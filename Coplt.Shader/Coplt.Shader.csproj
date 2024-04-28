@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+        <LangVersion>12.0</LangVersion>
+        <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Coplt.Shader.Library\Coplt.Shader.Library.csproj" />
+    </ItemGroup>
+
+</Project>

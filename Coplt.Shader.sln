@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coplt.Shader", "Coplt.Shader\Coplt.Shader.csproj", "{6DF9167F-8C75-4FE3-A08F-384FC57377D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{F36156B9-F69D-4D48-856F-E2972142546F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coplt.Shader.Library", "Coplt.Shader.Library\Coplt.Shader.Library.csproj", "{D79FE587-0BF2-45FF-A2F1-AD1A0A278A12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coplt.Shader.Mathematics", "Coplt.Shader.Mathematics\Coplt.Shader.Mathematics.csproj", "{5745D85D-B9C1-43B8-90A0-D820184CBBBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DF9167F-8C75-4FE3-A08F-384FC57377D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DF9167F-8C75-4FE3-A08F-384FC57377D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DF9167F-8C75-4FE3-A08F-384FC57377D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DF9167F-8C75-4FE3-A08F-384FC57377D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F36156B9-F69D-4D48-856F-E2972142546F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F36156B9-F69D-4D48-856F-E2972142546F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F36156B9-F69D-4D48-856F-E2972142546F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F36156B9-F69D-4D48-856F-E2972142546F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D79FE587-0BF2-45FF-A2F1-AD1A0A278A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D79FE587-0BF2-45FF-A2F1-AD1A0A278A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D79FE587-0BF2-45FF-A2F1-AD1A0A278A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D79FE587-0BF2-45FF-A2F1-AD1A0A278A12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5745D85D-B9C1-43B8-90A0-D820184CBBBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5745D85D-B9C1-43B8-90A0-D820184CBBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5745D85D-B9C1-43B8-90A0-D820184CBBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5745D85D-B9C1-43B8-90A0-D820184CBBBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
