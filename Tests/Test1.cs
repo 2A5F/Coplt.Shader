@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using Coplt.Shader;
 using Coplt.Shader.Shaders;
-using Coplt.Shader.Mathematics;
+using Coplt.Mathematics;
 
 namespace Tests.Test1;
 

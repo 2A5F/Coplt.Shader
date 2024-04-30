@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+        <LangVersion>12.0</LangVersion>
+        <RootNamespace>Coplt.Shader.Mathematics</RootNamespace>
+        <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
+        <TransformOnBuild>true</TransformOnBuild>
+        <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+        <NoWarn>CS8981;CS0169</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <TextTemplate Include="interface.tt"/>
+        <TextTemplate Include="vec.swizzle.2.3.tt" />
+        <TextTemplate Include="vec.swizzle.2.4.tt" />
+        <TextTemplate Include="vec.swizzle.3.2.tt" />
+        <TextTemplate Include="vec.swizzle.3.4.tt" />
+        <TextTemplate Include="vec.swizzle.4.2.tt" />
+        <TextTemplate Include="vec.swizzle.4.3.tt" />
+        <TextTemplate Include="vec.swizzle.4.tt" />
+        <TextTemplate Include="vecs.tt" />
+        <TextTemplate Include="vec.swizzle.2.tt" />
+        <TextTemplate Include="vec.swizzle.3.tt" />
+    </ItemGroup>
+
+    <Target Name="TextTemplateTransform" BeforeTargets="PrepareForBuild" Inputs="@(TextTemplate)" Outputs="@(TextTemplate->'%(RelativeDir)%(Filename).cs')">
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool run t4 -v %(TextTemplate.Identity) -o %(TextTemplate.RelativeDir)%(TextTemplate.Filename).cs -I=%(TextTemplate.RelativeDir)" EnvironmentVariables="ProjectDir=$(ProjectDir)"/>
+    </Target>
+</Project>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Coplt.Shader.Mathematics;
+namespace Coplt.Mathematics;
 
 public struct float4x4
 {

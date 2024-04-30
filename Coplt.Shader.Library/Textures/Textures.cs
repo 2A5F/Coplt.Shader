@@ -1,4 +1,4 @@
-﻿using Coplt.Shader.Mathematics;
+﻿using Coplt.Mathematics;
 
 namespace Coplt.Shader.Shaders;
 

@@ -7,6 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Coplt.Shader.Weaving\Coplt.Shader.Weaving.csproj" ReferenceOutputAssembly="false">
+          <PrivateAssets>all</PrivateAssets>
+      </ProjectReference>
       <ProjectReference Include="..\Coplt.Shader.Library\Coplt.Shader.Library.csproj" />
     </ItemGroup>
 

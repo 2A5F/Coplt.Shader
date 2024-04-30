@@ -1,0 +1,20 @@
+﻿<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#+
+    public record struct Typ(string name, string Type, int size, string one, bool math = false, bool f = false, bool i = false, bool simd = false, string shuffleCast = "")
+    {
+        public static string[] xyzw = { "x", "y", "z", "w" };
+        public static string[] rgba = { "r", "g", "b", "a" };
+
+        public static Typ[] Typs =
+        {
+            new("float", nameof(Single), sizeof(float), "1.0f", math: true, f: true, simd: true),
+            new("double", nameof(Double), sizeof(double), "1.0", math: true, f: true, simd: true),
+            new("int", nameof(Int32), sizeof(int), "1", math: true, i: true, simd: true),
+            new("uint", nameof(UInt32), sizeof(uint), "1u", math: true, i: true, simd: true, shuffleCast: "(uint)"),
+            new("long", nameof(Int64), sizeof(long), "1L", math: true, i: true, simd: true),
+            new("ulong", nameof(UInt64), sizeof(ulong), "1UL", math: true, i: true, simd: true, shuffleCast: "(ulong)"),
+            new("bool", nameof(Boolean), sizeof(bool), "true"),
+        };
+    }
+#>
