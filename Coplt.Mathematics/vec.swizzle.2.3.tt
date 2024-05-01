@@ -52,13 +52,13 @@ public partial struct <#= typeName #>
                 {
                     WriteLine("#if NET8_0_OR_GREATER");
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(Vector<#= bitSize3 #>.Shuffle(vector.ToVector<#= bitSize3 #>(), Vector<#= bitSize3 #>.Create(<#= typ.shuffleCast #><#= a #>, <#= b #>, <#= c #>, 3)));
 <#
                     WriteLine("#else // NET8_0_OR_GREATER");
                 }
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(<#= Typ.xyzw[a] #>, <#= Typ.xyzw[b] #>, <#= Typ.xyzw[c] #>);
 <#
                 if (typ.simd) WriteLine("#endif // NET8_0_OR_GREATER");

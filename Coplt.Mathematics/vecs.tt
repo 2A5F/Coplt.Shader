@@ -23,9 +23,9 @@ namespace Coplt.Mathematics;
             WriteLine($"    private {typ.name} _{comp};");
             WriteLine($"    public {typ.name} {comp}");
             WriteLine($"    {{");
-            WriteLine($"        [MethodImpl(MethodImplOptions.AggressiveInlining)]");
+            WriteLine($"        [MethodImpl(256 | 512)]");
             WriteLine($"        get => _{comp};");
-            WriteLine($"        [MethodImpl(MethodImplOptions.AggressiveInlining)]");
+            WriteLine($"        [MethodImpl(256 | 512)]");
             WriteLine($"        set => _{comp} = value;");
             WriteLine($"    }}");
         }
@@ -42,9 +42,9 @@ namespace Coplt.Mathematics;
             var comp = Typ.xyzw[c];
             WriteLine($"    public {typ.name} {comp}");
             WriteLine($"    {{");
-            WriteLine($"        [MethodImpl(MethodImplOptions.AggressiveInlining)]");
+            WriteLine($"        [MethodImpl(256 | 512)]");
             WriteLine($"        get => vector.GetElement({c});");
-            WriteLine($"        [MethodImpl(MethodImplOptions.AggressiveInlining)]");
+            WriteLine($"        [MethodImpl(256 | 512)]");
             WriteLine($"        set => vector = vector.WithElement(0, value);");
             WriteLine($"    }}");
         }
@@ -58,9 +58,9 @@ namespace Coplt.Mathematics;
             var rgba = Typ.rgba[c];
             WriteLine($"    public {typ.name} {rgba}");
             WriteLine($"    {{");
-            WriteLine($"        [MethodImpl(MethodImplOptions.AggressiveInlining)]");
+            WriteLine($"        [MethodImpl(256 | 512)]");
             WriteLine($"        get => {xyzw};");
-            WriteLine($"        [MethodImpl(MethodImplOptions.AggressiveInlining)]");
+            WriteLine($"        [MethodImpl(256 | 512)]");
             WriteLine($"        set => {xyzw} = value;");
             WriteLine($"    }}");
         }
@@ -134,34 +134,34 @@ public partial struct <#= typeName #> :
 
     public static bool IsSimdAccelerated
     { 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => <#= typ.simd ? "true" : "false" #>; 
     }
     public static int Length
     { 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => <#= i #>; 
     }
     public static int SizeByte
     { 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => <#= byteSize #>; 
     }
     public static int SizeBit
     { 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => <#= bitSize #>; 
     }
 
     public static <#= typeName #> Zero
     { 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => default; 
     }
 
     public static <#= typeName #> One
     { 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(<#= typ.one #>); 
     }
 
@@ -178,14 +178,14 @@ public partial struct <#= typeName #> :
     
     #region Unsafe Inner    
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator Vector<#= bitSize #><<#= typ.name #>>(<#= typeName #> self) => self.vector;
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public Vector<#= bitSize #><<#= typ.name #>> UnsafeGetInner() => vector;
-    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef]
     public ref Vector<#= bitSize #><<#= typ.name #>> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public void UnsafeSetInner(Vector<#= bitSize #><<#= typ.name #>> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -208,16 +208,16 @@ public partial struct <#= typeName #> :
             {
                 WriteLine($"    #if NET8_0_OR_GREATER");
 #>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(Vector<#= bitSize #><<#= typ.name #>> vector) => this.vector = vector;
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> UnsafeFromInner(Vector<#= bitSize #><<#= typ.name #>> vector) => new(vector);
 <#
                 WriteLine($"    #endif // NET8_0_OR_GREATER");
             }
 #>
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#
             {
                 var first = true;
@@ -242,10 +242,10 @@ public partial struct <#= typeName #> :
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator <#= typeName #>(<#= typ.name #> value) => new(value);
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= typ.name #> value)
     {
 <#
@@ -260,10 +260,10 @@ public partial struct <#= typeName #> :
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Scalar(<#= typ.name #> value) => new(value, new is_scalar());
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(<#= typ.name #> value, is_scalar _)
     {
 <#

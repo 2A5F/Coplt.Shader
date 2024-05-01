@@ -43,7 +43,7 @@ public partial struct <#= typeName #>
             var (a, b, c) = tuple;
 
             int[] abc = [a, b, c];
-            
+
             int[] inv = [0, 0, 0, 0];
             int[] sel = [-1, -1, -1, -1];
             inv[b] = 1;
@@ -65,35 +65,30 @@ public partial struct <#= typeName #>
                 {
                     WriteLine("#if NET8_0_OR_GREATER");
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector<#= bitSize4 #>.ConditionalSelect(
-            Vector<#= bitSize4 #>.Create(-1, -1, -1, 0).As<#= typ.Type #>(),
-            Vector<#= bitSize4 #>.Shuffle(vector, Vector<#= bitSize4 #>.Create(<#= typ.shuffleCast #><#= a #>, <#= b #>, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector<#= bitSize4 #>.Shuffle(vector, Vector<#= bitSize4 #>.Create(<#= typ.shuffleCast #><#= a #>, <#= b #>, <#= c #>, 3)) & Vector<#= bitSize4 #>.Create(-1, -1, -1, 0).As<#= typ.Type #>());
 <#
                     if (no_overlap)
                     {
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set => vector = Vector<#= bitSize4 #>.ConditionalSelect(
             Vector<#= bitSize4 #>.Create(<#= sel[0] #>, <#= sel[1] #>, <#= sel[2] #>, <#= sel[3] #>).As<#= typ.Type #>(), 
             vector, 
             Vector<#= bitSize4 #>.Shuffle(value.vector, Vector<#= bitSize4 #>.Create(<#= typ.shuffleCast #><#= inv[0] #>, <#= inv[1] #>, <#= inv[2] #>, <#= inv[3] #>))
         );
 <#
-                        
                     }
                     WriteLine("#else // NET8_0_OR_GREATER");
                 }
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(<#= Typ.xyzw[a] #>, <#= Typ.xyzw[b] #>, <#= Typ.xyzw[c] #>);
 <#
                 if (no_overlap)
                 {
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { <#= Typ.xyzw[a] #> = value.x; <#= Typ.xyzw[b] #> = value.y; <#= Typ.xyzw[c] #> = value.z; }
 <#
                 }

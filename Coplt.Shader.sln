@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coplt.Mathematics", "Coplt.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coplt.Shader.Weaving", "Coplt.Shader.Weaving\Coplt.Shader.Weaving.csproj", "{3905502C-6983-4D1F-AA6C-FC1B1518749E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathTests", "MathTests\MathTests.csproj", "{EAEDC447-AA5D-48D6-B285-425C5E8D52B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{3905502C-6983-4D1F-AA6C-FC1B1518749E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3905502C-6983-4D1F-AA6C-FC1B1518749E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3905502C-6983-4D1F-AA6C-FC1B1518749E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAEDC447-AA5D-48D6-B285-425C5E8D52B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAEDC447-AA5D-48D6-B285-425C5E8D52B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAEDC447-AA5D-48D6-B285-425C5E8D52B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAEDC447-AA5D-48D6-B285-425C5E8D52B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

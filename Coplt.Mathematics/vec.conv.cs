@@ -14,7 +14,7 @@ namespace Coplt.Mathematics;
 
 public partial struct float2 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint2(float2 self)
     {
         #if NET8_0_OR_GREATER
@@ -23,7 +23,7 @@ public partial struct float2
         return new((uint)self.x, (uint)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int2(float2 self)
     {
         #if NET8_0_OR_GREATER
@@ -32,7 +32,7 @@ public partial struct float2
         return new((int)self.x, (int)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong2(float2 self)
     {
         #if NET8_0_OR_GREATER
@@ -42,7 +42,7 @@ public partial struct float2
         return new((ulong)self.x, (ulong)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long2(float2 self)
     {
         #if NET8_0_OR_GREATER
@@ -52,17 +52,17 @@ public partial struct float2
         return new((long)self.x, (long)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator decimal2(float2 self)
     {
         return new((decimal)self.x, (decimal)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half2(float2 self)
     {
         return new((half)self.x, (half)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double2(float2 self)
     {
         #if NET8_0_OR_GREATER
@@ -80,7 +80,7 @@ public partial struct float2
 
 public partial struct float3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint3(float3 self)
     {
         #if NET8_0_OR_GREATER
@@ -89,7 +89,7 @@ public partial struct float3
         return new((uint)self.x, (uint)self.y, (uint)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int3(float3 self)
     {
         #if NET8_0_OR_GREATER
@@ -98,7 +98,7 @@ public partial struct float3
         return new((int)self.x, (int)self.y, (int)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong3(float3 self)
     {
         #if NET8_0_OR_GREATER
@@ -108,7 +108,7 @@ public partial struct float3
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long3(float3 self)
     {
         #if NET8_0_OR_GREATER
@@ -118,17 +118,17 @@ public partial struct float3
         return new((long)self.x, (long)self.y, (long)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator decimal3(float3 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half3(float3 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double3(float3 self)
     {
         #if NET8_0_OR_GREATER
@@ -146,7 +146,7 @@ public partial struct float3
 
 public partial struct float4 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint4(float4 self)
     {
         #if NET8_0_OR_GREATER
@@ -155,7 +155,7 @@ public partial struct float4
         return new((uint)self.x, (uint)self.y, (uint)self.z, (uint)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int4(float4 self)
     {
         #if NET8_0_OR_GREATER
@@ -164,7 +164,7 @@ public partial struct float4
         return new((int)self.x, (int)self.y, (int)self.z, (int)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong4(float4 self)
     {
         #if NET8_0_OR_GREATER
@@ -174,7 +174,7 @@ public partial struct float4
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z, (ulong)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long4(float4 self)
     {
         #if NET8_0_OR_GREATER
@@ -184,17 +184,17 @@ public partial struct float4
         return new((long)self.x, (long)self.y, (long)self.z, (long)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator decimal4(float4 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z, (decimal)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half4(float4 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z, (half)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double4(float4 self)
     {
         #if NET8_0_OR_GREATER
@@ -212,7 +212,7 @@ public partial struct float4
 
 public partial struct double2 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint2(double2 self)
     {
         #if NET8_0_OR_GREATER
@@ -222,7 +222,7 @@ public partial struct double2
         return new((uint)self.x, (uint)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int2(double2 self)
     {
         #if NET8_0_OR_GREATER
@@ -232,7 +232,7 @@ public partial struct double2
         return new((int)self.x, (int)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong2(double2 self)
     {
         #if NET8_0_OR_GREATER
@@ -241,7 +241,7 @@ public partial struct double2
         return new((ulong)self.x, (ulong)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long2(double2 self)
     {
         #if NET8_0_OR_GREATER
@@ -250,7 +250,7 @@ public partial struct double2
         return new((long)self.x, (long)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator float2(double2 self)
     {
         #if NET8_0_OR_GREATER
@@ -260,12 +260,12 @@ public partial struct double2
         return new((float)self.x, (float)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator decimal2(double2 self)
     {
         return new((decimal)self.x, (decimal)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half2(double2 self)
     {
         return new((half)self.x, (half)self.y);
@@ -278,7 +278,7 @@ public partial struct double2
 
 public partial struct double3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint3(double3 self)
     {
         #if NET8_0_OR_GREATER
@@ -288,7 +288,7 @@ public partial struct double3
         return new((uint)self.x, (uint)self.y, (uint)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int3(double3 self)
     {
         #if NET8_0_OR_GREATER
@@ -298,7 +298,7 @@ public partial struct double3
         return new((int)self.x, (int)self.y, (int)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong3(double3 self)
     {
         #if NET8_0_OR_GREATER
@@ -307,7 +307,7 @@ public partial struct double3
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long3(double3 self)
     {
         #if NET8_0_OR_GREATER
@@ -316,7 +316,7 @@ public partial struct double3
         return new((long)self.x, (long)self.y, (long)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator float3(double3 self)
     {
         #if NET8_0_OR_GREATER
@@ -326,12 +326,12 @@ public partial struct double3
         return new((float)self.x, (float)self.y, (float)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator decimal3(double3 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half3(double3 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z);
@@ -344,7 +344,7 @@ public partial struct double3
 
 public partial struct double4 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint4(double4 self)
     {
         #if NET8_0_OR_GREATER
@@ -354,7 +354,7 @@ public partial struct double4
         return new((uint)self.x, (uint)self.y, (uint)self.z, (uint)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int4(double4 self)
     {
         #if NET8_0_OR_GREATER
@@ -364,7 +364,7 @@ public partial struct double4
         return new((int)self.x, (int)self.y, (int)self.z, (int)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong4(double4 self)
     {
         #if NET8_0_OR_GREATER
@@ -373,7 +373,7 @@ public partial struct double4
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z, (ulong)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long4(double4 self)
     {
         #if NET8_0_OR_GREATER
@@ -382,7 +382,7 @@ public partial struct double4
         return new((long)self.x, (long)self.y, (long)self.z, (long)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator float4(double4 self)
     {
         #if NET8_0_OR_GREATER
@@ -392,12 +392,12 @@ public partial struct double4
         return new((float)self.x, (float)self.y, (float)self.z, (float)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator decimal4(double4 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z, (decimal)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half4(double4 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z, (half)self.w);
@@ -410,7 +410,7 @@ public partial struct double4
 
 public partial struct int2 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint2(int2 self)
     {
         #if NET8_0_OR_GREATER
@@ -419,7 +419,7 @@ public partial struct int2
         return new((uint)self.x, (uint)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong2(int2 self)
     {
         #if NET8_0_OR_GREATER
@@ -429,12 +429,12 @@ public partial struct int2
         return new((ulong)self.x, (ulong)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half2(int2 self)
     {
         return new((half)self.x, (half)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator long2(int2 self)
     {
         #if NET8_0_OR_GREATER
@@ -444,7 +444,7 @@ public partial struct int2
         return new((long)self.x, (long)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator float2(int2 self)
     {
         #if NET8_0_OR_GREATER
@@ -453,7 +453,7 @@ public partial struct int2
         return new((float)self.x, (float)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double2(int2 self)
     {
         #if NET8_0_OR_GREATER
@@ -463,7 +463,7 @@ public partial struct int2
         return new((double)self.x, (double)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal2(int2 self)
     {
         return new((decimal)self.x, (decimal)self.y);
@@ -476,7 +476,7 @@ public partial struct int2
 
 public partial struct int3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint3(int3 self)
     {
         #if NET8_0_OR_GREATER
@@ -485,7 +485,7 @@ public partial struct int3
         return new((uint)self.x, (uint)self.y, (uint)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong3(int3 self)
     {
         #if NET8_0_OR_GREATER
@@ -495,12 +495,12 @@ public partial struct int3
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half3(int3 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator long3(int3 self)
     {
         #if NET8_0_OR_GREATER
@@ -510,7 +510,7 @@ public partial struct int3
         return new((long)self.x, (long)self.y, (long)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator float3(int3 self)
     {
         #if NET8_0_OR_GREATER
@@ -519,7 +519,7 @@ public partial struct int3
         return new((float)self.x, (float)self.y, (float)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double3(int3 self)
     {
         #if NET8_0_OR_GREATER
@@ -529,7 +529,7 @@ public partial struct int3
         return new((double)self.x, (double)self.y, (double)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal3(int3 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z);
@@ -542,7 +542,7 @@ public partial struct int3
 
 public partial struct int4 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint4(int4 self)
     {
         #if NET8_0_OR_GREATER
@@ -551,7 +551,7 @@ public partial struct int4
         return new((uint)self.x, (uint)self.y, (uint)self.z, (uint)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong4(int4 self)
     {
         #if NET8_0_OR_GREATER
@@ -561,12 +561,12 @@ public partial struct int4
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z, (ulong)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half4(int4 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z, (half)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator long4(int4 self)
     {
         #if NET8_0_OR_GREATER
@@ -576,7 +576,7 @@ public partial struct int4
         return new((long)self.x, (long)self.y, (long)self.z, (long)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator float4(int4 self)
     {
         #if NET8_0_OR_GREATER
@@ -585,7 +585,7 @@ public partial struct int4
         return new((float)self.x, (float)self.y, (float)self.z, (float)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double4(int4 self)
     {
         #if NET8_0_OR_GREATER
@@ -595,7 +595,7 @@ public partial struct int4
         return new((double)self.x, (double)self.y, (double)self.z, (double)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal4(int4 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z, (decimal)self.w);
@@ -608,7 +608,7 @@ public partial struct int4
 
 public partial struct uint2 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int2(uint2 self)
     {
         #if NET8_0_OR_GREATER
@@ -617,12 +617,12 @@ public partial struct uint2
         return new((int)self.x, (int)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half2(uint2 self)
     {
         return new((half)self.x, (half)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator long2(uint2 self)
     {
         #if NET8_0_OR_GREATER
@@ -632,7 +632,7 @@ public partial struct uint2
         return new((long)self.x, (long)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator ulong2(uint2 self)
     {
         #if NET8_0_OR_GREATER
@@ -642,7 +642,7 @@ public partial struct uint2
         return new((ulong)self.x, (ulong)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator float2(uint2 self)
     {
         #if NET8_0_OR_GREATER
@@ -651,7 +651,7 @@ public partial struct uint2
         return new((float)self.x, (float)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double2(uint2 self)
     {
         #if NET8_0_OR_GREATER
@@ -661,7 +661,7 @@ public partial struct uint2
         return new((double)self.x, (double)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal2(uint2 self)
     {
         return new((decimal)self.x, (decimal)self.y);
@@ -674,7 +674,7 @@ public partial struct uint2
 
 public partial struct uint3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int3(uint3 self)
     {
         #if NET8_0_OR_GREATER
@@ -683,12 +683,12 @@ public partial struct uint3
         return new((int)self.x, (int)self.y, (int)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half3(uint3 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator long3(uint3 self)
     {
         #if NET8_0_OR_GREATER
@@ -698,7 +698,7 @@ public partial struct uint3
         return new((long)self.x, (long)self.y, (long)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator ulong3(uint3 self)
     {
         #if NET8_0_OR_GREATER
@@ -708,7 +708,7 @@ public partial struct uint3
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator float3(uint3 self)
     {
         #if NET8_0_OR_GREATER
@@ -717,7 +717,7 @@ public partial struct uint3
         return new((float)self.x, (float)self.y, (float)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double3(uint3 self)
     {
         #if NET8_0_OR_GREATER
@@ -727,7 +727,7 @@ public partial struct uint3
         return new((double)self.x, (double)self.y, (double)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal3(uint3 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z);
@@ -740,7 +740,7 @@ public partial struct uint3
 
 public partial struct uint4 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int4(uint4 self)
     {
         #if NET8_0_OR_GREATER
@@ -749,12 +749,12 @@ public partial struct uint4
         return new((int)self.x, (int)self.y, (int)self.z, (int)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half4(uint4 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z, (half)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator long4(uint4 self)
     {
         #if NET8_0_OR_GREATER
@@ -764,7 +764,7 @@ public partial struct uint4
         return new((long)self.x, (long)self.y, (long)self.z, (long)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator ulong4(uint4 self)
     {
         #if NET8_0_OR_GREATER
@@ -774,7 +774,7 @@ public partial struct uint4
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z, (ulong)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator float4(uint4 self)
     {
         #if NET8_0_OR_GREATER
@@ -783,7 +783,7 @@ public partial struct uint4
         return new((float)self.x, (float)self.y, (float)self.z, (float)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double4(uint4 self)
     {
         #if NET8_0_OR_GREATER
@@ -793,7 +793,7 @@ public partial struct uint4
         return new((double)self.x, (double)self.y, (double)self.z, (double)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal4(uint4 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z, (decimal)self.w);
@@ -806,7 +806,7 @@ public partial struct uint4
 
 public partial struct long2 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint2(long2 self)
     {
         #if NET8_0_OR_GREATER
@@ -816,7 +816,7 @@ public partial struct long2
         return new((uint)self.x, (uint)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int2(long2 self)
     {
         #if NET8_0_OR_GREATER
@@ -826,7 +826,7 @@ public partial struct long2
         return new((int)self.x, (int)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong2(long2 self)
     {
         #if NET8_0_OR_GREATER
@@ -835,12 +835,12 @@ public partial struct long2
         return new((ulong)self.x, (ulong)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half2(long2 self)
     {
         return new((half)self.x, (half)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double2(long2 self)
     {
         #if NET8_0_OR_GREATER
@@ -849,7 +849,7 @@ public partial struct long2
         return new((double)self.x, (double)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal2(long2 self)
     {
         return new((decimal)self.x, (decimal)self.y);
@@ -862,7 +862,7 @@ public partial struct long2
 
 public partial struct long3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint3(long3 self)
     {
         #if NET8_0_OR_GREATER
@@ -872,7 +872,7 @@ public partial struct long3
         return new((uint)self.x, (uint)self.y, (uint)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int3(long3 self)
     {
         #if NET8_0_OR_GREATER
@@ -882,7 +882,7 @@ public partial struct long3
         return new((int)self.x, (int)self.y, (int)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong3(long3 self)
     {
         #if NET8_0_OR_GREATER
@@ -891,12 +891,12 @@ public partial struct long3
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half3(long3 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double3(long3 self)
     {
         #if NET8_0_OR_GREATER
@@ -905,7 +905,7 @@ public partial struct long3
         return new((double)self.x, (double)self.y, (double)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal3(long3 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z);
@@ -918,7 +918,7 @@ public partial struct long3
 
 public partial struct long4 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint4(long4 self)
     {
         #if NET8_0_OR_GREATER
@@ -928,7 +928,7 @@ public partial struct long4
         return new((uint)self.x, (uint)self.y, (uint)self.z, (uint)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int4(long4 self)
     {
         #if NET8_0_OR_GREATER
@@ -938,7 +938,7 @@ public partial struct long4
         return new((int)self.x, (int)self.y, (int)self.z, (int)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong4(long4 self)
     {
         #if NET8_0_OR_GREATER
@@ -947,12 +947,12 @@ public partial struct long4
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z, (ulong)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half4(long4 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z, (half)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double4(long4 self)
     {
         #if NET8_0_OR_GREATER
@@ -961,7 +961,7 @@ public partial struct long4
         return new((double)self.x, (double)self.y, (double)self.z, (double)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal4(long4 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z, (decimal)self.w);
@@ -974,7 +974,7 @@ public partial struct long4
 
 public partial struct ulong2 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint2(ulong2 self)
     {
         #if NET8_0_OR_GREATER
@@ -984,7 +984,7 @@ public partial struct ulong2
         return new((uint)self.x, (uint)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int2(ulong2 self)
     {
         #if NET8_0_OR_GREATER
@@ -994,7 +994,7 @@ public partial struct ulong2
         return new((int)self.x, (int)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long2(ulong2 self)
     {
         #if NET8_0_OR_GREATER
@@ -1003,12 +1003,12 @@ public partial struct ulong2
         return new((long)self.x, (long)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half2(ulong2 self)
     {
         return new((half)self.x, (half)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double2(ulong2 self)
     {
         #if NET8_0_OR_GREATER
@@ -1017,7 +1017,7 @@ public partial struct ulong2
         return new((double)self.x, (double)self.y);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal2(ulong2 self)
     {
         return new((decimal)self.x, (decimal)self.y);
@@ -1030,7 +1030,7 @@ public partial struct ulong2
 
 public partial struct ulong3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint3(ulong3 self)
     {
         #if NET8_0_OR_GREATER
@@ -1040,7 +1040,7 @@ public partial struct ulong3
         return new((uint)self.x, (uint)self.y, (uint)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int3(ulong3 self)
     {
         #if NET8_0_OR_GREATER
@@ -1050,7 +1050,7 @@ public partial struct ulong3
         return new((int)self.x, (int)self.y, (int)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long3(ulong3 self)
     {
         #if NET8_0_OR_GREATER
@@ -1059,12 +1059,12 @@ public partial struct ulong3
         return new((long)self.x, (long)self.y, (long)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half3(ulong3 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double3(ulong3 self)
     {
         #if NET8_0_OR_GREATER
@@ -1073,7 +1073,7 @@ public partial struct ulong3
         return new((double)self.x, (double)self.y, (double)self.z);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal3(ulong3 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z);
@@ -1086,7 +1086,7 @@ public partial struct ulong3
 
 public partial struct ulong4 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint4(ulong4 self)
     {
         #if NET8_0_OR_GREATER
@@ -1096,7 +1096,7 @@ public partial struct ulong4
         return new((uint)self.x, (uint)self.y, (uint)self.z, (uint)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int4(ulong4 self)
     {
         #if NET8_0_OR_GREATER
@@ -1106,7 +1106,7 @@ public partial struct ulong4
         return new((int)self.x, (int)self.y, (int)self.z, (int)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long4(ulong4 self)
     {
         #if NET8_0_OR_GREATER
@@ -1115,12 +1115,12 @@ public partial struct ulong4
         return new((long)self.x, (long)self.y, (long)self.z, (long)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator half4(ulong4 self)
     {
         return new((half)self.x, (half)self.y, (half)self.z, (half)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double4(ulong4 self)
     {
         #if NET8_0_OR_GREATER
@@ -1129,7 +1129,7 @@ public partial struct ulong4
         return new((double)self.x, (double)self.y, (double)self.z, (double)self.w);
         #endif // NET8_0_OR_GREATER
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal4(ulong4 self)
     {
         return new((decimal)self.x, (decimal)self.y, (decimal)self.z, (decimal)self.w);
@@ -1142,32 +1142,32 @@ public partial struct ulong4
 
 public partial struct decimal2 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint2(decimal2 self)
     {
         return new((uint)self.x, (uint)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int2(decimal2 self)
     {
         return new((int)self.x, (int)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong2(decimal2 self)
     {
         return new((ulong)self.x, (ulong)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long2(decimal2 self)
     {
         return new((long)self.x, (long)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator float2(decimal2 self)
     {
         return new((float)self.x, (float)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator double2(decimal2 self)
     {
         return new((double)self.x, (double)self.y);
@@ -1180,32 +1180,32 @@ public partial struct decimal2
 
 public partial struct decimal3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint3(decimal3 self)
     {
         return new((uint)self.x, (uint)self.y, (uint)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int3(decimal3 self)
     {
         return new((int)self.x, (int)self.y, (int)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong3(decimal3 self)
     {
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long3(decimal3 self)
     {
         return new((long)self.x, (long)self.y, (long)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator float3(decimal3 self)
     {
         return new((float)self.x, (float)self.y, (float)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator double3(decimal3 self)
     {
         return new((double)self.x, (double)self.y, (double)self.z);
@@ -1218,32 +1218,32 @@ public partial struct decimal3
 
 public partial struct decimal4 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint4(decimal4 self)
     {
         return new((uint)self.x, (uint)self.y, (uint)self.z, (uint)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int4(decimal4 self)
     {
         return new((int)self.x, (int)self.y, (int)self.z, (int)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong4(decimal4 self)
     {
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z, (ulong)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long4(decimal4 self)
     {
         return new((long)self.x, (long)self.y, (long)self.z, (long)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator float4(decimal4 self)
     {
         return new((float)self.x, (float)self.y, (float)self.z, (float)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator double4(decimal4 self)
     {
         return new((double)self.x, (double)self.y, (double)self.z, (double)self.w);
@@ -1256,32 +1256,32 @@ public partial struct decimal4
 
 public partial struct half2 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint2(half2 self)
     {
         return new((uint)self.x, (uint)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int2(half2 self)
     {
         return new((int)self.x, (int)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong2(half2 self)
     {
         return new((ulong)self.x, (ulong)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long2(half2 self)
     {
         return new((long)self.x, (long)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator float2(half2 self)
     {
         return new((float)self.x, (float)self.y);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double2(half2 self)
     {
         return new((double)self.x, (double)self.y);
@@ -1294,32 +1294,32 @@ public partial struct half2
 
 public partial struct half3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint3(half3 self)
     {
         return new((uint)self.x, (uint)self.y, (uint)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int3(half3 self)
     {
         return new((int)self.x, (int)self.y, (int)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong3(half3 self)
     {
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long3(half3 self)
     {
         return new((long)self.x, (long)self.y, (long)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator float3(half3 self)
     {
         return new((float)self.x, (float)self.y, (float)self.z);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double3(half3 self)
     {
         return new((double)self.x, (double)self.y, (double)self.z);
@@ -1332,32 +1332,32 @@ public partial struct half3
 
 public partial struct half4 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator uint4(half4 self)
     {
         return new((uint)self.x, (uint)self.y, (uint)self.z, (uint)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator int4(half4 self)
     {
         return new((int)self.x, (int)self.y, (int)self.z, (int)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator ulong4(half4 self)
     {
         return new((ulong)self.x, (ulong)self.y, (ulong)self.z, (ulong)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static explicit operator long4(half4 self)
     {
         return new((long)self.x, (long)self.y, (long)self.z, (long)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator float4(half4 self)
     {
         return new((float)self.x, (float)self.y, (float)self.z, (float)self.w);
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static implicit operator double4(half4 self)
     {
         return new((double)self.x, (double)self.y, (double)self.z, (double)self.w);

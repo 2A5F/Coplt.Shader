@@ -54,9 +54,9 @@ public partial struct <#= typeName #>
                 if (ordered)
                 {
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => this;
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set => this = value;
 <#
                 }
@@ -66,20 +66,20 @@ public partial struct <#= typeName #>
                     {
                         WriteLine("#if NET8_0_OR_GREATER");
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(Vector<#= bitSize3 #>.Shuffle(vector, Vector<#= bitSize3 #>.Create(<#= typ.shuffleCast #><#= a #>, <#= b #>, <#= c #>, 3)));
 <#
                         WriteLine("#else // NET8_0_OR_GREATER");
                     }
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(<#= Typ.xyzw[a] #>, <#= Typ.xyzw[b] #>, <#= Typ.xyzw[c] #>);
 <#
                     if (typ.simd) WriteLine("#endif // NET8_0_OR_GREATER");
                     if (no_overlap)
                     {
 #>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set => this = value.<#= Typ.xyzw[inv[0]] #><#= Typ.xyzw[inv[1]] #><#= Typ.xyzw[inv[2]] #>;
 <#
                     }

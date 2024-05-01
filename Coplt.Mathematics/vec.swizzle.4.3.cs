@@ -17,2176 +17,1664 @@ public partial struct float4
     public float3 xxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 rrr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 xxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 rrg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 xxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 rrb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 xxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 rra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 xyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 rgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 xyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 rgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 xyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 rgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 xyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 rga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 xzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 rbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 xzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 rbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 xzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 rbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 xzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 rba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 xwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 rar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 xwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 rag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 xwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 rab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 xww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 raa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 yxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 grr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 yxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 grg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 yxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 grb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 yxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 gra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 yyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 ggr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 yyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 ggg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 yyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 ggb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 yyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 gga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 yzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 gbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 yzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 gbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 yzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 gbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 yzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 gba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 ywx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 gar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 ywy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 gag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 ywz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 gab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 yww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 gaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 brr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 brg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 zxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 brb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 bra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 zyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 bgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 zyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 bgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 bgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 bga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 zzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 bbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 bbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 bbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 bba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 bar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 zwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 bag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 zwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 bab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 zww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 baa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 wxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 arr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 wxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 arg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 wxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 arb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 wxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 ara
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 wyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 agr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 wyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 agg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 wyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 agb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 wyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 aga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 wzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 abr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 wzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 abg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public float3 wzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 abb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 wzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 aba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 wwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 aar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public float3 wwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 aag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public float3 wwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 aab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public float3 www
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public float3 aaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsSingle(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
@@ -2201,3670 +1689,1670 @@ public partial struct double4
     public double3 xxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 rrr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 xxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 rrg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 xxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 rrb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 xxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 rra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 xyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 rgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 xyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 rgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 xyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 rgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 xyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 rga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 xzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 rbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 xzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 rbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 xzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 rbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 xzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 rba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 xwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 rar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 xwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 rag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 xwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 rab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 xww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 raa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 yxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 grr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 yxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 grg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 yxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 grb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 yxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 gra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 yyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 ggr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 yyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 ggg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 yyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 ggb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 yyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 gga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 yzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 gbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 yzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 gbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 yzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 gbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 yzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 gba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 ywx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 gar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 ywy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 gag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 ywz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 gab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 yww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 gaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 brr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 brg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 zxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 brb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 bra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 zyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 bgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 zyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 bgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 bgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 bga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 zzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 bbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 bbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 bbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 bba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 bar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 zwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 bag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 zwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 bab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 zww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 baa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 wxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 arr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 wxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 arg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 wxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 arb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 wxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 ara
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 wyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 agr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 wyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 agg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 wyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 agb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 wyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 aga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 wzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 abr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 wzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 abg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public double3 wzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 abb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 wzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 aba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 wwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 aar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public double3 wwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 aag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public double3 wwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 aab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public double3 www
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public double3 aaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsDouble(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
 }
 
 #endregion // double4
-
-#region decimal4
-
-public partial struct decimal4 
-{
-    public decimal3 xxx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, x);
-    }
-    public decimal3 rrr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, x);
-    }
-    public decimal3 xxy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, y);
-    }
-    public decimal3 rrg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, y);
-    }
-    public decimal3 xxz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, z);
-    }
-    public decimal3 rrb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, z);
-    }
-    public decimal3 xxw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, w);
-    }
-    public decimal3 rra
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, w);
-    }
-    public decimal3 xyx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, x);
-    }
-    public decimal3 rgr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, x);
-    }
-    public decimal3 xyy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, y);
-    }
-    public decimal3 rgg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, y);
-    }
-    public decimal3 xyz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; y = value.y; z = value.z; }
-    }
-    public decimal3 rgb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; y = value.y; z = value.z; }
-    }
-    public decimal3 xyw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; y = value.y; w = value.z; }
-    }
-    public decimal3 rga
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; y = value.y; w = value.z; }
-    }
-    public decimal3 xzx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, x);
-    }
-    public decimal3 rbr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, x);
-    }
-    public decimal3 xzy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; z = value.y; y = value.z; }
-    }
-    public decimal3 rbg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; z = value.y; y = value.z; }
-    }
-    public decimal3 xzz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, z);
-    }
-    public decimal3 rbb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, z);
-    }
-    public decimal3 xzw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; z = value.y; w = value.z; }
-    }
-    public decimal3 rba
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; z = value.y; w = value.z; }
-    }
-    public decimal3 xwx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, x);
-    }
-    public decimal3 rar
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, x);
-    }
-    public decimal3 xwy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; w = value.y; y = value.z; }
-    }
-    public decimal3 rag
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; w = value.y; y = value.z; }
-    }
-    public decimal3 xwz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; w = value.y; z = value.z; }
-    }
-    public decimal3 rab
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; w = value.y; z = value.z; }
-    }
-    public decimal3 xww
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, w);
-    }
-    public decimal3 raa
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, w);
-    }
-    public decimal3 yxx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, x);
-    }
-    public decimal3 grr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, x);
-    }
-    public decimal3 yxy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, y);
-    }
-    public decimal3 grg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, y);
-    }
-    public decimal3 yxz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; x = value.y; z = value.z; }
-    }
-    public decimal3 grb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; x = value.y; z = value.z; }
-    }
-    public decimal3 yxw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; x = value.y; w = value.z; }
-    }
-    public decimal3 gra
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; x = value.y; w = value.z; }
-    }
-    public decimal3 yyx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, x);
-    }
-    public decimal3 ggr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, x);
-    }
-    public decimal3 yyy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, y);
-    }
-    public decimal3 ggg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, y);
-    }
-    public decimal3 yyz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, z);
-    }
-    public decimal3 ggb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, z);
-    }
-    public decimal3 yyw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, w);
-    }
-    public decimal3 gga
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, w);
-    }
-    public decimal3 yzx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; z = value.y; x = value.z; }
-    }
-    public decimal3 gbr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; z = value.y; x = value.z; }
-    }
-    public decimal3 yzy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, y);
-    }
-    public decimal3 gbg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, y);
-    }
-    public decimal3 yzz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, z);
-    }
-    public decimal3 gbb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, z);
-    }
-    public decimal3 yzw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; z = value.y; w = value.z; }
-    }
-    public decimal3 gba
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; z = value.y; w = value.z; }
-    }
-    public decimal3 ywx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; w = value.y; x = value.z; }
-    }
-    public decimal3 gar
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; w = value.y; x = value.z; }
-    }
-    public decimal3 ywy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, y);
-    }
-    public decimal3 gag
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, y);
-    }
-    public decimal3 ywz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; w = value.y; z = value.z; }
-    }
-    public decimal3 gab
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; w = value.y; z = value.z; }
-    }
-    public decimal3 yww
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, w);
-    }
-    public decimal3 gaa
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, w);
-    }
-    public decimal3 zxx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, x);
-    }
-    public decimal3 brr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, x);
-    }
-    public decimal3 zxy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; x = value.y; y = value.z; }
-    }
-    public decimal3 brg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; x = value.y; y = value.z; }
-    }
-    public decimal3 zxz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, z);
-    }
-    public decimal3 brb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, z);
-    }
-    public decimal3 zxw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; x = value.y; w = value.z; }
-    }
-    public decimal3 bra
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; x = value.y; w = value.z; }
-    }
-    public decimal3 zyx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; y = value.y; x = value.z; }
-    }
-    public decimal3 bgr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; y = value.y; x = value.z; }
-    }
-    public decimal3 zyy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, y);
-    }
-    public decimal3 bgg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, y);
-    }
-    public decimal3 zyz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, z);
-    }
-    public decimal3 bgb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, z);
-    }
-    public decimal3 zyw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; y = value.y; w = value.z; }
-    }
-    public decimal3 bga
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; y = value.y; w = value.z; }
-    }
-    public decimal3 zzx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, x);
-    }
-    public decimal3 bbr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, x);
-    }
-    public decimal3 zzy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, y);
-    }
-    public decimal3 bbg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, y);
-    }
-    public decimal3 zzz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, z);
-    }
-    public decimal3 bbb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, z);
-    }
-    public decimal3 zzw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, w);
-    }
-    public decimal3 bba
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, w);
-    }
-    public decimal3 zwx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; w = value.y; x = value.z; }
-    }
-    public decimal3 bar
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; w = value.y; x = value.z; }
-    }
-    public decimal3 zwy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; w = value.y; y = value.z; }
-    }
-    public decimal3 bag
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; w = value.y; y = value.z; }
-    }
-    public decimal3 zwz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, z);
-    }
-    public decimal3 bab
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, z);
-    }
-    public decimal3 zww
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, w);
-    }
-    public decimal3 baa
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, w);
-    }
-    public decimal3 wxx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, x);
-    }
-    public decimal3 arr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, x);
-    }
-    public decimal3 wxy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; x = value.y; y = value.z; }
-    }
-    public decimal3 arg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; x = value.y; y = value.z; }
-    }
-    public decimal3 wxz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; x = value.y; z = value.z; }
-    }
-    public decimal3 arb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; x = value.y; z = value.z; }
-    }
-    public decimal3 wxw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, w);
-    }
-    public decimal3 ara
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, w);
-    }
-    public decimal3 wyx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; y = value.y; x = value.z; }
-    }
-    public decimal3 agr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; y = value.y; x = value.z; }
-    }
-    public decimal3 wyy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, y);
-    }
-    public decimal3 agg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, y);
-    }
-    public decimal3 wyz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; y = value.y; z = value.z; }
-    }
-    public decimal3 agb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; y = value.y; z = value.z; }
-    }
-    public decimal3 wyw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, w);
-    }
-    public decimal3 aga
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, w);
-    }
-    public decimal3 wzx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; z = value.y; x = value.z; }
-    }
-    public decimal3 abr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; z = value.y; x = value.z; }
-    }
-    public decimal3 wzy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; z = value.y; y = value.z; }
-    }
-    public decimal3 abg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; z = value.y; y = value.z; }
-    }
-    public decimal3 wzz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, z);
-    }
-    public decimal3 abb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, z);
-    }
-    public decimal3 wzw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, w);
-    }
-    public decimal3 aba
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, w);
-    }
-    public decimal3 wwx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, x);
-    }
-    public decimal3 aar
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, x);
-    }
-    public decimal3 wwy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, y);
-    }
-    public decimal3 aag
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, y);
-    }
-    public decimal3 wwz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, z);
-    }
-    public decimal3 aab
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, z);
-    }
-    public decimal3 www
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, w);
-    }
-    public decimal3 aaa
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, w);
-    }
-}
-
-#endregion // decimal4
-
-#region half4
-
-public partial struct half4 
-{
-    public half3 xxx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, x);
-    }
-    public half3 rrr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, x);
-    }
-    public half3 xxy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, y);
-    }
-    public half3 rrg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, y);
-    }
-    public half3 xxz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, z);
-    }
-    public half3 rrb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, z);
-    }
-    public half3 xxw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, w);
-    }
-    public half3 rra
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, x, w);
-    }
-    public half3 xyx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, x);
-    }
-    public half3 rgr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, x);
-    }
-    public half3 xyy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, y);
-    }
-    public half3 rgg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, y);
-    }
-    public half3 xyz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; y = value.y; z = value.z; }
-    }
-    public half3 rgb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; y = value.y; z = value.z; }
-    }
-    public half3 xyw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; y = value.y; w = value.z; }
-    }
-    public half3 rga
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; y = value.y; w = value.z; }
-    }
-    public half3 xzx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, x);
-    }
-    public half3 rbr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, x);
-    }
-    public half3 xzy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; z = value.y; y = value.z; }
-    }
-    public half3 rbg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; z = value.y; y = value.z; }
-    }
-    public half3 xzz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, z);
-    }
-    public half3 rbb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, z);
-    }
-    public half3 xzw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; z = value.y; w = value.z; }
-    }
-    public half3 rba
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; z = value.y; w = value.z; }
-    }
-    public half3 xwx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, x);
-    }
-    public half3 rar
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, x);
-    }
-    public half3 xwy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; w = value.y; y = value.z; }
-    }
-    public half3 rag
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; w = value.y; y = value.z; }
-    }
-    public half3 xwz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; w = value.y; z = value.z; }
-    }
-    public half3 rab
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { x = value.x; w = value.y; z = value.z; }
-    }
-    public half3 xww
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, w);
-    }
-    public half3 raa
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(x, w, w);
-    }
-    public half3 yxx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, x);
-    }
-    public half3 grr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, x);
-    }
-    public half3 yxy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, y);
-    }
-    public half3 grg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, y);
-    }
-    public half3 yxz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; x = value.y; z = value.z; }
-    }
-    public half3 grb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; x = value.y; z = value.z; }
-    }
-    public half3 yxw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; x = value.y; w = value.z; }
-    }
-    public half3 gra
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; x = value.y; w = value.z; }
-    }
-    public half3 yyx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, x);
-    }
-    public half3 ggr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, x);
-    }
-    public half3 yyy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, y);
-    }
-    public half3 ggg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, y);
-    }
-    public half3 yyz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, z);
-    }
-    public half3 ggb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, z);
-    }
-    public half3 yyw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, w);
-    }
-    public half3 gga
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, y, w);
-    }
-    public half3 yzx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; z = value.y; x = value.z; }
-    }
-    public half3 gbr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; z = value.y; x = value.z; }
-    }
-    public half3 yzy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, y);
-    }
-    public half3 gbg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, y);
-    }
-    public half3 yzz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, z);
-    }
-    public half3 gbb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, z);
-    }
-    public half3 yzw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; z = value.y; w = value.z; }
-    }
-    public half3 gba
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; z = value.y; w = value.z; }
-    }
-    public half3 ywx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; w = value.y; x = value.z; }
-    }
-    public half3 gar
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; w = value.y; x = value.z; }
-    }
-    public half3 ywy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, y);
-    }
-    public half3 gag
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, y);
-    }
-    public half3 ywz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; w = value.y; z = value.z; }
-    }
-    public half3 gab
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { y = value.x; w = value.y; z = value.z; }
-    }
-    public half3 yww
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, w);
-    }
-    public half3 gaa
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(y, w, w);
-    }
-    public half3 zxx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, x);
-    }
-    public half3 brr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, x);
-    }
-    public half3 zxy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; x = value.y; y = value.z; }
-    }
-    public half3 brg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; x = value.y; y = value.z; }
-    }
-    public half3 zxz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, z);
-    }
-    public half3 brb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, z);
-    }
-    public half3 zxw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; x = value.y; w = value.z; }
-    }
-    public half3 bra
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; x = value.y; w = value.z; }
-    }
-    public half3 zyx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; y = value.y; x = value.z; }
-    }
-    public half3 bgr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; y = value.y; x = value.z; }
-    }
-    public half3 zyy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, y);
-    }
-    public half3 bgg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, y);
-    }
-    public half3 zyz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, z);
-    }
-    public half3 bgb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, z);
-    }
-    public half3 zyw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; y = value.y; w = value.z; }
-    }
-    public half3 bga
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; y = value.y; w = value.z; }
-    }
-    public half3 zzx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, x);
-    }
-    public half3 bbr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, x);
-    }
-    public half3 zzy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, y);
-    }
-    public half3 bbg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, y);
-    }
-    public half3 zzz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, z);
-    }
-    public half3 bbb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, z);
-    }
-    public half3 zzw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, w);
-    }
-    public half3 bba
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, z, w);
-    }
-    public half3 zwx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; w = value.y; x = value.z; }
-    }
-    public half3 bar
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; w = value.y; x = value.z; }
-    }
-    public half3 zwy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; w = value.y; y = value.z; }
-    }
-    public half3 bag
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { z = value.x; w = value.y; y = value.z; }
-    }
-    public half3 zwz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, z);
-    }
-    public half3 bab
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, z);
-    }
-    public half3 zww
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, w);
-    }
-    public half3 baa
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(z, w, w);
-    }
-    public half3 wxx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, x);
-    }
-    public half3 arr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, x);
-    }
-    public half3 wxy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; x = value.y; y = value.z; }
-    }
-    public half3 arg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; x = value.y; y = value.z; }
-    }
-    public half3 wxz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; x = value.y; z = value.z; }
-    }
-    public half3 arb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; x = value.y; z = value.z; }
-    }
-    public half3 wxw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, w);
-    }
-    public half3 ara
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, x, w);
-    }
-    public half3 wyx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; y = value.y; x = value.z; }
-    }
-    public half3 agr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; y = value.y; x = value.z; }
-    }
-    public half3 wyy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, y);
-    }
-    public half3 agg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, y);
-    }
-    public half3 wyz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; y = value.y; z = value.z; }
-    }
-    public half3 agb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; y = value.y; z = value.z; }
-    }
-    public half3 wyw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, w);
-    }
-    public half3 aga
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, y, w);
-    }
-    public half3 wzx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; z = value.y; x = value.z; }
-    }
-    public half3 abr
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; z = value.y; x = value.z; }
-    }
-    public half3 wzy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; z = value.y; y = value.z; }
-    }
-    public half3 abg
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        set { w = value.x; z = value.y; y = value.z; }
-    }
-    public half3 wzz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, z);
-    }
-    public half3 abb
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, z);
-    }
-    public half3 wzw
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, w);
-    }
-    public half3 aba
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, z, w);
-    }
-    public half3 wwx
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, x);
-    }
-    public half3 aar
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, x);
-    }
-    public half3 wwy
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, y);
-    }
-    public half3 aag
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, y);
-    }
-    public half3 wwz
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, z);
-    }
-    public half3 aab
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, z);
-    }
-    public half3 www
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, w);
-    }
-    public half3 aaa
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(w, w, w);
-    }
-}
-
-#endregion // half4
 
 #region int4
 
@@ -5873,2176 +3361,1664 @@ public partial struct int4
     public int3 xxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 rrr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 xxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 rrg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 xxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 rrb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 xxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 rra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 xyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 rgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 xyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 rgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 xyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 rgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 xyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 rga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 xzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 rbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 xzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 rbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 xzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 rbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 xzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 rba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 xwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 rar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 xwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 rag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 xwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 rab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 xww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 raa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 yxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 grr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 yxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 grg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 yxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 grb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 yxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 gra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 yyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 ggr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 yyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 ggg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 yyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 ggb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 yyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 gga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 yzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 gbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 yzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 gbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 yzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 gbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 yzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 gba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 ywx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 gar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 ywy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 gag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 ywz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 gab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 yww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 gaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(1, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 brr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 brg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 zxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 brb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 bra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 zyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 bgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 zyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 bgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 bgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 bga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 zzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 bbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 bbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 bbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 bba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 bar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 zwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 bag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 zwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 bab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 zww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 baa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(2, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 wxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 arr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 wxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 arg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 wxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 arb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 wxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 ara
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 wyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 agr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 wyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 agg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 wyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 agb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 wyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 aga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 wzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 abr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 wzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 abg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public int3 wzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 abb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 wzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 aba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 wwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 aar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public int3 wwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 aag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public int3 wwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 aab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public int3 www
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public int3 aaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsInt32(),
-            Vector128.Shuffle(vector, Vector128.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create(3, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
@@ -8057,2176 +5033,1664 @@ public partial struct uint4
     public uint3 xxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rrr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rrg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rrb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 rab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 xww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 raa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 grr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 grg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 grb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 ggr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 ggg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 ggb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 ywx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 ywy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 ywz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 yww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 gaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)1, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 brr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 brg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 brb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 bab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 zww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 baa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)2, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 arr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 arg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 arb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 ara
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 0, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 agr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 agg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 agb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 aga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 1, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 abr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 abg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
             vector, 
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 abb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 aba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 2, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 aar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 aag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 1, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 wwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 aab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 www
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public uint3 aaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector128.ConditionalSelect(
-            Vector128.Create(-1, -1, -1, 0).AsUInt32(),
-            Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)3, 3, 3, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
@@ -10241,2176 +6705,1664 @@ public partial struct long4
     public long3 xxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 rrr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 xxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 rrg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 xxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 rrb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 xxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 rra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 xyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 rgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 xyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 rgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 xyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 rgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 xyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 rga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 xzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 rbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 xzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 rbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 xzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 rbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 xzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 rba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 xwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 rar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 xwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 rag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 xwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 rab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 xww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 raa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 yxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 grr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 yxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 grg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 yxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 grb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 yxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 gra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 yyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 ggr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 yyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 ggg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 yyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 ggb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 yyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 gga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 yzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 gbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 yzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 gbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 yzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 gbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 yzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 gba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 ywx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 gar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 ywy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 gag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 ywz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 gab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 yww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 gaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(1, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 brr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 brg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 zxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 brb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 bra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 zyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 bgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 zyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 bgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 bgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 bga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 zzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 bbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 bbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 bbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 bba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 bar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 zwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 bag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 zwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 bab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 zww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 baa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(2, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 wxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 arr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 wxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 arg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 wxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 arb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 wxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 ara
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 wyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 agr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 wyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 agg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 wyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 agb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 wyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 aga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 wzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 abr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 wzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 abg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public long3 wzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 abb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 wzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 aba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 wwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 aar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public long3 wwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 aag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public long3 wwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 aab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public long3 www
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public long3 aaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsInt64(),
-            Vector256.Shuffle(vector, Vector256.Create(3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create(3, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
@@ -12425,2176 +8377,1664 @@ public partial struct ulong4
     public ulong3 xxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rrr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rrg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rrb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 rab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 xww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 raa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 grr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 grg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 grb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 ggr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 ggg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 ggb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 ywx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 ywy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 ywz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 yww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 gaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)1, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 brr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 brg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 brb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bra
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bgr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bgg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bgb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bbr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bbg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bbb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 bab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 zww
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 baa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)2, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wxx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 arr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wxy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 arg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wxz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 arb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wxw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 ara
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 0, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wyx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 agr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wyy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 agg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wyz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 agb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wyw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 aga
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 1, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wzx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 abr
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wzy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 abg
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 0)),
-            default
-        ));
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
             vector, 
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wzz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 abb
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wzw
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 aba
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 2, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wwx
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 aar
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wwy
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 aag
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 1, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 wwz
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 aab
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 www
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
     public ulong3 aaa
     {
 #if NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => new(Vector256.ConditionalSelect(
-            Vector256.Create(-1, -1, -1, 0).AsUInt64(),
-            Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 0, 0)),
-            default
-        ));
+        [MethodImpl(256 | 512)]
+        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)3, 3, 3, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
 #else // NET8_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
 #endif // NET8_0_OR_GREATER
     }
@@ -14602,744 +10042,2232 @@ public partial struct ulong4
 
 #endregion // ulong4
 
+#region decimal4
+
+public partial struct decimal4 
+{
+    public decimal3 xxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public decimal3 rrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public decimal3 xxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public decimal3 rrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public decimal3 xxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public decimal3 rrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public decimal3 xxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w);
+    }
+    public decimal3 rra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w);
+    }
+    public decimal3 xyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public decimal3 rgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public decimal3 xyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public decimal3 rgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public decimal3 xyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; z = value.z; }
+    }
+    public decimal3 rgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; z = value.z; }
+    }
+    public decimal3 xyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; w = value.z; }
+    }
+    public decimal3 rga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; w = value.z; }
+    }
+    public decimal3 xzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public decimal3 rbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public decimal3 xzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; y = value.z; }
+    }
+    public decimal3 rbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; y = value.z; }
+    }
+    public decimal3 xzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public decimal3 rbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public decimal3 xzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; w = value.z; }
+    }
+    public decimal3 rba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; w = value.z; }
+    }
+    public decimal3 xwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x);
+    }
+    public decimal3 rar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x);
+    }
+    public decimal3 xwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; y = value.z; }
+    }
+    public decimal3 rag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; y = value.z; }
+    }
+    public decimal3 xwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; z = value.z; }
+    }
+    public decimal3 rab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; z = value.z; }
+    }
+    public decimal3 xww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w);
+    }
+    public decimal3 raa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w);
+    }
+    public decimal3 yxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public decimal3 grr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public decimal3 yxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public decimal3 grg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public decimal3 yxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; z = value.z; }
+    }
+    public decimal3 grb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; z = value.z; }
+    }
+    public decimal3 yxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; w = value.z; }
+    }
+    public decimal3 gra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; w = value.z; }
+    }
+    public decimal3 yyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public decimal3 ggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public decimal3 yyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public decimal3 ggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public decimal3 yyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public decimal3 ggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public decimal3 yyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w);
+    }
+    public decimal3 gga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w);
+    }
+    public decimal3 yzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; x = value.z; }
+    }
+    public decimal3 gbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; x = value.z; }
+    }
+    public decimal3 yzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public decimal3 gbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public decimal3 yzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public decimal3 gbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public decimal3 yzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; w = value.z; }
+    }
+    public decimal3 gba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; w = value.z; }
+    }
+    public decimal3 ywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; x = value.z; }
+    }
+    public decimal3 gar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; x = value.z; }
+    }
+    public decimal3 ywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y);
+    }
+    public decimal3 gag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y);
+    }
+    public decimal3 ywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; z = value.z; }
+    }
+    public decimal3 gab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; z = value.z; }
+    }
+    public decimal3 yww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w);
+    }
+    public decimal3 gaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w);
+    }
+    public decimal3 zxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public decimal3 brr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public decimal3 zxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; y = value.z; }
+    }
+    public decimal3 brg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; y = value.z; }
+    }
+    public decimal3 zxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public decimal3 brb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public decimal3 zxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; w = value.z; }
+    }
+    public decimal3 bra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; w = value.z; }
+    }
+    public decimal3 zyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; x = value.z; }
+    }
+    public decimal3 bgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; x = value.z; }
+    }
+    public decimal3 zyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public decimal3 bgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public decimal3 zyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public decimal3 bgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public decimal3 zyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; w = value.z; }
+    }
+    public decimal3 bga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; w = value.z; }
+    }
+    public decimal3 zzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public decimal3 bbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public decimal3 zzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public decimal3 bbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public decimal3 zzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public decimal3 bbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public decimal3 zzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w);
+    }
+    public decimal3 bba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w);
+    }
+    public decimal3 zwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; x = value.z; }
+    }
+    public decimal3 bar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; x = value.z; }
+    }
+    public decimal3 zwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; y = value.z; }
+    }
+    public decimal3 bag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; y = value.z; }
+    }
+    public decimal3 zwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z);
+    }
+    public decimal3 bab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z);
+    }
+    public decimal3 zww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w);
+    }
+    public decimal3 baa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w);
+    }
+    public decimal3 wxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x);
+    }
+    public decimal3 arr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x);
+    }
+    public decimal3 wxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; y = value.z; }
+    }
+    public decimal3 arg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; y = value.z; }
+    }
+    public decimal3 wxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; z = value.z; }
+    }
+    public decimal3 arb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; z = value.z; }
+    }
+    public decimal3 wxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w);
+    }
+    public decimal3 ara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w);
+    }
+    public decimal3 wyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; x = value.z; }
+    }
+    public decimal3 agr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; x = value.z; }
+    }
+    public decimal3 wyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y);
+    }
+    public decimal3 agg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y);
+    }
+    public decimal3 wyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; z = value.z; }
+    }
+    public decimal3 agb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; z = value.z; }
+    }
+    public decimal3 wyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w);
+    }
+    public decimal3 aga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w);
+    }
+    public decimal3 wzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; x = value.z; }
+    }
+    public decimal3 abr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; x = value.z; }
+    }
+    public decimal3 wzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; y = value.z; }
+    }
+    public decimal3 abg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; y = value.z; }
+    }
+    public decimal3 wzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z);
+    }
+    public decimal3 abb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z);
+    }
+    public decimal3 wzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w);
+    }
+    public decimal3 aba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w);
+    }
+    public decimal3 wwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x);
+    }
+    public decimal3 aar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x);
+    }
+    public decimal3 wwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y);
+    }
+    public decimal3 aag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y);
+    }
+    public decimal3 wwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z);
+    }
+    public decimal3 aab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z);
+    }
+    public decimal3 www
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w);
+    }
+    public decimal3 aaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w);
+    }
+}
+
+#endregion // decimal4
+
+#region half4
+
+public partial struct half4 
+{
+    public half3 xxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public half3 rrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public half3 xxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public half3 rrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public half3 xxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public half3 rrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public half3 xxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w);
+    }
+    public half3 rra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w);
+    }
+    public half3 xyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public half3 rgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public half3 xyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public half3 rgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public half3 xyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; z = value.z; }
+    }
+    public half3 rgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; z = value.z; }
+    }
+    public half3 xyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; w = value.z; }
+    }
+    public half3 rga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; w = value.z; }
+    }
+    public half3 xzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public half3 rbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public half3 xzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; y = value.z; }
+    }
+    public half3 rbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; y = value.z; }
+    }
+    public half3 xzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public half3 rbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public half3 xzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; w = value.z; }
+    }
+    public half3 rba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; w = value.z; }
+    }
+    public half3 xwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x);
+    }
+    public half3 rar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x);
+    }
+    public half3 xwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; y = value.z; }
+    }
+    public half3 rag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; y = value.z; }
+    }
+    public half3 xwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; z = value.z; }
+    }
+    public half3 rab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; z = value.z; }
+    }
+    public half3 xww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w);
+    }
+    public half3 raa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w);
+    }
+    public half3 yxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public half3 grr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public half3 yxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public half3 grg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public half3 yxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; z = value.z; }
+    }
+    public half3 grb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; z = value.z; }
+    }
+    public half3 yxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; w = value.z; }
+    }
+    public half3 gra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; w = value.z; }
+    }
+    public half3 yyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public half3 ggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public half3 yyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public half3 ggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public half3 yyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public half3 ggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public half3 yyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w);
+    }
+    public half3 gga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w);
+    }
+    public half3 yzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; x = value.z; }
+    }
+    public half3 gbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; x = value.z; }
+    }
+    public half3 yzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public half3 gbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public half3 yzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public half3 gbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public half3 yzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; w = value.z; }
+    }
+    public half3 gba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; w = value.z; }
+    }
+    public half3 ywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; x = value.z; }
+    }
+    public half3 gar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; x = value.z; }
+    }
+    public half3 ywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y);
+    }
+    public half3 gag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y);
+    }
+    public half3 ywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; z = value.z; }
+    }
+    public half3 gab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; z = value.z; }
+    }
+    public half3 yww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w);
+    }
+    public half3 gaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w);
+    }
+    public half3 zxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public half3 brr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public half3 zxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; y = value.z; }
+    }
+    public half3 brg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; y = value.z; }
+    }
+    public half3 zxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public half3 brb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public half3 zxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; w = value.z; }
+    }
+    public half3 bra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; w = value.z; }
+    }
+    public half3 zyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; x = value.z; }
+    }
+    public half3 bgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; x = value.z; }
+    }
+    public half3 zyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public half3 bgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public half3 zyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public half3 bgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public half3 zyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; w = value.z; }
+    }
+    public half3 bga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; w = value.z; }
+    }
+    public half3 zzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public half3 bbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public half3 zzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public half3 bbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public half3 zzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public half3 bbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public half3 zzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w);
+    }
+    public half3 bba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w);
+    }
+    public half3 zwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; x = value.z; }
+    }
+    public half3 bar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; x = value.z; }
+    }
+    public half3 zwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; y = value.z; }
+    }
+    public half3 bag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; y = value.z; }
+    }
+    public half3 zwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z);
+    }
+    public half3 bab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z);
+    }
+    public half3 zww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w);
+    }
+    public half3 baa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w);
+    }
+    public half3 wxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x);
+    }
+    public half3 arr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x);
+    }
+    public half3 wxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; y = value.z; }
+    }
+    public half3 arg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; y = value.z; }
+    }
+    public half3 wxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; z = value.z; }
+    }
+    public half3 arb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; z = value.z; }
+    }
+    public half3 wxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w);
+    }
+    public half3 ara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w);
+    }
+    public half3 wyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; x = value.z; }
+    }
+    public half3 agr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; x = value.z; }
+    }
+    public half3 wyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y);
+    }
+    public half3 agg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y);
+    }
+    public half3 wyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; z = value.z; }
+    }
+    public half3 agb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; z = value.z; }
+    }
+    public half3 wyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w);
+    }
+    public half3 aga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w);
+    }
+    public half3 wzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; x = value.z; }
+    }
+    public half3 abr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; x = value.z; }
+    }
+    public half3 wzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; y = value.z; }
+    }
+    public half3 abg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; y = value.z; }
+    }
+    public half3 wzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z);
+    }
+    public half3 abb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z);
+    }
+    public half3 wzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w);
+    }
+    public half3 aba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w);
+    }
+    public half3 wwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x);
+    }
+    public half3 aar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x);
+    }
+    public half3 wwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y);
+    }
+    public half3 aag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y);
+    }
+    public half3 wwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z);
+    }
+    public half3 aab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z);
+    }
+    public half3 www
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w);
+    }
+    public half3 aaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w);
+    }
+}
+
+#endregion // half4
+
 #region bool4
 
 public partial struct bool4 
 {
     public bool3 xxx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
     }
     public bool3 rrr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, x);
     }
     public bool3 xxy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
     }
     public bool3 rrg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, y);
     }
     public bool3 xxz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
     }
     public bool3 rrb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, z);
     }
     public bool3 xxw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
     }
     public bool3 rra
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, x, w);
     }
     public bool3 xyx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
     }
     public bool3 rgr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, x);
     }
     public bool3 xyy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
     }
     public bool3 rgg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, y);
     }
     public bool3 xyz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
     }
     public bool3 rgb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; z = value.z; }
     }
     public bool3 xyw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
     }
     public bool3 rga
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; y = value.y; w = value.z; }
     }
     public bool3 xzx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
     }
     public bool3 rbr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, x);
     }
     public bool3 xzy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
     }
     public bool3 rbg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; y = value.z; }
     }
     public bool3 xzz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
     }
     public bool3 rbb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, z);
     }
     public bool3 xzw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
     }
     public bool3 rba
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; z = value.y; w = value.z; }
     }
     public bool3 xwx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
     }
     public bool3 rar
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, x);
     }
     public bool3 xwy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
     }
     public bool3 rag
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; y = value.z; }
     }
     public bool3 xwz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
     }
     public bool3 rab
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { x = value.x; w = value.y; z = value.z; }
     }
     public bool3 xww
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
     }
     public bool3 raa
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(x, w, w);
     }
     public bool3 yxx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
     }
     public bool3 grr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, x);
     }
     public bool3 yxy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
     }
     public bool3 grg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, y);
     }
     public bool3 yxz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
     }
     public bool3 grb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; z = value.z; }
     }
     public bool3 yxw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
     }
     public bool3 gra
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; x = value.y; w = value.z; }
     }
     public bool3 yyx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
     }
     public bool3 ggr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, x);
     }
     public bool3 yyy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
     }
     public bool3 ggg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, y);
     }
     public bool3 yyz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
     }
     public bool3 ggb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, z);
     }
     public bool3 yyw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
     }
     public bool3 gga
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, y, w);
     }
     public bool3 yzx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
     }
     public bool3 gbr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; x = value.z; }
     }
     public bool3 yzy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
     }
     public bool3 gbg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, y);
     }
     public bool3 yzz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
     }
     public bool3 gbb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, z);
     }
     public bool3 yzw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
     }
     public bool3 gba
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, z, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; z = value.y; w = value.z; }
     }
     public bool3 ywx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
     }
     public bool3 gar
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; x = value.z; }
     }
     public bool3 ywy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
     }
     public bool3 gag
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, y);
     }
     public bool3 ywz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
     }
     public bool3 gab
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { y = value.x; w = value.y; z = value.z; }
     }
     public bool3 yww
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
     }
     public bool3 gaa
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(y, w, w);
     }
     public bool3 zxx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
     }
     public bool3 brr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, x);
     }
     public bool3 zxy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
     }
     public bool3 brg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; y = value.z; }
     }
     public bool3 zxz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
     }
     public bool3 brb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, z);
     }
     public bool3 zxw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
     }
     public bool3 bra
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, x, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; x = value.y; w = value.z; }
     }
     public bool3 zyx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
     }
     public bool3 bgr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; x = value.z; }
     }
     public bool3 zyy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
     }
     public bool3 bgg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, y);
     }
     public bool3 zyz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
     }
     public bool3 bgb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, z);
     }
     public bool3 zyw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
     }
     public bool3 bga
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, y, w);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; y = value.y; w = value.z; }
     }
     public bool3 zzx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
     }
     public bool3 bbr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, x);
     }
     public bool3 zzy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
     }
     public bool3 bbg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, y);
     }
     public bool3 zzz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
     }
     public bool3 bbb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, z);
     }
     public bool3 zzw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
     }
     public bool3 bba
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, z, w);
     }
     public bool3 zwx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
     }
     public bool3 bar
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; x = value.z; }
     }
     public bool3 zwy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
     }
     public bool3 bag
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { z = value.x; w = value.y; y = value.z; }
     }
     public bool3 zwz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
     }
     public bool3 bab
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, z);
     }
     public bool3 zww
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
     }
     public bool3 baa
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(z, w, w);
     }
     public bool3 wxx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
     }
     public bool3 arr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, x);
     }
     public bool3 wxy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
     }
     public bool3 arg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; y = value.z; }
     }
     public bool3 wxz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
     }
     public bool3 arb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; x = value.y; z = value.z; }
     }
     public bool3 wxw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
     }
     public bool3 ara
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, x, w);
     }
     public bool3 wyx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
     }
     public bool3 agr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; x = value.z; }
     }
     public bool3 wyy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
     }
     public bool3 agg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, y);
     }
     public bool3 wyz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
     }
     public bool3 agb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, z);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; y = value.y; z = value.z; }
     }
     public bool3 wyw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
     }
     public bool3 aga
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, y, w);
     }
     public bool3 wzx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
     }
     public bool3 abr
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, x);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; x = value.z; }
     }
     public bool3 wzy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
     }
     public bool3 abg
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, y);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         set { w = value.x; z = value.y; y = value.z; }
     }
     public bool3 wzz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
     }
     public bool3 abb
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, z);
     }
     public bool3 wzw
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
     }
     public bool3 aba
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, z, w);
     }
     public bool3 wwx
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
     }
     public bool3 aar
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, x);
     }
     public bool3 wwy
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
     }
     public bool3 aag
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, y);
     }
     public bool3 wwz
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
     }
     public bool3 aab
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, z);
     }
     public bool3 www
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
     }
     public bool3 aaa
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(256 | 512)]
         get => new(w, w, w);
     }
 }

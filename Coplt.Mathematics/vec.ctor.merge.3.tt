@@ -31,7 +31,7 @@ namespace Coplt.Mathematics;
 
 public partial struct <#= typeName #> 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= typeName2 #> xy, <#= type #> z)
     {
 <#
@@ -57,7 +57,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= type #> x, <#= typeName2 #> yz)
     {
 <#
@@ -86,7 +86,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(<#= typeName2 #> xz, <#= type #> y, insert_y _)
     {
 <#
@@ -122,21 +122,21 @@ public static partial class math
     /// Insert X component
     /// <code>X -> (y, z) => (X, y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Ix(this <#= typeName2 #> yz, <#= type #> x) => new(x, yz);
 
     /// <summary>
     /// Insert Y component
     /// <code>Y -> (x, z) => (x, Y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Iy(this <#= typeName2 #> xz, <#= type #> y) => new(xz, y, new insert_y());
 
     /// <summary>
     /// Insert Z component
     /// <code>Z -> (x, y) => (x, y, Z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Iz(this <#= typeName2 #> xy, <#= type #> z) => new(xy, z);
 }
 

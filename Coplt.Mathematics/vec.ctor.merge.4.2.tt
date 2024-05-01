@@ -31,7 +31,7 @@ namespace Coplt.Mathematics;
 
 public partial struct <#= typeName #> 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= typeName2 #> xy, <#= typeName2 #> zw)
     {
 <#
@@ -58,7 +58,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= typeName2 #> xy, <#= type #> z, <#= type #> w)
     {
 <#
@@ -85,7 +85,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= type #> x, <#= type #> y, <#= typeName2 #> zw)
     {
 <#
@@ -112,7 +112,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= type #> x, <#= typeName2 #> yz, <#= type #> w)
     {
 <#
@@ -142,7 +142,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(<#= typeName2 #> xw, <#= typeName2 #> yz, merge_xw_yz _)
     {
 <#
@@ -172,7 +172,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(<#= typeName2 #> xw, <#= type #> y, <#= type #> z, insert_yz _)
     {
 <#
@@ -202,7 +202,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(<#= typeName2 #> xz, <#= typeName2 #> yw, merge_xz_yw _)
     {
 <#
@@ -232,7 +232,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(<#= typeName2 #> xz, <#= type #> y, <#= type #> w, insert_yw _)
     {
 <#
@@ -262,7 +262,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(<#= typeName2 #> yw, <#= type #> x, <#= type #> z, insert_xz _)
     {
 <#
@@ -299,84 +299,84 @@ public static partial class math
     /// Insert Z W component
     /// <code>(Z, W) -> (x, y) => (x, y, Z, W)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Izw(this <#= typeName2 #> xy, <#= typeName2 #> zw) => new(xy, zw);
 
     /// <summary>
     /// Insert X Y component
     /// <code>(X, Y) -> (z, w) => (X, Y, z, w)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Ixy(this <#= typeName2 #> zw, <#= typeName2 #> xy) => new(xy, zw);
 
     /// <summary>
     /// Insert Y Z component
     /// <code>(Y, Z) -> (x, w) => (x, Y, Z, w)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Iyz(this <#= typeName2 #> xw, <#= typeName2 #> yz) => new(xw, yz, new merge_xw_yz());
 
     /// <summary>
     /// Insert X W component
     /// <code>(X, W) -> (y, z) => (X, y, z, W)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Ixw(this <#= typeName2 #> yz, <#= typeName2 #> xw) => new(xw, yz, new merge_xw_yz());
 
     /// <summary>
     /// Insert Y W component
     /// <code>(Y, W) -> (x, z) => (x, Y, z, W)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Iyw(this <#= typeName2 #> xz, <#= typeName2 #> yw) => new(xz, yw, new merge_xz_yw());
 
     /// <summary>
     /// Insert X Z component
     /// <code>(X, Z) -> (y, w) => (X, y, Z, w)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Ixz(this <#= typeName2 #> yw, <#= typeName2 #> xz) => new(xz, yw, new merge_xz_yw());
 
     /// <summary>
     /// Insert Z W component
     /// <code>Z W -> (x, y) => (x, y, Z, W)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Izw(this <#= typeName2 #> xy, <#= type #> z, <#= type #> w) => new(xy, z, w);
 
     /// <summary>
     /// Insert X Y component
     /// <code>X Y -> (z, w) => (X, Y, z, w)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Ixy(this <#= typeName2 #> zw, <#= type #> x, <#= type #> y) => new(x, y, zw);
 
     /// <summary>
     /// Insert Y Z component
     /// <code>Y Z -> (x, w) => (x, Y, Z, w)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Iyz(this <#= typeName2 #> xw, <#= type #> y, <#= type #> z) => new(xw, y, z, new insert_yz());
 
     /// <summary>
     /// Insert X W component
     /// <code>X W -> (y, z) => (X, y, z, W)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Ixw(this <#= typeName2 #> yz, <#= type #> x, <#= type #> w) => new(x, yz, w);
 
     /// <summary>
     /// Insert Y W component
     /// <code>Y W -> (x, z) => (x, Y, z, W)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Iyw(this <#= typeName2 #> xz, <#= type #> y, <#= type #> w) => new(xz, y, w, new insert_yw());
 
     /// <summary>
     /// Insert X Z component
     /// <code>X Z -> (y, w) => (X, y, Z, w)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Ixz(this <#= typeName2 #> yw, <#= type #> x, <#= type #> z) => new(yw, x, z, new insert_xz());
 }
 

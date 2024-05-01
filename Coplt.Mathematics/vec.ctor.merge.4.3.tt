@@ -31,7 +31,7 @@ namespace Coplt.Mathematics;
 
 public partial struct <#= typeName #> 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= typeName3 #> xyz, <#= type #> w)
     {
 <#
@@ -58,7 +58,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= type #> x, <#= typeName3 #> yzw)
     {
 <#
@@ -85,7 +85,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(<#= typeName3 #> xzw, <#= type #> y, insert_y _)
     {
 <#
@@ -112,7 +112,7 @@ public partial struct <#= typeName #>
 #>
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal <#= typeName #>(<#= typeName3 #> xyw, <#= type #> z, insert_z _)
     {
 <#
@@ -146,28 +146,28 @@ public static partial class math
     /// Insert X component
     /// <code>X -> (y, z, w) => (X, y, z, w)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Ix(this <#= typeName3 #> yzw, <#= type #> x) => new(x, yzw);
 
     /// <summary>
     /// Insert Y component
     /// <code>Y -> (x, z, w) => (x, Y, z, w)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Iy(this <#= typeName3 #> xzw, <#= type #> y) => new(xzw, y, new insert_y());
 
     /// <summary>
     /// Insert Z component
     /// <code>Z -> (x, y, w) => (x, y, Z, w)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Iz(this <#= typeName3 #> xyw, <#= type #> z) => new(xyw, z, new insert_z());
 
     /// <summary>
     /// Insert W component
     /// <code>W -> (x, y, z) => (x, y, z, W)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> Iw(this <#= typeName3 #> xyz, <#= type #> w) => new(xyz, w);
 }
 

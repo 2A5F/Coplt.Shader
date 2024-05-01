@@ -50,7 +50,7 @@ public partial struct <#= typeName #>
                 var tarByteSize = tar.size * (i is 3 ? 4 : i);
                 var tarBitSize = 8 * tarByteSize;
 #>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static <#= ck #> operator <#= tarName #>(<#= typeName #> self)
     {
 <#

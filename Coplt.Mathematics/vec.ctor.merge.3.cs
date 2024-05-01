@@ -14,7 +14,7 @@ namespace Coplt.Mathematics;
 
 public partial struct float3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public float3(float2 xy, float z)
     {
         #if NET8_0_OR_GREATER
@@ -26,7 +26,7 @@ public partial struct float3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public float3(float x, float2 yz)
     {
         #if NET8_0_OR_GREATER
@@ -41,7 +41,7 @@ public partial struct float3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal float3(float2 xz, float y, insert_y _)
     {
         #if NET8_0_OR_GREATER
@@ -63,21 +63,21 @@ public static partial class math
     /// Insert X component
     /// <code>X -> (y, z) => (X, y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static float3 Ix(this float2 yz, float x) => new(x, yz);
 
     /// <summary>
     /// Insert Y component
     /// <code>Y -> (x, z) => (x, Y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static float3 Iy(this float2 xz, float y) => new(xz, y, new insert_y());
 
     /// <summary>
     /// Insert Z component
     /// <code>Z -> (x, y) => (x, y, Z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static float3 Iz(this float2 xy, float z) => new(xy, z);
 }
 
@@ -87,7 +87,7 @@ public static partial class math
 
 public partial struct double3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public double3(double2 xy, double z)
     {
         #if NET8_0_OR_GREATER
@@ -99,7 +99,7 @@ public partial struct double3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public double3(double x, double2 yz)
     {
         #if NET8_0_OR_GREATER
@@ -114,7 +114,7 @@ public partial struct double3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal double3(double2 xz, double y, insert_y _)
     {
         #if NET8_0_OR_GREATER
@@ -136,141 +136,31 @@ public static partial class math
     /// Insert X component
     /// <code>X -> (y, z) => (X, y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static double3 Ix(this double2 yz, double x) => new(x, yz);
 
     /// <summary>
     /// Insert Y component
     /// <code>Y -> (x, z) => (x, Y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static double3 Iy(this double2 xz, double y) => new(xz, y, new insert_y());
 
     /// <summary>
     /// Insert Z component
     /// <code>Z -> (x, y) => (x, y, Z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static double3 Iz(this double2 xy, double z) => new(xy, z);
 }
 
 #endregion // double3
 
-#region decimal3
-
-public partial struct decimal3 
-{
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public decimal3(decimal2 xy, decimal z)
-    {
-        this.x = xy.x;
-        this.y = xy.y;
-        this.z = z;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public decimal3(decimal x, decimal2 yz)
-    {
-        this.x = x;
-        this.y = yz.x;
-        this.z = yz.y;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal decimal3(decimal2 xz, decimal y, insert_y _)
-    {
-        this.x = xz.x;
-        this.y = y;
-        this.z = xz.y;
-    }
-}
-
-public static partial class math
-{
-    /// <summary>
-    /// Insert X component
-    /// <code>X -> (y, z) => (X, y, z)</code>
-    /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static decimal3 Ix(this decimal2 yz, decimal x) => new(x, yz);
-
-    /// <summary>
-    /// Insert Y component
-    /// <code>Y -> (x, z) => (x, Y, z)</code>
-    /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static decimal3 Iy(this decimal2 xz, decimal y) => new(xz, y, new insert_y());
-
-    /// <summary>
-    /// Insert Z component
-    /// <code>Z -> (x, y) => (x, y, Z)</code>
-    /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static decimal3 Iz(this decimal2 xy, decimal z) => new(xy, z);
-}
-
-#endregion // decimal3
-
-#region half3
-
-public partial struct half3 
-{
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public half3(half2 xy, half z)
-    {
-        this.x = xy.x;
-        this.y = xy.y;
-        this.z = z;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public half3(half x, half2 yz)
-    {
-        this.x = x;
-        this.y = yz.x;
-        this.z = yz.y;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal half3(half2 xz, half y, insert_y _)
-    {
-        this.x = xz.x;
-        this.y = y;
-        this.z = xz.y;
-    }
-}
-
-public static partial class math
-{
-    /// <summary>
-    /// Insert X component
-    /// <code>X -> (y, z) => (X, y, z)</code>
-    /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static half3 Ix(this half2 yz, half x) => new(x, yz);
-
-    /// <summary>
-    /// Insert Y component
-    /// <code>Y -> (x, z) => (x, Y, z)</code>
-    /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static half3 Iy(this half2 xz, half y) => new(xz, y, new insert_y());
-
-    /// <summary>
-    /// Insert Z component
-    /// <code>Z -> (x, y) => (x, y, Z)</code>
-    /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static half3 Iz(this half2 xy, half z) => new(xy, z);
-}
-
-#endregion // half3
-
 #region int3
 
 public partial struct int3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public int3(int2 xy, int z)
     {
         #if NET8_0_OR_GREATER
@@ -282,7 +172,7 @@ public partial struct int3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public int3(int x, int2 yz)
     {
         #if NET8_0_OR_GREATER
@@ -297,7 +187,7 @@ public partial struct int3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal int3(int2 xz, int y, insert_y _)
     {
         #if NET8_0_OR_GREATER
@@ -319,21 +209,21 @@ public static partial class math
     /// Insert X component
     /// <code>X -> (y, z) => (X, y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static int3 Ix(this int2 yz, int x) => new(x, yz);
 
     /// <summary>
     /// Insert Y component
     /// <code>Y -> (x, z) => (x, Y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static int3 Iy(this int2 xz, int y) => new(xz, y, new insert_y());
 
     /// <summary>
     /// Insert Z component
     /// <code>Z -> (x, y) => (x, y, Z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static int3 Iz(this int2 xy, int z) => new(xy, z);
 }
 
@@ -343,7 +233,7 @@ public static partial class math
 
 public partial struct uint3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public uint3(uint2 xy, uint z)
     {
         #if NET8_0_OR_GREATER
@@ -355,7 +245,7 @@ public partial struct uint3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public uint3(uint x, uint2 yz)
     {
         #if NET8_0_OR_GREATER
@@ -370,7 +260,7 @@ public partial struct uint3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal uint3(uint2 xz, uint y, insert_y _)
     {
         #if NET8_0_OR_GREATER
@@ -392,21 +282,21 @@ public static partial class math
     /// Insert X component
     /// <code>X -> (y, z) => (X, y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static uint3 Ix(this uint2 yz, uint x) => new(x, yz);
 
     /// <summary>
     /// Insert Y component
     /// <code>Y -> (x, z) => (x, Y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static uint3 Iy(this uint2 xz, uint y) => new(xz, y, new insert_y());
 
     /// <summary>
     /// Insert Z component
     /// <code>Z -> (x, y) => (x, y, Z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static uint3 Iz(this uint2 xy, uint z) => new(xy, z);
 }
 
@@ -416,7 +306,7 @@ public static partial class math
 
 public partial struct long3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public long3(long2 xy, long z)
     {
         #if NET8_0_OR_GREATER
@@ -428,7 +318,7 @@ public partial struct long3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public long3(long x, long2 yz)
     {
         #if NET8_0_OR_GREATER
@@ -443,7 +333,7 @@ public partial struct long3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal long3(long2 xz, long y, insert_y _)
     {
         #if NET8_0_OR_GREATER
@@ -465,21 +355,21 @@ public static partial class math
     /// Insert X component
     /// <code>X -> (y, z) => (X, y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static long3 Ix(this long2 yz, long x) => new(x, yz);
 
     /// <summary>
     /// Insert Y component
     /// <code>Y -> (x, z) => (x, Y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static long3 Iy(this long2 xz, long y) => new(xz, y, new insert_y());
 
     /// <summary>
     /// Insert Z component
     /// <code>Z -> (x, y) => (x, y, Z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static long3 Iz(this long2 xy, long z) => new(xy, z);
 }
 
@@ -489,7 +379,7 @@ public static partial class math
 
 public partial struct ulong3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public ulong3(ulong2 xy, ulong z)
     {
         #if NET8_0_OR_GREATER
@@ -501,7 +391,7 @@ public partial struct ulong3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public ulong3(ulong x, ulong2 yz)
     {
         #if NET8_0_OR_GREATER
@@ -516,7 +406,7 @@ public partial struct ulong3
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal ulong3(ulong2 xz, ulong y, insert_y _)
     {
         #if NET8_0_OR_GREATER
@@ -538,31 +428,141 @@ public static partial class math
     /// Insert X component
     /// <code>X -> (y, z) => (X, y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static ulong3 Ix(this ulong2 yz, ulong x) => new(x, yz);
 
     /// <summary>
     /// Insert Y component
     /// <code>Y -> (x, z) => (x, Y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static ulong3 Iy(this ulong2 xz, ulong y) => new(xz, y, new insert_y());
 
     /// <summary>
     /// Insert Z component
     /// <code>Z -> (x, y) => (x, y, Z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static ulong3 Iz(this ulong2 xy, ulong z) => new(xy, z);
 }
 
 #endregion // ulong3
 
+#region decimal3
+
+public partial struct decimal3 
+{
+    [MethodImpl(256 | 512)]
+    public decimal3(decimal2 xy, decimal z)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = z;
+    }
+
+    [MethodImpl(256 | 512)]
+    public decimal3(decimal x, decimal2 yz)
+    {
+        this.x = x;
+        this.y = yz.x;
+        this.z = yz.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal decimal3(decimal2 xz, decimal y, insert_y _)
+    {
+        this.x = xz.x;
+        this.y = y;
+        this.z = xz.y;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z) => (X, y, z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static decimal3 Ix(this decimal2 yz, decimal x) => new(x, yz);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z) => (x, Y, z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static decimal3 Iy(this decimal2 xz, decimal y) => new(xz, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y) => (x, y, Z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static decimal3 Iz(this decimal2 xy, decimal z) => new(xy, z);
+}
+
+#endregion // decimal3
+
+#region half3
+
+public partial struct half3 
+{
+    [MethodImpl(256 | 512)]
+    public half3(half2 xy, half z)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = z;
+    }
+
+    [MethodImpl(256 | 512)]
+    public half3(half x, half2 yz)
+    {
+        this.x = x;
+        this.y = yz.x;
+        this.z = yz.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal half3(half2 xz, half y, insert_y _)
+    {
+        this.x = xz.x;
+        this.y = y;
+        this.z = xz.y;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z) => (X, y, z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static half3 Ix(this half2 yz, half x) => new(x, yz);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z) => (x, Y, z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static half3 Iy(this half2 xz, half y) => new(xz, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y) => (x, y, Z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static half3 Iz(this half2 xy, half z) => new(xy, z);
+}
+
+#endregion // half3
+
 #region bool3
 
 public partial struct bool3 
 {
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public bool3(bool2 xy, bool z)
     {
         this.x = xy.x;
@@ -570,7 +570,7 @@ public partial struct bool3
         this.z = z;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public bool3(bool x, bool2 yz)
     {
         this.x = x;
@@ -578,7 +578,7 @@ public partial struct bool3
         this.z = yz.y;
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     internal bool3(bool2 xz, bool y, insert_y _)
     {
         this.x = xz.x;
@@ -593,21 +593,21 @@ public static partial class math
     /// Insert X component
     /// <code>X -> (y, z) => (X, y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static bool3 Ix(this bool2 yz, bool x) => new(x, yz);
 
     /// <summary>
     /// Insert Y component
     /// <code>Y -> (x, z) => (x, Y, z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static bool3 Iy(this bool2 xz, bool y) => new(xz, y, new insert_y());
 
     /// <summary>
     /// Insert Z component
     /// <code>Z -> (x, y) => (x, y, Z)</code>
     /// </summary>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [MethodImpl(256 | 512)]
     public static bool3 Iz(this bool2 xy, bool z) => new(xy, z);
 }
 
