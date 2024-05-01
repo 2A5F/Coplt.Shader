@@ -12,16 +12,19 @@
 
     <ItemGroup>
         <TextTemplate Include="interface.tt"/>
+        <TextTemplate Include="vec.ctor.merge.4.2.tt" />
+        <TextTemplate Include="vec.ctor.merge.4.3.tt" />
+        <TextTemplate Include="vecs.tt" />
+        <TextTemplate Include="vec.ctor.merge.3.tt" />
+        <TextTemplate Include="vec.swizzle.2.tt" />
         <TextTemplate Include="vec.swizzle.2.3.tt" />
         <TextTemplate Include="vec.swizzle.2.4.tt" />
+        <TextTemplate Include="vec.swizzle.3.tt" />
         <TextTemplate Include="vec.swizzle.3.2.tt" />
         <TextTemplate Include="vec.swizzle.3.4.tt" />
+        <TextTemplate Include="vec.swizzle.4.tt" />
         <TextTemplate Include="vec.swizzle.4.2.tt" />
         <TextTemplate Include="vec.swizzle.4.3.tt" />
-        <TextTemplate Include="vec.swizzle.4.tt" />
-        <TextTemplate Include="vecs.tt" />
-        <TextTemplate Include="vec.swizzle.2.tt" />
-        <TextTemplate Include="vec.swizzle.3.tt" />
     </ItemGroup>
 
     <Target Name="TextTemplateTransform" BeforeTargets="PrepareForBuild" Inputs="@(TextTemplate)" Outputs="@(TextTemplate->'%(RelativeDir)%(Filename).cs')">
