@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Runtime.Intrinsics;
 #endif
 using System.Runtime.CompilerServices;
+using half = System.Half;
 
 namespace Coplt.Mathematics;
 
@@ -344,6 +345,182 @@ public partial struct double2
 }
 
 #endregion // double2
+
+#region decimal2
+
+public partial struct decimal2 
+{
+    public decimal3 xxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x);
+    }
+    public decimal3 rrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x);
+    }
+    public decimal3 xxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y);
+    }
+    public decimal3 rrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y);
+    }
+    public decimal3 xyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x);
+    }
+    public decimal3 rgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x);
+    }
+    public decimal3 xyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y);
+    }
+    public decimal3 rgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y);
+    }
+    public decimal3 yxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x);
+    }
+    public decimal3 grr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x);
+    }
+    public decimal3 yxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y);
+    }
+    public decimal3 grg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y);
+    }
+    public decimal3 yyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x);
+    }
+    public decimal3 ggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x);
+    }
+    public decimal3 yyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y);
+    }
+    public decimal3 ggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y);
+    }
+}
+
+#endregion // decimal2
+
+#region half2
+
+public partial struct half2 
+{
+    public half3 xxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x);
+    }
+    public half3 rrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x);
+    }
+    public half3 xxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y);
+    }
+    public half3 rrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y);
+    }
+    public half3 xyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x);
+    }
+    public half3 rgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x);
+    }
+    public half3 xyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y);
+    }
+    public half3 rgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y);
+    }
+    public half3 yxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x);
+    }
+    public half3 grr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x);
+    }
+    public half3 yxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y);
+    }
+    public half3 grg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y);
+    }
+    public half3 yyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x);
+    }
+    public half3 ggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x);
+    }
+    public half3 yyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y);
+    }
+    public half3 ggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y);
+    }
+}
+
+#endregion // half2
 
 #region int2
 

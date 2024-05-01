@@ -10,6 +10,7 @@ using System.Numerics;
 using System.Runtime.Intrinsics;
 #endif
 using System.Runtime.CompilerServices;
+using half = System.Half;
 
 namespace Coplt.Mathematics;
 <#

@@ -10,9 +10,10 @@ using System.Numerics;
 using System.Runtime.Intrinsics;
 #endif
 using System.Runtime.CompilerServices;
+using System.Diagnostics.CodeAnalysis;
+using half = System.Half;
 
 namespace Coplt.Mathematics;
-
 <#
     void NoSimdComps(Typ typ, int size)
     {
@@ -114,14 +115,10 @@ namespace Coplt.Mathematics;
         WriteLine($"        vector = Vector{bitSize}.CreateScalar(value);");
     }
 
-    var total_first = true;
     foreach (var typ in Typ.Typs)
     {
         for (var i = 2; i <= 4; i++)
         {
-            if (total_first) total_first = false;
-            else WriteLine("");
-
             var byteSize = typ.size * (i is 3 ? 4 : i);
             var bitSize = 8 * byteSize;
 
@@ -177,7 +174,22 @@ public partial struct <#= typeName #> :
             {
                 WriteLine($"    #if NET8_0_OR_GREATER");
 #>
-    public Vector<#= bitSize #><<#= typ.name #>> vector;
+    internal Vector<#= bitSize #><<#= typ.name #>> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector<#= bitSize #><<#= typ.name #>>(<#= typeName #> self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector<#= bitSize #><<#= typ.name #>> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector<#= bitSize #><<#= typ.name #>> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector<#= bitSize #><<#= typ.name #>> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
 <#
                 SimdComps(typ, i);
                 WriteLine($"    #else // NET8_0_OR_GREATER");
@@ -197,7 +209,9 @@ public partial struct <#= typeName #> :
                 WriteLine($"    #if NET8_0_OR_GREATER");
 #>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public <#= typeName #>(Vector<#= bitSize #><<#= typ.name #>> vector) => this.vector = vector;
+    internal <#= typeName #>(Vector<#= bitSize #><<#= typ.name #>> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static <#= typeName #> UnsafeFromInner(Vector<#= bitSize #><<#= typ.name #>> vector) => new(vector);
 <#
                 WriteLine($"    #endif // NET8_0_OR_GREATER");
             }
@@ -229,6 +243,9 @@ public partial struct <#= typeName #> :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator <#= typeName #>(<#= typ.name #> value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public <#= typeName #>(<#= typ.name #> value)
     {
 <#
@@ -247,7 +264,7 @@ public partial struct <#= typeName #> :
     public static <#= typeName #> Scalar(<#= typ.name #> value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private <#= typeName #>(<#= typ.name #> value, is_scalar _)
+    internal <#= typeName #>(<#= typ.name #> value, is_scalar _)
     {
 <#
             if (typ.simd)

@@ -6,9 +6,10 @@ using System.Numerics;
 using System.Runtime.Intrinsics;
 #endif
 using System.Runtime.CompilerServices;
+using System.Diagnostics.CodeAnalysis;
+using half = System.Half;
 
 namespace Coplt.Mathematics;
-
 #region float2
 
 public partial struct float2 : 
@@ -55,7 +56,22 @@ public partial struct float2 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector64<float> vector;
+    internal Vector64<float> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector64<float>(float2 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector64<float> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector64<float> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector64<float> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public float x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -109,7 +125,9 @@ public partial struct float2 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public float2(Vector64<float> vector) => this.vector = vector;
+    internal float2(Vector64<float> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float2 UnsafeFromInner(Vector64<float> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -122,6 +140,9 @@ public partial struct float2 :
         this.y = y;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator float2(float value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public float2(float value)
@@ -138,7 +159,7 @@ public partial struct float2 :
     public static float2 Scalar(float value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private float2(float value, is_scalar _)
+    internal float2(float value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector64.CreateScalar(value);
@@ -152,7 +173,6 @@ public partial struct float2 :
 }
 
 #endregion // float2
-
 #region float3
 
 public partial struct float3 : 
@@ -199,7 +219,22 @@ public partial struct float3 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector128<float> vector;
+    internal Vector128<float> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector128<float>(float3 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector128<float> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector128<float> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector128<float> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public float x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -276,7 +311,9 @@ public partial struct float3 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public float3(Vector128<float> vector) => this.vector = vector;
+    internal float3(Vector128<float> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float3 UnsafeFromInner(Vector128<float> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -290,6 +327,9 @@ public partial struct float3 :
         this.z = z;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator float3(float value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public float3(float value)
@@ -307,7 +347,7 @@ public partial struct float3 :
     public static float3 Scalar(float value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private float3(float value, is_scalar _)
+    internal float3(float value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
@@ -321,7 +361,6 @@ public partial struct float3 :
 }
 
 #endregion // float3
-
 #region float4
 
 public partial struct float4 : 
@@ -368,7 +407,22 @@ public partial struct float4 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector128<float> vector;
+    internal Vector128<float> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector128<float>(float4 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector128<float> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector128<float> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector128<float> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public float x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -466,7 +520,9 @@ public partial struct float4 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public float4(Vector128<float> vector) => this.vector = vector;
+    internal float4(Vector128<float> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float4 UnsafeFromInner(Vector128<float> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -481,6 +537,9 @@ public partial struct float4 :
         this.w = w;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator float4(float value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public float4(float value)
@@ -499,7 +558,7 @@ public partial struct float4 :
     public static float4 Scalar(float value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private float4(float value, is_scalar _)
+    internal float4(float value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
@@ -513,7 +572,6 @@ public partial struct float4 :
 }
 
 #endregion // float4
-
 #region double2
 
 public partial struct double2 : 
@@ -560,7 +618,22 @@ public partial struct double2 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector128<double> vector;
+    internal Vector128<double> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector128<double>(double2 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector128<double> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector128<double> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector128<double> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public double x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -614,7 +687,9 @@ public partial struct double2 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public double2(Vector128<double> vector) => this.vector = vector;
+    internal double2(Vector128<double> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double2 UnsafeFromInner(Vector128<double> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -627,6 +702,9 @@ public partial struct double2 :
         this.y = y;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator double2(double value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public double2(double value)
@@ -643,7 +721,7 @@ public partial struct double2 :
     public static double2 Scalar(double value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private double2(double value, is_scalar _)
+    internal double2(double value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
@@ -657,7 +735,6 @@ public partial struct double2 :
 }
 
 #endregion // double2
-
 #region double3
 
 public partial struct double3 : 
@@ -704,7 +781,22 @@ public partial struct double3 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector256<double> vector;
+    internal Vector256<double> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector256<double>(double3 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector256<double> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector256<double> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector256<double> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public double x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -781,7 +873,9 @@ public partial struct double3 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public double3(Vector256<double> vector) => this.vector = vector;
+    internal double3(Vector256<double> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double3 UnsafeFromInner(Vector256<double> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -795,6 +889,9 @@ public partial struct double3 :
         this.z = z;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator double3(double value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public double3(double value)
@@ -812,7 +909,7 @@ public partial struct double3 :
     public static double3 Scalar(double value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private double3(double value, is_scalar _)
+    internal double3(double value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
@@ -826,7 +923,6 @@ public partial struct double3 :
 }
 
 #endregion // double3
-
 #region double4
 
 public partial struct double4 : 
@@ -873,7 +969,22 @@ public partial struct double4 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector256<double> vector;
+    internal Vector256<double> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector256<double>(double4 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector256<double> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector256<double> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector256<double> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public double x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -971,7 +1082,9 @@ public partial struct double4 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public double4(Vector256<double> vector) => this.vector = vector;
+    internal double4(Vector256<double> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double4 UnsafeFromInner(Vector256<double> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -986,6 +1099,9 @@ public partial struct double4 :
         this.w = w;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator double4(double value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public double4(double value)
@@ -1004,7 +1120,7 @@ public partial struct double4 :
     public static double4 Scalar(double value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private double4(double value, is_scalar _)
+    internal double4(double value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
@@ -1018,7 +1134,6 @@ public partial struct double4 :
 }
 
 #endregion // double4
-
 #region int2
 
 public partial struct int2 : 
@@ -1065,7 +1180,22 @@ public partial struct int2 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector64<int> vector;
+    internal Vector64<int> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector64<int>(int2 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector64<int> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector64<int> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector64<int> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public int x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1119,7 +1249,9 @@ public partial struct int2 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public int2(Vector64<int> vector) => this.vector = vector;
+    internal int2(Vector64<int> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int2 UnsafeFromInner(Vector64<int> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1132,6 +1264,9 @@ public partial struct int2 :
         this.y = y;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator int2(int value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int2(int value)
@@ -1148,7 +1283,7 @@ public partial struct int2 :
     public static int2 Scalar(int value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private int2(int value, is_scalar _)
+    internal int2(int value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector64.CreateScalar(value);
@@ -1162,7 +1297,6 @@ public partial struct int2 :
 }
 
 #endregion // int2
-
 #region int3
 
 public partial struct int3 : 
@@ -1209,7 +1343,22 @@ public partial struct int3 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector128<int> vector;
+    internal Vector128<int> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector128<int>(int3 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector128<int> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector128<int> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector128<int> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public int x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1286,7 +1435,9 @@ public partial struct int3 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public int3(Vector128<int> vector) => this.vector = vector;
+    internal int3(Vector128<int> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int3 UnsafeFromInner(Vector128<int> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1300,6 +1451,9 @@ public partial struct int3 :
         this.z = z;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator int3(int value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int3(int value)
@@ -1317,7 +1471,7 @@ public partial struct int3 :
     public static int3 Scalar(int value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private int3(int value, is_scalar _)
+    internal int3(int value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
@@ -1331,7 +1485,6 @@ public partial struct int3 :
 }
 
 #endregion // int3
-
 #region int4
 
 public partial struct int4 : 
@@ -1378,7 +1531,22 @@ public partial struct int4 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector128<int> vector;
+    internal Vector128<int> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector128<int>(int4 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector128<int> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector128<int> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector128<int> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public int x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1476,7 +1644,9 @@ public partial struct int4 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public int4(Vector128<int> vector) => this.vector = vector;
+    internal int4(Vector128<int> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int4 UnsafeFromInner(Vector128<int> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1491,6 +1661,9 @@ public partial struct int4 :
         this.w = w;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator int4(int value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int4(int value)
@@ -1509,7 +1682,7 @@ public partial struct int4 :
     public static int4 Scalar(int value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private int4(int value, is_scalar _)
+    internal int4(int value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
@@ -1523,7 +1696,6 @@ public partial struct int4 :
 }
 
 #endregion // int4
-
 #region uint2
 
 public partial struct uint2 : 
@@ -1570,7 +1742,22 @@ public partial struct uint2 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector64<uint> vector;
+    internal Vector64<uint> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector64<uint>(uint2 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector64<uint> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector64<uint> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector64<uint> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public uint x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1624,7 +1811,9 @@ public partial struct uint2 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public uint2(Vector64<uint> vector) => this.vector = vector;
+    internal uint2(Vector64<uint> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint2 UnsafeFromInner(Vector64<uint> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1637,6 +1826,9 @@ public partial struct uint2 :
         this.y = y;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator uint2(uint value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public uint2(uint value)
@@ -1653,7 +1845,7 @@ public partial struct uint2 :
     public static uint2 Scalar(uint value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private uint2(uint value, is_scalar _)
+    internal uint2(uint value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector64.CreateScalar(value);
@@ -1667,7 +1859,6 @@ public partial struct uint2 :
 }
 
 #endregion // uint2
-
 #region uint3
 
 public partial struct uint3 : 
@@ -1714,7 +1905,22 @@ public partial struct uint3 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector128<uint> vector;
+    internal Vector128<uint> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector128<uint>(uint3 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector128<uint> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector128<uint> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector128<uint> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public uint x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1791,7 +1997,9 @@ public partial struct uint3 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public uint3(Vector128<uint> vector) => this.vector = vector;
+    internal uint3(Vector128<uint> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint3 UnsafeFromInner(Vector128<uint> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1805,6 +2013,9 @@ public partial struct uint3 :
         this.z = z;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator uint3(uint value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public uint3(uint value)
@@ -1822,7 +2033,7 @@ public partial struct uint3 :
     public static uint3 Scalar(uint value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private uint3(uint value, is_scalar _)
+    internal uint3(uint value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
@@ -1836,7 +2047,6 @@ public partial struct uint3 :
 }
 
 #endregion // uint3
-
 #region uint4
 
 public partial struct uint4 : 
@@ -1883,7 +2093,22 @@ public partial struct uint4 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector128<uint> vector;
+    internal Vector128<uint> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector128<uint>(uint4 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector128<uint> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector128<uint> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector128<uint> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public uint x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1981,7 +2206,9 @@ public partial struct uint4 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public uint4(Vector128<uint> vector) => this.vector = vector;
+    internal uint4(Vector128<uint> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint4 UnsafeFromInner(Vector128<uint> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1996,6 +2223,9 @@ public partial struct uint4 :
         this.w = w;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator uint4(uint value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public uint4(uint value)
@@ -2014,7 +2244,7 @@ public partial struct uint4 :
     public static uint4 Scalar(uint value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private uint4(uint value, is_scalar _)
+    internal uint4(uint value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
@@ -2028,7 +2258,6 @@ public partial struct uint4 :
 }
 
 #endregion // uint4
-
 #region long2
 
 public partial struct long2 : 
@@ -2075,7 +2304,22 @@ public partial struct long2 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector128<long> vector;
+    internal Vector128<long> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector128<long>(long2 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector128<long> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector128<long> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector128<long> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public long x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2129,7 +2373,9 @@ public partial struct long2 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public long2(Vector128<long> vector) => this.vector = vector;
+    internal long2(Vector128<long> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long2 UnsafeFromInner(Vector128<long> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2142,6 +2388,9 @@ public partial struct long2 :
         this.y = y;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator long2(long value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public long2(long value)
@@ -2158,7 +2407,7 @@ public partial struct long2 :
     public static long2 Scalar(long value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private long2(long value, is_scalar _)
+    internal long2(long value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
@@ -2172,7 +2421,6 @@ public partial struct long2 :
 }
 
 #endregion // long2
-
 #region long3
 
 public partial struct long3 : 
@@ -2219,7 +2467,22 @@ public partial struct long3 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector256<long> vector;
+    internal Vector256<long> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector256<long>(long3 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector256<long> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector256<long> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector256<long> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public long x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2296,7 +2559,9 @@ public partial struct long3 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public long3(Vector256<long> vector) => this.vector = vector;
+    internal long3(Vector256<long> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long3 UnsafeFromInner(Vector256<long> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2310,6 +2575,9 @@ public partial struct long3 :
         this.z = z;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator long3(long value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public long3(long value)
@@ -2327,7 +2595,7 @@ public partial struct long3 :
     public static long3 Scalar(long value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private long3(long value, is_scalar _)
+    internal long3(long value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
@@ -2341,7 +2609,6 @@ public partial struct long3 :
 }
 
 #endregion // long3
-
 #region long4
 
 public partial struct long4 : 
@@ -2388,7 +2655,22 @@ public partial struct long4 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector256<long> vector;
+    internal Vector256<long> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector256<long>(long4 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector256<long> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector256<long> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector256<long> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public long x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2486,7 +2768,9 @@ public partial struct long4 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public long4(Vector256<long> vector) => this.vector = vector;
+    internal long4(Vector256<long> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long4 UnsafeFromInner(Vector256<long> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2501,6 +2785,9 @@ public partial struct long4 :
         this.w = w;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator long4(long value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public long4(long value)
@@ -2519,7 +2806,7 @@ public partial struct long4 :
     public static long4 Scalar(long value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private long4(long value, is_scalar _)
+    internal long4(long value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
@@ -2533,7 +2820,6 @@ public partial struct long4 :
 }
 
 #endregion // long4
-
 #region ulong2
 
 public partial struct ulong2 : 
@@ -2580,7 +2866,22 @@ public partial struct ulong2 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector128<ulong> vector;
+    internal Vector128<ulong> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector128<ulong>(ulong2 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector128<ulong> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector128<ulong> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector128<ulong> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public ulong x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2634,7 +2935,9 @@ public partial struct ulong2 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public ulong2(Vector128<ulong> vector) => this.vector = vector;
+    internal ulong2(Vector128<ulong> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong2 UnsafeFromInner(Vector128<ulong> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2647,6 +2950,9 @@ public partial struct ulong2 :
         this.y = y;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator ulong2(ulong value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ulong2(ulong value)
@@ -2663,7 +2969,7 @@ public partial struct ulong2 :
     public static ulong2 Scalar(ulong value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private ulong2(ulong value, is_scalar _)
+    internal ulong2(ulong value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
@@ -2677,7 +2983,6 @@ public partial struct ulong2 :
 }
 
 #endregion // ulong2
-
 #region ulong3
 
 public partial struct ulong3 : 
@@ -2724,7 +3029,22 @@ public partial struct ulong3 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector256<ulong> vector;
+    internal Vector256<ulong> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector256<ulong>(ulong3 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector256<ulong> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector256<ulong> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector256<ulong> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public ulong x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2801,7 +3121,9 @@ public partial struct ulong3 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public ulong3(Vector256<ulong> vector) => this.vector = vector;
+    internal ulong3(Vector256<ulong> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong3 UnsafeFromInner(Vector256<ulong> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2815,6 +3137,9 @@ public partial struct ulong3 :
         this.z = z;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator ulong3(ulong value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ulong3(ulong value)
@@ -2832,7 +3157,7 @@ public partial struct ulong3 :
     public static ulong3 Scalar(ulong value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private ulong3(ulong value, is_scalar _)
+    internal ulong3(ulong value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
@@ -2846,7 +3171,6 @@ public partial struct ulong3 :
 }
 
 #endregion // ulong3
-
 #region ulong4
 
 public partial struct ulong4 : 
@@ -2893,7 +3217,22 @@ public partial struct ulong4 :
     #region fields
 
     #if NET8_0_OR_GREATER
-    public Vector256<ulong> vector;
+    internal Vector256<ulong> vector;
+    
+    #region Unsafe Inner    
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static explicit operator Vector256<ulong>(ulong4 self) => self.vector;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public Vector256<ulong> UnsafeGetInner() => vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining), UnscopedRef]
+    public ref Vector256<ulong> UnsafeGetInnerRef() => ref vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void UnsafeSetInner(Vector256<ulong> vector) => this.vector = vector;
+   
+    #endregion // Unsafe Inner    
+
     public ulong x
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2991,7 +3330,9 @@ public partial struct ulong4 :
 
     #if NET8_0_OR_GREATER
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public ulong4(Vector256<ulong> vector) => this.vector = vector;
+    internal ulong4(Vector256<ulong> vector) => this.vector = vector;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong4 UnsafeFromInner(Vector256<ulong> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -3006,6 +3347,9 @@ public partial struct ulong4 :
         this.w = w;
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator ulong4(ulong value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ulong4(ulong value)
@@ -3024,7 +3368,7 @@ public partial struct ulong4 :
     public static ulong4 Scalar(ulong value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private ulong4(ulong value, is_scalar _)
+    internal ulong4(ulong value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
@@ -3038,7 +3382,782 @@ public partial struct ulong4 :
 }
 
 #endregion // ulong4
+#region decimal2
 
+public partial struct decimal2 : 
+    IVector2<decimal>, IVectorSelf<decimal2>
+{
+
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => false; 
+    }
+    public static int Length
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 2; 
+    }
+    public static int SizeByte
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 32; 
+    }
+    public static int SizeBit
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 256; 
+    }
+
+    public static decimal2 Zero
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => default; 
+    }
+
+    public static decimal2 One
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(1m); 
+    }
+
+    #endregion
+
+    #region fields
+
+    private decimal _x;
+    public decimal x
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _x = value;
+    }
+    private decimal _y;
+    public decimal y
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _y = value;
+    }
+    public decimal r
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => x = value;
+    }
+    public decimal g
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => y = value;
+    }
+
+    #endregion
+
+    #region ctors
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal2(decimal x, decimal y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator decimal2(decimal value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal2(decimal value)
+    {
+        x = value;
+        y = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal2 Scalar(decimal value) => new(value, new is_scalar());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal decimal2(decimal value, is_scalar _)
+    {
+        x = value;
+    }
+
+    #endregion // ctors
+
+}
+
+#endregion // decimal2
+#region decimal3
+
+public partial struct decimal3 : 
+    IVector3<decimal>, IVectorSelf<decimal3>
+{
+
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => false; 
+    }
+    public static int Length
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 3; 
+    }
+    public static int SizeByte
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 64; 
+    }
+    public static int SizeBit
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 512; 
+    }
+
+    public static decimal3 Zero
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => default; 
+    }
+
+    public static decimal3 One
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(1m); 
+    }
+
+    #endregion
+
+    #region fields
+
+    private decimal _x;
+    public decimal x
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _x = value;
+    }
+    private decimal _y;
+    public decimal y
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _y = value;
+    }
+    private decimal _z;
+    public decimal z
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _z;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _z = value;
+    }
+    private decimal _align;
+    public decimal r
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => x = value;
+    }
+    public decimal g
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => y = value;
+    }
+    public decimal b
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => z;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => z = value;
+    }
+
+    #endregion
+
+    #region ctors
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal3(decimal x, decimal y, decimal z)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator decimal3(decimal value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal3(decimal value)
+    {
+        x = value;
+        y = value;
+        z = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal3 Scalar(decimal value) => new(value, new is_scalar());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal decimal3(decimal value, is_scalar _)
+    {
+        x = value;
+    }
+
+    #endregion // ctors
+
+}
+
+#endregion // decimal3
+#region decimal4
+
+public partial struct decimal4 : 
+    IVector4<decimal>, IVectorSelf<decimal4>
+{
+
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => false; 
+    }
+    public static int Length
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 4; 
+    }
+    public static int SizeByte
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 64; 
+    }
+    public static int SizeBit
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 512; 
+    }
+
+    public static decimal4 Zero
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => default; 
+    }
+
+    public static decimal4 One
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(1m); 
+    }
+
+    #endregion
+
+    #region fields
+
+    private decimal _x;
+    public decimal x
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _x = value;
+    }
+    private decimal _y;
+    public decimal y
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _y = value;
+    }
+    private decimal _z;
+    public decimal z
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _z;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _z = value;
+    }
+    private decimal _w;
+    public decimal w
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _w;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _w = value;
+    }
+    public decimal r
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => x = value;
+    }
+    public decimal g
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => y = value;
+    }
+    public decimal b
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => z;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => z = value;
+    }
+    public decimal a
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => w;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => w = value;
+    }
+
+    #endregion
+
+    #region ctors
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal4(decimal x, decimal y, decimal z, decimal w)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator decimal4(decimal value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal4(decimal value)
+    {
+        x = value;
+        y = value;
+        z = value;
+        w = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal4 Scalar(decimal value) => new(value, new is_scalar());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal decimal4(decimal value, is_scalar _)
+    {
+        x = value;
+    }
+
+    #endregion // ctors
+
+}
+
+#endregion // decimal4
+#region half2
+
+public partial struct half2 : 
+    IVector2<half>, IVectorSelf<half2>
+{
+
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => false; 
+    }
+    public static int Length
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 2; 
+    }
+    public static int SizeByte
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 4; 
+    }
+    public static int SizeBit
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 32; 
+    }
+
+    public static half2 Zero
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => default; 
+    }
+
+    public static half2 One
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new((half)1.0); 
+    }
+
+    #endregion
+
+    #region fields
+
+    private half _x;
+    public half x
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _x = value;
+    }
+    private half _y;
+    public half y
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _y = value;
+    }
+    public half r
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => x = value;
+    }
+    public half g
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => y = value;
+    }
+
+    #endregion
+
+    #region ctors
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half2(half x, half y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator half2(half value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half2(half value)
+    {
+        x = value;
+        y = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half2 Scalar(half value) => new(value, new is_scalar());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal half2(half value, is_scalar _)
+    {
+        x = value;
+    }
+
+    #endregion // ctors
+
+}
+
+#endregion // half2
+#region half3
+
+public partial struct half3 : 
+    IVector3<half>, IVectorSelf<half3>
+{
+
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => false; 
+    }
+    public static int Length
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 3; 
+    }
+    public static int SizeByte
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 8; 
+    }
+    public static int SizeBit
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 64; 
+    }
+
+    public static half3 Zero
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => default; 
+    }
+
+    public static half3 One
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new((half)1.0); 
+    }
+
+    #endregion
+
+    #region fields
+
+    private half _x;
+    public half x
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _x = value;
+    }
+    private half _y;
+    public half y
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _y = value;
+    }
+    private half _z;
+    public half z
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _z;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _z = value;
+    }
+    private half _align;
+    public half r
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => x = value;
+    }
+    public half g
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => y = value;
+    }
+    public half b
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => z;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => z = value;
+    }
+
+    #endregion
+
+    #region ctors
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half3(half x, half y, half z)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator half3(half value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half3(half value)
+    {
+        x = value;
+        y = value;
+        z = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half3 Scalar(half value) => new(value, new is_scalar());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal half3(half value, is_scalar _)
+    {
+        x = value;
+    }
+
+    #endregion // ctors
+
+}
+
+#endregion // half3
+#region half4
+
+public partial struct half4 : 
+    IVector4<half>, IVectorSelf<half4>
+{
+
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => false; 
+    }
+    public static int Length
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 4; 
+    }
+    public static int SizeByte
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 8; 
+    }
+    public static int SizeBit
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => 64; 
+    }
+
+    public static half4 Zero
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => default; 
+    }
+
+    public static half4 One
+    { 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new((half)1.0); 
+    }
+
+    #endregion
+
+    #region fields
+
+    private half _x;
+    public half x
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _x = value;
+    }
+    private half _y;
+    public half y
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _y = value;
+    }
+    private half _z;
+    public half z
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _z;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _z = value;
+    }
+    private half _w;
+    public half w
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _w;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => _w = value;
+    }
+    public half r
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => x;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => x = value;
+    }
+    public half g
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => y;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => y = value;
+    }
+    public half b
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => z;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => z = value;
+    }
+    public half a
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => w;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => w = value;
+    }
+
+    #endregion
+
+    #region ctors
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half4(half x, half y, half z, half w)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator half4(half value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half4(half value)
+    {
+        x = value;
+        y = value;
+        z = value;
+        w = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half4 Scalar(half value) => new(value, new is_scalar());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal half4(half value, is_scalar _)
+    {
+        x = value;
+    }
+
+    #endregion // ctors
+
+}
+
+#endregion // half4
 #region bool2
 
 public partial struct bool2 : 
@@ -3128,6 +4247,9 @@ public partial struct bool2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator bool2(bool value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool2(bool value)
     {
         x = value;
@@ -3138,7 +4260,7 @@ public partial struct bool2 :
     public static bool2 Scalar(bool value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private bool2(bool value, is_scalar _)
+    internal bool2(bool value, is_scalar _)
     {
         x = value;
     }
@@ -3148,7 +4270,6 @@ public partial struct bool2 :
 }
 
 #endregion // bool2
-
 #region bool3
 
 public partial struct bool3 : 
@@ -3255,6 +4376,9 @@ public partial struct bool3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator bool3(bool value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool3(bool value)
     {
         x = value;
@@ -3266,7 +4390,7 @@ public partial struct bool3 :
     public static bool3 Scalar(bool value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private bool3(bool value, is_scalar _)
+    internal bool3(bool value, is_scalar _)
     {
         x = value;
     }
@@ -3276,7 +4400,6 @@ public partial struct bool3 :
 }
 
 #endregion // bool3
-
 #region bool4
 
 public partial struct bool4 : 
@@ -3398,6 +4521,9 @@ public partial struct bool4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static implicit operator bool4(bool value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool4(bool value)
     {
         x = value;
@@ -3410,7 +4536,7 @@ public partial struct bool4 :
     public static bool4 Scalar(bool value) => new(value, new is_scalar());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private bool4(bool value, is_scalar _)
+    internal bool4(bool value, is_scalar _)
     {
         x = value;
     }

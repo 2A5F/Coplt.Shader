@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Runtime.Intrinsics;
 #endif
 using System.Runtime.CompilerServices;
+using half = System.Half;
 
 namespace Coplt.Mathematics;
 
@@ -10436,6 +10437,5334 @@ public partial struct double4
 }
 
 #endregion // double4
+
+#region decimal4
+
+public partial struct decimal4 
+{
+    public decimal4 xxxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, x);
+    }
+    public decimal4 rrrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, x);
+    }
+    public decimal4 xxxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, y);
+    }
+    public decimal4 rrrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, y);
+    }
+    public decimal4 xxxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, z);
+    }
+    public decimal4 rrrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, z);
+    }
+    public decimal4 xxxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, w);
+    }
+    public decimal4 rrra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, w);
+    }
+    public decimal4 xxyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, x);
+    }
+    public decimal4 rrgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, x);
+    }
+    public decimal4 xxyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, y);
+    }
+    public decimal4 rrgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, y);
+    }
+    public decimal4 xxyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, z);
+    }
+    public decimal4 rrgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, z);
+    }
+    public decimal4 xxyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, w);
+    }
+    public decimal4 rrga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, w);
+    }
+    public decimal4 xxzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, x);
+    }
+    public decimal4 rrbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, x);
+    }
+    public decimal4 xxzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, y);
+    }
+    public decimal4 rrbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, y);
+    }
+    public decimal4 xxzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, z);
+    }
+    public decimal4 rrbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, z);
+    }
+    public decimal4 xxzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, w);
+    }
+    public decimal4 rrba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, w);
+    }
+    public decimal4 xxwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, x);
+    }
+    public decimal4 rrar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, x);
+    }
+    public decimal4 xxwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, y);
+    }
+    public decimal4 rrag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, y);
+    }
+    public decimal4 xxwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, z);
+    }
+    public decimal4 rrab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, z);
+    }
+    public decimal4 xxww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, w);
+    }
+    public decimal4 rraa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, w);
+    }
+    public decimal4 xyxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, x);
+    }
+    public decimal4 rgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, x);
+    }
+    public decimal4 xyxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, y);
+    }
+    public decimal4 rgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, y);
+    }
+    public decimal4 xyxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, z);
+    }
+    public decimal4 rgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, z);
+    }
+    public decimal4 xyxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, w);
+    }
+    public decimal4 rgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, w);
+    }
+    public decimal4 xyyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, x);
+    }
+    public decimal4 rggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, x);
+    }
+    public decimal4 xyyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, y);
+    }
+    public decimal4 rggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, y);
+    }
+    public decimal4 xyyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, z);
+    }
+    public decimal4 rggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, z);
+    }
+    public decimal4 xyyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, w);
+    }
+    public decimal4 rgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, w);
+    }
+    public decimal4 xyzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, x);
+    }
+    public decimal4 rgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, x);
+    }
+    public decimal4 xyzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, y);
+    }
+    public decimal4 rgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, y);
+    }
+    public decimal4 xyzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, z);
+    }
+    public decimal4 rgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, z);
+    }
+    public decimal4 xyzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => this;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value;
+    }
+    public decimal4 rgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => this;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value;
+    }
+    public decimal4 xywx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, x);
+    }
+    public decimal4 rgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, x);
+    }
+    public decimal4 xywy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, y);
+    }
+    public decimal4 rgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, y);
+    }
+    public decimal4 xywz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xywz;
+    }
+    public decimal4 rgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xywz;
+    }
+    public decimal4 xyww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, w);
+    }
+    public decimal4 rgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, w);
+    }
+    public decimal4 xzxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, x);
+    }
+    public decimal4 rbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, x);
+    }
+    public decimal4 xzxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, y);
+    }
+    public decimal4 rbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, y);
+    }
+    public decimal4 xzxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, z);
+    }
+    public decimal4 rbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, z);
+    }
+    public decimal4 xzxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, w);
+    }
+    public decimal4 rbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, w);
+    }
+    public decimal4 xzyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, x);
+    }
+    public decimal4 rbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, x);
+    }
+    public decimal4 xzyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, y);
+    }
+    public decimal4 rbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, y);
+    }
+    public decimal4 xzyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, z);
+    }
+    public decimal4 rbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, z);
+    }
+    public decimal4 xzyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xzyw;
+    }
+    public decimal4 rbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xzyw;
+    }
+    public decimal4 xzzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, x);
+    }
+    public decimal4 rbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, x);
+    }
+    public decimal4 xzzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, y);
+    }
+    public decimal4 rbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, y);
+    }
+    public decimal4 xzzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, z);
+    }
+    public decimal4 rbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, z);
+    }
+    public decimal4 xzzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, w);
+    }
+    public decimal4 rbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, w);
+    }
+    public decimal4 xzwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, x);
+    }
+    public decimal4 rbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, x);
+    }
+    public decimal4 xzwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xwyz;
+    }
+    public decimal4 rbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xwyz;
+    }
+    public decimal4 xzwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, z);
+    }
+    public decimal4 rbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, z);
+    }
+    public decimal4 xzww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, w);
+    }
+    public decimal4 rbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, w);
+    }
+    public decimal4 xwxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, x);
+    }
+    public decimal4 rarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, x);
+    }
+    public decimal4 xwxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, y);
+    }
+    public decimal4 rarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, y);
+    }
+    public decimal4 xwxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, z);
+    }
+    public decimal4 rarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, z);
+    }
+    public decimal4 xwxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, w);
+    }
+    public decimal4 rara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, w);
+    }
+    public decimal4 xwyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, x);
+    }
+    public decimal4 ragr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, x);
+    }
+    public decimal4 xwyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, y);
+    }
+    public decimal4 ragg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, y);
+    }
+    public decimal4 xwyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xzwy;
+    }
+    public decimal4 ragb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xzwy;
+    }
+    public decimal4 xwyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, w);
+    }
+    public decimal4 raga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, w);
+    }
+    public decimal4 xwzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, x);
+    }
+    public decimal4 rabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, x);
+    }
+    public decimal4 xwzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xwzy;
+    }
+    public decimal4 rabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xwzy;
+    }
+    public decimal4 xwzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, z);
+    }
+    public decimal4 rabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, z);
+    }
+    public decimal4 xwzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, w);
+    }
+    public decimal4 raba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, w);
+    }
+    public decimal4 xwwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, x);
+    }
+    public decimal4 raar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, x);
+    }
+    public decimal4 xwwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, y);
+    }
+    public decimal4 raag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, y);
+    }
+    public decimal4 xwwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, z);
+    }
+    public decimal4 raab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, z);
+    }
+    public decimal4 xwww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, w);
+    }
+    public decimal4 raaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, w);
+    }
+    public decimal4 yxxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, x);
+    }
+    public decimal4 grrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, x);
+    }
+    public decimal4 yxxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, y);
+    }
+    public decimal4 grrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, y);
+    }
+    public decimal4 yxxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, z);
+    }
+    public decimal4 grrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, z);
+    }
+    public decimal4 yxxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, w);
+    }
+    public decimal4 grra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, w);
+    }
+    public decimal4 yxyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, x);
+    }
+    public decimal4 grgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, x);
+    }
+    public decimal4 yxyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, y);
+    }
+    public decimal4 grgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, y);
+    }
+    public decimal4 yxyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, z);
+    }
+    public decimal4 grgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, z);
+    }
+    public decimal4 yxyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, w);
+    }
+    public decimal4 grga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, w);
+    }
+    public decimal4 yxzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, x);
+    }
+    public decimal4 grbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, x);
+    }
+    public decimal4 yxzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, y);
+    }
+    public decimal4 grbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, y);
+    }
+    public decimal4 yxzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, z);
+    }
+    public decimal4 grbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, z);
+    }
+    public decimal4 yxzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yxzw;
+    }
+    public decimal4 grba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yxzw;
+    }
+    public decimal4 yxwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, x);
+    }
+    public decimal4 grar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, x);
+    }
+    public decimal4 yxwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, y);
+    }
+    public decimal4 grag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, y);
+    }
+    public decimal4 yxwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yxwz;
+    }
+    public decimal4 grab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yxwz;
+    }
+    public decimal4 yxww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, w);
+    }
+    public decimal4 graa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, w);
+    }
+    public decimal4 yyxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, x);
+    }
+    public decimal4 ggrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, x);
+    }
+    public decimal4 yyxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, y);
+    }
+    public decimal4 ggrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, y);
+    }
+    public decimal4 yyxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, z);
+    }
+    public decimal4 ggrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, z);
+    }
+    public decimal4 yyxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, w);
+    }
+    public decimal4 ggra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, w);
+    }
+    public decimal4 yyyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, x);
+    }
+    public decimal4 gggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, x);
+    }
+    public decimal4 yyyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, y);
+    }
+    public decimal4 gggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, y);
+    }
+    public decimal4 yyyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, z);
+    }
+    public decimal4 gggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, z);
+    }
+    public decimal4 yyyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, w);
+    }
+    public decimal4 ggga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, w);
+    }
+    public decimal4 yyzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, x);
+    }
+    public decimal4 ggbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, x);
+    }
+    public decimal4 yyzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, y);
+    }
+    public decimal4 ggbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, y);
+    }
+    public decimal4 yyzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, z);
+    }
+    public decimal4 ggbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, z);
+    }
+    public decimal4 yyzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, w);
+    }
+    public decimal4 ggba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, w);
+    }
+    public decimal4 yywx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, x);
+    }
+    public decimal4 ggar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, x);
+    }
+    public decimal4 yywy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, y);
+    }
+    public decimal4 ggag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, y);
+    }
+    public decimal4 yywz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, z);
+    }
+    public decimal4 ggab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, z);
+    }
+    public decimal4 yyww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, w);
+    }
+    public decimal4 ggaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, w);
+    }
+    public decimal4 yzxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, x);
+    }
+    public decimal4 gbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, x);
+    }
+    public decimal4 yzxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, y);
+    }
+    public decimal4 gbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, y);
+    }
+    public decimal4 yzxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, z);
+    }
+    public decimal4 gbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, z);
+    }
+    public decimal4 yzxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zxyw;
+    }
+    public decimal4 gbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zxyw;
+    }
+    public decimal4 yzyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, x);
+    }
+    public decimal4 gbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, x);
+    }
+    public decimal4 yzyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, y);
+    }
+    public decimal4 gbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, y);
+    }
+    public decimal4 yzyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, z);
+    }
+    public decimal4 gbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, z);
+    }
+    public decimal4 yzyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, w);
+    }
+    public decimal4 gbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, w);
+    }
+    public decimal4 yzzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, x);
+    }
+    public decimal4 gbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, x);
+    }
+    public decimal4 yzzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, y);
+    }
+    public decimal4 gbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, y);
+    }
+    public decimal4 yzzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, z);
+    }
+    public decimal4 gbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, z);
+    }
+    public decimal4 yzzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, w);
+    }
+    public decimal4 gbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, w);
+    }
+    public decimal4 yzwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wxyz;
+    }
+    public decimal4 gbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wxyz;
+    }
+    public decimal4 yzwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, y);
+    }
+    public decimal4 gbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, y);
+    }
+    public decimal4 yzwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, z);
+    }
+    public decimal4 gbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, z);
+    }
+    public decimal4 yzww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, w);
+    }
+    public decimal4 gbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, w);
+    }
+    public decimal4 ywxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, x);
+    }
+    public decimal4 garr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, x);
+    }
+    public decimal4 ywxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, y);
+    }
+    public decimal4 garg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, y);
+    }
+    public decimal4 ywxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zxwy;
+    }
+    public decimal4 garb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zxwy;
+    }
+    public decimal4 ywxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, w);
+    }
+    public decimal4 gara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, w);
+    }
+    public decimal4 ywyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, x);
+    }
+    public decimal4 gagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, x);
+    }
+    public decimal4 ywyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, y);
+    }
+    public decimal4 gagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, y);
+    }
+    public decimal4 ywyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, z);
+    }
+    public decimal4 gagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, z);
+    }
+    public decimal4 ywyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, w);
+    }
+    public decimal4 gaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, w);
+    }
+    public decimal4 ywzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wxzy;
+    }
+    public decimal4 gabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wxzy;
+    }
+    public decimal4 ywzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, y);
+    }
+    public decimal4 gabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, y);
+    }
+    public decimal4 ywzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, z);
+    }
+    public decimal4 gabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, z);
+    }
+    public decimal4 ywzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, w);
+    }
+    public decimal4 gaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, w);
+    }
+    public decimal4 ywwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, x);
+    }
+    public decimal4 gaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, x);
+    }
+    public decimal4 ywwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, y);
+    }
+    public decimal4 gaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, y);
+    }
+    public decimal4 ywwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, z);
+    }
+    public decimal4 gaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, z);
+    }
+    public decimal4 ywww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, w);
+    }
+    public decimal4 gaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, w);
+    }
+    public decimal4 zxxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, x);
+    }
+    public decimal4 brrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, x);
+    }
+    public decimal4 zxxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, y);
+    }
+    public decimal4 brrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, y);
+    }
+    public decimal4 zxxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, z);
+    }
+    public decimal4 brrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, z);
+    }
+    public decimal4 zxxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, w);
+    }
+    public decimal4 brra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, w);
+    }
+    public decimal4 zxyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, x);
+    }
+    public decimal4 brgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, x);
+    }
+    public decimal4 zxyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, y);
+    }
+    public decimal4 brgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, y);
+    }
+    public decimal4 zxyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, z);
+    }
+    public decimal4 brgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, z);
+    }
+    public decimal4 zxyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yzxw;
+    }
+    public decimal4 brga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yzxw;
+    }
+    public decimal4 zxzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, x);
+    }
+    public decimal4 brbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, x);
+    }
+    public decimal4 zxzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, y);
+    }
+    public decimal4 brbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, y);
+    }
+    public decimal4 zxzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, z);
+    }
+    public decimal4 brbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, z);
+    }
+    public decimal4 zxzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, w);
+    }
+    public decimal4 brba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, w);
+    }
+    public decimal4 zxwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, x);
+    }
+    public decimal4 brar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, x);
+    }
+    public decimal4 zxwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.ywxz;
+    }
+    public decimal4 brag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.ywxz;
+    }
+    public decimal4 zxwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, z);
+    }
+    public decimal4 brab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, z);
+    }
+    public decimal4 zxww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, w);
+    }
+    public decimal4 braa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, w);
+    }
+    public decimal4 zyxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, x);
+    }
+    public decimal4 bgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, x);
+    }
+    public decimal4 zyxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, y);
+    }
+    public decimal4 bgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, y);
+    }
+    public decimal4 zyxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, z);
+    }
+    public decimal4 bgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, z);
+    }
+    public decimal4 zyxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zyxw;
+    }
+    public decimal4 bgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zyxw;
+    }
+    public decimal4 zyyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, x);
+    }
+    public decimal4 bggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, x);
+    }
+    public decimal4 zyyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, y);
+    }
+    public decimal4 bggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, y);
+    }
+    public decimal4 zyyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, z);
+    }
+    public decimal4 bggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, z);
+    }
+    public decimal4 zyyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, w);
+    }
+    public decimal4 bgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, w);
+    }
+    public decimal4 zyzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, x);
+    }
+    public decimal4 bgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, x);
+    }
+    public decimal4 zyzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, y);
+    }
+    public decimal4 bgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, y);
+    }
+    public decimal4 zyzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, z);
+    }
+    public decimal4 bgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, z);
+    }
+    public decimal4 zyzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, w);
+    }
+    public decimal4 bgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, w);
+    }
+    public decimal4 zywx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wyxz;
+    }
+    public decimal4 bgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wyxz;
+    }
+    public decimal4 zywy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, y);
+    }
+    public decimal4 bgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, y);
+    }
+    public decimal4 zywz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, z);
+    }
+    public decimal4 bgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, z);
+    }
+    public decimal4 zyww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, w);
+    }
+    public decimal4 bgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, w);
+    }
+    public decimal4 zzxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, x);
+    }
+    public decimal4 bbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, x);
+    }
+    public decimal4 zzxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, y);
+    }
+    public decimal4 bbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, y);
+    }
+    public decimal4 zzxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, z);
+    }
+    public decimal4 bbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, z);
+    }
+    public decimal4 zzxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, w);
+    }
+    public decimal4 bbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, w);
+    }
+    public decimal4 zzyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, x);
+    }
+    public decimal4 bbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, x);
+    }
+    public decimal4 zzyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, y);
+    }
+    public decimal4 bbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, y);
+    }
+    public decimal4 zzyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, z);
+    }
+    public decimal4 bbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, z);
+    }
+    public decimal4 zzyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, w);
+    }
+    public decimal4 bbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, w);
+    }
+    public decimal4 zzzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, x);
+    }
+    public decimal4 bbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, x);
+    }
+    public decimal4 zzzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, y);
+    }
+    public decimal4 bbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, y);
+    }
+    public decimal4 zzzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, z);
+    }
+    public decimal4 bbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, z);
+    }
+    public decimal4 zzzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, w);
+    }
+    public decimal4 bbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, w);
+    }
+    public decimal4 zzwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, x);
+    }
+    public decimal4 bbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, x);
+    }
+    public decimal4 zzwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, y);
+    }
+    public decimal4 bbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, y);
+    }
+    public decimal4 zzwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, z);
+    }
+    public decimal4 bbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, z);
+    }
+    public decimal4 zzww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, w);
+    }
+    public decimal4 bbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, w);
+    }
+    public decimal4 zwxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, x);
+    }
+    public decimal4 barr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, x);
+    }
+    public decimal4 zwxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zwxy;
+    }
+    public decimal4 barg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zwxy;
+    }
+    public decimal4 zwxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, z);
+    }
+    public decimal4 barb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, z);
+    }
+    public decimal4 zwxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, w);
+    }
+    public decimal4 bara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, w);
+    }
+    public decimal4 zwyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wzxy;
+    }
+    public decimal4 bagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wzxy;
+    }
+    public decimal4 zwyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, y);
+    }
+    public decimal4 bagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, y);
+    }
+    public decimal4 zwyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, z);
+    }
+    public decimal4 bagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, z);
+    }
+    public decimal4 zwyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, w);
+    }
+    public decimal4 baga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, w);
+    }
+    public decimal4 zwzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, x);
+    }
+    public decimal4 babr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, x);
+    }
+    public decimal4 zwzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, y);
+    }
+    public decimal4 babg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, y);
+    }
+    public decimal4 zwzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, z);
+    }
+    public decimal4 babb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, z);
+    }
+    public decimal4 zwzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, w);
+    }
+    public decimal4 baba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, w);
+    }
+    public decimal4 zwwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, x);
+    }
+    public decimal4 baar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, x);
+    }
+    public decimal4 zwwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, y);
+    }
+    public decimal4 baag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, y);
+    }
+    public decimal4 zwwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, z);
+    }
+    public decimal4 baab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, z);
+    }
+    public decimal4 zwww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, w);
+    }
+    public decimal4 baaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, w);
+    }
+    public decimal4 wxxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, x);
+    }
+    public decimal4 arrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, x);
+    }
+    public decimal4 wxxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, y);
+    }
+    public decimal4 arrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, y);
+    }
+    public decimal4 wxxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, z);
+    }
+    public decimal4 arrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, z);
+    }
+    public decimal4 wxxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, w);
+    }
+    public decimal4 arra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, w);
+    }
+    public decimal4 wxyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, x);
+    }
+    public decimal4 argr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, x);
+    }
+    public decimal4 wxyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, y);
+    }
+    public decimal4 argg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, y);
+    }
+    public decimal4 wxyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yzwx;
+    }
+    public decimal4 argb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yzwx;
+    }
+    public decimal4 wxyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, w);
+    }
+    public decimal4 arga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, w);
+    }
+    public decimal4 wxzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, x);
+    }
+    public decimal4 arbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, x);
+    }
+    public decimal4 wxzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.ywzx;
+    }
+    public decimal4 arbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.ywzx;
+    }
+    public decimal4 wxzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, z);
+    }
+    public decimal4 arbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, z);
+    }
+    public decimal4 wxzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, w);
+    }
+    public decimal4 arba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, w);
+    }
+    public decimal4 wxwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, x);
+    }
+    public decimal4 arar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, x);
+    }
+    public decimal4 wxwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, y);
+    }
+    public decimal4 arag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, y);
+    }
+    public decimal4 wxwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, z);
+    }
+    public decimal4 arab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, z);
+    }
+    public decimal4 wxww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, w);
+    }
+    public decimal4 araa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, w);
+    }
+    public decimal4 wyxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, x);
+    }
+    public decimal4 agrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, x);
+    }
+    public decimal4 wyxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, y);
+    }
+    public decimal4 agrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, y);
+    }
+    public decimal4 wyxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zywx;
+    }
+    public decimal4 agrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zywx;
+    }
+    public decimal4 wyxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, w);
+    }
+    public decimal4 agra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, w);
+    }
+    public decimal4 wyyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, x);
+    }
+    public decimal4 aggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, x);
+    }
+    public decimal4 wyyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, y);
+    }
+    public decimal4 aggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, y);
+    }
+    public decimal4 wyyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, z);
+    }
+    public decimal4 aggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, z);
+    }
+    public decimal4 wyyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, w);
+    }
+    public decimal4 agga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, w);
+    }
+    public decimal4 wyzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wyzx;
+    }
+    public decimal4 agbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wyzx;
+    }
+    public decimal4 wyzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, y);
+    }
+    public decimal4 agbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, y);
+    }
+    public decimal4 wyzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, z);
+    }
+    public decimal4 agbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, z);
+    }
+    public decimal4 wyzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, w);
+    }
+    public decimal4 agba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, w);
+    }
+    public decimal4 wywx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, x);
+    }
+    public decimal4 agar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, x);
+    }
+    public decimal4 wywy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, y);
+    }
+    public decimal4 agag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, y);
+    }
+    public decimal4 wywz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, z);
+    }
+    public decimal4 agab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, z);
+    }
+    public decimal4 wyww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, w);
+    }
+    public decimal4 agaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, w);
+    }
+    public decimal4 wzxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, x);
+    }
+    public decimal4 abrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, x);
+    }
+    public decimal4 wzxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zwyx;
+    }
+    public decimal4 abrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zwyx;
+    }
+    public decimal4 wzxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, z);
+    }
+    public decimal4 abrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, z);
+    }
+    public decimal4 wzxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, w);
+    }
+    public decimal4 abra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, w);
+    }
+    public decimal4 wzyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wzyx;
+    }
+    public decimal4 abgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wzyx;
+    }
+    public decimal4 wzyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, y);
+    }
+    public decimal4 abgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, y);
+    }
+    public decimal4 wzyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, z);
+    }
+    public decimal4 abgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, z);
+    }
+    public decimal4 wzyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, w);
+    }
+    public decimal4 abga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, w);
+    }
+    public decimal4 wzzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, x);
+    }
+    public decimal4 abbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, x);
+    }
+    public decimal4 wzzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, y);
+    }
+    public decimal4 abbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, y);
+    }
+    public decimal4 wzzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, z);
+    }
+    public decimal4 abbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, z);
+    }
+    public decimal4 wzzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, w);
+    }
+    public decimal4 abba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, w);
+    }
+    public decimal4 wzwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, x);
+    }
+    public decimal4 abar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, x);
+    }
+    public decimal4 wzwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, y);
+    }
+    public decimal4 abag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, y);
+    }
+    public decimal4 wzwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, z);
+    }
+    public decimal4 abab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, z);
+    }
+    public decimal4 wzww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, w);
+    }
+    public decimal4 abaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, w);
+    }
+    public decimal4 wwxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, x);
+    }
+    public decimal4 aarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, x);
+    }
+    public decimal4 wwxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, y);
+    }
+    public decimal4 aarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, y);
+    }
+    public decimal4 wwxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, z);
+    }
+    public decimal4 aarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, z);
+    }
+    public decimal4 wwxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, w);
+    }
+    public decimal4 aara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, w);
+    }
+    public decimal4 wwyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, x);
+    }
+    public decimal4 aagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, x);
+    }
+    public decimal4 wwyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, y);
+    }
+    public decimal4 aagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, y);
+    }
+    public decimal4 wwyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, z);
+    }
+    public decimal4 aagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, z);
+    }
+    public decimal4 wwyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, w);
+    }
+    public decimal4 aaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, w);
+    }
+    public decimal4 wwzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, x);
+    }
+    public decimal4 aabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, x);
+    }
+    public decimal4 wwzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, y);
+    }
+    public decimal4 aabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, y);
+    }
+    public decimal4 wwzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, z);
+    }
+    public decimal4 aabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, z);
+    }
+    public decimal4 wwzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, w);
+    }
+    public decimal4 aaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, w);
+    }
+    public decimal4 wwwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, x);
+    }
+    public decimal4 aaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, x);
+    }
+    public decimal4 wwwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, y);
+    }
+    public decimal4 aaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, y);
+    }
+    public decimal4 wwwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, z);
+    }
+    public decimal4 aaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, z);
+    }
+    public decimal4 wwww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, w);
+    }
+    public decimal4 aaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, w);
+    }
+}
+
+#endregion // decimal4
+
+#region half4
+
+public partial struct half4 
+{
+    public half4 xxxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, x);
+    }
+    public half4 rrrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, x);
+    }
+    public half4 xxxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, y);
+    }
+    public half4 rrrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, y);
+    }
+    public half4 xxxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, z);
+    }
+    public half4 rrrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, z);
+    }
+    public half4 xxxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, w);
+    }
+    public half4 rrra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, x, w);
+    }
+    public half4 xxyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, x);
+    }
+    public half4 rrgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, x);
+    }
+    public half4 xxyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, y);
+    }
+    public half4 rrgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, y);
+    }
+    public half4 xxyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, z);
+    }
+    public half4 rrgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, z);
+    }
+    public half4 xxyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, w);
+    }
+    public half4 rrga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, y, w);
+    }
+    public half4 xxzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, x);
+    }
+    public half4 rrbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, x);
+    }
+    public half4 xxzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, y);
+    }
+    public half4 rrbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, y);
+    }
+    public half4 xxzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, z);
+    }
+    public half4 rrbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, z);
+    }
+    public half4 xxzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, w);
+    }
+    public half4 rrba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, z, w);
+    }
+    public half4 xxwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, x);
+    }
+    public half4 rrar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, x);
+    }
+    public half4 xxwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, y);
+    }
+    public half4 rrag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, y);
+    }
+    public half4 xxwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, z);
+    }
+    public half4 rrab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, z);
+    }
+    public half4 xxww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, w);
+    }
+    public half4 rraa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x, w, w);
+    }
+    public half4 xyxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, x);
+    }
+    public half4 rgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, x);
+    }
+    public half4 xyxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, y);
+    }
+    public half4 rgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, y);
+    }
+    public half4 xyxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, z);
+    }
+    public half4 rgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, z);
+    }
+    public half4 xyxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, w);
+    }
+    public half4 rgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, x, w);
+    }
+    public half4 xyyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, x);
+    }
+    public half4 rggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, x);
+    }
+    public half4 xyyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, y);
+    }
+    public half4 rggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, y);
+    }
+    public half4 xyyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, z);
+    }
+    public half4 rggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, z);
+    }
+    public half4 xyyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, w);
+    }
+    public half4 rgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, y, w);
+    }
+    public half4 xyzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, x);
+    }
+    public half4 rgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, x);
+    }
+    public half4 xyzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, y);
+    }
+    public half4 rgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, y);
+    }
+    public half4 xyzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, z);
+    }
+    public half4 rgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, z, z);
+    }
+    public half4 xyzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => this;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value;
+    }
+    public half4 rgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => this;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value;
+    }
+    public half4 xywx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, x);
+    }
+    public half4 rgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, x);
+    }
+    public half4 xywy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, y);
+    }
+    public half4 rgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, y);
+    }
+    public half4 xywz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xywz;
+    }
+    public half4 rgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xywz;
+    }
+    public half4 xyww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, w);
+    }
+    public half4 rgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, y, w, w);
+    }
+    public half4 xzxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, x);
+    }
+    public half4 rbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, x);
+    }
+    public half4 xzxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, y);
+    }
+    public half4 rbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, y);
+    }
+    public half4 xzxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, z);
+    }
+    public half4 rbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, z);
+    }
+    public half4 xzxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, w);
+    }
+    public half4 rbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, x, w);
+    }
+    public half4 xzyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, x);
+    }
+    public half4 rbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, x);
+    }
+    public half4 xzyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, y);
+    }
+    public half4 rbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, y);
+    }
+    public half4 xzyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, z);
+    }
+    public half4 rbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, z);
+    }
+    public half4 xzyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xzyw;
+    }
+    public half4 rbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, y, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xzyw;
+    }
+    public half4 xzzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, x);
+    }
+    public half4 rbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, x);
+    }
+    public half4 xzzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, y);
+    }
+    public half4 rbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, y);
+    }
+    public half4 xzzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, z);
+    }
+    public half4 rbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, z);
+    }
+    public half4 xzzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, w);
+    }
+    public half4 rbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, z, w);
+    }
+    public half4 xzwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, x);
+    }
+    public half4 rbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, x);
+    }
+    public half4 xzwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xwyz;
+    }
+    public half4 rbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xwyz;
+    }
+    public half4 xzwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, z);
+    }
+    public half4 rbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, z);
+    }
+    public half4 xzww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, w);
+    }
+    public half4 rbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, z, w, w);
+    }
+    public half4 xwxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, x);
+    }
+    public half4 rarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, x);
+    }
+    public half4 xwxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, y);
+    }
+    public half4 rarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, y);
+    }
+    public half4 xwxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, z);
+    }
+    public half4 rarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, z);
+    }
+    public half4 xwxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, w);
+    }
+    public half4 rara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, x, w);
+    }
+    public half4 xwyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, x);
+    }
+    public half4 ragr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, x);
+    }
+    public half4 xwyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, y);
+    }
+    public half4 ragg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, y);
+    }
+    public half4 xwyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xzwy;
+    }
+    public half4 ragb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xzwy;
+    }
+    public half4 xwyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, w);
+    }
+    public half4 raga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, y, w);
+    }
+    public half4 xwzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, x);
+    }
+    public half4 rabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, x);
+    }
+    public half4 xwzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xwzy;
+    }
+    public half4 rabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.xwzy;
+    }
+    public half4 xwzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, z);
+    }
+    public half4 rabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, z);
+    }
+    public half4 xwzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, w);
+    }
+    public half4 raba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, z, w);
+    }
+    public half4 xwwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, x);
+    }
+    public half4 raar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, x);
+    }
+    public half4 xwwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, y);
+    }
+    public half4 raag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, y);
+    }
+    public half4 xwwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, z);
+    }
+    public half4 raab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, z);
+    }
+    public half4 xwww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, w);
+    }
+    public half4 raaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, w, w, w);
+    }
+    public half4 yxxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, x);
+    }
+    public half4 grrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, x);
+    }
+    public half4 yxxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, y);
+    }
+    public half4 grrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, y);
+    }
+    public half4 yxxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, z);
+    }
+    public half4 grrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, z);
+    }
+    public half4 yxxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, w);
+    }
+    public half4 grra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, x, w);
+    }
+    public half4 yxyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, x);
+    }
+    public half4 grgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, x);
+    }
+    public half4 yxyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, y);
+    }
+    public half4 grgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, y);
+    }
+    public half4 yxyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, z);
+    }
+    public half4 grgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, z);
+    }
+    public half4 yxyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, w);
+    }
+    public half4 grga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, y, w);
+    }
+    public half4 yxzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, x);
+    }
+    public half4 grbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, x);
+    }
+    public half4 yxzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, y);
+    }
+    public half4 grbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, y);
+    }
+    public half4 yxzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, z);
+    }
+    public half4 grbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, z);
+    }
+    public half4 yxzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yxzw;
+    }
+    public half4 grba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, z, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yxzw;
+    }
+    public half4 yxwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, x);
+    }
+    public half4 grar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, x);
+    }
+    public half4 yxwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, y);
+    }
+    public half4 grag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, y);
+    }
+    public half4 yxwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yxwz;
+    }
+    public half4 grab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yxwz;
+    }
+    public half4 yxww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, w);
+    }
+    public half4 graa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x, w, w);
+    }
+    public half4 yyxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, x);
+    }
+    public half4 ggrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, x);
+    }
+    public half4 yyxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, y);
+    }
+    public half4 ggrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, y);
+    }
+    public half4 yyxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, z);
+    }
+    public half4 ggrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, z);
+    }
+    public half4 yyxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, w);
+    }
+    public half4 ggra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, x, w);
+    }
+    public half4 yyyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, x);
+    }
+    public half4 gggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, x);
+    }
+    public half4 yyyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, y);
+    }
+    public half4 gggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, y);
+    }
+    public half4 yyyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, z);
+    }
+    public half4 gggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, z);
+    }
+    public half4 yyyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, w);
+    }
+    public half4 ggga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, y, w);
+    }
+    public half4 yyzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, x);
+    }
+    public half4 ggbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, x);
+    }
+    public half4 yyzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, y);
+    }
+    public half4 ggbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, y);
+    }
+    public half4 yyzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, z);
+    }
+    public half4 ggbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, z);
+    }
+    public half4 yyzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, w);
+    }
+    public half4 ggba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, z, w);
+    }
+    public half4 yywx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, x);
+    }
+    public half4 ggar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, x);
+    }
+    public half4 yywy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, y);
+    }
+    public half4 ggag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, y);
+    }
+    public half4 yywz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, z);
+    }
+    public half4 ggab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, z);
+    }
+    public half4 yyww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, w);
+    }
+    public half4 ggaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y, w, w);
+    }
+    public half4 yzxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, x);
+    }
+    public half4 gbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, x);
+    }
+    public half4 yzxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, y);
+    }
+    public half4 gbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, y);
+    }
+    public half4 yzxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, z);
+    }
+    public half4 gbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, z);
+    }
+    public half4 yzxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zxyw;
+    }
+    public half4 gbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, x, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zxyw;
+    }
+    public half4 yzyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, x);
+    }
+    public half4 gbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, x);
+    }
+    public half4 yzyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, y);
+    }
+    public half4 gbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, y);
+    }
+    public half4 yzyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, z);
+    }
+    public half4 gbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, z);
+    }
+    public half4 yzyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, w);
+    }
+    public half4 gbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, y, w);
+    }
+    public half4 yzzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, x);
+    }
+    public half4 gbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, x);
+    }
+    public half4 yzzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, y);
+    }
+    public half4 gbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, y);
+    }
+    public half4 yzzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, z);
+    }
+    public half4 gbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, z);
+    }
+    public half4 yzzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, w);
+    }
+    public half4 gbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, z, w);
+    }
+    public half4 yzwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wxyz;
+    }
+    public half4 gbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wxyz;
+    }
+    public half4 yzwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, y);
+    }
+    public half4 gbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, y);
+    }
+    public half4 yzwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, z);
+    }
+    public half4 gbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, z);
+    }
+    public half4 yzww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, w);
+    }
+    public half4 gbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, z, w, w);
+    }
+    public half4 ywxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, x);
+    }
+    public half4 garr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, x);
+    }
+    public half4 ywxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, y);
+    }
+    public half4 garg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, y);
+    }
+    public half4 ywxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zxwy;
+    }
+    public half4 garb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zxwy;
+    }
+    public half4 ywxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, w);
+    }
+    public half4 gara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, x, w);
+    }
+    public half4 ywyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, x);
+    }
+    public half4 gagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, x);
+    }
+    public half4 ywyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, y);
+    }
+    public half4 gagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, y);
+    }
+    public half4 ywyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, z);
+    }
+    public half4 gagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, z);
+    }
+    public half4 ywyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, w);
+    }
+    public half4 gaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, y, w);
+    }
+    public half4 ywzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wxzy;
+    }
+    public half4 gabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wxzy;
+    }
+    public half4 ywzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, y);
+    }
+    public half4 gabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, y);
+    }
+    public half4 ywzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, z);
+    }
+    public half4 gabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, z);
+    }
+    public half4 ywzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, w);
+    }
+    public half4 gaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, z, w);
+    }
+    public half4 ywwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, x);
+    }
+    public half4 gaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, x);
+    }
+    public half4 ywwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, y);
+    }
+    public half4 gaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, y);
+    }
+    public half4 ywwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, z);
+    }
+    public half4 gaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, z);
+    }
+    public half4 ywww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, w);
+    }
+    public half4 gaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, w, w, w);
+    }
+    public half4 zxxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, x);
+    }
+    public half4 brrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, x);
+    }
+    public half4 zxxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, y);
+    }
+    public half4 brrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, y);
+    }
+    public half4 zxxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, z);
+    }
+    public half4 brrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, z);
+    }
+    public half4 zxxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, w);
+    }
+    public half4 brra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, x, w);
+    }
+    public half4 zxyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, x);
+    }
+    public half4 brgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, x);
+    }
+    public half4 zxyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, y);
+    }
+    public half4 brgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, y);
+    }
+    public half4 zxyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, z);
+    }
+    public half4 brgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, z);
+    }
+    public half4 zxyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yzxw;
+    }
+    public half4 brga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, y, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yzxw;
+    }
+    public half4 zxzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, x);
+    }
+    public half4 brbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, x);
+    }
+    public half4 zxzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, y);
+    }
+    public half4 brbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, y);
+    }
+    public half4 zxzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, z);
+    }
+    public half4 brbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, z);
+    }
+    public half4 zxzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, w);
+    }
+    public half4 brba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, z, w);
+    }
+    public half4 zxwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, x);
+    }
+    public half4 brar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, x);
+    }
+    public half4 zxwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.ywxz;
+    }
+    public half4 brag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.ywxz;
+    }
+    public half4 zxwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, z);
+    }
+    public half4 brab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, z);
+    }
+    public half4 zxww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, w);
+    }
+    public half4 braa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, x, w, w);
+    }
+    public half4 zyxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, x);
+    }
+    public half4 bgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, x);
+    }
+    public half4 zyxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, y);
+    }
+    public half4 bgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, y);
+    }
+    public half4 zyxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, z);
+    }
+    public half4 bgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, z);
+    }
+    public half4 zyxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zyxw;
+    }
+    public half4 bgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, x, w);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zyxw;
+    }
+    public half4 zyyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, x);
+    }
+    public half4 bggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, x);
+    }
+    public half4 zyyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, y);
+    }
+    public half4 bggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, y);
+    }
+    public half4 zyyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, z);
+    }
+    public half4 bggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, z);
+    }
+    public half4 zyyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, w);
+    }
+    public half4 bgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, y, w);
+    }
+    public half4 zyzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, x);
+    }
+    public half4 bgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, x);
+    }
+    public half4 zyzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, y);
+    }
+    public half4 bgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, y);
+    }
+    public half4 zyzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, z);
+    }
+    public half4 bgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, z);
+    }
+    public half4 zyzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, w);
+    }
+    public half4 bgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, z, w);
+    }
+    public half4 zywx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wyxz;
+    }
+    public half4 bgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wyxz;
+    }
+    public half4 zywy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, y);
+    }
+    public half4 bgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, y);
+    }
+    public half4 zywz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, z);
+    }
+    public half4 bgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, z);
+    }
+    public half4 zyww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, w);
+    }
+    public half4 bgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, y, w, w);
+    }
+    public half4 zzxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, x);
+    }
+    public half4 bbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, x);
+    }
+    public half4 zzxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, y);
+    }
+    public half4 bbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, y);
+    }
+    public half4 zzxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, z);
+    }
+    public half4 bbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, z);
+    }
+    public half4 zzxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, w);
+    }
+    public half4 bbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, x, w);
+    }
+    public half4 zzyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, x);
+    }
+    public half4 bbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, x);
+    }
+    public half4 zzyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, y);
+    }
+    public half4 bbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, y);
+    }
+    public half4 zzyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, z);
+    }
+    public half4 bbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, z);
+    }
+    public half4 zzyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, w);
+    }
+    public half4 bbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, y, w);
+    }
+    public half4 zzzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, x);
+    }
+    public half4 bbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, x);
+    }
+    public half4 zzzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, y);
+    }
+    public half4 bbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, y);
+    }
+    public half4 zzzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, z);
+    }
+    public half4 bbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, z);
+    }
+    public half4 zzzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, w);
+    }
+    public half4 bbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, z, w);
+    }
+    public half4 zzwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, x);
+    }
+    public half4 bbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, x);
+    }
+    public half4 zzwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, y);
+    }
+    public half4 bbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, y);
+    }
+    public half4 zzwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, z);
+    }
+    public half4 bbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, z);
+    }
+    public half4 zzww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, w);
+    }
+    public half4 bbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, z, w, w);
+    }
+    public half4 zwxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, x);
+    }
+    public half4 barr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, x);
+    }
+    public half4 zwxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zwxy;
+    }
+    public half4 barg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zwxy;
+    }
+    public half4 zwxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, z);
+    }
+    public half4 barb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, z);
+    }
+    public half4 zwxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, w);
+    }
+    public half4 bara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, x, w);
+    }
+    public half4 zwyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wzxy;
+    }
+    public half4 bagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wzxy;
+    }
+    public half4 zwyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, y);
+    }
+    public half4 bagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, y);
+    }
+    public half4 zwyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, z);
+    }
+    public half4 bagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, z);
+    }
+    public half4 zwyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, w);
+    }
+    public half4 baga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, y, w);
+    }
+    public half4 zwzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, x);
+    }
+    public half4 babr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, x);
+    }
+    public half4 zwzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, y);
+    }
+    public half4 babg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, y);
+    }
+    public half4 zwzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, z);
+    }
+    public half4 babb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, z);
+    }
+    public half4 zwzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, w);
+    }
+    public half4 baba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, z, w);
+    }
+    public half4 zwwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, x);
+    }
+    public half4 baar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, x);
+    }
+    public half4 zwwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, y);
+    }
+    public half4 baag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, y);
+    }
+    public half4 zwwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, z);
+    }
+    public half4 baab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, z);
+    }
+    public half4 zwww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, w);
+    }
+    public half4 baaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(z, w, w, w);
+    }
+    public half4 wxxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, x);
+    }
+    public half4 arrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, x);
+    }
+    public half4 wxxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, y);
+    }
+    public half4 arrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, y);
+    }
+    public half4 wxxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, z);
+    }
+    public half4 arrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, z);
+    }
+    public half4 wxxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, w);
+    }
+    public half4 arra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, x, w);
+    }
+    public half4 wxyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, x);
+    }
+    public half4 argr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, x);
+    }
+    public half4 wxyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, y);
+    }
+    public half4 argg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, y);
+    }
+    public half4 wxyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yzwx;
+    }
+    public half4 argb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yzwx;
+    }
+    public half4 wxyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, w);
+    }
+    public half4 arga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, y, w);
+    }
+    public half4 wxzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, x);
+    }
+    public half4 arbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, x);
+    }
+    public half4 wxzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.ywzx;
+    }
+    public half4 arbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.ywzx;
+    }
+    public half4 wxzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, z);
+    }
+    public half4 arbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, z);
+    }
+    public half4 wxzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, w);
+    }
+    public half4 arba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, z, w);
+    }
+    public half4 wxwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, x);
+    }
+    public half4 arar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, x);
+    }
+    public half4 wxwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, y);
+    }
+    public half4 arag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, y);
+    }
+    public half4 wxwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, z);
+    }
+    public half4 arab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, z);
+    }
+    public half4 wxww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, w);
+    }
+    public half4 araa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, x, w, w);
+    }
+    public half4 wyxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, x);
+    }
+    public half4 agrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, x);
+    }
+    public half4 wyxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, y);
+    }
+    public half4 agrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, y);
+    }
+    public half4 wyxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zywx;
+    }
+    public half4 agrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, z);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zywx;
+    }
+    public half4 wyxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, w);
+    }
+    public half4 agra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, x, w);
+    }
+    public half4 wyyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, x);
+    }
+    public half4 aggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, x);
+    }
+    public half4 wyyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, y);
+    }
+    public half4 aggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, y);
+    }
+    public half4 wyyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, z);
+    }
+    public half4 aggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, z);
+    }
+    public half4 wyyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, w);
+    }
+    public half4 agga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, y, w);
+    }
+    public half4 wyzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wyzx;
+    }
+    public half4 agbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wyzx;
+    }
+    public half4 wyzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, y);
+    }
+    public half4 agbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, y);
+    }
+    public half4 wyzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, z);
+    }
+    public half4 agbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, z);
+    }
+    public half4 wyzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, w);
+    }
+    public half4 agba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, z, w);
+    }
+    public half4 wywx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, x);
+    }
+    public half4 agar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, x);
+    }
+    public half4 wywy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, y);
+    }
+    public half4 agag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, y);
+    }
+    public half4 wywz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, z);
+    }
+    public half4 agab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, z);
+    }
+    public half4 wyww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, w);
+    }
+    public half4 agaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, y, w, w);
+    }
+    public half4 wzxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, x);
+    }
+    public half4 abrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, x);
+    }
+    public half4 wzxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zwyx;
+    }
+    public half4 abrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, y);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.zwyx;
+    }
+    public half4 wzxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, z);
+    }
+    public half4 abrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, z);
+    }
+    public half4 wzxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, w);
+    }
+    public half4 abra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, x, w);
+    }
+    public half4 wzyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wzyx;
+    }
+    public half4 abgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.wzyx;
+    }
+    public half4 wzyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, y);
+    }
+    public half4 abgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, y);
+    }
+    public half4 wzyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, z);
+    }
+    public half4 abgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, z);
+    }
+    public half4 wzyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, w);
+    }
+    public half4 abga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, y, w);
+    }
+    public half4 wzzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, x);
+    }
+    public half4 abbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, x);
+    }
+    public half4 wzzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, y);
+    }
+    public half4 abbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, y);
+    }
+    public half4 wzzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, z);
+    }
+    public half4 abbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, z);
+    }
+    public half4 wzzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, w);
+    }
+    public half4 abba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, z, w);
+    }
+    public half4 wzwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, x);
+    }
+    public half4 abar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, x);
+    }
+    public half4 wzwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, y);
+    }
+    public half4 abag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, y);
+    }
+    public half4 wzwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, z);
+    }
+    public half4 abab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, z);
+    }
+    public half4 wzww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, w);
+    }
+    public half4 abaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, z, w, w);
+    }
+    public half4 wwxx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, x);
+    }
+    public half4 aarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, x);
+    }
+    public half4 wwxy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, y);
+    }
+    public half4 aarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, y);
+    }
+    public half4 wwxz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, z);
+    }
+    public half4 aarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, z);
+    }
+    public half4 wwxw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, w);
+    }
+    public half4 aara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, x, w);
+    }
+    public half4 wwyx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, x);
+    }
+    public half4 aagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, x);
+    }
+    public half4 wwyy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, y);
+    }
+    public half4 aagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, y);
+    }
+    public half4 wwyz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, z);
+    }
+    public half4 aagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, z);
+    }
+    public half4 wwyw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, w);
+    }
+    public half4 aaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, y, w);
+    }
+    public half4 wwzx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, x);
+    }
+    public half4 aabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, x);
+    }
+    public half4 wwzy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, y);
+    }
+    public half4 aabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, y);
+    }
+    public half4 wwzz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, z);
+    }
+    public half4 aabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, z);
+    }
+    public half4 wwzw
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, w);
+    }
+    public half4 aaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, z, w);
+    }
+    public half4 wwwx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, x);
+    }
+    public half4 aaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, x);
+    }
+    public half4 wwwy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, y);
+    }
+    public half4 aaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, y);
+    }
+    public half4 wwwz
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, z);
+    }
+    public half4 aaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, z);
+    }
+    public half4 wwww
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, w);
+    }
+    public half4 aaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(w, w, w, w);
+    }
+}
+
+#endregion // half4
 
 #region int4
 

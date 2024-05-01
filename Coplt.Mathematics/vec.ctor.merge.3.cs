@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Runtime.Intrinsics;
 #endif
 using System.Runtime.CompilerServices;
+using half = System.Half;
 
 namespace Coplt.Mathematics;
 
@@ -154,6 +155,116 @@ public static partial class math
 }
 
 #endregion // double3
+
+#region decimal3
+
+public partial struct decimal3 
+{
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal3(decimal2 xy, decimal z)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal3(decimal x, decimal2 yz)
+    {
+        this.x = x;
+        this.y = yz.x;
+        this.z = yz.y;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal decimal3(decimal2 xz, decimal y, insert_y _)
+    {
+        this.x = xz.x;
+        this.y = y;
+        this.z = xz.y;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z) => (X, y, z)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal3 Ix(this decimal2 yz, decimal x) => new(x, yz);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z) => (x, Y, z)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal3 Iy(this decimal2 xz, decimal y) => new(xz, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y) => (x, y, Z)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal3 Iz(this decimal2 xy, decimal z) => new(xy, z);
+}
+
+#endregion // decimal3
+
+#region half3
+
+public partial struct half3 
+{
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half3(half2 xy, half z)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half3(half x, half2 yz)
+    {
+        this.x = x;
+        this.y = yz.x;
+        this.z = yz.y;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal half3(half2 xz, half y, insert_y _)
+    {
+        this.x = xz.x;
+        this.y = y;
+        this.z = xz.y;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z) => (X, y, z)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half3 Ix(this half2 yz, half x) => new(x, yz);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z) => (x, Y, z)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half3 Iy(this half2 xz, half y) => new(xz, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y) => (x, y, Z)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half3 Iz(this half2 xy, half z) => new(xy, z);
+}
+
+#endregion // half3
 
 #region int3
 

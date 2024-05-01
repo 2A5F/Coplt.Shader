@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Runtime.Intrinsics;
 #endif
 using System.Runtime.CompilerServices;
+using half = System.Half;
 
 namespace Coplt.Mathematics;
 
@@ -180,6 +181,118 @@ public partial struct double2
 }
 
 #endregion // double2
+
+#region decimal2
+
+public partial struct decimal2 
+{
+    public decimal2 xx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x);
+    }
+    public decimal2 rr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x);
+    }
+    public decimal2 xy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => this;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value;
+    }
+    public decimal2 rg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => this;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value;
+    }
+    public decimal2 yx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yx;
+    }
+    public decimal2 gr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yx;
+    }
+    public decimal2 yy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y);
+    }
+    public decimal2 gg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y);
+    }
+}
+
+#endregion // decimal2
+
+#region half2
+
+public partial struct half2 
+{
+    public half2 xx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x);
+    }
+    public half2 rr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(x, x);
+    }
+    public half2 xy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => this;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value;
+    }
+    public half2 rg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => this;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value;
+    }
+    public half2 yx
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yx;
+    }
+    public half2 gr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, x);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        set => this = value.yx;
+    }
+    public half2 yy
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y);
+    }
+    public half2 gg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => new(y, y);
+    }
+}
+
+#endregion // half2
 
 #region int2
 

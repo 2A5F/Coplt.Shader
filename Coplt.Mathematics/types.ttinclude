@@ -14,7 +14,30 @@
             new("uint", nameof(UInt32), sizeof(uint), "1u", math: true, i: true, simd: true, shuffleCast: "(uint)"),
             new("long", nameof(Int64), sizeof(long), "1L", math: true, i: true, simd: true),
             new("ulong", nameof(UInt64), sizeof(ulong), "1UL", math: true, i: true, simd: true, shuffleCast: "(ulong)"),
+            new("decimal", nameof(Decimal), sizeof(decimal), "1m", math: true),
+            new("half", "Half", sizeof(ushort), "(half)1.0", math: true, f: true),
             new("bool", nameof(Boolean), sizeof(bool), "true"),
+        };
+
+        public static Dictionary<string, string[]> ExplicitConverts = new()
+        {
+            { "int", [ "uint", "ulong", "half"] },
+            { "uint", ["int", "half"] },
+            { "long", [ "uint", "int", "ulong", "half"] },
+            { "ulong", [ "uint", "int", "long", "half"] },
+            { "float", [ "uint", "int", "ulong", "long", "decimal", "half"] },
+            { "double", [ "uint", "int", "ulong", "long", "float", "decimal", "half"] },
+            { "decimal", [ "uint", "int", "ulong", "long", "float", "double"] },
+            { "half", [ "uint", "int", "ulong", "long"] },
+        };
+        public static Dictionary<string, string[]> ImplicitConverts = new()
+        {
+            { "int", [ "long", "float", "double", "decimal"] },
+            { "uint", [ "long", "ulong", "float", "double", "decimal"] },
+            { "long", [ "double", "decimal"] },
+            { "ulong", [ "double", "decimal"] },
+            { "float", [ "double"] },
+            { "half", [ "float", "double"] },
         };
     }
 #>

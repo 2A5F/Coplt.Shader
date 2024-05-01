@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Runtime.Intrinsics;
 #endif
 using System.Runtime.CompilerServices;
+using half = System.Half;
 
 namespace Coplt.Mathematics;
 
@@ -188,6 +189,154 @@ public static partial class math
 }
 
 #endregion // double4
+
+#region decimal4
+
+public partial struct decimal4 
+{
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal4(decimal3 xyz, decimal w)
+    {
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = w;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public decimal4(decimal x, decimal3 yzw)
+    {
+        this.x = x;
+        this.y = yzw.x;
+        this.z = yzw.y;
+        this.w = yzw.z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal decimal4(decimal3 xzw, decimal y, insert_y _)
+    {
+        this.x = xzw.x;
+        this.y = y;
+        this.z = xzw.y;
+        this.w = xzw.z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal decimal4(decimal3 xyw, decimal z, insert_z _)
+    {
+        this.x = xyw.x;
+        this.y = xyw.y;
+        this.z = z;
+        this.w = xyw.z;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z, w) => (X, y, z, w)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal4 Ix(this decimal3 yzw, decimal x) => new(x, yzw);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z, w) => (x, Y, z, w)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal4 Iy(this decimal3 xzw, decimal y) => new(xzw, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y, w) => (x, y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal4 Iz(this decimal3 xyw, decimal z) => new(xyw, z, new insert_z());
+
+    /// <summary>
+    /// Insert W component
+    /// <code>W -> (x, y, z) => (x, y, z, W)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static decimal4 Iw(this decimal3 xyz, decimal w) => new(xyz, w);
+}
+
+#endregion // decimal4
+
+#region half4
+
+public partial struct half4 
+{
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half4(half3 xyz, half w)
+    {
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = w;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public half4(half x, half3 yzw)
+    {
+        this.x = x;
+        this.y = yzw.x;
+        this.z = yzw.y;
+        this.w = yzw.z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal half4(half3 xzw, half y, insert_y _)
+    {
+        this.x = xzw.x;
+        this.y = y;
+        this.z = xzw.y;
+        this.w = xzw.z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal half4(half3 xyw, half z, insert_z _)
+    {
+        this.x = xyw.x;
+        this.y = xyw.y;
+        this.z = z;
+        this.w = xyw.z;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z, w) => (X, y, z, w)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half4 Ix(this half3 yzw, half x) => new(x, yzw);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z, w) => (x, Y, z, w)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half4 Iy(this half3 xzw, half y) => new(xzw, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y, w) => (x, y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half4 Iz(this half3 xyw, half z) => new(xyw, z, new insert_z());
+
+    /// <summary>
+    /// Insert W component
+    /// <code>W -> (x, y, z) => (x, y, z, W)</code>
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static half4 Iw(this half3 xyz, half w) => new(xyz, w);
+}
+
+#endregion // half4
 
 #region int4
 
