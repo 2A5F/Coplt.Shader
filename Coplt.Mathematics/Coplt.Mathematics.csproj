@@ -14,13 +14,11 @@
     <ItemGroup>
         <TextTemplate Include="bool.tt" />
         <TextTemplate Include="interface.tt"/>
-        <TextTemplate Include="vec.conv.tt" />
-        <TextTemplate Include="vec.ctor.merge.4.2.tt" />
-        <TextTemplate Include="vec.ctor.merge.4.3.tt" />
-        <TextTemplate Include="vec.eq.tt" />
-        <TextTemplate Include="vec.str.tt" />
+        <TextTemplate Include="vec.bitop.tt" />
         <TextTemplate Include="vecs.tt" />
         <TextTemplate Include="vec.ctor.merge.3.tt" />
+        <TextTemplate Include="vec.ctor.merge.4.2.tt" />
+        <TextTemplate Include="vec.ctor.merge.4.3.tt" />
         <TextTemplate Include="vec.swizzle.2.tt" />
         <TextTemplate Include="vec.swizzle.2.3.tt" />
         <TextTemplate Include="vec.swizzle.2.4.tt" />
@@ -29,7 +27,10 @@
         <TextTemplate Include="vec.swizzle.3.4.tt" />
         <TextTemplate Include="vec.swizzle.4.tt" />
         <TextTemplate Include="vec.swizzle.4.2.tt" />
-        <TextTemplate Include="vec.swizzle.4.3.tt" />
+        <TextTemplate Include="vec.conv.tt" />
+        <TextTemplate Include="vec.eq.tt" />
+        <TextTemplate Include="vec.str.tt" />
+        <TextTemplate Include="vec.bool.tt" />
     </ItemGroup>
 
     <ItemGroup>

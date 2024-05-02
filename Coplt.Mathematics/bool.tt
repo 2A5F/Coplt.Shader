@@ -15,6 +15,8 @@ namespace Coplt.Mathematics;
         string ei(string t) => t == type ? "implicit" : "explicit"; 
 #>
 
+#region <#= typeName #>
+
 public readonly partial record struct <#= typeName #> : IEquatable<bool>, IFormattable
 #if NET8_0_OR_GREATER
     , ISpanFormattable, IUtf8SpanFormattable
@@ -63,7 +65,19 @@ public readonly partial record struct <#= typeName #> : IEquatable<bool>, IForma
 
     #endregion
 
-    #region Conv operator
+    #region operators
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator !(<#= typeName #> v) => new((<#= type #>)~v.value);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator ~(<#= typeName #> v) => new((<#= type #>)~v.value);
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator |(<#= typeName #> a, <#= typeName #> b) => new((<#= type #>)(a.value | b.value));
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator &(<#= typeName #> a, <#= typeName #> b) => new((<#= type #>)(a.value & b.value));
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator ^(<#= typeName #> a, <#= typeName #> b) => new((<#= type #>)(a.value ^ b.value));
 
     [MethodImpl(256 | 512)]
     public static implicit operator bool(<#= typeName #> v) => v.value != 0;
@@ -127,6 +141,8 @@ public readonly partial record struct <#= typeName #> : IEquatable<bool>, IForma
 
     #endregion
 }
+
+#endregion // <#= typeName #>
 <#
     }
 #>

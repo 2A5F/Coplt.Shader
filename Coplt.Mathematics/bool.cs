@@ -2,6 +2,8 @@
 
 namespace Coplt.Mathematics;
 
+#region b16
+
 public readonly partial record struct b16 : IEquatable<bool>, IFormattable
 #if NET8_0_OR_GREATER
     , ISpanFormattable, IUtf8SpanFormattable
@@ -50,7 +52,19 @@ public readonly partial record struct b16 : IEquatable<bool>, IFormattable
 
     #endregion
 
-    #region Conv operator
+    #region operators
+
+    [MethodImpl(256 | 512)]
+    public static b16 operator !(b16 v) => new((ushort)~v.value);
+
+    [MethodImpl(256 | 512)]
+    public static b16 operator ~(b16 v) => new((ushort)~v.value);
+    [MethodImpl(256 | 512)]
+    public static b16 operator |(b16 a, b16 b) => new((ushort)(a.value | b.value));
+    [MethodImpl(256 | 512)]
+    public static b16 operator &(b16 a, b16 b) => new((ushort)(a.value & b.value));
+    [MethodImpl(256 | 512)]
+    public static b16 operator ^(b16 a, b16 b) => new((ushort)(a.value ^ b.value));
 
     [MethodImpl(256 | 512)]
     public static implicit operator bool(b16 v) => v.value != 0;
@@ -115,6 +129,10 @@ public readonly partial record struct b16 : IEquatable<bool>, IFormattable
     #endregion
 }
 
+#endregion // b16
+
+#region b32
+
 public readonly partial record struct b32 : IEquatable<bool>, IFormattable
 #if NET8_0_OR_GREATER
     , ISpanFormattable, IUtf8SpanFormattable
@@ -163,7 +181,19 @@ public readonly partial record struct b32 : IEquatable<bool>, IFormattable
 
     #endregion
 
-    #region Conv operator
+    #region operators
+
+    [MethodImpl(256 | 512)]
+    public static b32 operator !(b32 v) => new((uint)~v.value);
+
+    [MethodImpl(256 | 512)]
+    public static b32 operator ~(b32 v) => new((uint)~v.value);
+    [MethodImpl(256 | 512)]
+    public static b32 operator |(b32 a, b32 b) => new((uint)(a.value | b.value));
+    [MethodImpl(256 | 512)]
+    public static b32 operator &(b32 a, b32 b) => new((uint)(a.value & b.value));
+    [MethodImpl(256 | 512)]
+    public static b32 operator ^(b32 a, b32 b) => new((uint)(a.value ^ b.value));
 
     [MethodImpl(256 | 512)]
     public static implicit operator bool(b32 v) => v.value != 0;
@@ -228,6 +258,10 @@ public readonly partial record struct b32 : IEquatable<bool>, IFormattable
     #endregion
 }
 
+#endregion // b32
+
+#region b64
+
 public readonly partial record struct b64 : IEquatable<bool>, IFormattable
 #if NET8_0_OR_GREATER
     , ISpanFormattable, IUtf8SpanFormattable
@@ -276,7 +310,19 @@ public readonly partial record struct b64 : IEquatable<bool>, IFormattable
 
     #endregion
 
-    #region Conv operator
+    #region operators
+
+    [MethodImpl(256 | 512)]
+    public static b64 operator !(b64 v) => new((ulong)~v.value);
+
+    [MethodImpl(256 | 512)]
+    public static b64 operator ~(b64 v) => new((ulong)~v.value);
+    [MethodImpl(256 | 512)]
+    public static b64 operator |(b64 a, b64 b) => new((ulong)(a.value | b.value));
+    [MethodImpl(256 | 512)]
+    public static b64 operator &(b64 a, b64 b) => new((ulong)(a.value & b.value));
+    [MethodImpl(256 | 512)]
+    public static b64 operator ^(b64 a, b64 b) => new((ulong)(a.value ^ b.value));
 
     [MethodImpl(256 | 512)]
     public static implicit operator bool(b64 v) => v.value != 0;
@@ -340,3 +386,5 @@ public readonly partial record struct b64 : IEquatable<bool>, IFormattable
 
     #endregion
 }
+
+#endregion // b64
