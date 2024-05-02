@@ -28,7 +28,7 @@ namespace Coplt.Mathematics;
 public partial struct <#= typeName #>
 {
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> operator!(<#= typeName #> self)
+    public static <#= typeName #> operator !(<#= typeName #> self)
     {
 <#
             if (typ.simd)

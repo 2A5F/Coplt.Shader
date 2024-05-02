@@ -7,7 +7,7 @@ namespace Coplt.Mathematics;
 public partial struct b16v2
 {
     [MethodImpl(256 | 512)]
-    public static b16v2 operator!(b16v2 self)
+    public static b16v2 operator !(b16v2 self)
     {
         return new(!self.x, !self.y);
     }
@@ -31,7 +31,7 @@ public static partial class math
 public partial struct b16v3
 {
     [MethodImpl(256 | 512)]
-    public static b16v3 operator!(b16v3 self)
+    public static b16v3 operator !(b16v3 self)
     {
         return new(!self.x, !self.y, !self.z);
     }
@@ -55,7 +55,7 @@ public static partial class math
 public partial struct b16v4
 {
     [MethodImpl(256 | 512)]
-    public static b16v4 operator!(b16v4 self)
+    public static b16v4 operator !(b16v4 self)
     {
         return new(!self.x, !self.y, !self.z, !self.w);
     }
@@ -79,7 +79,7 @@ public static partial class math
 public partial struct b32v2
 {
     [MethodImpl(256 | 512)]
-    public static b32v2 operator!(b32v2 self)
+    public static b32v2 operator !(b32v2 self)
     {
         #if NET8_0_OR_GREATER
         return new((~self.vector));
@@ -107,7 +107,7 @@ public static partial class math
 public partial struct b32v3
 {
     [MethodImpl(256 | 512)]
-    public static b32v3 operator!(b32v3 self)
+    public static b32v3 operator !(b32v3 self)
     {
         #if NET8_0_OR_GREATER
         return new((~self.vector) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
@@ -135,7 +135,7 @@ public static partial class math
 public partial struct b32v4
 {
     [MethodImpl(256 | 512)]
-    public static b32v4 operator!(b32v4 self)
+    public static b32v4 operator !(b32v4 self)
     {
         #if NET8_0_OR_GREATER
         return new((~self.vector));
@@ -163,7 +163,7 @@ public static partial class math
 public partial struct b64v2
 {
     [MethodImpl(256 | 512)]
-    public static b64v2 operator!(b64v2 self)
+    public static b64v2 operator !(b64v2 self)
     {
         #if NET8_0_OR_GREATER
         return new((~self.vector));
@@ -191,7 +191,7 @@ public static partial class math
 public partial struct b64v3
 {
     [MethodImpl(256 | 512)]
-    public static b64v3 operator!(b64v3 self)
+    public static b64v3 operator !(b64v3 self)
     {
         #if NET8_0_OR_GREATER
         return new((~self.vector) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
@@ -219,7 +219,7 @@ public static partial class math
 public partial struct b64v4
 {
     [MethodImpl(256 | 512)]
-    public static b64v4 operator!(b64v4 self)
+    public static b64v4 operator !(b64v4 self)
     {
         #if NET8_0_OR_GREATER
         return new((~self.vector));

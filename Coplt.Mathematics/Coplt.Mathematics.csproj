@@ -14,6 +14,7 @@
     <ItemGroup>
         <TextTemplate Include="bool.tt" />
         <TextTemplate Include="interface.tt"/>
+        <TextTemplate Include="vec.arith.tt" />
         <TextTemplate Include="vec.bitop.tt" />
         <TextTemplate Include="vecs.tt" />
         <TextTemplate Include="vec.ctor.merge.3.tt" />

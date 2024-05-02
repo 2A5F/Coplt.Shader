@@ -2,8 +2,8 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#+
     public record struct Typ(
-        string name, string Type, int size, string one, bool math = false, bool f = false, bool i = false, bool simd = false, string shuffleCast = "", bool formattable = true,
-        bool bitop = true, bool shift = true)
+        string name, string Type, int size, string one, bool arith = false, bool f = false, bool i = false, bool simd = false, string shuffleCast = "", bool formattable = true,
+        bool bitop = true, bool shift = true, bool sig = false)
     {
         public string compType { get; set; } = name;
         public string simdComp { get; set; } = name;
@@ -13,14 +13,14 @@
 
         public static Typ[] Typs =
         {
-            new("float", nameof(Single), sizeof(float), "1.0f", math: true, f: true, simd: true),
-            new("double", nameof(Double), sizeof(double), "1.0", math: true, f: true, simd: true),
-            new("int", nameof(Int32), sizeof(int), "1", math: true, i: true, simd: true),
-            new("uint", nameof(UInt32), sizeof(uint), "1u", math: true, i: true, simd: true, shuffleCast: "(uint)"),
-            new("long", nameof(Int64), sizeof(long), "1L", math: true, i: true, simd: true),
-            new("ulong", nameof(UInt64), sizeof(ulong), "1UL", math: true, i: true, simd: true, shuffleCast: "(ulong)"),
-            new("decimal", nameof(Decimal), sizeof(decimal), "1m", math: true, bitop: false),
-            new("half", "Half", sizeof(ushort), "(half)1.0", math: true, f: true),
+            new("float", nameof(Single), sizeof(float), "1.0f", arith: true, sig: true, f: true, simd: true),
+            new("double", nameof(Double), sizeof(double), "1.0", arith: true, sig: true, f: true, simd: true),
+            new("int", nameof(Int32), sizeof(int), "1", arith: true, sig: true, i: true, simd: true),
+            new("uint", nameof(UInt32), sizeof(uint), "1u", arith: true, i: true, simd: true, shuffleCast: "(uint)"),
+            new("long", nameof(Int64), sizeof(long), "1L", arith: true,sig: true,  i: true, simd: true),
+            new("ulong", nameof(UInt64), sizeof(ulong), "1UL", arith: true, i: true, simd: true, shuffleCast: "(ulong)"),
+            new("decimal", nameof(Decimal), sizeof(decimal), "1m", arith: true, sig: true, bitop: false),
+            new("half", "Half", sizeof(ushort), "(half)1.0", arith: true, sig: true, f: true),
             new("b16v", nameof(UInt16), sizeof(ushort), "true", shift: false) { compType = "b16", },
             new("b32v", nameof(UInt32), sizeof(uint), "true", simd: true, shuffleCast: "(uint)", shift: false) { compType = "b32", simdComp = "uint" },
             new("b64v", nameof(UInt64), sizeof(ulong), "true", simd: true, shuffleCast: "(ulong)", shift: false) { compType = "b64", simdComp = "ulong" },
