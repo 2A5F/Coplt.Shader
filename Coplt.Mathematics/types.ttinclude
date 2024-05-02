@@ -1,8 +1,11 @@
 ﻿<#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#+
-    public record struct Typ(string name, string Type, int size, string one, bool math = false, bool f = false, bool i = false, bool simd = false, string shuffleCast = "")
+    public record struct Typ(string name, string Type, int size, string one, bool math = false, bool f = false, bool i = false, bool simd = false, string shuffleCast = "", bool formattable = true)
     {
+        public string compType { get; set; } = name;
+        public string simdComp { get; set; } = name;
+
         public static string[] xyzw = { "x", "y", "z", "w" };
         public static string[] rgba = { "r", "g", "b", "a" };
 
@@ -16,7 +19,9 @@
             new("ulong", nameof(UInt64), sizeof(ulong), "1UL", math: true, i: true, simd: true, shuffleCast: "(ulong)"),
             new("decimal", nameof(Decimal), sizeof(decimal), "1m", math: true),
             new("half", "Half", sizeof(ushort), "(half)1.0", math: true, f: true),
-            new("bool", nameof(Boolean), sizeof(bool), "true"),
+            new("b16v", nameof(UInt16), sizeof(ushort), "true") { compType = "b16", },
+            new("b32v", nameof(UInt32), sizeof(uint), "true", simd: true, shuffleCast: "(uint)") { compType = "b32", simdComp = "uint" },
+            new("b64v", nameof(UInt64), sizeof(ulong), "true", simd: true, shuffleCast: "(ulong)") { compType = "b64", simdComp = "ulong" },
         };
 
         public static Dictionary<string, string[]> ExplicitConverts = new()
@@ -29,6 +34,9 @@
             { "double", [ "uint", "int", "ulong", "long", "float", "decimal", "half"] },
             { "decimal", [ "uint", "int", "ulong", "long", "float", "double"] },
             { "half", [ "uint", "int", "ulong", "long"] },
+            { "b16v", [ "uint", "int", "ulong", "long", "float", "double", "decimal", "half", "b32v", "b64v"] },
+            { "b32v", [ "uint", "int", "ulong", "long", "float", "double", "decimal", "half", "b16v", "b64v"] },
+            { "b64v", [ "uint", "int", "ulong", "long", "float", "double", "decimal", "half", "b16v", "b32v"] },
         };
         public static Dictionary<string, string[]> ImplicitConverts = new()
         {
