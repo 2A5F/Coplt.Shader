@@ -5,6 +5,9 @@ using System.Runtime.Intrinsics.X86;
 
 namespace Coplt.Mathematics;
 
+// log fast : https://stackoverflow.com/questions/39821367/very-fast-approximate-logarithm-natural-log-function-in-c
+// log fast2 : https://stackoverflow.com/questions/9411823/fast-log2float-x-implementation-c
+
 public static partial class simd_log_float
 {
     #region Log 64
@@ -69,6 +72,41 @@ public static partial class simd_log_float
         return x;
     }
 
+    /// <summary>
+    /// natural log on [0x1.f7a5ecp-127, 0x1.fffffep127]. Maximum relative error 9.4529e-5
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> LogFast(Vector64<float> a)
+    {
+        var e = (a.AsInt32() - Vector64.Create(0x3f2aaaab)) & Vector64.Create(0xff800000).AsInt32();
+        var m = (a.AsInt32() - e).AsSingle();
+        var i = Vector64.ConvertToSingle(e) * 1.19209290e-7f; // 0x1.0p-23
+        /* m in [2/3, 4/3] */
+        var f = m - Vector64<float>.One;
+        var s = f * f;
+        /* Compute log1p(f) for f in [-1/3, 1/3] */
+        var r = simd.Fma(Vector64.Create(0.230836749f), f, Vector64.Create(-0.279208571f)); // 0x1.d8c0f0p-3, -0x1.1de8dap-2
+        var t = simd.Fma(Vector64.Create(0.331826031f), f, Vector64.Create(-0.498910338f)); // 0x1.53ca34p-2, -0x1.fee25ap-2
+        r = simd.Fma(r, s, t);
+        r = simd.Fma(r, s, f);
+        r = simd.Fma(i, Vector64.Create(0.693147182f), r); // 0x1.62e430p-1 // log(2) 
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> LogFast2(Vector64<float> a)
+    {
+        var x = a.AsInt32();
+        var log2 = Vector64.ConvertToSingle(((x >> 23) & Vector64.Create(255)) - Vector64.Create(128));
+        x &= Vector64.Create(-2139095041); // ~(255 << 23)
+        x += Vector64.Create(1065353216); // 127 << 23
+        log2 += simd.Fma(
+            simd.Fma(Vector64.Create(-0.34484843f), x.AsSingle(), Vector64.Create(2.02466578f)),
+            x.AsSingle(), Vector64.Create(-0.67487759f)
+        );
+        return log2 * 0.69314718f;
+    }
+
     #endregion
 
     #region Log 128
@@ -131,6 +169,41 @@ public static partial class simd_log_float
         );
 
         return x;
+    }
+
+    /// <summary>
+    /// natural log on [0x1.f7a5ecp-127, 0x1.fffffep127]. Maximum relative error 9.4529e-5
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> LogFast(Vector128<float> a)
+    {
+        var e = (a.AsInt32() - Vector128.Create(0x3f2aaaab)) & Vector128.Create(0xff800000).AsInt32();
+        var m = (a.AsInt32() - e).AsSingle();
+        var i = Vector128.ConvertToSingle(e) * 1.19209290e-7f; // 0x1.0p-23
+        /* m in [2/3, 4/3] */
+        var f = m - Vector128<float>.One;
+        var s = f * f;
+        /* Compute log1p(f) for f in [-1/3, 1/3] */
+        var r = simd.Fma(Vector128.Create(0.230836749f), f, Vector128.Create(-0.279208571f)); // 0x1.d8c0f0p-3, -0x1.1de8dap-2
+        var t = simd.Fma(Vector128.Create(0.331826031f), f, Vector128.Create(-0.498910338f)); // 0x1.53ca34p-2, -0x1.fee25ap-2
+        r = simd.Fma(r, s, t);
+        r = simd.Fma(r, s, f);
+        r = simd.Fma(i, Vector128.Create(0.693147182f), r); // 0x1.62e430p-1 // log(2) 
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> LogFast2(Vector128<float> a)
+    {
+        var x = a.AsInt32();
+        var log2 = Vector128.ConvertToSingle(((x >> 23) & Vector128.Create(255)) - Vector128.Create(128));
+        x &= Vector128.Create(-2139095041); // ~(255 << 23)
+        x += Vector128.Create(1065353216); // 127 << 23
+        log2 += simd.Fma(
+            simd.Fma(Vector128.Create(-0.34484843f), x.AsSingle(), Vector128.Create(2.02466578f)),
+            x.AsSingle(), Vector128.Create(-0.67487759f)
+        );
+        return log2 * 0.69314718f;
     }
 
     #endregion

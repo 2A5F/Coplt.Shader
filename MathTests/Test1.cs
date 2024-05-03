@@ -11,7 +11,7 @@ public class Test1
     public void Foo()
     {
         var a = new float4(123, 123, 123, 123);
-        var r = simd_log_float.Log(a.UnsafeGetInner());
+        var r = simd_log_float.LogFast2(a.UnsafeGetInner());
         Console.WriteLine(r);
         Console.WriteLine(MathF.Log(123));
     }
