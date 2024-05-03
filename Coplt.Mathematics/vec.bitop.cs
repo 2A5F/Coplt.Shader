@@ -67,6 +67,19 @@ public partial struct float2
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static float2 BitAndNot(this float2 a, float2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // float2
 
 #region float3
@@ -130,6 +143,19 @@ public partial struct float3
         return new(a.vector >>> b);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b), a.z.BitShiftRightUnsigned(b));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static float3 BitAndNot(this float3 a, float3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -201,6 +227,19 @@ public partial struct float4
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static float4 BitAndNot(this float4 a, float4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // float4
 
 #region double2
@@ -264,6 +303,19 @@ public partial struct double2
         return new(a.vector >>> b);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static double2 BitAndNot(this double2 a, double2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -335,6 +387,19 @@ public partial struct double3
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static double3 BitAndNot(this double3 a, double3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // double3
 
 #region double4
@@ -398,6 +463,19 @@ public partial struct double4
         return new(a.vector >>> b);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b), a.z.BitShiftRightUnsigned(b), a.w.BitShiftRightUnsigned(b));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static double4 BitAndNot(this double4 a, double4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -469,6 +547,19 @@ public partial struct int2
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static int2 BitAndNot(this int2 a, int2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // int2
 
 #region int3
@@ -532,6 +623,19 @@ public partial struct int3
         return new(a.vector >>> b);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b), a.z.BitShiftRightUnsigned(b));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static int3 BitAndNot(this int3 a, int3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -603,6 +707,19 @@ public partial struct int4
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static int4 BitAndNot(this int4 a, int4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // int4
 
 #region uint2
@@ -666,6 +783,19 @@ public partial struct uint2
         return new(a.vector >>> b);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static uint2 BitAndNot(this uint2 a, uint2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -737,6 +867,19 @@ public partial struct uint3
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static uint3 BitAndNot(this uint3 a, uint3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // uint3
 
 #region uint4
@@ -800,6 +943,19 @@ public partial struct uint4
         return new(a.vector >>> b);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b), a.z.BitShiftRightUnsigned(b), a.w.BitShiftRightUnsigned(b));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static uint4 BitAndNot(this uint4 a, uint4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -871,6 +1027,19 @@ public partial struct long2
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static long2 BitAndNot(this long2 a, long2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // long2
 
 #region long3
@@ -934,6 +1103,19 @@ public partial struct long3
         return new(a.vector >>> b);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b), a.z.BitShiftRightUnsigned(b));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static long3 BitAndNot(this long3 a, long3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -1005,6 +1187,19 @@ public partial struct long4
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static long4 BitAndNot(this long4 a, long4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // long4
 
 #region ulong2
@@ -1068,6 +1263,19 @@ public partial struct ulong2
         return new(a.vector >>> b);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ulong2 BitAndNot(this ulong2 a, ulong2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -1139,6 +1347,19 @@ public partial struct ulong3
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ulong3 BitAndNot(this ulong3 a, ulong3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // ulong3
 
 #region ulong4
@@ -1206,6 +1427,19 @@ public partial struct ulong4
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ulong4 BitAndNot(this ulong4 a, ulong4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // ulong4
 
 #region half2
@@ -1246,6 +1480,15 @@ public partial struct half2
     public static half2 operator >>>(half2 a, int b)
     {
         return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b));
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static half2 BitAndNot(this half2 a, half2 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
     }
 }
 
@@ -1292,6 +1535,15 @@ public partial struct half3
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static half3 BitAndNot(this half3 a, half3 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+    }
+}
+
 #endregion // half3
 
 #region half4
@@ -1335,6 +1587,15 @@ public partial struct half4
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static half4 BitAndNot(this half4 a, half4 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+    }
+}
+
 #endregion // half4
 
 #region b16v2
@@ -1357,6 +1618,15 @@ public partial struct b16v2
     public static b16v2 operator &(b16v2 a, b16v2 b)
     {
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static b16v2 BitAndNot(this b16v2 a, b16v2 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
     }
 }
 
@@ -1385,6 +1655,15 @@ public partial struct b16v3
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static b16v3 BitAndNot(this b16v3 a, b16v3 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+    }
+}
+
 #endregion // b16v3
 
 #region b16v4
@@ -1407,6 +1686,15 @@ public partial struct b16v4
     public static b16v4 operator &(b16v4 a, b16v4 b)
     {
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static b16v4 BitAndNot(this b16v4 a, b16v4 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
     }
 }
 
@@ -1443,6 +1731,19 @@ public partial struct b32v2
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static b32v2 BitAndNot(this b32v2 a, b32v2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -1484,6 +1785,19 @@ public partial struct b32v3
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static b32v3 BitAndNot(this b32v3 a, b32v3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // b32v3
 
 #region b32v4
@@ -1517,6 +1831,19 @@ public partial struct b32v4
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static b32v4 BitAndNot(this b32v4 a, b32v4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -1558,6 +1885,19 @@ public partial struct b64v2
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static b64v2 BitAndNot(this b64v2 a, b64v2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // b64v2
 
 #region b64v3
@@ -1595,6 +1935,19 @@ public partial struct b64v3
     }
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static b64v3 BitAndNot(this b64v3 a, b64v3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // b64v3
 
 #region b64v4
@@ -1628,6 +1981,19 @@ public partial struct b64v4
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static b64v4 BitAndNot(this b64v4 a, b64v4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.AndNot(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
         #endif // NET8_0_OR_GREATER
     }
 }

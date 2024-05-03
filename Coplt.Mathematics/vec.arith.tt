@@ -68,7 +68,8 @@ public partial struct <#= typeName #>
 <#
             }
 #>
-        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} + b.{Typ.xyzw[n]})")) #>);
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} + b.{Typ.xyzw[n]})")) #>);
 <#
             if (typ.simd)
             {
@@ -92,7 +93,8 @@ public partial struct <#= typeName #>
 <#
             }
 #>
-        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} - b.{Typ.xyzw[n]})")) #>);
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} - b.{Typ.xyzw[n]})")) #>);
 <#
             if (typ.simd)
             {
@@ -116,7 +118,8 @@ public partial struct <#= typeName #>
 <#
             }
 #>
-        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} * b.{Typ.xyzw[n]})")) #>);
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} * b.{Typ.xyzw[n]})")) #>);
 <#
             if (typ.simd)
             {
@@ -188,7 +191,8 @@ public partial struct <#= typeName #>
 <#
             }
 #>
-        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} / b.{Typ.xyzw[n]})")) #>);
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} / b.{Typ.xyzw[n]})")) #>);
 <#
             if (typ.simd)
             {
@@ -226,7 +230,8 @@ public partial struct <#= typeName #>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator %(<#= typeName #> a, <#= typeName #> b)
     {
-        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} % b.{Typ.xyzw[n]})")) #>);
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} % b.{Typ.xyzw[n]})")) #>);
     }
 
     [MethodImpl(256 | 512)]
@@ -240,6 +245,76 @@ public partial struct <#= typeName #>
 
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator ++(<#= typeName #> a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> abs(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(Vector<#= bitSize #>.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.abs()")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> sign(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd && (typ.f || typ.i))
+            {
+#>
+        #if NET8_0_OR_GREATER
+<#
+                if (typ.f)
+                {
+#>
+        return new(simd.SignFloat(a.vector));
+<#
+                }
+                else if (typ.sig)
+                {
+#>
+        return new(simd.SignInt(a.vector)); 
+<#
+                }
+                else
+                {
+#>
+        return new(simd.SignUInt(a.vector)); 
+<#
+                }
+#>
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.sign()")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
 }
 
 #endregion // <#= typeName #>

@@ -9,11 +9,14 @@
         <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
         <NoWarn>CS8981;CS0169</NoWarn>
         <RunPostBuildEvent>Always</RunPostBuildEvent>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
         <TextTemplate Include="bool.tt" />
         <TextTemplate Include="interface.tt"/>
+        <TextTemplate Include="vec.arith.float.bin.tt" />
+        <TextTemplate Include="vec.arith.float.tt" />
         <TextTemplate Include="vec.arith.tt" />
         <TextTemplate Include="vec.bitop.tt" />
         <TextTemplate Include="vecs.tt" />

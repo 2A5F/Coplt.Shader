@@ -138,6 +138,40 @@ public static partial class scalar
 
     #endregion
 
+    #region BitAndNot
+
+    [MethodImpl(256 | 512)]
+    public static b16 BitAndNot(this b16 a, b16 b) => a & ~b;
+    [MethodImpl(256 | 512)]
+    public static b32 BitAndNot(this b32 a, b32 b) => a & ~b;
+    [MethodImpl(256 | 512)]
+    public static b64 BitAndNot(this b64 a, b64 b) => a & ~b;
+
+    [MethodImpl(256 | 512)]
+    public static byte BitAndNot(this byte a, byte b) => (byte)(a & ~b);
+    [MethodImpl(256 | 512)]
+    public static sbyte BitAndNot(this sbyte a, sbyte b) => (sbyte)(a & ~b);
+    [MethodImpl(256 | 512)]
+    public static ushort BitAndNot(this ushort a, ushort b) => (ushort)(a & ~b);
+    [MethodImpl(256 | 512)]
+    public static short BitAndNot(this short a, short b) => (short)(a & ~b);
+    [MethodImpl(256 | 512)]
+    public static uint BitAndNot(this uint a, uint b) => a & ~b;
+    [MethodImpl(256 | 512)]
+    public static int BitAndNot(this int a, int b) => a & ~b;
+    [MethodImpl(256 | 512)]
+    public static ulong BitAndNot(this ulong a, ulong b) => a & ~b;
+    [MethodImpl(256 | 512)]
+    public static long BitAndNot(this long a, long b) => a & ~b;
+    [MethodImpl(256 | 512)]
+    public static half BitAndNot(this half a, half b) => ((ushort)(a.AsUInt16() & ~b.AsUInt16())).AsHalf();
+    [MethodImpl(256 | 512)]
+    public static float BitAndNot(this float a, float b) => (a.AsUInt32() & ~b.AsUInt32()).AsSingle();
+    [MethodImpl(256 | 512)]
+    public static double BitAndNot(this double a, double b) => (a.AsUInt32() & ~b.AsUInt32()).AsDouble();
+
+    #endregion
+
     #region BitShiftLeft
 
     [MethodImpl(256 | 512)]
@@ -216,6 +250,249 @@ public static partial class scalar
     public static float BitShiftRightUnsigned(this float a, int b) => (a.AsUInt32() >>> b).AsSingle();
     [MethodImpl(256 | 512)]
     public static double BitShiftRightUnsigned(this double a, int b) => (a.AsUInt32() >>> b).AsDouble();
+
+    #endregion
+
+    #region Abs
+
+    [MethodImpl(256 | 512)]
+    public static byte abs(this byte v) => v;
+    [MethodImpl(256 | 512)]
+    public static sbyte abs(this sbyte v) => Math.Abs(v);
+    [MethodImpl(256 | 512)]
+    public static ushort abs(this ushort v) => v;
+    [MethodImpl(256 | 512)]
+    public static short abs(this short v) => Math.Abs(v);
+    [MethodImpl(256 | 512)]
+    public static uint abs(this uint v) => v;
+    [MethodImpl(256 | 512)]
+    public static int abs(this int v) => Math.Abs(v);
+    [MethodImpl(256 | 512)]
+    public static ulong abs(this ulong v) => v;
+    [MethodImpl(256 | 512)]
+    public static long abs(this long v) => Math.Abs(v);
+    [MethodImpl(256 | 512)]
+    public static half abs(this half v) => (half)Math.Abs((float)v);
+    [MethodImpl(256 | 512)]
+    public static float abs(this float v) => Math.Abs(v);
+    [MethodImpl(256 | 512)]
+    public static double abs(this double v) => Math.Abs(v);
+    [MethodImpl(256 | 512)]
+    public static decimal abs(this decimal v) => Math.Abs(v);
+
+    #endregion
+
+    #region Sign
+
+    [MethodImpl(256 | 512)]
+    public static byte sign(this byte v) => (byte)(v == 0 ? 0 : 1);
+    [MethodImpl(256 | 512)]
+    public static sbyte sign(this sbyte v) => (sbyte)Math.Sign(v);
+    [MethodImpl(256 | 512)]
+    public static ushort sign(this ushort v) => (ushort)(v == 0 ? 0 : 1);
+    [MethodImpl(256 | 512)]
+    public static short sign(this short v) => (short)Math.Sign(v);
+    [MethodImpl(256 | 512)]
+    public static uint sign(this uint v) => v == 0u ? 0u : 1u;
+    [MethodImpl(256 | 512)]
+    public static int sign(this int v) => Math.Sign(v);
+    [MethodImpl(256 | 512)]
+    public static ulong sign(this ulong v) => v == 0ul ? 0ul : 1ul;
+    [MethodImpl(256 | 512)]
+    public static long sign(this long v) => Math.Sign(v);
+    [MethodImpl(256 | 512)]
+    public static half sign(this half v) => (half)Math.Sign((float)v);
+    [MethodImpl(256 | 512)]
+    public static float sign(this float v) => Math.Sign(v);
+    [MethodImpl(256 | 512)]
+    public static double sign(this double v) => Math.Sign(v);
+    [MethodImpl(256 | 512)]
+    public static decimal sign(this decimal v) => Math.Sign(v);
+
+    #endregion
+
+    #region Ceil
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half ceil(this half v) => half.Ceiling(v);
+    #else
+    public static half ceil(this half v) => (half)MathF.Ceiling(v);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float ceil(this float v) => MathF.Ceiling(v);
+    [MethodImpl(256 | 512)]
+    public static double ceil(this double v) => Math.Ceiling(v);
+    [MethodImpl(256 | 512)]
+    public static decimal ceil(this decimal v) => Math.Ceiling(v);
+
+    #endregion
+
+    #region Floor
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half floor(this half v) => half.Floor(v);
+    #else
+    public static half floor(this half v) => (half)MathF.Floor(v);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float floor(this float v) => MathF.Floor(v);
+    [MethodImpl(256 | 512)]
+    public static double floor(this double v) => Math.Floor(v);
+    [MethodImpl(256 | 512)]
+    public static decimal floor(this decimal v) => Math.Floor(v);
+
+    #endregion
+
+    #region Round
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half round(this half v) => half.Round(v);
+    #else
+    public static half round(this half v) => (half)MathF.Round(v);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float round(this float v) => MathF.Round(v);
+    [MethodImpl(256 | 512)]
+    public static double round(this double v) => Math.Round(v);
+    [MethodImpl(256 | 512)]
+    public static decimal round(this decimal v) => Math.Round(v);
+
+    #endregion
+
+    #region Trunc
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half trunc(this half v) => half.Truncate(v);
+    #else
+    public static half trunc(this half v) => (half)MathF.Truncate(v);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float trunc(this float v) => MathF.Truncate(v);
+    [MethodImpl(256 | 512)]
+    public static double trunc(this double v) => Math.Truncate(v);
+    [MethodImpl(256 | 512)]
+    public static decimal trunc(this decimal v) => Math.Truncate(v);
+
+    #endregion
+
+    #region Frac
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half frac(this half v) => v - half.Floor(v);
+    #else
+    public static half frac(this half v) => (half)(v - MathF.Floor(v));
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float frac(this float v) => v - MathF.Floor(v);
+    [MethodImpl(256 | 512)]
+    public static double frac(this double v) => v - Math.Floor(v);
+    [MethodImpl(256 | 512)]
+    public static decimal frac(this decimal v) => v - Math.Floor(v);
+
+    #endregion
+
+    #region rcp
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half rcp(this half v) => half.One / v;
+    #else
+    public static half rcp(this half v) => (half)(1 / v);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float rcp(this float v) => 1.0f / v;
+    [MethodImpl(256 | 512)]
+    public static double rcp(this double v) => 1.0 / v;
+    [MethodImpl(256 | 512)]
+    public static decimal rcp(this decimal v) => 1.0m / v;
+
+    #endregion
+
+    #region Fma
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    public static half fma(this half a, half b, half c) => half.FusedMultiplyAdd(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static float fma(this float a, float b, float c) => MathF.FusedMultiplyAdd(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static double fma(this double a, double b, double c) => Math.FusedMultiplyAdd(a, b, c);
+    #else
+    [MethodImpl(256 | 512)]
+    public static half fma(this half a, half b, half c) => (half)(a * b + c);
+    [MethodImpl(256 | 512)]
+    public static float fma(this float a, float b, float c) => a * b + c;
+    [MethodImpl(256 | 512)]
+    public static double fma(this double a, double b, double c) => a * b + c;
+    #endif
+
+    #endregion
+    
+    #region Log
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half log(this half a) => half.Log(a);
+    #else
+    public static half log(this half a) => (half)MathF.Log(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float log(this float a) => MathF.Log(a);
+    [MethodImpl(256 | 512)]
+    public static double log(this double a) => Math.Log(a);
+
+    #endregion
+
+    #region Pow
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half pow(this half a, half b) => half.Pow(a, b);
+    #else
+    public static half pow(this half a, half b) => (half)MathF.Pow(a, b);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float pow(this float a, float b) => MathF.Pow(a, b);
+    [MethodImpl(256 | 512)]
+    public static double pow(this double a, double b) => Math.Pow(a, b);
+
+    #endregion
+
+    #region IsInf
+
+    [MethodImpl(256 | 512)]
+    public static bool isInf(this half a) => half.IsInfinity(a);
+    [MethodImpl(256 | 512)]
+    public static bool isInf(this float a) => float.IsInfinity(a);
+    [MethodImpl(256 | 512)]
+    public static bool isInf(this double a) => double.IsInfinity(a);
+
+    #endregion
+
+    #region IsPInf
+
+    [MethodImpl(256 | 512)]
+    public static bool isPosInf(this half a) => half.IsPositiveInfinity(a);
+    [MethodImpl(256 | 512)]
+    public static bool isPosInf(this float a) => float.IsPositiveInfinity(a);
+    [MethodImpl(256 | 512)]
+    public static bool isPosInf(this double a) => double.IsPositiveInfinity(a);
+
+    #endregion
+
+    #region IsNegInf
+
+    [MethodImpl(256 | 512)]
+    public static bool isNegInf(this half a) => half.IsNegativeInfinity(a);
+    [MethodImpl(256 | 512)]
+    public static bool isNegInf(this float a) => float.IsNegativeInfinity(a);
+    [MethodImpl(256 | 512)]
+    public static bool isNegInf(this double a) => double.IsNegativeInfinity(a);
 
     #endregion
 }

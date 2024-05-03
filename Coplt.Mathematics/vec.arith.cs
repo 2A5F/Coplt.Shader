@@ -107,6 +107,29 @@ public partial struct float2
     public static float2 operator ++(float2 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static float2 abs(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 sign(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignFloat(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // float2
 
 #region float3
@@ -212,6 +235,29 @@ public partial struct float3
 
     [MethodImpl(256 | 512)]
     public static float3 operator ++(float3 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static float3 abs(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 sign(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignFloat(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float3
@@ -321,6 +367,29 @@ public partial struct float4
     public static float4 operator ++(float4 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static float4 abs(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 sign(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignFloat(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // float4
 
 #region double2
@@ -426,6 +495,29 @@ public partial struct double2
 
     [MethodImpl(256 | 512)]
     public static double2 operator ++(double2 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static double2 abs(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 sign(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignFloat(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double2
@@ -535,6 +627,29 @@ public partial struct double3
     public static double3 operator ++(double3 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static double3 abs(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 sign(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignFloat(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // double3
 
 #region double4
@@ -640,6 +755,29 @@ public partial struct double4
 
     [MethodImpl(256 | 512)]
     public static double4 operator ++(double4 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static double4 abs(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 sign(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignFloat(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double4
@@ -749,6 +887,29 @@ public partial struct int2
     public static int2 operator ++(int2 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static int2 abs(this int2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 sign(this int2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // int2
 
 #region int3
@@ -854,6 +1015,29 @@ public partial struct int3
 
     [MethodImpl(256 | 512)]
     public static int3 operator ++(int3 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static int3 abs(this int3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 sign(this int3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // int3
@@ -963,6 +1147,29 @@ public partial struct int4
     public static int4 operator ++(int4 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static int4 abs(this int4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 sign(this int4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // int4
 
 #region uint2
@@ -1059,6 +1266,29 @@ public partial struct uint2
 
     [MethodImpl(256 | 512)]
     public static uint2 operator ++(uint2 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static uint2 abs(this uint2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint2 sign(this uint2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignUInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // uint2
@@ -1159,6 +1389,29 @@ public partial struct uint3
     public static uint3 operator ++(uint3 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static uint3 abs(this uint3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint3 sign(this uint3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignUInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // uint3
 
 #region uint4
@@ -1255,6 +1508,29 @@ public partial struct uint4
 
     [MethodImpl(256 | 512)]
     public static uint4 operator ++(uint4 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static uint4 abs(this uint4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint4 sign(this uint4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignUInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // uint4
@@ -1364,6 +1640,29 @@ public partial struct long2
     public static long2 operator ++(long2 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static long2 abs(this long2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 sign(this long2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // long2
 
 #region long3
@@ -1469,6 +1768,29 @@ public partial struct long3
 
     [MethodImpl(256 | 512)]
     public static long3 operator ++(long3 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static long3 abs(this long3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 sign(this long3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // long3
@@ -1578,6 +1900,29 @@ public partial struct long4
     public static long4 operator ++(long4 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static long4 abs(this long4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 sign(this long4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // long4
 
 #region ulong2
@@ -1674,6 +2019,29 @@ public partial struct ulong2
 
     [MethodImpl(256 | 512)]
     public static ulong2 operator ++(ulong2 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ulong2 abs(this ulong2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 sign(this ulong2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignUInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // ulong2
@@ -1774,6 +2142,29 @@ public partial struct ulong3
     public static ulong3 operator ++(ulong3 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ulong3 abs(this ulong3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 sign(this ulong3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignUInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // ulong3
 
 #region ulong4
@@ -1872,6 +2263,29 @@ public partial struct ulong4
     public static ulong4 operator ++(ulong4 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ulong4 abs(this ulong4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Abs(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 sign(this ulong4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.SignUInt(a.vector)); 
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+        #endif // NET8_0_OR_GREATER
+    }
+}
+
 #endregion // ulong4
 
 #region decimal2
@@ -1945,6 +2359,21 @@ public partial struct decimal2
 
     [MethodImpl(256 | 512)]
     public static decimal2 operator ++(decimal2 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static decimal2 abs(this decimal2 a)
+    {
+        return new(a.x.abs(), a.y.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 sign(this decimal2 a)
+    {
+        return new(a.x.sign(), a.y.sign());
+    }
 }
 
 #endregion // decimal2
@@ -2022,6 +2451,21 @@ public partial struct decimal3
     public static decimal3 operator ++(decimal3 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static decimal3 abs(this decimal3 a)
+    {
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 sign(this decimal3 a)
+    {
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+    }
+}
+
 #endregion // decimal3
 
 #region decimal4
@@ -2095,6 +2539,21 @@ public partial struct decimal4
 
     [MethodImpl(256 | 512)]
     public static decimal4 operator ++(decimal4 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static decimal4 abs(this decimal4 a)
+    {
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 sign(this decimal4 a)
+    {
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+    }
 }
 
 #endregion // decimal4
@@ -2172,6 +2631,21 @@ public partial struct half2
     public static half2 operator ++(half2 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static half2 abs(this half2 a)
+    {
+        return new(a.x.abs(), a.y.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 sign(this half2 a)
+    {
+        return new(a.x.sign(), a.y.sign());
+    }
+}
+
 #endregion // half2
 
 #region half3
@@ -2247,6 +2721,21 @@ public partial struct half3
     public static half3 operator ++(half3 a) => a + One;
 }
 
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static half3 abs(this half3 a)
+    {
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 sign(this half3 a)
+    {
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+    }
+}
+
 #endregion // half3
 
 #region half4
@@ -2320,6 +2809,21 @@ public partial struct half4
 
     [MethodImpl(256 | 512)]
     public static half4 operator ++(half4 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static half4 abs(this half4 a)
+    {
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 sign(this half4 a)
+    {
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+    }
 }
 
 #endregion // half4

@@ -8,38 +8,13 @@ public class Test1
 {
 #if NET8_0_OR_GREATER
     [Test]
-    public void Bar()
+    public void Foo()
     {
-        var a = new int4(1, 2, 3, 4);
-        Span<byte> str = stackalloc byte[128];
-        a.TryFormat(str, out var n, default, default);
-        var s = Encoding.UTF8.GetString(str);
+        var a = new float4(123, 123, 123, 123);
+        var r = simd_log_float.Log(a.UnsafeGetInner());
+        Console.WriteLine(r);
+        Console.WriteLine(MathF.Log(123));
     }
 #endif
 
-    [MethodImpl(256 | 512)]
-    public void Foo(int i)
-    {
-        var a = new int4(1, 2, 3, 4);
-        a.yzx = a.yzw;
-        if (i == 8888)
-        {
-            Thread.Sleep(100);
-        }
-        if (i == 9999)
-        {
-            Console.WriteLine("");
-            Console.WriteLine("");
-        }
-        Console.WriteLine(a);
-    }
-
-    [Test]
-    public void Swizzel1()
-    {
-        for (var i = 0; i < 20000; i++)
-        {
-            Foo(i);
-        }
-    }
 }
