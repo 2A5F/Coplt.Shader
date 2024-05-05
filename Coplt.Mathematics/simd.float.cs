@@ -11,67 +11,54 @@ namespace Coplt.Mathematics;
 public static partial class simd_log_float
 {
     #region Log 64
-
+   
     [MethodImpl(256 | 512)]
-    private static Vector64<int> LogBp1(Vector64<float> d)
-    {
-        var m = Vector64.LessThan(d, Vector64.Create(5.421010862427522E-20f));
-        var r = Vector64.ConditionalSelect(m, 1.8446744073709552E19f * d, d);
-        var q = (r.AsInt32() >>> 23) & Vector64.Create(0xff);
-        q -= Vector64.ConditionalSelect(m.AsInt32(), Vector64.Create(64 + 0x7e), Vector64.Create(0x7e));
-        return q;
-    }
-
+    public static Vector64<float> Log(Vector64<float> a) => Log2(a) * 0.6931471805599453094172321214581766f;
+    
     [MethodImpl(256 | 512)]
-    private static Vector64<float> Ldexp(Vector64<float> x, Vector64<int> q)
+    public static Vector64<float> Log2(Vector64<float> a)
     {
-        var m = q >> 31;
-        m = (((m + q) >> 6) - m) << 4;
-        var t = q - (m << 2);
-        m += Vector64.Create(0x7f);
-        m = Vector64.GreaterThan(m, default) & m;
-        var n = Vector64.GreaterThan(m, Vector64.Create(0xff));
-        m = Vector64.AndNot(m, n) | (n & Vector64.Create(0xff));
-        var u = (m << 23).AsSingle();
-        var r = x * u * u * u * u;
-        u = ((t + Vector64.Create(0x7f)) << 23).AsSingle();
-        return r * u;
-    }
+        var xl = Vector64.Max(a, Vector64<float>.Zero).AsInt32();
+        var mantissa = (xl >>> 23) - Vector64.Create(0x7F);
+        var r = Vector64.ConvertToSingle(mantissa);
 
-    [MethodImpl(256 | 512)]
-    public static Vector64<float> Log(Vector64<float> d)
-    {
-        var x = d * 0.707106781186547524f;
-        var e = LogBp1(x);
-        var m = Ldexp(d, -e);
-        var r = x;
+        xl = (xl & Vector64.Create(0x7FFFFF)) | Vector64.Create(0x7F << 23);
 
-        x = (-Vector64<float>.One + m) / (Vector64<float>.One + m);
-        var x2 = x * x;
+        var d = (xl.AsSingle() | Vector64<float>.One) * Vector64.Create(2.0f / 3.0f);
 
-        var t = Vector64.Create(0.2371599674224853515625f);
-        t = simd.Fma(t, x2, Vector64.Create(0.285279005765914916992188f));
-        t = simd.Fma(t, x2, Vector64.Create(0.400005519390106201171875f));
-        t = simd.Fma(t, x2, Vector64.Create(0.666666567325592041015625f));
-        t = simd.Fma(t, x2, Vector64.Create(2.0f));
+        #region Approx
 
-        x = simd.Fma(x, t, Vector64.Create(0.693147180559945286226764f) * Vector64.ConvertToSingle(e));
-        x = Vector64.ConditionalSelect(
-            Vector64.Equals(r, Vector64.Create(float.PositiveInfinity)),
-            Vector64.Create(float.PositiveInfinity),
-            x
+        // A Taylor Series approximation of ln(x) that relies on the identity that ln(x) = 2*atan((x-1)/(x+1)).
+        d = (d - Vector64<float>.One) / (d + Vector64<float>.One);
+        var sq = d * d;
+
+        var rx = simd.Fma(sq, Vector64.Create(0.2371599674224853515625f), Vector64.Create(0.285279005765914916992188f));
+        rx = simd.Fma(sq, rx, Vector64.Create(0.400005519390106201171875f));
+        rx = simd.Fma(sq, rx, Vector64.Create(0.666666567325592041015625f));
+        rx = simd.Fma(sq, rx, Vector64.Create(2.0f));
+
+        d *= rx;
+
+        #endregion
+
+        r += simd.Fma(d, Vector64.Create(1.4426950408889634f), Vector64.Create(0.58496250072115619f));
+
+        r = Vector64.ConditionalSelect(
+            Vector64.GreaterThan(a, Vector64<float>.Zero),
+            r, Vector64.Create(float.NaN)
+        );
+        r = Vector64.ConditionalSelect(
+            Vector64.Equals(a, Vector64.Create(float.PositiveInfinity)),
+            Vector64.Create(float.PositiveInfinity), r
+        );
+        r = Vector64.ConditionalSelect(
+            Vector64.Equals(a, Vector64<float>.Zero),
+            Vector64.Create(float.NegativeInfinity), r
         );
 
-        x = Vector64.GreaterThan(default, r) | x;
-        x = Vector64.ConditionalSelect(
-            Vector64.Equals(r, default),
-            Vector64.Create(float.NegativeInfinity),
-            x
-        );
-
-        return x;
+        return r;
     }
-
+    
     /// <summary>
     /// natural log on [0x1.f7a5ecp-127, 0x1.fffffep127]. Maximum relative error 9.4529e-5
     /// </summary>
@@ -94,7 +81,7 @@ public static partial class simd_log_float
     }
 
     [MethodImpl(256 | 512)]
-    public static Vector64<float> LogFast2(Vector64<float> a)
+    public static Vector64<float> LogFastFast(Vector64<float> a)
     {
         var x = a.AsInt32();
         var log2 = Vector64.ConvertToSingle(((x >> 23) & Vector64.Create(255)) - Vector64.Create(128));
@@ -110,67 +97,54 @@ public static partial class simd_log_float
     #endregion
 
     #region Log 128
-
+    
     [MethodImpl(256 | 512)]
-    private static Vector128<int> LogBp1(Vector128<float> d)
-    {
-        var m = Vector128.LessThan(d, Vector128.Create(5.421010862427522E-20f));
-        var r = Vector128.ConditionalSelect(m, 1.8446744073709552E19f * d, d);
-        var q = (r.AsInt32() >>> 23) & Vector128.Create(0xff);
-        q -= Vector128.ConditionalSelect(m.AsInt32(), Vector128.Create(64 + 0x7e), Vector128.Create(0x7e));
-        return q;
-    }
-
+    public static Vector128<float> Log(Vector128<float> a) => Log2(a) * 0.6931471805599453094172321214581766f;
+    
     [MethodImpl(256 | 512)]
-    private static Vector128<float> Ldexp(Vector128<float> x, Vector128<int> q)
+    public static Vector128<float> Log2(Vector128<float> a)
     {
-        var m = q >> 31;
-        m = (((m + q) >> 6) - m) << 4;
-        var t = q - (m << 2);
-        m += Vector128.Create(0x7f);
-        m = Vector128.GreaterThan(m, default) & m;
-        var n = Vector128.GreaterThan(m, Vector128.Create(0xff));
-        m = Vector128.AndNot(m, n) | (n & Vector128.Create(0xff));
-        var u = (m << 23).AsSingle();
-        var r = x * u * u * u * u;
-        u = ((t + Vector128.Create(0x7f)) << 23).AsSingle();
-        return r * u;
-    }
+        var xl = Vector128.Max(a, Vector128<float>.Zero).AsInt32();
+        var mantissa = (xl >>> 23) - Vector128.Create(0x7F);
+        var r = Vector128.ConvertToSingle(mantissa);
 
-    [MethodImpl(256 | 512)]
-    public static Vector128<float> Log(Vector128<float> d)
-    {
-        var x = d * 0.707106781186547524f;
-        var e = LogBp1(x);
-        var m = Ldexp(d, -e);
-        var r = x;
+        xl = (xl & Vector128.Create(0x7FFFFF)) | Vector128.Create(0x7F << 23);
 
-        x = (-Vector128<float>.One + m) / (Vector128<float>.One + m);
-        var x2 = x * x;
+        var d = (xl.AsSingle() | Vector128<float>.One) * Vector128.Create(2.0f / 3.0f);
 
-        var t = Vector128.Create(0.2371599674224853515625f);
-        t = simd.Fma(t, x2, Vector128.Create(0.285279005765914916992188f));
-        t = simd.Fma(t, x2, Vector128.Create(0.400005519390106201171875f));
-        t = simd.Fma(t, x2, Vector128.Create(0.666666567325592041015625f));
-        t = simd.Fma(t, x2, Vector128.Create(2.0f));
+        #region Approx
 
-        x = simd.Fma(x, t, Vector128.Create(0.693147180559945286226764f) * Vector128.ConvertToSingle(e));
-        x = Vector128.ConditionalSelect(
-            Vector128.Equals(r, Vector128.Create(float.PositiveInfinity)),
-            Vector128.Create(float.PositiveInfinity),
-            x
+        // A Taylor Series approximation of ln(x) that relies on the identity that ln(x) = 2*atan((x-1)/(x+1)).
+        d = (d - Vector128<float>.One) / (d + Vector128<float>.One);
+        var sq = d * d;
+
+        var rx = simd.Fma(sq, Vector128.Create(0.2371599674224853515625f), Vector128.Create(0.285279005765914916992188f));
+        rx = simd.Fma(sq, rx, Vector128.Create(0.400005519390106201171875f));
+        rx = simd.Fma(sq, rx, Vector128.Create(0.666666567325592041015625f));
+        rx = simd.Fma(sq, rx, Vector128.Create(2.0f));
+
+        d *= rx;
+
+        #endregion
+
+        r += simd.Fma(d, Vector128.Create(1.4426950408889634f), Vector128.Create(0.58496250072115619f));
+
+        r = Vector128.ConditionalSelect(
+            Vector128.GreaterThan(a, Vector128<float>.Zero),
+            r, Vector128.Create(float.NaN)
+        );
+        r = Vector128.ConditionalSelect(
+            Vector128.Equals(a, Vector128.Create(float.PositiveInfinity)),
+            Vector128.Create(float.PositiveInfinity), r
+        );
+        r = Vector128.ConditionalSelect(
+            Vector128.Equals(a, Vector128<float>.Zero),
+            Vector128.Create(float.NegativeInfinity), r
         );
 
-        x = Vector128.GreaterThan(default, r) | x;
-        x = Vector128.ConditionalSelect(
-            Vector128.Equals(r, default),
-            Vector128.Create(float.NegativeInfinity),
-            x
-        );
-
-        return x;
+        return r;
     }
-
+    
     /// <summary>
     /// natural log on [0x1.f7a5ecp-127, 0x1.fffffep127]. Maximum relative error 9.4529e-5
     /// </summary>
@@ -193,7 +167,7 @@ public static partial class simd_log_float
     }
 
     [MethodImpl(256 | 512)]
-    public static Vector128<float> LogFast2(Vector128<float> a)
+    public static Vector128<float> LogFastFast(Vector128<float> a)
     {
         var x = a.AsInt32();
         var log2 = Vector128.ConvertToSingle(((x >> 23) & Vector128.Create(255)) - Vector128.Create(128));

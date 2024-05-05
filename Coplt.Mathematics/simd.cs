@@ -8,6 +8,62 @@ namespace Coplt.Mathematics;
 
 public static partial class simd
 {
+    #region Cmp
+    
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Ne(Vector64<float> a, Vector64<float> b)
+    {
+        if (Sse.IsSupported)
+        {
+            return Sse.CompareNotEqual(a.ToVector128(), b.ToVector128()).GetLower();
+        }
+        if (PackedSimd.IsSupported)
+        {
+            return PackedSimd.CompareNotEqual(a.ToVector128(), b.ToVector128()).GetLower();
+        }
+        return ~Vector64.Equals(a, b);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Ne(Vector128<float> a, Vector128<float> b)
+    {
+        if (Sse.IsSupported)
+        {
+            return Sse.CompareNotEqual(a, b);
+        }
+        if (PackedSimd.IsSupported)
+        {
+            return PackedSimd.CompareNotEqual(a, b);
+        }
+        return ~Vector128.Equals(a, b);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Ne(Vector128<double> a, Vector128<double> b)
+    {
+        if (Sse2.IsSupported)
+        {
+            return Sse2.CompareNotEqual(a, b);
+        }
+        if (PackedSimd.IsSupported)
+        {
+            return PackedSimd.CompareNotEqual(a, b);
+        }
+        return ~Vector128.Equals(a, b);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Ne(Vector256<double> a, Vector256<double> b)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.CompareNotEqual(a, b);
+        }
+        return ~Vector256.Equals(a, b);
+    }
+
+    #endregion
+    
     #region Round
 
     [MethodImpl(256 | 512)]
@@ -412,7 +468,10 @@ public static partial class simd
     [MethodImpl(256 | 512)]
     public static Vector128<double> Log(Vector128<double> d)
     {
-        // todo
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_double.Log(d);
+        }
         return Vector128.Create(
             d.GetElement(0).log(),
             d.GetElement(1).log()
@@ -422,7 +481,10 @@ public static partial class simd
     [MethodImpl(256 | 512)]
     public static Vector256<double> Log(Vector256<double> d)
     {
-        // todo
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_double.Log(d);
+        }
         return Vector256.Create(
             d.GetElement(0).log(),
             d.GetElement(1).log(),
@@ -432,7 +494,7 @@ public static partial class simd
     }
 
     #endregion
-    
+
     #region Log Fast
 
     [MethodImpl(256 | 512)]
@@ -466,22 +528,32 @@ public static partial class simd
             d.GetElement(3).log()
         );
     }
-
+    
     [MethodImpl(256 | 512)]
-    public static Vector128<double> LogFast(Vector128<double> d)
+    public static Vector64<float> LogFastFast(Vector64<float> d)
     {
-        // todo
-        return Vector128.Create(
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_log_float.LogFast(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_float.LogFastFast(d.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
             d.GetElement(0).log(),
             d.GetElement(1).log()
         );
     }
 
     [MethodImpl(256 | 512)]
-    public static Vector256<double> LogFast(Vector256<double> d)
+    public static Vector128<float> LogFastFast(Vector128<float> d)
     {
-        // todo
-        return Vector256.Create(
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_float.LogFastFast(d);
+        }
+        return Vector128.Create(
             d.GetElement(0).log(),
             d.GetElement(1).log(),
             d.GetElement(2).log(),
@@ -489,6 +561,7 @@ public static partial class simd
         );
     }
 
+    
     #endregion
 }
 
