@@ -30,12 +30,12 @@ public static partial class simd_log_double
         var sq = d * d;
 
         var rx = simd.Fma(sq, Vector128.Create(0.148197055177935105296783), Vector128.Create(0.153108178020442575739679));
-        rx = simd.Fma(sq, rx, Vector128.Create(0.181837339521549679055568));
-        rx = simd.Fma(sq, rx, Vector128.Create(0.22222194152736701733275));
-        rx = simd.Fma(sq, rx, Vector128.Create(0.285714288030134544449368));
-        rx = simd.Fma(sq, rx, Vector128.Create(0.399999999989941956712869));
-        rx = simd.Fma(sq, rx, Vector128.Create(0.666666666666685503450651));
-        rx = simd.Fma(sq, rx, Vector128.Create(2.0));
+        rx = simd.Fma(rx, sq, Vector128.Create(0.181837339521549679055568));
+        rx = simd.Fma(rx, sq, Vector128.Create(0.22222194152736701733275));
+        rx = simd.Fma(rx, sq, Vector128.Create(0.285714288030134544449368));
+        rx = simd.Fma(rx, sq, Vector128.Create(0.399999999989941956712869));
+        rx = simd.Fma(rx, sq, Vector128.Create(0.666666666666685503450651));
+        rx = simd.Fma(rx, sq, Vector128.Create(2.0));
 
         d *= rx;
 
@@ -84,12 +84,12 @@ public static partial class simd_log_double
         var sq = d * d;
 
         var rx = simd.Fma(sq, Vector256.Create(0.148197055177935105296783), Vector256.Create(0.153108178020442575739679));
-        rx = simd.Fma(sq, rx, Vector256.Create(0.181837339521549679055568));
-        rx = simd.Fma(sq, rx, Vector256.Create(0.22222194152736701733275));
-        rx = simd.Fma(sq, rx, Vector256.Create(0.285714288030134544449368));
-        rx = simd.Fma(sq, rx, Vector256.Create(0.399999999989941956712869));
-        rx = simd.Fma(sq, rx, Vector256.Create(0.666666666666685503450651));
-        rx = simd.Fma(sq, rx, Vector256.Create(2.0));
+        rx = simd.Fma(rx, sq, Vector256.Create(0.181837339521549679055568));
+        rx = simd.Fma(rx, sq, Vector256.Create(0.22222194152736701733275));
+        rx = simd.Fma(rx, sq, Vector256.Create(0.285714288030134544449368));
+        rx = simd.Fma(rx, sq, Vector256.Create(0.399999999989941956712869));
+        rx = simd.Fma(rx, sq, Vector256.Create(0.666666666666685503450651));
+        rx = simd.Fma(rx, sq, Vector256.Create(2.0));
 
         d *= rx;
 

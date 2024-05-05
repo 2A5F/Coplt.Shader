@@ -9,7 +9,7 @@ namespace Coplt.Mathematics;
 public static partial class simd
 {
     #region Cmp
-    
+
     [MethodImpl(256 | 512)]
     public static Vector64<float> Ne(Vector64<float> a, Vector64<float> b)
     {
@@ -63,7 +63,7 @@ public static partial class simd
     }
 
     #endregion
-    
+
     #region Round
 
     [MethodImpl(256 | 512)]
@@ -457,6 +457,13 @@ public static partial class simd
         {
             return simd_log_float.Log(d);
         }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_log_float.Log(d.GetLower()),
+                simd_log_float.Log(d.GetUpper())
+            );
+        }
         return Vector128.Create(
             d.GetElement(0).log(),
             d.GetElement(1).log(),
@@ -481,9 +488,16 @@ public static partial class simd
     [MethodImpl(256 | 512)]
     public static Vector256<double> Log(Vector256<double> d)
     {
-        if (Vector128.IsHardwareAccelerated)
+        if (Vector256.IsHardwareAccelerated)
         {
             return simd_log_double.Log(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_log_double.Log(d.GetLower()),
+                simd_log_double.Log(d.GetUpper())
+            );
         }
         return Vector256.Create(
             d.GetElement(0).log(),
@@ -528,7 +542,7 @@ public static partial class simd
             d.GetElement(3).log()
         );
     }
-    
+
     [MethodImpl(256 | 512)]
     public static Vector64<float> LogFastFast(Vector64<float> d)
     {
@@ -561,7 +575,6 @@ public static partial class simd
         );
     }
 
-    
     #endregion
 }
 

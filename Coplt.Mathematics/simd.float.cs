@@ -11,10 +11,10 @@ namespace Coplt.Mathematics;
 public static partial class simd_log_float
 {
     #region Log 64
-   
+
     [MethodImpl(256 | 512)]
     public static Vector64<float> Log(Vector64<float> a) => Log2(a) * 0.6931471805599453094172321214581766f;
-    
+
     [MethodImpl(256 | 512)]
     public static Vector64<float> Log2(Vector64<float> a)
     {
@@ -33,9 +33,9 @@ public static partial class simd_log_float
         var sq = d * d;
 
         var rx = simd.Fma(sq, Vector64.Create(0.2371599674224853515625f), Vector64.Create(0.285279005765914916992188f));
-        rx = simd.Fma(sq, rx, Vector64.Create(0.400005519390106201171875f));
-        rx = simd.Fma(sq, rx, Vector64.Create(0.666666567325592041015625f));
-        rx = simd.Fma(sq, rx, Vector64.Create(2.0f));
+        rx = simd.Fma(rx, sq, Vector64.Create(0.400005519390106201171875f));
+        rx = simd.Fma(rx, sq, Vector64.Create(0.666666567325592041015625f));
+        rx = simd.Fma(rx, sq, Vector64.Create(2.0f));
 
         d *= rx;
 
@@ -58,7 +58,7 @@ public static partial class simd_log_float
 
         return r;
     }
-    
+
     /// <summary>
     /// natural log on [0x1.f7a5ecp-127, 0x1.fffffep127]. Maximum relative error 9.4529e-5
     /// </summary>
@@ -97,10 +97,10 @@ public static partial class simd_log_float
     #endregion
 
     #region Log 128
-    
+
     [MethodImpl(256 | 512)]
     public static Vector128<float> Log(Vector128<float> a) => Log2(a) * 0.6931471805599453094172321214581766f;
-    
+
     [MethodImpl(256 | 512)]
     public static Vector128<float> Log2(Vector128<float> a)
     {
@@ -119,9 +119,9 @@ public static partial class simd_log_float
         var sq = d * d;
 
         var rx = simd.Fma(sq, Vector128.Create(0.2371599674224853515625f), Vector128.Create(0.285279005765914916992188f));
-        rx = simd.Fma(sq, rx, Vector128.Create(0.400005519390106201171875f));
-        rx = simd.Fma(sq, rx, Vector128.Create(0.666666567325592041015625f));
-        rx = simd.Fma(sq, rx, Vector128.Create(2.0f));
+        rx = simd.Fma(rx, sq, Vector128.Create(0.400005519390106201171875f));
+        rx = simd.Fma(rx, sq, Vector128.Create(0.666666567325592041015625f));
+        rx = simd.Fma(rx, sq, Vector128.Create(2.0f));
 
         d *= rx;
 
@@ -144,7 +144,7 @@ public static partial class simd_log_float
 
         return r;
     }
-    
+
     /// <summary>
     /// natural log on [0x1.f7a5ecp-127, 0x1.fffffep127]. Maximum relative error 9.4529e-5
     /// </summary>
