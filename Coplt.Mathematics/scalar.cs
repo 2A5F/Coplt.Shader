@@ -432,7 +432,7 @@ public static partial class scalar
     #endif
 
     #endregion
-    
+
     #region Log
 
     [MethodImpl(256 | 512)]
@@ -448,6 +448,56 @@ public static partial class scalar
 
     #endregion
 
+    #region Log2
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    public static half log2(this half a) => half.Log2(a);
+    [MethodImpl(256 | 512)]
+    public static float log2(this float a) => MathF.Log2(a);
+    [MethodImpl(256 | 512)]
+    public static double log2(this double a) => Math.Log2(a);
+    #else
+    [MethodImpl(256 | 512)]
+    public static half log2(this half a) => (half)(MathF.Log(a) / math.F_Log2);
+    [MethodImpl(256 | 512)]
+    public static float log2(this float a) => MathF.Log(a) / math.F_Log2;
+    [MethodImpl(256 | 512)]
+    public static double log2(this double a) => Math.Log(a) / math.D_Log2;
+    #endif
+
+    #endregion
+    
+    #region Log10
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half log10(this half a) => half.Log10(a);
+    #else
+    public static half log10(this half a) => (half)MathF.Log10(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float log10(this float a) => MathF.Log10(a);
+    [MethodImpl(256 | 512)]
+    public static double log10(this double a) => Math.Log10(a);
+
+    #endregion
+
+    #region Log N
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half log(this half a, half b) => half.Log(a, b);
+    #else
+    public static half log(this half a, half b) => (half)MathF.Log(a, b);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float log(this float a, float b) => MathF.Log(a, b);
+    [MethodImpl(256 | 512)]
+    public static double log(this double a, double b) => Math.Log(a, b);
+
+    #endregion
+    
     #region Pow
 
     [MethodImpl(256 | 512)]

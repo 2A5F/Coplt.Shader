@@ -576,6 +576,162 @@ public static partial class simd
     }
 
     #endregion
+
+    #region Log2
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Log2(Vector64<float> d)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_log_float.Log2(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_float.Log2(d.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            d.GetElement(0).log2(),
+            d.GetElement(1).log2()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Log2(Vector128<float> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_float.Log2(d);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_log_float.Log2(d.GetLower()),
+                simd_log_float.Log2(d.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            d.GetElement(0).log2(),
+            d.GetElement(1).log2(),
+            d.GetElement(2).log2(),
+            d.GetElement(3).log2()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Log2(Vector128<double> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_double.Log2(d);
+        }
+        return Vector128.Create(
+            d.GetElement(0).log2(),
+            d.GetElement(1).log2()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Log2(Vector256<double> d)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_log_double.Log2(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_log_double.Log2(d.GetLower()),
+                simd_log_double.Log2(d.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            d.GetElement(0).log2(),
+            d.GetElement(1).log2(),
+            d.GetElement(2).log2(),
+            d.GetElement(3).log2()
+        );
+    }
+
+    #endregion
+
+    #region Log10
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Log10(Vector64<float> d)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_log_float.Log10(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_float.Log10(d.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            d.GetElement(0).log10(),
+            d.GetElement(1).log10()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Log10(Vector128<float> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_float.Log10(d);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_log_float.Log10(d.GetLower()),
+                simd_log_float.Log10(d.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            d.GetElement(0).log10(),
+            d.GetElement(1).log10(),
+            d.GetElement(2).log10(),
+            d.GetElement(3).log10()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Log10(Vector128<double> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_log_double.Log10(d);
+        }
+        return Vector128.Create(
+            d.GetElement(0).log10(),
+            d.GetElement(1).log10()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Log10(Vector256<double> d)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_log_double.Log10(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_log_double.Log10(d.GetLower()),
+                simd_log_double.Log10(d.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            d.GetElement(0).log10(),
+            d.GetElement(1).log10(),
+            d.GetElement(2).log10(),
+            d.GetElement(3).log10()
+        );
+    }
+
+    #endregion
 }
 
 #endif

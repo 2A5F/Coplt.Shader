@@ -13,7 +13,10 @@ public static partial class simd_log_float
     #region Log 64
 
     [MethodImpl(256 | 512)]
-    public static Vector64<float> Log(Vector64<float> a) => Log2(a) * 0.6931471805599453094172321214581766f;
+    public static Vector64<float> Log(Vector64<float> a) => Log2(a) * math.F_Log2;
+    
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Log10(Vector64<float> a) => Log2(a) * (math.F_Log2 / math.F_Log10);
 
     [MethodImpl(256 | 512)]
     public static Vector64<float> Log2(Vector64<float> a)
@@ -99,7 +102,10 @@ public static partial class simd_log_float
     #region Log 128
 
     [MethodImpl(256 | 512)]
-    public static Vector128<float> Log(Vector128<float> a) => Log2(a) * 0.6931471805599453094172321214581766f;
+    public static Vector128<float> Log(Vector128<float> a) => Log2(a) * math.F_Log2;
+    
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Log10(Vector128<float> a) => Log2(a) * (math.F_Log2 / math.F_Log10);
 
     [MethodImpl(256 | 512)]
     public static Vector128<float> Log2(Vector128<float> a)
