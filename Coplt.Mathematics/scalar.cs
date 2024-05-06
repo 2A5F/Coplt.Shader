@@ -396,6 +396,35 @@ public static partial class scalar
 
     #endregion
 
+    #region Modf
+
+    [MethodImpl(256 | 512)]
+    public static half modf(this half v, out half i)
+    {
+        i = trunc(v);
+        return (half)(v - i);
+    }
+    [MethodImpl(256 | 512)]
+    public static float modf(this float v, out float i)
+    {
+        i = trunc(v);
+        return v - i;
+    }
+    [MethodImpl(256 | 512)]
+    public static double modf(this double v, out double i)
+    {
+        i = trunc(v);
+        return v - i;
+    }
+    [MethodImpl(256 | 512)]
+    public static decimal modf(this decimal v, out decimal i)
+    {
+        i = trunc(v);
+        return v - i;
+    }
+
+    #endregion
+
     #region rcp
 
     [MethodImpl(256 | 512)]
@@ -433,6 +462,21 @@ public static partial class scalar
 
     #endregion
 
+    #region Exp
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half exp(this half a) => half.Exp(a);
+    #else
+    public static half exp(this half a) => (half)MathF.Exp(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float exp(this float a) => MathF.Exp(a);
+    [MethodImpl(256 | 512)]
+    public static double exp(this double a) => Math.Exp(a);
+
+    #endregion
+
     #region Log
 
     [MethodImpl(256 | 512)]
@@ -467,7 +511,7 @@ public static partial class scalar
     #endif
 
     #endregion
-    
+
     #region Log10
 
     [MethodImpl(256 | 512)]
@@ -497,7 +541,7 @@ public static partial class scalar
     public static double log(this double a, double b) => Math.Log(a, b);
 
     #endregion
-    
+
     #region Pow
 
     [MethodImpl(256 | 512)]

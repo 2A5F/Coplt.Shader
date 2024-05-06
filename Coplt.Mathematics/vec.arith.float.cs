@@ -4,8 +4,63 @@ namespace Coplt.Mathematics;
 
 #region float2
 
+public partial struct float2
+{
+    public static float2 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277f); 
+    }
+    public static float2 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f);
+    }
+    public static float2 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static float2 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f);
+    }
+    public static float2 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static float2 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862f);
+    }
+    public static float2 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094f); 
+    }
+    public static float2 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009f);
+    }
+    public static float2 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861f);
+    }
+    public static float2 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144f);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static float2 ceil(this float2 a)
     {
@@ -57,6 +112,20 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float2 modf(this float2 a, out float2 i)
+    {
+        #if NET8_0_OR_GREATER
+        var r = simd.ModF(a.vector, out var iv);
+        i = new(iv);
+        return new(r);
+        #else // NET8_0_OR_GREATER
+        float2 r = new(a.x.modf(out var i0), a.y.modf(out var i1));
+        i = new(i0, i1);
+        return r;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static float2 rcp(this float2 a)
     {
         #if NET8_0_OR_GREATER
@@ -71,8 +140,63 @@ public static partial class math
 
 #region float3
 
+public partial struct float3
+{
+    public static float3 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277f); 
+    }
+    public static float3 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f);
+    }
+    public static float3 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static float3 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f);
+    }
+    public static float3 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static float3 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862f);
+    }
+    public static float3 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094f); 
+    }
+    public static float3 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009f);
+    }
+    public static float3 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861f);
+    }
+    public static float3 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144f);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static float3 ceil(this float3 a)
     {
@@ -124,6 +248,20 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float3 modf(this float3 a, out float3 i)
+    {
+        #if NET8_0_OR_GREATER
+        var r = simd.ModF(a.vector, out var iv);
+        i = new(iv);
+        return new(r);
+        #else // NET8_0_OR_GREATER
+        float3 r = new(a.x.modf(out var i0), a.y.modf(out var i1), a.z.modf(out var i2));
+        i = new(i0, i1, i2);
+        return r;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static float3 rcp(this float3 a)
     {
         #if NET8_0_OR_GREATER
@@ -138,8 +276,63 @@ public static partial class math
 
 #region float4
 
+public partial struct float4
+{
+    public static float4 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277f); 
+    }
+    public static float4 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f);
+    }
+    public static float4 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static float4 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f);
+    }
+    public static float4 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static float4 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862f);
+    }
+    public static float4 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094f); 
+    }
+    public static float4 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009f);
+    }
+    public static float4 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861f);
+    }
+    public static float4 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144f);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static float4 ceil(this float4 a)
     {
@@ -191,6 +384,20 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float4 modf(this float4 a, out float4 i)
+    {
+        #if NET8_0_OR_GREATER
+        var r = simd.ModF(a.vector, out var iv);
+        i = new(iv);
+        return new(r);
+        #else // NET8_0_OR_GREATER
+        float4 r = new(a.x.modf(out var i0), a.y.modf(out var i1), a.z.modf(out var i2), a.w.modf(out var i3));
+        i = new(i0, i1, i2, i3);
+        return r;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static float4 rcp(this float4 a)
     {
         #if NET8_0_OR_GREATER
@@ -205,8 +412,63 @@ public static partial class math
 
 #region double2
 
+public partial struct double2
+{
+    public static double2 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277); 
+    }
+    public static double2 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923);
+    }
+    public static double2 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static double2 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846);
+    }
+    public static double2 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static double2 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862);
+    }
+    public static double2 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094); 
+    }
+    public static double2 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009);
+    }
+    public static double2 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861);
+    }
+    public static double2 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static double2 ceil(this double2 a)
     {
@@ -258,6 +520,20 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double2 modf(this double2 a, out double2 i)
+    {
+        #if NET8_0_OR_GREATER
+        var r = simd.ModF(a.vector, out var iv);
+        i = new(iv);
+        return new(r);
+        #else // NET8_0_OR_GREATER
+        double2 r = new(a.x.modf(out var i0), a.y.modf(out var i1));
+        i = new(i0, i1);
+        return r;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static double2 rcp(this double2 a)
     {
         #if NET8_0_OR_GREATER
@@ -272,8 +548,63 @@ public static partial class math
 
 #region double3
 
+public partial struct double3
+{
+    public static double3 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277); 
+    }
+    public static double3 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923);
+    }
+    public static double3 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static double3 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846);
+    }
+    public static double3 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static double3 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862);
+    }
+    public static double3 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094); 
+    }
+    public static double3 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009);
+    }
+    public static double3 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861);
+    }
+    public static double3 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static double3 ceil(this double3 a)
     {
@@ -325,6 +656,20 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double3 modf(this double3 a, out double3 i)
+    {
+        #if NET8_0_OR_GREATER
+        var r = simd.ModF(a.vector, out var iv);
+        i = new(iv);
+        return new(r);
+        #else // NET8_0_OR_GREATER
+        double3 r = new(a.x.modf(out var i0), a.y.modf(out var i1), a.z.modf(out var i2));
+        i = new(i0, i1, i2);
+        return r;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static double3 rcp(this double3 a)
     {
         #if NET8_0_OR_GREATER
@@ -339,8 +684,63 @@ public static partial class math
 
 #region double4
 
+public partial struct double4
+{
+    public static double4 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277); 
+    }
+    public static double4 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923);
+    }
+    public static double4 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static double4 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846);
+    }
+    public static double4 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static double4 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862);
+    }
+    public static double4 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094); 
+    }
+    public static double4 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009);
+    }
+    public static double4 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861);
+    }
+    public static double4 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static double4 ceil(this double4 a)
     {
@@ -392,6 +792,20 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double4 modf(this double4 a, out double4 i)
+    {
+        #if NET8_0_OR_GREATER
+        var r = simd.ModF(a.vector, out var iv);
+        i = new(iv);
+        return new(r);
+        #else // NET8_0_OR_GREATER
+        double4 r = new(a.x.modf(out var i0), a.y.modf(out var i1), a.z.modf(out var i2), a.w.modf(out var i3));
+        i = new(i0, i1, i2, i3);
+        return r;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static double4 rcp(this double4 a)
     {
         #if NET8_0_OR_GREATER
@@ -406,8 +820,63 @@ public static partial class math
 
 #region decimal2
 
+public partial struct decimal2
+{
+    public static decimal2 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277m); 
+    }
+    public static decimal2 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923m);
+    }
+    public static decimal2 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static decimal2 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846m);
+    }
+    public static decimal2 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static decimal2 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862m);
+    }
+    public static decimal2 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094m); 
+    }
+    public static decimal2 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009m);
+    }
+    public static decimal2 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861m);
+    }
+    public static decimal2 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144m);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static decimal2 ceil(this decimal2 a)
     {
@@ -439,6 +908,14 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal2 modf(this decimal2 a, out decimal2 i)
+    {
+        decimal2 r = new(a.x.modf(out var i0), a.y.modf(out var i1));
+        i = new(i0, i1);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
     public static decimal2 rcp(this decimal2 a)
     {
         return new(a.x.rcp(), a.y.rcp());
@@ -449,8 +926,63 @@ public static partial class math
 
 #region decimal3
 
+public partial struct decimal3
+{
+    public static decimal3 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277m); 
+    }
+    public static decimal3 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923m);
+    }
+    public static decimal3 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static decimal3 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846m);
+    }
+    public static decimal3 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static decimal3 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862m);
+    }
+    public static decimal3 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094m); 
+    }
+    public static decimal3 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009m);
+    }
+    public static decimal3 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861m);
+    }
+    public static decimal3 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144m);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static decimal3 ceil(this decimal3 a)
     {
@@ -482,6 +1014,14 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal3 modf(this decimal3 a, out decimal3 i)
+    {
+        decimal3 r = new(a.x.modf(out var i0), a.y.modf(out var i1), a.z.modf(out var i2));
+        i = new(i0, i1, i2);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
     public static decimal3 rcp(this decimal3 a)
     {
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp());
@@ -492,8 +1032,63 @@ public static partial class math
 
 #region decimal4
 
+public partial struct decimal4
+{
+    public static decimal4 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277m); 
+    }
+    public static decimal4 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923m);
+    }
+    public static decimal4 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static decimal4 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846m);
+    }
+    public static decimal4 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static decimal4 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862m);
+    }
+    public static decimal4 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094m); 
+    }
+    public static decimal4 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009m);
+    }
+    public static decimal4 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861m);
+    }
+    public static decimal4 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144m);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static decimal4 ceil(this decimal4 a)
     {
@@ -525,6 +1120,14 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal4 modf(this decimal4 a, out decimal4 i)
+    {
+        decimal4 r = new(a.x.modf(out var i0), a.y.modf(out var i1), a.z.modf(out var i2), a.w.modf(out var i3));
+        i = new(i0, i1, i2, i3);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
     public static decimal4 rcp(this decimal4 a)
     {
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp(), a.w.rcp());
@@ -535,8 +1138,63 @@ public static partial class math
 
 #region half2
 
+public partial struct half2
+{
+    public static half2 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277f.half()); 
+    }
+    public static half2 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f.half());
+    }
+    public static half2 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static half2 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f.half());
+    }
+    public static half2 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static half2 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862f.half());
+    }
+    public static half2 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094f.half()); 
+    }
+    public static half2 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009f.half());
+    }
+    public static half2 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861f.half());
+    }
+    public static half2 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144f.half());
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static half2 ceil(this half2 a)
     {
@@ -568,6 +1226,14 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half2 modf(this half2 a, out half2 i)
+    {
+        half2 r = new(a.x.modf(out var i0), a.y.modf(out var i1));
+        i = new(i0, i1);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
     public static half2 rcp(this half2 a)
     {
         return new(a.x.rcp(), a.y.rcp());
@@ -578,8 +1244,63 @@ public static partial class math
 
 #region half3
 
+public partial struct half3
+{
+    public static half3 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277f.half()); 
+    }
+    public static half3 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f.half());
+    }
+    public static half3 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static half3 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f.half());
+    }
+    public static half3 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static half3 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862f.half());
+    }
+    public static half3 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094f.half()); 
+    }
+    public static half3 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009f.half());
+    }
+    public static half3 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861f.half());
+    }
+    public static half3 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144f.half());
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static half3 ceil(this half3 a)
     {
@@ -611,6 +1332,14 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half3 modf(this half3 a, out half3 i)
+    {
+        half3 r = new(a.x.modf(out var i0), a.y.modf(out var i1), a.z.modf(out var i2));
+        i = new(i0, i1, i2);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
     public static half3 rcp(this half3 a)
     {
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp());
@@ -621,8 +1350,63 @@ public static partial class math
 
 #region half4
 
+public partial struct half4
+{
+    public static half4 E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277f.half()); 
+    }
+    public static half4 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f.half());
+    }
+    public static half4 π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static half4 PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f.half());
+    }
+    public static half4 π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static half4 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862f.half());
+    }
+    public static half4 Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094f.half()); 
+    }
+    public static half4 Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009f.half());
+    }
+    public static half4 RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861f.half());
+    }
+    public static half4 DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144f.half());
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static half4 ceil(this half4 a)
     {
@@ -651,6 +1435,14 @@ public static partial class math
     public static half4 frac(this half4 a)
     {
         return new(a.x.frac(), a.y.frac(), a.z.frac(), a.w.frac());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 modf(this half4 a, out half4 i)
+    {
+        half4 r = new(a.x.modf(out var i0), a.y.modf(out var i1), a.z.modf(out var i2), a.w.modf(out var i3));
+        i = new(i0, i1, i2, i3);
+        return r;
     }
 
     [MethodImpl(256 | 512)]

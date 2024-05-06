@@ -260,6 +260,97 @@ public static partial class simd
 
     #endregion
 
+    #region ModF
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> ModF(Vector64<float> d, out Vector64<float> i)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            i = Truncate(d);
+            return d - i;
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            var r128 = ModF(d.ToVector128(), out var i128);
+            i = i128.GetLower();
+            return r128.GetLower();
+        }
+
+        var r = Vector64.Create(
+            d.GetElement(0).modf(out var i0),
+            d.GetElement(1).modf(out var i1)
+        );
+        i = Vector64.Create(i0, i1);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> ModF(Vector128<float> d, out Vector128<float> i)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            i = Truncate(d);
+            return d - i;
+        }
+
+        var r = Vector128.Create(
+            d.GetElement(0).modf(out var i0),
+            d.GetElement(1).modf(out var i1),
+            d.GetElement(2).modf(out var i2),
+            d.GetElement(3).modf(out var i3)
+        );
+        i = Vector128.Create(i0, i1, i2, i3);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> ModF(Vector128<double> d, out Vector128<double> i)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            i = Truncate(d);
+            return d - i;
+        }
+
+        var r = Vector128.Create(
+            d.GetElement(0).modf(out var i0),
+            d.GetElement(1).modf(out var i1)
+        );
+        i = Vector128.Create(i0, i1);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> ModF(Vector256<double> d, out Vector256<double> i)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            i = Truncate(d);
+            return d - i;
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            var i_l = Truncate(d.GetLower());
+            var i_u = Truncate(d.GetUpper());
+            var r_l = d.GetLower() - i_l;
+            var r_u = d.GetUpper() - i_l;
+            i = Vector256.Create(i_l, i_u);
+            return Vector256.Create(r_l, r_u);
+        }
+
+        var r = Vector256.Create(
+            d.GetElement(0).modf(out var i0),
+            d.GetElement(1).modf(out var i1),
+            d.GetElement(2).modf(out var i2),
+            d.GetElement(3).modf(out var i3)
+        );
+        i = Vector256.Create(i0, i1, i2, i3);
+        return r;
+    }
+
+    #endregion
+
     #region Sign
 
     [MethodImpl(256 | 512)]
@@ -438,11 +529,11 @@ public static partial class simd
     {
         if (Vector64.IsHardwareAccelerated)
         {
-            return simd_log_float.Log(d);
+            return simd_float.Log(d);
         }
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.Log(d.ToVector128()).GetLower();
+            return simd_float.Log(d.ToVector128()).GetLower();
         }
         return Vector64.Create(
             d.GetElement(0).log(),
@@ -455,13 +546,13 @@ public static partial class simd
     {
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.Log(d);
+            return simd_float.Log(d);
         }
         if (Vector64.IsHardwareAccelerated)
         {
             return Vector128.Create(
-                simd_log_float.Log(d.GetLower()),
-                simd_log_float.Log(d.GetUpper())
+                simd_float.Log(d.GetLower()),
+                simd_float.Log(d.GetUpper())
             );
         }
         return Vector128.Create(
@@ -477,7 +568,7 @@ public static partial class simd
     {
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_double.Log(d);
+            return simd_double.Log(d);
         }
         return Vector128.Create(
             d.GetElement(0).log(),
@@ -490,13 +581,13 @@ public static partial class simd
     {
         if (Vector256.IsHardwareAccelerated)
         {
-            return simd_log_double.Log(d);
+            return simd_double.Log(d);
         }
         if (Vector128.IsHardwareAccelerated)
         {
             return Vector256.Create(
-                simd_log_double.Log(d.GetLower()),
-                simd_log_double.Log(d.GetUpper())
+                simd_double.Log(d.GetLower()),
+                simd_double.Log(d.GetUpper())
             );
         }
         return Vector256.Create(
@@ -516,11 +607,11 @@ public static partial class simd
     {
         if (Vector64.IsHardwareAccelerated)
         {
-            return simd_log_float.LogFast(d);
+            return simd_float.LogFast(d);
         }
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.LogFast(d.ToVector128()).GetLower();
+            return simd_float.LogFast(d.ToVector128()).GetLower();
         }
         return Vector64.Create(
             d.GetElement(0).log(),
@@ -533,7 +624,7 @@ public static partial class simd
     {
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.LogFast(d);
+            return simd_float.LogFast(d);
         }
         return Vector128.Create(
             d.GetElement(0).log(),
@@ -548,11 +639,11 @@ public static partial class simd
     {
         if (Vector64.IsHardwareAccelerated)
         {
-            return simd_log_float.LogFast(d);
+            return simd_float.LogFast(d);
         }
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.LogFastFast(d.ToVector128()).GetLower();
+            return simd_float.LogFastFast(d.ToVector128()).GetLower();
         }
         return Vector64.Create(
             d.GetElement(0).log(),
@@ -565,7 +656,7 @@ public static partial class simd
     {
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.LogFastFast(d);
+            return simd_float.LogFastFast(d);
         }
         return Vector128.Create(
             d.GetElement(0).log(),
@@ -584,11 +675,11 @@ public static partial class simd
     {
         if (Vector64.IsHardwareAccelerated)
         {
-            return simd_log_float.Log2(d);
+            return simd_float.Log2(d);
         }
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.Log2(d.ToVector128()).GetLower();
+            return simd_float.Log2(d.ToVector128()).GetLower();
         }
         return Vector64.Create(
             d.GetElement(0).log2(),
@@ -601,13 +692,13 @@ public static partial class simd
     {
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.Log2(d);
+            return simd_float.Log2(d);
         }
         if (Vector64.IsHardwareAccelerated)
         {
             return Vector128.Create(
-                simd_log_float.Log2(d.GetLower()),
-                simd_log_float.Log2(d.GetUpper())
+                simd_float.Log2(d.GetLower()),
+                simd_float.Log2(d.GetUpper())
             );
         }
         return Vector128.Create(
@@ -623,7 +714,7 @@ public static partial class simd
     {
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_double.Log2(d);
+            return simd_double.Log2(d);
         }
         return Vector128.Create(
             d.GetElement(0).log2(),
@@ -636,13 +727,13 @@ public static partial class simd
     {
         if (Vector256.IsHardwareAccelerated)
         {
-            return simd_log_double.Log2(d);
+            return simd_double.Log2(d);
         }
         if (Vector128.IsHardwareAccelerated)
         {
             return Vector256.Create(
-                simd_log_double.Log2(d.GetLower()),
-                simd_log_double.Log2(d.GetUpper())
+                simd_double.Log2(d.GetLower()),
+                simd_double.Log2(d.GetUpper())
             );
         }
         return Vector256.Create(
@@ -662,11 +753,11 @@ public static partial class simd
     {
         if (Vector64.IsHardwareAccelerated)
         {
-            return simd_log_float.Log10(d);
+            return simd_float.Log10(d);
         }
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.Log10(d.ToVector128()).GetLower();
+            return simd_float.Log10(d.ToVector128()).GetLower();
         }
         return Vector64.Create(
             d.GetElement(0).log10(),
@@ -679,13 +770,13 @@ public static partial class simd
     {
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_float.Log10(d);
+            return simd_float.Log10(d);
         }
         if (Vector64.IsHardwareAccelerated)
         {
             return Vector128.Create(
-                simd_log_float.Log10(d.GetLower()),
-                simd_log_float.Log10(d.GetUpper())
+                simd_float.Log10(d.GetLower()),
+                simd_float.Log10(d.GetUpper())
             );
         }
         return Vector128.Create(
@@ -701,7 +792,7 @@ public static partial class simd
     {
         if (Vector128.IsHardwareAccelerated)
         {
-            return simd_log_double.Log10(d);
+            return simd_double.Log10(d);
         }
         return Vector128.Create(
             d.GetElement(0).log10(),
@@ -714,13 +805,13 @@ public static partial class simd
     {
         if (Vector256.IsHardwareAccelerated)
         {
-            return simd_log_double.Log10(d);
+            return simd_double.Log10(d);
         }
         if (Vector128.IsHardwareAccelerated)
         {
             return Vector256.Create(
-                simd_log_double.Log10(d.GetLower()),
-                simd_log_double.Log10(d.GetUpper())
+                simd_double.Log10(d.GetLower()),
+                simd_double.Log10(d.GetUpper())
             );
         }
         return Vector256.Create(
@@ -728,6 +819,240 @@ public static partial class simd
             d.GetElement(1).log10(),
             d.GetElement(2).log10(),
             d.GetElement(3).log10()
+        );
+    }
+
+    #endregion
+
+    #region Exp
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Exp(Vector64<float> d)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Exp(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Exp(d.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            d.GetElement(0).exp(),
+            d.GetElement(1).exp()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Exp(Vector128<float> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Exp(d);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Exp(d.GetLower()),
+                simd_float.Exp(d.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            d.GetElement(0).exp(),
+            d.GetElement(1).exp(),
+            d.GetElement(2).exp(),
+            d.GetElement(3).exp()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Exp(Vector128<double> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Exp(d);
+        }
+        return Vector128.Create(
+            d.GetElement(0).exp(),
+            d.GetElement(1).exp()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Exp(Vector256<double> d)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Exp(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Exp(d.GetLower()),
+                simd_double.Exp(d.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            d.GetElement(0).exp(),
+            d.GetElement(1).exp(),
+            d.GetElement(2).exp(),
+            d.GetElement(3).exp()
+        );
+    }
+
+    #endregion
+
+    #region Pow
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Pow(Vector64<float> a, Vector64<float> b)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Pow(a, b);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Pow(a.ToVector128(), b.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).pow(b.GetElement(0)),
+            a.GetElement(1).pow(b.GetElement(1))
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Pow(Vector128<float> a, Vector128<float> b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Pow(a, b);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Pow(a.GetLower(), b.GetLower()),
+                simd_float.Pow(a.GetUpper(), b.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).pow(b.GetElement(0)),
+            a.GetElement(1).pow(b.GetElement(1)),
+            a.GetElement(2).pow(b.GetElement(2)),
+            a.GetElement(3).pow(b.GetElement(3))
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Pow(Vector128<double> a, Vector128<double> b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Pow(a, b);
+        }
+        return Vector128.Create(
+            a.GetElement(0).pow(b.GetElement(0)),
+            a.GetElement(1).pow(b.GetElement(1))
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Pow(Vector256<double> a, Vector256<double> b)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Pow(a, b);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Pow(a.GetLower(), b.GetLower()),
+                simd_double.Pow(a.GetUpper(), b.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).pow(b.GetElement(0)),
+            a.GetElement(1).pow(b.GetElement(1)),
+            a.GetElement(2).pow(b.GetElement(2)),
+            a.GetElement(3).pow(b.GetElement(3))
+        );
+    }
+
+    #endregion
+
+    #region Pow Scalar
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Pow(Vector64<float> a, float b)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Pow(a, b);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Pow(a.ToVector128(), b).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).pow(b),
+            a.GetElement(1).pow(b)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Pow(Vector128<float> a, float b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Pow(a, b);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Pow(a.GetLower(), b),
+                simd_float.Pow(a.GetUpper(), b)
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).pow(b),
+            a.GetElement(1).pow(b),
+            a.GetElement(2).pow(b),
+            a.GetElement(3).pow(b)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Pow(Vector128<double> a, double b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Pow(a, b);
+        }
+        return Vector128.Create(
+            a.GetElement(0).pow(b),
+            a.GetElement(1).pow(b)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Pow(Vector256<double> a, double b)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Pow(a, b);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Pow(a.GetLower(), b),
+                simd_double.Pow(a.GetUpper(), b)
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).pow(b),
+            a.GetElement(1).pow(b),
+            a.GetElement(2).pow(b),
+            a.GetElement(3).pow(b)
         );
     }
 

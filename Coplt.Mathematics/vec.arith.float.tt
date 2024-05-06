@@ -21,8 +21,63 @@ namespace Coplt.Mathematics;
 
 #region <#= typeName #>
 
+public partial struct <#= typeName #>
+{
+    public static <#= typeName #> E
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.7182818284590452353602874713526624977572470936999595749669676277<#= typ.suffix #>); 
+    }
+    public static <#= typeName #> PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923<#= typ.suffix #>);
+    }
+    public static <#= typeName #> π
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI;
+    }
+    public static <#= typeName #> PI2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846<#= typ.suffix #>);
+    }
+    public static <#= typeName #> π2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => PI2;
+    }
+    public static <#= typeName #> Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795862<#= typ.suffix #>);
+    }
+    public static <#= typeName #> Log2
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.6931471805599453094172321214581765680755001343602552541206800094<#= typ.suffix #>); 
+    }
+    public static <#= typeName #> Log10
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(2.3025850929940456840179914546843642076011014886287729760333279009<#= typ.suffix #>);
+    }
+    public static <#= typeName #> RadToDeg
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(57.295779513082320876798154814105170332405472466564321549160243861<#= typ.suffix #>);
+    }
+    public static <#= typeName #> DegToRad
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(0.0174532925199432957692369076848861271344287188854172545609719144<#= typ.suffix #>);
+    }
+}
+
 public static partial class math
 {
+
     [MethodImpl(256 | 512)]
     public static <#= typeName #> ceil(this <#= typeName #> a)
     {
@@ -133,6 +188,34 @@ public static partial class math
             }
 #>
         return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.frac()")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> modf(this <#= typeName #> a, out <#= typeName #> i)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        var r = simd.ModF(a.vector, out var iv);
+        i = new(iv);
+        return new(r);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        <#= typeName #> r = new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.modf(out var i{n})")) #>);
+        i = new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"i{n}")) #>);
+        return r;
 <#
             if (typ.simd)
             {

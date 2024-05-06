@@ -8,13 +8,13 @@ namespace Coplt.Mathematics;
 // log fast : https://stackoverflow.com/questions/39821367/very-fast-approximate-logarithm-natural-log-function-in-c
 // log fast2 : https://stackoverflow.com/questions/9411823/fast-log2float-x-implementation-c
 
-public static partial class simd_log_float
+public static partial class simd_float
 {
-    #region Log 64
+    #region Log v64
 
     [MethodImpl(256 | 512)]
     public static Vector64<float> Log(Vector64<float> a) => Log2(a) * math.F_Log2;
-    
+
     [MethodImpl(256 | 512)]
     public static Vector64<float> Log10(Vector64<float> a) => Log2(a) * (math.F_Log2 / math.F_Log10);
 
@@ -99,11 +99,11 @@ public static partial class simd_log_float
 
     #endregion
 
-    #region Log 128
+    #region Log v128
 
     [MethodImpl(256 | 512)]
     public static Vector128<float> Log(Vector128<float> a) => Log2(a) * math.F_Log2;
-    
+
     [MethodImpl(256 | 512)]
     public static Vector128<float> Log10(Vector128<float> a) => Log2(a) * (math.F_Log2 / math.F_Log10);
 
@@ -184,6 +184,116 @@ public static partial class simd_log_float
             x.AsSingle(), Vector128.Create(-0.67487759f)
         );
         return log2 * 0.69314718f;
+    }
+
+    #endregion
+
+    #region Exp v64
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Exp(Vector64<float> x) => Exp2(x * math.F_1_Div_Log2);
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Exp2(Vector64<float> x)
+    {
+        var e = Vector64.GreaterThanOrEqual(x, Vector64.Create(88.3762626647949f)) & Vector64.Create(float.PositiveInfinity);
+        e += simd.Ne(x, x);
+
+        var xx = Vector64.Max(
+            Vector64.Min(x, Vector64.Create(81.0f * math.F_1_Div_Log2)),
+            Vector64.Create(-81.0f * math.F_1_Div_Log2)
+        );
+
+        var fx = simd.Round(xx);
+
+        xx -= fx;
+        var r = simd.Fma(xx, Vector64.Create(1.530610536076361E-05f), Vector64.Create(0.000154631026827329f));
+        r = simd.Fma(r, xx, Vector64.Create(0.0013333465742372899f));
+        r = simd.Fma(r, xx, Vector64.Create(0.00961804886829518f));
+        r = simd.Fma(r, xx, Vector64.Create(0.05550410925060949f));
+        r = simd.Fma(r, xx, Vector64.Create(0.240226509999339f));
+        r = simd.Fma(r, xx, Vector64.Create(0.6931471805500692f));
+        r = simd.Fma(r, xx, Vector64.Create(1.0f));
+
+        fx = ((Vector64.ConvertToInt32(fx) + Vector64.Create(127)) << 23).AsSingle();
+
+        r = simd.Fma(r, fx, e);
+        r = Vector64.AndNot(r, Vector64.Equals(x, Vector64.Create(float.NegativeInfinity)));
+
+        return r;
+    }
+
+    #endregion
+    
+    #region Exp v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Exp(Vector128<float> x) => Exp2(x * math.F_1_Div_Log2);
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Exp2(Vector128<float> x)
+    {
+        var e = Vector128.GreaterThanOrEqual(x, Vector128.Create(89f)) & Vector128.Create(float.PositiveInfinity);
+        e += simd.Ne(x, x);
+
+        var xx = Vector128.Max(
+            Vector128.Min(x, Vector128.Create(81.0f * math.F_1_Div_Log2)),
+            Vector128.Create(-81.0f * math.F_1_Div_Log2)
+        );
+
+        var fx = simd.Round(xx);
+
+        xx -= fx;
+        var r = simd.Fma(xx, Vector128.Create(1.530610536076361E-05f), Vector128.Create(0.000154631026827329f));
+        r = simd.Fma(r, xx, Vector128.Create(0.0013333465742372899f));
+        r = simd.Fma(r, xx, Vector128.Create(0.00961804886829518f));
+        r = simd.Fma(r, xx, Vector128.Create(0.05550410925060949f));
+        r = simd.Fma(r, xx, Vector128.Create(0.240226509999339f));
+        r = simd.Fma(r, xx, Vector128.Create(0.6931471805500692f));
+        r = simd.Fma(r, xx, Vector128.Create(1.0f));
+
+        fx = ((Vector128.ConvertToInt32(fx) + Vector128.Create(127)) << 23).AsSingle();
+
+        r = simd.Fma(r, fx, e);
+        r = Vector128.AndNot(r, Vector128.Equals(x, Vector128.Create(float.NegativeInfinity)));
+
+        return r;
+    }
+
+    #endregion
+    
+    #region Pow v64
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Pow(Vector64<float> a, Vector64<float> b)
+    {
+        var r = Exp2(Log2(Vector64.Abs(a)) * b);
+        return r;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Pow(Vector64<float> a, float b)
+    {
+        var r = Exp2(Log2(Vector64.Abs(a)) * b);
+        return r;
+    }
+
+    #endregion
+    
+    #region Pow v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Pow(Vector128<float> a, Vector128<float> b)
+    {
+        var r = Exp2(Log2(Vector128.Abs(a)) * b);
+        return r;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Pow(Vector128<float> a, float b)
+    {
+        var r = Exp2(Log2(Vector128.Abs(a)) * b);
+        return r;
     }
 
     #endregion
