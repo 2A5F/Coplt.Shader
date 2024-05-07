@@ -134,6 +134,48 @@ public static partial class math
         return new(a.x.rcp(), a.y.rcp());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float2 saturate(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return a.clamp(default, float2.One);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.saturate(), a.y.saturate());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 lerp(this float2 t, float2 start, float2 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 lerp(this float t, float2 start, float2 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(new(t), end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 unlerp(this float2 a, float2 start, float2 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static float2 unlerp(this float a, float2 start, float2 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static float2 remap(this float2 a, float2 srcStart, float2 srcEnd, float2 dstStart, float2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // float2
@@ -270,6 +312,48 @@ public static partial class math
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float3 saturate(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return a.clamp(default, float3.One);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.saturate(), a.y.saturate(), a.z.saturate());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 lerp(this float3 t, float3 start, float3 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 lerp(this float t, float3 start, float3 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(new(t), end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 unlerp(this float3 a, float3 start, float3 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static float3 unlerp(this float a, float3 start, float3 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static float3 remap(this float3 a, float3 srcStart, float3 srcEnd, float3 dstStart, float3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // float3
@@ -406,6 +490,48 @@ public static partial class math
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp(), a.w.rcp());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float4 saturate(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return a.clamp(default, float4.One);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.saturate(), a.y.saturate(), a.z.saturate(), a.w.saturate());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 lerp(this float4 t, float4 start, float4 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 lerp(this float t, float4 start, float4 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(new(t), end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 unlerp(this float4 a, float4 start, float4 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static float4 unlerp(this float a, float4 start, float4 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static float4 remap(this float4 a, float4 srcStart, float4 srcEnd, float4 dstStart, float4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // float4
@@ -542,6 +668,48 @@ public static partial class math
         return new(a.x.rcp(), a.y.rcp());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double2 saturate(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return a.clamp(default, double2.One);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.saturate(), a.y.saturate());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 lerp(this double2 t, double2 start, double2 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 lerp(this double t, double2 start, double2 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(new(t), end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 unlerp(this double2 a, double2 start, double2 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static double2 unlerp(this double a, double2 start, double2 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static double2 remap(this double2 a, double2 srcStart, double2 srcEnd, double2 dstStart, double2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // double2
@@ -678,6 +846,48 @@ public static partial class math
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double3 saturate(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return a.clamp(default, double3.One);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.saturate(), a.y.saturate(), a.z.saturate());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 lerp(this double3 t, double3 start, double3 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 lerp(this double t, double3 start, double3 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(new(t), end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 unlerp(this double3 a, double3 start, double3 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static double3 unlerp(this double a, double3 start, double3 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static double3 remap(this double3 a, double3 srcStart, double3 srcEnd, double3 dstStart, double3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // double3
@@ -814,6 +1024,48 @@ public static partial class math
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp(), a.w.rcp());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double4 saturate(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return a.clamp(default, double4.One);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.saturate(), a.y.saturate(), a.z.saturate(), a.w.saturate());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 lerp(this double4 t, double4 start, double4 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 lerp(this double t, double4 start, double4 end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(new(t), end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 unlerp(this double4 a, double4 start, double4 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static double4 unlerp(this double a, double4 start, double4 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static double4 remap(this double4 a, double4 srcStart, double4 srcEnd, double4 dstStart, double4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // double4
@@ -920,6 +1172,34 @@ public static partial class math
     {
         return new(a.x.rcp(), a.y.rcp());
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 saturate(this decimal2 a)
+    {
+        return new(a.x.saturate(), a.y.saturate());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 lerp(this decimal2 t, decimal2 start, decimal2 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 lerp(this decimal t, decimal2 start, decimal2 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 unlerp(this decimal2 a, decimal2 start, decimal2 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 unlerp(this decimal a, decimal2 start, decimal2 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 remap(this decimal2 a, decimal2 srcStart, decimal2 srcEnd, decimal2 dstStart, decimal2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // decimal2
@@ -1026,6 +1306,34 @@ public static partial class math
     {
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp());
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 saturate(this decimal3 a)
+    {
+        return new(a.x.saturate(), a.y.saturate(), a.z.saturate());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 lerp(this decimal3 t, decimal3 start, decimal3 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 lerp(this decimal t, decimal3 start, decimal3 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 unlerp(this decimal3 a, decimal3 start, decimal3 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 unlerp(this decimal a, decimal3 start, decimal3 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 remap(this decimal3 a, decimal3 srcStart, decimal3 srcEnd, decimal3 dstStart, decimal3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // decimal3
@@ -1132,6 +1440,34 @@ public static partial class math
     {
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp(), a.w.rcp());
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 saturate(this decimal4 a)
+    {
+        return new(a.x.saturate(), a.y.saturate(), a.z.saturate(), a.w.saturate());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 lerp(this decimal4 t, decimal4 start, decimal4 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 lerp(this decimal t, decimal4 start, decimal4 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 unlerp(this decimal4 a, decimal4 start, decimal4 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 unlerp(this decimal a, decimal4 start, decimal4 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 remap(this decimal4 a, decimal4 srcStart, decimal4 srcEnd, decimal4 dstStart, decimal4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // decimal4
@@ -1238,6 +1574,34 @@ public static partial class math
     {
         return new(a.x.rcp(), a.y.rcp());
     }
+
+    [MethodImpl(256 | 512)]
+    public static half2 saturate(this half2 a)
+    {
+        return new(a.x.saturate(), a.y.saturate());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 lerp(this half2 t, half2 start, half2 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 lerp(this half t, half2 start, half2 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 unlerp(this half2 a, half2 start, half2 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static half2 unlerp(this half a, half2 start, half2 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static half2 remap(this half2 a, half2 srcStart, half2 srcEnd, half2 dstStart, half2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // half2
@@ -1344,6 +1708,34 @@ public static partial class math
     {
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp());
     }
+
+    [MethodImpl(256 | 512)]
+    public static half3 saturate(this half3 a)
+    {
+        return new(a.x.saturate(), a.y.saturate(), a.z.saturate());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 lerp(this half3 t, half3 start, half3 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 lerp(this half t, half3 start, half3 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 unlerp(this half3 a, half3 start, half3 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static half3 unlerp(this half a, half3 start, half3 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static half3 remap(this half3 a, half3 srcStart, half3 srcEnd, half3 dstStart, half3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // half3
@@ -1450,6 +1842,34 @@ public static partial class math
     {
         return new(a.x.rcp(), a.y.rcp(), a.z.rcp(), a.w.rcp());
     }
+
+    [MethodImpl(256 | 512)]
+    public static half4 saturate(this half4 a)
+    {
+        return new(a.x.saturate(), a.y.saturate(), a.z.saturate(), a.w.saturate());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 lerp(this half4 t, half4 start, half4 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 lerp(this half t, half4 start, half4 end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 unlerp(this half4 a, half4 start, half4 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static half4 unlerp(this half a, half4 start, half4 end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static half4 remap(this half4 a, half4 srcStart, half4 srcEnd, half4 dstStart, half4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 }
 
 #endregion // half4

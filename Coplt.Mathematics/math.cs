@@ -19,7 +19,10 @@ public static partial class math
     public const double D_RadToDeg = 57.295779513082320876798154814105170332405472466564321549160243861;
     public const double D_1_Div_Log2 = 1.4426950408889634073599246810018921374266459541529859341354494069;
     public const double D_DegToRad = 0.0174532925199432957692369076848861271344287188854172545609719144;  
+}
 
+public static partial class ctor
+{
     [MethodImpl(256 | 512)]
     public static half half(this float v) => (half)v;
 }

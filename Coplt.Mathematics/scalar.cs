@@ -1,6 +1,6 @@
 ﻿namespace Coplt.Mathematics;
 
-public static partial class scalar
+public static partial class math
 {
     #region BitNot
 
@@ -425,6 +425,108 @@ public static partial class scalar
 
     #endregion
 
+    #region Min
+
+    [MethodImpl(256 | 512)]
+    public static byte min(this byte a, byte b) => Math.Min(a, b);
+    [MethodImpl(256 | 512)]
+    public static sbyte min(this sbyte a, sbyte b) => Math.Min(a, b);
+    [MethodImpl(256 | 512)]
+    public static ushort min(this ushort a, ushort b) => Math.Min(a, b);
+    [MethodImpl(256 | 512)]
+    public static short min(this short a, short b) => Math.Min(a, b);
+    [MethodImpl(256 | 512)]
+    public static uint min(this uint a, uint b) => Math.Min(a, b);
+    [MethodImpl(256 | 512)]
+    public static int min(this int a, int b) => Math.Min(a, b);
+    [MethodImpl(256 | 512)]
+    public static ulong min(this ulong a, ulong b) => Math.Min(a, b);
+    [MethodImpl(256 | 512)]
+    public static long min(this long a, long b) => Math.Min(a, b);
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    public static half min(this half a, half b) => half.Min(a, b);
+    #else
+    [MethodImpl(256 | 512)]
+    public static half min(this half a, half b) => (half)Math.Min(a, b);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float min(this float a, float b) => Math.Min(a, b);
+    [MethodImpl(256 | 512)]
+    public static double min(this double a, double b) => Math.Min(a, b);
+    [MethodImpl(256 | 512)]
+    public static decimal min(this decimal a, decimal b) => Math.Min(a, b);
+
+    #endregion
+
+    #region Max
+
+    [MethodImpl(256 | 512)]
+    public static byte max(this byte a, byte b) => Math.Max(a, b);
+    [MethodImpl(256 | 512)]
+    public static sbyte max(this sbyte a, sbyte b) => Math.Max(a, b);
+    [MethodImpl(256 | 512)]
+    public static ushort max(this ushort a, ushort b) => Math.Max(a, b);
+    [MethodImpl(256 | 512)]
+    public static short max(this short a, short b) => Math.Max(a, b);
+    [MethodImpl(256 | 512)]
+    public static uint max(this uint a, uint b) => Math.Max(a, b);
+    [MethodImpl(256 | 512)]
+    public static int max(this int a, int b) => Math.Max(a, b);
+    [MethodImpl(256 | 512)]
+    public static ulong max(this ulong a, ulong b) => Math.Max(a, b);
+    [MethodImpl(256 | 512)]
+    public static long max(this long a, long b) => Math.Max(a, b);
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    public static half max(this half a, half b) => half.Max(a, b);
+    #else
+    [MethodImpl(256 | 512)]
+    public static half max(this half a, half b) => (half)Math.Max(a, b);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float max(this float a, float b) => Math.Max(a, b);
+    [MethodImpl(256 | 512)]
+    public static double max(this double a, double b) => Math.Max(a, b);
+    [MethodImpl(256 | 512)]
+    public static decimal max(this decimal a, decimal b) => Math.Max(a, b);
+
+    #endregion
+
+    #region Clamp
+
+    [MethodImpl(256 | 512)]
+    public static byte clamp(this byte v, byte min, byte max) => Math.Max(min, Math.Min(max, v));
+    [MethodImpl(256 | 512)]
+    public static sbyte clamp(this sbyte v, sbyte min, sbyte max) => Math.Max(min, Math.Min(max, v));
+    [MethodImpl(256 | 512)]
+    public static ushort clamp(this ushort v, ushort min, ushort max) => Math.Max(min, Math.Min(max, v));
+    [MethodImpl(256 | 512)]
+    public static short clamp(this short v, short min, short max) => Math.Max(min, Math.Min(max, v));
+    [MethodImpl(256 | 512)]
+    public static uint clamp(this uint v, uint min, uint max) => Math.Max(min, Math.Min(max, v));
+    [MethodImpl(256 | 512)]
+    public static int clamp(this int v, int min, int max) => Math.Max(min, Math.Min(max, v));
+    [MethodImpl(256 | 512)]
+    public static ulong clamp(this ulong v, ulong min, ulong max) => Math.Max(min, Math.Min(max, v));
+    [MethodImpl(256 | 512)]
+    public static long clamp(this long v, long min, long max) => Math.Max(min, Math.Min(max, v));
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    public static half clamp(this half v, half min, half max) => half.Max(min, half.Min(max, v));
+    #else
+    [MethodImpl(256 | 512)]
+    public static half clamp(this half v, half min, half max) => (half)Math.Max(min, Math.Min(max, v));
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float clamp(this float v, float min, float max) => Math.Max(min, Math.Min(max, v));
+    [MethodImpl(256 | 512)]
+    public static double clamp(this double v, double min, double max) => Math.Max(min, Math.Min(max, v));
+    [MethodImpl(256 | 512)]
+    public static decimal clamp(this decimal v, decimal min, decimal max) => Math.Max(min, Math.Min(max, v));
+
+    #endregion
+
     #region rcp
 
     [MethodImpl(256 | 512)]
@@ -459,21 +561,6 @@ public static partial class scalar
     [MethodImpl(256 | 512)]
     public static double fma(this double a, double b, double c) => a * b + c;
     #endif
-
-    #endregion
-
-    #region Exp
-
-    [MethodImpl(256 | 512)]
-    #if NET8_0_OR_GREATER
-    public static half exp(this half a) => half.Exp(a);
-    #else
-    public static half exp(this half a) => (half)MathF.Exp(a);
-    #endif
-    [MethodImpl(256 | 512)]
-    public static float exp(this float a) => MathF.Exp(a);
-    [MethodImpl(256 | 512)]
-    public static double exp(this double a) => Math.Exp(a);
 
     #endregion
 
@@ -542,6 +629,43 @@ public static partial class scalar
 
     #endregion
 
+    #region Exp
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half exp(this half a) => half.Exp(a);
+    #else
+    public static half exp(this half a) => (half)MathF.Exp(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float exp(this float a) => MathF.Exp(a);
+    [MethodImpl(256 | 512)]
+    public static double exp(this double a) => Math.Exp(a);
+
+    #endregion
+
+    #region Exp2
+
+    [MethodImpl(256 | 512)]
+    public static half exp2(this half a) => (half)MathF.Exp((float)a * 0.693147180559945309f);
+    [MethodImpl(256 | 512)]
+    public static float exp2(this float a) => MathF.Exp(a * 0.693147180559945309f);
+    [MethodImpl(256 | 512)]
+    public static double exp2(this double a) => Math.Exp(a * 0.693147180559945309);
+
+    #endregion
+
+    #region Exp10
+
+    [MethodImpl(256 | 512)]
+    public static half exp10(this half a) => (half)MathF.Exp((float)a * 2.302585092994045684f);
+    [MethodImpl(256 | 512)]
+    public static float exp10(this float a) => MathF.Exp(a * 2.302585092994045684f);
+    [MethodImpl(256 | 512)]
+    public static double exp10(this double a) => Math.Exp(a * 2.302585092994045684);
+
+    #endregion
+
     #region Pow
 
     [MethodImpl(256 | 512)]
@@ -587,6 +711,195 @@ public static partial class scalar
     public static bool isNegInf(this float a) => float.IsNegativeInfinity(a);
     [MethodImpl(256 | 512)]
     public static bool isNegInf(this double a) => double.IsNegativeInfinity(a);
+
+    #endregion
+
+    #region Saturate
+
+    [MethodImpl(256 | 512)]
+    public static half saturate(this half v) => v.clamp((half)0f, (half)1f);
+    [MethodImpl(256 | 512)]
+    public static float saturate(this float v) => v.clamp(0f, 1f);
+    [MethodImpl(256 | 512)]
+    public static double saturate(this double v) => v.clamp(0, 1);
+    [MethodImpl(256 | 512)]
+    public static decimal saturate(this decimal v) => v.clamp(0m, 1m);
+
+    #endregion
+
+    #region Dot
+
+    [MethodImpl(256 | 512)]
+    public static byte dot(this byte a, byte b) => (byte)(a * b);
+    [MethodImpl(256 | 512)]
+    public static sbyte dot(this sbyte a, sbyte b) => (sbyte)(a * b);
+    [MethodImpl(256 | 512)]
+    public static ushort dot(this ushort a, ushort b) => (ushort)(a * b);
+    [MethodImpl(256 | 512)]
+    public static short dot(this short a, short b) => (short)(a * b);
+    [MethodImpl(256 | 512)]
+    public static uint dot(this uint a, uint b) => a * b;
+    [MethodImpl(256 | 512)]
+    public static int dot(this int a, int b) => a * b;
+    [MethodImpl(256 | 512)]
+    public static ulong dot(this ulong a, ulong b) => a * b;
+    [MethodImpl(256 | 512)]
+    public static long dot(this long a, long b) => a * b;
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    public static half dot(this half a, half b) => a * b;
+    #else
+    [MethodImpl(256 | 512)]
+    public static half dot(this half a, half b) => (half)(a * b);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float dot(this float a, float b) => a * b;
+    [MethodImpl(256 | 512)]
+    public static double dot(this double a, double b) => a * b;
+    [MethodImpl(256 | 512)]
+    public static decimal dot(this decimal a, decimal b) => a * b;
+
+    #endregion
+
+    #region Sqrt
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half sqrt(this half v) => half.Sqrt(v);
+    #else
+    public static half sqrt(this half v) => (half)MathF.Sqrt(v);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float sqrt(this float v) => MathF.Sqrt(v);
+    [MethodImpl(256 | 512)]
+    public static double sqrt(this double v) => Math.Sqrt(v);
+
+    #endregion
+
+    #region RSqrt
+
+    [MethodImpl(256 | 512)]
+    public static half rsqrt(this half v) => (half)(1 / sqrt((float)v));
+    [MethodImpl(256 | 512)]
+    public static float rsqrt(this float v) => 1 / sqrt(v);
+    [MethodImpl(256 | 512)]
+    public static double rsqrt(this double v) => 1 / sqrt(v);
+
+    #endregion
+
+    #region LengthSq
+
+    [MethodImpl(256 | 512)]
+    public static byte lengthsq(this byte v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static sbyte lengthsq(this sbyte v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static ushort lengthsq(this ushort v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static short lengthsq(this short v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static uint lengthsq(this uint v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static int lengthsq(this int v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static ulong lengthsq(this ulong v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static long lengthsq(this long v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static half lengthsq(this half v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static float lengthsq(this float v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static double lengthsq(this double v) => dot(v, v);
+    [MethodImpl(256 | 512)]
+    public static decimal lengthsq(this decimal v) => dot(v, v);
+
+    #endregion
+
+    #region Length
+
+    [MethodImpl(256 | 512)]
+    public static byte length(this byte v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static sbyte length(this sbyte v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static ushort length(this ushort v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static short length(this short v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static uint length(this uint v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static int length(this int v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static ulong length(this ulong v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static long length(this long v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static half length(this half v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static float length(this float v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static double length(this double v) => abs(v);
+    [MethodImpl(256 | 512)]
+    public static decimal length(this decimal v) => abs(v);
+
+    #endregion
+
+    #region DistanceSq
+
+    [MethodImpl(256 | 512)]
+    public static byte distancesq(this byte a, byte b) => (byte)lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static sbyte distancesq(this sbyte a, sbyte b) => (sbyte)lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static ushort distancesq(this ushort a, ushort b) => (ushort)lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static short distancesq(this short a, short b) => (short)lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static uint distancesq(this uint a, uint b) => lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static int distancesq(this int a, int b) => lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static ulong distancesq(this ulong a, ulong b) => lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static long distancesq(this long a, long b) => lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static half distancesq(this half a, half b) => (half)lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static float distancesq(this float a, float b) => lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static double distancesq(this double a, double b) => lengthsq(b - a);
+    [MethodImpl(256 | 512)]
+    public static decimal distancesq(this decimal a, decimal b) => lengthsq(b - a);
+
+    #endregion
+
+    #region Distance
+
+    [MethodImpl(256 | 512)]
+    public static byte distance(this byte a, byte b) => (byte)abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static sbyte distance(this sbyte a, sbyte b) => (sbyte)abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static ushort distance(this ushort a, ushort b) => (ushort)abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static short distance(this short a, short b) => (short)abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static uint distance(this uint a, uint b) => abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static int distance(this int a, int b) => abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static ulong distance(this ulong a, ulong b) => abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static long distance(this long a, long b) => abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static half distance(this half a, half b) => (half)abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static float distance(this float a, float b) => abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static double distance(this double a, double b) => abs(b - a);
+    [MethodImpl(256 | 512)]
+    public static decimal distance(this decimal a, decimal b) => abs(b - a);
 
     #endregion
 }

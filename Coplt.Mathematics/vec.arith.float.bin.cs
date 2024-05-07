@@ -87,6 +87,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float2 exp2(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp2(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp2(), a.y.exp2());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 exp10(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp10(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp10(), a.y.exp10());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static float2 pow(this float2 a, float2 b)
     {
         #if NET8_0_OR_GREATER
@@ -122,6 +142,28 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float2 sqrt(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Sqrt(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sqrt(), a.y.sqrt());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 rsqrt(this float2 a) => float2.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static float2 length(this float2 a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static float2 distance(this float2 a, float2 b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static float2 normalize(this float2 a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // float2
@@ -211,6 +253,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float3 exp2(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp2(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp2(), a.y.exp2(), a.z.exp2());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 exp10(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp10(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp10(), a.y.exp10(), a.z.exp10());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static float3 pow(this float3 a, float3 b)
     {
         #if NET8_0_OR_GREATER
@@ -246,6 +308,28 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float3 sqrt(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Sqrt(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sqrt(), a.y.sqrt(), a.z.sqrt());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 rsqrt(this float3 a) => float3.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static float3 length(this float3 a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static float3 distance(this float3 a, float3 b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static float3 normalize(this float3 a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // float3
@@ -335,6 +419,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float4 exp2(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp2(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp2(), a.y.exp2(), a.z.exp2(), a.w.exp2());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 exp10(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp10(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp10(), a.y.exp10(), a.z.exp10(), a.w.exp10());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static float4 pow(this float4 a, float4 b)
     {
         #if NET8_0_OR_GREATER
@@ -370,6 +474,28 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float4 sqrt(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Sqrt(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sqrt(), a.y.sqrt(), a.z.sqrt(), a.w.sqrt());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 rsqrt(this float4 a) => float4.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static float4 length(this float4 a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static float4 distance(this float4 a, float4 b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static float4 normalize(this float4 a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // float4
@@ -459,6 +585,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double2 exp2(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp2(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp2(), a.y.exp2());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 exp10(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp10(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp10(), a.y.exp10());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static double2 pow(this double2 a, double2 b)
     {
         #if NET8_0_OR_GREATER
@@ -494,6 +640,28 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double2 sqrt(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Sqrt(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sqrt(), a.y.sqrt());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 rsqrt(this double2 a) => double2.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static double2 length(this double2 a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static double2 distance(this double2 a, double2 b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static double2 normalize(this double2 a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // double2
@@ -583,6 +751,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double3 exp2(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp2(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp2(), a.y.exp2(), a.z.exp2());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 exp10(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp10(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp10(), a.y.exp10(), a.z.exp10());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static double3 pow(this double3 a, double3 b)
     {
         #if NET8_0_OR_GREATER
@@ -618,6 +806,28 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double3 sqrt(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Sqrt(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sqrt(), a.y.sqrt(), a.z.sqrt());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 rsqrt(this double3 a) => double3.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static double3 length(this double3 a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static double3 distance(this double3 a, double3 b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static double3 normalize(this double3 a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // double3
@@ -707,6 +917,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double4 exp2(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp2(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp2(), a.y.exp2(), a.z.exp2(), a.w.exp2());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 exp10(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp10(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.exp10(), a.y.exp10(), a.z.exp10(), a.w.exp10());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static double4 pow(this double4 a, double4 b)
     {
         #if NET8_0_OR_GREATER
@@ -742,6 +972,28 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double4 sqrt(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Sqrt(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sqrt(), a.y.sqrt(), a.z.sqrt(), a.w.sqrt());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 rsqrt(this double4 a) => double4.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static double4 length(this double4 a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static double4 distance(this double4 a, double4 b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static double4 normalize(this double4 a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // double4
@@ -799,6 +1051,18 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half2 exp2(this half2 a)
+    {
+        return new(a.x.exp2(), a.y.exp2());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 exp10(this half2 a)
+    {
+        return new(a.x.exp10(), a.y.exp10());
+    }
+
+    [MethodImpl(256 | 512)]
     public static half2 pow(this half2 a, half2 b)
     {
         return new(a.x.pow(b.x), a.y.pow(b.y));
@@ -822,6 +1086,24 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half2 sqrt(this half2 a)
+    {
+        return new(a.x.sqrt(), a.y.sqrt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 rsqrt(this half2 a) => half2.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static half2 length(this half2 a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static half2 distance(this half2 a, half2 b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static half2 normalize(this half2 a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // half2
@@ -879,6 +1161,18 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half3 exp2(this half3 a)
+    {
+        return new(a.x.exp2(), a.y.exp2(), a.z.exp2());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 exp10(this half3 a)
+    {
+        return new(a.x.exp10(), a.y.exp10(), a.z.exp10());
+    }
+
+    [MethodImpl(256 | 512)]
     public static half3 pow(this half3 a, half3 b)
     {
         return new(a.x.pow(b.x), a.y.pow(b.y), a.z.pow(b.z));
@@ -902,6 +1196,24 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half3 sqrt(this half3 a)
+    {
+        return new(a.x.sqrt(), a.y.sqrt(), a.z.sqrt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 rsqrt(this half3 a) => half3.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static half3 length(this half3 a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static half3 distance(this half3 a, half3 b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static half3 normalize(this half3 a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // half3
@@ -959,6 +1271,18 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half4 exp2(this half4 a)
+    {
+        return new(a.x.exp2(), a.y.exp2(), a.z.exp2(), a.w.exp2());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 exp10(this half4 a)
+    {
+        return new(a.x.exp10(), a.y.exp10(), a.z.exp10(), a.w.exp10());
+    }
+
+    [MethodImpl(256 | 512)]
     public static half4 pow(this half4 a, half4 b)
     {
         return new(a.x.pow(b.x), a.y.pow(b.y), a.z.pow(b.z), a.w.pow(b.w));
@@ -982,6 +1306,24 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half4 sqrt(this half4 a)
+    {
+        return new(a.x.sqrt(), a.y.sqrt(), a.z.sqrt(), a.w.sqrt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 rsqrt(this half4 a) => half4.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static half4 length(this half4 a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static half4 distance(this half4 a, half4 b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static half4 normalize(this half4 a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // half4

@@ -192,6 +192,9 @@ public static partial class simd_float
 
     [MethodImpl(256 | 512)]
     public static Vector64<float> Exp(Vector64<float> x) => Exp2(x * math.F_1_Div_Log2);
+    
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Exp10(Vector64<float> x) => Exp(x * 2.302585092994045684f);
 
     [MethodImpl(256 | 512)]
     public static Vector64<float> Exp2(Vector64<float> x)
@@ -229,6 +232,9 @@ public static partial class simd_float
 
     [MethodImpl(256 | 512)]
     public static Vector128<float> Exp(Vector128<float> x) => Exp2(x * math.F_1_Div_Log2);
+    
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Exp10(Vector128<float> x) => Exp(x * 2.302585092994045684f);
 
     [MethodImpl(256 | 512)]
     public static Vector128<float> Exp2(Vector128<float> x)

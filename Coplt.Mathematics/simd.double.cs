@@ -125,6 +125,9 @@ public static partial class simd_double
 
     [MethodImpl(256 | 512)]
     public static Vector128<double> Exp(Vector128<double> a) => Exp2(a * math.D_1_Div_Log2);
+    
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Exp10(Vector128<double> x) => Exp(x * 2.302585092994045684);
 
     [MethodImpl(256 | 512)]
     public static Vector128<double> Exp2(Vector128<double> x)
@@ -166,6 +169,9 @@ public static partial class simd_double
 
     [MethodImpl(256 | 512)]
     public static Vector256<double> Exp(Vector256<double> a) => Exp2(a * math.D_1_Div_Log2);
+    
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Exp10(Vector256<double> x) => Exp(x * 2.302585092994045684);
 
     [MethodImpl(256 | 512)]
     public static Vector256<double> Exp2(Vector256<double> x)

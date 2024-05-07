@@ -128,6 +128,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float2 min(this float2 a, float2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 max(this float2 a, float2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 clamp(this float2 v, float2 min, float2 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Max(min.vector, Vector64.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float dot(this float2 a, float2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector64.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (float)(a.x * b.x + a.y * b.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float lengthsq(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector64.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float distancesq(this float2 a, float2 b) => lengthsq(b - a);
 }
 
 #endregion // float2
@@ -258,6 +311,62 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float3 min(this float3 a, float3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 max(this float3 a, float3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 clamp(this float3 v, float3 min, float3 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(min.vector, Vector128.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float dot(this float3 a, float3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (float)(a.x * b.x + a.y * b.y + a.z * b.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 cross(this float3 a, float3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static float lengthsq(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float distancesq(this float3 a, float3 b) => lengthsq(b - a);
 }
 
 #endregion // float3
@@ -388,6 +497,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float4 min(this float4 a, float4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 max(this float4 a, float4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 clamp(this float4 v, float4 min, float4 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(min.vector, Vector128.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float dot(this float4 a, float4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (float)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float lengthsq(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float distancesq(this float4 a, float4 b) => lengthsq(b - a);
 }
 
 #endregion // float4
@@ -518,6 +680,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double2 min(this double2 a, double2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 max(this double2 a, double2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 clamp(this double2 v, double2 min, double2 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(min.vector, Vector128.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double dot(this double2 a, double2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (double)(a.x * b.x + a.y * b.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double lengthsq(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double distancesq(this double2 a, double2 b) => lengthsq(b - a);
 }
 
 #endregion // double2
@@ -648,6 +863,62 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double3 min(this double3 a, double3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 max(this double3 a, double3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 clamp(this double3 v, double3 min, double3 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(min.vector, Vector256.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double dot(this double3 a, double3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (double)(a.x * b.x + a.y * b.y + a.z * b.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 cross(this double3 a, double3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static double lengthsq(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double distancesq(this double3 a, double3 b) => lengthsq(b - a);
 }
 
 #endregion // double3
@@ -778,6 +1049,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double4 min(this double4 a, double4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 max(this double4 a, double4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 clamp(this double4 v, double4 min, double4 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(min.vector, Vector256.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double dot(this double4 a, double4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (double)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double lengthsq(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double distancesq(this double4 a, double4 b) => lengthsq(b - a);
 }
 
 #endregion // double4
@@ -908,6 +1232,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static int2 min(this int2 a, int2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 max(this int2 a, int2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 clamp(this int2 v, int2 min, int2 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Max(min.vector, Vector64.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int dot(this int2 a, int2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector64.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (int)(a.x * b.x + a.y * b.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int lengthsq(this int2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector64.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int distancesq(this int2 a, int2 b) => lengthsq(b - a);
 }
 
 #endregion // int2
@@ -1038,6 +1415,62 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static int3 min(this int3 a, int3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 max(this int3 a, int3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 clamp(this int3 v, int3 min, int3 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(min.vector, Vector128.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int dot(this int3 a, int3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (int)(a.x * b.x + a.y * b.y + a.z * b.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 cross(this int3 a, int3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static int lengthsq(this int3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int distancesq(this int3 a, int3 b) => lengthsq(b - a);
 }
 
 #endregion // int3
@@ -1168,6 +1601,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static int4 min(this int4 a, int4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 max(this int4 a, int4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 clamp(this int4 v, int4 min, int4 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(min.vector, Vector128.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int dot(this int4 a, int4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (int)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int lengthsq(this int4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int distancesq(this int4 a, int4 b) => lengthsq(b - a);
 }
 
 #endregion // int4
@@ -1289,6 +1775,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint2 min(this uint2 a, uint2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint2 max(this uint2 a, uint2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint2 clamp(this uint2 v, uint2 min, uint2 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector64.Max(min.vector, Vector64.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint dot(this uint2 a, uint2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector64.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (uint)(a.x * b.x + a.y * b.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint lengthsq(this uint2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector64.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint distancesq(this uint2 a, uint2 b) => lengthsq(b - a);
 }
 
 #endregion // uint2
@@ -1410,6 +1949,62 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint3 min(this uint3 a, uint3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint3 max(this uint3 a, uint3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint3 clamp(this uint3 v, uint3 min, uint3 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(min.vector, Vector128.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint dot(this uint3 a, uint3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (uint)(a.x * b.x + a.y * b.y + a.z * b.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint3 cross(this uint3 a, uint3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static uint lengthsq(this uint3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint distancesq(this uint3 a, uint3 b) => lengthsq(b - a);
 }
 
 #endregion // uint3
@@ -1531,6 +2126,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint4 min(this uint4 a, uint4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint4 max(this uint4 a, uint4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint4 clamp(this uint4 v, uint4 min, uint4 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(min.vector, Vector128.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint dot(this uint4 a, uint4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (uint)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint lengthsq(this uint4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint distancesq(this uint4 a, uint4 b) => lengthsq(b - a);
 }
 
 #endregion // uint4
@@ -1661,6 +2309,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static long2 min(this long2 a, long2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 max(this long2 a, long2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 clamp(this long2 v, long2 min, long2 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(min.vector, Vector128.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long dot(this long2 a, long2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (long)(a.x * b.x + a.y * b.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long lengthsq(this long2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long distancesq(this long2 a, long2 b) => lengthsq(b - a);
 }
 
 #endregion // long2
@@ -1791,6 +2492,62 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static long3 min(this long3 a, long3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 max(this long3 a, long3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 clamp(this long3 v, long3 min, long3 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(min.vector, Vector256.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long dot(this long3 a, long3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (long)(a.x * b.x + a.y * b.y + a.z * b.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 cross(this long3 a, long3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static long lengthsq(this long3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long distancesq(this long3 a, long3 b) => lengthsq(b - a);
 }
 
 #endregion // long3
@@ -1921,6 +2678,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static long4 min(this long4 a, long4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 max(this long4 a, long4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 clamp(this long4 v, long4 min, long4 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(min.vector, Vector256.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long dot(this long4 a, long4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (long)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long lengthsq(this long4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long distancesq(this long4 a, long4 b) => lengthsq(b - a);
 }
 
 #endregion // long4
@@ -2042,6 +2852,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 min(this ulong2 a, ulong2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 max(this ulong2 a, ulong2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 clamp(this ulong2 v, ulong2 min, ulong2 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector128.Max(min.vector, Vector128.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong dot(this ulong2 a, ulong2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (ulong)(a.x * b.x + a.y * b.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong lengthsq(this ulong2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong distancesq(this ulong2 a, ulong2 b) => lengthsq(b - a);
 }
 
 #endregion // ulong2
@@ -2163,6 +3026,62 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 min(this ulong3 a, ulong3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 max(this ulong3 a, ulong3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 clamp(this ulong3 v, ulong3 min, ulong3 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(min.vector, Vector256.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong dot(this ulong3 a, ulong3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (ulong)(a.x * b.x + a.y * b.y + a.z * b.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 cross(this ulong3 a, ulong3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static ulong lengthsq(this ulong3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong distancesq(this ulong3 a, ulong3 b) => lengthsq(b - a);
 }
 
 #endregion // ulong3
@@ -2284,6 +3203,59 @@ public static partial class math
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 min(this ulong4 a, ulong4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 max(this ulong4 a, ulong4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 clamp(this ulong4 v, ulong4 min, ulong4 max)
+    {
+        #if NET8_0_OR_GREATER
+        return new(Vector256.Max(min.vector, Vector256.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong dot(this ulong4 a, ulong4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+        return (ulong)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong lengthsq(this ulong4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+        return a.dot(a);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong distancesq(this ulong4 a, ulong4 b) => lengthsq(b - a);
 }
 
 #endregion // ulong4
@@ -2374,6 +3346,39 @@ public static partial class math
     {
         return new(a.x.sign(), a.y.sign());
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 min(this decimal2 a, decimal2 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 max(this decimal2 a, decimal2 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 clamp(this decimal2 v, decimal2 min, decimal2 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal dot(this decimal2 a, decimal2 b)
+    {
+        return (decimal)(a.x * b.x + a.y * b.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal lengthsq(this decimal2 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal distancesq(this decimal2 a, decimal2 b) => lengthsq(b - a);
 }
 
 #endregion // decimal2
@@ -2464,6 +3469,42 @@ public static partial class math
     {
         return new(a.x.sign(), a.y.sign(), a.z.sign());
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 min(this decimal3 a, decimal3 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 max(this decimal3 a, decimal3 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 clamp(this decimal3 v, decimal3 min, decimal3 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal dot(this decimal3 a, decimal3 b)
+    {
+        return (decimal)(a.x * b.x + a.y * b.y + a.z * b.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 cross(this decimal3 a, decimal3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static decimal lengthsq(this decimal3 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal distancesq(this decimal3 a, decimal3 b) => lengthsq(b - a);
 }
 
 #endregion // decimal3
@@ -2554,6 +3595,39 @@ public static partial class math
     {
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 min(this decimal4 a, decimal4 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 max(this decimal4 a, decimal4 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 clamp(this decimal4 v, decimal4 min, decimal4 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal dot(this decimal4 a, decimal4 b)
+    {
+        return (decimal)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal lengthsq(this decimal4 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal distancesq(this decimal4 a, decimal4 b) => lengthsq(b - a);
 }
 
 #endregion // decimal4
@@ -2644,6 +3718,39 @@ public static partial class math
     {
         return new(a.x.sign(), a.y.sign());
     }
+
+    [MethodImpl(256 | 512)]
+    public static half2 min(this half2 a, half2 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 max(this half2 a, half2 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 clamp(this half2 v, half2 min, half2 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half dot(this half2 a, half2 b)
+    {
+        return (half)(a.x * b.x + a.y * b.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half lengthsq(this half2 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half distancesq(this half2 a, half2 b) => lengthsq(b - a);
 }
 
 #endregion // half2
@@ -2734,6 +3841,42 @@ public static partial class math
     {
         return new(a.x.sign(), a.y.sign(), a.z.sign());
     }
+
+    [MethodImpl(256 | 512)]
+    public static half3 min(this half3 a, half3 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 max(this half3 a, half3 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 clamp(this half3 v, half3 min, half3 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half dot(this half3 a, half3 b)
+    {
+        return (half)(a.x * b.x + a.y * b.y + a.z * b.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 cross(this half3 a, half3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static half lengthsq(this half3 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half distancesq(this half3 a, half3 b) => lengthsq(b - a);
 }
 
 #endregion // half3
@@ -2824,6 +3967,39 @@ public static partial class math
     {
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
     }
+
+    [MethodImpl(256 | 512)]
+    public static half4 min(this half4 a, half4 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 max(this half4 a, half4 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 clamp(this half4 v, half4 min, half4 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half dot(this half4 a, half4 b)
+    {
+        return (half)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half lengthsq(this half4 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half distancesq(this half4 a, half4 b) => lengthsq(b - a);
 }
 
 #endregion // half4

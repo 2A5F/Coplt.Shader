@@ -225,6 +225,56 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static <#= typeName #> exp2(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp2(a.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.exp2()")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> exp10(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(simd.Exp10(a.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.exp10()")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> pow(this <#= typeName #> a, <#= typeName #> b)
     {
 <#
@@ -305,6 +355,42 @@ public static partial class math
             }
 #>
     }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> sqrt(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(Vector<#= bitSize #>.Sqrt(a.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.sqrt()")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> rsqrt(this <#= typeName #> a) => <#= typeName #>.One / sqrt(a);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> length(this <#= typeName #> a) => dot(a, a).sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> distance(this <#= typeName #> a, <#= typeName #> b) => length(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> normalize(this <#= typeName #> a) => a * dot(a, a).rsqrt();
 }
 
 #endregion // <#= typeName #>

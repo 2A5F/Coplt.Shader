@@ -315,6 +315,140 @@ public static partial class math
             }
 #>
     }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> min(this <#= typeName #> a, <#= typeName #> b)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(Vector<#= bitSize #>.Min(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.min(b.{Typ.xyzw[n]})")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> max(this <#= typeName #> a, <#= typeName #> b)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(Vector<#= bitSize #>.Max(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.max(b.{Typ.xyzw[n]})")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> clamp(this <#= typeName #> v, <#= typeName #> min, <#= typeName #> max)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(Vector<#= bitSize #>.Max(min.vector, Vector<#= bitSize #>.Min(max.vector, v.vector)));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"v.{Typ.xyzw[n]}.clamp(min.{Typ.xyzw[n]}, max.{Typ.xyzw[n]})")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.simdComp #> dot(this <#= typeName #> a, <#= typeName #> b)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return Vector<#= bitSize #>.Dot(a.vector, b.vector);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return (<#= typ.simdComp #>)(<#= string.Join(" + ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]} * b.{Typ.xyzw[n]}")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+<#
+            if (i == 3)
+            {
+#>
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> cross(this <#= typeName #> a, <#= typeName #> b) => (a * b.yzx - a.yzx * b).yzx;
+<#
+            }
+#>
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.simdComp #> lengthsq(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return Vector<#= bitSize #>.Dot(a.vector, a.vector);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return a.dot(a);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.simdComp #> distancesq(this <#= typeName #> a, <#= typeName #> b) => lengthsq(b - a);
 }
 
 #endregion // <#= typeName #>

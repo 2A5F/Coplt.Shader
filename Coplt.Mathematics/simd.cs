@@ -902,6 +902,162 @@ public static partial class simd
 
     #endregion
 
+    #region Exp2
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Exp2(Vector64<float> d)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Exp2(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Exp2(d.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            d.GetElement(0).exp2(),
+            d.GetElement(1).exp2()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Exp2(Vector128<float> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Exp2(d);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Exp2(d.GetLower()),
+                simd_float.Exp2(d.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            d.GetElement(0).exp2(),
+            d.GetElement(1).exp2(),
+            d.GetElement(2).exp2(),
+            d.GetElement(3).exp2()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Exp2(Vector128<double> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Exp2(d);
+        }
+        return Vector128.Create(
+            d.GetElement(0).exp2(),
+            d.GetElement(1).exp2()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Exp2(Vector256<double> d)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Exp2(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Exp2(d.GetLower()),
+                simd_double.Exp2(d.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            d.GetElement(0).exp2(),
+            d.GetElement(1).exp2(),
+            d.GetElement(2).exp2(),
+            d.GetElement(3).exp2()
+        );
+    }
+
+    #endregion
+
+    #region Exp10
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Exp10(Vector64<float> d)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Exp10(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Exp10(d.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            d.GetElement(0).exp10(),
+            d.GetElement(1).exp10()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Exp10(Vector128<float> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Exp10(d);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Exp10(d.GetLower()),
+                simd_float.Exp10(d.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            d.GetElement(0).exp10(),
+            d.GetElement(1).exp10(),
+            d.GetElement(2).exp10(),
+            d.GetElement(3).exp10()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Exp10(Vector128<double> d)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Exp10(d);
+        }
+        return Vector128.Create(
+            d.GetElement(0).exp10(),
+            d.GetElement(1).exp10()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Exp10(Vector256<double> d)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Exp10(d);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Exp10(d.GetLower()),
+                simd_double.Exp10(d.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            d.GetElement(0).exp10(),
+            d.GetElement(1).exp10(),
+            d.GetElement(2).exp10(),
+            d.GetElement(3).exp10()
+        );
+    }
+
+    #endregion
+
     #region Pow
 
     [MethodImpl(256 | 512)]
