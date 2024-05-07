@@ -5,7 +5,29 @@ public static partial class math
     #region select
 
     [MethodImpl(256 | 512)]
-    public static T select<T>(this bool c, T t, T f) => c ? t : f;
+    public static byte select(this bool c, byte t, byte f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static sbyte select(this bool c, sbyte t, sbyte f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static ushort select(this bool c, ushort t, ushort f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static short select(this bool c, short t, short f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static uint select(this bool c, uint t, uint f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static int select(this bool c, int t, int f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static ulong select(this bool c, ulong t, ulong f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static long select(this bool c, long t, long f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static half select(this bool c, half t, half f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static float select(this bool c, float t, float f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static double select(this bool c, double t, double f) => c ? t : f;
+    [MethodImpl(256 | 512)]
+    public static decimal select(this bool c, decimal t, decimal f) => c ? t : f;
 
     #endregion
 

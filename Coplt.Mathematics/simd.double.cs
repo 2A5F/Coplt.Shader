@@ -7,6 +7,46 @@ namespace Coplt.Mathematics;
 
 public static partial class simd_double
 {
+    #region Mod v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Mod(Vector128<double> x, Vector128<double> y)
+    {
+        var div = x / y;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, y, x);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Mod(Vector128<double> x, double y)
+    {
+        var div = x / y;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector128.Create(y), x);
+    }
+
+    #endregion
+
+    #region Mod v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Mod(Vector256<double> x, Vector256<double> y)
+    {
+        var div = x / y;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, y, x);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Mod(Vector256<double> x, double y)
+    {
+        var div = x / y;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector256.Create(y), x);
+    }
+
+    #endregion
+
     #region Log v128
 
     [MethodImpl(256 | 512)]
@@ -125,7 +165,7 @@ public static partial class simd_double
 
     [MethodImpl(256 | 512)]
     public static Vector128<double> Exp(Vector128<double> a) => Exp2(a * math.D_1_Div_Log2);
-    
+
     [MethodImpl(256 | 512)]
     public static Vector128<double> Exp10(Vector128<double> x) => Exp(x * 2.302585092994045684);
 
@@ -169,7 +209,7 @@ public static partial class simd_double
 
     [MethodImpl(256 | 512)]
     public static Vector256<double> Exp(Vector256<double> a) => Exp2(a * math.D_1_Div_Log2);
-    
+
     [MethodImpl(256 | 512)]
     public static Vector256<double> Exp10(Vector256<double> x) => Exp(x * 2.302585092994045684);
 
@@ -214,16 +254,15 @@ public static partial class simd_double
     [MethodImpl(256 | 512)]
     public static Vector128<double> Pow(Vector128<double> a, Vector128<double> b)
     {
+        var sig = Vector128.LessThan(a, default)
+                  & simd.Ne(Mod(b, Vector128.Create(2.0)), default)
+                  & Vector128.Create(0x8000_0000_0000_0000).AsDouble();
         var r = Exp2(Log2(Vector128.Abs(a)) * b);
-        return r;
+        return r | sig;
     }
-    
+
     [MethodImpl(256 | 512)]
-    public static Vector128<double> Pow(Vector128<double> a, double b)
-    {
-        var r = Exp2(Log2(Vector128.Abs(a)) * b);
-        return r;
-    }
+    public static Vector128<double> Pow(Vector128<double> a, double b) => Pow(a, Vector128.Create(b));
 
     #endregion
 
@@ -232,16 +271,15 @@ public static partial class simd_double
     [MethodImpl(256 | 512)]
     public static Vector256<double> Pow(Vector256<double> a, Vector256<double> b)
     {
+        var sig = Vector256.LessThan(a, default)
+                  & simd.Ne(Mod(b, Vector256.Create(2.0)), default)
+                  & Vector256.Create(0x8000_0000_0000_0000).AsDouble();
         var r = Exp2(Log2(Vector256.Abs(a)) * b);
-        return r;
+        return r | sig;
     }
-    
+
     [MethodImpl(256 | 512)]
-    public static Vector256<double> Pow(Vector256<double> a, double b)
-    {
-        var r = Exp2(Log2(Vector256.Abs(a)) * b);
-        return r;
-    }
+    public static Vector256<double> Pow(Vector256<double> a, double b) => Pow(a, Vector256.Create(b));
 
     #endregion
 }

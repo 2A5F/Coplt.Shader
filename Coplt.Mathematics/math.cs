@@ -18,7 +18,135 @@ public static partial class math
     public const double D_Log10 = 2.3025850929940456840179914546843642076011014886287729760333279009;
     public const double D_RadToDeg = 57.295779513082320876798154814105170332405472466564321549160243861;
     public const double D_1_Div_Log2 = 1.4426950408889634073599246810018921374266459541529859341354494069;
-    public const double D_DegToRad = 0.0174532925199432957692369076848861271344287188854172545609719144;  
+    public const double D_DegToRad = 0.0174532925199432957692369076848861271344287188854172545609719144;
+
+    #region rcp fast
+
+    [MethodImpl(256 | 512)]
+    public static float2 rcp_fast(this float2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Rcp(v.vector));
+        #else
+        return rcp(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 rcp_fast(this float3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Rcp(v.vector));
+        #else
+        return rcp(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 rcp_fast(this float4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Rcp(v.vector));
+        #else
+        return rcp(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 rcp_fast(this double2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Rcp(v.vector));
+        #else
+        return rcp(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 rcp_fast(this double3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Rcp(v.vector));
+        #else
+        return rcp(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 rcp_fast(this double4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Rcp(v.vector));
+        #else
+        return rcp(v);
+        #endif
+    }
+
+    #endregion
+
+    #region rsqrt fast
+
+    [MethodImpl(256 | 512)]
+    public static float2 rsqrt_fast(this float2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.RSqrt(v.vector));
+        #else
+        return rsqrt(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 rsqrt_fast(this float3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.RSqrt(v.vector));
+        #else
+        return rsqrt(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 rsqrt_fast(this float4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.RSqrt(v.vector));
+        #else
+        return rsqrt(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 rsqrt_fast(this double2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.RSqrt(v.vector));
+        #else
+        return rsqrt(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 rsqrt_fast(this double3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.RSqrt(v.vector));
+        #else
+        return rsqrt(v);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 rsqrt_fast(this double4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.RSqrt(v.vector));
+        #else
+        return rsqrt(v);
+        #endif
+    }
+
+    #endregion
 }
 
 public static partial class ctor

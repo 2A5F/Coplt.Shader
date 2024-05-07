@@ -8,6 +8,86 @@ namespace Coplt.Mathematics;
 
 public static partial class simd
 {
+    #region Convert
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<int> ToInt32(Vector256<double> v)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.ConvertToVector128Int32(v);
+        }
+        return Vector128.Narrow(Vector128.ConvertToInt64(v.GetLower()), Vector128.ConvertToInt64(v.GetUpper()));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<uint> ToUInt32(Vector256<double> v)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.ConvertToVector128Int32(v).AsUInt32();
+        }
+        return Vector128.Narrow(Vector128.ConvertToUInt64(v.GetLower()), Vector128.ConvertToUInt64(v.GetUpper()));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> ToSingle(Vector256<double> v)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.ConvertToVector128Single(v);
+        }
+        return Vector128.Narrow(v.GetLower(), v.GetUpper());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> ToSingle(Vector128<double> v)
+    {
+        return Vector64.Narrow(v.GetLower(), v.GetUpper());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> ToDouble(Vector128<float> v)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.ConvertToVector256Double(v);
+        }
+        var (l, u) = Vector128.Widen(v);
+        return Vector256.Create(l, u);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> ToDouble(Vector64<float> v)
+    {
+        var (l, u) = Vector64.Widen(v);
+        return Vector128.Create(l, u);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> ToDouble(Vector128<int> v)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.ConvertToVector256Double(v);
+        }
+        var (l, u) = Vector128.Widen(v);
+        return Vector256.Create(Vector128.ConvertToDouble(l), Vector128.ConvertToDouble(u));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> ToDouble(Vector128<uint> v)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.ConvertToVector256Double(v.AsInt32());
+        }
+        var (l, u) = Vector128.Widen(v);
+        return Vector256.Create(Vector128.ConvertToDouble(l), Vector128.ConvertToDouble(u));
+    }
+
+    #endregion
+
     #region Cmp
 
     [MethodImpl(256 | 512)]
@@ -162,6 +242,85 @@ public static partial class simd
 
     #endregion
 
+    #region RoundToZero
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> RoundToZero(Vector64<float> x)
+    {
+        if (Sse41.IsSupported)
+        {
+            return Sse41.RoundToZero(x.ToVector128()).GetLower();
+        }
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.RoundToZero(x);
+        }
+        return Vector64.Create(
+            MathF.Round(x.GetElement(0), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(1), MidpointRounding.ToZero)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> RoundToZero(Vector128<float> x)
+    {
+        if (Sse41.IsSupported)
+        {
+            return Sse41.RoundToZero(x);
+        }
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.RoundToZero(x);
+        }
+        return Vector128.Create(
+            MathF.Round(x.GetElement(0), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(1), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(2), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(3), MidpointRounding.ToZero)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> RoundToZero(Vector128<double> x)
+    {
+        if (Sse41.IsSupported)
+        {
+            return Sse41.RoundToZero(x);
+        }
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return AdvSimd.Arm64.RoundToZero(x);
+        }
+        return Vector128.Create(
+            Math.Round(x.GetElement(0), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(1), MidpointRounding.ToZero)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> RoundToZero(Vector256<double> x)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.RoundToZero(x);
+        }
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return Vector256.Create(
+                AdvSimd.Arm64.RoundToZero(x.GetLower()),
+                AdvSimd.Arm64.RoundToZero(x.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            Math.Round(x.GetElement(0), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(1), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(2), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(3), MidpointRounding.ToZero)
+        );
+    }
+
+    #endregion
+
     #region Truncate
 
     [MethodImpl(256 | 512)]
@@ -260,6 +419,142 @@ public static partial class simd
 
     #endregion
 
+    #region Mod
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Mod(Vector64<float> a, Vector64<float> b)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Mod(a, b);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Mod(a.ToVector128(), b.ToVector128()).GetLower();
+        }
+
+        return Vector64.Create(
+            a.GetElement(0) % b.GetElement(0),
+            a.GetElement(1) % b.GetElement(1)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Mod(Vector128<float> a, Vector128<float> b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Mod(a, b);
+        }
+
+        return Vector128.Create(
+            a.GetElement(0) % b.GetElement(0),
+            a.GetElement(1) % b.GetElement(1),
+            a.GetElement(2) % b.GetElement(2),
+            a.GetElement(3) % b.GetElement(3)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Mod(Vector128<double> a, Vector128<double> b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Mod(a, b);
+        }
+
+        return Vector128.Create(
+            a.GetElement(0) % b.GetElement(0),
+            a.GetElement(1) % b.GetElement(1)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Mod(Vector256<double> a, Vector256<double> b)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Mod(a, b);
+        }
+
+        return Vector256.Create(
+            a.GetElement(0) % b.GetElement(0),
+            a.GetElement(1) % b.GetElement(1),
+            a.GetElement(2) % b.GetElement(2),
+            a.GetElement(3) % b.GetElement(3)
+        );
+    }
+
+    #endregion
+
+    #region Mod Scalar
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Mod(Vector64<float> a, float b)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Mod(a, b);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Mod(a.ToVector128(), b).GetLower();
+        }
+
+        return Vector64.Create(
+            a.GetElement(0) % b,
+            a.GetElement(1) % b
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Mod(Vector128<float> a, float b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Mod(a, b);
+        }
+
+        return Vector128.Create(
+            a.GetElement(0) % b,
+            a.GetElement(1) % b,
+            a.GetElement(2) % b,
+            a.GetElement(3) % b
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Mod(Vector128<double> a, double b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Mod(a, b);
+        }
+
+        return Vector128.Create(
+            a.GetElement(0) % b,
+            a.GetElement(1) % b
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Mod(Vector256<double> a, double b)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Mod(a, b);
+        }
+
+        return Vector256.Create(
+            a.GetElement(0) % b,
+            a.GetElement(1) % b,
+            a.GetElement(2) % b,
+            a.GetElement(3) % b
+        );
+    }
+
+    #endregion
+
     #region ModF
 
     [MethodImpl(256 | 512)]
@@ -270,7 +565,7 @@ public static partial class simd
             i = Truncate(d);
             return d - i;
         }
-        if (Vector64.IsHardwareAccelerated)
+        if (Vector128.IsHardwareAccelerated)
         {
             var r128 = ModF(d.ToVector128(), out var i128);
             i = i128.GetLower();
@@ -486,6 +781,60 @@ public static partial class simd
             return X86.Fma.MultiplyAdd(a, b, c);
         }
         return a * b + c;
+    }
+
+    #endregion
+
+    #region Fnma
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Fnma(Vector64<float> a, Vector64<float> b, Vector64<float> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplyAddNegated(a.ToVector128(), b.ToVector128(), c.ToVector128()).GetLower();
+        }
+        return -(a * b) + c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Fnma(Vector128<float> a, Vector128<float> b, Vector128<float> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplyAddNegated(a, b, c);
+        }
+        return -(a * b) + c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Fnma(Vector128<double> a, Vector128<double> b, Vector128<double> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplyAddNegated(a, b, c);
+        }
+        return -(a * b) + c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Fnma(Vector256<float> a, Vector256<float> b, Vector256<float> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplyAddNegated(a, b, c);
+        }
+        return -(a * b) + c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Fnma(Vector256<double> a, Vector256<double> b, Vector256<double> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplyAddNegated(a, b, c);
+        }
+        return -(a * b) + c;
     }
 
     #endregion
@@ -1210,6 +1559,124 @@ public static partial class simd
             a.GetElement(2).pow(b),
             a.GetElement(3).pow(b)
         );
+    }
+
+    #endregion
+
+    #region Rcp
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Rcp(Vector64<float> a)
+    {
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.ReciprocalEstimate(a);
+        }
+        if (!Vector64.IsHardwareAccelerated && Vector128.IsHardwareAccelerated)
+        {
+            return Rcp(a.ToVector128()).GetLower();
+        }
+
+        return Vector64<float>.One / a;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Rcp(Vector128<float> a)
+    {
+        if (Sse.IsSupported)
+        {
+            return Sse.Reciprocal(a);
+        }
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.ReciprocalEstimate(a);
+        }
+
+        return Vector128<float>.One / a;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Rcp(Vector128<double> a)
+    {
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return AdvSimd.Arm64.ReciprocalEstimate(a);
+        }
+
+        return Vector128<double>.One / a;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Rcp(Vector256<double> a)
+    {
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return Vector256.Create(
+                AdvSimd.Arm64.ReciprocalEstimate(a.GetLower()),
+                AdvSimd.Arm64.ReciprocalEstimate(a.GetUpper())
+            );
+        }
+
+        return Vector256<double>.One / a;
+    }
+
+    #endregion
+
+    #region RSqrt
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> RSqrt(Vector64<float> a)
+    {
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.ReciprocalSquareRootEstimate(a);
+        }
+        if (!Vector64.IsHardwareAccelerated && Vector128.IsHardwareAccelerated)
+        {
+            return RSqrt(a.ToVector128()).GetLower();
+        }
+
+        return Vector64<float>.One / Vector64.Sqrt(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> RSqrt(Vector128<float> a)
+    {
+        if (Sse.IsSupported)
+        {
+            return Sse.ReciprocalSqrt(a);
+        }
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.ReciprocalSquareRootEstimate(a);
+        }
+
+        return Vector128<float>.One / Vector128.Sqrt(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> RSqrt(Vector128<double> a)
+    {
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return AdvSimd.Arm64.ReciprocalSquareRootEstimate(a);
+        }
+
+        return Vector128<double>.One / Vector128.Sqrt(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> RSqrt(Vector256<double> a)
+    {
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return Vector256.Create(
+                AdvSimd.Arm64.ReciprocalSquareRootEstimate(a.GetLower()),
+                AdvSimd.Arm64.ReciprocalSquareRootEstimate(a.GetUpper())
+            );
+        }
+
+        return Vector256<double>.One / Vector256.Sqrt(a);
     }
 
     #endregion

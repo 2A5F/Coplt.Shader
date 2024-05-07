@@ -7,6 +7,9 @@ namespace Coplt.Mathematics;
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b32v2 isFinite(this float2 a) => abs(a) < float.PositiveInfinity;
+
+    [MethodImpl(256 | 512)]
     public static b32v2 isInf(this float2 a)
     {
         #if NET8_0_OR_GREATER
@@ -164,6 +167,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static float2 normalize(this float2 a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static float2 normalizeSafe(this float2 a, float2 defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38f, a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 step(this float2 a, float2 threshold) =>
+        select(a >= threshold, float2.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static float2 refract(this float2 i, float2 n, float indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (float)(1.0f - indexOfRefraction * indexOfRefraction * (1.0f - ni * ni));
+        return select(k >= 0.0f, indexOfRefraction * i - (float)((float)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 projectSafe(this float2 a, float2 onto, float2 defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 faceForward(this float2 n, float2 i, float2 ng) =>
+        select(dot(ng, i) >= 0.0f, -n, n);
 }
 
 #endregion // float2
@@ -172,6 +205,9 @@ public static partial class math
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b32v3 isFinite(this float3 a) => abs(a) < float.PositiveInfinity;
+
     [MethodImpl(256 | 512)]
     public static b32v3 isInf(this float3 a)
     {
@@ -330,6 +366,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static float3 normalize(this float3 a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static float3 normalizeSafe(this float3 a, float3 defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38f, a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 step(this float3 a, float3 threshold) =>
+        select(a >= threshold, float3.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static float3 refract(this float3 i, float3 n, float indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (float)(1.0f - indexOfRefraction * indexOfRefraction * (1.0f - ni * ni));
+        return select(k >= 0.0f, indexOfRefraction * i - (float)((float)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 projectSafe(this float3 a, float3 onto, float3 defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 faceForward(this float3 n, float3 i, float3 ng) =>
+        select(dot(ng, i) >= 0.0f, -n, n);
 }
 
 #endregion // float3
@@ -338,6 +404,9 @@ public static partial class math
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b32v4 isFinite(this float4 a) => abs(a) < float.PositiveInfinity;
+
     [MethodImpl(256 | 512)]
     public static b32v4 isInf(this float4 a)
     {
@@ -496,6 +565,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static float4 normalize(this float4 a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static float4 normalizeSafe(this float4 a, float4 defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38f, a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 step(this float4 a, float4 threshold) =>
+        select(a >= threshold, float4.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static float4 refract(this float4 i, float4 n, float indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (float)(1.0f - indexOfRefraction * indexOfRefraction * (1.0f - ni * ni));
+        return select(k >= 0.0f, indexOfRefraction * i - (float)((float)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 projectSafe(this float4 a, float4 onto, float4 defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 faceForward(this float4 n, float4 i, float4 ng) =>
+        select(dot(ng, i) >= 0.0f, -n, n);
 }
 
 #endregion // float4
@@ -504,6 +603,9 @@ public static partial class math
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b64v2 isFinite(this double2 a) => abs(a) < double.PositiveInfinity;
+
     [MethodImpl(256 | 512)]
     public static b64v2 isInf(this double2 a)
     {
@@ -662,6 +764,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double2 normalize(this double2 a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static double2 normalizeSafe(this double2 a, double2 defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38, a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 step(this double2 a, double2 threshold) =>
+        select(a >= threshold, double2.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static double2 refract(this double2 i, double2 n, double indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (double)(1.0 - indexOfRefraction * indexOfRefraction * (1.0 - ni * ni));
+        return select(k >= 0.0, indexOfRefraction * i - (double)((double)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 projectSafe(this double2 a, double2 onto, double2 defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 faceForward(this double2 n, double2 i, double2 ng) =>
+        select(dot(ng, i) >= 0.0, -n, n);
 }
 
 #endregion // double2
@@ -670,6 +802,9 @@ public static partial class math
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b64v3 isFinite(this double3 a) => abs(a) < double.PositiveInfinity;
+
     [MethodImpl(256 | 512)]
     public static b64v3 isInf(this double3 a)
     {
@@ -828,6 +963,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double3 normalize(this double3 a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static double3 normalizeSafe(this double3 a, double3 defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38, a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 step(this double3 a, double3 threshold) =>
+        select(a >= threshold, double3.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static double3 refract(this double3 i, double3 n, double indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (double)(1.0 - indexOfRefraction * indexOfRefraction * (1.0 - ni * ni));
+        return select(k >= 0.0, indexOfRefraction * i - (double)((double)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 projectSafe(this double3 a, double3 onto, double3 defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 faceForward(this double3 n, double3 i, double3 ng) =>
+        select(dot(ng, i) >= 0.0, -n, n);
 }
 
 #endregion // double3
@@ -836,6 +1001,9 @@ public static partial class math
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b64v4 isFinite(this double4 a) => abs(a) < double.PositiveInfinity;
+
     [MethodImpl(256 | 512)]
     public static b64v4 isInf(this double4 a)
     {
@@ -994,6 +1162,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double4 normalize(this double4 a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static double4 normalizeSafe(this double4 a, double4 defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38, a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 step(this double4 a, double4 threshold) =>
+        select(a >= threshold, double4.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static double4 refract(this double4 i, double4 n, double indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (double)(1.0 - indexOfRefraction * indexOfRefraction * (1.0 - ni * ni));
+        return select(k >= 0.0, indexOfRefraction * i - (double)((double)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 projectSafe(this double4 a, double4 onto, double4 defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 faceForward(this double4 n, double4 i, double4 ng) =>
+        select(dot(ng, i) >= 0.0, -n, n);
 }
 
 #endregion // double4
@@ -1002,6 +1200,9 @@ public static partial class math
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b16v2 isFinite(this half2 a) => abs(a) < half.PositiveInfinity;
+
     [MethodImpl(256 | 512)]
     public static b16v2 isInf(this half2 a)
     {
@@ -1104,6 +1305,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static half2 normalize(this half2 a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static half2 normalizeSafe(this half2 a, half2 defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38f.half(), a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 step(this half2 a, half2 threshold) =>
+        select(a >= threshold, half2.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static half2 refract(this half2 i, half2 n, half indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (half)(1.0f.half() - indexOfRefraction * indexOfRefraction * (1.0f.half() - ni * ni));
+        return select(k >= 0.0f.half(), indexOfRefraction * i - (half)((half)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 projectSafe(this half2 a, half2 onto, half2 defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 faceForward(this half2 n, half2 i, half2 ng) =>
+        select(dot(ng, i) >= 0.0f.half(), -n, n);
 }
 
 #endregion // half2
@@ -1112,6 +1343,9 @@ public static partial class math
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b16v3 isFinite(this half3 a) => abs(a) < half.PositiveInfinity;
+
     [MethodImpl(256 | 512)]
     public static b16v3 isInf(this half3 a)
     {
@@ -1214,6 +1448,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static half3 normalize(this half3 a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static half3 normalizeSafe(this half3 a, half3 defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38f.half(), a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 step(this half3 a, half3 threshold) =>
+        select(a >= threshold, half3.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static half3 refract(this half3 i, half3 n, half indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (half)(1.0f.half() - indexOfRefraction * indexOfRefraction * (1.0f.half() - ni * ni));
+        return select(k >= 0.0f.half(), indexOfRefraction * i - (half)((half)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 projectSafe(this half3 a, half3 onto, half3 defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 faceForward(this half3 n, half3 i, half3 ng) =>
+        select(dot(ng, i) >= 0.0f.half(), -n, n);
 }
 
 #endregion // half3
@@ -1222,6 +1486,9 @@ public static partial class math
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b16v4 isFinite(this half4 a) => abs(a) < half.PositiveInfinity;
+
     [MethodImpl(256 | 512)]
     public static b16v4 isInf(this half4 a)
     {
@@ -1324,6 +1591,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static half4 normalize(this half4 a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static half4 normalizeSafe(this half4 a, half4 defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38f.half(), a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 step(this half4 a, half4 threshold) =>
+        select(a >= threshold, half4.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static half4 refract(this half4 i, half4 n, half indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (half)(1.0f.half() - indexOfRefraction * indexOfRefraction * (1.0f.half() - ni * ni));
+        return select(k >= 0.0f.half(), indexOfRefraction * i - (half)((half)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 projectSafe(this half4 a, half4 onto, half4 defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 faceForward(this half4 n, half4 i, half4 ng) =>
+        select(dot(ng, i) >= 0.0f.half(), -n, n);
 }
 
 #endregion // half4

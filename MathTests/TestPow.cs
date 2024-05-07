@@ -8,7 +8,7 @@ public class TestPow
 {
     [Test]
     [Parallelizable]
-    public void FloatTestPow([Random(0, 10.0f, 100)] float x, [Random(-10, 10, 100)] float y)
+    public void FloatTestPow([Random(-10f, 10.0f, 100)] float x, [Random(-10, 10, 10)] float y)
     {
         var a = simd.Pow(new float4(x).UnsafeGetInner(), new float4(y).UnsafeGetInner()).GetElement(0);
         var b = MathF.Pow(x, y);
@@ -30,7 +30,7 @@ public class TestPow
   
     [Test]
     [Parallelizable]
-    public void DoubleTestPow([Random(0, 100.0f, 100)] double x, [Random(-100, 100, 100)] double y)
+    public void DoubleTestPow([Random(-10, 100.0, 100)] double x, [Random(-100, 100, 10)] double y)
     {
         var a = simd_double.Pow(new double4(x).UnsafeGetInner(), new double4(y).UnsafeGetInner()).GetElement(0);
         var b = Math.Pow(x, y);

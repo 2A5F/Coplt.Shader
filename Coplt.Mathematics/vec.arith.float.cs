@@ -176,6 +176,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float2 remap(this float2 a, float2 srcStart, float2 srcEnd, float2 dstStart, float2 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static float2 smoothstep(this float2 a, float2 min, float2 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0f - (2.0f * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 reflect(this float2 i, float2 n) => i - 2f * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static float2 project(this float2 a, float2 onto) =>
+        (float)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static float2 radians(this float2 a) => a * float2.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static float2 degrees(this float2 a) => a * float2.RadToDeg;
 }
 
 #endregion // float2
@@ -354,6 +374,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float3 remap(this float3 a, float3 srcStart, float3 srcEnd, float3 dstStart, float3 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static float3 smoothstep(this float3 a, float3 min, float3 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0f - (2.0f * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 reflect(this float3 i, float3 n) => i - 2f * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static float3 project(this float3 a, float3 onto) =>
+        (float)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static float3 radians(this float3 a) => a * float3.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static float3 degrees(this float3 a) => a * float3.RadToDeg;
 }
 
 #endregion // float3
@@ -532,6 +572,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float4 remap(this float4 a, float4 srcStart, float4 srcEnd, float4 dstStart, float4 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static float4 smoothstep(this float4 a, float4 min, float4 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0f - (2.0f * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 reflect(this float4 i, float4 n) => i - 2f * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static float4 project(this float4 a, float4 onto) =>
+        (float)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static float4 radians(this float4 a) => a * float4.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static float4 degrees(this float4 a) => a * float4.RadToDeg;
 }
 
 #endregion // float4
@@ -710,6 +770,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double2 remap(this double2 a, double2 srcStart, double2 srcEnd, double2 dstStart, double2 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static double2 smoothstep(this double2 a, double2 min, double2 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0 - (2.0 * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 reflect(this double2 i, double2 n) => i - 2 * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static double2 project(this double2 a, double2 onto) =>
+        (double)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static double2 radians(this double2 a) => a * double2.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static double2 degrees(this double2 a) => a * double2.RadToDeg;
 }
 
 #endregion // double2
@@ -888,6 +968,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double3 remap(this double3 a, double3 srcStart, double3 srcEnd, double3 dstStart, double3 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static double3 smoothstep(this double3 a, double3 min, double3 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0 - (2.0 * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 reflect(this double3 i, double3 n) => i - 2 * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static double3 project(this double3 a, double3 onto) =>
+        (double)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static double3 radians(this double3 a) => a * double3.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static double3 degrees(this double3 a) => a * double3.RadToDeg;
 }
 
 #endregion // double3
@@ -1066,6 +1166,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double4 remap(this double4 a, double4 srcStart, double4 srcEnd, double4 dstStart, double4 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static double4 smoothstep(this double4 a, double4 min, double4 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0 - (2.0 * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 reflect(this double4 i, double4 n) => i - 2 * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static double4 project(this double4 a, double4 onto) =>
+        (double)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static double4 radians(this double4 a) => a * double4.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static double4 degrees(this double4 a) => a * double4.RadToDeg;
 }
 
 #endregion // double4
@@ -1200,6 +1320,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static decimal2 remap(this decimal2 a, decimal2 srcStart, decimal2 srcEnd, decimal2 dstStart, decimal2 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 smoothstep(this decimal2 a, decimal2 min, decimal2 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0m - (2.0m * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 reflect(this decimal2 i, decimal2 n) => i - 2m * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 project(this decimal2 a, decimal2 onto) =>
+        (decimal)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 radians(this decimal2 a) => a * decimal2.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 degrees(this decimal2 a) => a * decimal2.RadToDeg;
 }
 
 #endregion // decimal2
@@ -1334,6 +1474,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static decimal3 remap(this decimal3 a, decimal3 srcStart, decimal3 srcEnd, decimal3 dstStart, decimal3 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 smoothstep(this decimal3 a, decimal3 min, decimal3 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0m - (2.0m * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 reflect(this decimal3 i, decimal3 n) => i - 2m * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 project(this decimal3 a, decimal3 onto) =>
+        (decimal)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 radians(this decimal3 a) => a * decimal3.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 degrees(this decimal3 a) => a * decimal3.RadToDeg;
 }
 
 #endregion // decimal3
@@ -1468,6 +1628,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static decimal4 remap(this decimal4 a, decimal4 srcStart, decimal4 srcEnd, decimal4 dstStart, decimal4 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 smoothstep(this decimal4 a, decimal4 min, decimal4 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0m - (2.0m * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 reflect(this decimal4 i, decimal4 n) => i - 2m * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 project(this decimal4 a, decimal4 onto) =>
+        (decimal)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 radians(this decimal4 a) => a * decimal4.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 degrees(this decimal4 a) => a * decimal4.RadToDeg;
 }
 
 #endregion // decimal4
@@ -1602,6 +1782,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half2 remap(this half2 a, half2 srcStart, half2 srcEnd, half2 dstStart, half2 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static half2 smoothstep(this half2 a, half2 min, half2 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0f.half() - (2.0f.half() * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 reflect(this half2 i, half2 n) => i - 2f.half() * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static half2 project(this half2 a, half2 onto) =>
+        (half)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static half2 radians(this half2 a) => a * half2.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static half2 degrees(this half2 a) => a * half2.RadToDeg;
 }
 
 #endregion // half2
@@ -1736,6 +1936,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half3 remap(this half3 a, half3 srcStart, half3 srcEnd, half3 dstStart, half3 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static half3 smoothstep(this half3 a, half3 min, half3 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0f.half() - (2.0f.half() * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 reflect(this half3 i, half3 n) => i - 2f.half() * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static half3 project(this half3 a, half3 onto) =>
+        (half)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static half3 radians(this half3 a) => a * half3.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static half3 degrees(this half3 a) => a * half3.RadToDeg;
 }
 
 #endregion // half3
@@ -1870,6 +2090,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half4 remap(this half4 a, half4 srcStart, half4 srcEnd, half4 dstStart, half4 dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static half4 smoothstep(this half4 a, half4 min, half4 max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0f.half() - (2.0f.half() * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 reflect(this half4 i, half4 n) => i - 2f.half() * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static half4 project(this half4 a, half4 onto) =>
+        (half)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static half4 radians(this half4 a) => a * half4.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static half4 degrees(this half4 a) => a * half4.RadToDeg;
 }
 
 #endregion // half4

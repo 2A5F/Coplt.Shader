@@ -91,13 +91,21 @@ public partial struct float2
     [MethodImpl(256 | 512)]
     public static float2 operator %(float2 a, float2 b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
         return new((float)(a.x % b.x), (float)(a.y % b.y));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
     public static float2 operator %(float2 a, float b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b));
+        #else // NET8_0_OR_GREATER
         return new((float)(a.x % b), (float)(a.y % b));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
@@ -181,6 +189,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static float distancesq(this float2 a, float2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static float2 square(this float2 a) => a * a;
 }
 
 #endregion // float2
@@ -274,13 +285,21 @@ public partial struct float3
     [MethodImpl(256 | 512)]
     public static float3 operator %(float3 a, float3 b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
         return new((float)(a.x % b.x), (float)(a.y % b.y), (float)(a.z % b.z));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
     public static float3 operator %(float3 a, float b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b));
+        #else // NET8_0_OR_GREATER
         return new((float)(a.x % b), (float)(a.y % b), (float)(a.z % b));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
@@ -367,6 +386,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static float distancesq(this float3 a, float3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static float3 square(this float3 a) => a * a;
 }
 
 #endregion // float3
@@ -460,13 +482,21 @@ public partial struct float4
     [MethodImpl(256 | 512)]
     public static float4 operator %(float4 a, float4 b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
         return new((float)(a.x % b.x), (float)(a.y % b.y), (float)(a.z % b.z), (float)(a.w % b.w));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
     public static float4 operator %(float4 a, float b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b));
+        #else // NET8_0_OR_GREATER
         return new((float)(a.x % b), (float)(a.y % b), (float)(a.z % b), (float)(a.w % b));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
@@ -550,6 +580,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static float distancesq(this float4 a, float4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static float4 square(this float4 a) => a * a;
 }
 
 #endregion // float4
@@ -643,13 +676,21 @@ public partial struct double2
     [MethodImpl(256 | 512)]
     public static double2 operator %(double2 a, double2 b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
         return new((double)(a.x % b.x), (double)(a.y % b.y));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
     public static double2 operator %(double2 a, double b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b));
+        #else // NET8_0_OR_GREATER
         return new((double)(a.x % b), (double)(a.y % b));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
@@ -733,6 +774,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double distancesq(this double2 a, double2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static double2 square(this double2 a) => a * a;
 }
 
 #endregion // double2
@@ -826,13 +870,21 @@ public partial struct double3
     [MethodImpl(256 | 512)]
     public static double3 operator %(double3 a, double3 b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
         return new((double)(a.x % b.x), (double)(a.y % b.y), (double)(a.z % b.z));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
     public static double3 operator %(double3 a, double b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b));
+        #else // NET8_0_OR_GREATER
         return new((double)(a.x % b), (double)(a.y % b), (double)(a.z % b));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
@@ -919,6 +971,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double distancesq(this double3 a, double3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static double3 square(this double3 a) => a * a;
 }
 
 #endregion // double3
@@ -1012,13 +1067,21 @@ public partial struct double4
     [MethodImpl(256 | 512)]
     public static double4 operator %(double4 a, double4 b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
         return new((double)(a.x % b.x), (double)(a.y % b.y), (double)(a.z % b.z), (double)(a.w % b.w));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
     public static double4 operator %(double4 a, double b)
     {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b));
+        #else // NET8_0_OR_GREATER
         return new((double)(a.x % b), (double)(a.y % b), (double)(a.z % b), (double)(a.w % b));
+        #endif // NET8_0_OR_GREATER
     }
 
     [MethodImpl(256 | 512)]
@@ -1102,6 +1165,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double distancesq(this double4 a, double4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static double4 square(this double4 a) => a * a;
 }
 
 #endregion // double4
@@ -1285,6 +1351,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static int distancesq(this int2 a, int2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static int2 square(this int2 a) => a * a;
 }
 
 #endregion // int2
@@ -1471,6 +1540,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static int distancesq(this int3 a, int3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static int3 square(this int3 a) => a * a;
 }
 
 #endregion // int3
@@ -1654,6 +1726,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static int distancesq(this int4 a, int4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static int4 square(this int4 a) => a * a;
 }
 
 #endregion // int4
@@ -1828,6 +1903,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static uint distancesq(this uint2 a, uint2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static uint2 square(this uint2 a) => a * a;
 }
 
 #endregion // uint2
@@ -2005,6 +2083,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static uint distancesq(this uint3 a, uint3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static uint3 square(this uint3 a) => a * a;
 }
 
 #endregion // uint3
@@ -2179,6 +2260,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static uint distancesq(this uint4 a, uint4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static uint4 square(this uint4 a) => a * a;
 }
 
 #endregion // uint4
@@ -2362,6 +2446,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static long distancesq(this long2 a, long2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static long2 square(this long2 a) => a * a;
 }
 
 #endregion // long2
@@ -2548,6 +2635,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static long distancesq(this long3 a, long3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static long3 square(this long3 a) => a * a;
 }
 
 #endregion // long3
@@ -2731,6 +2821,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static long distancesq(this long4 a, long4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static long4 square(this long4 a) => a * a;
 }
 
 #endregion // long4
@@ -2905,6 +2998,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static ulong distancesq(this ulong2 a, ulong2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 square(this ulong2 a) => a * a;
 }
 
 #endregion // ulong2
@@ -3082,6 +3178,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static ulong distancesq(this ulong3 a, ulong3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 square(this ulong3 a) => a * a;
 }
 
 #endregion // ulong3
@@ -3256,6 +3355,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static ulong distancesq(this ulong4 a, ulong4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 square(this ulong4 a) => a * a;
 }
 
 #endregion // ulong4
@@ -3379,6 +3481,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static decimal distancesq(this decimal2 a, decimal2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 square(this decimal2 a) => a * a;
 }
 
 #endregion // decimal2
@@ -3505,6 +3610,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static decimal distancesq(this decimal3 a, decimal3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 square(this decimal3 a) => a * a;
 }
 
 #endregion // decimal3
@@ -3628,6 +3736,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static decimal distancesq(this decimal4 a, decimal4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 square(this decimal4 a) => a * a;
 }
 
 #endregion // decimal4
@@ -3751,6 +3862,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static half distancesq(this half2 a, half2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static half2 square(this half2 a) => a * a;
 }
 
 #endregion // half2
@@ -3877,6 +3991,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static half distancesq(this half3 a, half3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static half3 square(this half3 a) => a * a;
 }
 
 #endregion // half3
@@ -4000,6 +4117,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static half distancesq(this half4 a, half4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static half4 square(this half4 a) => a * a;
 }
 
 #endregion // half4

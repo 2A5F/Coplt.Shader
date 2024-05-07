@@ -51,6 +51,9 @@ public static partial class math
             }
 #>
     }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> select(this bool c, <#= typeName #> t, <#= typeName #> f) => c ? t : f;
 }
 
 #endregion // <#= typeName #>

@@ -333,6 +333,26 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static <#= typeName #> remap(this <#= typeName #> a, <#= typeName #> srcStart, <#= typeName #> srcEnd, <#= typeName #> dstStart, <#= typeName #> dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> smoothstep(this <#= typeName #> a, <#= typeName #> min, <#= typeName #> max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0<#= typ.suffix #> - (2.0<#= typ.suffix #> * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> reflect(this <#= typeName #> i, <#= typeName #> n) => i - 2<#= typ.suffix #> * n * dot(i, n);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> project(this <#= typeName #> a, <#= typeName #> onto) =>
+        (<#= typ.simdComp #>)(dot(a, onto) / dot(onto, onto)) * onto;
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> radians(this <#= typeName #> a) => a * <#= typeName #>.DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> degrees(this <#= typeName #> a) => a * <#= typeName #>.RadToDeg;
 }
 
 #endregion // <#= typeName #>

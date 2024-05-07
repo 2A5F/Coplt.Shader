@@ -230,14 +230,51 @@ public partial struct <#= typeName #>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator %(<#= typeName #> a, <#= typeName #> b)
     {
+<#
+            if (typ.simd && typ.f)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
         return new(<#=
                 string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} % b.{Typ.xyzw[n]})")) #>);
+<#
+            if (typ.simd && typ.f)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
     }
 
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator %(<#= typeName #> a, <#= typ.compType #> b)
     {
-        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} % b)")) #>);
+<#
+            if (typ.simd && typ.f)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"({typ.compType})(a.{Typ.xyzw[n]} % b)")) #>);
+<#
+            if (typ.simd && typ.f)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
     }
 
     [MethodImpl(256 | 512)]
@@ -449,6 +486,9 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static <#= typ.simdComp #> distancesq(this <#= typeName #> a, <#= typeName #> b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> square(this <#= typeName #> a) => a * a;
 }
 
 #endregion // <#= typeName #>

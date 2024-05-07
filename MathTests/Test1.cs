@@ -8,36 +8,22 @@ public class Test1
 {
     #if NET8_0_OR_GREATER
     [Test]
-    public void LogFloat()
+    public void Float()
     {
-        var a = new float4(123, -1, 0, float.PositiveInfinity);
-        var r = simd_float.Log2(a.UnsafeGetInner());
+        var a = new float4(-5);
+        var b = new float4(2);
+        var r = simd_float.Mod(a.UnsafeGetInner(), b.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(MathF.Log2(123));
+        Console.WriteLine(-5 % 2);
     }
     [Test]
-    public void LogDouble()
+    public void Double()
     {
-        var a = new double4(123, -1, 0, double.PositiveInfinity);
-        var r = simd_double.Log2(a.UnsafeGetInner());
+        var a = new double4(123.456);
+        var b = new double4(456.123);
+        var r = simd_double.Mod(a.UnsafeGetInner(), b.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(Math.Log2(123));
-    }
-    [Test]
-    public void ExpFloat()
-    {
-        var a = new float4(3, float.NaN, float.NegativeInfinity, float.PositiveInfinity);
-        var r = simd_float.Exp(a.UnsafeGetInner());
-        Console.WriteLine(r);
-        Console.WriteLine($"<{MathF.Exp(3)}, {MathF.Exp(float.NaN)}, {MathF.Exp(float.NegativeInfinity)}, {MathF.Exp(float.PositiveInfinity)}>");
-    }
-    [Test]
-    public void ExpDouble()
-    {
-        var a = new double4(3, double.NaN, double.NegativeInfinity, double.PositiveInfinity);
-        var r = simd_double.Exp(a.UnsafeGetInner());
-        Console.WriteLine(r);
-        Console.WriteLine($"<{Math.Exp(3)}, {Math.Exp(double.NaN)}, {Math.Exp(double.NegativeInfinity)}, {Math.Exp(double.PositiveInfinity)}>");
+        Console.WriteLine(123.456 % 456.123);
     }
     #endif
 }

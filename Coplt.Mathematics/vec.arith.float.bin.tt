@@ -28,6 +28,9 @@ namespace Coplt.Mathematics;
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static <#= bTypeName #> isFinite(this <#= typeName #> a) => abs(a) < <#= typ.simdComp #>.PositiveInfinity;
+
+    [MethodImpl(256 | 512)]
     public static <#= bTypeName #> isInf(this <#= typeName #> a)
     {
 <#
@@ -391,6 +394,36 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static <#= typeName #> normalize(this <#= typeName #> a) => a * dot(a, a).rsqrt();
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> normalizeSafe(this <#= typeName #> a, <#= typeName #> defaultvalue = default)
+    {
+        var len = dot(a, a);
+        return select(len > 1.175494351e-38<#= typ.suffix #>, a * rsqrt(len), defaultvalue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> step(this <#= typeName #> a, <#= typeName #> threshold) =>
+        select(a >= threshold, <#= typeName #>.One, default);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> refract(this <#= typeName #> i, <#= typeName #> n, <#= typ.simdComp #> indexOfRefraction)
+    {
+        var ni = dot(n, i);
+        var k = (<#= typ.simdComp #>)(1.0<#= typ.suffix #> - indexOfRefraction * indexOfRefraction * (1.0<#= typ.suffix #> - ni * ni));
+        return select(k >= 0.0<#= typ.suffix #>, indexOfRefraction * i - (<#= typ.simdComp #>)((<#= typ.simdComp #>)(indexOfRefraction * ni) + sqrt(k)) * n, default);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> projectSafe(this <#= typeName #> a, <#= typeName #> onto, <#= typeName #> defaultValue = default) 
+    {
+        var proj = project(a, onto);
+        return select(all(isFinite(proj)), proj, defaultValue);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> faceForward(this <#= typeName #> n, <#= typeName #> i, <#= typeName #> ng) =>
+        select(dot(ng, i) >= 0.0<#= typ.suffix #>, -n, n);
 }
 
 #endregion // <#= typeName #>
