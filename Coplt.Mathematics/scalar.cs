@@ -2,6 +2,13 @@
 
 public static partial class math
 {
+    #region select
+
+    [MethodImpl(256 | 512)]
+    public static T select<T>(this bool c, T t, T f) => c ? t : f;
+
+    #endregion
+
     #region BitNot
 
     [MethodImpl(256 | 512)]

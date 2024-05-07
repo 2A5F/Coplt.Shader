@@ -2,6 +2,9 @@
 
 public static partial class BitOps
 {
+    [MethodImpl(256 | 512)]
+    public static U UnsafeAs<T, U>(this T v) => Unsafe.As<T, U>(ref v);
+
     #region Half As
 
     [MethodImpl(256 | 512)]

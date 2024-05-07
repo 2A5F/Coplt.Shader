@@ -19,6 +19,8 @@
         <TextTemplate Include="vec.arith.float.tt" />
         <TextTemplate Include="vec.arith.tt" />
         <TextTemplate Include="vec.bitop.tt" />
+        <TextTemplate Include="vec.bool_op.tt" />
+        <TextTemplate Include="vec.cmp.tt" />
         <TextTemplate Include="vecs.tt" />
         <TextTemplate Include="vec.ctor.merge.3.tt" />
         <TextTemplate Include="vec.ctor.merge.4.2.tt" />
