@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics;
 using System.Text;
 using Coplt.Mathematics;
 
@@ -11,17 +12,17 @@ public class Test1
     public void Float()
     {
         var a = new float4(9);
-        var r = simd_float.Tan(a.UnsafeGetInner());
+        var r = simd_float.SinCos(Vector256.Create(a.UnsafeGetInner(), a.UnsafeGetInner()));
         Console.WriteLine(r);
-        Console.WriteLine(MathF.Tan(9));
+        Console.WriteLine(MathF.SinCos(9));
     }
     [Test]
     public void Double()
     {
         var a = new double4(9);
-        var r = simd_double.Tan(a.UnsafeGetInner());
+        var r = simd_double.SinCos(Vector512.Create(a.UnsafeGetInner(), a.UnsafeGetInner()));
         Console.WriteLine(r);
-        Console.WriteLine(Math.Tan(9.0));
+        Console.WriteLine(Math.SinCos(9.0));
     }
     #endif
 }

@@ -43,6 +43,131 @@ public static partial class simd_double
 
     #endregion
 
+    #region Wrap v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Wrap(Vector128<double> x, Vector128<double> min, Vector128<double> max)
+    {
+        var add = Vector128.ConditionalSelect(Vector128.GreaterThanOrEqual(x, default), min, max);
+        var off = Mod(x, max - min);
+        return add + off;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Wrap(Vector128<double> x, double min, double max)
+    {
+        var add = Vector128.ConditionalSelect(Vector128.GreaterThanOrEqual(x, default), Vector128.Create(min), Vector128.Create(max));
+        var off = Mod(x, max - min);
+        return add + off;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Wrap0ToPi(Vector128<double> x)
+    {
+        var add = x + (Vector128.LessThan(x, default) & Vector128.Create(math.D_PI));
+        var div = x * math.D_1_Div_PI;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector128.Create(math.D_PI), add);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Wrap0To2Pi(Vector128<double> x)
+    {
+        var add = x + (Vector128.LessThan(x, default) & Vector128.Create(math.D_2_PI));
+        var div = x * math.D_1_Div_2_PI;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector128.Create(math.D_2_PI), add);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Wrap0To4Pi(Vector128<double> x)
+    {
+        var add = x + (Vector128.LessThan(x, default) & Vector128.Create(math.D_4_PI));
+        var div = x * math.D_1_Div_4_PI;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector128.Create(math.D_4_PI), add);
+    }
+
+    #endregion
+    
+    #region Wrap v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Wrap(Vector256<double> x, Vector256<double> min, Vector256<double> max)
+    {
+        var add = Vector256.ConditionalSelect(Vector256.GreaterThanOrEqual(x, default), min, max);
+        var off = Mod(x, max - min);
+        return add + off;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Wrap(Vector256<double> x, double min, double max)
+    {
+        var add = Vector256.ConditionalSelect(Vector256.GreaterThanOrEqual(x, default), Vector256.Create(min), Vector256.Create(max));
+        var off = Mod(x, max - min);
+        return add + off;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Wrap0ToPi(Vector256<double> x)
+    {
+        var add = x + (Vector256.LessThan(x, default) & Vector256.Create(math.D_PI));
+        var div = x * math.D_1_Div_PI;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector256.Create(math.D_PI), add);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Wrap0To2Pi(Vector256<double> x)
+    {
+        var add = x + (Vector256.LessThan(x, default) & Vector256.Create(math.D_2_PI));
+        var div = x * math.D_1_Div_2_PI;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector256.Create(math.D_2_PI), add);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Wrap0To4Pi(Vector256<double> x)
+    {
+        var add = x + (Vector256.LessThan(x, default) & Vector256.Create(math.D_4_PI));
+        var div = x * math.D_1_Div_4_PI;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector256.Create(math.D_4_PI), add);
+    }
+
+    #endregion
+    
+    #region Wrap v512
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Wrap0ToPi(Vector512<double> x)
+    {
+        var add = x + (Vector512.LessThan(x, default) & Vector512.Create(math.D_PI));
+        var div = x * math.D_1_Div_PI;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector512.Create(math.D_PI), add);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Wrap0To2Pi(Vector512<double> x)
+    {
+        var add = x + (Vector512.LessThan(x, default) & Vector512.Create(math.D_2_PI));
+        var div = x * math.D_1_Div_2_PI;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector512.Create(math.D_2_PI), add);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Wrap0To4Pi(Vector512<double> x)
+    {
+        var add = x + (Vector512.LessThan(x, default) & Vector512.Create(math.D_4_PI));
+        var div = x * math.D_1_Div_4_PI;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, Vector512.Create(math.D_4_PI), add);
+    }
+
+    #endregion
+
     #region Log v128
 
     [MethodImpl(256 | 512)]
@@ -288,7 +413,7 @@ public static partial class simd_double
     public static Vector128<double> Sin(Vector128<double> x)
     {
         // Since sin() is periodic around 2pi, this converts x into the range of [0, 2pi]
-        var xt = x - Vector128.Floor(x / math.D_2_PI) * math.D_2_PI;
+        var xt = Wrap0To2Pi(x);
 
         // Since sin() in [0, 2pi] is an odd function around pi, this converts the range to [0, pi], then stores whether or not the result needs to be negated in is_neg.
         var is_neg = Vector128.GreaterThan(xt, Vector128.Create(math.D_PI));
@@ -334,7 +459,7 @@ public static partial class simd_double
     public static Vector256<double> Sin(Vector256<double> x)
     {
         // Since sin() is periodic around 2pi, this converts x into the range of [0, 2pi]
-        var xt = x - Vector256.Floor(x / math.D_2_PI) * math.D_2_PI;
+        var xt = Wrap0To2Pi(x);
 
         // Since sin() in [0, 2pi] is an odd function around pi, this converts the range to [0, pi], then stores whether or not the result needs to be negated in is_neg.
         var is_neg = Vector256.GreaterThan(xt, Vector256.Create(math.D_PI));
@@ -381,7 +506,7 @@ public static partial class simd_double
     public static Vector512<double> Sin(Vector512<double> x)
     {
         // Since sin() is periodic around 2pi, this converts x into the range of [0, 2pi]
-        var xt = x - Vector512.Floor(x / math.D_2_PI) * math.D_2_PI;
+        var xt = Wrap0To2Pi(x);
 
         // Since sin() in [0, 2pi] is an odd function around pi, this converts the range to [0, pi], then stores whether or not the result needs to be negated in is_neg.
         var is_neg = Vector512.GreaterThan(xt, Vector512.Create(math.D_PI));
@@ -441,7 +566,7 @@ public static partial class simd_double
     public static Vector128<double> Tan(Vector128<double> x)
     {
         // Since tan() is periodic around pi, this converts x into the range of [0, pi]
-        var xt = x - Vector128.Floor(x * Vector128.Create(math.D_1_Div_PI)) * Vector128.Create(math.D_PI);
+        var xt = Wrap0ToPi(x);
 
         // Since tan() in [0, pi] is an odd function around pi/2, this converts the range to [0, pi/2], then stores whether or not the result needs to be negated in is_neg.
         var is_neg = Vector128.GreaterThan(xt, Vector128.Create(math.D_Half_PI));
@@ -470,7 +595,7 @@ public static partial class simd_double
     }
 
     #endregion
-    
+
     #region Tan v256
 
     /// <summary>
@@ -497,7 +622,7 @@ public static partial class simd_double
     public static Vector256<double> Tan(Vector256<double> x)
     {
         // Since tan() is periodic around pi, this converts x into the range of [0, pi]
-        var xt = x - Vector256.Floor(x * Vector256.Create(math.D_1_Div_PI)) * Vector256.Create(math.D_PI);
+        var xt = Wrap0ToPi(x);
 
         // Since tan() in [0, pi] is an odd function around pi/2, this converts the range to [0, pi/2], then stores whether or not the result needs to be negated in is_neg.
         var is_neg = Vector256.GreaterThan(xt, Vector256.Create(math.D_Half_PI));

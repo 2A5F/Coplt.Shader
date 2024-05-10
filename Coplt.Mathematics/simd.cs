@@ -292,11 +292,44 @@ public static partial class simd
         {
             return AdvSimd.RoundToZero(x);
         }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                RoundToZero(x.GetLower()),
+                RoundToZero(x.GetUpper())
+            );
+        }
         return Vector128.Create(
             MathF.Round(x.GetElement(0), MidpointRounding.ToZero),
             MathF.Round(x.GetElement(1), MidpointRounding.ToZero),
             MathF.Round(x.GetElement(2), MidpointRounding.ToZero),
             MathF.Round(x.GetElement(3), MidpointRounding.ToZero)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> RoundToZero(Vector256<float> x)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.RoundToZero(x);
+        }
+        if (Vector128.IsHardwareAccelerated || Vector64.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                RoundToZero(x.GetLower()),
+                RoundToZero(x.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            MathF.Round(x.GetElement(0), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(1), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(2), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(3), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(4), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(5), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(6), MidpointRounding.ToZero),
+            MathF.Round(x.GetElement(7), MidpointRounding.ToZero)
         );
     }
 
@@ -324,11 +357,11 @@ public static partial class simd
         {
             return Avx.RoundToZero(x);
         }
-        if (AdvSimd.Arm64.IsSupported)
+        if (Vector128.IsHardwareAccelerated)
         {
             return Vector256.Create(
-                AdvSimd.Arm64.RoundToZero(x.GetLower()),
-                AdvSimd.Arm64.RoundToZero(x.GetUpper())
+                RoundToZero(x.GetLower()),
+                RoundToZero(x.GetUpper())
             );
         }
         return Vector256.Create(
@@ -336,6 +369,32 @@ public static partial class simd
             Math.Round(x.GetElement(1), MidpointRounding.ToZero),
             Math.Round(x.GetElement(2), MidpointRounding.ToZero),
             Math.Round(x.GetElement(3), MidpointRounding.ToZero)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> RoundToZero(Vector512<double> x)
+    {
+        if (Avx512F.IsSupported)
+        {
+            return Avx512F.RoundScale(x, 0x03);
+        }
+        if (Vector256.IsHardwareAccelerated || Vector128.IsHardwareAccelerated)
+        {
+            return Vector512.Create(
+                RoundToZero(x.GetLower()),
+                RoundToZero(x.GetUpper())
+            );
+        }
+        return Vector512.Create(
+            Math.Round(x.GetElement(0), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(1), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(2), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(3), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(4), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(5), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(6), MidpointRounding.ToZero),
+            Math.Round(x.GetElement(7), MidpointRounding.ToZero)
         );
     }
 
@@ -1922,7 +1981,7 @@ public static partial class simd
             return (Vector128.Create(v0.sin, v1.sin, v2.sin, v3.sin), Vector128.Create(v0.cos, v1.cos, v2.cos, v3.cos));
         }
     }
-    
+
     [MethodImpl(256 | 512)]
     public static (Vector128<double> sin, Vector128<double> cos) SinCos(Vector128<double> a)
     {
@@ -1968,7 +2027,7 @@ public static partial class simd
     }
 
     #endregion
-    
+
     #region Tan
 
     [MethodImpl(256 | 512)]

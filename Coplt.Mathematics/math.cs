@@ -31,6 +31,10 @@ public static partial class math
     /// </summary>
     public const float F_2_PI = 6.2831853071795864769252867665590057683943387987502116419498891846f;
     /// <summary>
+    /// <code>4 * π</code>
+    /// </summary>
+    public const float F_4_PI = 12.566370614359172953850573533118011536788677597500423283899778369f;
+    /// <summary>
     /// <code>π / 2</code>
     /// </summary>
     public const float F_Half_PI = 1.5707963267948966192313216916397514420985846996875529104874722961f;
@@ -42,6 +46,14 @@ public static partial class math
     /// <code>1 / π</code>
     /// </summary>
     public const float F_1_Div_PI = 0.3183098861837906715377675267450287240689192914809128974953346881f;
+    /// <summary>
+    /// <code>1 / (2 * π)</code>
+    /// </summary>
+    public const float F_1_Div_2_PI = 0.1591549430918953357688837633725143620344596457404564487476673440f;
+    /// <summary>
+    /// <code>1 / (4 * π)</code>
+    /// </summary>
+    public const float F_1_Div_4_PI = 0.0795774715459476678844418816862571810172298228702282243738336720f;
     /// <summary>
     /// <code>360 / τ</code>
     /// </summary>
@@ -80,6 +92,10 @@ public static partial class math
     /// </summary>
     public const double D_2_PI = 6.2831853071795864769252867665590057683943387987502116419498891846;
     /// <summary>
+    /// <code>4 * π</code>
+    /// </summary>
+    public const double D_4_PI = 12.566370614359172953850573533118011536788677597500423283899778369;
+    /// <summary>
     /// <code>π / 2</code>
     /// </summary>
     public const double D_Half_PI = 1.5707963267948966192313216916397514420985846996875529104874722961;
@@ -91,6 +107,14 @@ public static partial class math
     /// <code>1 / π</code>
     /// </summary>
     public const double D_1_Div_PI = 0.3183098861837906715377675267450287240689192914809128974953346881;
+    /// <summary>
+    /// <code>1 / (2 * π)</code>
+    /// </summary>
+    public const double D_1_Div_2_PI = 0.1591549430918953357688837633725143620344596457404564487476673440;
+    /// <summary>
+    /// <code>1 / (4 * π)</code>
+    /// </summary>
+    public const double D_1_Div_4_PI = 0.0795774715459476678844418816862571810172298228702282243738336720;
     /// <summary>
     /// <code>360 / τ</code>
     /// </summary>
