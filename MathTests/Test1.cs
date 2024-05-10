@@ -10,18 +10,18 @@ public class Test1
     [Test]
     public void Float()
     {
-        var a = new float4(1);
-        var r = simd_float.Sin(a.UnsafeGetInner());
+        var a = new float4(9);
+        var r = simd_float.Tan(a.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(MathF.Sin(1));
+        Console.WriteLine(MathF.Tan(9));
     }
     [Test]
     public void Double()
     {
-        var a = new double4(1);
-        var r = simd_double.Sin(a.UnsafeGetInner());
+        var a = new double4(9);
+        var r = simd_double.Tan(a.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(Math.Sin(1.0));
+        Console.WriteLine(Math.Tan(9.0));
     }
     #endif
 }

@@ -992,4 +992,19 @@ public static partial class math
     public static void sincos(this double a, out double sin, out double cos) => (sin, cos) = sincos(a);
 
     #endregion
+
+    #region Tan
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half tan(this half a) => half.Tan(a);
+    #else
+    public static half tan(this half a) => (half)MathF.Tan(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float tan(this float a) => MathF.Tan(a);
+    [MethodImpl(256 | 512)]
+    public static double tan(this double a) => Math.Tan(a);
+
+    #endregion
 }

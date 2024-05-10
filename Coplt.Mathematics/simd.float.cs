@@ -1,8 +1,4 @@
 ﻿#if NET8_0_OR_GREATER
-using System.Runtime.Intrinsics.Arm;
-using System.Runtime.Intrinsics.Wasm;
-using System.Runtime.Intrinsics.X86;
-
 namespace Coplt.Mathematics;
 
 // log fast : https://stackoverflow.com/questions/39821367/very-fast-approximate-logarithm-natural-log-function-in-c
@@ -343,7 +339,7 @@ public static partial class simd_float
     #endregion
 
     #region Sin Cos v64
-    
+
     [MethodImpl(256 | 512)]
     public static Vector64<float> Cos(Vector64<float> x) => Sin(x + Vector64.Create(math.F_Half_PI));
 
@@ -351,7 +347,7 @@ public static partial class simd_float
     public static Vector64<float> Sin(Vector64<float> x)
     {
         // Since sin() is periodic around 2pi, this converts x into the range of [0, 2pi]
-        var xt = x - Vector64.Floor(x / math.F_PI2) * math.F_PI2;
+        var xt = x - Vector64.Floor(x / math.F_2_PI) * math.F_2_PI;
 
         // Since sin() in [0, 2pi] is an odd function around pi, this converts the range to [0, pi], then stores whether or not the result needs to be negated in is_neg.
         var is_neg = Vector64.GreaterThan(xt, Vector64.Create(math.F_PI));
@@ -384,12 +380,12 @@ public static partial class simd_float
     }
 
     #endregion
-    
+
     #region Sin Cos v128
 
     [MethodImpl(256 | 512)]
     public static Vector128<float> SinCos(Vector128<float> x) => Sin(x + Vector128.Create(0.0f, 0.0f, math.F_Half_PI, math.F_Half_PI));
-    
+
     [MethodImpl(256 | 512)]
     public static Vector128<float> Cos(Vector128<float> x) => Sin(x + Vector128.Create(math.F_Half_PI));
 
@@ -397,7 +393,7 @@ public static partial class simd_float
     public static Vector128<float> Sin(Vector128<float> x)
     {
         // Since sin() is periodic around 2pi, this converts x into the range of [0, 2pi]
-        var xt = x - Vector128.Floor(x / math.F_PI2) * math.F_PI2;
+        var xt = x - Vector128.Floor(x / math.F_2_PI) * math.F_2_PI;
 
         // Since sin() in [0, 2pi] is an odd function around pi, this converts the range to [0, pi], then stores whether or not the result needs to be negated in is_neg.
         var is_neg = Vector128.GreaterThan(xt, Vector128.Create(math.F_PI));
@@ -444,7 +440,7 @@ public static partial class simd_float
     public static Vector256<float> Sin(Vector256<float> x)
     {
         // Since sin() is periodic around 2pi, this converts x into the range of [0, 2pi]
-        var xt = x - Vector256.Floor(x / math.F_PI2) * math.F_PI2;
+        var xt = x - Vector256.Floor(x / math.F_2_PI) * math.F_2_PI;
 
         // Since sin() in [0, 2pi] is an odd function around pi, this converts the range to [0, pi], then stores whether or not the result needs to be negated in is_neg.
         var is_neg = Vector256.GreaterThan(xt, Vector256.Create(math.F_PI));
@@ -474,6 +470,118 @@ public static partial class simd_float
         r = simd.Fma(r, is_neg, is_nan);
 
         return r;
+    }
+
+    #endregion
+    
+    #region Tan v64
+
+    /// <summary>
+    /// Computes sines in [0,pi/4]
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> SinIn0P4(Vector64<float> x)
+    {
+        var sq = x * x;
+
+        // This is an odd-only Taylor series approximation of sin() on [0, pi/4]. 
+        var r = simd.Fma(sq, Vector64.Create(0.0000000001590238118466f), Vector64.Create(-0.0000000250508528135474f));
+        r = simd.Fma(r, sq, Vector64.Create(0.0000027557314284120030f));
+        r = simd.Fma(r, sq, Vector64.Create(-0.00019841269831470328245f));
+        r = simd.Fma(r, sq, Vector64.Create(0.008333333333324419158220f));
+        r = simd.Fma(r, sq, Vector64.Create(-0.1666666666666663969165095f));
+        r = simd.Fma(r, sq, Vector64<float>.One);
+        r *= x;
+
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Tan(Vector64<float> x)
+    {
+        // Since tan() is periodic around pi, this converts x into the range of [0, pi]
+        var xt = x - Vector64.Floor(x * Vector64.Create(math.F_1_Div_PI)) * Vector64.Create(math.F_PI);
+
+        // Since tan() in [0, pi] is an odd function around pi/2, this converts the range to [0, pi/2], then stores whether or not the result needs to be negated in is_neg.
+        var is_neg = Vector64.GreaterThan(xt, Vector64.Create(math.F_Half_PI));
+        xt += is_neg & ((xt - Vector64.Create(math.F_Half_PI)) * -2);
+
+        is_neg &= Vector64.Create(-2.0f);
+        is_neg += Vector64<float>.One;
+
+        var is_nan = simd.Ne(x, x);
+        is_nan += Vector64.GreaterThan(x, Vector64.Create(float.MaxValue));
+        is_nan += Vector64.LessThan(x, Vector64.Create(float.MinValue));
+
+        // Since tan() on [0, pi/2] is an inversed function around pi/4, this "folds" the range into [0, pi/4]. I.e. 3pi/10 becomes 2pi/10.
+        var do_inv_mask = Vector64.GreaterThan(xt, Vector64.Create(math.F_Quarter_PI));
+        var no_inv_mask = Vector64.LessThanOrEqual(xt, Vector64.Create(math.F_Quarter_PI));
+        xt = Vector64.Create(math.F_Quarter_PI) - Vector64.Abs(xt - Vector64.Create(math.F_Quarter_PI));
+
+        var xx = SinIn0P4(xt);
+
+        xt = Vector64.Sqrt(Vector64<float>.One - xx * xx);
+
+        xx = (do_inv_mask & (xt / xx)) + (no_inv_mask & (xx / xt));
+
+        xx = simd.Fma(xx, is_neg, is_nan);
+        return xx;
+    }
+
+    #endregion
+    
+    #region Tan v128
+
+    /// <summary>
+    /// Computes sines in [0,pi/4]
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> SinIn0P4(Vector128<float> x)
+    {
+        var sq = x * x;
+
+        // This is an odd-only Taylor series approximation of sin() on [0, pi/4]. 
+        var r = simd.Fma(sq, Vector128.Create(0.0000000001590238118466f), Vector128.Create(-0.0000000250508528135474f));
+        r = simd.Fma(r, sq, Vector128.Create(0.0000027557314284120030f));
+        r = simd.Fma(r, sq, Vector128.Create(-0.00019841269831470328245f));
+        r = simd.Fma(r, sq, Vector128.Create(0.008333333333324419158220f));
+        r = simd.Fma(r, sq, Vector128.Create(-0.1666666666666663969165095f));
+        r = simd.Fma(r, sq, Vector128<float>.One);
+        r *= x;
+
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Tan(Vector128<float> x)
+    {
+        // Since tan() is periodic around pi, this converts x into the range of [0, pi]
+        var xt = x - Vector128.Floor(x * Vector128.Create(math.F_1_Div_PI)) * Vector128.Create(math.F_PI);
+
+        // Since tan() in [0, pi] is an odd function around pi/2, this converts the range to [0, pi/2], then stores whether or not the result needs to be negated in is_neg.
+        var is_neg = Vector128.GreaterThan(xt, Vector128.Create(math.F_Half_PI));
+        xt += is_neg & ((xt - Vector128.Create(math.F_Half_PI)) * -2);
+
+        is_neg &= Vector128.Create(-2.0f);
+        is_neg += Vector128<float>.One;
+
+        var is_nan = simd.Ne(x, x);
+        is_nan += Vector128.GreaterThan(x, Vector128.Create(float.MaxValue));
+        is_nan += Vector128.LessThan(x, Vector128.Create(float.MinValue));
+
+        // Since tan() on [0, pi/2] is an inversed function around pi/4, this "folds" the range into [0, pi/4]. I.e. 3pi/10 becomes 2pi/10.
+        var do_inv_mask = Vector128.GreaterThan(xt, Vector128.Create(math.F_Quarter_PI));
+        var no_inv_mask = Vector128.LessThanOrEqual(xt, Vector128.Create(math.F_Quarter_PI));
+        xt = Vector128.Create(math.F_Quarter_PI) - Vector128.Abs(xt - Vector128.Create(math.F_Quarter_PI));
+
+        var xx = SinIn0P4(xt);
+
+        xt = Vector128.Sqrt(Vector128<float>.One - xx * xx);
+
+        xx = (do_inv_mask & (xt / xx)) + (no_inv_mask & (xx / xt));
+
+        xx = simd.Fma(xx, is_neg, is_nan);
+        return xx;
     }
 
     #endregion

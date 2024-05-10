@@ -12,3 +12,4 @@ hlsl-style linear algebra library
 - [ ] trigonometry simd impl
 - [ ] matrix
 - [ ] quaternion
+- [ ] higher precision single float trigonometric functions impl

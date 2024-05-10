@@ -248,6 +248,16 @@ public static partial class math
         cos = new(cos0, cos1);
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float2 tan(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tan(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tan(), a.y.tan());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float2
@@ -498,6 +508,16 @@ public static partial class math
         a.z.sincos(out var sin2, out var cos2);
         sin = new(sin0, sin1, sin2);
         cos = new(cos0, cos1, cos2);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 tan(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tan(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tan(), a.y.tan(), a.z.tan());
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -754,6 +774,16 @@ public static partial class math
         cos = new(cos0, cos1, cos2, cos3);
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float4 tan(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tan(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tan(), a.y.tan(), a.z.tan(), a.w.tan());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float4
@@ -1002,6 +1032,16 @@ public static partial class math
         a.y.sincos(out var sin1, out var cos1);
         sin = new(sin0, sin1);
         cos = new(cos0, cos1);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 tan(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tan(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tan(), a.y.tan());
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -1254,6 +1294,16 @@ public static partial class math
         a.z.sincos(out var sin2, out var cos2);
         sin = new(sin0, sin1, sin2);
         cos = new(cos0, cos1, cos2);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 tan(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tan(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tan(), a.y.tan(), a.z.tan());
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -1510,6 +1560,16 @@ public static partial class math
         cos = new(cos0, cos1, cos2, cos3);
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double4 tan(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tan(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tan(), a.y.tan(), a.z.tan(), a.w.tan());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double4
@@ -1684,6 +1744,12 @@ public static partial class math
         a.y.sincos(out var sin1, out var cos1);
         sin = new(sin0, sin1);
         cos = new(cos0, cos1);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 tan(this half2 a)
+    {
+        return new(a.x.tan(), a.y.tan());
     }
 }
 
@@ -1861,6 +1927,12 @@ public static partial class math
         a.z.sincos(out var sin2, out var cos2);
         sin = new(sin0, sin1, sin2);
         cos = new(cos0, cos1, cos2);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 tan(this half3 a)
+    {
+        return new(a.x.tan(), a.y.tan(), a.z.tan());
     }
 }
 
@@ -2040,6 +2112,12 @@ public static partial class math
         a.w.sincos(out var sin3, out var cos3);
         sin = new(sin0, sin1, sin2, sin3);
         cos = new(cos0, cos1, cos2, cos3);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 tan(this half4 a)
+    {
+        return new(a.x.tan(), a.y.tan(), a.z.tan(), a.w.tan());
     }
 }
 

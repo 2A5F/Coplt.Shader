@@ -1968,6 +1968,84 @@ public static partial class simd
     }
 
     #endregion
+    
+    #region Tan
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Tan(Vector64<float> a)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Tan(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Tan(a.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).tan(),
+            a.GetElement(1).tan()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Tan(Vector128<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Tan(a);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Tan(a.GetLower()),
+                simd_float.Tan(a.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).tan(),
+            a.GetElement(1).tan(),
+            a.GetElement(2).tan(),
+            a.GetElement(3).tan()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Tan(Vector128<double> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Tan(a);
+        }
+        return Vector128.Create(
+            a.GetElement(0).tan(),
+            a.GetElement(1).tan()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Tan(Vector256<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Tan(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Tan(a.GetLower()),
+                simd_double.Tan(a.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).tan(),
+            a.GetElement(1).tan(),
+            a.GetElement(2).tan(),
+            a.GetElement(3).tan()
+        );
+    }
+
+    #endregion
 }
 
 #endif

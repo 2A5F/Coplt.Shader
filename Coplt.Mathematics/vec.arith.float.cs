@@ -6,51 +6,57 @@ namespace Coplt.Mathematics;
 
 public partial struct float2
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static float2 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277f); 
     }
-    public static float2 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f);
-    }
-    public static float2 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static float2 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f);
-    }
-    public static float2 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static float2 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862f);
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static float2 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094f); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static float2 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009f);
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static float2 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f);
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static float2 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f);
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static float2 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861f);
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static float2 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -204,51 +210,57 @@ public static partial class math
 
 public partial struct float3
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static float3 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277f); 
     }
-    public static float3 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f);
-    }
-    public static float3 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static float3 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f);
-    }
-    public static float3 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static float3 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862f);
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static float3 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094f); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static float3 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009f);
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static float3 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f);
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static float3 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f);
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static float3 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861f);
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static float3 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -402,51 +414,57 @@ public static partial class math
 
 public partial struct float4
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static float4 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277f); 
     }
-    public static float4 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f);
-    }
-    public static float4 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static float4 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f);
-    }
-    public static float4 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static float4 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862f);
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static float4 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094f); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static float4 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009f);
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static float4 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f);
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static float4 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f);
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static float4 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861f);
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static float4 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -600,51 +618,57 @@ public static partial class math
 
 public partial struct double2
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static double2 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277); 
     }
-    public static double2 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923);
-    }
-    public static double2 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static double2 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846);
-    }
-    public static double2 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static double2 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862);
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static double2 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static double2 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009);
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static double2 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923);
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static double2 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846);
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static double2 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861);
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static double2 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -798,51 +822,57 @@ public static partial class math
 
 public partial struct double3
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static double3 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277); 
     }
-    public static double3 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923);
-    }
-    public static double3 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static double3 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846);
-    }
-    public static double3 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static double3 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862);
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static double3 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static double3 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009);
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static double3 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923);
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static double3 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846);
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static double3 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861);
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static double3 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -996,51 +1026,57 @@ public static partial class math
 
 public partial struct double4
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static double4 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277); 
     }
-    public static double4 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923);
-    }
-    public static double4 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static double4 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846);
-    }
-    public static double4 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static double4 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862);
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static double4 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static double4 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009);
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static double4 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923);
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static double4 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846);
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static double4 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861);
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static double4 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -1194,51 +1230,57 @@ public static partial class math
 
 public partial struct decimal2
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static decimal2 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277m); 
     }
-    public static decimal2 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923m);
-    }
-    public static decimal2 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static decimal2 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846m);
-    }
-    public static decimal2 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static decimal2 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862m);
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static decimal2 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094m); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static decimal2 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009m);
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static decimal2 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923m);
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static decimal2 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846m);
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static decimal2 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861m);
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static decimal2 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -1348,51 +1390,57 @@ public static partial class math
 
 public partial struct decimal3
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static decimal3 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277m); 
     }
-    public static decimal3 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923m);
-    }
-    public static decimal3 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static decimal3 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846m);
-    }
-    public static decimal3 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static decimal3 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862m);
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static decimal3 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094m); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static decimal3 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009m);
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static decimal3 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923m);
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static decimal3 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846m);
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static decimal3 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861m);
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static decimal3 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -1502,51 +1550,57 @@ public static partial class math
 
 public partial struct decimal4
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static decimal4 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277m); 
     }
-    public static decimal4 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923m);
-    }
-    public static decimal4 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static decimal4 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846m);
-    }
-    public static decimal4 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static decimal4 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862m);
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static decimal4 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094m); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static decimal4 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009m);
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static decimal4 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923m);
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static decimal4 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846m);
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static decimal4 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861m);
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static decimal4 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -1656,51 +1710,57 @@ public static partial class math
 
 public partial struct half2
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static half2 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277f.half()); 
     }
-    public static half2 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f.half());
-    }
-    public static half2 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static half2 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f.half());
-    }
-    public static half2 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static half2 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862f.half());
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static half2 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094f.half()); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static half2 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009f.half());
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static half2 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f.half());
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static half2 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f.half());
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static half2 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861f.half());
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static half2 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -1810,51 +1870,57 @@ public static partial class math
 
 public partial struct half3
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static half3 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277f.half()); 
     }
-    public static half3 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f.half());
-    }
-    public static half3 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static half3 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f.half());
-    }
-    public static half3 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static half3 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862f.half());
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static half3 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094f.half()); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static half3 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009f.half());
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static half3 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f.half());
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static half3 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f.half());
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static half3 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861f.half());
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static half3 DegToRad
     { 
         [MethodImpl(256 | 512)] 
@@ -1964,51 +2030,57 @@ public static partial class math
 
 public partial struct half4
 {
+    /// <summary>
+    /// <code>e</code>
+    /// </summary>
     public static half4 E
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.7182818284590452353602874713526624977572470936999595749669676277f.half()); 
     }
-    public static half4 PI
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f.half());
-    }
-    public static half4 π
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI;
-    }
-    public static half4 PI2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f.half());
-    }
-    public static half4 π2
-    { 
-        [MethodImpl(256 | 512)] 
-        get => PI2;
-    }
-    public static half4 Tau
-    { 
-        [MethodImpl(256 | 512)] 
-        get => new(6.2831853071795862f.half());
-    }
+    /// <summary>
+    /// <code>log(2)</code>
+    /// </summary>
     public static half4 Log2
     { 
         [MethodImpl(256 | 512)] 
         get => new(0.6931471805599453094172321214581765680755001343602552541206800094f.half()); 
     }
+    /// <summary>
+    /// <code>log(10)</code>
+    /// </summary>
     public static half4 Log10
     { 
         [MethodImpl(256 | 512)] 
         get => new(2.3025850929940456840179914546843642076011014886287729760333279009f.half());
     }
+    /// <summary>
+    /// <code>π</code>
+    /// </summary>
+    public static half4 PI
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(3.1415926535897932384626433832795028841971693993751058209749445923f.half());
+    }
+    /// <summary>
+    /// <code>τ = 2 * π</code>
+    /// </summary>
+    public static half4 Tau
+    { 
+        [MethodImpl(256 | 512)] 
+        get => new(6.2831853071795864769252867665590057683943387987502116419498891846f.half());
+    }
+    /// <summary>
+    /// <code>360 / τ</code>
+    /// </summary>
     public static half4 RadToDeg
     { 
         [MethodImpl(256 | 512)] 
         get => new(57.295779513082320876798154814105170332405472466564321549160243861f.half());
     }
+    /// <summary>
+    /// <code>τ / 360</code>
+    /// </summary>
     public static half4 DegToRad
     { 
         [MethodImpl(256 | 512)] 
