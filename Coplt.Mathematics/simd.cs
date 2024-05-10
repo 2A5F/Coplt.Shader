@@ -119,6 +119,16 @@ public static partial class simd
     }
 
     [MethodImpl(256 | 512)]
+    public static Vector256<float> Ne(Vector256<float> a, Vector256<float> b)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.CompareNotEqual(a, b);
+        }
+        return ~Vector256.Equals(a, b);
+    }
+
+    [MethodImpl(256 | 512)]
     public static Vector128<double> Ne(Vector128<double> a, Vector128<double> b)
     {
         if (Sse2.IsSupported)
@@ -140,6 +150,16 @@ public static partial class simd
             return Avx.CompareNotEqual(a, b);
         }
         return ~Vector256.Equals(a, b);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Ne(Vector512<double> a, Vector512<double> b)
+    {
+        if (Avx512F.IsSupported)
+        {
+            return Avx512F.CompareNotEqual(a, b);
+        }
+        return ~Vector512.Equals(a, b);
     }
 
     #endregion
@@ -783,6 +803,16 @@ public static partial class simd
         return a * b + c;
     }
 
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Fma(Vector512<double> a, Vector512<double> b, Vector512<double> c)
+    {
+        if (Avx512F.IsSupported)
+        {
+            return Avx512F.FusedMultiplyAdd(a, b, c);
+        }
+        return a * b + c;
+    }
+
     #endregion
 
     #region Fnma
@@ -833,6 +863,16 @@ public static partial class simd
         if (X86.Fma.IsSupported)
         {
             return X86.Fma.MultiplyAddNegated(a, b, c);
+        }
+        return -(a * b) + c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Fnma(Vector512<double> a, Vector512<double> b, Vector512<double> c)
+    {
+        if (Avx512F.IsSupported)
+        {
+            return Avx512F.FusedMultiplyAddNegated(a, b, c);
         }
         return -(a * b) + c;
     }
@@ -1677,6 +1717,254 @@ public static partial class simd
         }
 
         return Vector256<double>.One / Vector256.Sqrt(a);
+    }
+
+    #endregion
+
+    #region Sin
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Sin(Vector64<float> a)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Sin(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Sin(a.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).sin(),
+            a.GetElement(1).sin()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Sin(Vector128<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Sin(a);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Sin(a.GetLower()),
+                simd_float.Sin(a.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).sin(),
+            a.GetElement(1).sin(),
+            a.GetElement(2).sin(),
+            a.GetElement(3).sin()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Sin(Vector128<double> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Sin(a);
+        }
+        return Vector128.Create(
+            a.GetElement(0).sin(),
+            a.GetElement(1).sin()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Sin(Vector256<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Sin(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Sin(a.GetLower()),
+                simd_double.Sin(a.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).sin(),
+            a.GetElement(1).sin(),
+            a.GetElement(2).sin(),
+            a.GetElement(3).sin()
+        );
+    }
+
+    #endregion
+
+    #region Cos
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Cos(Vector64<float> a)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Cos(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Cos(a.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).cos(),
+            a.GetElement(1).cos()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Cos(Vector128<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Cos(a);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Cos(a.GetLower()),
+                simd_float.Cos(a.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).cos(),
+            a.GetElement(1).cos(),
+            a.GetElement(2).cos(),
+            a.GetElement(3).cos()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Cos(Vector128<double> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Cos(a);
+        }
+        return Vector128.Create(
+            a.GetElement(0).cos(),
+            a.GetElement(1).cos()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Cos(Vector256<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Cos(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Cos(a.GetLower()),
+                simd_double.Cos(a.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).cos(),
+            a.GetElement(1).cos(),
+            a.GetElement(2).cos(),
+            a.GetElement(3).cos()
+        );
+    }
+
+    #endregion
+
+    #region SinCos
+
+    [MethodImpl(256 | 512)]
+    public static (Vector64<float> sin, Vector64<float> cos) SinCos(Vector64<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            var r = simd_float.SinCos(Vector128.Create(a, a));
+            return (r.GetLower(), r.GetUpper());
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return (Sin(a), Cos(a));
+        }
+        var v0 = a.GetElement(0).sincos();
+        var v1 = a.GetElement(1).sincos();
+        return (Vector64.Create(v0.sin, v1.sin), Vector64.Create(v0.cos, v1.cos));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (Vector128<float> sin, Vector128<float> cos) SinCos(Vector128<float> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            var r = simd_float.SinCos(Vector256.Create(a, a));
+            return (r.GetLower(), r.GetUpper());
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return (Sin(a), Cos(a));
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            var v0 = SinCos(a.GetLower());
+            var v1 = SinCos(a.GetUpper());
+            return (Vector128.Create(v0.sin, v1.sin), Vector128.Create(v0.cos, v1.cos));
+        }
+        {
+            var v0 = a.GetElement(0).sincos();
+            var v1 = a.GetElement(1).sincos();
+            var v2 = a.GetElement(1).sincos();
+            var v3 = a.GetElement(1).sincos();
+            return (Vector128.Create(v0.sin, v1.sin, v2.sin, v3.sin), Vector128.Create(v0.cos, v1.cos, v2.cos, v3.cos));
+        }
+    }
+    
+    [MethodImpl(256 | 512)]
+    public static (Vector128<double> sin, Vector128<double> cos) SinCos(Vector128<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            var r = simd_double.SinCos(Vector256.Create(a, a));
+            return (r.GetLower(), r.GetUpper());
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return (Sin(a), Cos(a));
+        }
+        var v0 = a.GetElement(0).sincos();
+        var v1 = a.GetElement(1).sincos();
+        return (Vector128.Create(v0.sin, v1.sin), Vector128.Create(v0.cos, v1.cos));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (Vector256<double> sin, Vector256<double> cos) SinCos(Vector256<double> a)
+    {
+        if (Vector512.IsHardwareAccelerated)
+        {
+            var r = simd_double.SinCos(Vector512.Create(a, a));
+            return (r.GetLower(), r.GetUpper());
+        }
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return (Sin(a), Cos(a));
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            var v0 = SinCos(a.GetLower());
+            var v1 = SinCos(a.GetUpper());
+            return (Vector256.Create(v0.sin, v1.sin), Vector256.Create(v0.cos, v1.cos));
+        }
+        {
+            var v0 = a.GetElement(0).sincos();
+            var v1 = a.GetElement(1).sincos();
+            var v2 = a.GetElement(1).sincos();
+            var v3 = a.GetElement(1).sincos();
+            return (Vector256.Create(v0.sin, v1.sin, v2.sin, v3.sin), Vector256.Create(v0.cos, v1.cos, v2.cos, v3.cos));
+        }
     }
 
     #endregion

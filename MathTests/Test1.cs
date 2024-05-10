@@ -10,20 +10,18 @@ public class Test1
     [Test]
     public void Float()
     {
-        var a = new float4(-5);
-        var b = new float4(2);
-        var r = simd_float.Mod(a.UnsafeGetInner(), b.UnsafeGetInner());
+        var a = new float4(1);
+        var r = simd_float.Sin(a.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(-5 % 2);
+        Console.WriteLine(MathF.Sin(1));
     }
     [Test]
     public void Double()
     {
-        var a = new double4(123.456);
-        var b = new double4(456.123);
-        var r = simd_double.Mod(a.UnsafeGetInner(), b.UnsafeGetInner());
+        var a = new double4(1);
+        var r = simd_double.Sin(a.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(123.456 % 456.123);
+        Console.WriteLine(Math.Sin(1.0));
     }
     #endif
 }

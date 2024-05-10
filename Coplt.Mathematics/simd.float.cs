@@ -341,5 +341,141 @@ public static partial class simd_float
     public static Vector128<float> Pow(Vector128<float> a, float b) => Pow(a, Vector128.Create(b));
 
     #endregion
+
+    #region Sin Cos v64
+    
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Cos(Vector64<float> x) => Sin(x + Vector64.Create(math.F_Half_PI));
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Sin(Vector64<float> x)
+    {
+        // Since sin() is periodic around 2pi, this converts x into the range of [0, 2pi]
+        var xt = x - Vector64.Floor(x / math.F_PI2) * math.F_PI2;
+
+        // Since sin() in [0, 2pi] is an odd function around pi, this converts the range to [0, pi], then stores whether or not the result needs to be negated in is_neg.
+        var is_neg = Vector64.GreaterThan(xt, Vector64.Create(math.F_PI));
+        xt -= is_neg & Vector64.Create(math.F_PI);
+
+        is_neg &= Vector64.Create(-2.0f);
+        is_neg += Vector64<float>.One;
+
+        var is_nan = simd.Ne(x, x);
+        is_nan += Vector64.GreaterThan(x, Vector64.Create(float.MaxValue));
+        is_nan += Vector64.LessThan(x, Vector64.Create(float.MinValue));
+
+        // Since sin() on [0, pi] is an even function around pi/2, this "folds" the range into [0, pi/2]. I.e. 3pi/5 becomes 2pi/5.
+        xt = Vector64.Create(math.F_Half_PI) - Vector64.Abs(xt - Vector64.Create(math.F_Half_PI));
+
+        var sq = xt * xt;
+        var r = simd.Fma(sq, Vector64.Create(-0.0000000000007384998082865f), Vector64.Create(0.000000000160490521296459f));
+        r = simd.Fma(r, sq, Vector64.Create(-0.00000002505191090496049f));
+        r = simd.Fma(r, sq, Vector64.Create(0.00000275573170815073144f));
+        r = simd.Fma(r, sq, Vector64.Create(-0.00019841269828860068271f));
+        r = simd.Fma(r, sq, Vector64.Create(0.008333333333299304989001f));
+        r = simd.Fma(r, sq, Vector64.Create(-0.166666666666663509013977f));
+        r = simd.Fma(r, sq, Vector64<float>.One);
+
+        r *= xt;
+
+        r = simd.Fma(r, is_neg, is_nan);
+
+        return r;
+    }
+
+    #endregion
+    
+    #region Sin Cos v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> SinCos(Vector128<float> x) => Sin(x + Vector128.Create(0.0f, 0.0f, math.F_Half_PI, math.F_Half_PI));
+    
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Cos(Vector128<float> x) => Sin(x + Vector128.Create(math.F_Half_PI));
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Sin(Vector128<float> x)
+    {
+        // Since sin() is periodic around 2pi, this converts x into the range of [0, 2pi]
+        var xt = x - Vector128.Floor(x / math.F_PI2) * math.F_PI2;
+
+        // Since sin() in [0, 2pi] is an odd function around pi, this converts the range to [0, pi], then stores whether or not the result needs to be negated in is_neg.
+        var is_neg = Vector128.GreaterThan(xt, Vector128.Create(math.F_PI));
+        xt -= is_neg & Vector128.Create(math.F_PI);
+
+        is_neg &= Vector128.Create(-2.0f);
+        is_neg += Vector128<float>.One;
+
+        var is_nan = simd.Ne(x, x);
+        is_nan += Vector128.GreaterThan(x, Vector128.Create(float.MaxValue));
+        is_nan += Vector128.LessThan(x, Vector128.Create(float.MinValue));
+
+        // Since sin() on [0, pi] is an even function around pi/2, this "folds" the range into [0, pi/2]. I.e. 3pi/5 becomes 2pi/5.
+        xt = Vector128.Create(math.F_Half_PI) - Vector128.Abs(xt - Vector128.Create(math.F_Half_PI));
+
+        var sq = xt * xt;
+        var r = simd.Fma(sq, Vector128.Create(-0.0000000000007384998082865f), Vector128.Create(0.000000000160490521296459f));
+        r = simd.Fma(r, sq, Vector128.Create(-0.00000002505191090496049f));
+        r = simd.Fma(r, sq, Vector128.Create(0.00000275573170815073144f));
+        r = simd.Fma(r, sq, Vector128.Create(-0.00019841269828860068271f));
+        r = simd.Fma(r, sq, Vector128.Create(0.008333333333299304989001f));
+        r = simd.Fma(r, sq, Vector128.Create(-0.166666666666663509013977f));
+        r = simd.Fma(r, sq, Vector128<float>.One);
+
+        r *= xt;
+
+        r = simd.Fma(r, is_neg, is_nan);
+
+        return r;
+    }
+
+    #endregion
+
+    #region Sin Cos v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> SinCos(Vector256<float> x) =>
+        Sin(x + Vector256.Create(0.0f, 0.0f, 0.0f, 0.0f, math.F_Half_PI, math.F_Half_PI, math.F_Half_PI, math.F_Half_PI));
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Cos(Vector256<float> x) => Sin(x + Vector256.Create(math.F_Half_PI));
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Sin(Vector256<float> x)
+    {
+        // Since sin() is periodic around 2pi, this converts x into the range of [0, 2pi]
+        var xt = x - Vector256.Floor(x / math.F_PI2) * math.F_PI2;
+
+        // Since sin() in [0, 2pi] is an odd function around pi, this converts the range to [0, pi], then stores whether or not the result needs to be negated in is_neg.
+        var is_neg = Vector256.GreaterThan(xt, Vector256.Create(math.F_PI));
+        xt -= is_neg & Vector256.Create(math.F_PI);
+
+        is_neg &= Vector256.Create(-2.0f);
+        is_neg += Vector256<float>.One;
+
+        var is_nan = simd.Ne(x, x);
+        is_nan += Vector256.GreaterThan(x, Vector256.Create(float.MaxValue));
+        is_nan += Vector256.LessThan(x, Vector256.Create(float.MinValue));
+
+        // Since sin() on [0, pi] is an even function around pi/2, this "folds" the range into [0, pi/2]. I.e. 3pi/5 becomes 2pi/5.
+        xt = Vector256.Create(math.F_Half_PI) - Vector256.Abs(xt - Vector256.Create(math.F_Half_PI));
+
+        var sq = xt * xt;
+        var r = simd.Fma(sq, Vector256.Create(-0.0000000000007384998082865f), Vector256.Create(0.000000000160490521296459f));
+        r = simd.Fma(r, sq, Vector256.Create(-0.00000002505191090496049f));
+        r = simd.Fma(r, sq, Vector256.Create(0.00000275573170815073144f));
+        r = simd.Fma(r, sq, Vector256.Create(-0.00019841269828860068271f));
+        r = simd.Fma(r, sq, Vector256.Create(0.008333333333299304989001f));
+        r = simd.Fma(r, sq, Vector256.Create(-0.166666666666663509013977f));
+        r = simd.Fma(r, sq, Vector256<float>.One);
+
+        r *= xt;
+
+        r = simd.Fma(r, is_neg, is_nan);
+
+        return r;
+    }
+
+    #endregion
 }
 #endif

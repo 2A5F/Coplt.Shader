@@ -3,7 +3,6 @@
     <PropertyGroup>
         <Nullable>enable</Nullable>
         <LangVersion>12.0</LangVersion>
-        <RootNamespace>Coplt.Shader.Mathematics</RootNamespace>
         <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
         <TransformOnBuild>true</TransformOnBuild>
         <TransformOutOfDateOnly>false</TransformOutOfDateOnly>

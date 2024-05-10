@@ -931,4 +931,65 @@ public static partial class math
     public static decimal distance(this decimal a, decimal b) => abs(b - a);
 
     #endregion
+
+    #region Sin
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half sin(this half a) => half.Sin(a);
+    #else
+    public static half sin(this half a) => (half)MathF.Sin(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float sin(this float a) => MathF.Sin(a);
+    [MethodImpl(256 | 512)]
+    public static double sin(this double a) => Math.Sin(a);
+
+    #endregion
+
+    #region Cos
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half cos(this half a) => half.Cos(a);
+    #else
+    public static half cos(this half a) => (half)MathF.Cos(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float cos(this float a) => MathF.Cos(a);
+    [MethodImpl(256 | 512)]
+    public static double cos(this double a) => Math.Cos(a);
+
+    #endregion
+
+    #region SinCos
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    public static (half sin, half cos) sincos(this half a) => half.SinCos(a);
+    [MethodImpl(256 | 512)]
+    public static (float sin, float cos) sincos(this float a) => MathF.SinCos(a);
+    [MethodImpl(256 | 512)]
+    public static (double sin, double cos) sincos(this double a) => Math.SinCos(a);
+    #else
+    [MethodImpl(256 | 512)]
+    public static (half sin, half cos) sincos(this half a) => ((half)MathF.Sin(a), (half)MathF.Cos(a));
+    [MethodImpl(256 | 512)]
+    public static (float sin, float cos) sincos(this float a) => (MathF.Sin(a), MathF.Cos(a));
+    [MethodImpl(256 | 512)]
+    public static (double sin, double cos) sincos(this double a) => (Math.Sin(a), Math.Cos(a));
+    #endif
+
+    #endregion
+
+    #region SinCos out
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this half a, out half sin, out half cos) => (sin, cos) = sincos(a);
+    [MethodImpl(256 | 512)]
+    public static void sincos(this float a, out float sin, out float cos) => (sin, cos) = sincos(a);
+    [MethodImpl(256 | 512)]
+    public static void sincos(this double a, out double sin, out double cos) => (sin, cos) = sincos(a);
+
+    #endregion
 }

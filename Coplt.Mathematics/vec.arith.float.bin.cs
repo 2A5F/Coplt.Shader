@@ -197,6 +197,57 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float2 faceForward(this float2 n, float2 i, float2 ng) =>
         select(dot(ng, i) >= 0.0f, -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static float2 sin(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sin(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sin(), a.y.sin());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 cos(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cos(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cos(), a.y.cos());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (float2 sin, float2 cos) sincos(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        var (sin, cos) = simd.SinCos(a.vector);
+        return (new(sin), new(cos));
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        return (
+            new(sin0, sin1),
+            new(cos0, cos1)
+        );
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this float2 a, out float2 sin, out float2 cos)
+    {
+        #if NET8_0_OR_GREATER
+        var (v_sin, v_cos) = simd.SinCos(a.vector);
+        sin = new(v_sin);
+        cos = new(v_cos);
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        sin = new(sin0, sin1);
+        cos = new(cos0, cos1);
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float2
@@ -396,6 +447,59 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float3 faceForward(this float3 n, float3 i, float3 ng) =>
         select(dot(ng, i) >= 0.0f, -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static float3 sin(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sin(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sin(), a.y.sin(), a.z.sin());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 cos(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cos(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cos(), a.y.cos(), a.z.cos());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (float3 sin, float3 cos) sincos(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        var (sin, cos) = simd.SinCos(a.vector);
+        return (new(sin), new(cos));
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        return (
+            new(sin0, sin1, sin2),
+            new(cos0, cos1, cos2)
+        );
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this float3 a, out float3 sin, out float3 cos)
+    {
+        #if NET8_0_OR_GREATER
+        var (v_sin, v_cos) = simd.SinCos(a.vector);
+        sin = new(v_sin);
+        cos = new(v_cos);
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        sin = new(sin0, sin1, sin2);
+        cos = new(cos0, cos1, cos2);
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float3
@@ -595,6 +699,61 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float4 faceForward(this float4 n, float4 i, float4 ng) =>
         select(dot(ng, i) >= 0.0f, -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static float4 sin(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sin(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sin(), a.y.sin(), a.z.sin(), a.w.sin());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 cos(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cos(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cos(), a.y.cos(), a.z.cos(), a.w.cos());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (float4 sin, float4 cos) sincos(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        var (sin, cos) = simd.SinCos(a.vector);
+        return (new(sin), new(cos));
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        a.w.sincos(out var sin3, out var cos3);
+        return (
+            new(sin0, sin1, sin2, sin3),
+            new(cos0, cos1, cos2, cos3)
+        );
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this float4 a, out float4 sin, out float4 cos)
+    {
+        #if NET8_0_OR_GREATER
+        var (v_sin, v_cos) = simd.SinCos(a.vector);
+        sin = new(v_sin);
+        cos = new(v_cos);
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        a.w.sincos(out var sin3, out var cos3);
+        sin = new(sin0, sin1, sin2, sin3);
+        cos = new(cos0, cos1, cos2, cos3);
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float4
@@ -794,6 +953,57 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double2 faceForward(this double2 n, double2 i, double2 ng) =>
         select(dot(ng, i) >= 0.0, -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static double2 sin(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sin(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sin(), a.y.sin());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 cos(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cos(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cos(), a.y.cos());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (double2 sin, double2 cos) sincos(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        var (sin, cos) = simd.SinCos(a.vector);
+        return (new(sin), new(cos));
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        return (
+            new(sin0, sin1),
+            new(cos0, cos1)
+        );
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this double2 a, out double2 sin, out double2 cos)
+    {
+        #if NET8_0_OR_GREATER
+        var (v_sin, v_cos) = simd.SinCos(a.vector);
+        sin = new(v_sin);
+        cos = new(v_cos);
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        sin = new(sin0, sin1);
+        cos = new(cos0, cos1);
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double2
@@ -993,6 +1203,59 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double3 faceForward(this double3 n, double3 i, double3 ng) =>
         select(dot(ng, i) >= 0.0, -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static double3 sin(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sin(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sin(), a.y.sin(), a.z.sin());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 cos(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cos(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cos(), a.y.cos(), a.z.cos());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (double3 sin, double3 cos) sincos(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        var (sin, cos) = simd.SinCos(a.vector);
+        return (new(sin), new(cos));
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        return (
+            new(sin0, sin1, sin2),
+            new(cos0, cos1, cos2)
+        );
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this double3 a, out double3 sin, out double3 cos)
+    {
+        #if NET8_0_OR_GREATER
+        var (v_sin, v_cos) = simd.SinCos(a.vector);
+        sin = new(v_sin);
+        cos = new(v_cos);
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        sin = new(sin0, sin1, sin2);
+        cos = new(cos0, cos1, cos2);
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double3
@@ -1192,6 +1455,61 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double4 faceForward(this double4 n, double4 i, double4 ng) =>
         select(dot(ng, i) >= 0.0, -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static double4 sin(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sin(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sin(), a.y.sin(), a.z.sin(), a.w.sin());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 cos(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cos(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cos(), a.y.cos(), a.z.cos(), a.w.cos());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (double4 sin, double4 cos) sincos(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        var (sin, cos) = simd.SinCos(a.vector);
+        return (new(sin), new(cos));
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        a.w.sincos(out var sin3, out var cos3);
+        return (
+            new(sin0, sin1, sin2, sin3),
+            new(cos0, cos1, cos2, cos3)
+        );
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this double4 a, out double4 sin, out double4 cos)
+    {
+        #if NET8_0_OR_GREATER
+        var (v_sin, v_cos) = simd.SinCos(a.vector);
+        sin = new(v_sin);
+        cos = new(v_cos);
+        #else // NET8_0_OR_GREATER
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        a.w.sincos(out var sin3, out var cos3);
+        sin = new(sin0, sin1, sin2, sin3);
+        cos = new(cos0, cos1, cos2, cos3);
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double4
@@ -1335,6 +1653,38 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half2 faceForward(this half2 n, half2 i, half2 ng) =>
         select(dot(ng, i) >= 0.0f.half(), -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static half2 sin(this half2 a)
+    {
+        return new(a.x.sin(), a.y.sin());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 cos(this half2 a)
+    {
+        return new(a.x.cos(), a.y.cos());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (half2 sin, half2 cos) sincos(this half2 a)
+    {
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        return (
+            new(sin0, sin1),
+            new(cos0, cos1)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this half2 a, out half2 sin, out half2 cos)
+    {
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        sin = new(sin0, sin1);
+        cos = new(cos0, cos1);
+    }
 }
 
 #endregion // half2
@@ -1478,6 +1828,40 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half3 faceForward(this half3 n, half3 i, half3 ng) =>
         select(dot(ng, i) >= 0.0f.half(), -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static half3 sin(this half3 a)
+    {
+        return new(a.x.sin(), a.y.sin(), a.z.sin());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 cos(this half3 a)
+    {
+        return new(a.x.cos(), a.y.cos(), a.z.cos());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (half3 sin, half3 cos) sincos(this half3 a)
+    {
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        return (
+            new(sin0, sin1, sin2),
+            new(cos0, cos1, cos2)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this half3 a, out half3 sin, out half3 cos)
+    {
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        sin = new(sin0, sin1, sin2);
+        cos = new(cos0, cos1, cos2);
+    }
 }
 
 #endregion // half3
@@ -1621,6 +2005,42 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half4 faceForward(this half4 n, half4 i, half4 ng) =>
         select(dot(ng, i) >= 0.0f.half(), -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static half4 sin(this half4 a)
+    {
+        return new(a.x.sin(), a.y.sin(), a.z.sin(), a.w.sin());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 cos(this half4 a)
+    {
+        return new(a.x.cos(), a.y.cos(), a.z.cos(), a.w.cos());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (half4 sin, half4 cos) sincos(this half4 a)
+    {
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        a.w.sincos(out var sin3, out var cos3);
+        return (
+            new(sin0, sin1, sin2, sin3),
+            new(cos0, cos1, cos2, cos3)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this half4 a, out half4 sin, out half4 cos)
+    {
+        a.x.sincos(out var sin0, out var cos0);
+        a.y.sincos(out var sin1, out var cos1);
+        a.z.sincos(out var sin2, out var cos2);
+        a.w.sincos(out var sin3, out var cos3);
+        sin = new(sin0, sin1, sin2, sin3);
+        cos = new(cos0, cos1, cos2, cos3);
+    }
 }
 
 #endregion // half4

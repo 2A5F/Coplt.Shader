@@ -424,6 +424,111 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static <#= typeName #> faceForward(this <#= typeName #> n, <#= typeName #> i, <#= typeName #> ng) =>
         select(dot(ng, i) >= 0.0<#= typ.suffix #>, -n, n);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> sin(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(simd.Sin(a.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.sin()")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> cos(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(simd.Cos(a.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.cos()")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static (<#= typeName #> sin, <#= typeName #> cos) sincos(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        var (sin, cos) = simd.SinCos(a.vector);
+        return (new(sin), new(cos));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        <#= string.Join(";\n        ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.sincos(out var sin{n}, out var cos{n})")) #>;
+        return (
+            new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"sin{n}")) #>),
+            new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"cos{n}")) #>)
+        );
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static void sincos(this <#= typeName #> a, out <#= typeName #> sin, out <#= typeName #> cos)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        var (v_sin, v_cos) = simd.SinCos(a.vector);
+        sin = new(v_sin);
+        cos = new(v_cos);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        <#= string.Join(";\n        ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.sincos(out var sin{n}, out var cos{n})")) #>;
+        sin = new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"sin{n}")) #>);
+        cos = new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"cos{n}")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
 }
 
 #endregion // <#= typeName #>
