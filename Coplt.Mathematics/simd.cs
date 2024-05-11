@@ -2240,7 +2240,7 @@ public static partial class simd
 
     #endregion
 
-    #region Cosh
+    #region Tanh
 
     [MethodImpl(256 | 512)]
     public static Vector64<float> Tanh(Vector64<float> a)
@@ -2313,6 +2313,162 @@ public static partial class simd
             a.GetElement(1).tanh(),
             a.GetElement(2).tanh(),
             a.GetElement(3).tanh()
+        );
+    }
+
+    #endregion
+
+    #region Asinh
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Asinh(Vector64<float> a)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Asinh(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Asinh(a.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).asinh(),
+            a.GetElement(1).asinh()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Asinh(Vector128<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Asinh(a);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Asinh(a.GetLower()),
+                simd_float.Asinh(a.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).asinh(),
+            a.GetElement(1).asinh(),
+            a.GetElement(2).asinh(),
+            a.GetElement(3).asinh()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Asinh(Vector128<double> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Asinh(a);
+        }
+        return Vector128.Create(
+            a.GetElement(0).asinh(),
+            a.GetElement(1).asinh()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Asinh(Vector256<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Asinh(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Asinh(a.GetLower()),
+                simd_double.Asinh(a.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).asinh(),
+            a.GetElement(1).asinh(),
+            a.GetElement(2).asinh(),
+            a.GetElement(3).asinh()
+        );
+    }
+
+    #endregion
+
+    #region Acosh
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Acosh(Vector64<float> a)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Acosh(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Acosh(a.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).acosh(),
+            a.GetElement(1).acosh()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Acosh(Vector128<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Acosh(a);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_float.Acosh(a.GetLower()),
+                simd_float.Acosh(a.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).acosh(),
+            a.GetElement(1).acosh(),
+            a.GetElement(2).acosh(),
+            a.GetElement(3).acosh()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Acosh(Vector128<double> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Acosh(a);
+        }
+        return Vector128.Create(
+            a.GetElement(0).acosh(),
+            a.GetElement(1).acosh()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Acosh(Vector256<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Acosh(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_double.Acosh(a.GetLower()),
+                simd_double.Acosh(a.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).acosh(),
+            a.GetElement(1).acosh(),
+            a.GetElement(2).acosh(),
+            a.GetElement(3).acosh()
         );
     }
 

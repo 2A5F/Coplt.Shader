@@ -12,17 +12,17 @@ public class Test1
     public void Float()
     {
         var a = new float4(9);
-        var r = simd_float.Sinh(a.UnsafeGetInner());
+        var r = simd_float.AsinhAcosh(a.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(MathF.Sinh(9));
+        Console.WriteLine(MathF.Acosh(9));
     }
     [Test]
     public void Double()
     {
         var a = new double4(9);
-        var r = simd_double.Sinh(a.UnsafeGetInner());
+        var r = simd_double.AsinhAcosh(a.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(Math.Sinh(9.0));
+        Console.WriteLine(Math.Acosh(9.0));
     }
     #endif
 }

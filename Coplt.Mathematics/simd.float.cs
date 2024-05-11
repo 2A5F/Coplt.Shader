@@ -349,6 +349,60 @@ public static partial class simd_float
 
     #endregion
 
+    #region Log v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Log(Vector256<float> a) => Log2(a) * math.F_Log2;
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Log10(Vector256<float> a) => Log2(a) * (math.F_Log2 / math.F_Log10);
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Log2(Vector256<float> a)
+    {
+        var xl = Vector256.Max(a, Vector256<float>.Zero).AsInt32();
+        var mantissa = (xl >>> 23) - Vector256.Create(0x7F);
+        var r = Vector256.ConvertToSingle(mantissa);
+
+        xl = (xl & Vector256.Create(0x7FFFFF)) | Vector256.Create(0x7F << 23);
+
+        var d = (xl.AsSingle() | Vector256<float>.One) * Vector256.Create(2.0f / 3.0f);
+
+        #region Approx
+
+        // A Taylor Series approximation of ln(x) that relies on the identity that ln(x) = 2*atan((x-1)/(x+1)).
+        d = (d - Vector256<float>.One) / (d + Vector256<float>.One);
+        var sq = d * d;
+
+        var rx = simd.Fma(sq, Vector256.Create(0.2371599674224853515625f), Vector256.Create(0.285279005765914916992188f));
+        rx = simd.Fma(rx, sq, Vector256.Create(0.400005519390106201171875f));
+        rx = simd.Fma(rx, sq, Vector256.Create(0.666666567325592041015625f));
+        rx = simd.Fma(rx, sq, Vector256.Create(2.0f));
+
+        d *= rx;
+
+        #endregion
+
+        r += simd.Fma(d, Vector256.Create(1.4426950408889634f), Vector256.Create(0.58496250072115619f));
+
+        r = Vector256.ConditionalSelect(
+            Vector256.GreaterThan(a, Vector256<float>.Zero),
+            r, Vector256.Create(float.NaN)
+        );
+        r = Vector256.ConditionalSelect(
+            Vector256.Equals(a, Vector256.Create(float.PositiveInfinity)),
+            Vector256.Create(float.PositiveInfinity), r
+        );
+        r = Vector256.ConditionalSelect(
+            Vector256.Equals(a, Vector256<float>.Zero),
+            Vector256.Create(float.NegativeInfinity), r
+        );
+
+        return r;
+    }
+
+    #endregion
+
     #region Exp v64
 
     [MethodImpl(256 | 512)]
@@ -832,7 +886,7 @@ public static partial class simd_float
     }
 
     #endregion
-    
+
     #region Tanh v64
 
     [MethodImpl(256 | 512)]
@@ -842,9 +896,9 @@ public static partial class simd_float
         var rr = Vector64<float>.One / r;
         return (r - rr) / (r + rr);
     }
-    
+
     #endregion
-    
+
     #region Tanh v128
 
     [MethodImpl(256 | 512)]
@@ -854,7 +908,79 @@ public static partial class simd_float
         var rr = Vector128<float>.One / r;
         return (r - rr) / (r + rr);
     }
-    
+
+    #endregion
+
+    #region ASinh ACosh v64
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Asinh(Vector64<float> x)
+    {
+        var r = simd.Fma(x, x, Vector64<float>.One);
+        r = Vector64.Sqrt(r);
+        r += x;
+        r = Log(r);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Acosh(Vector64<float> x)
+    {
+        var r = simd.Fma(x, x, -Vector64<float>.One);
+        r = Vector64.Sqrt(r);
+        r += x;
+        r = Log(r);
+        return r;
+    }
+
+    #endregion
+
+    #region ASinh ACosh v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Asinh(Vector128<float> x)
+    {
+        var r = simd.Fma(x, x, Vector128<float>.One);
+        r = Vector128.Sqrt(r);
+        r += x;
+        r = Log(r);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Acosh(Vector128<float> x)
+    {
+        var r = simd.Fma(x, x, -Vector128<float>.One);
+        r = Vector128.Sqrt(r);
+        r += x;
+        r = Log(r);
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> AsinhAcosh(Vector128<float> x)
+    {
+        var r = simd.Fma(x, x, Vector128.Create(1.0f, 1.0f, -1.0f, -1.0f));
+        r = Vector128.Sqrt(r);
+        r += x;
+        r = Log(r);
+        return r;
+    }
+
+    #endregion
+
+    #region ASinh ACosh v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> AsinhAcosh(Vector256<float> x)
+    {
+        var r = simd.Fma(x, x, Vector256.Create(1.0f, 1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f));
+        r = Vector256.Sqrt(r);
+        r += x;
+        r = Log(r);
+        return r;
+    }
+
     #endregion
 }
 #endif

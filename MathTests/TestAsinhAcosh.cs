@@ -4,14 +4,14 @@ using Coplt.Mathematics;
 #if NET8_0_OR_GREATER
 namespace MathTests;
 
-public class TestSinhCosh
+public class TestAsinhAcosh
 {
     [Test]
     [Parallelizable]
-    public void FloatTestSinh([Random(-10f, 10.0f, 100)] float x)
+    public void FloatTestAsinh([Random(-10f, 10.0f, 100)] float x)
     {
-        var a = simd_float.Sinh(new float4(x).UnsafeGetInner()).GetElement(0);
-        var b = MathF.Sinh(x);
+        var a = simd_float.Asinh(new float4(x).UnsafeGetInner()).GetElement(0);
+        var b = MathF.Asinh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
         Assert.That(b, Is.EqualTo(a).Within(0.001f).Percent);
@@ -19,10 +19,10 @@ public class TestSinhCosh
 
     [Test]
     [Parallelizable]
-    public void DoubleTestSinh([Random(-10, 10.0, 100)] double x)
+    public void DoubleTestAsinh([Random(-10, 10.0, 100)] double x)
     {
-        var a = simd_double.Sinh(new double4(x).UnsafeGetInner()).GetElement(0);
-        var b = Math.Sinh(x);
+        var a = simd_double.Asinh(new double4(x).UnsafeGetInner()).GetElement(0);
+        var b = Math.Asinh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
         Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f).Percent);
@@ -30,10 +30,10 @@ public class TestSinhCosh
     
     [Test]
     [Parallelizable]
-    public void FloatTestCosh([Random(-10f, 10.0f, 100)] float x)
+    public void FloatTestAcosh([Random(1, 10.0f, 100)] float x)
     {
-        var a = simd_float.Cosh(new float4(x).UnsafeGetInner()).GetElement(0);
-        var b = MathF.Cosh(x);
+        var a = simd_float.Acosh(new float4(x).UnsafeGetInner()).GetElement(0);
+        var b = MathF.Acosh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
         Assert.That(b, Is.EqualTo(a).Within(0.001f).Percent);
@@ -41,10 +41,10 @@ public class TestSinhCosh
 
     [Test]
     [Parallelizable]
-    public void DoubleTestCosh([Random(-10, 10.0, 100)] double x)
+    public void DoubleTestAcosh([Random(1, 10.0, 100)] double x)
     {
-        var a = simd_double.Cosh(new double4(x).UnsafeGetInner()).GetElement(0);
-        var b = Math.Cosh(x);
+        var a = simd_double.Acosh(new double4(x).UnsafeGetInner()).GetElement(0);
+        var b = Math.Acosh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
         Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f).Percent);

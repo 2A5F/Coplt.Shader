@@ -1007,6 +1007,66 @@ public static partial class math
     public static double tan(this double a) => Math.Tan(a);
 
     #endregion
+    
+    #region Asin
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half asin(this half a) => half.Asin(a);
+    #else
+    public static half asin(this half a) => (half)MathF.Asin(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float asin(this float a) => MathF.Asin(a);
+    [MethodImpl(256 | 512)]
+    public static double asin(this double a) => Math.Asin(a);
+
+    #endregion
+
+    #region Acos
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half acos(this half a) => half.Acos(a);
+    #else
+    public static half acos(this half a) => (half)MathF.Acos(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float acos(this float a) => MathF.Acos(a);
+    [MethodImpl(256 | 512)]
+    public static double acos(this double a) => Math.Acos(a);
+
+    #endregion
+
+    #region Atan
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half atan(this half a) => half.Atan(a);
+    #else
+    public static half atan(this half a) => (half)MathF.Atan(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float atan(this float a) => MathF.Atan(a);
+    [MethodImpl(256 | 512)]
+    public static double atan(this double a) => Math.Atan(a);
+
+    #endregion
+
+    #region Atan2
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half atan2(this half a, half b) => half.Atan2(a, b);
+    #else
+    public static half atan2(this half a, half b) => (half)MathF.Atan2(a, b);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float atan2(this float a, float b) => MathF.Atan2(a, b);
+    [MethodImpl(256 | 512)]
+    public static double atan2(this double a, double b) => Math.Atan2(a, b);
+
+    #endregion
 
     #region Sinh
 
@@ -1050,6 +1110,51 @@ public static partial class math
     public static float tanh(this float a) => MathF.Tanh(a);
     [MethodImpl(256 | 512)]
     public static double tanh(this double a) => Math.Tanh(a);
+
+    #endregion
+
+    #region Asinh
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half asinh(this half a) => half.Asinh(a);
+    #else
+    public static half asinh(this half a) => (half)MathF.Asinh(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float asinh(this float a) => MathF.Asinh(a);
+    [MethodImpl(256 | 512)]
+    public static double asinh(this double a) => Math.Asinh(a);
+
+    #endregion
+
+    #region Acosh
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half acosh(this half a) => half.Acosh(a);
+    #else
+    public static half acosh(this half a) => (half)MathF.Acosh(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float acosh(this float a) => MathF.Acosh(a);
+    [MethodImpl(256 | 512)]
+    public static double acosh(this double a) => Math.Acosh(a);
+
+    #endregion
+    
+    #region Atanh
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half atanh(this half a) => half.Atanh(a);
+    #else
+    public static half atanh(this half a) => (half)MathF.Atanh(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float atanh(this float a) => MathF.Atanh(a);
+    [MethodImpl(256 | 512)]
+    public static double atanh(this double a) => Math.Atanh(a);
 
     #endregion
 }

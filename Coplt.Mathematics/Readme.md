@@ -9,7 +9,7 @@ hlsl-style linear algebra library
 - Simd accelerated log, exp, pow, fmod, trigonometry (Lower precision than C# standard library)
 
 ## Todo
-- [ ] trigonometry simd impl
+- [ ] simd impl of asin acos atan atan2 atanh
 - [ ] matrix
 - [ ] quaternion
 - [ ] higher precision single float trigonometric functions impl
