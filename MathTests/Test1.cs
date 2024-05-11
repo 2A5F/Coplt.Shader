@@ -12,17 +12,17 @@ public class Test1
     public void Float()
     {
         var a = new float4(9);
-        var r = simd_float.SinCos(Vector256.Create(a.UnsafeGetInner(), a.UnsafeGetInner()));
+        var r = simd_float.Sinh(a.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(MathF.SinCos(9));
+        Console.WriteLine(MathF.Sinh(9));
     }
     [Test]
     public void Double()
     {
         var a = new double4(9);
-        var r = simd_double.SinCos(Vector512.Create(a.UnsafeGetInner(), a.UnsafeGetInner()));
+        var r = simd_double.Sinh(a.UnsafeGetInner());
         Console.WriteLine(r);
-        Console.WriteLine(Math.SinCos(9.0));
+        Console.WriteLine(Math.Sinh(9.0));
     }
     #endif
 }

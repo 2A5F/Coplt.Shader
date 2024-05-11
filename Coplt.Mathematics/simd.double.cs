@@ -89,7 +89,7 @@ public static partial class simd_double
     }
 
     #endregion
-    
+
     #region Wrap v256
 
     [MethodImpl(256 | 512)]
@@ -136,7 +136,7 @@ public static partial class simd_double
     }
 
     #endregion
-    
+
     #region Wrap v512
 
     [MethodImpl(256 | 512)]
@@ -362,6 +362,50 @@ public static partial class simd_double
 
         fx += Vector256.Create(6755399441055744.0);
         fx = ((fx.AsInt64() + Vector256.Create(0x3ffL)) << 52).AsDouble();
+
+        r = simd.Fma(r, fx, e);
+
+        return r;
+    }
+
+    #endregion
+
+    #region Exp v512
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Exp(Vector512<double> a) => Exp2(a * math.D_1_Div_Log2);
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Exp10(Vector512<double> x) => Exp(x * 2.302585092994045684);
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Exp2(Vector512<double> x)
+    {
+        var e = Vector512.GreaterThanOrEqual(x, Vector512.Create(709.0 * 1.4426950408889634)) & Vector512.Create(double.PositiveInfinity);
+        e += simd.Ne(x, x);
+
+        var xx = Vector512.Max(
+            Vector512.Min(x, Vector512.Create(709.0 * 1.4426950408889634)),
+            Vector512.Create(-709.0 * 1.4426950408889634)
+        );
+        var fx = simd.Round(xx);
+
+        xx -= fx;
+        var sq = xx * xx;
+        var r = simd.Fma(sq, Vector512.Create(0.00000000044560630323), Vector512.Create(0.00000010178055034703));
+        r = simd.Fma(r, sq, Vector512.Create(0.000015252733847608224));
+        r = simd.Fma(r, sq, Vector512.Create(0.0013333558146398846396));
+        r = simd.Fma(r, sq, Vector512.Create(0.05550410866482166557484));
+        r = simd.Fma(r, sq, Vector512.Create(0.6931471805599453087156032));
+        var ro = simd.Fma(sq, Vector512.Create(0.000000007073075504998510), Vector512.Create(0.000001321543919937730177));
+        ro = simd.Fma(ro, sq, Vector512.Create(0.0001540353044975008196326));
+        ro = simd.Fma(ro, sq, Vector512.Create(0.00961812910759946061829085));
+        ro = simd.Fma(ro, sq, Vector512.Create(0.240226506959101195979507231));
+        ro = simd.Fma(ro, sq, Vector512<double>.One);
+        r = simd.Fma(r, xx, ro);
+
+        fx += Vector512.Create(6755399441055744.0);
+        fx = ((fx.AsInt64() + Vector512.Create(0x3ffL)) << 52).AsDouble();
 
         r = simd.Fma(r, fx, e);
 
@@ -648,6 +692,112 @@ public static partial class simd_double
 
         xx = simd.Fma(xx, is_neg, is_nan);
         return xx;
+    }
+
+    #endregion
+
+    #region Sinh Cosh v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Sinh(Vector128<double> x)
+    {
+        var r = Exp(x);
+        var rr = Vector128<double>.One / r;
+        return (r - rr) * 0.5;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Cosh(Vector128<double> x)
+    {
+        var r = Exp(x);
+        var rr = Vector128<double>.One / r;
+        return (r + rr) * 0.5;
+    }
+
+    #endregion
+
+    #region Sinh Cosh v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Sinh(Vector256<double> x)
+    {
+        var r = Exp(x);
+        var rr = Vector256<double>.One / r;
+        return (r - rr) * 0.5;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Cosh(Vector256<double> x)
+    {
+        var r = Exp(x);
+        var rr = Vector256<double>.One / r;
+        return (r + rr) * 0.5;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> SinhCosh(Vector256<double> x)
+    {
+        var r = Exp(x);
+        var rr = Vector256<double>.One / r;
+        var rrr = simd.Fma(rr, Vector256.Create(1.0, 1.0, -1.0, -1.0), r);
+        return rrr * 0.5;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> SinhCoshD128To256(Vector128<double> x)
+    {
+        var r = Exp(x);
+        var r512 = Vector256.Create(r, r);
+        var rr = Vector256<double>.One / r512;
+        var rrr = simd.Fma(rr, Vector256.Create(1.0, 1.0, -1.0, -1.0), r512);
+        return rrr * 0.5;
+    }
+
+    #endregion
+
+    #region Sinh Cosh v512
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> SinhCosh(Vector512<double> x)
+    {
+        var r = Exp(x);
+        var rr = Vector512<double>.One / r;
+        var rrr = simd.Fma(rr, Vector512.Create(1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0), r);
+        return rrr * 0.5;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> SinhCoshD256To512(Vector256<double> x)
+    {
+        var r = Exp(x);
+        var r512 = Vector512.Create(r, r);
+        var rr = Vector512<double>.One / r512;
+        var rrr = simd.Fma(rr, Vector512.Create(1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0), r512);
+        return rrr * 0.5;
+    }
+
+    #endregion
+
+    #region Tanh v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Tanh(Vector128<double> x)
+    {
+        var r = Exp(x);
+        var rr = Vector128<double>.One / r;
+        return (r - rr) / (r + rr);
+    }
+
+    #endregion
+
+    #region Tanh v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Tanh(Vector256<double> x)
+    {
+        var r = Exp(x);
+        var rr = Vector256<double>.One / r;
+        return (r - rr) / (r + rr);
     }
 
     #endregion

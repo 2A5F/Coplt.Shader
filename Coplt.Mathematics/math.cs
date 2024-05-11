@@ -256,5 +256,9 @@ public static partial class math
 public static partial class ctor
 {
     [MethodImpl(256 | 512)]
+    public static half half(this int v) => (half)v;
+    [MethodImpl(256 | 512)]
     public static half half(this float v) => (half)v;
+    [MethodImpl(256 | 512)]
+    public static half half(this double v) => (half)v;
 }

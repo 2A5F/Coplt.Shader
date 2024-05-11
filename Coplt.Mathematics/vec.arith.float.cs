@@ -101,7 +101,7 @@ public static partial class math
     public static float2 trunc(this float2 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Truncate(a.vector));
+        return new(simd.RoundToZero(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.trunc(), a.y.trunc());
         #endif // NET8_0_OR_GREATER
@@ -305,7 +305,7 @@ public static partial class math
     public static float3 trunc(this float3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Truncate(a.vector));
+        return new(simd.RoundToZero(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.trunc(), a.y.trunc(), a.z.trunc());
         #endif // NET8_0_OR_GREATER
@@ -509,7 +509,7 @@ public static partial class math
     public static float4 trunc(this float4 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Truncate(a.vector));
+        return new(simd.RoundToZero(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.trunc(), a.y.trunc(), a.z.trunc(), a.w.trunc());
         #endif // NET8_0_OR_GREATER
@@ -713,7 +713,7 @@ public static partial class math
     public static double2 trunc(this double2 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Truncate(a.vector));
+        return new(simd.RoundToZero(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.trunc(), a.y.trunc());
         #endif // NET8_0_OR_GREATER
@@ -917,7 +917,7 @@ public static partial class math
     public static double3 trunc(this double3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Truncate(a.vector));
+        return new(simd.RoundToZero(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.trunc(), a.y.trunc(), a.z.trunc());
         #endif // NET8_0_OR_GREATER
@@ -1121,7 +1121,7 @@ public static partial class math
     public static double4 trunc(this double4 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Truncate(a.vector));
+        return new(simd.RoundToZero(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.trunc(), a.y.trunc(), a.z.trunc(), a.w.trunc());
         #endif // NET8_0_OR_GREATER

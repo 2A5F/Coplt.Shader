@@ -429,6 +429,46 @@ public static partial class simd_float
 
     #endregion
 
+    #region Exp v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Exp(Vector256<float> x) => Exp2(x * math.F_1_Div_Log2);
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Exp10(Vector256<float> x) => Exp(x * 2.302585092994045684f);
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Exp2(Vector256<float> x)
+    {
+        var e = Vector256.GreaterThanOrEqual(x, Vector256.Create(89f)) & Vector256.Create(float.PositiveInfinity);
+        e += simd.Ne(x, x);
+
+        var xx = Vector256.Max(
+            Vector256.Min(x, Vector256.Create(81.0f * math.F_1_Div_Log2)),
+            Vector256.Create(-81.0f * math.F_1_Div_Log2)
+        );
+
+        var fx = simd.Round(xx);
+
+        xx -= fx;
+        var r = simd.Fma(xx, Vector256.Create(1.530610536076361E-05f), Vector256.Create(0.000154631026827329f));
+        r = simd.Fma(r, xx, Vector256.Create(0.0013333465742372899f));
+        r = simd.Fma(r, xx, Vector256.Create(0.00961804886829518f));
+        r = simd.Fma(r, xx, Vector256.Create(0.05550410925060949f));
+        r = simd.Fma(r, xx, Vector256.Create(0.240226509999339f));
+        r = simd.Fma(r, xx, Vector256.Create(0.6931471805500692f));
+        r = simd.Fma(r, xx, Vector256.Create(1.0f));
+
+        fx = ((Vector256.ConvertToInt32(fx) + Vector256.Create(127)) << 23).AsSingle();
+
+        r = simd.Fma(r, fx, e);
+        r = Vector256.AndNot(r, Vector256.Equals(x, Vector256.Create(float.NegativeInfinity)));
+
+        return r;
+    }
+
+    #endregion
+
     #region Pow v64
 
     [MethodImpl(256 | 512)]
@@ -709,6 +749,112 @@ public static partial class simd_float
         return xx;
     }
 
+    #endregion
+
+    #region Sinh Cosh v64
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Sinh(Vector64<float> x)
+    {
+        var r = Exp(x);
+        var rr = Vector64<float>.One / r;
+        return (r - rr) * 0.5f;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Cosh(Vector64<float> x)
+    {
+        var r = Exp(x);
+        var rr = Vector64<float>.One / r;
+        return (r + rr) * 0.5f;
+    }
+
+    #endregion
+
+    #region Sinh Cosh v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Sinh(Vector128<float> x)
+    {
+        var r = Exp(x);
+        var rr = Vector128<float>.One / r;
+        return (r - rr) * 0.5f;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Cosh(Vector128<float> x)
+    {
+        var r = Exp(x);
+        var rr = Vector128<float>.One / r;
+        return (r + rr) * 0.5f;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> SinhCosh(Vector128<float> x)
+    {
+        var r = Exp(x);
+        var rr = Vector128<float>.One / r;
+        var rrr = simd.Fma(rr, Vector128.Create(1.0f, 1.0f, -1.0f, -1.0f), r);
+        return rrr * 0.5f;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> SinhCoshF64To128(Vector64<float> x)
+    {
+        var r = Exp(x);
+        var r256 = Vector128.Create(r, r);
+        var rr = Vector128<float>.One / r256;
+        var rrr = simd.Fma(rr, Vector128.Create(1.0f, 1.0f, -1.0f, -1.0f), r256);
+        return rrr * 0.5f;
+    }
+
+    #endregion
+
+    #region Sinh Cosh v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> SinhCosh(Vector256<float> x)
+    {
+        var r = Exp(x);
+        var rr = Vector256<float>.One / r;
+        var rrr = simd.Fma(rr, Vector256.Create(1.0f, 1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f), r);
+        return rrr * 0.5f;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> SinhCoshF128To256(Vector128<float> x)
+    {
+        var r = Exp(x);
+        var r256 = Vector256.Create(r, r);
+        var rr = Vector256<float>.One / r256;
+        var rrr = simd.Fma(rr, Vector256.Create(1.0f, 1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f), r256);
+        return rrr * 0.5f;
+    }
+
+    #endregion
+    
+    #region Tanh v64
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Tanh(Vector64<float> x)
+    {
+        var r = Exp(x);
+        var rr = Vector64<float>.One / r;
+        return (r - rr) / (r + rr);
+    }
+    
+    #endregion
+    
+    #region Tanh v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Tanh(Vector128<float> x)
+    {
+        var r = Exp(x);
+        var rr = Vector128<float>.One / r;
+        return (r - rr) / (r + rr);
+    }
+    
     #endregion
 }
 #endif

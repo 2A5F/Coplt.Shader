@@ -1007,4 +1007,49 @@ public static partial class math
     public static double tan(this double a) => Math.Tan(a);
 
     #endregion
+
+    #region Sinh
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half sinh(this half a) => half.Sinh(a);
+    #else
+    public static half sinh(this half a) => (half)MathF.Sinh(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float sinh(this float a) => MathF.Sinh(a);
+    [MethodImpl(256 | 512)]
+    public static double sinh(this double a) => Math.Sinh(a);
+
+    #endregion
+
+    #region Cosh
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half cosh(this half a) => half.Cosh(a);
+    #else
+    public static half cosh(this half a) => (half)MathF.Cosh(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float cosh(this float a) => MathF.Cosh(a);
+    [MethodImpl(256 | 512)]
+    public static double cosh(this double a) => Math.Cosh(a);
+
+    #endregion
+
+    #region Tanh
+
+    [MethodImpl(256 | 512)]
+    #if NET8_0_OR_GREATER
+    public static half tanh(this half a) => half.Tanh(a);
+    #else
+    public static half tanh(this half a) => (half)MathF.Tanh(a);
+    #endif
+    [MethodImpl(256 | 512)]
+    public static float tanh(this float a) => MathF.Tanh(a);
+    [MethodImpl(256 | 512)]
+    public static double tanh(this double a) => Math.Tanh(a);
+
+    #endregion
 }

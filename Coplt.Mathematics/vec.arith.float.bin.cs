@@ -258,6 +258,36 @@ public static partial class math
         return new(a.x.tan(), a.y.tan());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float2 sinh(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sinh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sinh(), a.y.sinh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 cosh(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cosh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cosh(), a.y.cosh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 tanh(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tanh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tanh(), a.y.tanh());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float2
@@ -518,6 +548,36 @@ public static partial class math
         return new(simd.Tan(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.tan(), a.y.tan(), a.z.tan());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 sinh(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sinh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sinh(), a.y.sinh(), a.z.sinh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 cosh(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cosh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cosh(), a.y.cosh(), a.z.cosh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 tanh(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tanh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tanh(), a.y.tanh(), a.z.tanh());
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -784,6 +844,36 @@ public static partial class math
         return new(a.x.tan(), a.y.tan(), a.z.tan(), a.w.tan());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float4 sinh(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sinh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sinh(), a.y.sinh(), a.z.sinh(), a.w.sinh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 cosh(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cosh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cosh(), a.y.cosh(), a.z.cosh(), a.w.cosh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 tanh(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tanh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tanh(), a.y.tanh(), a.z.tanh(), a.w.tanh());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float4
@@ -1042,6 +1132,36 @@ public static partial class math
         return new(simd.Tan(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.tan(), a.y.tan());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 sinh(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sinh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sinh(), a.y.sinh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 cosh(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cosh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cosh(), a.y.cosh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 tanh(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tanh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tanh(), a.y.tanh());
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -1304,6 +1424,36 @@ public static partial class math
         return new(simd.Tan(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.tan(), a.y.tan(), a.z.tan());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 sinh(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sinh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sinh(), a.y.sinh(), a.z.sinh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 cosh(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cosh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cosh(), a.y.cosh(), a.z.cosh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 tanh(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tanh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tanh(), a.y.tanh(), a.z.tanh());
         #endif // NET8_0_OR_GREATER
     }
 }
@@ -1570,6 +1720,36 @@ public static partial class math
         return new(a.x.tan(), a.y.tan(), a.z.tan(), a.w.tan());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double4 sinh(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Sinh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.sinh(), a.y.sinh(), a.z.sinh(), a.w.sinh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 cosh(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Cosh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.cosh(), a.y.cosh(), a.z.cosh(), a.w.cosh());
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 tanh(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Tanh(a.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.tanh(), a.y.tanh(), a.z.tanh(), a.w.tanh());
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double4
@@ -1750,6 +1930,24 @@ public static partial class math
     public static half2 tan(this half2 a)
     {
         return new(a.x.tan(), a.y.tan());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 sinh(this half2 a)
+    {
+        return new(a.x.sinh(), a.y.sinh());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 cosh(this half2 a)
+    {
+        return new(a.x.cosh(), a.y.cosh());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 tanh(this half2 a)
+    {
+        return new(a.x.tanh(), a.y.tanh());
     }
 }
 
@@ -1933,6 +2131,24 @@ public static partial class math
     public static half3 tan(this half3 a)
     {
         return new(a.x.tan(), a.y.tan(), a.z.tan());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 sinh(this half3 a)
+    {
+        return new(a.x.sinh(), a.y.sinh(), a.z.sinh());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 cosh(this half3 a)
+    {
+        return new(a.x.cosh(), a.y.cosh(), a.z.cosh());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 tanh(this half3 a)
+    {
+        return new(a.x.tanh(), a.y.tanh(), a.z.tanh());
     }
 }
 
@@ -2118,6 +2334,24 @@ public static partial class math
     public static half4 tan(this half4 a)
     {
         return new(a.x.tan(), a.y.tan(), a.z.tan(), a.w.tan());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 sinh(this half4 a)
+    {
+        return new(a.x.sinh(), a.y.sinh(), a.z.sinh(), a.w.sinh());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 cosh(this half4 a)
+    {
+        return new(a.x.cosh(), a.y.cosh(), a.z.cosh(), a.w.cosh());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 tanh(this half4 a)
+    {
+        return new(a.x.tanh(), a.y.tanh(), a.z.tanh(), a.w.tanh());
     }
 }
 
