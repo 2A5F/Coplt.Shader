@@ -135,6 +135,12 @@ public partial struct float2 :
     }
 
     [MethodImpl(256 | 512)]
+    public float2((float x, float y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2((float x, float y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator float2(float value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -163,7 +169,18 @@ public partial struct float2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float x, out float y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float this[int i]
     {
@@ -191,7 +208,7 @@ public partial struct float2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float2
@@ -353,6 +370,12 @@ public partial struct float3 :
     }
 
     [MethodImpl(256 | 512)]
+    public float3((float x, float y, float z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3((float x, float y, float z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator float3(float value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -382,7 +405,19 @@ public partial struct float3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float x, out float y, out float z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float this[int i]
     {
@@ -414,7 +449,7 @@ public partial struct float3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float3
@@ -598,6 +633,12 @@ public partial struct float4 :
     }
 
     [MethodImpl(256 | 512)]
+    public float4((float x, float y, float z, float w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4((float x, float y, float z, float w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator float4(float value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -628,7 +669,20 @@ public partial struct float4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float x, out float y, out float z, out float w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float this[int i]
     {
@@ -664,7 +718,7 @@ public partial struct float4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float4
@@ -802,6 +856,12 @@ public partial struct double2 :
     }
 
     [MethodImpl(256 | 512)]
+    public double2((double x, double y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2((double x, double y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator double2(double value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -830,7 +890,18 @@ public partial struct double2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double x, out double y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double this[int i]
     {
@@ -858,7 +929,7 @@ public partial struct double2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double2
@@ -1020,6 +1091,12 @@ public partial struct double3 :
     }
 
     [MethodImpl(256 | 512)]
+    public double3((double x, double y, double z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3((double x, double y, double z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator double3(double value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -1049,7 +1126,19 @@ public partial struct double3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double x, out double y, out double z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double this[int i]
     {
@@ -1081,7 +1170,7 @@ public partial struct double3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double3
@@ -1265,6 +1354,12 @@ public partial struct double4 :
     }
 
     [MethodImpl(256 | 512)]
+    public double4((double x, double y, double z, double w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4((double x, double y, double z, double w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator double4(double value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -1295,7 +1390,20 @@ public partial struct double4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double x, out double y, out double z, out double w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double this[int i]
     {
@@ -1331,7 +1439,7 @@ public partial struct double4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double4
@@ -1469,6 +1577,12 @@ public partial struct int2 :
     }
 
     [MethodImpl(256 | 512)]
+    public int2((int x, int y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2((int x, int y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator int2(int value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -1497,7 +1611,18 @@ public partial struct int2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int x, out int y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int this[int i]
     {
@@ -1525,7 +1650,7 @@ public partial struct int2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int2
@@ -1687,6 +1812,12 @@ public partial struct int3 :
     }
 
     [MethodImpl(256 | 512)]
+    public int3((int x, int y, int z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3((int x, int y, int z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator int3(int value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -1716,7 +1847,19 @@ public partial struct int3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int x, out int y, out int z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int this[int i]
     {
@@ -1748,7 +1891,7 @@ public partial struct int3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int3
@@ -1932,6 +2075,12 @@ public partial struct int4 :
     }
 
     [MethodImpl(256 | 512)]
+    public int4((int x, int y, int z, int w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4((int x, int y, int z, int w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator int4(int value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -1962,7 +2111,20 @@ public partial struct int4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int x, out int y, out int z, out int w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int this[int i]
     {
@@ -1998,7 +2160,7 @@ public partial struct int4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int4
@@ -2136,6 +2298,12 @@ public partial struct uint2 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint2((uint x, uint y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2((uint x, uint y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator uint2(uint value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -2164,7 +2332,18 @@ public partial struct uint2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint x, out uint y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint this[int i]
     {
@@ -2192,7 +2371,7 @@ public partial struct uint2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint2
@@ -2354,6 +2533,12 @@ public partial struct uint3 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint3((uint x, uint y, uint z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3((uint x, uint y, uint z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator uint3(uint value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -2383,7 +2568,19 @@ public partial struct uint3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint x, out uint y, out uint z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint this[int i]
     {
@@ -2415,7 +2612,7 @@ public partial struct uint3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint3
@@ -2599,6 +2796,12 @@ public partial struct uint4 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint4((uint x, uint y, uint z, uint w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4((uint x, uint y, uint z, uint w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator uint4(uint value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -2629,7 +2832,20 @@ public partial struct uint4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint x, out uint y, out uint z, out uint w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint this[int i]
     {
@@ -2665,7 +2881,7 @@ public partial struct uint4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint4
@@ -2803,6 +3019,12 @@ public partial struct long2 :
     }
 
     [MethodImpl(256 | 512)]
+    public long2((long x, long y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2((long x, long y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator long2(long value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -2831,7 +3053,18 @@ public partial struct long2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long x, out long y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long this[int i]
     {
@@ -2859,7 +3092,7 @@ public partial struct long2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long2
@@ -3021,6 +3254,12 @@ public partial struct long3 :
     }
 
     [MethodImpl(256 | 512)]
+    public long3((long x, long y, long z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3((long x, long y, long z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator long3(long value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -3050,7 +3289,19 @@ public partial struct long3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long x, out long y, out long z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long this[int i]
     {
@@ -3082,7 +3333,7 @@ public partial struct long3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long3
@@ -3266,6 +3517,12 @@ public partial struct long4 :
     }
 
     [MethodImpl(256 | 512)]
+    public long4((long x, long y, long z, long w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4((long x, long y, long z, long w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator long4(long value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -3296,7 +3553,20 @@ public partial struct long4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long x, out long y, out long z, out long w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long this[int i]
     {
@@ -3332,7 +3602,7 @@ public partial struct long4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long4
@@ -3470,6 +3740,12 @@ public partial struct ulong2 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong2((ulong x, ulong y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2((ulong x, ulong y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator ulong2(ulong value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -3498,7 +3774,18 @@ public partial struct ulong2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong x, out ulong y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong this[int i]
     {
@@ -3526,7 +3813,7 @@ public partial struct ulong2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong2
@@ -3688,6 +3975,12 @@ public partial struct ulong3 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong3((ulong x, ulong y, ulong z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3((ulong x, ulong y, ulong z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator ulong3(ulong value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -3717,7 +4010,19 @@ public partial struct ulong3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong x, out ulong y, out ulong z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong this[int i]
     {
@@ -3749,7 +4054,7 @@ public partial struct ulong3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong3
@@ -3933,6 +4238,12 @@ public partial struct ulong4 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong4((ulong x, ulong y, ulong z, ulong w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4((ulong x, ulong y, ulong z, ulong w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator ulong4(ulong value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -3963,7 +4274,20 @@ public partial struct ulong4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong x, out ulong y, out ulong z, out ulong w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong this[int i]
     {
@@ -3999,7 +4323,7 @@ public partial struct ulong4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong4
@@ -4094,6 +4418,12 @@ public partial struct decimal2 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal2((decimal x, decimal y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2((decimal x, decimal y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal2(decimal value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -4114,7 +4444,18 @@ public partial struct decimal2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal x, out decimal y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal this[int i]
     {
@@ -4142,7 +4483,7 @@ public partial struct decimal2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal2
@@ -4254,6 +4595,12 @@ public partial struct decimal3 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal3((decimal x, decimal y, decimal z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3((decimal x, decimal y, decimal z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal3(decimal value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -4275,7 +4622,19 @@ public partial struct decimal3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal x, out decimal y, out decimal z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal this[int i]
     {
@@ -4307,7 +4666,7 @@ public partial struct decimal3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal3
@@ -4434,6 +4793,12 @@ public partial struct decimal4 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal4((decimal x, decimal y, decimal z, decimal w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4((decimal x, decimal y, decimal z, decimal w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator decimal4(decimal value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -4456,7 +4821,20 @@ public partial struct decimal4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal x, out decimal y, out decimal z, out decimal w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal this[int i]
     {
@@ -4492,7 +4870,7 @@ public partial struct decimal4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal4
@@ -4587,6 +4965,12 @@ public partial struct half2 :
     }
 
     [MethodImpl(256 | 512)]
+    public half2((half x, half y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2((half x, half y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator half2(half value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -4607,7 +4991,18 @@ public partial struct half2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half x, out half y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half this[int i]
     {
@@ -4635,7 +5030,7 @@ public partial struct half2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half2
@@ -4747,6 +5142,12 @@ public partial struct half3 :
     }
 
     [MethodImpl(256 | 512)]
+    public half3((half x, half y, half z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3((half x, half y, half z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator half3(half value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -4768,7 +5169,19 @@ public partial struct half3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half x, out half y, out half z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half this[int i]
     {
@@ -4800,7 +5213,7 @@ public partial struct half3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half3
@@ -4927,6 +5340,12 @@ public partial struct half4 :
     }
 
     [MethodImpl(256 | 512)]
+    public half4((half x, half y, half z, half w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4((half x, half y, half z, half w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator half4(half value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -4949,7 +5368,20 @@ public partial struct half4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half x, out half y, out half z, out half w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half this[int i]
     {
@@ -4985,7 +5417,7 @@ public partial struct half4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half4
@@ -5080,6 +5512,12 @@ public partial struct b16v2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16v2((b16 x, b16 y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16v2((b16 x, b16 y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator b16v2(b16 value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -5100,7 +5538,18 @@ public partial struct b16v2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16 x, out b16 y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16 this[int i]
     {
@@ -5128,7 +5577,7 @@ public partial struct b16v2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16v2
@@ -5240,6 +5689,12 @@ public partial struct b16v3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16v3((b16 x, b16 y, b16 z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16v3((b16 x, b16 y, b16 z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator b16v3(b16 value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -5261,7 +5716,19 @@ public partial struct b16v3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16 x, out b16 y, out b16 z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16 this[int i]
     {
@@ -5293,7 +5760,7 @@ public partial struct b16v3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16v3
@@ -5420,6 +5887,12 @@ public partial struct b16v4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16v4((b16 x, b16 y, b16 z, b16 w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16v4((b16 x, b16 y, b16 z, b16 w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator b16v4(b16 value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -5442,7 +5915,20 @@ public partial struct b16v4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16 x, out b16 y, out b16 z, out b16 w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16 this[int i]
     {
@@ -5478,7 +5964,7 @@ public partial struct b16v4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16v4
@@ -5616,6 +6102,12 @@ public partial struct b32v2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32v2((b32 x, b32 y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32v2((b32 x, b32 y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator b32v2(b32 value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -5644,7 +6136,18 @@ public partial struct b32v2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32 x, out b32 y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32 this[int i]
     {
@@ -5672,7 +6175,7 @@ public partial struct b32v2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32v2
@@ -5834,6 +6337,12 @@ public partial struct b32v3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32v3((b32 x, b32 y, b32 z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32v3((b32 x, b32 y, b32 z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator b32v3(b32 value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -5863,7 +6372,19 @@ public partial struct b32v3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32 x, out b32 y, out b32 z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32 this[int i]
     {
@@ -5895,7 +6416,7 @@ public partial struct b32v3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32v3
@@ -6079,6 +6600,12 @@ public partial struct b32v4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32v4((b32 x, b32 y, b32 z, b32 w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32v4((b32 x, b32 y, b32 z, b32 w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator b32v4(b32 value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -6109,7 +6636,20 @@ public partial struct b32v4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32 x, out b32 y, out b32 z, out b32 w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32 this[int i]
     {
@@ -6145,7 +6685,7 @@ public partial struct b32v4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32v4
@@ -6283,6 +6823,12 @@ public partial struct b64v2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64v2((b64 x, b64 y) tuple) : this(tuple.x, tuple.y) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64v2((b64 x, b64 y) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator b64v2(b64 value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -6311,7 +6857,18 @@ public partial struct b64v2 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64 x, out b64 y)
+    {
+        x = this.x;
+        y = this.y;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64 this[int i]
     {
@@ -6339,7 +6896,7 @@ public partial struct b64v2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64v2
@@ -6501,6 +7058,12 @@ public partial struct b64v3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64v3((b64 x, b64 y, b64 z) tuple) : this(tuple.x, tuple.y, tuple.z) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64v3((b64 x, b64 y, b64 z) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator b64v3(b64 value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -6530,7 +7093,19 @@ public partial struct b64v3 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64 x, out b64 y, out b64 z)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64 this[int i]
     {
@@ -6562,7 +7137,7 @@ public partial struct b64v3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64v3
@@ -6746,6 +7321,12 @@ public partial struct b64v4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64v4((b64 x, b64 y, b64 z, b64 w) tuple) : this(tuple.x, tuple.y, tuple.z, tuple.w) {}
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64v4((b64 x, b64 y, b64 z, b64 w) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public static implicit operator b64v4(b64 value) => new(value);
 
     [MethodImpl(256 | 512)]
@@ -6776,7 +7357,20 @@ public partial struct b64v4 :
 
     #endregion // ctors
 
-    #region Index
+    #region deconstruct
+
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64 x, out b64 y, out b64 z, out b64 w)
+    {
+        x = this.x;
+        y = this.y;
+        z = this.z;
+        w = this.w;
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64 this[int i]
     {
@@ -6812,7 +7406,7 @@ public partial struct b64v4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64v4

@@ -126,6 +126,22 @@ public partial struct <#= typeName #> :
     }
 
     [MethodImpl(256 | 512)]
+    public <#= typeName #>((<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"{vecTypeName} c{i}")) #>) tuple)
+    {
+<#
+                for (int i = 0; i < m; i++)
+                {
+#>
+        this.c<#= i #> = tuple.c<#= i #>;
+<#
+                }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator <#= typeName #>((<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"{vecTypeName} c{i}")) #>) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(
         <#=
                     string.Join(",\n        ", Enumerable.Range(0, n).Select(j => string.Join(", ", Enumerable.Range(0, m).Select(i => $"{typ.compType} m{j}{i}")))) #>
@@ -136,6 +152,50 @@ public partial struct <#= typeName #> :
                 {
 #>
         this.c<#= i #> = new(<#= string.Join(", ", Enumerable.Range(0, n).Select(j => $"m{j}{i}")) #>);
+<#
+                }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator <#= typeName #>((
+        <#=
+                    string.Join(",\n        ", Enumerable.Range(0, n).Select(j => string.Join(", ", Enumerable.Range(0, m).Select(i => $"{typ.compType} m{j}{i}")))) #>
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public <#= typeName #>((
+        <#=
+                    string.Join(",\n        ", Enumerable.Range(0, n).Select(j => string.Join(", ", Enumerable.Range(0, m).Select(i => $"{typ.compType} m{j}{i}")))) #>
+    ) tuple)
+    {
+<#
+                for (int i = 0; i < m; i++)
+                {
+#>
+        this.c<#= i #> = new(<#= string.Join(", ", Enumerable.Range(0, n).Select(j => $"tuple.m{j}{i}")) #>);
+<#
+                }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator <#= typeName #>((
+        <#=
+                    string.Join(",\n        ", Enumerable.Range(0, n).Select(j => $"({string.Join(", ", Enumerable.Range(0, m).Select(i => $"{typ.compType} m{j}{i}"))}) r{j}")) #>
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public <#= typeName #>((
+        <#=
+                    string.Join(",\n        ", Enumerable.Range(0, n).Select(j => $"({string.Join(", ", Enumerable.Range(0, m).Select(i => $"{typ.compType} m{j}{i}"))}) r{j}")) #>
+    ) tuple)
+    {
+<#
+                for (int i = 0; i < m; i++)
+                {
+#>
+        this.c<#= i #> = new(<#= string.Join(", ", Enumerable.Range(0, n).Select(j => $"tuple.r{j}.m{j}{i}")) #>);
 <#
                 }
 #>
@@ -175,7 +235,40 @@ public partial struct <#= typeName #> :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"out {vecTypeName} c{i}")) #>)
+    {
+<#
+                for (int i = 0; i < m; i++)
+                {
+#>
+        c<#= i #> = this.c<#= i #>;
+<#
+                }
+#>
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        <#=
+                    string.Join(",\n        ", Enumerable.Range(0, n).Select(j => string.Join(", ", Enumerable.Range(0, m).Select(i => $"out {typ.compType} m{j}{i}")))) #>
+    )
+    {
+<#
+                for (int i = 0; i < m; i++)
+                {
+#>
+        this.c<#= i #>.Deconstruct(<#= string.Join(", ", Enumerable.Range(0, n).Select(j => $"out m{j}{i}")) #>);
+<#
+                }
+#>
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public <#= vecTypeName #> this[int c]
     {
@@ -249,7 +342,7 @@ public partial struct <#= typeName #> :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // <#= typeName #>

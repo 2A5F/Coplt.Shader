@@ -101,6 +101,16 @@ public partial struct float2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public float2x2((float2 c0, float2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2x2((float2 c0, float2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public float2x2(
         float m00, float m01,
         float m10, float m11
@@ -108,6 +118,38 @@ public partial struct float2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2x2((
+        float m00, float m01,
+        float m10, float m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float2x2((
+        float m00, float m01,
+        float m10, float m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2x2((
+        (float m00, float m01) r0,
+        (float m10, float m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float2x2((
+        (float m00, float m01) r0,
+        (float m10, float m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -132,7 +174,28 @@ public partial struct float2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float2 c0, out float2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out float m00, out float m01,
+        out float m10, out float m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float2 this[int c]
     {
@@ -186,7 +249,7 @@ public partial struct float2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float2x2
@@ -306,6 +369,17 @@ public partial struct float2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public float2x3((float2 c0, float2 c1, float2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2x3((float2 c0, float2 c1, float2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public float2x3(
         float m00, float m01, float m02,
         float m10, float m11, float m12
@@ -314,6 +388,40 @@ public partial struct float2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2x3((
+        float m00, float m01, float m02,
+        float m10, float m11, float m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float2x3((
+        float m00, float m01, float m02,
+        float m10, float m11, float m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2x3((
+        (float m00, float m01, float m02) r0,
+        (float m10, float m11, float m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float2x3((
+        (float m00, float m01, float m02) r0,
+        (float m10, float m11, float m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -340,7 +448,30 @@ public partial struct float2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float2 c0, out float2 c1, out float2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out float m00, out float m01, out float m02,
+        out float m10, out float m11, out float m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float2 this[int c]
     {
@@ -402,7 +533,7 @@ public partial struct float2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float2x3
@@ -538,6 +669,18 @@ public partial struct float2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public float2x4((float2 c0, float2 c1, float2 c2, float2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2x4((float2 c0, float2 c1, float2 c2, float2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public float2x4(
         float m00, float m01, float m02, float m03,
         float m10, float m11, float m12, float m13
@@ -547,6 +690,42 @@ public partial struct float2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2x4((
+        float m00, float m01, float m02, float m03,
+        float m10, float m11, float m12, float m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float2x4((
+        float m00, float m01, float m02, float m03,
+        float m10, float m11, float m12, float m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float2x4((
+        (float m00, float m01, float m02, float m03) r0,
+        (float m10, float m11, float m12, float m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float2x4((
+        (float m00, float m01, float m02, float m03) r0,
+        (float m10, float m11, float m12, float m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -575,7 +754,32 @@ public partial struct float2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float2 c0, out float2 c1, out float2 c2, out float2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out float m00, out float m01, out float m02, out float m03,
+        out float m10, out float m11, out float m12, out float m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float2 this[int c]
     {
@@ -645,7 +849,7 @@ public partial struct float2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float2x4
@@ -764,6 +968,16 @@ public partial struct float3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public float3x2((float3 c0, float3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3x2((float3 c0, float3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public float3x2(
         float m00, float m01,
         float m10, float m11,
@@ -772,6 +986,42 @@ public partial struct float3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3x2((
+        float m00, float m01,
+        float m10, float m11,
+        float m20, float m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float3x2((
+        float m00, float m01,
+        float m10, float m11,
+        float m20, float m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3x2((
+        (float m00, float m01) r0,
+        (float m10, float m11) r1,
+        (float m20, float m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float3x2((
+        (float m00, float m01) r0,
+        (float m10, float m11) r1,
+        (float m20, float m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -796,7 +1046,29 @@ public partial struct float3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float3 c0, out float3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out float m00, out float m01,
+        out float m10, out float m11,
+        out float m20, out float m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float3 this[int c]
     {
@@ -850,7 +1122,7 @@ public partial struct float3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float3x2
@@ -992,6 +1264,17 @@ public partial struct float3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public float3x3((float3 c0, float3 c1, float3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3x3((float3 c0, float3 c1, float3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public float3x3(
         float m00, float m01, float m02,
         float m10, float m11, float m12,
@@ -1001,6 +1284,44 @@ public partial struct float3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3x3((
+        float m00, float m01, float m02,
+        float m10, float m11, float m12,
+        float m20, float m21, float m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float3x3((
+        float m00, float m01, float m02,
+        float m10, float m11, float m12,
+        float m20, float m21, float m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3x3((
+        (float m00, float m01, float m02) r0,
+        (float m10, float m11, float m12) r1,
+        (float m20, float m21, float m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float3x3((
+        (float m00, float m01, float m02) r0,
+        (float m10, float m11, float m12) r1,
+        (float m20, float m21, float m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -1027,7 +1348,31 @@ public partial struct float3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float3 c0, out float3 c1, out float3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out float m00, out float m01, out float m02,
+        out float m10, out float m11, out float m12,
+        out float m20, out float m21, out float m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float3 this[int c]
     {
@@ -1089,7 +1434,7 @@ public partial struct float3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float3x3
@@ -1254,6 +1599,18 @@ public partial struct float3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public float3x4((float3 c0, float3 c1, float3 c2, float3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3x4((float3 c0, float3 c1, float3 c2, float3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public float3x4(
         float m00, float m01, float m02, float m03,
         float m10, float m11, float m12, float m13,
@@ -1264,6 +1621,46 @@ public partial struct float3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3x4((
+        float m00, float m01, float m02, float m03,
+        float m10, float m11, float m12, float m13,
+        float m20, float m21, float m22, float m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float3x4((
+        float m00, float m01, float m02, float m03,
+        float m10, float m11, float m12, float m13,
+        float m20, float m21, float m22, float m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float3x4((
+        (float m00, float m01, float m02, float m03) r0,
+        (float m10, float m11, float m12, float m13) r1,
+        (float m20, float m21, float m22, float m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float3x4((
+        (float m00, float m01, float m02, float m03) r0,
+        (float m10, float m11, float m12, float m13) r1,
+        (float m20, float m21, float m22, float m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -1292,7 +1689,33 @@ public partial struct float3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float3 c0, out float3 c1, out float3 c2, out float3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out float m00, out float m01, out float m02, out float m03,
+        out float m10, out float m11, out float m12, out float m13,
+        out float m20, out float m21, out float m22, out float m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float3 this[int c]
     {
@@ -1362,7 +1785,7 @@ public partial struct float3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float3x4
@@ -1496,6 +1919,16 @@ public partial struct float4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public float4x2((float4 c0, float4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4x2((float4 c0, float4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public float4x2(
         float m00, float m01,
         float m10, float m11,
@@ -1505,6 +1938,46 @@ public partial struct float4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4x2((
+        float m00, float m01,
+        float m10, float m11,
+        float m20, float m21,
+        float m30, float m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float4x2((
+        float m00, float m01,
+        float m10, float m11,
+        float m20, float m21,
+        float m30, float m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4x2((
+        (float m00, float m01) r0,
+        (float m10, float m11) r1,
+        (float m20, float m21) r2,
+        (float m30, float m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float4x2((
+        (float m00, float m01) r0,
+        (float m10, float m11) r1,
+        (float m20, float m21) r2,
+        (float m30, float m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -1529,7 +2002,30 @@ public partial struct float4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float4 c0, out float4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out float m00, out float m01,
+        out float m10, out float m11,
+        out float m20, out float m21,
+        out float m30, out float m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float4 this[int c]
     {
@@ -1583,7 +2079,7 @@ public partial struct float4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float4x2
@@ -1747,6 +2243,17 @@ public partial struct float4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public float4x3((float4 c0, float4 c1, float4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4x3((float4 c0, float4 c1, float4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public float4x3(
         float m00, float m01, float m02,
         float m10, float m11, float m12,
@@ -1757,6 +2264,48 @@ public partial struct float4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4x3((
+        float m00, float m01, float m02,
+        float m10, float m11, float m12,
+        float m20, float m21, float m22,
+        float m30, float m31, float m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float4x3((
+        float m00, float m01, float m02,
+        float m10, float m11, float m12,
+        float m20, float m21, float m22,
+        float m30, float m31, float m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4x3((
+        (float m00, float m01, float m02) r0,
+        (float m10, float m11, float m12) r1,
+        (float m20, float m21, float m22) r2,
+        (float m30, float m31, float m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float4x3((
+        (float m00, float m01, float m02) r0,
+        (float m10, float m11, float m12) r1,
+        (float m20, float m21, float m22) r2,
+        (float m30, float m31, float m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -1783,7 +2332,32 @@ public partial struct float4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float4 c0, out float4 c1, out float4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out float m00, out float m01, out float m02,
+        out float m10, out float m11, out float m12,
+        out float m20, out float m21, out float m22,
+        out float m30, out float m31, out float m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float4 this[int c]
     {
@@ -1845,7 +2419,7 @@ public partial struct float4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float4x3
@@ -2039,6 +2613,18 @@ public partial struct float4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public float4x4((float4 c0, float4 c1, float4 c2, float4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4x4((float4 c0, float4 c1, float4 c2, float4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public float4x4(
         float m00, float m01, float m02, float m03,
         float m10, float m11, float m12, float m13,
@@ -2050,6 +2636,50 @@ public partial struct float4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4x4((
+        float m00, float m01, float m02, float m03,
+        float m10, float m11, float m12, float m13,
+        float m20, float m21, float m22, float m23,
+        float m30, float m31, float m32, float m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float4x4((
+        float m00, float m01, float m02, float m03,
+        float m10, float m11, float m12, float m13,
+        float m20, float m21, float m22, float m23,
+        float m30, float m31, float m32, float m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator float4x4((
+        (float m00, float m01, float m02, float m03) r0,
+        (float m10, float m11, float m12, float m13) r1,
+        (float m20, float m21, float m22, float m23) r2,
+        (float m30, float m31, float m32, float m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public float4x4((
+        (float m00, float m01, float m02, float m03) r0,
+        (float m10, float m11, float m12, float m13) r1,
+        (float m20, float m21, float m22, float m23) r2,
+        (float m30, float m31, float m32, float m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -2078,7 +2708,34 @@ public partial struct float4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out float4 c0, out float4 c1, out float4 c2, out float4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out float m00, out float m01, out float m02, out float m03,
+        out float m10, out float m11, out float m12, out float m13,
+        out float m20, out float m21, out float m22, out float m23,
+        out float m30, out float m31, out float m32, out float m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public float4 this[int c]
     {
@@ -2148,7 +2805,7 @@ public partial struct float4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // float4x4
@@ -2252,6 +2909,16 @@ public partial struct double2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public double2x2((double2 c0, double2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2x2((double2 c0, double2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public double2x2(
         double m00, double m01,
         double m10, double m11
@@ -2259,6 +2926,38 @@ public partial struct double2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2x2((
+        double m00, double m01,
+        double m10, double m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double2x2((
+        double m00, double m01,
+        double m10, double m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2x2((
+        (double m00, double m01) r0,
+        (double m10, double m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double2x2((
+        (double m00, double m01) r0,
+        (double m10, double m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -2283,7 +2982,28 @@ public partial struct double2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double2 c0, out double2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out double m00, out double m01,
+        out double m10, out double m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double2 this[int c]
     {
@@ -2337,7 +3057,7 @@ public partial struct double2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double2x2
@@ -2457,6 +3177,17 @@ public partial struct double2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public double2x3((double2 c0, double2 c1, double2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2x3((double2 c0, double2 c1, double2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public double2x3(
         double m00, double m01, double m02,
         double m10, double m11, double m12
@@ -2465,6 +3196,40 @@ public partial struct double2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2x3((
+        double m00, double m01, double m02,
+        double m10, double m11, double m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double2x3((
+        double m00, double m01, double m02,
+        double m10, double m11, double m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2x3((
+        (double m00, double m01, double m02) r0,
+        (double m10, double m11, double m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double2x3((
+        (double m00, double m01, double m02) r0,
+        (double m10, double m11, double m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -2491,7 +3256,30 @@ public partial struct double2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double2 c0, out double2 c1, out double2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out double m00, out double m01, out double m02,
+        out double m10, out double m11, out double m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double2 this[int c]
     {
@@ -2553,7 +3341,7 @@ public partial struct double2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double2x3
@@ -2689,6 +3477,18 @@ public partial struct double2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public double2x4((double2 c0, double2 c1, double2 c2, double2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2x4((double2 c0, double2 c1, double2 c2, double2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public double2x4(
         double m00, double m01, double m02, double m03,
         double m10, double m11, double m12, double m13
@@ -2698,6 +3498,42 @@ public partial struct double2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2x4((
+        double m00, double m01, double m02, double m03,
+        double m10, double m11, double m12, double m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double2x4((
+        double m00, double m01, double m02, double m03,
+        double m10, double m11, double m12, double m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double2x4((
+        (double m00, double m01, double m02, double m03) r0,
+        (double m10, double m11, double m12, double m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double2x4((
+        (double m00, double m01, double m02, double m03) r0,
+        (double m10, double m11, double m12, double m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -2726,7 +3562,32 @@ public partial struct double2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double2 c0, out double2 c1, out double2 c2, out double2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out double m00, out double m01, out double m02, out double m03,
+        out double m10, out double m11, out double m12, out double m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double2 this[int c]
     {
@@ -2796,7 +3657,7 @@ public partial struct double2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double2x4
@@ -2915,6 +3776,16 @@ public partial struct double3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public double3x2((double3 c0, double3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3x2((double3 c0, double3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public double3x2(
         double m00, double m01,
         double m10, double m11,
@@ -2923,6 +3794,42 @@ public partial struct double3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3x2((
+        double m00, double m01,
+        double m10, double m11,
+        double m20, double m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double3x2((
+        double m00, double m01,
+        double m10, double m11,
+        double m20, double m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3x2((
+        (double m00, double m01) r0,
+        (double m10, double m11) r1,
+        (double m20, double m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double3x2((
+        (double m00, double m01) r0,
+        (double m10, double m11) r1,
+        (double m20, double m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -2947,7 +3854,29 @@ public partial struct double3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double3 c0, out double3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out double m00, out double m01,
+        out double m10, out double m11,
+        out double m20, out double m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double3 this[int c]
     {
@@ -3001,7 +3930,7 @@ public partial struct double3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double3x2
@@ -3143,6 +4072,17 @@ public partial struct double3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public double3x3((double3 c0, double3 c1, double3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3x3((double3 c0, double3 c1, double3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public double3x3(
         double m00, double m01, double m02,
         double m10, double m11, double m12,
@@ -3152,6 +4092,44 @@ public partial struct double3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3x3((
+        double m00, double m01, double m02,
+        double m10, double m11, double m12,
+        double m20, double m21, double m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double3x3((
+        double m00, double m01, double m02,
+        double m10, double m11, double m12,
+        double m20, double m21, double m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3x3((
+        (double m00, double m01, double m02) r0,
+        (double m10, double m11, double m12) r1,
+        (double m20, double m21, double m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double3x3((
+        (double m00, double m01, double m02) r0,
+        (double m10, double m11, double m12) r1,
+        (double m20, double m21, double m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -3178,7 +4156,31 @@ public partial struct double3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double3 c0, out double3 c1, out double3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out double m00, out double m01, out double m02,
+        out double m10, out double m11, out double m12,
+        out double m20, out double m21, out double m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double3 this[int c]
     {
@@ -3240,7 +4242,7 @@ public partial struct double3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double3x3
@@ -3405,6 +4407,18 @@ public partial struct double3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public double3x4((double3 c0, double3 c1, double3 c2, double3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3x4((double3 c0, double3 c1, double3 c2, double3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public double3x4(
         double m00, double m01, double m02, double m03,
         double m10, double m11, double m12, double m13,
@@ -3415,6 +4429,46 @@ public partial struct double3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3x4((
+        double m00, double m01, double m02, double m03,
+        double m10, double m11, double m12, double m13,
+        double m20, double m21, double m22, double m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double3x4((
+        double m00, double m01, double m02, double m03,
+        double m10, double m11, double m12, double m13,
+        double m20, double m21, double m22, double m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double3x4((
+        (double m00, double m01, double m02, double m03) r0,
+        (double m10, double m11, double m12, double m13) r1,
+        (double m20, double m21, double m22, double m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double3x4((
+        (double m00, double m01, double m02, double m03) r0,
+        (double m10, double m11, double m12, double m13) r1,
+        (double m20, double m21, double m22, double m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -3443,7 +4497,33 @@ public partial struct double3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double3 c0, out double3 c1, out double3 c2, out double3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out double m00, out double m01, out double m02, out double m03,
+        out double m10, out double m11, out double m12, out double m13,
+        out double m20, out double m21, out double m22, out double m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double3 this[int c]
     {
@@ -3513,7 +4593,7 @@ public partial struct double3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double3x4
@@ -3647,6 +4727,16 @@ public partial struct double4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public double4x2((double4 c0, double4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4x2((double4 c0, double4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public double4x2(
         double m00, double m01,
         double m10, double m11,
@@ -3656,6 +4746,46 @@ public partial struct double4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4x2((
+        double m00, double m01,
+        double m10, double m11,
+        double m20, double m21,
+        double m30, double m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double4x2((
+        double m00, double m01,
+        double m10, double m11,
+        double m20, double m21,
+        double m30, double m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4x2((
+        (double m00, double m01) r0,
+        (double m10, double m11) r1,
+        (double m20, double m21) r2,
+        (double m30, double m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double4x2((
+        (double m00, double m01) r0,
+        (double m10, double m11) r1,
+        (double m20, double m21) r2,
+        (double m30, double m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -3680,7 +4810,30 @@ public partial struct double4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double4 c0, out double4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out double m00, out double m01,
+        out double m10, out double m11,
+        out double m20, out double m21,
+        out double m30, out double m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double4 this[int c]
     {
@@ -3734,7 +4887,7 @@ public partial struct double4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double4x2
@@ -3898,6 +5051,17 @@ public partial struct double4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public double4x3((double4 c0, double4 c1, double4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4x3((double4 c0, double4 c1, double4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public double4x3(
         double m00, double m01, double m02,
         double m10, double m11, double m12,
@@ -3908,6 +5072,48 @@ public partial struct double4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4x3((
+        double m00, double m01, double m02,
+        double m10, double m11, double m12,
+        double m20, double m21, double m22,
+        double m30, double m31, double m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double4x3((
+        double m00, double m01, double m02,
+        double m10, double m11, double m12,
+        double m20, double m21, double m22,
+        double m30, double m31, double m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4x3((
+        (double m00, double m01, double m02) r0,
+        (double m10, double m11, double m12) r1,
+        (double m20, double m21, double m22) r2,
+        (double m30, double m31, double m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double4x3((
+        (double m00, double m01, double m02) r0,
+        (double m10, double m11, double m12) r1,
+        (double m20, double m21, double m22) r2,
+        (double m30, double m31, double m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -3934,7 +5140,32 @@ public partial struct double4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double4 c0, out double4 c1, out double4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out double m00, out double m01, out double m02,
+        out double m10, out double m11, out double m12,
+        out double m20, out double m21, out double m22,
+        out double m30, out double m31, out double m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double4 this[int c]
     {
@@ -3996,7 +5227,7 @@ public partial struct double4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double4x3
@@ -4190,6 +5421,18 @@ public partial struct double4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public double4x4((double4 c0, double4 c1, double4 c2, double4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4x4((double4 c0, double4 c1, double4 c2, double4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public double4x4(
         double m00, double m01, double m02, double m03,
         double m10, double m11, double m12, double m13,
@@ -4201,6 +5444,50 @@ public partial struct double4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4x4((
+        double m00, double m01, double m02, double m03,
+        double m10, double m11, double m12, double m13,
+        double m20, double m21, double m22, double m23,
+        double m30, double m31, double m32, double m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double4x4((
+        double m00, double m01, double m02, double m03,
+        double m10, double m11, double m12, double m13,
+        double m20, double m21, double m22, double m23,
+        double m30, double m31, double m32, double m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator double4x4((
+        (double m00, double m01, double m02, double m03) r0,
+        (double m10, double m11, double m12, double m13) r1,
+        (double m20, double m21, double m22, double m23) r2,
+        (double m30, double m31, double m32, double m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public double4x4((
+        (double m00, double m01, double m02, double m03) r0,
+        (double m10, double m11, double m12, double m13) r1,
+        (double m20, double m21, double m22, double m23) r2,
+        (double m30, double m31, double m32, double m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -4229,7 +5516,34 @@ public partial struct double4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out double4 c0, out double4 c1, out double4 c2, out double4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out double m00, out double m01, out double m02, out double m03,
+        out double m10, out double m11, out double m12, out double m13,
+        out double m20, out double m21, out double m22, out double m23,
+        out double m30, out double m31, out double m32, out double m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public double4 this[int c]
     {
@@ -4299,7 +5613,7 @@ public partial struct double4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // double4x4
@@ -4403,6 +5717,16 @@ public partial struct int2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public int2x2((int2 c0, int2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2x2((int2 c0, int2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public int2x2(
         int m00, int m01,
         int m10, int m11
@@ -4410,6 +5734,38 @@ public partial struct int2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2x2((
+        int m00, int m01,
+        int m10, int m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int2x2((
+        int m00, int m01,
+        int m10, int m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2x2((
+        (int m00, int m01) r0,
+        (int m10, int m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int2x2((
+        (int m00, int m01) r0,
+        (int m10, int m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -4434,7 +5790,28 @@ public partial struct int2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int2 c0, out int2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out int m00, out int m01,
+        out int m10, out int m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int2 this[int c]
     {
@@ -4488,7 +5865,7 @@ public partial struct int2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int2x2
@@ -4608,6 +5985,17 @@ public partial struct int2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public int2x3((int2 c0, int2 c1, int2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2x3((int2 c0, int2 c1, int2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public int2x3(
         int m00, int m01, int m02,
         int m10, int m11, int m12
@@ -4616,6 +6004,40 @@ public partial struct int2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2x3((
+        int m00, int m01, int m02,
+        int m10, int m11, int m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int2x3((
+        int m00, int m01, int m02,
+        int m10, int m11, int m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2x3((
+        (int m00, int m01, int m02) r0,
+        (int m10, int m11, int m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int2x3((
+        (int m00, int m01, int m02) r0,
+        (int m10, int m11, int m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -4642,7 +6064,30 @@ public partial struct int2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int2 c0, out int2 c1, out int2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out int m00, out int m01, out int m02,
+        out int m10, out int m11, out int m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int2 this[int c]
     {
@@ -4704,7 +6149,7 @@ public partial struct int2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int2x3
@@ -4840,6 +6285,18 @@ public partial struct int2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public int2x4((int2 c0, int2 c1, int2 c2, int2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2x4((int2 c0, int2 c1, int2 c2, int2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public int2x4(
         int m00, int m01, int m02, int m03,
         int m10, int m11, int m12, int m13
@@ -4849,6 +6306,42 @@ public partial struct int2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2x4((
+        int m00, int m01, int m02, int m03,
+        int m10, int m11, int m12, int m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int2x4((
+        int m00, int m01, int m02, int m03,
+        int m10, int m11, int m12, int m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int2x4((
+        (int m00, int m01, int m02, int m03) r0,
+        (int m10, int m11, int m12, int m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int2x4((
+        (int m00, int m01, int m02, int m03) r0,
+        (int m10, int m11, int m12, int m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -4877,7 +6370,32 @@ public partial struct int2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int2 c0, out int2 c1, out int2 c2, out int2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out int m00, out int m01, out int m02, out int m03,
+        out int m10, out int m11, out int m12, out int m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int2 this[int c]
     {
@@ -4947,7 +6465,7 @@ public partial struct int2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int2x4
@@ -5066,6 +6584,16 @@ public partial struct int3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public int3x2((int3 c0, int3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3x2((int3 c0, int3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public int3x2(
         int m00, int m01,
         int m10, int m11,
@@ -5074,6 +6602,42 @@ public partial struct int3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3x2((
+        int m00, int m01,
+        int m10, int m11,
+        int m20, int m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int3x2((
+        int m00, int m01,
+        int m10, int m11,
+        int m20, int m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3x2((
+        (int m00, int m01) r0,
+        (int m10, int m11) r1,
+        (int m20, int m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int3x2((
+        (int m00, int m01) r0,
+        (int m10, int m11) r1,
+        (int m20, int m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -5098,7 +6662,29 @@ public partial struct int3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int3 c0, out int3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out int m00, out int m01,
+        out int m10, out int m11,
+        out int m20, out int m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int3 this[int c]
     {
@@ -5152,7 +6738,7 @@ public partial struct int3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int3x2
@@ -5294,6 +6880,17 @@ public partial struct int3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public int3x3((int3 c0, int3 c1, int3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3x3((int3 c0, int3 c1, int3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public int3x3(
         int m00, int m01, int m02,
         int m10, int m11, int m12,
@@ -5303,6 +6900,44 @@ public partial struct int3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3x3((
+        int m00, int m01, int m02,
+        int m10, int m11, int m12,
+        int m20, int m21, int m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int3x3((
+        int m00, int m01, int m02,
+        int m10, int m11, int m12,
+        int m20, int m21, int m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3x3((
+        (int m00, int m01, int m02) r0,
+        (int m10, int m11, int m12) r1,
+        (int m20, int m21, int m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int3x3((
+        (int m00, int m01, int m02) r0,
+        (int m10, int m11, int m12) r1,
+        (int m20, int m21, int m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -5329,7 +6964,31 @@ public partial struct int3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int3 c0, out int3 c1, out int3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out int m00, out int m01, out int m02,
+        out int m10, out int m11, out int m12,
+        out int m20, out int m21, out int m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int3 this[int c]
     {
@@ -5391,7 +7050,7 @@ public partial struct int3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int3x3
@@ -5556,6 +7215,18 @@ public partial struct int3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public int3x4((int3 c0, int3 c1, int3 c2, int3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3x4((int3 c0, int3 c1, int3 c2, int3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public int3x4(
         int m00, int m01, int m02, int m03,
         int m10, int m11, int m12, int m13,
@@ -5566,6 +7237,46 @@ public partial struct int3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3x4((
+        int m00, int m01, int m02, int m03,
+        int m10, int m11, int m12, int m13,
+        int m20, int m21, int m22, int m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int3x4((
+        int m00, int m01, int m02, int m03,
+        int m10, int m11, int m12, int m13,
+        int m20, int m21, int m22, int m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int3x4((
+        (int m00, int m01, int m02, int m03) r0,
+        (int m10, int m11, int m12, int m13) r1,
+        (int m20, int m21, int m22, int m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int3x4((
+        (int m00, int m01, int m02, int m03) r0,
+        (int m10, int m11, int m12, int m13) r1,
+        (int m20, int m21, int m22, int m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -5594,7 +7305,33 @@ public partial struct int3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int3 c0, out int3 c1, out int3 c2, out int3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out int m00, out int m01, out int m02, out int m03,
+        out int m10, out int m11, out int m12, out int m13,
+        out int m20, out int m21, out int m22, out int m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int3 this[int c]
     {
@@ -5664,7 +7401,7 @@ public partial struct int3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int3x4
@@ -5798,6 +7535,16 @@ public partial struct int4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public int4x2((int4 c0, int4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4x2((int4 c0, int4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public int4x2(
         int m00, int m01,
         int m10, int m11,
@@ -5807,6 +7554,46 @@ public partial struct int4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4x2((
+        int m00, int m01,
+        int m10, int m11,
+        int m20, int m21,
+        int m30, int m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int4x2((
+        int m00, int m01,
+        int m10, int m11,
+        int m20, int m21,
+        int m30, int m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4x2((
+        (int m00, int m01) r0,
+        (int m10, int m11) r1,
+        (int m20, int m21) r2,
+        (int m30, int m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int4x2((
+        (int m00, int m01) r0,
+        (int m10, int m11) r1,
+        (int m20, int m21) r2,
+        (int m30, int m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -5831,7 +7618,30 @@ public partial struct int4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int4 c0, out int4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out int m00, out int m01,
+        out int m10, out int m11,
+        out int m20, out int m21,
+        out int m30, out int m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int4 this[int c]
     {
@@ -5885,7 +7695,7 @@ public partial struct int4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int4x2
@@ -6049,6 +7859,17 @@ public partial struct int4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public int4x3((int4 c0, int4 c1, int4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4x3((int4 c0, int4 c1, int4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public int4x3(
         int m00, int m01, int m02,
         int m10, int m11, int m12,
@@ -6059,6 +7880,48 @@ public partial struct int4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4x3((
+        int m00, int m01, int m02,
+        int m10, int m11, int m12,
+        int m20, int m21, int m22,
+        int m30, int m31, int m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int4x3((
+        int m00, int m01, int m02,
+        int m10, int m11, int m12,
+        int m20, int m21, int m22,
+        int m30, int m31, int m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4x3((
+        (int m00, int m01, int m02) r0,
+        (int m10, int m11, int m12) r1,
+        (int m20, int m21, int m22) r2,
+        (int m30, int m31, int m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int4x3((
+        (int m00, int m01, int m02) r0,
+        (int m10, int m11, int m12) r1,
+        (int m20, int m21, int m22) r2,
+        (int m30, int m31, int m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -6085,7 +7948,32 @@ public partial struct int4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int4 c0, out int4 c1, out int4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out int m00, out int m01, out int m02,
+        out int m10, out int m11, out int m12,
+        out int m20, out int m21, out int m22,
+        out int m30, out int m31, out int m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int4 this[int c]
     {
@@ -6147,7 +8035,7 @@ public partial struct int4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int4x3
@@ -6341,6 +8229,18 @@ public partial struct int4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public int4x4((int4 c0, int4 c1, int4 c2, int4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4x4((int4 c0, int4 c1, int4 c2, int4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public int4x4(
         int m00, int m01, int m02, int m03,
         int m10, int m11, int m12, int m13,
@@ -6352,6 +8252,50 @@ public partial struct int4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4x4((
+        int m00, int m01, int m02, int m03,
+        int m10, int m11, int m12, int m13,
+        int m20, int m21, int m22, int m23,
+        int m30, int m31, int m32, int m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int4x4((
+        int m00, int m01, int m02, int m03,
+        int m10, int m11, int m12, int m13,
+        int m20, int m21, int m22, int m23,
+        int m30, int m31, int m32, int m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator int4x4((
+        (int m00, int m01, int m02, int m03) r0,
+        (int m10, int m11, int m12, int m13) r1,
+        (int m20, int m21, int m22, int m23) r2,
+        (int m30, int m31, int m32, int m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public int4x4((
+        (int m00, int m01, int m02, int m03) r0,
+        (int m10, int m11, int m12, int m13) r1,
+        (int m20, int m21, int m22, int m23) r2,
+        (int m30, int m31, int m32, int m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -6380,7 +8324,34 @@ public partial struct int4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out int4 c0, out int4 c1, out int4 c2, out int4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out int m00, out int m01, out int m02, out int m03,
+        out int m10, out int m11, out int m12, out int m13,
+        out int m20, out int m21, out int m22, out int m23,
+        out int m30, out int m31, out int m32, out int m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public int4 this[int c]
     {
@@ -6450,7 +8421,7 @@ public partial struct int4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // int4x4
@@ -6554,6 +8525,16 @@ public partial struct uint2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint2x2((uint2 c0, uint2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2x2((uint2 c0, uint2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public uint2x2(
         uint m00, uint m01,
         uint m10, uint m11
@@ -6561,6 +8542,38 @@ public partial struct uint2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2x2((
+        uint m00, uint m01,
+        uint m10, uint m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint2x2((
+        uint m00, uint m01,
+        uint m10, uint m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2x2((
+        (uint m00, uint m01) r0,
+        (uint m10, uint m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint2x2((
+        (uint m00, uint m01) r0,
+        (uint m10, uint m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -6585,7 +8598,28 @@ public partial struct uint2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint2 c0, out uint2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out uint m00, out uint m01,
+        out uint m10, out uint m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint2 this[int c]
     {
@@ -6639,7 +8673,7 @@ public partial struct uint2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint2x2
@@ -6759,6 +8793,17 @@ public partial struct uint2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint2x3((uint2 c0, uint2 c1, uint2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2x3((uint2 c0, uint2 c1, uint2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public uint2x3(
         uint m00, uint m01, uint m02,
         uint m10, uint m11, uint m12
@@ -6767,6 +8812,40 @@ public partial struct uint2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2x3((
+        uint m00, uint m01, uint m02,
+        uint m10, uint m11, uint m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint2x3((
+        uint m00, uint m01, uint m02,
+        uint m10, uint m11, uint m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2x3((
+        (uint m00, uint m01, uint m02) r0,
+        (uint m10, uint m11, uint m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint2x3((
+        (uint m00, uint m01, uint m02) r0,
+        (uint m10, uint m11, uint m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -6793,7 +8872,30 @@ public partial struct uint2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint2 c0, out uint2 c1, out uint2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out uint m00, out uint m01, out uint m02,
+        out uint m10, out uint m11, out uint m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint2 this[int c]
     {
@@ -6855,7 +8957,7 @@ public partial struct uint2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint2x3
@@ -6991,6 +9093,18 @@ public partial struct uint2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint2x4((uint2 c0, uint2 c1, uint2 c2, uint2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2x4((uint2 c0, uint2 c1, uint2 c2, uint2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public uint2x4(
         uint m00, uint m01, uint m02, uint m03,
         uint m10, uint m11, uint m12, uint m13
@@ -7000,6 +9114,42 @@ public partial struct uint2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2x4((
+        uint m00, uint m01, uint m02, uint m03,
+        uint m10, uint m11, uint m12, uint m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint2x4((
+        uint m00, uint m01, uint m02, uint m03,
+        uint m10, uint m11, uint m12, uint m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint2x4((
+        (uint m00, uint m01, uint m02, uint m03) r0,
+        (uint m10, uint m11, uint m12, uint m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint2x4((
+        (uint m00, uint m01, uint m02, uint m03) r0,
+        (uint m10, uint m11, uint m12, uint m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -7028,7 +9178,32 @@ public partial struct uint2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint2 c0, out uint2 c1, out uint2 c2, out uint2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out uint m00, out uint m01, out uint m02, out uint m03,
+        out uint m10, out uint m11, out uint m12, out uint m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint2 this[int c]
     {
@@ -7098,7 +9273,7 @@ public partial struct uint2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint2x4
@@ -7217,6 +9392,16 @@ public partial struct uint3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint3x2((uint3 c0, uint3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3x2((uint3 c0, uint3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public uint3x2(
         uint m00, uint m01,
         uint m10, uint m11,
@@ -7225,6 +9410,42 @@ public partial struct uint3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3x2((
+        uint m00, uint m01,
+        uint m10, uint m11,
+        uint m20, uint m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint3x2((
+        uint m00, uint m01,
+        uint m10, uint m11,
+        uint m20, uint m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3x2((
+        (uint m00, uint m01) r0,
+        (uint m10, uint m11) r1,
+        (uint m20, uint m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint3x2((
+        (uint m00, uint m01) r0,
+        (uint m10, uint m11) r1,
+        (uint m20, uint m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -7249,7 +9470,29 @@ public partial struct uint3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint3 c0, out uint3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out uint m00, out uint m01,
+        out uint m10, out uint m11,
+        out uint m20, out uint m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint3 this[int c]
     {
@@ -7303,7 +9546,7 @@ public partial struct uint3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint3x2
@@ -7445,6 +9688,17 @@ public partial struct uint3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint3x3((uint3 c0, uint3 c1, uint3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3x3((uint3 c0, uint3 c1, uint3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public uint3x3(
         uint m00, uint m01, uint m02,
         uint m10, uint m11, uint m12,
@@ -7454,6 +9708,44 @@ public partial struct uint3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3x3((
+        uint m00, uint m01, uint m02,
+        uint m10, uint m11, uint m12,
+        uint m20, uint m21, uint m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint3x3((
+        uint m00, uint m01, uint m02,
+        uint m10, uint m11, uint m12,
+        uint m20, uint m21, uint m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3x3((
+        (uint m00, uint m01, uint m02) r0,
+        (uint m10, uint m11, uint m12) r1,
+        (uint m20, uint m21, uint m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint3x3((
+        (uint m00, uint m01, uint m02) r0,
+        (uint m10, uint m11, uint m12) r1,
+        (uint m20, uint m21, uint m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -7480,7 +9772,31 @@ public partial struct uint3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint3 c0, out uint3 c1, out uint3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out uint m00, out uint m01, out uint m02,
+        out uint m10, out uint m11, out uint m12,
+        out uint m20, out uint m21, out uint m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint3 this[int c]
     {
@@ -7542,7 +9858,7 @@ public partial struct uint3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint3x3
@@ -7707,6 +10023,18 @@ public partial struct uint3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint3x4((uint3 c0, uint3 c1, uint3 c2, uint3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3x4((uint3 c0, uint3 c1, uint3 c2, uint3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public uint3x4(
         uint m00, uint m01, uint m02, uint m03,
         uint m10, uint m11, uint m12, uint m13,
@@ -7717,6 +10045,46 @@ public partial struct uint3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3x4((
+        uint m00, uint m01, uint m02, uint m03,
+        uint m10, uint m11, uint m12, uint m13,
+        uint m20, uint m21, uint m22, uint m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint3x4((
+        uint m00, uint m01, uint m02, uint m03,
+        uint m10, uint m11, uint m12, uint m13,
+        uint m20, uint m21, uint m22, uint m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint3x4((
+        (uint m00, uint m01, uint m02, uint m03) r0,
+        (uint m10, uint m11, uint m12, uint m13) r1,
+        (uint m20, uint m21, uint m22, uint m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint3x4((
+        (uint m00, uint m01, uint m02, uint m03) r0,
+        (uint m10, uint m11, uint m12, uint m13) r1,
+        (uint m20, uint m21, uint m22, uint m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -7745,7 +10113,33 @@ public partial struct uint3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint3 c0, out uint3 c1, out uint3 c2, out uint3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out uint m00, out uint m01, out uint m02, out uint m03,
+        out uint m10, out uint m11, out uint m12, out uint m13,
+        out uint m20, out uint m21, out uint m22, out uint m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint3 this[int c]
     {
@@ -7815,7 +10209,7 @@ public partial struct uint3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint3x4
@@ -7949,6 +10343,16 @@ public partial struct uint4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint4x2((uint4 c0, uint4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4x2((uint4 c0, uint4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public uint4x2(
         uint m00, uint m01,
         uint m10, uint m11,
@@ -7958,6 +10362,46 @@ public partial struct uint4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4x2((
+        uint m00, uint m01,
+        uint m10, uint m11,
+        uint m20, uint m21,
+        uint m30, uint m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint4x2((
+        uint m00, uint m01,
+        uint m10, uint m11,
+        uint m20, uint m21,
+        uint m30, uint m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4x2((
+        (uint m00, uint m01) r0,
+        (uint m10, uint m11) r1,
+        (uint m20, uint m21) r2,
+        (uint m30, uint m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint4x2((
+        (uint m00, uint m01) r0,
+        (uint m10, uint m11) r1,
+        (uint m20, uint m21) r2,
+        (uint m30, uint m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -7982,7 +10426,30 @@ public partial struct uint4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint4 c0, out uint4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out uint m00, out uint m01,
+        out uint m10, out uint m11,
+        out uint m20, out uint m21,
+        out uint m30, out uint m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint4 this[int c]
     {
@@ -8036,7 +10503,7 @@ public partial struct uint4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint4x2
@@ -8200,6 +10667,17 @@ public partial struct uint4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint4x3((uint4 c0, uint4 c1, uint4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4x3((uint4 c0, uint4 c1, uint4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public uint4x3(
         uint m00, uint m01, uint m02,
         uint m10, uint m11, uint m12,
@@ -8210,6 +10688,48 @@ public partial struct uint4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4x3((
+        uint m00, uint m01, uint m02,
+        uint m10, uint m11, uint m12,
+        uint m20, uint m21, uint m22,
+        uint m30, uint m31, uint m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint4x3((
+        uint m00, uint m01, uint m02,
+        uint m10, uint m11, uint m12,
+        uint m20, uint m21, uint m22,
+        uint m30, uint m31, uint m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4x3((
+        (uint m00, uint m01, uint m02) r0,
+        (uint m10, uint m11, uint m12) r1,
+        (uint m20, uint m21, uint m22) r2,
+        (uint m30, uint m31, uint m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint4x3((
+        (uint m00, uint m01, uint m02) r0,
+        (uint m10, uint m11, uint m12) r1,
+        (uint m20, uint m21, uint m22) r2,
+        (uint m30, uint m31, uint m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -8236,7 +10756,32 @@ public partial struct uint4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint4 c0, out uint4 c1, out uint4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out uint m00, out uint m01, out uint m02,
+        out uint m10, out uint m11, out uint m12,
+        out uint m20, out uint m21, out uint m22,
+        out uint m30, out uint m31, out uint m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint4 this[int c]
     {
@@ -8298,7 +10843,7 @@ public partial struct uint4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint4x3
@@ -8492,6 +11037,18 @@ public partial struct uint4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public uint4x4((uint4 c0, uint4 c1, uint4 c2, uint4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4x4((uint4 c0, uint4 c1, uint4 c2, uint4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public uint4x4(
         uint m00, uint m01, uint m02, uint m03,
         uint m10, uint m11, uint m12, uint m13,
@@ -8503,6 +11060,50 @@ public partial struct uint4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4x4((
+        uint m00, uint m01, uint m02, uint m03,
+        uint m10, uint m11, uint m12, uint m13,
+        uint m20, uint m21, uint m22, uint m23,
+        uint m30, uint m31, uint m32, uint m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint4x4((
+        uint m00, uint m01, uint m02, uint m03,
+        uint m10, uint m11, uint m12, uint m13,
+        uint m20, uint m21, uint m22, uint m23,
+        uint m30, uint m31, uint m32, uint m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator uint4x4((
+        (uint m00, uint m01, uint m02, uint m03) r0,
+        (uint m10, uint m11, uint m12, uint m13) r1,
+        (uint m20, uint m21, uint m22, uint m23) r2,
+        (uint m30, uint m31, uint m32, uint m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public uint4x4((
+        (uint m00, uint m01, uint m02, uint m03) r0,
+        (uint m10, uint m11, uint m12, uint m13) r1,
+        (uint m20, uint m21, uint m22, uint m23) r2,
+        (uint m30, uint m31, uint m32, uint m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -8531,7 +11132,34 @@ public partial struct uint4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out uint4 c0, out uint4 c1, out uint4 c2, out uint4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out uint m00, out uint m01, out uint m02, out uint m03,
+        out uint m10, out uint m11, out uint m12, out uint m13,
+        out uint m20, out uint m21, out uint m22, out uint m23,
+        out uint m30, out uint m31, out uint m32, out uint m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public uint4 this[int c]
     {
@@ -8601,7 +11229,7 @@ public partial struct uint4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // uint4x4
@@ -8705,6 +11333,16 @@ public partial struct long2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public long2x2((long2 c0, long2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2x2((long2 c0, long2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public long2x2(
         long m00, long m01,
         long m10, long m11
@@ -8712,6 +11350,38 @@ public partial struct long2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2x2((
+        long m00, long m01,
+        long m10, long m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long2x2((
+        long m00, long m01,
+        long m10, long m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2x2((
+        (long m00, long m01) r0,
+        (long m10, long m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long2x2((
+        (long m00, long m01) r0,
+        (long m10, long m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -8736,7 +11406,28 @@ public partial struct long2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long2 c0, out long2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out long m00, out long m01,
+        out long m10, out long m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long2 this[int c]
     {
@@ -8790,7 +11481,7 @@ public partial struct long2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long2x2
@@ -8910,6 +11601,17 @@ public partial struct long2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public long2x3((long2 c0, long2 c1, long2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2x3((long2 c0, long2 c1, long2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public long2x3(
         long m00, long m01, long m02,
         long m10, long m11, long m12
@@ -8918,6 +11620,40 @@ public partial struct long2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2x3((
+        long m00, long m01, long m02,
+        long m10, long m11, long m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long2x3((
+        long m00, long m01, long m02,
+        long m10, long m11, long m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2x3((
+        (long m00, long m01, long m02) r0,
+        (long m10, long m11, long m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long2x3((
+        (long m00, long m01, long m02) r0,
+        (long m10, long m11, long m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -8944,7 +11680,30 @@ public partial struct long2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long2 c0, out long2 c1, out long2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out long m00, out long m01, out long m02,
+        out long m10, out long m11, out long m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long2 this[int c]
     {
@@ -9006,7 +11765,7 @@ public partial struct long2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long2x3
@@ -9142,6 +11901,18 @@ public partial struct long2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public long2x4((long2 c0, long2 c1, long2 c2, long2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2x4((long2 c0, long2 c1, long2 c2, long2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public long2x4(
         long m00, long m01, long m02, long m03,
         long m10, long m11, long m12, long m13
@@ -9151,6 +11922,42 @@ public partial struct long2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2x4((
+        long m00, long m01, long m02, long m03,
+        long m10, long m11, long m12, long m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long2x4((
+        long m00, long m01, long m02, long m03,
+        long m10, long m11, long m12, long m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long2x4((
+        (long m00, long m01, long m02, long m03) r0,
+        (long m10, long m11, long m12, long m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long2x4((
+        (long m00, long m01, long m02, long m03) r0,
+        (long m10, long m11, long m12, long m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -9179,7 +11986,32 @@ public partial struct long2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long2 c0, out long2 c1, out long2 c2, out long2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out long m00, out long m01, out long m02, out long m03,
+        out long m10, out long m11, out long m12, out long m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long2 this[int c]
     {
@@ -9249,7 +12081,7 @@ public partial struct long2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long2x4
@@ -9368,6 +12200,16 @@ public partial struct long3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public long3x2((long3 c0, long3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3x2((long3 c0, long3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public long3x2(
         long m00, long m01,
         long m10, long m11,
@@ -9376,6 +12218,42 @@ public partial struct long3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3x2((
+        long m00, long m01,
+        long m10, long m11,
+        long m20, long m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long3x2((
+        long m00, long m01,
+        long m10, long m11,
+        long m20, long m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3x2((
+        (long m00, long m01) r0,
+        (long m10, long m11) r1,
+        (long m20, long m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long3x2((
+        (long m00, long m01) r0,
+        (long m10, long m11) r1,
+        (long m20, long m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -9400,7 +12278,29 @@ public partial struct long3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long3 c0, out long3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out long m00, out long m01,
+        out long m10, out long m11,
+        out long m20, out long m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long3 this[int c]
     {
@@ -9454,7 +12354,7 @@ public partial struct long3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long3x2
@@ -9596,6 +12496,17 @@ public partial struct long3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public long3x3((long3 c0, long3 c1, long3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3x3((long3 c0, long3 c1, long3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public long3x3(
         long m00, long m01, long m02,
         long m10, long m11, long m12,
@@ -9605,6 +12516,44 @@ public partial struct long3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3x3((
+        long m00, long m01, long m02,
+        long m10, long m11, long m12,
+        long m20, long m21, long m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long3x3((
+        long m00, long m01, long m02,
+        long m10, long m11, long m12,
+        long m20, long m21, long m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3x3((
+        (long m00, long m01, long m02) r0,
+        (long m10, long m11, long m12) r1,
+        (long m20, long m21, long m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long3x3((
+        (long m00, long m01, long m02) r0,
+        (long m10, long m11, long m12) r1,
+        (long m20, long m21, long m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -9631,7 +12580,31 @@ public partial struct long3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long3 c0, out long3 c1, out long3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out long m00, out long m01, out long m02,
+        out long m10, out long m11, out long m12,
+        out long m20, out long m21, out long m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long3 this[int c]
     {
@@ -9693,7 +12666,7 @@ public partial struct long3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long3x3
@@ -9858,6 +12831,18 @@ public partial struct long3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public long3x4((long3 c0, long3 c1, long3 c2, long3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3x4((long3 c0, long3 c1, long3 c2, long3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public long3x4(
         long m00, long m01, long m02, long m03,
         long m10, long m11, long m12, long m13,
@@ -9868,6 +12853,46 @@ public partial struct long3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3x4((
+        long m00, long m01, long m02, long m03,
+        long m10, long m11, long m12, long m13,
+        long m20, long m21, long m22, long m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long3x4((
+        long m00, long m01, long m02, long m03,
+        long m10, long m11, long m12, long m13,
+        long m20, long m21, long m22, long m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long3x4((
+        (long m00, long m01, long m02, long m03) r0,
+        (long m10, long m11, long m12, long m13) r1,
+        (long m20, long m21, long m22, long m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long3x4((
+        (long m00, long m01, long m02, long m03) r0,
+        (long m10, long m11, long m12, long m13) r1,
+        (long m20, long m21, long m22, long m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -9896,7 +12921,33 @@ public partial struct long3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long3 c0, out long3 c1, out long3 c2, out long3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out long m00, out long m01, out long m02, out long m03,
+        out long m10, out long m11, out long m12, out long m13,
+        out long m20, out long m21, out long m22, out long m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long3 this[int c]
     {
@@ -9966,7 +13017,7 @@ public partial struct long3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long3x4
@@ -10100,6 +13151,16 @@ public partial struct long4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public long4x2((long4 c0, long4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4x2((long4 c0, long4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public long4x2(
         long m00, long m01,
         long m10, long m11,
@@ -10109,6 +13170,46 @@ public partial struct long4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4x2((
+        long m00, long m01,
+        long m10, long m11,
+        long m20, long m21,
+        long m30, long m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long4x2((
+        long m00, long m01,
+        long m10, long m11,
+        long m20, long m21,
+        long m30, long m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4x2((
+        (long m00, long m01) r0,
+        (long m10, long m11) r1,
+        (long m20, long m21) r2,
+        (long m30, long m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long4x2((
+        (long m00, long m01) r0,
+        (long m10, long m11) r1,
+        (long m20, long m21) r2,
+        (long m30, long m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -10133,7 +13234,30 @@ public partial struct long4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long4 c0, out long4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out long m00, out long m01,
+        out long m10, out long m11,
+        out long m20, out long m21,
+        out long m30, out long m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long4 this[int c]
     {
@@ -10187,7 +13311,7 @@ public partial struct long4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long4x2
@@ -10351,6 +13475,17 @@ public partial struct long4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public long4x3((long4 c0, long4 c1, long4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4x3((long4 c0, long4 c1, long4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public long4x3(
         long m00, long m01, long m02,
         long m10, long m11, long m12,
@@ -10361,6 +13496,48 @@ public partial struct long4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4x3((
+        long m00, long m01, long m02,
+        long m10, long m11, long m12,
+        long m20, long m21, long m22,
+        long m30, long m31, long m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long4x3((
+        long m00, long m01, long m02,
+        long m10, long m11, long m12,
+        long m20, long m21, long m22,
+        long m30, long m31, long m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4x3((
+        (long m00, long m01, long m02) r0,
+        (long m10, long m11, long m12) r1,
+        (long m20, long m21, long m22) r2,
+        (long m30, long m31, long m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long4x3((
+        (long m00, long m01, long m02) r0,
+        (long m10, long m11, long m12) r1,
+        (long m20, long m21, long m22) r2,
+        (long m30, long m31, long m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -10387,7 +13564,32 @@ public partial struct long4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long4 c0, out long4 c1, out long4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out long m00, out long m01, out long m02,
+        out long m10, out long m11, out long m12,
+        out long m20, out long m21, out long m22,
+        out long m30, out long m31, out long m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long4 this[int c]
     {
@@ -10449,7 +13651,7 @@ public partial struct long4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long4x3
@@ -10643,6 +13845,18 @@ public partial struct long4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public long4x4((long4 c0, long4 c1, long4 c2, long4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4x4((long4 c0, long4 c1, long4 c2, long4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public long4x4(
         long m00, long m01, long m02, long m03,
         long m10, long m11, long m12, long m13,
@@ -10654,6 +13868,50 @@ public partial struct long4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4x4((
+        long m00, long m01, long m02, long m03,
+        long m10, long m11, long m12, long m13,
+        long m20, long m21, long m22, long m23,
+        long m30, long m31, long m32, long m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long4x4((
+        long m00, long m01, long m02, long m03,
+        long m10, long m11, long m12, long m13,
+        long m20, long m21, long m22, long m23,
+        long m30, long m31, long m32, long m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator long4x4((
+        (long m00, long m01, long m02, long m03) r0,
+        (long m10, long m11, long m12, long m13) r1,
+        (long m20, long m21, long m22, long m23) r2,
+        (long m30, long m31, long m32, long m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public long4x4((
+        (long m00, long m01, long m02, long m03) r0,
+        (long m10, long m11, long m12, long m13) r1,
+        (long m20, long m21, long m22, long m23) r2,
+        (long m30, long m31, long m32, long m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -10682,7 +13940,34 @@ public partial struct long4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out long4 c0, out long4 c1, out long4 c2, out long4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out long m00, out long m01, out long m02, out long m03,
+        out long m10, out long m11, out long m12, out long m13,
+        out long m20, out long m21, out long m22, out long m23,
+        out long m30, out long m31, out long m32, out long m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public long4 this[int c]
     {
@@ -10752,7 +14037,7 @@ public partial struct long4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // long4x4
@@ -10856,6 +14141,16 @@ public partial struct ulong2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong2x2((ulong2 c0, ulong2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2x2((ulong2 c0, ulong2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public ulong2x2(
         ulong m00, ulong m01,
         ulong m10, ulong m11
@@ -10863,6 +14158,38 @@ public partial struct ulong2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2x2((
+        ulong m00, ulong m01,
+        ulong m10, ulong m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong2x2((
+        ulong m00, ulong m01,
+        ulong m10, ulong m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2x2((
+        (ulong m00, ulong m01) r0,
+        (ulong m10, ulong m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong2x2((
+        (ulong m00, ulong m01) r0,
+        (ulong m10, ulong m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -10887,7 +14214,28 @@ public partial struct ulong2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong2 c0, out ulong2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ulong m00, out ulong m01,
+        out ulong m10, out ulong m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong2 this[int c]
     {
@@ -10941,7 +14289,7 @@ public partial struct ulong2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong2x2
@@ -11061,6 +14409,17 @@ public partial struct ulong2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong2x3((ulong2 c0, ulong2 c1, ulong2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2x3((ulong2 c0, ulong2 c1, ulong2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public ulong2x3(
         ulong m00, ulong m01, ulong m02,
         ulong m10, ulong m11, ulong m12
@@ -11069,6 +14428,40 @@ public partial struct ulong2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2x3((
+        ulong m00, ulong m01, ulong m02,
+        ulong m10, ulong m11, ulong m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong2x3((
+        ulong m00, ulong m01, ulong m02,
+        ulong m10, ulong m11, ulong m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2x3((
+        (ulong m00, ulong m01, ulong m02) r0,
+        (ulong m10, ulong m11, ulong m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong2x3((
+        (ulong m00, ulong m01, ulong m02) r0,
+        (ulong m10, ulong m11, ulong m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -11095,7 +14488,30 @@ public partial struct ulong2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong2 c0, out ulong2 c1, out ulong2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ulong m00, out ulong m01, out ulong m02,
+        out ulong m10, out ulong m11, out ulong m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong2 this[int c]
     {
@@ -11157,7 +14573,7 @@ public partial struct ulong2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong2x3
@@ -11293,6 +14709,18 @@ public partial struct ulong2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong2x4((ulong2 c0, ulong2 c1, ulong2 c2, ulong2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2x4((ulong2 c0, ulong2 c1, ulong2 c2, ulong2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public ulong2x4(
         ulong m00, ulong m01, ulong m02, ulong m03,
         ulong m10, ulong m11, ulong m12, ulong m13
@@ -11302,6 +14730,42 @@ public partial struct ulong2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2x4((
+        ulong m00, ulong m01, ulong m02, ulong m03,
+        ulong m10, ulong m11, ulong m12, ulong m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong2x4((
+        ulong m00, ulong m01, ulong m02, ulong m03,
+        ulong m10, ulong m11, ulong m12, ulong m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong2x4((
+        (ulong m00, ulong m01, ulong m02, ulong m03) r0,
+        (ulong m10, ulong m11, ulong m12, ulong m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong2x4((
+        (ulong m00, ulong m01, ulong m02, ulong m03) r0,
+        (ulong m10, ulong m11, ulong m12, ulong m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -11330,7 +14794,32 @@ public partial struct ulong2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong2 c0, out ulong2 c1, out ulong2 c2, out ulong2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ulong m00, out ulong m01, out ulong m02, out ulong m03,
+        out ulong m10, out ulong m11, out ulong m12, out ulong m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong2 this[int c]
     {
@@ -11400,7 +14889,7 @@ public partial struct ulong2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong2x4
@@ -11519,6 +15008,16 @@ public partial struct ulong3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong3x2((ulong3 c0, ulong3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3x2((ulong3 c0, ulong3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public ulong3x2(
         ulong m00, ulong m01,
         ulong m10, ulong m11,
@@ -11527,6 +15026,42 @@ public partial struct ulong3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3x2((
+        ulong m00, ulong m01,
+        ulong m10, ulong m11,
+        ulong m20, ulong m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong3x2((
+        ulong m00, ulong m01,
+        ulong m10, ulong m11,
+        ulong m20, ulong m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3x2((
+        (ulong m00, ulong m01) r0,
+        (ulong m10, ulong m11) r1,
+        (ulong m20, ulong m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong3x2((
+        (ulong m00, ulong m01) r0,
+        (ulong m10, ulong m11) r1,
+        (ulong m20, ulong m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -11551,7 +15086,29 @@ public partial struct ulong3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong3 c0, out ulong3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ulong m00, out ulong m01,
+        out ulong m10, out ulong m11,
+        out ulong m20, out ulong m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong3 this[int c]
     {
@@ -11605,7 +15162,7 @@ public partial struct ulong3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong3x2
@@ -11747,6 +15304,17 @@ public partial struct ulong3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong3x3((ulong3 c0, ulong3 c1, ulong3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3x3((ulong3 c0, ulong3 c1, ulong3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public ulong3x3(
         ulong m00, ulong m01, ulong m02,
         ulong m10, ulong m11, ulong m12,
@@ -11756,6 +15324,44 @@ public partial struct ulong3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3x3((
+        ulong m00, ulong m01, ulong m02,
+        ulong m10, ulong m11, ulong m12,
+        ulong m20, ulong m21, ulong m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong3x3((
+        ulong m00, ulong m01, ulong m02,
+        ulong m10, ulong m11, ulong m12,
+        ulong m20, ulong m21, ulong m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3x3((
+        (ulong m00, ulong m01, ulong m02) r0,
+        (ulong m10, ulong m11, ulong m12) r1,
+        (ulong m20, ulong m21, ulong m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong3x3((
+        (ulong m00, ulong m01, ulong m02) r0,
+        (ulong m10, ulong m11, ulong m12) r1,
+        (ulong m20, ulong m21, ulong m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -11782,7 +15388,31 @@ public partial struct ulong3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong3 c0, out ulong3 c1, out ulong3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ulong m00, out ulong m01, out ulong m02,
+        out ulong m10, out ulong m11, out ulong m12,
+        out ulong m20, out ulong m21, out ulong m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong3 this[int c]
     {
@@ -11844,7 +15474,7 @@ public partial struct ulong3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong3x3
@@ -12009,6 +15639,18 @@ public partial struct ulong3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong3x4((ulong3 c0, ulong3 c1, ulong3 c2, ulong3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3x4((ulong3 c0, ulong3 c1, ulong3 c2, ulong3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public ulong3x4(
         ulong m00, ulong m01, ulong m02, ulong m03,
         ulong m10, ulong m11, ulong m12, ulong m13,
@@ -12019,6 +15661,46 @@ public partial struct ulong3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3x4((
+        ulong m00, ulong m01, ulong m02, ulong m03,
+        ulong m10, ulong m11, ulong m12, ulong m13,
+        ulong m20, ulong m21, ulong m22, ulong m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong3x4((
+        ulong m00, ulong m01, ulong m02, ulong m03,
+        ulong m10, ulong m11, ulong m12, ulong m13,
+        ulong m20, ulong m21, ulong m22, ulong m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong3x4((
+        (ulong m00, ulong m01, ulong m02, ulong m03) r0,
+        (ulong m10, ulong m11, ulong m12, ulong m13) r1,
+        (ulong m20, ulong m21, ulong m22, ulong m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong3x4((
+        (ulong m00, ulong m01, ulong m02, ulong m03) r0,
+        (ulong m10, ulong m11, ulong m12, ulong m13) r1,
+        (ulong m20, ulong m21, ulong m22, ulong m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -12047,7 +15729,33 @@ public partial struct ulong3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong3 c0, out ulong3 c1, out ulong3 c2, out ulong3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ulong m00, out ulong m01, out ulong m02, out ulong m03,
+        out ulong m10, out ulong m11, out ulong m12, out ulong m13,
+        out ulong m20, out ulong m21, out ulong m22, out ulong m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong3 this[int c]
     {
@@ -12117,7 +15825,7 @@ public partial struct ulong3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong3x4
@@ -12251,6 +15959,16 @@ public partial struct ulong4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong4x2((ulong4 c0, ulong4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4x2((ulong4 c0, ulong4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public ulong4x2(
         ulong m00, ulong m01,
         ulong m10, ulong m11,
@@ -12260,6 +15978,46 @@ public partial struct ulong4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4x2((
+        ulong m00, ulong m01,
+        ulong m10, ulong m11,
+        ulong m20, ulong m21,
+        ulong m30, ulong m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong4x2((
+        ulong m00, ulong m01,
+        ulong m10, ulong m11,
+        ulong m20, ulong m21,
+        ulong m30, ulong m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4x2((
+        (ulong m00, ulong m01) r0,
+        (ulong m10, ulong m11) r1,
+        (ulong m20, ulong m21) r2,
+        (ulong m30, ulong m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong4x2((
+        (ulong m00, ulong m01) r0,
+        (ulong m10, ulong m11) r1,
+        (ulong m20, ulong m21) r2,
+        (ulong m30, ulong m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -12284,7 +16042,30 @@ public partial struct ulong4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong4 c0, out ulong4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ulong m00, out ulong m01,
+        out ulong m10, out ulong m11,
+        out ulong m20, out ulong m21,
+        out ulong m30, out ulong m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong4 this[int c]
     {
@@ -12338,7 +16119,7 @@ public partial struct ulong4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong4x2
@@ -12502,6 +16283,17 @@ public partial struct ulong4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong4x3((ulong4 c0, ulong4 c1, ulong4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4x3((ulong4 c0, ulong4 c1, ulong4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public ulong4x3(
         ulong m00, ulong m01, ulong m02,
         ulong m10, ulong m11, ulong m12,
@@ -12512,6 +16304,48 @@ public partial struct ulong4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4x3((
+        ulong m00, ulong m01, ulong m02,
+        ulong m10, ulong m11, ulong m12,
+        ulong m20, ulong m21, ulong m22,
+        ulong m30, ulong m31, ulong m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong4x3((
+        ulong m00, ulong m01, ulong m02,
+        ulong m10, ulong m11, ulong m12,
+        ulong m20, ulong m21, ulong m22,
+        ulong m30, ulong m31, ulong m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4x3((
+        (ulong m00, ulong m01, ulong m02) r0,
+        (ulong m10, ulong m11, ulong m12) r1,
+        (ulong m20, ulong m21, ulong m22) r2,
+        (ulong m30, ulong m31, ulong m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong4x3((
+        (ulong m00, ulong m01, ulong m02) r0,
+        (ulong m10, ulong m11, ulong m12) r1,
+        (ulong m20, ulong m21, ulong m22) r2,
+        (ulong m30, ulong m31, ulong m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -12538,7 +16372,32 @@ public partial struct ulong4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong4 c0, out ulong4 c1, out ulong4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ulong m00, out ulong m01, out ulong m02,
+        out ulong m10, out ulong m11, out ulong m12,
+        out ulong m20, out ulong m21, out ulong m22,
+        out ulong m30, out ulong m31, out ulong m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong4 this[int c]
     {
@@ -12600,7 +16459,7 @@ public partial struct ulong4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong4x3
@@ -12794,6 +16653,18 @@ public partial struct ulong4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public ulong4x4((ulong4 c0, ulong4 c1, ulong4 c2, ulong4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4x4((ulong4 c0, ulong4 c1, ulong4 c2, ulong4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public ulong4x4(
         ulong m00, ulong m01, ulong m02, ulong m03,
         ulong m10, ulong m11, ulong m12, ulong m13,
@@ -12805,6 +16676,50 @@ public partial struct ulong4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4x4((
+        ulong m00, ulong m01, ulong m02, ulong m03,
+        ulong m10, ulong m11, ulong m12, ulong m13,
+        ulong m20, ulong m21, ulong m22, ulong m23,
+        ulong m30, ulong m31, ulong m32, ulong m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong4x4((
+        ulong m00, ulong m01, ulong m02, ulong m03,
+        ulong m10, ulong m11, ulong m12, ulong m13,
+        ulong m20, ulong m21, ulong m22, ulong m23,
+        ulong m30, ulong m31, ulong m32, ulong m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ulong4x4((
+        (ulong m00, ulong m01, ulong m02, ulong m03) r0,
+        (ulong m10, ulong m11, ulong m12, ulong m13) r1,
+        (ulong m20, ulong m21, ulong m22, ulong m23) r2,
+        (ulong m30, ulong m31, ulong m32, ulong m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ulong4x4((
+        (ulong m00, ulong m01, ulong m02, ulong m03) r0,
+        (ulong m10, ulong m11, ulong m12, ulong m13) r1,
+        (ulong m20, ulong m21, ulong m22, ulong m23) r2,
+        (ulong m30, ulong m31, ulong m32, ulong m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -12833,7 +16748,34 @@ public partial struct ulong4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ulong4 c0, out ulong4 c1, out ulong4 c2, out ulong4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ulong m00, out ulong m01, out ulong m02, out ulong m03,
+        out ulong m10, out ulong m11, out ulong m12, out ulong m13,
+        out ulong m20, out ulong m21, out ulong m22, out ulong m23,
+        out ulong m30, out ulong m31, out ulong m32, out ulong m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public ulong4 this[int c]
     {
@@ -12903,7 +16845,7 @@ public partial struct ulong4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // ulong4x4
@@ -13007,6 +16949,16 @@ public partial struct decimal2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal2x2((decimal2 c0, decimal2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2x2((decimal2 c0, decimal2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public decimal2x2(
         decimal m00, decimal m01,
         decimal m10, decimal m11
@@ -13014,6 +16966,38 @@ public partial struct decimal2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2x2((
+        decimal m00, decimal m01,
+        decimal m10, decimal m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal2x2((
+        decimal m00, decimal m01,
+        decimal m10, decimal m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2x2((
+        (decimal m00, decimal m01) r0,
+        (decimal m10, decimal m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal2x2((
+        (decimal m00, decimal m01) r0,
+        (decimal m10, decimal m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -13038,7 +17022,28 @@ public partial struct decimal2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal2 c0, out decimal2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out decimal m00, out decimal m01,
+        out decimal m10, out decimal m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal2 this[int c]
     {
@@ -13092,7 +17097,7 @@ public partial struct decimal2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal2x2
@@ -13212,6 +17217,17 @@ public partial struct decimal2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal2x3((decimal2 c0, decimal2 c1, decimal2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2x3((decimal2 c0, decimal2 c1, decimal2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public decimal2x3(
         decimal m00, decimal m01, decimal m02,
         decimal m10, decimal m11, decimal m12
@@ -13220,6 +17236,40 @@ public partial struct decimal2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2x3((
+        decimal m00, decimal m01, decimal m02,
+        decimal m10, decimal m11, decimal m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal2x3((
+        decimal m00, decimal m01, decimal m02,
+        decimal m10, decimal m11, decimal m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2x3((
+        (decimal m00, decimal m01, decimal m02) r0,
+        (decimal m10, decimal m11, decimal m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal2x3((
+        (decimal m00, decimal m01, decimal m02) r0,
+        (decimal m10, decimal m11, decimal m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -13246,7 +17296,30 @@ public partial struct decimal2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal2 c0, out decimal2 c1, out decimal2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out decimal m00, out decimal m01, out decimal m02,
+        out decimal m10, out decimal m11, out decimal m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal2 this[int c]
     {
@@ -13308,7 +17381,7 @@ public partial struct decimal2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal2x3
@@ -13444,6 +17517,18 @@ public partial struct decimal2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal2x4((decimal2 c0, decimal2 c1, decimal2 c2, decimal2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2x4((decimal2 c0, decimal2 c1, decimal2 c2, decimal2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public decimal2x4(
         decimal m00, decimal m01, decimal m02, decimal m03,
         decimal m10, decimal m11, decimal m12, decimal m13
@@ -13453,6 +17538,42 @@ public partial struct decimal2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2x4((
+        decimal m00, decimal m01, decimal m02, decimal m03,
+        decimal m10, decimal m11, decimal m12, decimal m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal2x4((
+        decimal m00, decimal m01, decimal m02, decimal m03,
+        decimal m10, decimal m11, decimal m12, decimal m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal2x4((
+        (decimal m00, decimal m01, decimal m02, decimal m03) r0,
+        (decimal m10, decimal m11, decimal m12, decimal m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal2x4((
+        (decimal m00, decimal m01, decimal m02, decimal m03) r0,
+        (decimal m10, decimal m11, decimal m12, decimal m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -13481,7 +17602,32 @@ public partial struct decimal2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal2 c0, out decimal2 c1, out decimal2 c2, out decimal2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out decimal m00, out decimal m01, out decimal m02, out decimal m03,
+        out decimal m10, out decimal m11, out decimal m12, out decimal m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal2 this[int c]
     {
@@ -13551,7 +17697,7 @@ public partial struct decimal2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal2x4
@@ -13670,6 +17816,16 @@ public partial struct decimal3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal3x2((decimal3 c0, decimal3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3x2((decimal3 c0, decimal3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public decimal3x2(
         decimal m00, decimal m01,
         decimal m10, decimal m11,
@@ -13678,6 +17834,42 @@ public partial struct decimal3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3x2((
+        decimal m00, decimal m01,
+        decimal m10, decimal m11,
+        decimal m20, decimal m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal3x2((
+        decimal m00, decimal m01,
+        decimal m10, decimal m11,
+        decimal m20, decimal m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3x2((
+        (decimal m00, decimal m01) r0,
+        (decimal m10, decimal m11) r1,
+        (decimal m20, decimal m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal3x2((
+        (decimal m00, decimal m01) r0,
+        (decimal m10, decimal m11) r1,
+        (decimal m20, decimal m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -13702,7 +17894,29 @@ public partial struct decimal3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal3 c0, out decimal3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out decimal m00, out decimal m01,
+        out decimal m10, out decimal m11,
+        out decimal m20, out decimal m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal3 this[int c]
     {
@@ -13756,7 +17970,7 @@ public partial struct decimal3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal3x2
@@ -13898,6 +18112,17 @@ public partial struct decimal3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal3x3((decimal3 c0, decimal3 c1, decimal3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3x3((decimal3 c0, decimal3 c1, decimal3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public decimal3x3(
         decimal m00, decimal m01, decimal m02,
         decimal m10, decimal m11, decimal m12,
@@ -13907,6 +18132,44 @@ public partial struct decimal3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3x3((
+        decimal m00, decimal m01, decimal m02,
+        decimal m10, decimal m11, decimal m12,
+        decimal m20, decimal m21, decimal m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal3x3((
+        decimal m00, decimal m01, decimal m02,
+        decimal m10, decimal m11, decimal m12,
+        decimal m20, decimal m21, decimal m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3x3((
+        (decimal m00, decimal m01, decimal m02) r0,
+        (decimal m10, decimal m11, decimal m12) r1,
+        (decimal m20, decimal m21, decimal m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal3x3((
+        (decimal m00, decimal m01, decimal m02) r0,
+        (decimal m10, decimal m11, decimal m12) r1,
+        (decimal m20, decimal m21, decimal m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -13933,7 +18196,31 @@ public partial struct decimal3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal3 c0, out decimal3 c1, out decimal3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out decimal m00, out decimal m01, out decimal m02,
+        out decimal m10, out decimal m11, out decimal m12,
+        out decimal m20, out decimal m21, out decimal m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal3 this[int c]
     {
@@ -13995,7 +18282,7 @@ public partial struct decimal3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal3x3
@@ -14160,6 +18447,18 @@ public partial struct decimal3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal3x4((decimal3 c0, decimal3 c1, decimal3 c2, decimal3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3x4((decimal3 c0, decimal3 c1, decimal3 c2, decimal3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public decimal3x4(
         decimal m00, decimal m01, decimal m02, decimal m03,
         decimal m10, decimal m11, decimal m12, decimal m13,
@@ -14170,6 +18469,46 @@ public partial struct decimal3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3x4((
+        decimal m00, decimal m01, decimal m02, decimal m03,
+        decimal m10, decimal m11, decimal m12, decimal m13,
+        decimal m20, decimal m21, decimal m22, decimal m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal3x4((
+        decimal m00, decimal m01, decimal m02, decimal m03,
+        decimal m10, decimal m11, decimal m12, decimal m13,
+        decimal m20, decimal m21, decimal m22, decimal m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal3x4((
+        (decimal m00, decimal m01, decimal m02, decimal m03) r0,
+        (decimal m10, decimal m11, decimal m12, decimal m13) r1,
+        (decimal m20, decimal m21, decimal m22, decimal m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal3x4((
+        (decimal m00, decimal m01, decimal m02, decimal m03) r0,
+        (decimal m10, decimal m11, decimal m12, decimal m13) r1,
+        (decimal m20, decimal m21, decimal m22, decimal m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -14198,7 +18537,33 @@ public partial struct decimal3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal3 c0, out decimal3 c1, out decimal3 c2, out decimal3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out decimal m00, out decimal m01, out decimal m02, out decimal m03,
+        out decimal m10, out decimal m11, out decimal m12, out decimal m13,
+        out decimal m20, out decimal m21, out decimal m22, out decimal m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal3 this[int c]
     {
@@ -14268,7 +18633,7 @@ public partial struct decimal3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal3x4
@@ -14402,6 +18767,16 @@ public partial struct decimal4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal4x2((decimal4 c0, decimal4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4x2((decimal4 c0, decimal4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public decimal4x2(
         decimal m00, decimal m01,
         decimal m10, decimal m11,
@@ -14411,6 +18786,46 @@ public partial struct decimal4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4x2((
+        decimal m00, decimal m01,
+        decimal m10, decimal m11,
+        decimal m20, decimal m21,
+        decimal m30, decimal m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal4x2((
+        decimal m00, decimal m01,
+        decimal m10, decimal m11,
+        decimal m20, decimal m21,
+        decimal m30, decimal m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4x2((
+        (decimal m00, decimal m01) r0,
+        (decimal m10, decimal m11) r1,
+        (decimal m20, decimal m21) r2,
+        (decimal m30, decimal m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal4x2((
+        (decimal m00, decimal m01) r0,
+        (decimal m10, decimal m11) r1,
+        (decimal m20, decimal m21) r2,
+        (decimal m30, decimal m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -14435,7 +18850,30 @@ public partial struct decimal4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal4 c0, out decimal4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out decimal m00, out decimal m01,
+        out decimal m10, out decimal m11,
+        out decimal m20, out decimal m21,
+        out decimal m30, out decimal m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal4 this[int c]
     {
@@ -14489,7 +18927,7 @@ public partial struct decimal4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal4x2
@@ -14653,6 +19091,17 @@ public partial struct decimal4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal4x3((decimal4 c0, decimal4 c1, decimal4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4x3((decimal4 c0, decimal4 c1, decimal4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public decimal4x3(
         decimal m00, decimal m01, decimal m02,
         decimal m10, decimal m11, decimal m12,
@@ -14663,6 +19112,48 @@ public partial struct decimal4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4x3((
+        decimal m00, decimal m01, decimal m02,
+        decimal m10, decimal m11, decimal m12,
+        decimal m20, decimal m21, decimal m22,
+        decimal m30, decimal m31, decimal m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal4x3((
+        decimal m00, decimal m01, decimal m02,
+        decimal m10, decimal m11, decimal m12,
+        decimal m20, decimal m21, decimal m22,
+        decimal m30, decimal m31, decimal m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4x3((
+        (decimal m00, decimal m01, decimal m02) r0,
+        (decimal m10, decimal m11, decimal m12) r1,
+        (decimal m20, decimal m21, decimal m22) r2,
+        (decimal m30, decimal m31, decimal m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal4x3((
+        (decimal m00, decimal m01, decimal m02) r0,
+        (decimal m10, decimal m11, decimal m12) r1,
+        (decimal m20, decimal m21, decimal m22) r2,
+        (decimal m30, decimal m31, decimal m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -14689,7 +19180,32 @@ public partial struct decimal4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal4 c0, out decimal4 c1, out decimal4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out decimal m00, out decimal m01, out decimal m02,
+        out decimal m10, out decimal m11, out decimal m12,
+        out decimal m20, out decimal m21, out decimal m22,
+        out decimal m30, out decimal m31, out decimal m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal4 this[int c]
     {
@@ -14751,7 +19267,7 @@ public partial struct decimal4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal4x3
@@ -14945,6 +19461,18 @@ public partial struct decimal4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public decimal4x4((decimal4 c0, decimal4 c1, decimal4 c2, decimal4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4x4((decimal4 c0, decimal4 c1, decimal4 c2, decimal4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public decimal4x4(
         decimal m00, decimal m01, decimal m02, decimal m03,
         decimal m10, decimal m11, decimal m12, decimal m13,
@@ -14956,6 +19484,50 @@ public partial struct decimal4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4x4((
+        decimal m00, decimal m01, decimal m02, decimal m03,
+        decimal m10, decimal m11, decimal m12, decimal m13,
+        decimal m20, decimal m21, decimal m22, decimal m23,
+        decimal m30, decimal m31, decimal m32, decimal m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal4x4((
+        decimal m00, decimal m01, decimal m02, decimal m03,
+        decimal m10, decimal m11, decimal m12, decimal m13,
+        decimal m20, decimal m21, decimal m22, decimal m23,
+        decimal m30, decimal m31, decimal m32, decimal m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator decimal4x4((
+        (decimal m00, decimal m01, decimal m02, decimal m03) r0,
+        (decimal m10, decimal m11, decimal m12, decimal m13) r1,
+        (decimal m20, decimal m21, decimal m22, decimal m23) r2,
+        (decimal m30, decimal m31, decimal m32, decimal m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public decimal4x4((
+        (decimal m00, decimal m01, decimal m02, decimal m03) r0,
+        (decimal m10, decimal m11, decimal m12, decimal m13) r1,
+        (decimal m20, decimal m21, decimal m22, decimal m23) r2,
+        (decimal m30, decimal m31, decimal m32, decimal m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -14984,7 +19556,34 @@ public partial struct decimal4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out decimal4 c0, out decimal4 c1, out decimal4 c2, out decimal4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out decimal m00, out decimal m01, out decimal m02, out decimal m03,
+        out decimal m10, out decimal m11, out decimal m12, out decimal m13,
+        out decimal m20, out decimal m21, out decimal m22, out decimal m23,
+        out decimal m30, out decimal m31, out decimal m32, out decimal m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public decimal4 this[int c]
     {
@@ -15054,7 +19653,7 @@ public partial struct decimal4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // decimal4x4
@@ -15158,6 +19757,16 @@ public partial struct half2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public half2x2((half2 c0, half2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2x2((half2 c0, half2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public half2x2(
         half m00, half m01,
         half m10, half m11
@@ -15165,6 +19774,38 @@ public partial struct half2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2x2((
+        half m00, half m01,
+        half m10, half m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half2x2((
+        half m00, half m01,
+        half m10, half m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2x2((
+        (half m00, half m01) r0,
+        (half m10, half m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half2x2((
+        (half m00, half m01) r0,
+        (half m10, half m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -15189,7 +19830,28 @@ public partial struct half2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half2 c0, out half2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out half m00, out half m01,
+        out half m10, out half m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half2 this[int c]
     {
@@ -15243,7 +19905,7 @@ public partial struct half2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half2x2
@@ -15363,6 +20025,17 @@ public partial struct half2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public half2x3((half2 c0, half2 c1, half2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2x3((half2 c0, half2 c1, half2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public half2x3(
         half m00, half m01, half m02,
         half m10, half m11, half m12
@@ -15371,6 +20044,40 @@ public partial struct half2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2x3((
+        half m00, half m01, half m02,
+        half m10, half m11, half m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half2x3((
+        half m00, half m01, half m02,
+        half m10, half m11, half m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2x3((
+        (half m00, half m01, half m02) r0,
+        (half m10, half m11, half m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half2x3((
+        (half m00, half m01, half m02) r0,
+        (half m10, half m11, half m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -15397,7 +20104,30 @@ public partial struct half2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half2 c0, out half2 c1, out half2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out half m00, out half m01, out half m02,
+        out half m10, out half m11, out half m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half2 this[int c]
     {
@@ -15459,7 +20189,7 @@ public partial struct half2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half2x3
@@ -15595,6 +20325,18 @@ public partial struct half2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public half2x4((half2 c0, half2 c1, half2 c2, half2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2x4((half2 c0, half2 c1, half2 c2, half2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public half2x4(
         half m00, half m01, half m02, half m03,
         half m10, half m11, half m12, half m13
@@ -15604,6 +20346,42 @@ public partial struct half2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2x4((
+        half m00, half m01, half m02, half m03,
+        half m10, half m11, half m12, half m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half2x4((
+        half m00, half m01, half m02, half m03,
+        half m10, half m11, half m12, half m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half2x4((
+        (half m00, half m01, half m02, half m03) r0,
+        (half m10, half m11, half m12, half m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half2x4((
+        (half m00, half m01, half m02, half m03) r0,
+        (half m10, half m11, half m12, half m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -15632,7 +20410,32 @@ public partial struct half2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half2 c0, out half2 c1, out half2 c2, out half2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out half m00, out half m01, out half m02, out half m03,
+        out half m10, out half m11, out half m12, out half m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half2 this[int c]
     {
@@ -15702,7 +20505,7 @@ public partial struct half2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half2x4
@@ -15821,6 +20624,16 @@ public partial struct half3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public half3x2((half3 c0, half3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3x2((half3 c0, half3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public half3x2(
         half m00, half m01,
         half m10, half m11,
@@ -15829,6 +20642,42 @@ public partial struct half3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3x2((
+        half m00, half m01,
+        half m10, half m11,
+        half m20, half m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half3x2((
+        half m00, half m01,
+        half m10, half m11,
+        half m20, half m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3x2((
+        (half m00, half m01) r0,
+        (half m10, half m11) r1,
+        (half m20, half m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half3x2((
+        (half m00, half m01) r0,
+        (half m10, half m11) r1,
+        (half m20, half m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -15853,7 +20702,29 @@ public partial struct half3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half3 c0, out half3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out half m00, out half m01,
+        out half m10, out half m11,
+        out half m20, out half m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half3 this[int c]
     {
@@ -15907,7 +20778,7 @@ public partial struct half3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half3x2
@@ -16049,6 +20920,17 @@ public partial struct half3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public half3x3((half3 c0, half3 c1, half3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3x3((half3 c0, half3 c1, half3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public half3x3(
         half m00, half m01, half m02,
         half m10, half m11, half m12,
@@ -16058,6 +20940,44 @@ public partial struct half3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3x3((
+        half m00, half m01, half m02,
+        half m10, half m11, half m12,
+        half m20, half m21, half m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half3x3((
+        half m00, half m01, half m02,
+        half m10, half m11, half m12,
+        half m20, half m21, half m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3x3((
+        (half m00, half m01, half m02) r0,
+        (half m10, half m11, half m12) r1,
+        (half m20, half m21, half m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half3x3((
+        (half m00, half m01, half m02) r0,
+        (half m10, half m11, half m12) r1,
+        (half m20, half m21, half m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -16084,7 +21004,31 @@ public partial struct half3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half3 c0, out half3 c1, out half3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out half m00, out half m01, out half m02,
+        out half m10, out half m11, out half m12,
+        out half m20, out half m21, out half m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half3 this[int c]
     {
@@ -16146,7 +21090,7 @@ public partial struct half3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half3x3
@@ -16311,6 +21255,18 @@ public partial struct half3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public half3x4((half3 c0, half3 c1, half3 c2, half3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3x4((half3 c0, half3 c1, half3 c2, half3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public half3x4(
         half m00, half m01, half m02, half m03,
         half m10, half m11, half m12, half m13,
@@ -16321,6 +21277,46 @@ public partial struct half3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3x4((
+        half m00, half m01, half m02, half m03,
+        half m10, half m11, half m12, half m13,
+        half m20, half m21, half m22, half m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half3x4((
+        half m00, half m01, half m02, half m03,
+        half m10, half m11, half m12, half m13,
+        half m20, half m21, half m22, half m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half3x4((
+        (half m00, half m01, half m02, half m03) r0,
+        (half m10, half m11, half m12, half m13) r1,
+        (half m20, half m21, half m22, half m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half3x4((
+        (half m00, half m01, half m02, half m03) r0,
+        (half m10, half m11, half m12, half m13) r1,
+        (half m20, half m21, half m22, half m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -16349,7 +21345,33 @@ public partial struct half3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half3 c0, out half3 c1, out half3 c2, out half3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out half m00, out half m01, out half m02, out half m03,
+        out half m10, out half m11, out half m12, out half m13,
+        out half m20, out half m21, out half m22, out half m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half3 this[int c]
     {
@@ -16419,7 +21441,7 @@ public partial struct half3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half3x4
@@ -16553,6 +21575,16 @@ public partial struct half4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public half4x2((half4 c0, half4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4x2((half4 c0, half4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public half4x2(
         half m00, half m01,
         half m10, half m11,
@@ -16562,6 +21594,46 @@ public partial struct half4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4x2((
+        half m00, half m01,
+        half m10, half m11,
+        half m20, half m21,
+        half m30, half m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half4x2((
+        half m00, half m01,
+        half m10, half m11,
+        half m20, half m21,
+        half m30, half m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4x2((
+        (half m00, half m01) r0,
+        (half m10, half m11) r1,
+        (half m20, half m21) r2,
+        (half m30, half m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half4x2((
+        (half m00, half m01) r0,
+        (half m10, half m11) r1,
+        (half m20, half m21) r2,
+        (half m30, half m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -16586,7 +21658,30 @@ public partial struct half4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half4 c0, out half4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out half m00, out half m01,
+        out half m10, out half m11,
+        out half m20, out half m21,
+        out half m30, out half m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half4 this[int c]
     {
@@ -16640,7 +21735,7 @@ public partial struct half4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half4x2
@@ -16804,6 +21899,17 @@ public partial struct half4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public half4x3((half4 c0, half4 c1, half4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4x3((half4 c0, half4 c1, half4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public half4x3(
         half m00, half m01, half m02,
         half m10, half m11, half m12,
@@ -16814,6 +21920,48 @@ public partial struct half4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4x3((
+        half m00, half m01, half m02,
+        half m10, half m11, half m12,
+        half m20, half m21, half m22,
+        half m30, half m31, half m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half4x3((
+        half m00, half m01, half m02,
+        half m10, half m11, half m12,
+        half m20, half m21, half m22,
+        half m30, half m31, half m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4x3((
+        (half m00, half m01, half m02) r0,
+        (half m10, half m11, half m12) r1,
+        (half m20, half m21, half m22) r2,
+        (half m30, half m31, half m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half4x3((
+        (half m00, half m01, half m02) r0,
+        (half m10, half m11, half m12) r1,
+        (half m20, half m21, half m22) r2,
+        (half m30, half m31, half m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -16840,7 +21988,32 @@ public partial struct half4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half4 c0, out half4 c1, out half4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out half m00, out half m01, out half m02,
+        out half m10, out half m11, out half m12,
+        out half m20, out half m21, out half m22,
+        out half m30, out half m31, out half m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half4 this[int c]
     {
@@ -16902,7 +22075,7 @@ public partial struct half4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half4x3
@@ -17096,6 +22269,18 @@ public partial struct half4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public half4x4((half4 c0, half4 c1, half4 c2, half4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4x4((half4 c0, half4 c1, half4 c2, half4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public half4x4(
         half m00, half m01, half m02, half m03,
         half m10, half m11, half m12, half m13,
@@ -17107,6 +22292,50 @@ public partial struct half4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4x4((
+        half m00, half m01, half m02, half m03,
+        half m10, half m11, half m12, half m13,
+        half m20, half m21, half m22, half m23,
+        half m30, half m31, half m32, half m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half4x4((
+        half m00, half m01, half m02, half m03,
+        half m10, half m11, half m12, half m13,
+        half m20, half m21, half m22, half m23,
+        half m30, half m31, half m32, half m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator half4x4((
+        (half m00, half m01, half m02, half m03) r0,
+        (half m10, half m11, half m12, half m13) r1,
+        (half m20, half m21, half m22, half m23) r2,
+        (half m30, half m31, half m32, half m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public half4x4((
+        (half m00, half m01, half m02, half m03) r0,
+        (half m10, half m11, half m12, half m13) r1,
+        (half m20, half m21, half m22, half m23) r2,
+        (half m30, half m31, half m32, half m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -17135,7 +22364,34 @@ public partial struct half4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out half4 c0, out half4 c1, out half4 c2, out half4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out half m00, out half m01, out half m02, out half m03,
+        out half m10, out half m11, out half m12, out half m13,
+        out half m20, out half m21, out half m22, out half m23,
+        out half m30, out half m31, out half m32, out half m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public half4 this[int c]
     {
@@ -17205,7 +22461,7 @@ public partial struct half4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // half4x4
@@ -17309,6 +22565,16 @@ public partial struct b16m2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16m2x2((b16v2 c0, b16v2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m2x2((b16v2 c0, b16v2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b16m2x2(
         b16 m00, b16 m01,
         b16 m10, b16 m11
@@ -17316,6 +22582,38 @@ public partial struct b16m2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m2x2((
+        b16 m00, b16 m01,
+        b16 m10, b16 m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x2((
+        b16 m00, b16 m01,
+        b16 m10, b16 m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m2x2((
+        (b16 m00, b16 m01) r0,
+        (b16 m10, b16 m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x2((
+        (b16 m00, b16 m01) r0,
+        (b16 m10, b16 m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -17340,7 +22638,28 @@ public partial struct b16m2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16v2 c0, out b16v2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b16 m00, out b16 m01,
+        out b16 m10, out b16 m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16v2 this[int c]
     {
@@ -17394,7 +22713,7 @@ public partial struct b16m2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16m2x2
@@ -17514,6 +22833,17 @@ public partial struct b16m2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16m2x3((b16v2 c0, b16v2 c1, b16v2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m2x3((b16v2 c0, b16v2 c1, b16v2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b16m2x3(
         b16 m00, b16 m01, b16 m02,
         b16 m10, b16 m11, b16 m12
@@ -17522,6 +22852,40 @@ public partial struct b16m2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m2x3((
+        b16 m00, b16 m01, b16 m02,
+        b16 m10, b16 m11, b16 m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x3((
+        b16 m00, b16 m01, b16 m02,
+        b16 m10, b16 m11, b16 m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m2x3((
+        (b16 m00, b16 m01, b16 m02) r0,
+        (b16 m10, b16 m11, b16 m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x3((
+        (b16 m00, b16 m01, b16 m02) r0,
+        (b16 m10, b16 m11, b16 m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -17548,7 +22912,30 @@ public partial struct b16m2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16v2 c0, out b16v2 c1, out b16v2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b16 m00, out b16 m01, out b16 m02,
+        out b16 m10, out b16 m11, out b16 m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16v2 this[int c]
     {
@@ -17610,7 +22997,7 @@ public partial struct b16m2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16m2x3
@@ -17746,6 +23133,18 @@ public partial struct b16m2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16m2x4((b16v2 c0, b16v2 c1, b16v2 c2, b16v2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m2x4((b16v2 c0, b16v2 c1, b16v2 c2, b16v2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b16m2x4(
         b16 m00, b16 m01, b16 m02, b16 m03,
         b16 m10, b16 m11, b16 m12, b16 m13
@@ -17755,6 +23154,42 @@ public partial struct b16m2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m2x4((
+        b16 m00, b16 m01, b16 m02, b16 m03,
+        b16 m10, b16 m11, b16 m12, b16 m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x4((
+        b16 m00, b16 m01, b16 m02, b16 m03,
+        b16 m10, b16 m11, b16 m12, b16 m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m2x4((
+        (b16 m00, b16 m01, b16 m02, b16 m03) r0,
+        (b16 m10, b16 m11, b16 m12, b16 m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x4((
+        (b16 m00, b16 m01, b16 m02, b16 m03) r0,
+        (b16 m10, b16 m11, b16 m12, b16 m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -17783,7 +23218,32 @@ public partial struct b16m2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16v2 c0, out b16v2 c1, out b16v2 c2, out b16v2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b16 m00, out b16 m01, out b16 m02, out b16 m03,
+        out b16 m10, out b16 m11, out b16 m12, out b16 m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16v2 this[int c]
     {
@@ -17853,7 +23313,7 @@ public partial struct b16m2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16m2x4
@@ -17972,6 +23432,16 @@ public partial struct b16m3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16m3x2((b16v3 c0, b16v3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m3x2((b16v3 c0, b16v3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b16m3x2(
         b16 m00, b16 m01,
         b16 m10, b16 m11,
@@ -17980,6 +23450,42 @@ public partial struct b16m3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m3x2((
+        b16 m00, b16 m01,
+        b16 m10, b16 m11,
+        b16 m20, b16 m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x2((
+        b16 m00, b16 m01,
+        b16 m10, b16 m11,
+        b16 m20, b16 m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m3x2((
+        (b16 m00, b16 m01) r0,
+        (b16 m10, b16 m11) r1,
+        (b16 m20, b16 m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x2((
+        (b16 m00, b16 m01) r0,
+        (b16 m10, b16 m11) r1,
+        (b16 m20, b16 m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -18004,7 +23510,29 @@ public partial struct b16m3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16v3 c0, out b16v3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b16 m00, out b16 m01,
+        out b16 m10, out b16 m11,
+        out b16 m20, out b16 m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16v3 this[int c]
     {
@@ -18058,7 +23586,7 @@ public partial struct b16m3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16m3x2
@@ -18200,6 +23728,17 @@ public partial struct b16m3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16m3x3((b16v3 c0, b16v3 c1, b16v3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m3x3((b16v3 c0, b16v3 c1, b16v3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b16m3x3(
         b16 m00, b16 m01, b16 m02,
         b16 m10, b16 m11, b16 m12,
@@ -18209,6 +23748,44 @@ public partial struct b16m3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m3x3((
+        b16 m00, b16 m01, b16 m02,
+        b16 m10, b16 m11, b16 m12,
+        b16 m20, b16 m21, b16 m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x3((
+        b16 m00, b16 m01, b16 m02,
+        b16 m10, b16 m11, b16 m12,
+        b16 m20, b16 m21, b16 m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m3x3((
+        (b16 m00, b16 m01, b16 m02) r0,
+        (b16 m10, b16 m11, b16 m12) r1,
+        (b16 m20, b16 m21, b16 m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x3((
+        (b16 m00, b16 m01, b16 m02) r0,
+        (b16 m10, b16 m11, b16 m12) r1,
+        (b16 m20, b16 m21, b16 m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -18235,7 +23812,31 @@ public partial struct b16m3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16v3 c0, out b16v3 c1, out b16v3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b16 m00, out b16 m01, out b16 m02,
+        out b16 m10, out b16 m11, out b16 m12,
+        out b16 m20, out b16 m21, out b16 m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16v3 this[int c]
     {
@@ -18297,7 +23898,7 @@ public partial struct b16m3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16m3x3
@@ -18462,6 +24063,18 @@ public partial struct b16m3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16m3x4((b16v3 c0, b16v3 c1, b16v3 c2, b16v3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m3x4((b16v3 c0, b16v3 c1, b16v3 c2, b16v3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b16m3x4(
         b16 m00, b16 m01, b16 m02, b16 m03,
         b16 m10, b16 m11, b16 m12, b16 m13,
@@ -18472,6 +24085,46 @@ public partial struct b16m3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m3x4((
+        b16 m00, b16 m01, b16 m02, b16 m03,
+        b16 m10, b16 m11, b16 m12, b16 m13,
+        b16 m20, b16 m21, b16 m22, b16 m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x4((
+        b16 m00, b16 m01, b16 m02, b16 m03,
+        b16 m10, b16 m11, b16 m12, b16 m13,
+        b16 m20, b16 m21, b16 m22, b16 m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m3x4((
+        (b16 m00, b16 m01, b16 m02, b16 m03) r0,
+        (b16 m10, b16 m11, b16 m12, b16 m13) r1,
+        (b16 m20, b16 m21, b16 m22, b16 m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x4((
+        (b16 m00, b16 m01, b16 m02, b16 m03) r0,
+        (b16 m10, b16 m11, b16 m12, b16 m13) r1,
+        (b16 m20, b16 m21, b16 m22, b16 m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -18500,7 +24153,33 @@ public partial struct b16m3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16v3 c0, out b16v3 c1, out b16v3 c2, out b16v3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b16 m00, out b16 m01, out b16 m02, out b16 m03,
+        out b16 m10, out b16 m11, out b16 m12, out b16 m13,
+        out b16 m20, out b16 m21, out b16 m22, out b16 m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16v3 this[int c]
     {
@@ -18570,7 +24249,7 @@ public partial struct b16m3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16m3x4
@@ -18704,6 +24383,16 @@ public partial struct b16m4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16m4x2((b16v4 c0, b16v4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m4x2((b16v4 c0, b16v4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b16m4x2(
         b16 m00, b16 m01,
         b16 m10, b16 m11,
@@ -18713,6 +24402,46 @@ public partial struct b16m4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m4x2((
+        b16 m00, b16 m01,
+        b16 m10, b16 m11,
+        b16 m20, b16 m21,
+        b16 m30, b16 m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x2((
+        b16 m00, b16 m01,
+        b16 m10, b16 m11,
+        b16 m20, b16 m21,
+        b16 m30, b16 m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m4x2((
+        (b16 m00, b16 m01) r0,
+        (b16 m10, b16 m11) r1,
+        (b16 m20, b16 m21) r2,
+        (b16 m30, b16 m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x2((
+        (b16 m00, b16 m01) r0,
+        (b16 m10, b16 m11) r1,
+        (b16 m20, b16 m21) r2,
+        (b16 m30, b16 m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -18737,7 +24466,30 @@ public partial struct b16m4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16v4 c0, out b16v4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b16 m00, out b16 m01,
+        out b16 m10, out b16 m11,
+        out b16 m20, out b16 m21,
+        out b16 m30, out b16 m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16v4 this[int c]
     {
@@ -18791,7 +24543,7 @@ public partial struct b16m4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16m4x2
@@ -18955,6 +24707,17 @@ public partial struct b16m4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16m4x3((b16v4 c0, b16v4 c1, b16v4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m4x3((b16v4 c0, b16v4 c1, b16v4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b16m4x3(
         b16 m00, b16 m01, b16 m02,
         b16 m10, b16 m11, b16 m12,
@@ -18965,6 +24728,48 @@ public partial struct b16m4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m4x3((
+        b16 m00, b16 m01, b16 m02,
+        b16 m10, b16 m11, b16 m12,
+        b16 m20, b16 m21, b16 m22,
+        b16 m30, b16 m31, b16 m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x3((
+        b16 m00, b16 m01, b16 m02,
+        b16 m10, b16 m11, b16 m12,
+        b16 m20, b16 m21, b16 m22,
+        b16 m30, b16 m31, b16 m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m4x3((
+        (b16 m00, b16 m01, b16 m02) r0,
+        (b16 m10, b16 m11, b16 m12) r1,
+        (b16 m20, b16 m21, b16 m22) r2,
+        (b16 m30, b16 m31, b16 m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x3((
+        (b16 m00, b16 m01, b16 m02) r0,
+        (b16 m10, b16 m11, b16 m12) r1,
+        (b16 m20, b16 m21, b16 m22) r2,
+        (b16 m30, b16 m31, b16 m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -18991,7 +24796,32 @@ public partial struct b16m4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16v4 c0, out b16v4 c1, out b16v4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b16 m00, out b16 m01, out b16 m02,
+        out b16 m10, out b16 m11, out b16 m12,
+        out b16 m20, out b16 m21, out b16 m22,
+        out b16 m30, out b16 m31, out b16 m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16v4 this[int c]
     {
@@ -19053,7 +24883,7 @@ public partial struct b16m4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16m4x3
@@ -19247,6 +25077,18 @@ public partial struct b16m4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b16m4x4((b16v4 c0, b16v4 c1, b16v4 c2, b16v4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m4x4((b16v4 c0, b16v4 c1, b16v4 c2, b16v4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b16m4x4(
         b16 m00, b16 m01, b16 m02, b16 m03,
         b16 m10, b16 m11, b16 m12, b16 m13,
@@ -19258,6 +25100,50 @@ public partial struct b16m4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m4x4((
+        b16 m00, b16 m01, b16 m02, b16 m03,
+        b16 m10, b16 m11, b16 m12, b16 m13,
+        b16 m20, b16 m21, b16 m22, b16 m23,
+        b16 m30, b16 m31, b16 m32, b16 m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x4((
+        b16 m00, b16 m01, b16 m02, b16 m03,
+        b16 m10, b16 m11, b16 m12, b16 m13,
+        b16 m20, b16 m21, b16 m22, b16 m23,
+        b16 m30, b16 m31, b16 m32, b16 m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b16m4x4((
+        (b16 m00, b16 m01, b16 m02, b16 m03) r0,
+        (b16 m10, b16 m11, b16 m12, b16 m13) r1,
+        (b16 m20, b16 m21, b16 m22, b16 m23) r2,
+        (b16 m30, b16 m31, b16 m32, b16 m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x4((
+        (b16 m00, b16 m01, b16 m02, b16 m03) r0,
+        (b16 m10, b16 m11, b16 m12, b16 m13) r1,
+        (b16 m20, b16 m21, b16 m22, b16 m23) r2,
+        (b16 m30, b16 m31, b16 m32, b16 m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -19286,7 +25172,34 @@ public partial struct b16m4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b16v4 c0, out b16v4 c1, out b16v4 c2, out b16v4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b16 m00, out b16 m01, out b16 m02, out b16 m03,
+        out b16 m10, out b16 m11, out b16 m12, out b16 m13,
+        out b16 m20, out b16 m21, out b16 m22, out b16 m23,
+        out b16 m30, out b16 m31, out b16 m32, out b16 m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b16v4 this[int c]
     {
@@ -19356,7 +25269,7 @@ public partial struct b16m4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b16m4x4
@@ -19460,6 +25373,16 @@ public partial struct b32m2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32m2x2((b32v2 c0, b32v2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m2x2((b32v2 c0, b32v2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b32m2x2(
         b32 m00, b32 m01,
         b32 m10, b32 m11
@@ -19467,6 +25390,38 @@ public partial struct b32m2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m2x2((
+        b32 m00, b32 m01,
+        b32 m10, b32 m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m2x2((
+        b32 m00, b32 m01,
+        b32 m10, b32 m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m2x2((
+        (b32 m00, b32 m01) r0,
+        (b32 m10, b32 m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m2x2((
+        (b32 m00, b32 m01) r0,
+        (b32 m10, b32 m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -19491,7 +25446,28 @@ public partial struct b32m2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32v2 c0, out b32v2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b32 m00, out b32 m01,
+        out b32 m10, out b32 m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32v2 this[int c]
     {
@@ -19545,7 +25521,7 @@ public partial struct b32m2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32m2x2
@@ -19665,6 +25641,17 @@ public partial struct b32m2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32m2x3((b32v2 c0, b32v2 c1, b32v2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m2x3((b32v2 c0, b32v2 c1, b32v2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b32m2x3(
         b32 m00, b32 m01, b32 m02,
         b32 m10, b32 m11, b32 m12
@@ -19673,6 +25660,40 @@ public partial struct b32m2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m2x3((
+        b32 m00, b32 m01, b32 m02,
+        b32 m10, b32 m11, b32 m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m2x3((
+        b32 m00, b32 m01, b32 m02,
+        b32 m10, b32 m11, b32 m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m2x3((
+        (b32 m00, b32 m01, b32 m02) r0,
+        (b32 m10, b32 m11, b32 m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m2x3((
+        (b32 m00, b32 m01, b32 m02) r0,
+        (b32 m10, b32 m11, b32 m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -19699,7 +25720,30 @@ public partial struct b32m2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32v2 c0, out b32v2 c1, out b32v2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b32 m00, out b32 m01, out b32 m02,
+        out b32 m10, out b32 m11, out b32 m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32v2 this[int c]
     {
@@ -19761,7 +25805,7 @@ public partial struct b32m2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32m2x3
@@ -19897,6 +25941,18 @@ public partial struct b32m2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32m2x4((b32v2 c0, b32v2 c1, b32v2 c2, b32v2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m2x4((b32v2 c0, b32v2 c1, b32v2 c2, b32v2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b32m2x4(
         b32 m00, b32 m01, b32 m02, b32 m03,
         b32 m10, b32 m11, b32 m12, b32 m13
@@ -19906,6 +25962,42 @@ public partial struct b32m2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m2x4((
+        b32 m00, b32 m01, b32 m02, b32 m03,
+        b32 m10, b32 m11, b32 m12, b32 m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m2x4((
+        b32 m00, b32 m01, b32 m02, b32 m03,
+        b32 m10, b32 m11, b32 m12, b32 m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m2x4((
+        (b32 m00, b32 m01, b32 m02, b32 m03) r0,
+        (b32 m10, b32 m11, b32 m12, b32 m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m2x4((
+        (b32 m00, b32 m01, b32 m02, b32 m03) r0,
+        (b32 m10, b32 m11, b32 m12, b32 m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -19934,7 +26026,32 @@ public partial struct b32m2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32v2 c0, out b32v2 c1, out b32v2 c2, out b32v2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b32 m00, out b32 m01, out b32 m02, out b32 m03,
+        out b32 m10, out b32 m11, out b32 m12, out b32 m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32v2 this[int c]
     {
@@ -20004,7 +26121,7 @@ public partial struct b32m2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32m2x4
@@ -20123,6 +26240,16 @@ public partial struct b32m3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32m3x2((b32v3 c0, b32v3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m3x2((b32v3 c0, b32v3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b32m3x2(
         b32 m00, b32 m01,
         b32 m10, b32 m11,
@@ -20131,6 +26258,42 @@ public partial struct b32m3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m3x2((
+        b32 m00, b32 m01,
+        b32 m10, b32 m11,
+        b32 m20, b32 m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m3x2((
+        b32 m00, b32 m01,
+        b32 m10, b32 m11,
+        b32 m20, b32 m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m3x2((
+        (b32 m00, b32 m01) r0,
+        (b32 m10, b32 m11) r1,
+        (b32 m20, b32 m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m3x2((
+        (b32 m00, b32 m01) r0,
+        (b32 m10, b32 m11) r1,
+        (b32 m20, b32 m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -20155,7 +26318,29 @@ public partial struct b32m3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32v3 c0, out b32v3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b32 m00, out b32 m01,
+        out b32 m10, out b32 m11,
+        out b32 m20, out b32 m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32v3 this[int c]
     {
@@ -20209,7 +26394,7 @@ public partial struct b32m3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32m3x2
@@ -20351,6 +26536,17 @@ public partial struct b32m3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32m3x3((b32v3 c0, b32v3 c1, b32v3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m3x3((b32v3 c0, b32v3 c1, b32v3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b32m3x3(
         b32 m00, b32 m01, b32 m02,
         b32 m10, b32 m11, b32 m12,
@@ -20360,6 +26556,44 @@ public partial struct b32m3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m3x3((
+        b32 m00, b32 m01, b32 m02,
+        b32 m10, b32 m11, b32 m12,
+        b32 m20, b32 m21, b32 m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m3x3((
+        b32 m00, b32 m01, b32 m02,
+        b32 m10, b32 m11, b32 m12,
+        b32 m20, b32 m21, b32 m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m3x3((
+        (b32 m00, b32 m01, b32 m02) r0,
+        (b32 m10, b32 m11, b32 m12) r1,
+        (b32 m20, b32 m21, b32 m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m3x3((
+        (b32 m00, b32 m01, b32 m02) r0,
+        (b32 m10, b32 m11, b32 m12) r1,
+        (b32 m20, b32 m21, b32 m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -20386,7 +26620,31 @@ public partial struct b32m3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32v3 c0, out b32v3 c1, out b32v3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b32 m00, out b32 m01, out b32 m02,
+        out b32 m10, out b32 m11, out b32 m12,
+        out b32 m20, out b32 m21, out b32 m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32v3 this[int c]
     {
@@ -20448,7 +26706,7 @@ public partial struct b32m3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32m3x3
@@ -20613,6 +26871,18 @@ public partial struct b32m3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32m3x4((b32v3 c0, b32v3 c1, b32v3 c2, b32v3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m3x4((b32v3 c0, b32v3 c1, b32v3 c2, b32v3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b32m3x4(
         b32 m00, b32 m01, b32 m02, b32 m03,
         b32 m10, b32 m11, b32 m12, b32 m13,
@@ -20623,6 +26893,46 @@ public partial struct b32m3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m3x4((
+        b32 m00, b32 m01, b32 m02, b32 m03,
+        b32 m10, b32 m11, b32 m12, b32 m13,
+        b32 m20, b32 m21, b32 m22, b32 m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m3x4((
+        b32 m00, b32 m01, b32 m02, b32 m03,
+        b32 m10, b32 m11, b32 m12, b32 m13,
+        b32 m20, b32 m21, b32 m22, b32 m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m3x4((
+        (b32 m00, b32 m01, b32 m02, b32 m03) r0,
+        (b32 m10, b32 m11, b32 m12, b32 m13) r1,
+        (b32 m20, b32 m21, b32 m22, b32 m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m3x4((
+        (b32 m00, b32 m01, b32 m02, b32 m03) r0,
+        (b32 m10, b32 m11, b32 m12, b32 m13) r1,
+        (b32 m20, b32 m21, b32 m22, b32 m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -20651,7 +26961,33 @@ public partial struct b32m3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32v3 c0, out b32v3 c1, out b32v3 c2, out b32v3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b32 m00, out b32 m01, out b32 m02, out b32 m03,
+        out b32 m10, out b32 m11, out b32 m12, out b32 m13,
+        out b32 m20, out b32 m21, out b32 m22, out b32 m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32v3 this[int c]
     {
@@ -20721,7 +27057,7 @@ public partial struct b32m3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32m3x4
@@ -20855,6 +27191,16 @@ public partial struct b32m4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32m4x2((b32v4 c0, b32v4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m4x2((b32v4 c0, b32v4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b32m4x2(
         b32 m00, b32 m01,
         b32 m10, b32 m11,
@@ -20864,6 +27210,46 @@ public partial struct b32m4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m4x2((
+        b32 m00, b32 m01,
+        b32 m10, b32 m11,
+        b32 m20, b32 m21,
+        b32 m30, b32 m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m4x2((
+        b32 m00, b32 m01,
+        b32 m10, b32 m11,
+        b32 m20, b32 m21,
+        b32 m30, b32 m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m4x2((
+        (b32 m00, b32 m01) r0,
+        (b32 m10, b32 m11) r1,
+        (b32 m20, b32 m21) r2,
+        (b32 m30, b32 m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m4x2((
+        (b32 m00, b32 m01) r0,
+        (b32 m10, b32 m11) r1,
+        (b32 m20, b32 m21) r2,
+        (b32 m30, b32 m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -20888,7 +27274,30 @@ public partial struct b32m4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32v4 c0, out b32v4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b32 m00, out b32 m01,
+        out b32 m10, out b32 m11,
+        out b32 m20, out b32 m21,
+        out b32 m30, out b32 m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32v4 this[int c]
     {
@@ -20942,7 +27351,7 @@ public partial struct b32m4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32m4x2
@@ -21106,6 +27515,17 @@ public partial struct b32m4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32m4x3((b32v4 c0, b32v4 c1, b32v4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m4x3((b32v4 c0, b32v4 c1, b32v4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b32m4x3(
         b32 m00, b32 m01, b32 m02,
         b32 m10, b32 m11, b32 m12,
@@ -21116,6 +27536,48 @@ public partial struct b32m4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m4x3((
+        b32 m00, b32 m01, b32 m02,
+        b32 m10, b32 m11, b32 m12,
+        b32 m20, b32 m21, b32 m22,
+        b32 m30, b32 m31, b32 m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m4x3((
+        b32 m00, b32 m01, b32 m02,
+        b32 m10, b32 m11, b32 m12,
+        b32 m20, b32 m21, b32 m22,
+        b32 m30, b32 m31, b32 m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m4x3((
+        (b32 m00, b32 m01, b32 m02) r0,
+        (b32 m10, b32 m11, b32 m12) r1,
+        (b32 m20, b32 m21, b32 m22) r2,
+        (b32 m30, b32 m31, b32 m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m4x3((
+        (b32 m00, b32 m01, b32 m02) r0,
+        (b32 m10, b32 m11, b32 m12) r1,
+        (b32 m20, b32 m21, b32 m22) r2,
+        (b32 m30, b32 m31, b32 m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -21142,7 +27604,32 @@ public partial struct b32m4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32v4 c0, out b32v4 c1, out b32v4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b32 m00, out b32 m01, out b32 m02,
+        out b32 m10, out b32 m11, out b32 m12,
+        out b32 m20, out b32 m21, out b32 m22,
+        out b32 m30, out b32 m31, out b32 m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32v4 this[int c]
     {
@@ -21204,7 +27691,7 @@ public partial struct b32m4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32m4x3
@@ -21398,6 +27885,18 @@ public partial struct b32m4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b32m4x4((b32v4 c0, b32v4 c1, b32v4 c2, b32v4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m4x4((b32v4 c0, b32v4 c1, b32v4 c2, b32v4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b32m4x4(
         b32 m00, b32 m01, b32 m02, b32 m03,
         b32 m10, b32 m11, b32 m12, b32 m13,
@@ -21409,6 +27908,50 @@ public partial struct b32m4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m4x4((
+        b32 m00, b32 m01, b32 m02, b32 m03,
+        b32 m10, b32 m11, b32 m12, b32 m13,
+        b32 m20, b32 m21, b32 m22, b32 m23,
+        b32 m30, b32 m31, b32 m32, b32 m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m4x4((
+        b32 m00, b32 m01, b32 m02, b32 m03,
+        b32 m10, b32 m11, b32 m12, b32 m13,
+        b32 m20, b32 m21, b32 m22, b32 m23,
+        b32 m30, b32 m31, b32 m32, b32 m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b32m4x4((
+        (b32 m00, b32 m01, b32 m02, b32 m03) r0,
+        (b32 m10, b32 m11, b32 m12, b32 m13) r1,
+        (b32 m20, b32 m21, b32 m22, b32 m23) r2,
+        (b32 m30, b32 m31, b32 m32, b32 m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b32m4x4((
+        (b32 m00, b32 m01, b32 m02, b32 m03) r0,
+        (b32 m10, b32 m11, b32 m12, b32 m13) r1,
+        (b32 m20, b32 m21, b32 m22, b32 m23) r2,
+        (b32 m30, b32 m31, b32 m32, b32 m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -21437,7 +27980,34 @@ public partial struct b32m4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b32v4 c0, out b32v4 c1, out b32v4 c2, out b32v4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b32 m00, out b32 m01, out b32 m02, out b32 m03,
+        out b32 m10, out b32 m11, out b32 m12, out b32 m13,
+        out b32 m20, out b32 m21, out b32 m22, out b32 m23,
+        out b32 m30, out b32 m31, out b32 m32, out b32 m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b32v4 this[int c]
     {
@@ -21507,7 +28077,7 @@ public partial struct b32m4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b32m4x4
@@ -21611,6 +28181,16 @@ public partial struct b64m2x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64m2x2((b64v2 c0, b64v2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m2x2((b64v2 c0, b64v2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b64m2x2(
         b64 m00, b64 m01,
         b64 m10, b64 m11
@@ -21618,6 +28198,38 @@ public partial struct b64m2x2 :
     {
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m2x2((
+        b64 m00, b64 m01,
+        b64 m10, b64 m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m2x2((
+        b64 m00, b64 m01,
+        b64 m10, b64 m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m2x2((
+        (b64 m00, b64 m01) r0,
+        (b64 m10, b64 m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m2x2((
+        (b64 m00, b64 m01) r0,
+        (b64 m10, b64 m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
     }
 
     [MethodImpl(256 | 512)]
@@ -21642,7 +28254,28 @@ public partial struct b64m2x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64v2 c0, out b64v2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b64 m00, out b64 m01,
+        out b64 m10, out b64 m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64v2 this[int c]
     {
@@ -21696,7 +28329,7 @@ public partial struct b64m2x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64m2x2
@@ -21816,6 +28449,17 @@ public partial struct b64m2x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64m2x3((b64v2 c0, b64v2 c1, b64v2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m2x3((b64v2 c0, b64v2 c1, b64v2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b64m2x3(
         b64 m00, b64 m01, b64 m02,
         b64 m10, b64 m11, b64 m12
@@ -21824,6 +28468,40 @@ public partial struct b64m2x3 :
         this.c0 = new(m00, m10);
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m2x3((
+        b64 m00, b64 m01, b64 m02,
+        b64 m10, b64 m11, b64 m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m2x3((
+        b64 m00, b64 m01, b64 m02,
+        b64 m10, b64 m11, b64 m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m2x3((
+        (b64 m00, b64 m01, b64 m02) r0,
+        (b64 m10, b64 m11, b64 m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m2x3((
+        (b64 m00, b64 m01, b64 m02) r0,
+        (b64 m10, b64 m11, b64 m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
     }
 
     [MethodImpl(256 | 512)]
@@ -21850,7 +28528,30 @@ public partial struct b64m2x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64v2 c0, out b64v2 c1, out b64v2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b64 m00, out b64 m01, out b64 m02,
+        out b64 m10, out b64 m11, out b64 m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64v2 this[int c]
     {
@@ -21912,7 +28613,7 @@ public partial struct b64m2x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64m2x3
@@ -22048,6 +28749,18 @@ public partial struct b64m2x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64m2x4((b64v2 c0, b64v2 c1, b64v2 c2, b64v2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m2x4((b64v2 c0, b64v2 c1, b64v2 c2, b64v2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b64m2x4(
         b64 m00, b64 m01, b64 m02, b64 m03,
         b64 m10, b64 m11, b64 m12, b64 m13
@@ -22057,6 +28770,42 @@ public partial struct b64m2x4 :
         this.c1 = new(m01, m11);
         this.c2 = new(m02, m12);
         this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m2x4((
+        b64 m00, b64 m01, b64 m02, b64 m03,
+        b64 m10, b64 m11, b64 m12, b64 m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m2x4((
+        b64 m00, b64 m01, b64 m02, b64 m03,
+        b64 m10, b64 m11, b64 m12, b64 m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m2x4((
+        (b64 m00, b64 m01, b64 m02, b64 m03) r0,
+        (b64 m10, b64 m11, b64 m12, b64 m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m2x4((
+        (b64 m00, b64 m01, b64 m02, b64 m03) r0,
+        (b64 m10, b64 m11, b64 m12, b64 m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
     }
 
     [MethodImpl(256 | 512)]
@@ -22085,7 +28834,32 @@ public partial struct b64m2x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64v2 c0, out b64v2 c1, out b64v2 c2, out b64v2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b64 m00, out b64 m01, out b64 m02, out b64 m03,
+        out b64 m10, out b64 m11, out b64 m12, out b64 m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64v2 this[int c]
     {
@@ -22155,7 +28929,7 @@ public partial struct b64m2x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64m2x4
@@ -22274,6 +29048,16 @@ public partial struct b64m3x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64m3x2((b64v3 c0, b64v3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m3x2((b64v3 c0, b64v3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b64m3x2(
         b64 m00, b64 m01,
         b64 m10, b64 m11,
@@ -22282,6 +29066,42 @@ public partial struct b64m3x2 :
     {
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m3x2((
+        b64 m00, b64 m01,
+        b64 m10, b64 m11,
+        b64 m20, b64 m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m3x2((
+        b64 m00, b64 m01,
+        b64 m10, b64 m11,
+        b64 m20, b64 m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m3x2((
+        (b64 m00, b64 m01) r0,
+        (b64 m10, b64 m11) r1,
+        (b64 m20, b64 m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m3x2((
+        (b64 m00, b64 m01) r0,
+        (b64 m10, b64 m11) r1,
+        (b64 m20, b64 m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
     }
 
     [MethodImpl(256 | 512)]
@@ -22306,7 +29126,29 @@ public partial struct b64m3x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64v3 c0, out b64v3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b64 m00, out b64 m01,
+        out b64 m10, out b64 m11,
+        out b64 m20, out b64 m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64v3 this[int c]
     {
@@ -22360,7 +29202,7 @@ public partial struct b64m3x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64m3x2
@@ -22502,6 +29344,17 @@ public partial struct b64m3x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64m3x3((b64v3 c0, b64v3 c1, b64v3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m3x3((b64v3 c0, b64v3 c1, b64v3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b64m3x3(
         b64 m00, b64 m01, b64 m02,
         b64 m10, b64 m11, b64 m12,
@@ -22511,6 +29364,44 @@ public partial struct b64m3x3 :
         this.c0 = new(m00, m10, m20);
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m3x3((
+        b64 m00, b64 m01, b64 m02,
+        b64 m10, b64 m11, b64 m12,
+        b64 m20, b64 m21, b64 m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m3x3((
+        b64 m00, b64 m01, b64 m02,
+        b64 m10, b64 m11, b64 m12,
+        b64 m20, b64 m21, b64 m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m3x3((
+        (b64 m00, b64 m01, b64 m02) r0,
+        (b64 m10, b64 m11, b64 m12) r1,
+        (b64 m20, b64 m21, b64 m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m3x3((
+        (b64 m00, b64 m01, b64 m02) r0,
+        (b64 m10, b64 m11, b64 m12) r1,
+        (b64 m20, b64 m21, b64 m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
     }
 
     [MethodImpl(256 | 512)]
@@ -22537,7 +29428,31 @@ public partial struct b64m3x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64v3 c0, out b64v3 c1, out b64v3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b64 m00, out b64 m01, out b64 m02,
+        out b64 m10, out b64 m11, out b64 m12,
+        out b64 m20, out b64 m21, out b64 m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64v3 this[int c]
     {
@@ -22599,7 +29514,7 @@ public partial struct b64m3x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64m3x3
@@ -22764,6 +29679,18 @@ public partial struct b64m3x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64m3x4((b64v3 c0, b64v3 c1, b64v3 c2, b64v3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m3x4((b64v3 c0, b64v3 c1, b64v3 c2, b64v3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b64m3x4(
         b64 m00, b64 m01, b64 m02, b64 m03,
         b64 m10, b64 m11, b64 m12, b64 m13,
@@ -22774,6 +29701,46 @@ public partial struct b64m3x4 :
         this.c1 = new(m01, m11, m21);
         this.c2 = new(m02, m12, m22);
         this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m3x4((
+        b64 m00, b64 m01, b64 m02, b64 m03,
+        b64 m10, b64 m11, b64 m12, b64 m13,
+        b64 m20, b64 m21, b64 m22, b64 m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m3x4((
+        b64 m00, b64 m01, b64 m02, b64 m03,
+        b64 m10, b64 m11, b64 m12, b64 m13,
+        b64 m20, b64 m21, b64 m22, b64 m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m3x4((
+        (b64 m00, b64 m01, b64 m02, b64 m03) r0,
+        (b64 m10, b64 m11, b64 m12, b64 m13) r1,
+        (b64 m20, b64 m21, b64 m22, b64 m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m3x4((
+        (b64 m00, b64 m01, b64 m02, b64 m03) r0,
+        (b64 m10, b64 m11, b64 m12, b64 m13) r1,
+        (b64 m20, b64 m21, b64 m22, b64 m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
     }
 
     [MethodImpl(256 | 512)]
@@ -22802,7 +29769,33 @@ public partial struct b64m3x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64v3 c0, out b64v3 c1, out b64v3 c2, out b64v3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b64 m00, out b64 m01, out b64 m02, out b64 m03,
+        out b64 m10, out b64 m11, out b64 m12, out b64 m13,
+        out b64 m20, out b64 m21, out b64 m22, out b64 m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64v3 this[int c]
     {
@@ -22872,7 +29865,7 @@ public partial struct b64m3x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64m3x4
@@ -23006,6 +29999,16 @@ public partial struct b64m4x2 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64m4x2((b64v4 c0, b64v4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m4x2((b64v4 c0, b64v4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b64m4x2(
         b64 m00, b64 m01,
         b64 m10, b64 m11,
@@ -23015,6 +30018,46 @@ public partial struct b64m4x2 :
     {
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m4x2((
+        b64 m00, b64 m01,
+        b64 m10, b64 m11,
+        b64 m20, b64 m21,
+        b64 m30, b64 m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m4x2((
+        b64 m00, b64 m01,
+        b64 m10, b64 m11,
+        b64 m20, b64 m21,
+        b64 m30, b64 m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m4x2((
+        (b64 m00, b64 m01) r0,
+        (b64 m10, b64 m11) r1,
+        (b64 m20, b64 m21) r2,
+        (b64 m30, b64 m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m4x2((
+        (b64 m00, b64 m01) r0,
+        (b64 m10, b64 m11) r1,
+        (b64 m20, b64 m21) r2,
+        (b64 m30, b64 m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
     }
 
     [MethodImpl(256 | 512)]
@@ -23039,7 +30082,30 @@ public partial struct b64m4x2 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64v4 c0, out b64v4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b64 m00, out b64 m01,
+        out b64 m10, out b64 m11,
+        out b64 m20, out b64 m21,
+        out b64 m30, out b64 m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64v4 this[int c]
     {
@@ -23093,7 +30159,7 @@ public partial struct b64m4x2 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64m4x2
@@ -23257,6 +30323,17 @@ public partial struct b64m4x3 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64m4x3((b64v4 c0, b64v4 c1, b64v4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m4x3((b64v4 c0, b64v4 c1, b64v4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b64m4x3(
         b64 m00, b64 m01, b64 m02,
         b64 m10, b64 m11, b64 m12,
@@ -23267,6 +30344,48 @@ public partial struct b64m4x3 :
         this.c0 = new(m00, m10, m20, m30);
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m4x3((
+        b64 m00, b64 m01, b64 m02,
+        b64 m10, b64 m11, b64 m12,
+        b64 m20, b64 m21, b64 m22,
+        b64 m30, b64 m31, b64 m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m4x3((
+        b64 m00, b64 m01, b64 m02,
+        b64 m10, b64 m11, b64 m12,
+        b64 m20, b64 m21, b64 m22,
+        b64 m30, b64 m31, b64 m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m4x3((
+        (b64 m00, b64 m01, b64 m02) r0,
+        (b64 m10, b64 m11, b64 m12) r1,
+        (b64 m20, b64 m21, b64 m22) r2,
+        (b64 m30, b64 m31, b64 m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m4x3((
+        (b64 m00, b64 m01, b64 m02) r0,
+        (b64 m10, b64 m11, b64 m12) r1,
+        (b64 m20, b64 m21, b64 m22) r2,
+        (b64 m30, b64 m31, b64 m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
     }
 
     [MethodImpl(256 | 512)]
@@ -23293,7 +30412,32 @@ public partial struct b64m4x3 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64v4 c0, out b64v4 c1, out b64v4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b64 m00, out b64 m01, out b64 m02,
+        out b64 m10, out b64 m11, out b64 m12,
+        out b64 m20, out b64 m21, out b64 m22,
+        out b64 m30, out b64 m31, out b64 m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64v4 this[int c]
     {
@@ -23355,7 +30499,7 @@ public partial struct b64m4x3 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64m4x3
@@ -23549,6 +30693,18 @@ public partial struct b64m4x4 :
     }
 
     [MethodImpl(256 | 512)]
+    public b64m4x4((b64v4 c0, b64v4 c1, b64v4 c2, b64v4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m4x4((b64v4 c0, b64v4 c1, b64v4 c2, b64v4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
     public b64m4x4(
         b64 m00, b64 m01, b64 m02, b64 m03,
         b64 m10, b64 m11, b64 m12, b64 m13,
@@ -23560,6 +30716,50 @@ public partial struct b64m4x4 :
         this.c1 = new(m01, m11, m21, m31);
         this.c2 = new(m02, m12, m22, m32);
         this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m4x4((
+        b64 m00, b64 m01, b64 m02, b64 m03,
+        b64 m10, b64 m11, b64 m12, b64 m13,
+        b64 m20, b64 m21, b64 m22, b64 m23,
+        b64 m30, b64 m31, b64 m32, b64 m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m4x4((
+        b64 m00, b64 m01, b64 m02, b64 m03,
+        b64 m10, b64 m11, b64 m12, b64 m13,
+        b64 m20, b64 m21, b64 m22, b64 m23,
+        b64 m30, b64 m31, b64 m32, b64 m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator b64m4x4((
+        (b64 m00, b64 m01, b64 m02, b64 m03) r0,
+        (b64 m10, b64 m11, b64 m12, b64 m13) r1,
+        (b64 m20, b64 m21, b64 m22, b64 m23) r2,
+        (b64 m30, b64 m31, b64 m32, b64 m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public b64m4x4((
+        (b64 m00, b64 m01, b64 m02, b64 m03) r0,
+        (b64 m10, b64 m11, b64 m12, b64 m13) r1,
+        (b64 m20, b64 m21, b64 m22, b64 m23) r2,
+        (b64 m30, b64 m31, b64 m32, b64 m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
     }
 
     [MethodImpl(256 | 512)]
@@ -23588,7 +30788,34 @@ public partial struct b64m4x4 :
 
     #endregion
 
-    #region Index
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out b64v4 c0, out b64v4 c1, out b64v4 c2, out b64v4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out b64 m00, out b64 m01, out b64 m02, out b64 m03,
+        out b64 m10, out b64 m11, out b64 m12, out b64 m13,
+        out b64 m20, out b64 m21, out b64 m22, out b64 m23,
+        out b64 m30, out b64 m31, out b64 m32, out b64 m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
 
     public b64v4 this[int c]
     {
@@ -23658,7 +30885,7 @@ public partial struct b64m4x4 :
         }
     }
 
-    #endregion // Index
+    #endregion // index
 }
 
 #endregion // b64m4x4
