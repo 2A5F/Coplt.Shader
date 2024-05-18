@@ -8,6 +8,8 @@ namespace Coplt.Mathematics;
 <#
     foreach (var typ in Typ.Typs)
     {
+            
+        if (typ.size * 8 >= 128) continue;
 
         for (var i = 2; i <= 4; i++)
         {
@@ -16,8 +18,6 @@ namespace Coplt.Mathematics;
             var byteSize = typ.size * (i is 3 ? 4 : i);
             var bitSize = 8 * byteSize;
             
-            if (typ.size * 8 >= 128) continue;
-
             var bType = $"b{typ.size * 8}v";
             var bTyp = Typ.Typs.FirstOrDefault(a => a.name == bType);
             var bTypeName = $"{bType}{i}";

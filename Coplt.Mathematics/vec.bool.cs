@@ -6,6 +6,17 @@ namespace Coplt.Mathematics;
 
 public partial struct b16v2
 {
+    public static b16v2 True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b16v.True);
+    }
+    public static b16v2 False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b16v.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static b16v2 operator !(b16v2 self)
     {
@@ -17,11 +28,22 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this b16v2 v) => v.EqualsAll(new(b16v.True));
+    public static bool all(this b16v2 v)
+    {
+        return v.x && v.y;
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this b16v2 v) => v.EqualsAny(new(b16v.True));
+    public static bool any(this b16v2 v)
+    {
+        return v.x || v.y;
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this b16v2 v)
+    {
+        return !v.x && !v.y;
+    }
 }
 
 #endregion // b16v2
@@ -30,6 +52,17 @@ public static partial class math
 
 public partial struct b16v3
 {
+    public static b16v3 True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b16v.True);
+    }
+    public static b16v3 False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b16v.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static b16v3 operator !(b16v3 self)
     {
@@ -41,11 +74,22 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this b16v3 v) => v.EqualsAll(new(b16v.True));
+    public static bool all(this b16v3 v)
+    {
+        return v.x && v.y && v.z;
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this b16v3 v) => v.EqualsAny(new(b16v.True));
+    public static bool any(this b16v3 v)
+    {
+        return v.x || v.y || v.z;
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this b16v3 v)
+    {
+        return !v.x && !v.y && !v.z;
+    }
 }
 
 #endregion // b16v3
@@ -54,6 +98,17 @@ public static partial class math
 
 public partial struct b16v4
 {
+    public static b16v4 True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b16v.True);
+    }
+    public static b16v4 False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b16v.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static b16v4 operator !(b16v4 self)
     {
@@ -65,11 +120,22 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this b16v4 v) => v.EqualsAll(new(b16v.True));
+    public static bool all(this b16v4 v)
+    {
+        return v.x && v.y && v.z && v.w;
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this b16v4 v) => v.EqualsAny(new(b16v.True));
+    public static bool any(this b16v4 v)
+    {
+        return v.x || v.y || v.z || v.w;
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this b16v4 v)
+    {
+        return !v.x && !v.y && !v.z && !v.w;
+    }
 }
 
 #endregion // b16v4
@@ -78,6 +144,17 @@ public static partial class math
 
 public partial struct b32v2
 {
+    public static b32v2 True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b32v.True);
+    }
+    public static b32v2 False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b32v.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static b32v2 operator !(b32v2 self)
     {
@@ -93,11 +170,34 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this b32v2 v) => v.EqualsAll(new(b32v.True));
+    public static bool all(this b32v2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() >= 0xF;
+        #else // NET8_0_OR_GREATER
+        return v.x && v.y;
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this b32v2 v) => v.EqualsAny(new(b32v.True));
+    public static bool any(this b32v2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() != 0;
+        #else // NET8_0_OR_GREATER
+        return v.x || v.y;
+        #endif // NET8_0_OR_GREATER
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this b32v2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() == 0;
+        #else // NET8_0_OR_GREATER
+        return !v.x && !v.y;
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // b32v2
@@ -106,6 +206,17 @@ public static partial class math
 
 public partial struct b32v3
 {
+    public static b32v3 True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b32v.True);
+    }
+    public static b32v3 False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b32v.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static b32v3 operator !(b32v3 self)
     {
@@ -121,11 +232,34 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this b32v3 v) => v.EqualsAll(new(b32v.True));
+    public static bool all(this b32v3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() >= 0x7;
+        #else // NET8_0_OR_GREATER
+        return v.x && v.y && v.z;
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this b32v3 v) => v.EqualsAny(new(b32v.True));
+    public static bool any(this b32v3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() != 0;
+        #else // NET8_0_OR_GREATER
+        return v.x || v.y || v.z;
+        #endif // NET8_0_OR_GREATER
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this b32v3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() == 0;
+        #else // NET8_0_OR_GREATER
+        return !v.x && !v.y && !v.z;
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // b32v3
@@ -134,6 +268,17 @@ public static partial class math
 
 public partial struct b32v4
 {
+    public static b32v4 True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b32v.True);
+    }
+    public static b32v4 False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b32v.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static b32v4 operator !(b32v4 self)
     {
@@ -149,11 +294,34 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this b32v4 v) => v.EqualsAll(new(b32v.True));
+    public static bool all(this b32v4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() >= 0xF;
+        #else // NET8_0_OR_GREATER
+        return v.x && v.y && v.z && v.w;
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this b32v4 v) => v.EqualsAny(new(b32v.True));
+    public static bool any(this b32v4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() != 0;
+        #else // NET8_0_OR_GREATER
+        return v.x || v.y || v.z || v.w;
+        #endif // NET8_0_OR_GREATER
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this b32v4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() == 0;
+        #else // NET8_0_OR_GREATER
+        return !v.x && !v.y && !v.z && !v.w;
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // b32v4
@@ -162,6 +330,17 @@ public static partial class math
 
 public partial struct b64v2
 {
+    public static b64v2 True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b64v.True);
+    }
+    public static b64v2 False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b64v.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static b64v2 operator !(b64v2 self)
     {
@@ -177,11 +356,34 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this b64v2 v) => v.EqualsAll(new(b64v.True));
+    public static bool all(this b64v2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() >= 0xF;
+        #else // NET8_0_OR_GREATER
+        return v.x && v.y;
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this b64v2 v) => v.EqualsAny(new(b64v.True));
+    public static bool any(this b64v2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() != 0;
+        #else // NET8_0_OR_GREATER
+        return v.x || v.y;
+        #endif // NET8_0_OR_GREATER
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this b64v2 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() == 0;
+        #else // NET8_0_OR_GREATER
+        return !v.x && !v.y;
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // b64v2
@@ -190,6 +392,17 @@ public static partial class math
 
 public partial struct b64v3
 {
+    public static b64v3 True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b64v.True);
+    }
+    public static b64v3 False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b64v.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static b64v3 operator !(b64v3 self)
     {
@@ -205,11 +418,34 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this b64v3 v) => v.EqualsAll(new(b64v.True));
+    public static bool all(this b64v3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() >= 0x7;
+        #else // NET8_0_OR_GREATER
+        return v.x && v.y && v.z;
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this b64v3 v) => v.EqualsAny(new(b64v.True));
+    public static bool any(this b64v3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() != 0;
+        #else // NET8_0_OR_GREATER
+        return v.x || v.y || v.z;
+        #endif // NET8_0_OR_GREATER
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this b64v3 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() == 0;
+        #else // NET8_0_OR_GREATER
+        return !v.x && !v.y && !v.z;
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // b64v3
@@ -218,6 +454,17 @@ public static partial class math
 
 public partial struct b64v4
 {
+    public static b64v4 True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b64v.True);
+    }
+    public static b64v4 False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(b64v.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static b64v4 operator !(b64v4 self)
     {
@@ -233,11 +480,34 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this b64v4 v) => v.EqualsAll(new(b64v.True));
+    public static bool all(this b64v4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() >= 0xF;
+        #else // NET8_0_OR_GREATER
+        return v.x && v.y && v.z && v.w;
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this b64v4 v) => v.EqualsAny(new(b64v.True));
+    public static bool any(this b64v4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() != 0;
+        #else // NET8_0_OR_GREATER
+        return v.x || v.y || v.z || v.w;
+        #endif // NET8_0_OR_GREATER
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this b64v4 v)
+    {
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() == 0;
+        #else // NET8_0_OR_GREATER
+        return !v.x && !v.y && !v.z && !v.w;
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // b64v4

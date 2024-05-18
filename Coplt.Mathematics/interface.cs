@@ -2,6 +2,8 @@
 
 namespace Coplt.Mathematics;
 
+public interface IVectorBitops;
+
 public interface IVector 
 {
     #if NET8_0_OR_GREATER
@@ -29,6 +31,8 @@ public interface IVectorSelf<out Self> where Self : IVectorSelf<Self>
     public static abstract Self One { get; }
 #endif
 }
+
+public interface IMatrixBitops;
 
 public interface IMatrix
 {

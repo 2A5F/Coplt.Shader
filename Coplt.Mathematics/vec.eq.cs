@@ -60,7 +60,7 @@ public partial struct float2 : IEquatable<float2>
     public b32v2 EqualsVectorNot(float2 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector64.Equals(vector, other.vector).AsUInt32());
+        return new(simd.Ne(vector, other.vector).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y);
         #endif // NET8_0_OR_GREATER
@@ -141,7 +141,7 @@ public partial struct float3 : IEquatable<float3>
     public b32v3 EqualsVectorNot(float3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector128.Equals(vector, other.vector).AsUInt32());
+        return new(simd.Ne(vector, other.vector).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -222,7 +222,7 @@ public partial struct float4 : IEquatable<float4>
     public b32v4 EqualsVectorNot(float4 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector128.Equals(vector, other.vector).AsUInt32());
+        return new(simd.Ne(vector, other.vector).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z, w != other.w);
         #endif // NET8_0_OR_GREATER
@@ -303,7 +303,7 @@ public partial struct double2 : IEquatable<double2>
     public b64v2 EqualsVectorNot(double2 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector128.Equals(vector, other.vector).AsUInt64());
+        return new(simd.Ne(vector, other.vector).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y);
         #endif // NET8_0_OR_GREATER
@@ -384,7 +384,7 @@ public partial struct double3 : IEquatable<double3>
     public b64v3 EqualsVectorNot(double3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector256.Equals(vector, other.vector).AsUInt64());
+        return new(simd.Ne(vector, other.vector).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -465,7 +465,7 @@ public partial struct double4 : IEquatable<double4>
     public b64v4 EqualsVectorNot(double4 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector256.Equals(vector, other.vector).AsUInt64());
+        return new(simd.Ne(vector, other.vector).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z, w != other.w);
         #endif // NET8_0_OR_GREATER

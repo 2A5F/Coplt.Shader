@@ -4,7 +4,11 @@ namespace Coplt.Mathematics;
 
 #region float2
 
-public partial struct float2
+public partial struct float2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<float2, float2, float2>
+    , IShiftOperators<float2, int, float2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static float2 operator ~(float2 a)
@@ -33,6 +37,16 @@ public partial struct float2
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 operator ^(float2 a, float2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -84,7 +98,11 @@ public static partial class math
 
 #region float3
 
-public partial struct float3
+public partial struct float3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<float3, float3, float3>
+    , IShiftOperators<float3, int, float3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static float3 operator ~(float3 a)
@@ -113,6 +131,16 @@ public partial struct float3
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 operator ^(float3 a, float3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -164,7 +192,11 @@ public static partial class math
 
 #region float4
 
-public partial struct float4
+public partial struct float4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<float4, float4, float4>
+    , IShiftOperators<float4, int, float4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static float4 operator ~(float4 a)
@@ -193,6 +225,16 @@ public partial struct float4
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 operator ^(float4 a, float4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -244,7 +286,11 @@ public static partial class math
 
 #region double2
 
-public partial struct double2
+public partial struct double2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<double2, double2, double2>
+    , IShiftOperators<double2, int, double2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static double2 operator ~(double2 a)
@@ -273,6 +319,16 @@ public partial struct double2
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 operator ^(double2 a, double2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -324,7 +380,11 @@ public static partial class math
 
 #region double3
 
-public partial struct double3
+public partial struct double3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<double3, double3, double3>
+    , IShiftOperators<double3, int, double3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static double3 operator ~(double3 a)
@@ -353,6 +413,16 @@ public partial struct double3
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 operator ^(double3 a, double3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -404,7 +474,11 @@ public static partial class math
 
 #region double4
 
-public partial struct double4
+public partial struct double4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<double4, double4, double4>
+    , IShiftOperators<double4, int, double4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static double4 operator ~(double4 a)
@@ -433,6 +507,16 @@ public partial struct double4
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 operator ^(double4 a, double4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -484,7 +568,11 @@ public static partial class math
 
 #region int2
 
-public partial struct int2
+public partial struct int2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<int2, int2, int2>
+    , IShiftOperators<int2, int, int2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static int2 operator ~(int2 a)
@@ -513,6 +601,16 @@ public partial struct int2
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 operator ^(int2 a, int2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -564,7 +662,11 @@ public static partial class math
 
 #region int3
 
-public partial struct int3
+public partial struct int3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<int3, int3, int3>
+    , IShiftOperators<int3, int, int3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static int3 operator ~(int3 a)
@@ -593,6 +695,16 @@ public partial struct int3
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 operator ^(int3 a, int3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -644,7 +756,11 @@ public static partial class math
 
 #region int4
 
-public partial struct int4
+public partial struct int4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<int4, int4, int4>
+    , IShiftOperators<int4, int, int4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static int4 operator ~(int4 a)
@@ -673,6 +789,16 @@ public partial struct int4
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 operator ^(int4 a, int4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -724,7 +850,11 @@ public static partial class math
 
 #region uint2
 
-public partial struct uint2
+public partial struct uint2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<uint2, uint2, uint2>
+    , IShiftOperators<uint2, int, uint2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static uint2 operator ~(uint2 a)
@@ -753,6 +883,16 @@ public partial struct uint2
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint2 operator ^(uint2 a, uint2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -804,7 +944,11 @@ public static partial class math
 
 #region uint3
 
-public partial struct uint3
+public partial struct uint3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<uint3, uint3, uint3>
+    , IShiftOperators<uint3, int, uint3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static uint3 operator ~(uint3 a)
@@ -833,6 +977,16 @@ public partial struct uint3
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint3 operator ^(uint3 a, uint3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -884,7 +1038,11 @@ public static partial class math
 
 #region uint4
 
-public partial struct uint4
+public partial struct uint4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<uint4, uint4, uint4>
+    , IShiftOperators<uint4, int, uint4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static uint4 operator ~(uint4 a)
@@ -913,6 +1071,16 @@ public partial struct uint4
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint4 operator ^(uint4 a, uint4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -964,7 +1132,11 @@ public static partial class math
 
 #region long2
 
-public partial struct long2
+public partial struct long2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<long2, long2, long2>
+    , IShiftOperators<long2, int, long2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static long2 operator ~(long2 a)
@@ -993,6 +1165,16 @@ public partial struct long2
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 operator ^(long2 a, long2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1044,7 +1226,11 @@ public static partial class math
 
 #region long3
 
-public partial struct long3
+public partial struct long3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<long3, long3, long3>
+    , IShiftOperators<long3, int, long3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static long3 operator ~(long3 a)
@@ -1073,6 +1259,16 @@ public partial struct long3
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 operator ^(long3 a, long3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1124,7 +1320,11 @@ public static partial class math
 
 #region long4
 
-public partial struct long4
+public partial struct long4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<long4, long4, long4>
+    , IShiftOperators<long4, int, long4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static long4 operator ~(long4 a)
@@ -1153,6 +1353,16 @@ public partial struct long4
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 operator ^(long4 a, long4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1204,7 +1414,11 @@ public static partial class math
 
 #region ulong2
 
-public partial struct ulong2
+public partial struct ulong2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ulong2, ulong2, ulong2>
+    , IShiftOperators<ulong2, int, ulong2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static ulong2 operator ~(ulong2 a)
@@ -1233,6 +1447,16 @@ public partial struct ulong2
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 operator ^(ulong2 a, ulong2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1284,7 +1508,11 @@ public static partial class math
 
 #region ulong3
 
-public partial struct ulong3
+public partial struct ulong3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ulong3, ulong3, ulong3>
+    , IShiftOperators<ulong3, int, ulong3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static ulong3 operator ~(ulong3 a)
@@ -1313,6 +1541,16 @@ public partial struct ulong3
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 operator ^(ulong3 a, ulong3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1364,7 +1602,11 @@ public static partial class math
 
 #region ulong4
 
-public partial struct ulong4
+public partial struct ulong4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ulong4, ulong4, ulong4>
+    , IShiftOperators<ulong4, int, ulong4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static ulong4 operator ~(ulong4 a)
@@ -1393,6 +1635,16 @@ public partial struct ulong4
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 operator ^(ulong4 a, ulong4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1444,7 +1696,11 @@ public static partial class math
 
 #region half2
 
-public partial struct half2
+public partial struct half2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<half2, half2, half2>
+    , IShiftOperators<half2, int, half2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static half2 operator ~(half2 a)
@@ -1462,6 +1718,12 @@ public partial struct half2
     public static half2 operator &(half2 a, half2 b)
     {
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 operator ^(half2 a, half2 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
     }
 
     [MethodImpl(256 | 512)]
@@ -1496,7 +1758,11 @@ public static partial class math
 
 #region half3
 
-public partial struct half3
+public partial struct half3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<half3, half3, half3>
+    , IShiftOperators<half3, int, half3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static half3 operator ~(half3 a)
@@ -1514,6 +1780,12 @@ public partial struct half3
     public static half3 operator &(half3 a, half3 b)
     {
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 operator ^(half3 a, half3 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
     }
 
     [MethodImpl(256 | 512)]
@@ -1548,7 +1820,11 @@ public static partial class math
 
 #region half4
 
-public partial struct half4
+public partial struct half4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<half4, half4, half4>
+    , IShiftOperators<half4, int, half4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static half4 operator ~(half4 a)
@@ -1566,6 +1842,12 @@ public partial struct half4
     public static half4 operator &(half4 a, half4 b)
     {
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 operator ^(half4 a, half4 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
     }
 
     [MethodImpl(256 | 512)]
@@ -1600,7 +1882,10 @@ public static partial class math
 
 #region b16v2
 
-public partial struct b16v2
+public partial struct b16v2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<b16v2, b16v2, b16v2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static b16v2 operator ~(b16v2 a)
@@ -1619,6 +1904,12 @@ public partial struct b16v2
     {
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
     }
+
+    [MethodImpl(256 | 512)]
+    public static b16v2 operator ^(b16v2 a, b16v2 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
+    }
 }
 
 public static partial class math
@@ -1634,7 +1925,10 @@ public static partial class math
 
 #region b16v3
 
-public partial struct b16v3
+public partial struct b16v3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<b16v3, b16v3, b16v3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static b16v3 operator ~(b16v3 a)
@@ -1653,6 +1947,12 @@ public partial struct b16v3
     {
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static b16v3 operator ^(b16v3 a, b16v3 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
+    }
 }
 
 public static partial class math
@@ -1668,7 +1968,10 @@ public static partial class math
 
 #region b16v4
 
-public partial struct b16v4
+public partial struct b16v4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<b16v4, b16v4, b16v4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static b16v4 operator ~(b16v4 a)
@@ -1687,6 +1990,12 @@ public partial struct b16v4
     {
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static b16v4 operator ^(b16v4 a, b16v4 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
+    }
 }
 
 public static partial class math
@@ -1702,7 +2011,10 @@ public static partial class math
 
 #region b32v2
 
-public partial struct b32v2
+public partial struct b32v2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<b32v2, b32v2, b32v2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static b32v2 operator ~(b32v2 a)
@@ -1733,6 +2045,16 @@ public partial struct b32v2
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static b32v2 operator ^(b32v2 a, b32v2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 public static partial class math
@@ -1752,7 +2074,10 @@ public static partial class math
 
 #region b32v3
 
-public partial struct b32v3
+public partial struct b32v3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<b32v3, b32v3, b32v3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static b32v3 operator ~(b32v3 a)
@@ -1783,6 +2108,16 @@ public partial struct b32v3
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static b32v3 operator ^(b32v3 a, b32v3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 public static partial class math
@@ -1802,7 +2137,10 @@ public static partial class math
 
 #region b32v4
 
-public partial struct b32v4
+public partial struct b32v4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<b32v4, b32v4, b32v4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static b32v4 operator ~(b32v4 a)
@@ -1833,6 +2171,16 @@ public partial struct b32v4
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static b32v4 operator ^(b32v4 a, b32v4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 public static partial class math
@@ -1852,7 +2200,10 @@ public static partial class math
 
 #region b64v2
 
-public partial struct b64v2
+public partial struct b64v2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<b64v2, b64v2, b64v2>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static b64v2 operator ~(b64v2 a)
@@ -1883,6 +2234,16 @@ public partial struct b64v2
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static b64v2 operator ^(b64v2 a, b64v2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 public static partial class math
@@ -1902,7 +2263,10 @@ public static partial class math
 
 #region b64v3
 
-public partial struct b64v3
+public partial struct b64v3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<b64v3, b64v3, b64v3>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static b64v3 operator ~(b64v3 a)
@@ -1933,6 +2297,16 @@ public partial struct b64v3
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static b64v3 operator ^(b64v3 a, b64v3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 public static partial class math
@@ -1952,7 +2326,10 @@ public static partial class math
 
 #region b64v4
 
-public partial struct b64v4
+public partial struct b64v4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<b64v4, b64v4, b64v4>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static b64v4 operator ~(b64v4 a)
@@ -1981,6 +2358,16 @@ public partial struct b64v4
         return new(a.vector & b.vector);
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b64v4 operator ^(b64v4 a, b64v4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
         #endif // NET8_0_OR_GREATER
     }
 }

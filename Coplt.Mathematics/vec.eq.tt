@@ -193,7 +193,20 @@ public partial struct <#= typeName #> : IEquatable<<#= typeName #>>
                 {
 #>
         #if NET8_0_OR_GREATER
+<#
+                    if (typ.f && typ.bin)
+                    {
+#>
+        return new(simd.Ne(vector, other.vector).As<#= bTyp.Type #>());
+<#
+                    }
+                    else
+                    {
+#>
         return new(~Vector<#= bitSize #>.Equals(vector, other.vector).As<#= bTyp.Type #>());
+<#
+                    }
+                    #>
         #else // NET8_0_OR_GREATER
 <#
                 }

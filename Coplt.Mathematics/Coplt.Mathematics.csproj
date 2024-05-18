@@ -14,6 +14,10 @@
     <ItemGroup>
         <TextTemplate Include="bool.tt" />
         <TextTemplate Include="interface.tt"/>
+        <TextTemplate Include="mat.bitop.tt" />
+        <TextTemplate Include="mat.bool.tt" />
+        <TextTemplate Include="mat.bool_op.tt" />
+        <TextTemplate Include="mat.eq.tt" />
         <TextTemplate Include="mat.json.tt" />
         <TextTemplate Include="mat.str.tt" />
         <TextTemplate Include="vec.arith.float.bin.tt" />

@@ -27,6 +27,17 @@ namespace Coplt.Mathematics;
 
 public partial struct <#= typeName #>
 {
+    public static <#= typeName #> True
+    {
+        [MethodImpl(256 | 512)]
+        get => new(<#= bTypeName #>.True);
+    }
+    public static <#= typeName #> False
+    {
+        [MethodImpl(256 | 512)]
+        get => new(<#= bTypeName #>.False);
+    }
+
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator !(<#= typeName #> self)
     {
@@ -56,11 +67,76 @@ public static partial class math
 {
 
     [MethodImpl(256 | 512)]
-    public static bool all(this <#= typeName #> v) => v.EqualsAll(new(<#= bTypeName #>.True));
+    public static bool all(this <#= typeName #> v)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() >= 0x<#= i == 3 ? "7" : "F" #>;
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return <#= string.Join(" && ", Enumerable.Range(0, i).Select(n => $"v.{Typ.xyzw[n]}")) #>;
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
 
     [MethodImpl(256 | 512)]
-    public static bool any(this <#= typeName #> v) => v.EqualsAny(new(<#= bTypeName #>.True));
+    public static bool any(this <#= typeName #> v)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() != 0;
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return <#= string.Join(" || ", Enumerable.Range(0, i).Select(n => $"v.{Typ.xyzw[n]}")) #>;
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
 
+    [MethodImpl(256 | 512)]
+    public static bool allFalse(this <#= typeName #> v)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return v.vector.ExtractMostSignificantBits() == 0;
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return <#= string.Join(" && ", Enumerable.Range(0, i).Select(n => $"!v.{Typ.xyzw[n]}")) #>;
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
 }
 
 #endregion // <#= typeName #>

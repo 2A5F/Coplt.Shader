@@ -24,7 +24,18 @@ namespace Coplt.Mathematics;
 
 #region <#= typeName #>
 
-public partial struct <#= typeName #>
+public partial struct <#= typeName #> : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<<#= typeName #>, <#= typeName #>, <#= typeName #>>
+<#
+            if (typ.shift)
+            {
+#>
+    , IShiftOperators<<#= typeName #>, int, <#= typeName #>>
+<#
+            }
+#>
+    #endif
 {
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator ~(<#= typeName #> a)
@@ -97,6 +108,30 @@ public partial struct <#= typeName #>
             }
 #>
     }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator ^(<#= typeName #> a, <#= typeName #> b)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(a.vector ^ b.vector);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.BitXor(b.{Typ.xyzw[n]})")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
 <#
             if (typ.shift)
             {
@@ -106,23 +141,23 @@ public partial struct <#= typeName #>
     public static <#= typeName #> operator <<(<#= typeName #> a, int b)
     {
 <#
-            if (typ.simd)
-            {
+                if (typ.simd)
+                {
 #>
         #if NET8_0_OR_GREATER
         return new(a.vector << b);
         #else // NET8_0_OR_GREATER
 <#
-            }
+                }
 #>
         return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.BitShiftLeft(b)")) #>);
 <#
-            if (typ.simd)
-            {
+                if (typ.simd)
+                {
 #>
         #endif // NET8_0_OR_GREATER
 <#
-            }
+                }
 #>
     }
 
@@ -130,23 +165,23 @@ public partial struct <#= typeName #>
     public static <#= typeName #> operator >>(<#= typeName #> a, int b)
     {
 <#
-            if (typ.simd)
-            {
+                if (typ.simd)
+                {
 #>
         #if NET8_0_OR_GREATER
         return new(a.vector >> b);
         #else // NET8_0_OR_GREATER
 <#
-            }
+                }
 #>
         return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.BitShiftRight(b)")) #>);
 <#
-            if (typ.simd)
-            {
+                if (typ.simd)
+                {
 #>
         #endif // NET8_0_OR_GREATER
 <#
-            }
+                }
 #>
     }
 
@@ -154,23 +189,24 @@ public partial struct <#= typeName #>
     public static <#= typeName #> operator >>>(<#= typeName #> a, int b)
     {
 <#
-            if (typ.simd)
-            {
+                if (typ.simd)
+                {
 #>
         #if NET8_0_OR_GREATER
         return new(a.vector >>> b);
         #else // NET8_0_OR_GREATER
 <#
-            }
+                }
 #>
-        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.BitShiftRightUnsigned(b)")) #>);
+        return new(<#=
+                        string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.BitShiftRightUnsigned(b)")) #>);
 <#
-            if (typ.simd)
-            {
+                if (typ.simd)
+                {
 #>
         #endif // NET8_0_OR_GREATER
 <#
-            }
+                }
 #>
     }
 <#
