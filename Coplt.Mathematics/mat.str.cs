@@ -10,21 +10,21 @@ public partial struct float2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"float2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"float2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"float2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"float2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -34,13 +34,13 @@ public partial struct float2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -57,25 +57,25 @@ public partial struct float2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"float2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"float2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"float2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"float2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -85,17 +85,17 @@ public partial struct float2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -112,29 +112,29 @@ public partial struct float2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"float2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"float2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"float2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"float2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -144,21 +144,21 @@ public partial struct float2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -175,25 +175,25 @@ public partial struct float3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"float3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"float3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"float3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"float3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -203,17 +203,17 @@ public partial struct float3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -230,31 +230,31 @@ public partial struct float3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"float3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"float3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"float3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"float3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -264,23 +264,23 @@ public partial struct float3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -297,37 +297,37 @@ public partial struct float3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"float3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"float3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"float3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"float3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -337,29 +337,29 @@ public partial struct float3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -376,29 +376,29 @@ public partial struct float4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"float4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"float4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"float4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"float4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -408,21 +408,21 @@ public partial struct float4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -439,37 +439,37 @@ public partial struct float4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"float4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"float4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"float4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"float4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -479,29 +479,29 @@ public partial struct float4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -518,45 +518,45 @@ public partial struct float4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"float4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"float4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"float4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"float4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -566,37 +566,37 @@ public partial struct float4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "float4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -613,21 +613,21 @@ public partial struct double2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"double2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"double2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"double2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"double2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -637,13 +637,13 @@ public partial struct double2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -660,25 +660,25 @@ public partial struct double2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"double2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"double2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"double2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"double2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -688,17 +688,17 @@ public partial struct double2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -715,29 +715,29 @@ public partial struct double2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"double2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"double2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"double2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"double2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -747,21 +747,21 @@ public partial struct double2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -778,25 +778,25 @@ public partial struct double3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"double3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"double3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"double3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"double3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -806,17 +806,17 @@ public partial struct double3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -833,31 +833,31 @@ public partial struct double3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"double3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"double3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"double3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"double3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -867,23 +867,23 @@ public partial struct double3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -900,37 +900,37 @@ public partial struct double3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"double3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"double3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"double3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"double3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -940,29 +940,29 @@ public partial struct double3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -979,29 +979,29 @@ public partial struct double4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"double4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"double4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"double4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"double4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1011,21 +1011,21 @@ public partial struct double4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1042,37 +1042,37 @@ public partial struct double4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"double4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"double4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"double4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"double4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1082,29 +1082,29 @@ public partial struct double4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1121,45 +1121,45 @@ public partial struct double4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"double4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"double4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"double4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"double4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1169,37 +1169,37 @@ public partial struct double4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "double4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1216,21 +1216,21 @@ public partial struct int2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"int2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"int2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"int2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"int2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1240,13 +1240,13 @@ public partial struct int2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1263,25 +1263,25 @@ public partial struct int2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"int2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"int2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"int2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"int2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1291,17 +1291,17 @@ public partial struct int2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1318,29 +1318,29 @@ public partial struct int2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"int2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"int2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"int2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"int2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1350,21 +1350,21 @@ public partial struct int2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1381,25 +1381,25 @@ public partial struct int3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"int3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"int3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"int3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"int3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1409,17 +1409,17 @@ public partial struct int3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1436,31 +1436,31 @@ public partial struct int3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"int3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"int3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"int3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"int3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1470,23 +1470,23 @@ public partial struct int3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1503,37 +1503,37 @@ public partial struct int3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"int3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"int3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"int3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"int3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1543,29 +1543,29 @@ public partial struct int3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1582,29 +1582,29 @@ public partial struct int4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"int4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"int4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"int4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"int4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1614,21 +1614,21 @@ public partial struct int4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1645,37 +1645,37 @@ public partial struct int4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"int4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"int4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"int4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"int4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1685,29 +1685,29 @@ public partial struct int4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1724,45 +1724,45 @@ public partial struct int4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"int4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"int4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"int4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"int4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1772,37 +1772,37 @@ public partial struct int4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "int4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1819,21 +1819,21 @@ public partial struct uint2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"uint2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"uint2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1843,13 +1843,13 @@ public partial struct uint2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1866,25 +1866,25 @@ public partial struct uint2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"uint2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"uint2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1894,17 +1894,17 @@ public partial struct uint2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1921,29 +1921,29 @@ public partial struct uint2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"uint2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"uint2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -1953,21 +1953,21 @@ public partial struct uint2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -1984,25 +1984,25 @@ public partial struct uint3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"uint3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"uint3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2012,17 +2012,17 @@ public partial struct uint3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2039,31 +2039,31 @@ public partial struct uint3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"uint3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"uint3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2073,23 +2073,23 @@ public partial struct uint3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2106,37 +2106,37 @@ public partial struct uint3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"uint3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"uint3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2146,29 +2146,29 @@ public partial struct uint3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2185,29 +2185,29 @@ public partial struct uint4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"uint4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"uint4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2217,21 +2217,21 @@ public partial struct uint4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2248,37 +2248,37 @@ public partial struct uint4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"uint4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"uint4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2288,29 +2288,29 @@ public partial struct uint4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2327,45 +2327,45 @@ public partial struct uint4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"uint4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"uint4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"uint4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2375,37 +2375,37 @@ public partial struct uint4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "uint4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2422,21 +2422,21 @@ public partial struct long2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"long2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"long2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"long2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"long2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2446,13 +2446,13 @@ public partial struct long2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2469,25 +2469,25 @@ public partial struct long2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"long2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"long2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"long2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"long2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2497,17 +2497,17 @@ public partial struct long2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2524,29 +2524,29 @@ public partial struct long2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"long2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"long2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"long2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"long2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2556,21 +2556,21 @@ public partial struct long2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2587,25 +2587,25 @@ public partial struct long3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"long3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"long3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"long3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"long3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2615,17 +2615,17 @@ public partial struct long3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2642,31 +2642,31 @@ public partial struct long3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"long3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"long3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"long3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"long3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2676,23 +2676,23 @@ public partial struct long3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2709,37 +2709,37 @@ public partial struct long3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"long3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"long3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"long3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"long3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2749,29 +2749,29 @@ public partial struct long3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2788,29 +2788,29 @@ public partial struct long4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"long4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"long4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"long4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"long4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2820,21 +2820,21 @@ public partial struct long4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2851,37 +2851,37 @@ public partial struct long4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"long4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"long4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"long4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"long4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2891,29 +2891,29 @@ public partial struct long4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -2930,45 +2930,45 @@ public partial struct long4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"long4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"long4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"long4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"long4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -2978,37 +2978,37 @@ public partial struct long4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "long4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3025,21 +3025,21 @@ public partial struct ulong2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"ulong2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"ulong2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3049,13 +3049,13 @@ public partial struct ulong2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3072,25 +3072,25 @@ public partial struct ulong2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"ulong2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"ulong2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3100,17 +3100,17 @@ public partial struct ulong2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3127,29 +3127,29 @@ public partial struct ulong2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"ulong2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"ulong2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3159,21 +3159,21 @@ public partial struct ulong2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3190,25 +3190,25 @@ public partial struct ulong3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"ulong3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"ulong3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3218,17 +3218,17 @@ public partial struct ulong3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3245,31 +3245,31 @@ public partial struct ulong3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"ulong3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"ulong3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3279,23 +3279,23 @@ public partial struct ulong3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3312,37 +3312,37 @@ public partial struct ulong3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"ulong3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"ulong3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3352,29 +3352,29 @@ public partial struct ulong3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3391,29 +3391,29 @@ public partial struct ulong4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"ulong4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"ulong4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3423,21 +3423,21 @@ public partial struct ulong4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3454,37 +3454,37 @@ public partial struct ulong4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"ulong4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"ulong4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3494,29 +3494,29 @@ public partial struct ulong4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3533,45 +3533,45 @@ public partial struct ulong4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"ulong4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"ulong4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3581,37 +3581,37 @@ public partial struct ulong4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "ulong4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3628,21 +3628,21 @@ public partial struct decimal2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"decimal2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"decimal2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3652,13 +3652,13 @@ public partial struct decimal2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3675,25 +3675,25 @@ public partial struct decimal2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"decimal2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"decimal2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3703,17 +3703,17 @@ public partial struct decimal2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3730,29 +3730,29 @@ public partial struct decimal2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"decimal2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"decimal2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3762,21 +3762,21 @@ public partial struct decimal2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3793,25 +3793,25 @@ public partial struct decimal3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"decimal3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"decimal3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3821,17 +3821,17 @@ public partial struct decimal3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3848,31 +3848,31 @@ public partial struct decimal3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"decimal3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"decimal3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3882,23 +3882,23 @@ public partial struct decimal3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3915,37 +3915,37 @@ public partial struct decimal3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"decimal3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"decimal3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -3955,29 +3955,29 @@ public partial struct decimal3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -3994,29 +3994,29 @@ public partial struct decimal4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"decimal4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"decimal4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4026,21 +4026,21 @@ public partial struct decimal4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4057,37 +4057,37 @@ public partial struct decimal4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"decimal4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"decimal4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4097,29 +4097,29 @@ public partial struct decimal4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4136,45 +4136,45 @@ public partial struct decimal4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"decimal4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"decimal4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4184,37 +4184,37 @@ public partial struct decimal4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "decimal4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4231,21 +4231,21 @@ public partial struct half2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"half2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"half2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"half2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"half2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4255,13 +4255,13 @@ public partial struct half2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4278,25 +4278,25 @@ public partial struct half2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"half2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"half2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"half2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"half2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4306,17 +4306,17 @@ public partial struct half2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4333,29 +4333,29 @@ public partial struct half2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"half2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"half2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"half2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"half2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4365,21 +4365,21 @@ public partial struct half2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4396,25 +4396,25 @@ public partial struct half3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"half3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"half3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"half3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"half3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4424,17 +4424,17 @@ public partial struct half3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4451,31 +4451,31 @@ public partial struct half3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"half3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"half3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"half3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"half3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4485,23 +4485,23 @@ public partial struct half3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4518,37 +4518,37 @@ public partial struct half3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"half3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"half3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"half3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"half3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4558,29 +4558,29 @@ public partial struct half3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4597,29 +4597,29 @@ public partial struct half4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"half4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"half4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"half4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"half4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4629,21 +4629,21 @@ public partial struct half4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4660,37 +4660,37 @@ public partial struct half4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"half4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"half4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"half4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"half4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4700,29 +4700,29 @@ public partial struct half4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4739,45 +4739,45 @@ public partial struct half4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"half4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"half4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"half4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"half4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4787,37 +4787,37 @@ public partial struct half4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "half4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4834,21 +4834,21 @@ public partial struct b16m2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b16m2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"b16m2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4858,13 +4858,13 @@ public partial struct b16m2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4881,25 +4881,25 @@ public partial struct b16m2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b16m2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"b16m2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4909,17 +4909,17 @@ public partial struct b16m2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4936,29 +4936,29 @@ public partial struct b16m2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b16m2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"b16m2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -4968,21 +4968,21 @@ public partial struct b16m2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -4999,25 +4999,25 @@ public partial struct b16m3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b16m3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"b16m3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5027,17 +5027,17 @@ public partial struct b16m3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5054,31 +5054,31 @@ public partial struct b16m3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b16m3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"b16m3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5088,23 +5088,23 @@ public partial struct b16m3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5121,37 +5121,37 @@ public partial struct b16m3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b16m3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"b16m3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5161,29 +5161,29 @@ public partial struct b16m3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5200,29 +5200,29 @@ public partial struct b16m4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b16m4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"b16m4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5232,21 +5232,21 @@ public partial struct b16m4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5263,37 +5263,37 @@ public partial struct b16m4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b16m4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"b16m4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5303,29 +5303,29 @@ public partial struct b16m4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5342,45 +5342,45 @@ public partial struct b16m4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b16m4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"b16m4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b16m4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5390,37 +5390,37 @@ public partial struct b16m4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b16m4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5437,21 +5437,21 @@ public partial struct b32m2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b32m2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"b32m2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5461,13 +5461,13 @@ public partial struct b32m2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5484,25 +5484,25 @@ public partial struct b32m2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b32m2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"b32m2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5512,17 +5512,17 @@ public partial struct b32m2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5539,29 +5539,29 @@ public partial struct b32m2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b32m2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"b32m2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5571,21 +5571,21 @@ public partial struct b32m2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5602,25 +5602,25 @@ public partial struct b32m3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b32m3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"b32m3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5630,17 +5630,17 @@ public partial struct b32m3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5657,31 +5657,31 @@ public partial struct b32m3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b32m3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"b32m3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5691,23 +5691,23 @@ public partial struct b32m3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5724,37 +5724,37 @@ public partial struct b32m3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b32m3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"b32m3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5764,29 +5764,29 @@ public partial struct b32m3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5803,29 +5803,29 @@ public partial struct b32m4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b32m4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"b32m4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5835,21 +5835,21 @@ public partial struct b32m4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5866,37 +5866,37 @@ public partial struct b32m4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b32m4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"b32m4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5906,29 +5906,29 @@ public partial struct b32m4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -5945,45 +5945,45 @@ public partial struct b32m4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b32m4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"b32m4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b32m4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -5993,37 +5993,37 @@ public partial struct b32m4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b32m4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -6040,21 +6040,21 @@ public partial struct b64m2x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b64m2x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}})";
+    public override string ToString() => $"b64m2x2({{{m00}, {m01}}}, {{{m10}, {m11}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m2x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m2x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m2x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -6064,13 +6064,13 @@ public partial struct b64m2x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m2x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -6087,25 +6087,25 @@ public partial struct b64m2x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b64m2x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}})";
+    public override string ToString() => $"b64m2x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m2x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m2x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m2x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -6115,17 +6115,17 @@ public partial struct b64m2x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m2x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -6142,29 +6142,29 @@ public partial struct b64m2x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b64m2x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}})";
+    public override string ToString() => $"b64m2x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m2x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m2x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m2x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -6174,21 +6174,21 @@ public partial struct b64m2x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m2x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -6205,25 +6205,25 @@ public partial struct b64m3x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b64m3x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}})";
+    public override string ToString() => $"b64m3x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m3x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m3x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m3x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -6233,17 +6233,17 @@ public partial struct b64m3x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m3x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -6260,31 +6260,31 @@ public partial struct b64m3x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b64m3x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}})";
+    public override string ToString() => $"b64m3x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m3x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m3x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m3x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -6294,23 +6294,23 @@ public partial struct b64m3x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m3x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -6327,37 +6327,37 @@ public partial struct b64m3x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b64m3x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}})";
+    public override string ToString() => $"b64m3x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m3x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m3x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m3x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -6367,29 +6367,29 @@ public partial struct b64m3x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m3x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -6406,29 +6406,29 @@ public partial struct b64m4x2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b64m4x2({{{c0.x}, {c1.x}}}, {{{c0.y}, {c1.y}}}, {{{c0.z}, {c1.z}}}, {{{c0.w}, {c1.w}}})";
+    public override string ToString() => $"b64m4x2({{{m00}, {m01}}}, {{{m10}, {m11}}}, {{{m20}, {m21}}}, {{{m30}, {m31}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m4x2({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m4x2({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m4x2({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -6438,21 +6438,21 @@ public partial struct b64m4x2 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m4x2({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -6469,37 +6469,37 @@ public partial struct b64m4x3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b64m4x3({{{c0.x}, {c1.x}, {c2.x}}}, {{{c0.y}, {c1.y}, {c2.y}}}, {{{c0.z}, {c1.z}, {c2.z}}}, {{{c0.w}, {c1.w}, {c2.w}}})";
+    public override string ToString() => $"b64m4x3({{{m00}, {m01}, {m02}}}, {{{m10}, {m11}, {m12}}}, {{{m20}, {m21}, {m22}}}, {{{m30}, {m31}, {m32}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m4x3({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m4x3({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m4x3({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -6509,29 +6509,29 @@ public partial struct b64m4x3 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m4x3({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }
@@ -6548,45 +6548,45 @@ public partial struct b64m4x4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
-    public override string ToString() => $"b64m4x4({{{c0.x}, {c1.x}, {c2.x}, {c3.x}}}, {{{c0.y}, {c1.y}, {c2.y}, {c3.y}}}, {{{c0.z}, {c1.z}, {c2.z}, {c3.z}}}, {{{c0.w}, {c1.w}, {c2.w}, {c3.w}}})";
+    public override string ToString() => $"b64m4x4({{{m00}, {m01}, {m02}, {m03}}}, {{{m10}, {m11}, {m12}, {m13}}}, {{{m20}, {m21}, {m22}, {m23}}}, {{{m30}, {m31}, {m32}, {m33}}})";
 
-    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m4x4({{{c0.x.ToString(format, formatProvider)}, {c1.x.ToString(format, formatProvider)}, {c2.x.ToString(format, formatProvider)}, {c3.x.ToString(format, formatProvider)}}}, {{{c0.y.ToString(format, formatProvider)}, {c1.y.ToString(format, formatProvider)}, {c2.y.ToString(format, formatProvider)}, {c3.y.ToString(format, formatProvider)}}}, {{{c0.z.ToString(format, formatProvider)}, {c1.z.ToString(format, formatProvider)}, {c2.z.ToString(format, formatProvider)}, {c3.z.ToString(format, formatProvider)}}}, {{{c0.w.ToString(format, formatProvider)}, {c1.w.ToString(format, formatProvider)}, {c2.w.ToString(format, formatProvider)}, {c3.w.ToString(format, formatProvider)}}})";
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"b64m4x4({{{m00.ToString(format, formatProvider)}, {m01.ToString(format, formatProvider)}, {m02.ToString(format, formatProvider)}, {m03.ToString(format, formatProvider)}}}, {{{m10.ToString(format, formatProvider)}, {m11.ToString(format, formatProvider)}, {m12.ToString(format, formatProvider)}, {m13.ToString(format, formatProvider)}}}, {{{m20.ToString(format, formatProvider)}, {m21.ToString(format, formatProvider)}, {m22.ToString(format, formatProvider)}, {m23.ToString(format, formatProvider)}}}, {{{m30.ToString(format, formatProvider)}, {m31.ToString(format, formatProvider)}, {m32.ToString(format, formatProvider)}, {m33.ToString(format, formatProvider)}}})";
 
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m4x4({")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})")) return false;
         return true;
     }
@@ -6596,37 +6596,37 @@ public partial struct b64m4x4 : IFormattable
     {
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "b64m4x4({"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m00, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m01, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m02, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m03, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m10, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m11, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m12, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m13, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m20, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m21, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m22, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m23, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c0.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m30, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c1.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m31, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c2.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m32, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
-        if (!TryFormatPart(ref dst, ref nc, c3.w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, m33, format, provider)) return false;
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;
     }

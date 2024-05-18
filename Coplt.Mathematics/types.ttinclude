@@ -4,10 +4,14 @@
     public record struct Typ(
         string name, string Type, int size, string suffix, string one, bool arith = false, bool f = false, bool i = false, bool simd = false, string shuffleCast = "",
         bool formattable = true,
-        bool bitop = true, bool shift = true, bool sig = false, bool bin = true)
+        bool bitop = true, bool shift = true, bool sig = false, bool bin = true, bool bol = false)
     {
         public string compType { get; set; } = name;
         public string simdComp { get; set; } = name;
+        
+        public string jsonType { get; set; } = Type;
+        public string jsonCast { get; set; } = "";
+        public string jsonCastBack { get; set; } = "";
 
         public static string[] xyzw = { "x", "y", "z", "w" };
         public static string[] rgba = { "r", "g", "b", "a" };
@@ -21,10 +25,10 @@
             new("long", nameof(Int64), sizeof(long), "L", "1L", arith: true, sig: true, i: true, simd: true),
             new("ulong", nameof(UInt64), sizeof(ulong), "UL", "1UL", arith: true, i: true, simd: true, shuffleCast: "(ulong)"),
             new("decimal", nameof(Decimal), sizeof(decimal), "m", "1m", arith: true, f: true, sig: true, bitop: false, bin: false),
-            new("half", "Half", sizeof(ushort), "f.half()", "(half)1.0", arith: true, sig: true, f: true),
-            new("b16v", nameof(UInt16), sizeof(ushort), "", "true", shift: false) { compType = "b16", },
-            new("b32v", nameof(UInt32), sizeof(uint), "", "true", simd: true, shuffleCast: "(uint)", shift: false) { compType = "b32", simdComp = "uint" },
-            new("b64v", nameof(UInt64), sizeof(ulong), "", "true", simd: true, shuffleCast: "(ulong)", shift: false) { compType = "b64", simdComp = "ulong" },
+            new("half", "Half", sizeof(ushort), "f.half()", "(half)1.0", arith: true, sig: true, f: true) { jsonCast = "(float)",  jsonCastBack = "(half)", jsonType = "Single" },
+            new("b16v", nameof(UInt16), sizeof(ushort), "", "true", shift: false, bol: true) { compType = "b16", jsonType = "Boolean"  },
+            new("b32v", nameof(UInt32), sizeof(uint), "", "true", simd: true, shuffleCast: "(uint)", shift: false, bol: true) { compType = "b32", simdComp = "uint", jsonType = "Boolean" },
+            new("b64v", nameof(UInt64), sizeof(ulong), "", "true", simd: true, shuffleCast: "(ulong)", shift: false, bol: true) { compType = "b64", simdComp = "ulong", jsonType = "Boolean" },
         };
 
         public static Dictionary<string, string[]> ExplicitConverts = new()

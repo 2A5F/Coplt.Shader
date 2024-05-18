@@ -19,13 +19,13 @@ namespace Coplt.Mathematics;
                 var typeName = $"{typ.name.Replace('v', 'm')}{n}x{m}";
 
                 var format = string.Join(", ", Enumerable.Range(0, n).Select(j =>
-                    $"{{{{{string.Join(", ", Enumerable.Range(0, m).Select(i => $"{{c{i}.{Typ.xyzw[j]}}}"))}}}}}"
+                    $"{{{{{string.Join(", ", Enumerable.Range(0, m).Select(i => $"{{m{j}{i}}}"))}}}}}"
                     ));
 
                 var format2 = !typ.formattable
                     ? format
                     : string.Join(", ", Enumerable.Range(0, n).Select(j =>
-                        $"{{{{{string.Join(", ", Enumerable.Range(0, m).Select(i => $"{{c{i}.{Typ.xyzw[j]}.ToString(format, formatProvider)}}"))}}}}}"
+                        $"{{{{{string.Join(", ", Enumerable.Range(0, m).Select(i => $"{{m{j}{i}.ToString(format, formatProvider)}}"))}}}}}"
                         ));
 #>
 
@@ -56,7 +56,7 @@ public partial struct <#= typeName #> : IFormattable
                     }
                     for (var i = 0; i < m; i++)
                     {
-                        var comp = $"c{i}.{Typ.xyzw[j]}";
+                        var comp = $"m{j}{i}";
                         if (i != 0)
                         {
 #>
@@ -83,28 +83,28 @@ public partial struct <#= typeName #> : IFormattable
         nc = 0;
         if (!TryFormatPart(ref dst, ref nc, "<#= typeName #>({"u8)) return false;
 <#
-                for (var j = 0; j < n; j++)
-                {
-                    if (j != 0)
+                    for (var j = 0; j < n; j++)
                     {
+                        if (j != 0)
+                        {
 #>
         if (!TryFormatPart(ref dst, ref nc, "}, {"u8)) return false;
 <#
-                    }
-                    for (var i = 0; i < m; i++)
-                    {
-                        var comp = $"c{i}.{Typ.xyzw[j]}";
-                        if (i != 0)
+                        }
+                        for (var i = 0; i < m; i++)
                         {
+                            var comp = $"m{j}{i}";
+                            if (i != 0)
+                            {
 #>
         if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
 <#
-                        }
+                            }
 #>
         if (!TryFormatPart(ref dst, ref nc, <#= comp #>, format, provider)) return false;
 <#
+                        }
                     }
-                }
 #>
         if (!TryFormatPart(ref dst, ref nc, "})"u8)) return false;
         return true;

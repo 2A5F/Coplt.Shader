@@ -22,6 +22,7 @@ namespace Coplt.Mathematics;
 #region <#= typeName #>
 
 [Serializable]
+[JsonConverter(typeof(<#= typeName #>JsonConverter))]
 public partial struct <#= typeName #> :
     IMatrix<#= n #>x<#= m #><<#= typ.compType #>>, IMatrixSelf<<#= typeName #>>
 {

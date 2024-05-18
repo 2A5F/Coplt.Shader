@@ -5,6 +5,7 @@ namespace Coplt.Mathematics;
 #region float2x2
 
 [Serializable]
+[JsonConverter(typeof(float2x2JsonConverter))]
 public partial struct float2x2 :
     IMatrix2x2<float>, IMatrixSelf<float2x2>
 {
@@ -193,6 +194,7 @@ public partial struct float2x2 :
 #region float2x3
 
 [Serializable]
+[JsonConverter(typeof(float2x3JsonConverter))]
 public partial struct float2x3 :
     IMatrix2x3<float>, IMatrixSelf<float2x3>
 {
@@ -408,6 +410,7 @@ public partial struct float2x3 :
 #region float2x4
 
 [Serializable]
+[JsonConverter(typeof(float2x4JsonConverter))]
 public partial struct float2x4 :
     IMatrix2x4<float>, IMatrixSelf<float2x4>
 {
@@ -650,6 +653,7 @@ public partial struct float2x4 :
 #region float3x2
 
 [Serializable]
+[JsonConverter(typeof(float3x2JsonConverter))]
 public partial struct float3x2 :
     IMatrix3x2<float>, IMatrixSelf<float3x2>
 {
@@ -854,6 +858,7 @@ public partial struct float3x2 :
 #region float3x3
 
 [Serializable]
+[JsonConverter(typeof(float3x3JsonConverter))]
 public partial struct float3x3 :
     IMatrix3x3<float>, IMatrixSelf<float3x3>
 {
@@ -1092,6 +1097,7 @@ public partial struct float3x3 :
 #region float3x4
 
 [Serializable]
+[JsonConverter(typeof(float3x4JsonConverter))]
 public partial struct float3x4 :
     IMatrix3x4<float>, IMatrixSelf<float3x4>
 {
@@ -1364,6 +1370,7 @@ public partial struct float3x4 :
 #region float4x2
 
 [Serializable]
+[JsonConverter(typeof(float4x2JsonConverter))]
 public partial struct float4x2 :
     IMatrix4x2<float>, IMatrixSelf<float4x2>
 {
@@ -1584,6 +1591,7 @@ public partial struct float4x2 :
 #region float4x3
 
 [Serializable]
+[JsonConverter(typeof(float4x3JsonConverter))]
 public partial struct float4x3 :
     IMatrix4x3<float>, IMatrixSelf<float4x3>
 {
@@ -1845,6 +1853,7 @@ public partial struct float4x3 :
 #region float4x4
 
 [Serializable]
+[JsonConverter(typeof(float4x4JsonConverter))]
 public partial struct float4x4 :
     IMatrix4x4<float>, IMatrixSelf<float4x4>
 {
@@ -2147,6 +2156,7 @@ public partial struct float4x4 :
 #region double2x2
 
 [Serializable]
+[JsonConverter(typeof(double2x2JsonConverter))]
 public partial struct double2x2 :
     IMatrix2x2<double>, IMatrixSelf<double2x2>
 {
@@ -2335,6 +2345,7 @@ public partial struct double2x2 :
 #region double2x3
 
 [Serializable]
+[JsonConverter(typeof(double2x3JsonConverter))]
 public partial struct double2x3 :
     IMatrix2x3<double>, IMatrixSelf<double2x3>
 {
@@ -2550,6 +2561,7 @@ public partial struct double2x3 :
 #region double2x4
 
 [Serializable]
+[JsonConverter(typeof(double2x4JsonConverter))]
 public partial struct double2x4 :
     IMatrix2x4<double>, IMatrixSelf<double2x4>
 {
@@ -2792,6 +2804,7 @@ public partial struct double2x4 :
 #region double3x2
 
 [Serializable]
+[JsonConverter(typeof(double3x2JsonConverter))]
 public partial struct double3x2 :
     IMatrix3x2<double>, IMatrixSelf<double3x2>
 {
@@ -2996,6 +3009,7 @@ public partial struct double3x2 :
 #region double3x3
 
 [Serializable]
+[JsonConverter(typeof(double3x3JsonConverter))]
 public partial struct double3x3 :
     IMatrix3x3<double>, IMatrixSelf<double3x3>
 {
@@ -3234,6 +3248,7 @@ public partial struct double3x3 :
 #region double3x4
 
 [Serializable]
+[JsonConverter(typeof(double3x4JsonConverter))]
 public partial struct double3x4 :
     IMatrix3x4<double>, IMatrixSelf<double3x4>
 {
@@ -3506,6 +3521,7 @@ public partial struct double3x4 :
 #region double4x2
 
 [Serializable]
+[JsonConverter(typeof(double4x2JsonConverter))]
 public partial struct double4x2 :
     IMatrix4x2<double>, IMatrixSelf<double4x2>
 {
@@ -3726,6 +3742,7 @@ public partial struct double4x2 :
 #region double4x3
 
 [Serializable]
+[JsonConverter(typeof(double4x3JsonConverter))]
 public partial struct double4x3 :
     IMatrix4x3<double>, IMatrixSelf<double4x3>
 {
@@ -3987,6 +4004,7 @@ public partial struct double4x3 :
 #region double4x4
 
 [Serializable]
+[JsonConverter(typeof(double4x4JsonConverter))]
 public partial struct double4x4 :
     IMatrix4x4<double>, IMatrixSelf<double4x4>
 {
@@ -4289,6 +4307,7 @@ public partial struct double4x4 :
 #region int2x2
 
 [Serializable]
+[JsonConverter(typeof(int2x2JsonConverter))]
 public partial struct int2x2 :
     IMatrix2x2<int>, IMatrixSelf<int2x2>
 {
@@ -4477,6 +4496,7 @@ public partial struct int2x2 :
 #region int2x3
 
 [Serializable]
+[JsonConverter(typeof(int2x3JsonConverter))]
 public partial struct int2x3 :
     IMatrix2x3<int>, IMatrixSelf<int2x3>
 {
@@ -4692,6 +4712,7 @@ public partial struct int2x3 :
 #region int2x4
 
 [Serializable]
+[JsonConverter(typeof(int2x4JsonConverter))]
 public partial struct int2x4 :
     IMatrix2x4<int>, IMatrixSelf<int2x4>
 {
@@ -4934,6 +4955,7 @@ public partial struct int2x4 :
 #region int3x2
 
 [Serializable]
+[JsonConverter(typeof(int3x2JsonConverter))]
 public partial struct int3x2 :
     IMatrix3x2<int>, IMatrixSelf<int3x2>
 {
@@ -5138,6 +5160,7 @@ public partial struct int3x2 :
 #region int3x3
 
 [Serializable]
+[JsonConverter(typeof(int3x3JsonConverter))]
 public partial struct int3x3 :
     IMatrix3x3<int>, IMatrixSelf<int3x3>
 {
@@ -5376,6 +5399,7 @@ public partial struct int3x3 :
 #region int3x4
 
 [Serializable]
+[JsonConverter(typeof(int3x4JsonConverter))]
 public partial struct int3x4 :
     IMatrix3x4<int>, IMatrixSelf<int3x4>
 {
@@ -5648,6 +5672,7 @@ public partial struct int3x4 :
 #region int4x2
 
 [Serializable]
+[JsonConverter(typeof(int4x2JsonConverter))]
 public partial struct int4x2 :
     IMatrix4x2<int>, IMatrixSelf<int4x2>
 {
@@ -5868,6 +5893,7 @@ public partial struct int4x2 :
 #region int4x3
 
 [Serializable]
+[JsonConverter(typeof(int4x3JsonConverter))]
 public partial struct int4x3 :
     IMatrix4x3<int>, IMatrixSelf<int4x3>
 {
@@ -6129,6 +6155,7 @@ public partial struct int4x3 :
 #region int4x4
 
 [Serializable]
+[JsonConverter(typeof(int4x4JsonConverter))]
 public partial struct int4x4 :
     IMatrix4x4<int>, IMatrixSelf<int4x4>
 {
@@ -6431,6 +6458,7 @@ public partial struct int4x4 :
 #region uint2x2
 
 [Serializable]
+[JsonConverter(typeof(uint2x2JsonConverter))]
 public partial struct uint2x2 :
     IMatrix2x2<uint>, IMatrixSelf<uint2x2>
 {
@@ -6619,6 +6647,7 @@ public partial struct uint2x2 :
 #region uint2x3
 
 [Serializable]
+[JsonConverter(typeof(uint2x3JsonConverter))]
 public partial struct uint2x3 :
     IMatrix2x3<uint>, IMatrixSelf<uint2x3>
 {
@@ -6834,6 +6863,7 @@ public partial struct uint2x3 :
 #region uint2x4
 
 [Serializable]
+[JsonConverter(typeof(uint2x4JsonConverter))]
 public partial struct uint2x4 :
     IMatrix2x4<uint>, IMatrixSelf<uint2x4>
 {
@@ -7076,6 +7106,7 @@ public partial struct uint2x4 :
 #region uint3x2
 
 [Serializable]
+[JsonConverter(typeof(uint3x2JsonConverter))]
 public partial struct uint3x2 :
     IMatrix3x2<uint>, IMatrixSelf<uint3x2>
 {
@@ -7280,6 +7311,7 @@ public partial struct uint3x2 :
 #region uint3x3
 
 [Serializable]
+[JsonConverter(typeof(uint3x3JsonConverter))]
 public partial struct uint3x3 :
     IMatrix3x3<uint>, IMatrixSelf<uint3x3>
 {
@@ -7518,6 +7550,7 @@ public partial struct uint3x3 :
 #region uint3x4
 
 [Serializable]
+[JsonConverter(typeof(uint3x4JsonConverter))]
 public partial struct uint3x4 :
     IMatrix3x4<uint>, IMatrixSelf<uint3x4>
 {
@@ -7790,6 +7823,7 @@ public partial struct uint3x4 :
 #region uint4x2
 
 [Serializable]
+[JsonConverter(typeof(uint4x2JsonConverter))]
 public partial struct uint4x2 :
     IMatrix4x2<uint>, IMatrixSelf<uint4x2>
 {
@@ -8010,6 +8044,7 @@ public partial struct uint4x2 :
 #region uint4x3
 
 [Serializable]
+[JsonConverter(typeof(uint4x3JsonConverter))]
 public partial struct uint4x3 :
     IMatrix4x3<uint>, IMatrixSelf<uint4x3>
 {
@@ -8271,6 +8306,7 @@ public partial struct uint4x3 :
 #region uint4x4
 
 [Serializable]
+[JsonConverter(typeof(uint4x4JsonConverter))]
 public partial struct uint4x4 :
     IMatrix4x4<uint>, IMatrixSelf<uint4x4>
 {
@@ -8573,6 +8609,7 @@ public partial struct uint4x4 :
 #region long2x2
 
 [Serializable]
+[JsonConverter(typeof(long2x2JsonConverter))]
 public partial struct long2x2 :
     IMatrix2x2<long>, IMatrixSelf<long2x2>
 {
@@ -8761,6 +8798,7 @@ public partial struct long2x2 :
 #region long2x3
 
 [Serializable]
+[JsonConverter(typeof(long2x3JsonConverter))]
 public partial struct long2x3 :
     IMatrix2x3<long>, IMatrixSelf<long2x3>
 {
@@ -8976,6 +9014,7 @@ public partial struct long2x3 :
 #region long2x4
 
 [Serializable]
+[JsonConverter(typeof(long2x4JsonConverter))]
 public partial struct long2x4 :
     IMatrix2x4<long>, IMatrixSelf<long2x4>
 {
@@ -9218,6 +9257,7 @@ public partial struct long2x4 :
 #region long3x2
 
 [Serializable]
+[JsonConverter(typeof(long3x2JsonConverter))]
 public partial struct long3x2 :
     IMatrix3x2<long>, IMatrixSelf<long3x2>
 {
@@ -9422,6 +9462,7 @@ public partial struct long3x2 :
 #region long3x3
 
 [Serializable]
+[JsonConverter(typeof(long3x3JsonConverter))]
 public partial struct long3x3 :
     IMatrix3x3<long>, IMatrixSelf<long3x3>
 {
@@ -9660,6 +9701,7 @@ public partial struct long3x3 :
 #region long3x4
 
 [Serializable]
+[JsonConverter(typeof(long3x4JsonConverter))]
 public partial struct long3x4 :
     IMatrix3x4<long>, IMatrixSelf<long3x4>
 {
@@ -9932,6 +9974,7 @@ public partial struct long3x4 :
 #region long4x2
 
 [Serializable]
+[JsonConverter(typeof(long4x2JsonConverter))]
 public partial struct long4x2 :
     IMatrix4x2<long>, IMatrixSelf<long4x2>
 {
@@ -10152,6 +10195,7 @@ public partial struct long4x2 :
 #region long4x3
 
 [Serializable]
+[JsonConverter(typeof(long4x3JsonConverter))]
 public partial struct long4x3 :
     IMatrix4x3<long>, IMatrixSelf<long4x3>
 {
@@ -10413,6 +10457,7 @@ public partial struct long4x3 :
 #region long4x4
 
 [Serializable]
+[JsonConverter(typeof(long4x4JsonConverter))]
 public partial struct long4x4 :
     IMatrix4x4<long>, IMatrixSelf<long4x4>
 {
@@ -10715,6 +10760,7 @@ public partial struct long4x4 :
 #region ulong2x2
 
 [Serializable]
+[JsonConverter(typeof(ulong2x2JsonConverter))]
 public partial struct ulong2x2 :
     IMatrix2x2<ulong>, IMatrixSelf<ulong2x2>
 {
@@ -10903,6 +10949,7 @@ public partial struct ulong2x2 :
 #region ulong2x3
 
 [Serializable]
+[JsonConverter(typeof(ulong2x3JsonConverter))]
 public partial struct ulong2x3 :
     IMatrix2x3<ulong>, IMatrixSelf<ulong2x3>
 {
@@ -11118,6 +11165,7 @@ public partial struct ulong2x3 :
 #region ulong2x4
 
 [Serializable]
+[JsonConverter(typeof(ulong2x4JsonConverter))]
 public partial struct ulong2x4 :
     IMatrix2x4<ulong>, IMatrixSelf<ulong2x4>
 {
@@ -11360,6 +11408,7 @@ public partial struct ulong2x4 :
 #region ulong3x2
 
 [Serializable]
+[JsonConverter(typeof(ulong3x2JsonConverter))]
 public partial struct ulong3x2 :
     IMatrix3x2<ulong>, IMatrixSelf<ulong3x2>
 {
@@ -11564,6 +11613,7 @@ public partial struct ulong3x2 :
 #region ulong3x3
 
 [Serializable]
+[JsonConverter(typeof(ulong3x3JsonConverter))]
 public partial struct ulong3x3 :
     IMatrix3x3<ulong>, IMatrixSelf<ulong3x3>
 {
@@ -11802,6 +11852,7 @@ public partial struct ulong3x3 :
 #region ulong3x4
 
 [Serializable]
+[JsonConverter(typeof(ulong3x4JsonConverter))]
 public partial struct ulong3x4 :
     IMatrix3x4<ulong>, IMatrixSelf<ulong3x4>
 {
@@ -12074,6 +12125,7 @@ public partial struct ulong3x4 :
 #region ulong4x2
 
 [Serializable]
+[JsonConverter(typeof(ulong4x2JsonConverter))]
 public partial struct ulong4x2 :
     IMatrix4x2<ulong>, IMatrixSelf<ulong4x2>
 {
@@ -12294,6 +12346,7 @@ public partial struct ulong4x2 :
 #region ulong4x3
 
 [Serializable]
+[JsonConverter(typeof(ulong4x3JsonConverter))]
 public partial struct ulong4x3 :
     IMatrix4x3<ulong>, IMatrixSelf<ulong4x3>
 {
@@ -12555,6 +12608,7 @@ public partial struct ulong4x3 :
 #region ulong4x4
 
 [Serializable]
+[JsonConverter(typeof(ulong4x4JsonConverter))]
 public partial struct ulong4x4 :
     IMatrix4x4<ulong>, IMatrixSelf<ulong4x4>
 {
@@ -12857,6 +12911,7 @@ public partial struct ulong4x4 :
 #region decimal2x2
 
 [Serializable]
+[JsonConverter(typeof(decimal2x2JsonConverter))]
 public partial struct decimal2x2 :
     IMatrix2x2<decimal>, IMatrixSelf<decimal2x2>
 {
@@ -13045,6 +13100,7 @@ public partial struct decimal2x2 :
 #region decimal2x3
 
 [Serializable]
+[JsonConverter(typeof(decimal2x3JsonConverter))]
 public partial struct decimal2x3 :
     IMatrix2x3<decimal>, IMatrixSelf<decimal2x3>
 {
@@ -13260,6 +13316,7 @@ public partial struct decimal2x3 :
 #region decimal2x4
 
 [Serializable]
+[JsonConverter(typeof(decimal2x4JsonConverter))]
 public partial struct decimal2x4 :
     IMatrix2x4<decimal>, IMatrixSelf<decimal2x4>
 {
@@ -13502,6 +13559,7 @@ public partial struct decimal2x4 :
 #region decimal3x2
 
 [Serializable]
+[JsonConverter(typeof(decimal3x2JsonConverter))]
 public partial struct decimal3x2 :
     IMatrix3x2<decimal>, IMatrixSelf<decimal3x2>
 {
@@ -13706,6 +13764,7 @@ public partial struct decimal3x2 :
 #region decimal3x3
 
 [Serializable]
+[JsonConverter(typeof(decimal3x3JsonConverter))]
 public partial struct decimal3x3 :
     IMatrix3x3<decimal>, IMatrixSelf<decimal3x3>
 {
@@ -13944,6 +14003,7 @@ public partial struct decimal3x3 :
 #region decimal3x4
 
 [Serializable]
+[JsonConverter(typeof(decimal3x4JsonConverter))]
 public partial struct decimal3x4 :
     IMatrix3x4<decimal>, IMatrixSelf<decimal3x4>
 {
@@ -14216,6 +14276,7 @@ public partial struct decimal3x4 :
 #region decimal4x2
 
 [Serializable]
+[JsonConverter(typeof(decimal4x2JsonConverter))]
 public partial struct decimal4x2 :
     IMatrix4x2<decimal>, IMatrixSelf<decimal4x2>
 {
@@ -14436,6 +14497,7 @@ public partial struct decimal4x2 :
 #region decimal4x3
 
 [Serializable]
+[JsonConverter(typeof(decimal4x3JsonConverter))]
 public partial struct decimal4x3 :
     IMatrix4x3<decimal>, IMatrixSelf<decimal4x3>
 {
@@ -14697,6 +14759,7 @@ public partial struct decimal4x3 :
 #region decimal4x4
 
 [Serializable]
+[JsonConverter(typeof(decimal4x4JsonConverter))]
 public partial struct decimal4x4 :
     IMatrix4x4<decimal>, IMatrixSelf<decimal4x4>
 {
@@ -14999,6 +15062,7 @@ public partial struct decimal4x4 :
 #region half2x2
 
 [Serializable]
+[JsonConverter(typeof(half2x2JsonConverter))]
 public partial struct half2x2 :
     IMatrix2x2<half>, IMatrixSelf<half2x2>
 {
@@ -15187,6 +15251,7 @@ public partial struct half2x2 :
 #region half2x3
 
 [Serializable]
+[JsonConverter(typeof(half2x3JsonConverter))]
 public partial struct half2x3 :
     IMatrix2x3<half>, IMatrixSelf<half2x3>
 {
@@ -15402,6 +15467,7 @@ public partial struct half2x3 :
 #region half2x4
 
 [Serializable]
+[JsonConverter(typeof(half2x4JsonConverter))]
 public partial struct half2x4 :
     IMatrix2x4<half>, IMatrixSelf<half2x4>
 {
@@ -15644,6 +15710,7 @@ public partial struct half2x4 :
 #region half3x2
 
 [Serializable]
+[JsonConverter(typeof(half3x2JsonConverter))]
 public partial struct half3x2 :
     IMatrix3x2<half>, IMatrixSelf<half3x2>
 {
@@ -15848,6 +15915,7 @@ public partial struct half3x2 :
 #region half3x3
 
 [Serializable]
+[JsonConverter(typeof(half3x3JsonConverter))]
 public partial struct half3x3 :
     IMatrix3x3<half>, IMatrixSelf<half3x3>
 {
@@ -16086,6 +16154,7 @@ public partial struct half3x3 :
 #region half3x4
 
 [Serializable]
+[JsonConverter(typeof(half3x4JsonConverter))]
 public partial struct half3x4 :
     IMatrix3x4<half>, IMatrixSelf<half3x4>
 {
@@ -16358,6 +16427,7 @@ public partial struct half3x4 :
 #region half4x2
 
 [Serializable]
+[JsonConverter(typeof(half4x2JsonConverter))]
 public partial struct half4x2 :
     IMatrix4x2<half>, IMatrixSelf<half4x2>
 {
@@ -16578,6 +16648,7 @@ public partial struct half4x2 :
 #region half4x3
 
 [Serializable]
+[JsonConverter(typeof(half4x3JsonConverter))]
 public partial struct half4x3 :
     IMatrix4x3<half>, IMatrixSelf<half4x3>
 {
@@ -16839,6 +16910,7 @@ public partial struct half4x3 :
 #region half4x4
 
 [Serializable]
+[JsonConverter(typeof(half4x4JsonConverter))]
 public partial struct half4x4 :
     IMatrix4x4<half>, IMatrixSelf<half4x4>
 {
@@ -17141,6 +17213,7 @@ public partial struct half4x4 :
 #region b16m2x2
 
 [Serializable]
+[JsonConverter(typeof(b16m2x2JsonConverter))]
 public partial struct b16m2x2 :
     IMatrix2x2<b16>, IMatrixSelf<b16m2x2>
 {
@@ -17329,6 +17402,7 @@ public partial struct b16m2x2 :
 #region b16m2x3
 
 [Serializable]
+[JsonConverter(typeof(b16m2x3JsonConverter))]
 public partial struct b16m2x3 :
     IMatrix2x3<b16>, IMatrixSelf<b16m2x3>
 {
@@ -17544,6 +17618,7 @@ public partial struct b16m2x3 :
 #region b16m2x4
 
 [Serializable]
+[JsonConverter(typeof(b16m2x4JsonConverter))]
 public partial struct b16m2x4 :
     IMatrix2x4<b16>, IMatrixSelf<b16m2x4>
 {
@@ -17786,6 +17861,7 @@ public partial struct b16m2x4 :
 #region b16m3x2
 
 [Serializable]
+[JsonConverter(typeof(b16m3x2JsonConverter))]
 public partial struct b16m3x2 :
     IMatrix3x2<b16>, IMatrixSelf<b16m3x2>
 {
@@ -17990,6 +18066,7 @@ public partial struct b16m3x2 :
 #region b16m3x3
 
 [Serializable]
+[JsonConverter(typeof(b16m3x3JsonConverter))]
 public partial struct b16m3x3 :
     IMatrix3x3<b16>, IMatrixSelf<b16m3x3>
 {
@@ -18228,6 +18305,7 @@ public partial struct b16m3x3 :
 #region b16m3x4
 
 [Serializable]
+[JsonConverter(typeof(b16m3x4JsonConverter))]
 public partial struct b16m3x4 :
     IMatrix3x4<b16>, IMatrixSelf<b16m3x4>
 {
@@ -18500,6 +18578,7 @@ public partial struct b16m3x4 :
 #region b16m4x2
 
 [Serializable]
+[JsonConverter(typeof(b16m4x2JsonConverter))]
 public partial struct b16m4x2 :
     IMatrix4x2<b16>, IMatrixSelf<b16m4x2>
 {
@@ -18720,6 +18799,7 @@ public partial struct b16m4x2 :
 #region b16m4x3
 
 [Serializable]
+[JsonConverter(typeof(b16m4x3JsonConverter))]
 public partial struct b16m4x3 :
     IMatrix4x3<b16>, IMatrixSelf<b16m4x3>
 {
@@ -18981,6 +19061,7 @@ public partial struct b16m4x3 :
 #region b16m4x4
 
 [Serializable]
+[JsonConverter(typeof(b16m4x4JsonConverter))]
 public partial struct b16m4x4 :
     IMatrix4x4<b16>, IMatrixSelf<b16m4x4>
 {
@@ -19283,6 +19364,7 @@ public partial struct b16m4x4 :
 #region b32m2x2
 
 [Serializable]
+[JsonConverter(typeof(b32m2x2JsonConverter))]
 public partial struct b32m2x2 :
     IMatrix2x2<b32>, IMatrixSelf<b32m2x2>
 {
@@ -19471,6 +19553,7 @@ public partial struct b32m2x2 :
 #region b32m2x3
 
 [Serializable]
+[JsonConverter(typeof(b32m2x3JsonConverter))]
 public partial struct b32m2x3 :
     IMatrix2x3<b32>, IMatrixSelf<b32m2x3>
 {
@@ -19686,6 +19769,7 @@ public partial struct b32m2x3 :
 #region b32m2x4
 
 [Serializable]
+[JsonConverter(typeof(b32m2x4JsonConverter))]
 public partial struct b32m2x4 :
     IMatrix2x4<b32>, IMatrixSelf<b32m2x4>
 {
@@ -19928,6 +20012,7 @@ public partial struct b32m2x4 :
 #region b32m3x2
 
 [Serializable]
+[JsonConverter(typeof(b32m3x2JsonConverter))]
 public partial struct b32m3x2 :
     IMatrix3x2<b32>, IMatrixSelf<b32m3x2>
 {
@@ -20132,6 +20217,7 @@ public partial struct b32m3x2 :
 #region b32m3x3
 
 [Serializable]
+[JsonConverter(typeof(b32m3x3JsonConverter))]
 public partial struct b32m3x3 :
     IMatrix3x3<b32>, IMatrixSelf<b32m3x3>
 {
@@ -20370,6 +20456,7 @@ public partial struct b32m3x3 :
 #region b32m3x4
 
 [Serializable]
+[JsonConverter(typeof(b32m3x4JsonConverter))]
 public partial struct b32m3x4 :
     IMatrix3x4<b32>, IMatrixSelf<b32m3x4>
 {
@@ -20642,6 +20729,7 @@ public partial struct b32m3x4 :
 #region b32m4x2
 
 [Serializable]
+[JsonConverter(typeof(b32m4x2JsonConverter))]
 public partial struct b32m4x2 :
     IMatrix4x2<b32>, IMatrixSelf<b32m4x2>
 {
@@ -20862,6 +20950,7 @@ public partial struct b32m4x2 :
 #region b32m4x3
 
 [Serializable]
+[JsonConverter(typeof(b32m4x3JsonConverter))]
 public partial struct b32m4x3 :
     IMatrix4x3<b32>, IMatrixSelf<b32m4x3>
 {
@@ -21123,6 +21212,7 @@ public partial struct b32m4x3 :
 #region b32m4x4
 
 [Serializable]
+[JsonConverter(typeof(b32m4x4JsonConverter))]
 public partial struct b32m4x4 :
     IMatrix4x4<b32>, IMatrixSelf<b32m4x4>
 {
@@ -21425,6 +21515,7 @@ public partial struct b32m4x4 :
 #region b64m2x2
 
 [Serializable]
+[JsonConverter(typeof(b64m2x2JsonConverter))]
 public partial struct b64m2x2 :
     IMatrix2x2<b64>, IMatrixSelf<b64m2x2>
 {
@@ -21613,6 +21704,7 @@ public partial struct b64m2x2 :
 #region b64m2x3
 
 [Serializable]
+[JsonConverter(typeof(b64m2x3JsonConverter))]
 public partial struct b64m2x3 :
     IMatrix2x3<b64>, IMatrixSelf<b64m2x3>
 {
@@ -21828,6 +21920,7 @@ public partial struct b64m2x3 :
 #region b64m2x4
 
 [Serializable]
+[JsonConverter(typeof(b64m2x4JsonConverter))]
 public partial struct b64m2x4 :
     IMatrix2x4<b64>, IMatrixSelf<b64m2x4>
 {
@@ -22070,6 +22163,7 @@ public partial struct b64m2x4 :
 #region b64m3x2
 
 [Serializable]
+[JsonConverter(typeof(b64m3x2JsonConverter))]
 public partial struct b64m3x2 :
     IMatrix3x2<b64>, IMatrixSelf<b64m3x2>
 {
@@ -22274,6 +22368,7 @@ public partial struct b64m3x2 :
 #region b64m3x3
 
 [Serializable]
+[JsonConverter(typeof(b64m3x3JsonConverter))]
 public partial struct b64m3x3 :
     IMatrix3x3<b64>, IMatrixSelf<b64m3x3>
 {
@@ -22512,6 +22607,7 @@ public partial struct b64m3x3 :
 #region b64m3x4
 
 [Serializable]
+[JsonConverter(typeof(b64m3x4JsonConverter))]
 public partial struct b64m3x4 :
     IMatrix3x4<b64>, IMatrixSelf<b64m3x4>
 {
@@ -22784,6 +22880,7 @@ public partial struct b64m3x4 :
 #region b64m4x2
 
 [Serializable]
+[JsonConverter(typeof(b64m4x2JsonConverter))]
 public partial struct b64m4x2 :
     IMatrix4x2<b64>, IMatrixSelf<b64m4x2>
 {
@@ -23004,6 +23101,7 @@ public partial struct b64m4x2 :
 #region b64m4x3
 
 [Serializable]
+[JsonConverter(typeof(b64m4x3JsonConverter))]
 public partial struct b64m4x3 :
     IMatrix4x3<b64>, IMatrixSelf<b64m4x3>
 {
@@ -23265,6 +23363,7 @@ public partial struct b64m4x3 :
 #region b64m4x4
 
 [Serializable]
+[JsonConverter(typeof(b64m4x4JsonConverter))]
 public partial struct b64m4x4 :
     IMatrix4x4<b64>, IMatrixSelf<b64m4x4>
 {

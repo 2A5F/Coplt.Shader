@@ -4,6 +4,7 @@ namespace Coplt.Mathematics;
 #region float2
 
 [Serializable]
+[JsonConverter(typeof(float2JsonConverter))]
 public partial struct float2 : 
     IVector2<float>, IVectorSelf<float2>
 {
@@ -197,6 +198,7 @@ public partial struct float2 :
 #region float3
 
 [Serializable]
+[JsonConverter(typeof(float3JsonConverter))]
 public partial struct float3 : 
     IVector3<float>, IVectorSelf<float3>
 {
@@ -419,6 +421,7 @@ public partial struct float3 :
 #region float4
 
 [Serializable]
+[JsonConverter(typeof(float4JsonConverter))]
 public partial struct float4 : 
     IVector4<float>, IVectorSelf<float4>
 {
@@ -668,6 +671,7 @@ public partial struct float4 :
 #region double2
 
 [Serializable]
+[JsonConverter(typeof(double2JsonConverter))]
 public partial struct double2 : 
     IVector2<double>, IVectorSelf<double2>
 {
@@ -861,6 +865,7 @@ public partial struct double2 :
 #region double3
 
 [Serializable]
+[JsonConverter(typeof(double3JsonConverter))]
 public partial struct double3 : 
     IVector3<double>, IVectorSelf<double3>
 {
@@ -1083,6 +1088,7 @@ public partial struct double3 :
 #region double4
 
 [Serializable]
+[JsonConverter(typeof(double4JsonConverter))]
 public partial struct double4 : 
     IVector4<double>, IVectorSelf<double4>
 {
@@ -1332,6 +1338,7 @@ public partial struct double4 :
 #region int2
 
 [Serializable]
+[JsonConverter(typeof(int2JsonConverter))]
 public partial struct int2 : 
     IVector2<int>, IVectorSelf<int2>
 {
@@ -1525,6 +1532,7 @@ public partial struct int2 :
 #region int3
 
 [Serializable]
+[JsonConverter(typeof(int3JsonConverter))]
 public partial struct int3 : 
     IVector3<int>, IVectorSelf<int3>
 {
@@ -1747,6 +1755,7 @@ public partial struct int3 :
 #region int4
 
 [Serializable]
+[JsonConverter(typeof(int4JsonConverter))]
 public partial struct int4 : 
     IVector4<int>, IVectorSelf<int4>
 {
@@ -1996,6 +2005,7 @@ public partial struct int4 :
 #region uint2
 
 [Serializable]
+[JsonConverter(typeof(uint2JsonConverter))]
 public partial struct uint2 : 
     IVector2<uint>, IVectorSelf<uint2>
 {
@@ -2189,6 +2199,7 @@ public partial struct uint2 :
 #region uint3
 
 [Serializable]
+[JsonConverter(typeof(uint3JsonConverter))]
 public partial struct uint3 : 
     IVector3<uint>, IVectorSelf<uint3>
 {
@@ -2411,6 +2422,7 @@ public partial struct uint3 :
 #region uint4
 
 [Serializable]
+[JsonConverter(typeof(uint4JsonConverter))]
 public partial struct uint4 : 
     IVector4<uint>, IVectorSelf<uint4>
 {
@@ -2660,6 +2672,7 @@ public partial struct uint4 :
 #region long2
 
 [Serializable]
+[JsonConverter(typeof(long2JsonConverter))]
 public partial struct long2 : 
     IVector2<long>, IVectorSelf<long2>
 {
@@ -2853,6 +2866,7 @@ public partial struct long2 :
 #region long3
 
 [Serializable]
+[JsonConverter(typeof(long3JsonConverter))]
 public partial struct long3 : 
     IVector3<long>, IVectorSelf<long3>
 {
@@ -3075,6 +3089,7 @@ public partial struct long3 :
 #region long4
 
 [Serializable]
+[JsonConverter(typeof(long4JsonConverter))]
 public partial struct long4 : 
     IVector4<long>, IVectorSelf<long4>
 {
@@ -3324,6 +3339,7 @@ public partial struct long4 :
 #region ulong2
 
 [Serializable]
+[JsonConverter(typeof(ulong2JsonConverter))]
 public partial struct ulong2 : 
     IVector2<ulong>, IVectorSelf<ulong2>
 {
@@ -3517,6 +3533,7 @@ public partial struct ulong2 :
 #region ulong3
 
 [Serializable]
+[JsonConverter(typeof(ulong3JsonConverter))]
 public partial struct ulong3 : 
     IVector3<ulong>, IVectorSelf<ulong3>
 {
@@ -3739,6 +3756,7 @@ public partial struct ulong3 :
 #region ulong4
 
 [Serializable]
+[JsonConverter(typeof(ulong4JsonConverter))]
 public partial struct ulong4 : 
     IVector4<ulong>, IVectorSelf<ulong4>
 {
@@ -3988,6 +4006,7 @@ public partial struct ulong4 :
 #region decimal2
 
 [Serializable]
+[JsonConverter(typeof(decimal2JsonConverter))]
 public partial struct decimal2 : 
     IVector2<decimal>, IVectorSelf<decimal2>
 {
@@ -4130,6 +4149,7 @@ public partial struct decimal2 :
 #region decimal3
 
 [Serializable]
+[JsonConverter(typeof(decimal3JsonConverter))]
 public partial struct decimal3 : 
     IVector3<decimal>, IVectorSelf<decimal3>
 {
@@ -4294,6 +4314,7 @@ public partial struct decimal3 :
 #region decimal4
 
 [Serializable]
+[JsonConverter(typeof(decimal4JsonConverter))]
 public partial struct decimal4 : 
     IVector4<decimal>, IVectorSelf<decimal4>
 {
@@ -4478,6 +4499,7 @@ public partial struct decimal4 :
 #region half2
 
 [Serializable]
+[JsonConverter(typeof(half2JsonConverter))]
 public partial struct half2 : 
     IVector2<half>, IVectorSelf<half2>
 {
@@ -4620,6 +4642,7 @@ public partial struct half2 :
 #region half3
 
 [Serializable]
+[JsonConverter(typeof(half3JsonConverter))]
 public partial struct half3 : 
     IVector3<half>, IVectorSelf<half3>
 {
@@ -4784,6 +4807,7 @@ public partial struct half3 :
 #region half4
 
 [Serializable]
+[JsonConverter(typeof(half4JsonConverter))]
 public partial struct half4 : 
     IVector4<half>, IVectorSelf<half4>
 {
@@ -4968,6 +4992,7 @@ public partial struct half4 :
 #region b16v2
 
 [Serializable]
+[JsonConverter(typeof(b16v2JsonConverter))]
 public partial struct b16v2 : 
     IVector2<b16>, IVectorSelf<b16v2>
 {
@@ -5110,6 +5135,7 @@ public partial struct b16v2 :
 #region b16v3
 
 [Serializable]
+[JsonConverter(typeof(b16v3JsonConverter))]
 public partial struct b16v3 : 
     IVector3<b16>, IVectorSelf<b16v3>
 {
@@ -5274,6 +5300,7 @@ public partial struct b16v3 :
 #region b16v4
 
 [Serializable]
+[JsonConverter(typeof(b16v4JsonConverter))]
 public partial struct b16v4 : 
     IVector4<b16>, IVectorSelf<b16v4>
 {
@@ -5458,6 +5485,7 @@ public partial struct b16v4 :
 #region b32v2
 
 [Serializable]
+[JsonConverter(typeof(b32v2JsonConverter))]
 public partial struct b32v2 : 
     IVector2<b32>, IVectorSelf<b32v2>
 {
@@ -5651,6 +5679,7 @@ public partial struct b32v2 :
 #region b32v3
 
 [Serializable]
+[JsonConverter(typeof(b32v3JsonConverter))]
 public partial struct b32v3 : 
     IVector3<b32>, IVectorSelf<b32v3>
 {
@@ -5873,6 +5902,7 @@ public partial struct b32v3 :
 #region b32v4
 
 [Serializable]
+[JsonConverter(typeof(b32v4JsonConverter))]
 public partial struct b32v4 : 
     IVector4<b32>, IVectorSelf<b32v4>
 {
@@ -6122,6 +6152,7 @@ public partial struct b32v4 :
 #region b64v2
 
 [Serializable]
+[JsonConverter(typeof(b64v2JsonConverter))]
 public partial struct b64v2 : 
     IVector2<b64>, IVectorSelf<b64v2>
 {
@@ -6315,6 +6346,7 @@ public partial struct b64v2 :
 #region b64v3
 
 [Serializable]
+[JsonConverter(typeof(b64v3JsonConverter))]
 public partial struct b64v3 : 
     IVector3<b64>, IVectorSelf<b64v3>
 {
@@ -6537,6 +6569,7 @@ public partial struct b64v3 :
 #region b64v4
 
 [Serializable]
+[JsonConverter(typeof(b64v4JsonConverter))]
 public partial struct b64v4 : 
     IVector4<b64>, IVectorSelf<b64v4>
 {
