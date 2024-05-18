@@ -20,6 +20,7 @@
         <TextTemplate Include="mat.eq.tt" />
         <TextTemplate Include="mat.json.tt" />
         <TextTemplate Include="mat.str.tt" />
+        <TextTemplate Include="simd_matrix.tt" />
         <TextTemplate Include="vec.arith.float.bin.tt" />
         <TextTemplate Include="vec.arith.float.tt" />
         <TextTemplate Include="vec.arith.tt" />
