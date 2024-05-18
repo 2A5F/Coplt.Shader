@@ -3,6 +3,7 @@
 namespace Coplt.Mathematics;
 #region float2
 
+[Serializable]
 public partial struct float2 : 
     IVector2<float>, IVectorSelf<float2>
 {
@@ -161,11 +162,41 @@ public partial struct float2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public float this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // float2
 #region float3
 
+[Serializable]
 public partial struct float3 : 
     IVector3<float>, IVectorSelf<float3>
 {
@@ -349,11 +380,45 @@ public partial struct float3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public float this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // float3
 #region float4
 
+[Serializable]
 public partial struct float4 : 
     IVector4<float>, IVectorSelf<float4>
 {
@@ -560,11 +625,49 @@ public partial struct float4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public float this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // float4
 #region double2
 
+[Serializable]
 public partial struct double2 : 
     IVector2<double>, IVectorSelf<double2>
 {
@@ -723,11 +826,41 @@ public partial struct double2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public double this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // double2
 #region double3
 
+[Serializable]
 public partial struct double3 : 
     IVector3<double>, IVectorSelf<double3>
 {
@@ -911,11 +1044,45 @@ public partial struct double3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public double this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // double3
 #region double4
 
+[Serializable]
 public partial struct double4 : 
     IVector4<double>, IVectorSelf<double4>
 {
@@ -1122,11 +1289,49 @@ public partial struct double4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public double this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // double4
 #region int2
 
+[Serializable]
 public partial struct int2 : 
     IVector2<int>, IVectorSelf<int2>
 {
@@ -1285,11 +1490,41 @@ public partial struct int2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public int this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // int2
 #region int3
 
+[Serializable]
 public partial struct int3 : 
     IVector3<int>, IVectorSelf<int3>
 {
@@ -1473,11 +1708,45 @@ public partial struct int3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public int this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // int3
 #region int4
 
+[Serializable]
 public partial struct int4 : 
     IVector4<int>, IVectorSelf<int4>
 {
@@ -1684,11 +1953,49 @@ public partial struct int4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public int this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // int4
 #region uint2
 
+[Serializable]
 public partial struct uint2 : 
     IVector2<uint>, IVectorSelf<uint2>
 {
@@ -1847,11 +2154,41 @@ public partial struct uint2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public uint this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // uint2
 #region uint3
 
+[Serializable]
 public partial struct uint3 : 
     IVector3<uint>, IVectorSelf<uint3>
 {
@@ -2035,11 +2372,45 @@ public partial struct uint3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public uint this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // uint3
 #region uint4
 
+[Serializable]
 public partial struct uint4 : 
     IVector4<uint>, IVectorSelf<uint4>
 {
@@ -2246,11 +2617,49 @@ public partial struct uint4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public uint this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // uint4
 #region long2
 
+[Serializable]
 public partial struct long2 : 
     IVector2<long>, IVectorSelf<long2>
 {
@@ -2409,11 +2818,41 @@ public partial struct long2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public long this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // long2
 #region long3
 
+[Serializable]
 public partial struct long3 : 
     IVector3<long>, IVectorSelf<long3>
 {
@@ -2597,11 +3036,45 @@ public partial struct long3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public long this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // long3
 #region long4
 
+[Serializable]
 public partial struct long4 : 
     IVector4<long>, IVectorSelf<long4>
 {
@@ -2808,11 +3281,49 @@ public partial struct long4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public long this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // long4
 #region ulong2
 
+[Serializable]
 public partial struct ulong2 : 
     IVector2<ulong>, IVectorSelf<ulong2>
 {
@@ -2971,11 +3482,41 @@ public partial struct ulong2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public ulong this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // ulong2
 #region ulong3
 
+[Serializable]
 public partial struct ulong3 : 
     IVector3<ulong>, IVectorSelf<ulong3>
 {
@@ -3159,11 +3700,45 @@ public partial struct ulong3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public ulong this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // ulong3
 #region ulong4
 
+[Serializable]
 public partial struct ulong4 : 
     IVector4<ulong>, IVectorSelf<ulong4>
 {
@@ -3370,11 +3945,49 @@ public partial struct ulong4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public ulong this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // ulong4
 #region decimal2
 
+[Serializable]
 public partial struct decimal2 : 
     IVector2<decimal>, IVectorSelf<decimal2>
 {
@@ -3482,11 +4095,41 @@ public partial struct decimal2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public decimal this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // decimal2
 #region decimal3
 
+[Serializable]
 public partial struct decimal3 : 
     IVector3<decimal>, IVectorSelf<decimal3>
 {
@@ -3612,11 +4255,45 @@ public partial struct decimal3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public decimal this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // decimal3
 #region decimal4
 
+[Serializable]
 public partial struct decimal4 : 
     IVector4<decimal>, IVectorSelf<decimal4>
 {
@@ -3758,11 +4435,49 @@ public partial struct decimal4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public decimal this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // decimal4
 #region half2
 
+[Serializable]
 public partial struct half2 : 
     IVector2<half>, IVectorSelf<half2>
 {
@@ -3870,11 +4585,41 @@ public partial struct half2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public half this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // half2
 #region half3
 
+[Serializable]
 public partial struct half3 : 
     IVector3<half>, IVectorSelf<half3>
 {
@@ -4000,11 +4745,45 @@ public partial struct half3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public half this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // half3
 #region half4
 
+[Serializable]
 public partial struct half4 : 
     IVector4<half>, IVectorSelf<half4>
 {
@@ -4146,11 +4925,49 @@ public partial struct half4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public half this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // half4
 #region b16v2
 
+[Serializable]
 public partial struct b16v2 : 
     IVector2<b16>, IVectorSelf<b16v2>
 {
@@ -4258,11 +5075,41 @@ public partial struct b16v2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public b16 this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // b16v2
 #region b16v3
 
+[Serializable]
 public partial struct b16v3 : 
     IVector3<b16>, IVectorSelf<b16v3>
 {
@@ -4388,11 +5235,45 @@ public partial struct b16v3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public b16 this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // b16v3
 #region b16v4
 
+[Serializable]
 public partial struct b16v4 : 
     IVector4<b16>, IVectorSelf<b16v4>
 {
@@ -4534,11 +5415,49 @@ public partial struct b16v4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public b16 this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // b16v4
 #region b32v2
 
+[Serializable]
 public partial struct b32v2 : 
     IVector2<b32>, IVectorSelf<b32v2>
 {
@@ -4697,11 +5616,41 @@ public partial struct b32v2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public b32 this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // b32v2
 #region b32v3
 
+[Serializable]
 public partial struct b32v3 : 
     IVector3<b32>, IVectorSelf<b32v3>
 {
@@ -4885,11 +5834,45 @@ public partial struct b32v3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public b32 this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // b32v3
 #region b32v4
 
+[Serializable]
 public partial struct b32v4 : 
     IVector4<b32>, IVectorSelf<b32v4>
 {
@@ -5096,11 +6079,49 @@ public partial struct b32v4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public b32 this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // b32v4
 #region b64v2
 
+[Serializable]
 public partial struct b64v2 : 
     IVector2<b64>, IVectorSelf<b64v2>
 {
@@ -5259,11 +6280,41 @@ public partial struct b64v2 :
 
     #endregion // ctors
 
+    #region Index
+
+    public b64 this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // b64v2
 #region b64v3
 
+[Serializable]
 public partial struct b64v3 : 
     IVector3<b64>, IVectorSelf<b64v3>
 {
@@ -5447,11 +6498,45 @@ public partial struct b64v3 :
 
     #endregion // ctors
 
+    #region Index
+
+    public b64 this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // b64v3
 #region b64v4
 
+[Serializable]
 public partial struct b64v4 : 
     IVector4<b64>, IVectorSelf<b64v4>
 {
@@ -5658,6 +6743,43 @@ public partial struct b64v4 :
 
     #endregion // ctors
 
+    #region Index
+
+    public b64 this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+            0 => x,
+            1 => y,
+            2 => z,
+            3 => w,
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+                case 0:
+                    x = value;
+                    break;
+                case 1:
+                    y = value;
+                    break;
+                case 2:
+                    z = value;
+                    break;
+                case 3:
+                    w = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // b64v4

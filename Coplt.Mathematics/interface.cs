@@ -29,3 +29,42 @@ public interface IVectorSelf<out Self> where Self : IVectorSelf<Self>
     public static abstract Self One { get; }
 #endif
 }
+
+public interface IMatrix
+{
+    #if NET8_0_OR_GREATER
+    public static abstract bool IsSimdAccelerated { get; }
+    public static abstract int Length { get; }
+    public static abstract int2 Size { get; }
+    #endif
+}
+
+public interface IMatrix<T> : IMatrix;
+
+public interface IMatrix2x2 : IMatrix;
+public interface IMatrix2x2<T> : IMatrix<T>, IMatrix2x2;
+public interface IMatrix2x3 : IMatrix;
+public interface IMatrix2x3<T> : IMatrix<T>, IMatrix2x3;
+public interface IMatrix2x4 : IMatrix;
+public interface IMatrix2x4<T> : IMatrix<T>, IMatrix2x4;
+public interface IMatrix3x2 : IMatrix;
+public interface IMatrix3x2<T> : IMatrix<T>, IMatrix3x2;
+public interface IMatrix3x3 : IMatrix;
+public interface IMatrix3x3<T> : IMatrix<T>, IMatrix3x3;
+public interface IMatrix3x4 : IMatrix;
+public interface IMatrix3x4<T> : IMatrix<T>, IMatrix3x4;
+public interface IMatrix4x2 : IMatrix;
+public interface IMatrix4x2<T> : IMatrix<T>, IMatrix4x2;
+public interface IMatrix4x3 : IMatrix;
+public interface IMatrix4x3<T> : IMatrix<T>, IMatrix4x3;
+public interface IMatrix4x4 : IMatrix;
+public interface IMatrix4x4<T> : IMatrix<T>, IMatrix4x4;
+
+public interface IMatrixSelf<out Self> where Self : IMatrixSelf<Self>
+{
+#if NET8_0_OR_GREATER
+    public static abstract Self Zero { get; }
+    public static abstract Self One { get; }
+    public static abstract Self Identity { get; }
+#endif
+}

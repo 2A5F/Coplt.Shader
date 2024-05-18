@@ -2,7 +2,7 @@
 
 namespace Coplt.Mathematics;
 
-public struct float4x4
+public partial struct float4x4
 {
     public static float4 operator *(float4x4 mat, float4 vec) => throw new NotImplementedException();
 }

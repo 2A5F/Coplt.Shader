@@ -36,6 +36,7 @@
         <TextTemplate Include="vec.eq.tt" />
         <TextTemplate Include="vec.str.tt" />
         <TextTemplate Include="vec.bool.tt" />
+        <TextTemplate Include="mats.tt" />
     </ItemGroup>
 
     <ItemGroup>

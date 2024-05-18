@@ -117,6 +117,7 @@ namespace Coplt.Mathematics;
 #>
 #region <#= typeName #>
 
+[Serializable]
 public partial struct <#= typeName #> : 
     IVector<#= i #><<#= typ.compType #>>, IVectorSelf<<#= typeName #>>
 {
@@ -271,6 +272,45 @@ public partial struct <#= typeName #> :
 
     #endregion // ctors
 
+    #region Index
+
+    public <#= typ.compType #> this[int i]
+    {
+        [MethodImpl(256 | 512)]
+        get => i switch
+        {
+<#
+            for (var j = 0; j < i; j++)
+            {
+#>
+            <#= j #> => <#= Typ.xyzw[j] #>,
+<#
+            }
+#>
+            _ => throw new IndexOutOfRangeException(nameof(i)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (i)
+            {
+<#
+            for (var j = 0; j < i; j++)
+            {
+#>
+                case <#= j #>:
+                    <#= Typ.xyzw[j] #> = value;
+                    break;
+<#
+            }
+#>
+                default:
+                    throw new IndexOutOfRangeException(nameof(i));
+            }
+        }
+    }
+
+    #endregion // Index
 }
 
 #endregion // <#= typeName #>
