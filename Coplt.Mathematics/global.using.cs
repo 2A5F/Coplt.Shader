@@ -9,3 +9,4 @@ global using half = System.Half;
 global using b16v = Coplt.Mathematics.b16;
 global using b32v = Coplt.Mathematics.b32;
 global using b64v = Coplt.Mathematics.b64;
+global using static Coplt.Mathematics.FormatUtils;

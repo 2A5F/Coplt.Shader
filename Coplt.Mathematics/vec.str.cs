@@ -7,6 +7,7 @@ namespace Coplt.Mathematics;
 public partial struct float2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"float2({x}, {y})";
@@ -16,25 +17,11 @@ public partial struct float2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "float2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "float2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -42,25 +29,11 @@ public partial struct float2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "float2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "float2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -73,6 +46,7 @@ public partial struct float2 : IFormattable
 public partial struct float3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"float3({x}, {y}, {z})";
@@ -82,29 +56,13 @@ public partial struct float3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "float3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "float3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -112,29 +70,13 @@ public partial struct float3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "float3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "float3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -147,6 +89,7 @@ public partial struct float3 : IFormattable
 public partial struct float4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"float4({x}, {y}, {z}, {w})";
@@ -156,33 +99,15 @@ public partial struct float4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "float4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "float4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -190,33 +115,15 @@ public partial struct float4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "float4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "float4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -229,6 +136,7 @@ public partial struct float4 : IFormattable
 public partial struct double2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"double2({x}, {y})";
@@ -238,25 +146,11 @@ public partial struct double2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "double2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "double2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -264,25 +158,11 @@ public partial struct double2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "double2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "double2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -295,6 +175,7 @@ public partial struct double2 : IFormattable
 public partial struct double3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"double3({x}, {y}, {z})";
@@ -304,29 +185,13 @@ public partial struct double3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "double3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "double3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -334,29 +199,13 @@ public partial struct double3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "double3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "double3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -369,6 +218,7 @@ public partial struct double3 : IFormattable
 public partial struct double4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"double4({x}, {y}, {z}, {w})";
@@ -378,33 +228,15 @@ public partial struct double4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "double4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "double4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -412,33 +244,15 @@ public partial struct double4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "double4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "double4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -451,6 +265,7 @@ public partial struct double4 : IFormattable
 public partial struct int2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"int2({x}, {y})";
@@ -460,25 +275,11 @@ public partial struct int2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "int2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "int2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -486,25 +287,11 @@ public partial struct int2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "int2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "int2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -517,6 +304,7 @@ public partial struct int2 : IFormattable
 public partial struct int3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"int3({x}, {y}, {z})";
@@ -526,29 +314,13 @@ public partial struct int3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "int3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "int3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -556,29 +328,13 @@ public partial struct int3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "int3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "int3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -591,6 +347,7 @@ public partial struct int3 : IFormattable
 public partial struct int4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"int4({x}, {y}, {z}, {w})";
@@ -600,33 +357,15 @@ public partial struct int4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "int4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "int4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -634,33 +373,15 @@ public partial struct int4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "int4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "int4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -673,6 +394,7 @@ public partial struct int4 : IFormattable
 public partial struct uint2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"uint2({x}, {y})";
@@ -682,25 +404,11 @@ public partial struct uint2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "uint2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "uint2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -708,25 +416,11 @@ public partial struct uint2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "uint2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "uint2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -739,6 +433,7 @@ public partial struct uint2 : IFormattable
 public partial struct uint3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"uint3({x}, {y}, {z})";
@@ -748,29 +443,13 @@ public partial struct uint3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "uint3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "uint3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -778,29 +457,13 @@ public partial struct uint3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "uint3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "uint3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -813,6 +476,7 @@ public partial struct uint3 : IFormattable
 public partial struct uint4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"uint4({x}, {y}, {z}, {w})";
@@ -822,33 +486,15 @@ public partial struct uint4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "uint4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "uint4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -856,33 +502,15 @@ public partial struct uint4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "uint4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "uint4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -895,6 +523,7 @@ public partial struct uint4 : IFormattable
 public partial struct long2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"long2({x}, {y})";
@@ -904,25 +533,11 @@ public partial struct long2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "long2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "long2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -930,25 +545,11 @@ public partial struct long2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "long2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "long2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -961,6 +562,7 @@ public partial struct long2 : IFormattable
 public partial struct long3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"long3({x}, {y}, {z})";
@@ -970,29 +572,13 @@ public partial struct long3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "long3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "long3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1000,29 +586,13 @@ public partial struct long3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "long3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "long3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1035,6 +605,7 @@ public partial struct long3 : IFormattable
 public partial struct long4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"long4({x}, {y}, {z}, {w})";
@@ -1044,33 +615,15 @@ public partial struct long4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "long4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "long4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1078,33 +631,15 @@ public partial struct long4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "long4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "long4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1117,6 +652,7 @@ public partial struct long4 : IFormattable
 public partial struct ulong2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"ulong2({x}, {y})";
@@ -1126,25 +662,11 @@ public partial struct ulong2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "ulong2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "ulong2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1152,25 +674,11 @@ public partial struct ulong2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "ulong2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "ulong2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1183,6 +691,7 @@ public partial struct ulong2 : IFormattable
 public partial struct ulong3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"ulong3({x}, {y}, {z})";
@@ -1192,29 +701,13 @@ public partial struct ulong3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "ulong3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "ulong3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1222,29 +715,13 @@ public partial struct ulong3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "ulong3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "ulong3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1257,6 +734,7 @@ public partial struct ulong3 : IFormattable
 public partial struct ulong4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"ulong4({x}, {y}, {z}, {w})";
@@ -1266,33 +744,15 @@ public partial struct ulong4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "ulong4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "ulong4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1300,33 +760,15 @@ public partial struct ulong4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "ulong4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "ulong4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1339,6 +781,7 @@ public partial struct ulong4 : IFormattable
 public partial struct decimal2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"decimal2({x}, {y})";
@@ -1348,25 +791,11 @@ public partial struct decimal2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "decimal2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "decimal2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1374,25 +803,11 @@ public partial struct decimal2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "decimal2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "decimal2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1405,6 +820,7 @@ public partial struct decimal2 : IFormattable
 public partial struct decimal3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"decimal3({x}, {y}, {z})";
@@ -1414,29 +830,13 @@ public partial struct decimal3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "decimal3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "decimal3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1444,29 +844,13 @@ public partial struct decimal3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "decimal3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "decimal3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1479,6 +863,7 @@ public partial struct decimal3 : IFormattable
 public partial struct decimal4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"decimal4({x}, {y}, {z}, {w})";
@@ -1488,33 +873,15 @@ public partial struct decimal4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "decimal4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "decimal4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1522,33 +889,15 @@ public partial struct decimal4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "decimal4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "decimal4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1561,6 +910,7 @@ public partial struct decimal4 : IFormattable
 public partial struct half2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"half2({x}, {y})";
@@ -1570,25 +920,11 @@ public partial struct half2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "half2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "half2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1596,25 +932,11 @@ public partial struct half2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "half2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "half2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1627,6 +949,7 @@ public partial struct half2 : IFormattable
 public partial struct half3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"half3({x}, {y}, {z})";
@@ -1636,29 +959,13 @@ public partial struct half3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "half3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "half3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1666,29 +973,13 @@ public partial struct half3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "half3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "half3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1701,6 +992,7 @@ public partial struct half3 : IFormattable
 public partial struct half4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"half4({x}, {y}, {z}, {w})";
@@ -1710,33 +1002,15 @@ public partial struct half4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "half4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "half4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1744,33 +1018,15 @@ public partial struct half4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "half4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "half4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1783,6 +1039,7 @@ public partial struct half4 : IFormattable
 public partial struct b16v2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"b16v2({x}, {y})";
@@ -1792,25 +1049,11 @@ public partial struct b16v2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b16v2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b16v2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1818,25 +1061,11 @@ public partial struct b16v2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b16v2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b16v2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1849,6 +1078,7 @@ public partial struct b16v2 : IFormattable
 public partial struct b16v3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"b16v3({x}, {y}, {z})";
@@ -1858,29 +1088,13 @@ public partial struct b16v3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b16v3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b16v3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1888,29 +1102,13 @@ public partial struct b16v3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b16v3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b16v3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -1923,6 +1121,7 @@ public partial struct b16v3 : IFormattable
 public partial struct b16v4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"b16v4({x}, {y}, {z}, {w})";
@@ -1932,33 +1131,15 @@ public partial struct b16v4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b16v4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b16v4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -1966,33 +1147,15 @@ public partial struct b16v4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b16v4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b16v4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -2005,6 +1168,7 @@ public partial struct b16v4 : IFormattable
 public partial struct b32v2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"b32v2({x}, {y})";
@@ -2014,25 +1178,11 @@ public partial struct b32v2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b32v2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b32v2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -2040,25 +1190,11 @@ public partial struct b32v2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b32v2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b32v2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -2071,6 +1207,7 @@ public partial struct b32v2 : IFormattable
 public partial struct b32v3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"b32v3({x}, {y}, {z})";
@@ -2080,29 +1217,13 @@ public partial struct b32v3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b32v3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b32v3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -2110,29 +1231,13 @@ public partial struct b32v3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b32v3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b32v3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -2145,6 +1250,7 @@ public partial struct b32v3 : IFormattable
 public partial struct b32v4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"b32v4({x}, {y}, {z}, {w})";
@@ -2154,33 +1260,15 @@ public partial struct b32v4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b32v4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b32v4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -2188,33 +1276,15 @@ public partial struct b32v4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b32v4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b32v4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -2227,6 +1297,7 @@ public partial struct b32v4 : IFormattable
 public partial struct b64v2 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"b64v2({x}, {y})";
@@ -2236,25 +1307,11 @@ public partial struct b64v2 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b64v2(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b64v2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -2262,25 +1319,11 @@ public partial struct b64v2 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b64v2("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b64v2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -2293,6 +1336,7 @@ public partial struct b64v2 : IFormattable
 public partial struct b64v3 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"b64v3({x}, {y}, {z})";
@@ -2302,29 +1346,13 @@ public partial struct b64v3 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b64v3(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b64v3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -2332,29 +1360,13 @@ public partial struct b64v3 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b64v3("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b64v3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
@@ -2367,6 +1379,7 @@ public partial struct b64v3 : IFormattable
 public partial struct b64v4 : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"b64v4({x}, {y}, {z}, {w})";
@@ -2376,33 +1389,15 @@ public partial struct b64v4 : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b64v4(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b64v4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 
@@ -2410,33 +1405,15 @@ public partial struct b64v4 : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "b64v4("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
-        r = x.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = y.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = z.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        r = w.TryFormat(dst, out ic, format, provider);
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, "b64v4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif

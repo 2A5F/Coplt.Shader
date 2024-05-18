@@ -26,6 +26,7 @@ namespace Coplt.Mathematics;
 public partial struct <#= typeName #> : IFormattable
     #if NET8_0_OR_GREATER
     , ISpanFormattable
+    , IUtf8SpanFormattable
     #endif
 {
     public override string ToString() => $"<#= typeName #>(<#= format #>)";
@@ -35,40 +36,23 @@ public partial struct <#= typeName #> : IFormattable
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "<#= typeName #>(";
-        var part1 = ")";
-        if (dst.Length < part0.Length) return false;
-        part0.AsSpan().CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
+        if (!TryFormatPart(ref dst, ref nc, "<#= typeName #>(")) return false;
 <#
             for (var n = 0; n < i; n++)
             {
+                if (n != 0)
+                {
+#>
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+<#
+                }
                 var comp = Typ.xyzw[n];
-                if (typ.formattable)
-                {
 #>
-        r = <#= comp #>.TryFormat(dst, out ic, format, provider);
-<#
-                }
-                else
-                {
-#>
-        r = <#= comp #>.TryFormat(dst, out ic);
-<#
-                }
-#>
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
+        if (!TryFormatPart(ref dst, ref nc, <#= comp #>, format, provider)) return false;
 <#
             }
 #>
-        if (dst.Length < part1.Length) return false;
-        part1.AsSpan().CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
         return true;
     }
 <#
@@ -80,40 +64,23 @@ public partial struct <#= typeName #> : IFormattable
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
-        var part0 = "<#= typeName #>("u8;
-        var part1 = ")"u8;
-        if (dst.Length < part0.Length) return false;
-        part0.CopyTo(dst);
-        nc += part0.Length;
-        dst = dst[part0.Length..];
-        int ic;
-        bool r;
+        if (!TryFormatPart(ref dst, ref nc, "<#= typeName #>("u8)) return false;
 <#
             for (var n = 0; n < i; n++)
             {
+                if (n != 0)
+                {
+#>
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+<#
+                }
                 var comp = Typ.xyzw[n];
-                if (typ.formattable)
-                {
 #>
-        r = <#= comp #>.TryFormat(dst, out ic, format, provider);
-<#
-                }
-                else
-                {
-#>
-        r = <#= comp #>.TryFormat(dst, out ic);
-<#
-                }
-#>
-        nc += ic;
-        if (!r) return false;
-        dst = dst[ic..];
+        if (!TryFormatPart(ref dst, ref nc, <#= comp #>, format, provider)) return false;
 <#
             }
 #>
-        if (dst.Length < part1.Length) return false;
-        part1.CopyTo(dst);
-        nc += part1.Length;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
         return true;
     }
     #endif
