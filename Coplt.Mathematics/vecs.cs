@@ -163,7 +163,35 @@ public partial struct float2 :
         #if NET8_0_OR_GREATER
         vector = Vector64.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float2 Load(ReadOnlySpan<float> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public float2(ReadOnlySpan<float> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector64.LoadUnsafe(in MemoryMarshal.Cast<float, float>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe float2 Load(float* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe float2(float* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector64.Load((float*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -399,7 +427,37 @@ public partial struct float3 :
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 Load(ReadOnlySpan<float> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public float3(ReadOnlySpan<float> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<float, float>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe float3 Load(float* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe float3(float* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((float*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -663,7 +721,39 @@ public partial struct float4 :
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4 Load(ReadOnlySpan<float> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public float4(ReadOnlySpan<float> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<float, float>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe float4 Load(float* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe float4(float* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((float*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -884,7 +974,35 @@ public partial struct double2 :
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double2 Load(ReadOnlySpan<double> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public double2(ReadOnlySpan<double> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<double, double>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe double2 Load(double* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe double2(double* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((double*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1120,7 +1238,37 @@ public partial struct double3 :
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 Load(ReadOnlySpan<double> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public double3(ReadOnlySpan<double> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.LoadUnsafe(in MemoryMarshal.Cast<double, double>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe double3 Load(double* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe double3(double* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.Load((double*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1384,7 +1532,39 @@ public partial struct double4 :
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4 Load(ReadOnlySpan<double> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public double4(ReadOnlySpan<double> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.LoadUnsafe(in MemoryMarshal.Cast<double, double>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe double4 Load(double* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe double4(double* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.Load((double*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1605,7 +1785,35 @@ public partial struct int2 :
         #if NET8_0_OR_GREATER
         vector = Vector64.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 Load(ReadOnlySpan<int> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public int2(ReadOnlySpan<int> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector64.LoadUnsafe(in MemoryMarshal.Cast<int, int>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe int2 Load(int* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe int2(int* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector64.Load((int*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1841,7 +2049,37 @@ public partial struct int3 :
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 Load(ReadOnlySpan<int> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public int3(ReadOnlySpan<int> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<int, int>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe int3 Load(int* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe int3(int* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((int*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -2105,7 +2343,39 @@ public partial struct int4 :
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 Load(ReadOnlySpan<int> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public int4(ReadOnlySpan<int> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<int, int>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe int4 Load(int* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe int4(int* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((int*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -2324,9 +2594,37 @@ public partial struct uint2 :
     internal uint2(uint value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
-        vector = Vector64.CreateScalar((uint)value);
+        vector = Vector64.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint2 Load(ReadOnlySpan<uint> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public uint2(ReadOnlySpan<uint> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector64.LoadUnsafe(in MemoryMarshal.Cast<uint, uint>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe uint2 Load(uint* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe uint2(uint* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector64.Load((uint*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -2560,9 +2858,39 @@ public partial struct uint3 :
     internal uint3(uint value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
-        vector = Vector128.CreateScalar((uint)value);
+        vector = Vector128.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint3 Load(ReadOnlySpan<uint> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public uint3(ReadOnlySpan<uint> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<uint, uint>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe uint3 Load(uint* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe uint3(uint* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((uint*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -2824,9 +3152,41 @@ public partial struct uint4 :
     internal uint4(uint value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
-        vector = Vector128.CreateScalar((uint)value);
+        vector = Vector128.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint4 Load(ReadOnlySpan<uint> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public uint4(ReadOnlySpan<uint> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<uint, uint>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe uint4 Load(uint* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe uint4(uint* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((uint*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -3047,7 +3407,35 @@ public partial struct long2 :
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 Load(ReadOnlySpan<long> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public long2(ReadOnlySpan<long> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<long, long>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe long2 Load(long* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe long2(long* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((long*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -3283,7 +3671,37 @@ public partial struct long3 :
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 Load(ReadOnlySpan<long> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public long3(ReadOnlySpan<long> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.LoadUnsafe(in MemoryMarshal.Cast<long, long>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe long3 Load(long* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe long3(long* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.Load((long*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -3547,7 +3965,39 @@ public partial struct long4 :
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 Load(ReadOnlySpan<long> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public long4(ReadOnlySpan<long> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.LoadUnsafe(in MemoryMarshal.Cast<long, long>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe long4 Load(long* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe long4(long* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.Load((long*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -3766,9 +4216,37 @@ public partial struct ulong2 :
     internal ulong2(ulong value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
-        vector = Vector128.CreateScalar((ulong)value);
+        vector = Vector128.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 Load(ReadOnlySpan<ulong> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public ulong2(ReadOnlySpan<ulong> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<ulong, ulong>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe ulong2 Load(ulong* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe ulong2(ulong* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((ulong*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -4002,9 +4480,39 @@ public partial struct ulong3 :
     internal ulong3(ulong value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
-        vector = Vector256.CreateScalar((ulong)value);
+        vector = Vector256.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 Load(ReadOnlySpan<ulong> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public ulong3(ReadOnlySpan<ulong> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.LoadUnsafe(in MemoryMarshal.Cast<ulong, ulong>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe ulong3 Load(ulong* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe ulong3(ulong* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.Load((ulong*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -4266,9 +4774,41 @@ public partial struct ulong4 :
     internal ulong4(ulong value, is_scalar _)
     {
         #if NET8_0_OR_GREATER
-        vector = Vector256.CreateScalar((ulong)value);
+        vector = Vector256.CreateScalar(value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 Load(ReadOnlySpan<ulong> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public ulong4(ReadOnlySpan<ulong> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.LoadUnsafe(in MemoryMarshal.Cast<ulong, ulong>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe ulong4 Load(ulong* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe ulong4(ulong* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.Load((ulong*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -4439,7 +4979,27 @@ public partial struct decimal2 :
     [MethodImpl(256 | 512)]
     internal decimal2(decimal value, is_scalar _)
     {
-        x = value;
+        this.x = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 Load(ReadOnlySpan<decimal> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public decimal2(ReadOnlySpan<decimal> span)
+    {
+        this.x = span[0];
+        this.y = span[1];
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe decimal2 Load(decimal* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe decimal2(decimal* ptr)
+    {
+        this.x = ptr[0];
+        this.y = ptr[1];
     }
 
     #endregion // ctors
@@ -4617,7 +5177,29 @@ public partial struct decimal3 :
     [MethodImpl(256 | 512)]
     internal decimal3(decimal value, is_scalar _)
     {
-        x = value;
+        this.x = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 Load(ReadOnlySpan<decimal> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public decimal3(ReadOnlySpan<decimal> span)
+    {
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe decimal3 Load(decimal* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe decimal3(decimal* ptr)
+    {
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
     }
 
     #endregion // ctors
@@ -4816,7 +5398,31 @@ public partial struct decimal4 :
     [MethodImpl(256 | 512)]
     internal decimal4(decimal value, is_scalar _)
     {
-        x = value;
+        this.x = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 Load(ReadOnlySpan<decimal> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public decimal4(ReadOnlySpan<decimal> span)
+    {
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe decimal4 Load(decimal* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe decimal4(decimal* ptr)
+    {
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
     }
 
     #endregion // ctors
@@ -4986,7 +5592,27 @@ public partial struct half2 :
     [MethodImpl(256 | 512)]
     internal half2(half value, is_scalar _)
     {
-        x = value;
+        this.x = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half2 Load(ReadOnlySpan<half> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public half2(ReadOnlySpan<half> span)
+    {
+        this.x = span[0];
+        this.y = span[1];
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe half2 Load(half* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe half2(half* ptr)
+    {
+        this.x = ptr[0];
+        this.y = ptr[1];
     }
 
     #endregion // ctors
@@ -5164,7 +5790,29 @@ public partial struct half3 :
     [MethodImpl(256 | 512)]
     internal half3(half value, is_scalar _)
     {
-        x = value;
+        this.x = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half3 Load(ReadOnlySpan<half> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public half3(ReadOnlySpan<half> span)
+    {
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe half3 Load(half* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe half3(half* ptr)
+    {
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
     }
 
     #endregion // ctors
@@ -5363,7 +6011,31 @@ public partial struct half4 :
     [MethodImpl(256 | 512)]
     internal half4(half value, is_scalar _)
     {
-        x = value;
+        this.x = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4 Load(ReadOnlySpan<half> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public half4(ReadOnlySpan<half> span)
+    {
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe half4 Load(half* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe half4(half* ptr)
+    {
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
     }
 
     #endregion // ctors
@@ -5533,7 +6205,27 @@ public partial struct b16v2 :
     [MethodImpl(256 | 512)]
     internal b16v2(b16 value, is_scalar _)
     {
-        x = value;
+        this.x = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b16v2 Load(ReadOnlySpan<b16> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public b16v2(ReadOnlySpan<b16> span)
+    {
+        this.x = span[0];
+        this.y = span[1];
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe b16v2 Load(b16* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe b16v2(b16* ptr)
+    {
+        this.x = ptr[0];
+        this.y = ptr[1];
     }
 
     #endregion // ctors
@@ -5711,7 +6403,29 @@ public partial struct b16v3 :
     [MethodImpl(256 | 512)]
     internal b16v3(b16 value, is_scalar _)
     {
-        x = value;
+        this.x = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b16v3 Load(ReadOnlySpan<b16> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public b16v3(ReadOnlySpan<b16> span)
+    {
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe b16v3 Load(b16* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe b16v3(b16* ptr)
+    {
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
     }
 
     #endregion // ctors
@@ -5910,7 +6624,31 @@ public partial struct b16v4 :
     [MethodImpl(256 | 512)]
     internal b16v4(b16 value, is_scalar _)
     {
-        x = value;
+        this.x = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b16v4 Load(ReadOnlySpan<b16> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public b16v4(ReadOnlySpan<b16> span)
+    {
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe b16v4 Load(b16* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe b16v4(b16* ptr)
+    {
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
     }
 
     #endregion // ctors
@@ -6130,7 +6868,35 @@ public partial struct b32v2 :
         #if NET8_0_OR_GREATER
         vector = Vector64.CreateScalar((uint)value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b32v2 Load(ReadOnlySpan<b32> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public b32v2(ReadOnlySpan<b32> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector64.LoadUnsafe(in MemoryMarshal.Cast<b32, uint>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe b32v2 Load(b32* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe b32v2(b32* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector64.Load((uint*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -6366,7 +7132,37 @@ public partial struct b32v3 :
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar((uint)value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b32v3 Load(ReadOnlySpan<b32> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public b32v3(ReadOnlySpan<b32> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<b32, uint>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe b32v3 Load(b32* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe b32v3(b32* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((uint*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -6630,7 +7426,39 @@ public partial struct b32v4 :
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar((uint)value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b32v4 Load(ReadOnlySpan<b32> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public b32v4(ReadOnlySpan<b32> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<b32, uint>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe b32v4 Load(b32* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe b32v4(b32* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((uint*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -6851,7 +7679,35 @@ public partial struct b64v2 :
         #if NET8_0_OR_GREATER
         vector = Vector128.CreateScalar((ulong)value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b64v2 Load(ReadOnlySpan<b64> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public b64v2(ReadOnlySpan<b64> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.LoadUnsafe(in MemoryMarshal.Cast<b64, ulong>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe b64v2 Load(b64* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe b64v2(b64* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector128.Load((ulong*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -7087,7 +7943,37 @@ public partial struct b64v3 :
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar((ulong)value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b64v3 Load(ReadOnlySpan<b64> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public b64v3(ReadOnlySpan<b64> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.LoadUnsafe(in MemoryMarshal.Cast<b64, ulong>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe b64v3 Load(b64* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe b64v3(b64* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.Load((ulong*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
         #endif // NET8_0_OR_GREATER
     }
 
@@ -7351,7 +8237,39 @@ public partial struct b64v4 :
         #if NET8_0_OR_GREATER
         vector = Vector256.CreateScalar((ulong)value);
         #else // NET8_0_OR_GREATER
-        x = value;
+        this.x = value;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b64v4 Load(ReadOnlySpan<b64> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public b64v4(ReadOnlySpan<b64> span)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.LoadUnsafe(in MemoryMarshal.Cast<b64, ulong>(span)[0]);
+        #else // NET8_0_OR_GREATER
+        this.x = span[0];
+        this.y = span[1];
+        this.z = span[2];
+        this.w = span[3];
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe b64v4 Load(b64* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe b64v4(b64* ptr)
+    {
+        #if NET8_0_OR_GREATER
+        vector = Vector256.Load((ulong*)ptr);
+        #else // NET8_0_OR_GREATER
+        this.x = ptr[0];
+        this.y = ptr[1];
+        this.z = ptr[2];
+        this.w = ptr[3];
         #endif // NET8_0_OR_GREATER
     }
 

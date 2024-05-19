@@ -96,16 +96,6 @@ namespace Coplt.Mathematics;
         else WriteLine($"        vector = Vector{bitSize}.Create({cast}value);");
     }
 
-    void NoSimdCtorScalar(int size)
-    {
-        WriteLine($"        x = value;");
-    }
-
-    void SimdCtorScalar(int size, int bitSize, string cast)
-    {
-        WriteLine($"        vector = Vector{bitSize}.CreateScalar({cast}value);");
-    }
-
     foreach (var typ in Typ.Typs)
     {
         for (var i = 2; i <= 4; i++)
@@ -258,12 +248,81 @@ public partial struct <#= typeName #> :
 <#
             if (typ.simd)
             {
-                WriteLine($"        #if NET8_0_OR_GREATER");
-                SimdCtorScalar(i, bitSize, typ.shuffleCast);
-                WriteLine($"        #else // NET8_0_OR_GREATER");
+#>
+        #if NET8_0_OR_GREATER
+        vector = Vector<#= bitSize #>.CreateScalar(<#= typ.bol ? $"({typ.simdComp})" : "" #>value);
+        #else // NET8_0_OR_GREATER
+<#
             }
-            NoSimdCtorScalar(i);
-            if (typ.simd) WriteLine($"        #endif // NET8_0_OR_GREATER");
+#>
+        this.x = value;
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> Load(ReadOnlySpan<<#= typ.compType #>> span) => new(span);
+
+    [MethodImpl(256 | 512)]
+    public <#= typeName #>(ReadOnlySpan<<#= typ.compType #>> span)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        vector = Vector<#= bitSize #>.LoadUnsafe(in MemoryMarshal.Cast<<#= typ.compType #>, <#= typ.simdComp #>>(span)[0]);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+            for (var n = 0; n < i; n++)
+            {
+#>
+        this.<#= Typ.xyzw[n] #> = span[<#= n #>];
+<#
+            }
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static unsafe <#= typeName #> Load(<#= typ.compType #>* ptr) => new(ptr);
+
+    [MethodImpl(256 | 512)]
+    public unsafe <#= typeName #>(<#= typ.compType #>* ptr)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        vector = Vector<#= bitSize #>.Load((<#= typ.simdComp #>*)ptr);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+            for (var n = 0; n < i; n++)
+            {
+#>
+        this.<#= Typ.xyzw[n] #> = ptr[<#= n #>];
+<#
+            }
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
 #>
     }
 
