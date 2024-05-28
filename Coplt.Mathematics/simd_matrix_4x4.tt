@@ -22,7 +22,7 @@ public static partial class simd_matrix
             var typeName = $"Vector{bitSize}<{typ.simdComp}>";
             var vecName = $"Vector{bitSize}";
 #>
-    #region Transpose 4x4
+    #region <#= typeName #>
 
     [MethodImpl(256 | 512)]
     public static (<#= typeName #> c0, <#= typeName #> c1, <#= typeName #> c2, <#= typeName #> c3) Transpose4x4(

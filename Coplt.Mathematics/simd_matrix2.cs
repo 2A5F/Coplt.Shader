@@ -79,6 +79,28 @@ public static partial class simd_matrix
     }
 
     #endregion
+    
+    #region Transpose 2x2
+
+    [MethodImpl(256 | 512)]
+    public static (Vector64<float> c0, Vector64<float> c1) Transpose2x2(
+        Vector64<float> c0, Vector64<float> c1
+    )
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            var a = Vector128.Create(c0, c1);
+            var b = Vector128.Shuffle(a, Vector128.Create(0, 2, 1, 3));
+            return (b.GetLower(), b.GetUpper());
+        }
+        {
+            var oc0 = Vector64.Create(c0.GetElement(0), c1.GetElement(0));
+            var oc1 = Vector64.Create(c0.GetElement(1), c1.GetElement(1));
+            return (oc0, oc1);
+        }
+    }
+
+    #endregion
 }
 
 #endif

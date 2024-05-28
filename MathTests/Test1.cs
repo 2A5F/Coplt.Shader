@@ -28,11 +28,9 @@ public class Test1
         var c1 = new float2(3, 4).UnsafeGetInner();
         var c2 = new float2(5, 6).UnsafeGetInner();
         var c3 = new float2(7, 8).UnsafeGetInner();
-        var r = simd_matrix.Transpose2x4To4x2(c0, c1, c2, c3);
+        var r = simd_matrix.Transpose2x2(c0, c1);
         Console.WriteLine(r.Item1);
         Console.WriteLine(r.Item2);
-        // Console.WriteLine(r.Item3);
-        // Console.WriteLine(r.Item4);
     }
     [Test]
     public void Float()
