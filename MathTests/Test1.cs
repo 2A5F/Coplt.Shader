@@ -11,15 +11,28 @@ public class Test1
     [Test]
     public void Transpose4x4()
     {
-        var c0 = new long4(1, 2, 3, 4).UnsafeGetInner();
-        var c1 = new long4(5, 6, 7, 8).UnsafeGetInner();
-        var c2 = new long4(9, 10, 11, 12).UnsafeGetInner();
-        var c3 = new long4(13, 14, 15, 16).UnsafeGetInner();
-        var r = simd_matrix.Transpose4x4(c0, c1, c2, c3);
+        var c0 = new float4(1, 2, 3, 4).UnsafeGetInner();
+        var c1 = new float4(5, 6, 7, 8).UnsafeGetInner();
+        var c2 = new float4(9, 10, 11, 12).UnsafeGetInner();
+        var c3 = new float4(13, 14, 15, 16).UnsafeGetInner();
+        var r = simd_matrix.Transpose4x2To2x4(c0, c1);
         Console.WriteLine(r.Item1);
         Console.WriteLine(r.Item2);
         Console.WriteLine(r.Item3);
         Console.WriteLine(r.Item4);
+    }
+    [Test]
+    public void Transpose2()
+    {
+        var c0 = new float2(1, 2).UnsafeGetInner();
+        var c1 = new float2(3, 4).UnsafeGetInner();
+        var c2 = new float2(5, 6).UnsafeGetInner();
+        var c3 = new float2(7, 8).UnsafeGetInner();
+        var r = simd_matrix.Transpose2x4To4x2(c0, c1, c2, c3);
+        Console.WriteLine(r.Item1);
+        Console.WriteLine(r.Item2);
+        // Console.WriteLine(r.Item3);
+        // Console.WriteLine(r.Item4);
     }
     [Test]
     public void Float()

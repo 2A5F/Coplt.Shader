@@ -16,14 +16,14 @@ public static partial class simd_matrix
     {
         if (Sse.IsSupported)
         {
-            var a = Sse.Shuffle(c0, c1, 0x44);
-            var b = Sse.Shuffle(c2, c3, 0x44);
-            var c = Sse.Shuffle(c0, c1, 0xEE);
-            var d = Sse.Shuffle(c2, c3, 0xEE);
-            var oc0 = Sse.Shuffle(a, b, 0x88);
-            var oc1 = Sse.Shuffle(a, b, 0xDD);
-            var oc2 = Sse.Shuffle(c, d, 0x88);
-            var oc3 = Sse.Shuffle(c, d, 0xDD);
+            var a = Sse.Shuffle(c0, c1, 0x44); // a0 a1 b0 b1 => (c0.xy, c1.xy)
+            var b = Sse.Shuffle(c2, c3, 0x44); // a0 a1 b0 b1 => (c2.xy, c3.xy)
+            var c = Sse.Shuffle(c0, c1, 0xEE); // a2 a3 b2 b3 => (c0.yz, c1.yz)
+            var d = Sse.Shuffle(c2, c3, 0xEE); // a2 a3 b2 b3 => (c2.yz, c3.yz)
+            var oc0 = Sse.Shuffle(a, b, 0x88); // a0 a2 b0 b2 => (a.xz, b.xz) => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Sse.Shuffle(a, b, 0xDD); // a1 a3 a1 a3 => (a.yw, b.yw) => (c0.y, c1.y, c2.y, c3.y)
+            var oc2 = Sse.Shuffle(c, d, 0x88); // a0 a2 b0 b2 => (c.xz, d.xz) => (c0.z, c1.z, c2.z, c3.z)
+            var oc3 = Sse.Shuffle(c, d, 0xDD); // a1 a3 a1 a3 => (c.yw, d.yw) => (c0.w, c1.w, c2.w, c3.w)
             return (oc0, oc1, oc2, oc3);
         }
         {
@@ -78,14 +78,14 @@ public static partial class simd_matrix
             var ic1 = c1.AsSingle();
             var ic2 = c2.AsSingle();
             var ic3 = c3.AsSingle();
-            var a = Sse.Shuffle(ic0, ic1, 0x44);
-            var b = Sse.Shuffle(ic2, ic3, 0x44);
-            var c = Sse.Shuffle(ic0, ic1, 0xEE);
-            var d = Sse.Shuffle(ic2, ic3, 0xEE);
-            var oc0 = Sse.Shuffle(a, b, 0x88).AsInt32();
-            var oc1 = Sse.Shuffle(a, b, 0xDD).AsInt32();
-            var oc2 = Sse.Shuffle(c, d, 0x88).AsInt32();
-            var oc3 = Sse.Shuffle(c, d, 0xDD).AsInt32();
+            var a = Sse.Shuffle(ic0, ic1, 0x44); // a0 a1 b0 b1 => (c0.xy, c1.xy)
+            var b = Sse.Shuffle(ic2, ic3, 0x44); // a0 a1 b0 b1 => (c2.xy, c3.xy)
+            var c = Sse.Shuffle(ic0, ic1, 0xEE); // a2 a3 b2 b3 => (c0.yz, c1.yz)
+            var d = Sse.Shuffle(ic2, ic3, 0xEE); // a2 a3 b2 b3 => (c2.yz, c3.yz)
+            var oc0 = Sse.Shuffle(a, b, 0x88).AsInt32(); // a0 a2 b0 b2 => (a.xz, b.xz) => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Sse.Shuffle(a, b, 0xDD).AsInt32(); // a1 a3 a1 a3 => (a.yw, b.yw) => (c0.y, c1.y, c2.y, c3.y)
+            var oc2 = Sse.Shuffle(c, d, 0x88).AsInt32(); // a0 a2 b0 b2 => (c.xz, d.xz) => (c0.z, c1.z, c2.z, c3.z)
+            var oc3 = Sse.Shuffle(c, d, 0xDD).AsInt32(); // a1 a3 a1 a3 => (c.yw, d.yw) => (c0.w, c1.w, c2.w, c3.w)
             return (oc0, oc1, oc2, oc3);
         }
         {
@@ -111,14 +111,14 @@ public static partial class simd_matrix
             var ic1 = c1.AsSingle();
             var ic2 = c2.AsSingle();
             var ic3 = c3.AsSingle();
-            var a = Sse.Shuffle(ic0, ic1, 0x44);
-            var b = Sse.Shuffle(ic2, ic3, 0x44);
-            var c = Sse.Shuffle(ic0, ic1, 0xEE);
-            var d = Sse.Shuffle(ic2, ic3, 0xEE);
-            var oc0 = Sse.Shuffle(a, b, 0x88).AsUInt32();
-            var oc1 = Sse.Shuffle(a, b, 0xDD).AsUInt32();
-            var oc2 = Sse.Shuffle(c, d, 0x88).AsUInt32();
-            var oc3 = Sse.Shuffle(c, d, 0xDD).AsUInt32();
+            var a = Sse.Shuffle(ic0, ic1, 0x44); // a0 a1 b0 b1 => (c0.xy, c1.xy)
+            var b = Sse.Shuffle(ic2, ic3, 0x44); // a0 a1 b0 b1 => (c2.xy, c3.xy)
+            var c = Sse.Shuffle(ic0, ic1, 0xEE); // a2 a3 b2 b3 => (c0.yz, c1.yz)
+            var d = Sse.Shuffle(ic2, ic3, 0xEE); // a2 a3 b2 b3 => (c2.yz, c3.yz)
+            var oc0 = Sse.Shuffle(a, b, 0x88).AsUInt32(); // a0 a2 b0 b2 => (a.xz, b.xz) => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Sse.Shuffle(a, b, 0xDD).AsUInt32(); // a1 a3 a1 a3 => (a.yw, b.yw) => (c0.y, c1.y, c2.y, c3.y)
+            var oc2 = Sse.Shuffle(c, d, 0x88).AsUInt32(); // a0 a2 b0 b2 => (c.xz, d.xz) => (c0.z, c1.z, c2.z, c3.z)
+            var oc3 = Sse.Shuffle(c, d, 0xDD).AsUInt32(); // a1 a3 a1 a3 => (c.yw, d.yw) => (c0.w, c1.w, c2.w, c3.w)
             return (oc0, oc1, oc2, oc3);
         }
         {
