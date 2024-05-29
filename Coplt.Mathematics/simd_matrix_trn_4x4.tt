@@ -52,14 +52,14 @@ public static partial class simd_matrix
 #>
         if (Avx.IsSupported)
         {
-            var a = Avx.Shuffle(c0, c1, 0x0);
-            var b = Avx.Shuffle(c2, c3, 0x0);
-            var c = Avx.Shuffle(c0, c1, 0xF);
-            var d = Avx.Shuffle(c2, c3, 0xF);
-            var oc0 = Avx.Permute2x128(a, b, 0x20);
-            var oc1 = Avx.Permute2x128(c, d, 0x20);
-            var oc2 = Avx.Permute2x128(a, b, 0x31);
-            var oc3 = Avx.Permute2x128(c, d, 0x31);
+            var a = Avx.Shuffle(c0, c1, 0x0); // a0 b0 a2 b2  => (c0.x, c1.x, c0.z, c1.z)
+            var b = Avx.Shuffle(c2, c3, 0x0); // a0 b0 a2 b2  => (c2.x, c3.x, c2.z, c3.z)
+            var c = Avx.Shuffle(c0, c1, 0xF); // a1 b1 a3 b3  => (c0.y, c1.y, c0.w, c1.w)
+            var d = Avx.Shuffle(c2, c3, 0xF); // a1 b1 a3 b3  => (c2.y, c3.y, c2.w, c3.w)
+            var oc0 = Avx.Permute2x128(a, b, 0x20); // a01 b01 => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Avx.Permute2x128(c, d, 0x20); // a01 b01 => (c0.y, c1.y, c2.y, c3.y)
+            var oc2 = Avx.Permute2x128(a, b, 0x31); // a23 b23 => (c0.z, c1.z, c2.z, c3.z)
+            var oc3 = Avx.Permute2x128(c, d, 0x31); // a23 b23 => (c0.w, c1.w, c2.w, c3.w)
             return (oc0, oc1, oc2, oc3);
         }
 <#
@@ -94,14 +94,14 @@ public static partial class simd_matrix
             var ic1 = c1.AsDouble();
             var ic2 = c2.AsDouble();
             var ic3 = c3.AsDouble();
-            var a = Avx.Shuffle(ic0, ic1, 0x0);
-            var b = Avx.Shuffle(ic2, ic3, 0x0);
-            var c = Avx.Shuffle(ic0, ic1, 0xF);
-            var d = Avx.Shuffle(ic2, ic3, 0xF);
-            var oc0 = Avx.Permute2x128(a, b, 0x20).As<#= typ.Type #>();
-            var oc1 = Avx.Permute2x128(c, d, 0x20).As<#= typ.Type #>();
-            var oc2 = Avx.Permute2x128(a, b, 0x31).As<#= typ.Type #>();
-            var oc3 = Avx.Permute2x128(c, d, 0x31).As<#= typ.Type #>();
+            var a = Avx.Shuffle(ic0, ic1, 0x0); // a0 b0 a2 b2  => (c0.x, c1.x, c0.z, c1.z)
+            var b = Avx.Shuffle(ic2, ic3, 0x0); // a0 b0 a2 b2  => (c2.x, c3.x, c2.z, c3.z)
+            var c = Avx.Shuffle(ic0, ic1, 0xF); // a1 b1 a3 b3  => (c0.y, c1.y, c0.w, c1.w)
+            var d = Avx.Shuffle(ic2, ic3, 0xF); // a1 b1 a3 b3  => (c2.y, c3.y, c2.w, c3.w)
+            var oc0 = Avx.Permute2x128(a, b, 0x20).As<#= typ.Type #>(); // a01 b01 => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Avx.Permute2x128(c, d, 0x20).As<#= typ.Type #>(); // a01 b01 => (c0.y, c1.y, c2.y, c3.y)
+            var oc2 = Avx.Permute2x128(a, b, 0x31).As<#= typ.Type #>(); // a23 b23 => (c0.z, c1.z, c2.z, c3.z)
+            var oc3 = Avx.Permute2x128(c, d, 0x31).As<#= typ.Type #>(); // a23 b23 => (c0.w, c1.w, c2.w, c3.w)
             return (oc0, oc1, oc2, oc3);
         }
 <#

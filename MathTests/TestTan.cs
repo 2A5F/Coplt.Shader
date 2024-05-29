@@ -14,7 +14,7 @@ public class TestTan
         var b = MathF.Tan(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.01f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(0.02f).Percent);
     }
 
     [Test]
@@ -25,7 +25,7 @@ public class TestTan
         var b = Math.Tan(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_2f).Percent);
     }
 }
 

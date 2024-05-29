@@ -79,6 +79,54 @@ public static partial class simd_matrix
     }
 
     #endregion
+
+    #region Transpose 4x2 To 2x4 double
+
+    [MethodImpl(256 | 512)]
+    public static (Vector128<double> c0, Vector128<double> c1, Vector128<double> c2, Vector128<double> c3) Transpose4x2To2x4(
+        Vector256<double> c0, Vector256<double> c1
+    )
+    {
+        if (Avx.IsSupported)
+        {
+            var a = Avx.Shuffle(c0, c1, 0x0); // a0 b0 a2 b2  => (c0.x, c1.x, c0.z, c1.z)
+            var c = Avx.Shuffle(c0, c1, 0xF); // a1 b1 a3 b3  => (c0.y, c1.y, c0.w, c1.w)
+            return (a.GetLower(), c.GetLower(), a.GetUpper(), c.GetUpper());
+        }
+        {
+            var oc0 = Vector128.Create(c0.GetElement(0), c1.GetElement(0));
+            var oc1 = Vector128.Create(c0.GetElement(1), c1.GetElement(1));
+            var oc2 = Vector128.Create(c0.GetElement(2), c1.GetElement(2));
+            var oc3 = Vector128.Create(c0.GetElement(3), c1.GetElement(3));
+            return (oc0, oc1, oc2, oc3);
+        }
+    }
+
+    #endregion
+
+    #region Transpose 2x4 To 4x2 double
+
+    [MethodImpl(256 | 512)]
+    public static (Vector256<double> c0, Vector256<double> c1) Transpose2x4To4x2(
+        Vector128<double> c0, Vector128<double> c1, Vector128<double> c2, Vector128<double> c3
+    )
+    {
+        if (Avx.IsSupported)
+        {
+            var a = Vector256.Create(c0, c2);
+            var b = Vector256.Create(c1, c3);
+            var oc0 = Avx.Shuffle(a, b, 0x0); // a0 b0 a2 b2 => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Avx.Shuffle(a, b, 0xF); // a1 b1 a3 b3 => (c0.y, c1.y, c2.y, c3.y)
+            return (oc0, oc1);
+        }
+        {
+            var oc0 = Vector256.Create(c0.GetElement(0), c1.GetElement(0), c2.GetElement(0), c3.GetElement(0));
+            var oc1 = Vector256.Create(c0.GetElement(1), c1.GetElement(1), c2.GetElement(1), c3.GetElement(1));
+            return (oc0, oc1);
+        }
+    }
+
+    #endregion
 }
 
 #endif

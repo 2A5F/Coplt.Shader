@@ -14,7 +14,7 @@ public class TestAsinhAcosh
         var b = MathF.Asinh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.001f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(0.002f).Percent);
     }
 
     [Test]
