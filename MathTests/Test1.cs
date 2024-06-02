@@ -11,15 +11,15 @@ public class Test1
     [Test]
     public void Transpose4x4()
     {
-        var c0 = new float4(1, 2, 3, 4).UnsafeGetInner();
-        var c1 = new float4(5, 6, 7, 8).UnsafeGetInner();
-        var c2 = new float4(9, 10, 11, 12).UnsafeGetInner();
-        var c3 = new float4(13, 14, 15, 16).UnsafeGetInner();
-        var r = simd_matrix.Transpose4x4(c0, c1, c2, c3);
+        var c0 = new double4(1, 2, 3, 4).UnsafeGetInner();
+        var c1 = new double4(5, 6, 7, 8).UnsafeGetInner();
+        var c2 = new double4(9, 10, 11, 12).UnsafeGetInner();
+        var c3 = new double4(13, 14, 15, 16).UnsafeGetInner();
+        var r = simd_matrix.Transpose3x3(c0, c1, c2);
         Console.WriteLine(r.Item1);
         Console.WriteLine(r.Item2);
         Console.WriteLine(r.Item3);
-        Console.WriteLine(r.Item4);
+        // Console.WriteLine(r.Item4);
     }
     [Test]
     public void Transpose2()

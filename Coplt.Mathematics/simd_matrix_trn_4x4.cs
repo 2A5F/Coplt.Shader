@@ -82,11 +82,11 @@ public static partial class simd_matrix
             var b = Sse.Shuffle(ic2, ic3, 0x44); // a0 a1 b0 b1 => (c2.xy, c3.xy)
             var c = Sse.Shuffle(ic0, ic1, 0xEE); // a2 a3 b2 b3 => (c0.yz, c1.yz)
             var d = Sse.Shuffle(ic2, ic3, 0xEE); // a2 a3 b2 b3 => (c2.yz, c3.yz)
-            var oc0 = Sse.Shuffle(a, b, 0x88).AsInt32(); // a0 a2 b0 b2 => (a.xz, b.xz) => (c0.x, c1.x, c2.x, c3.x)
-            var oc1 = Sse.Shuffle(a, b, 0xDD).AsInt32(); // a1 a3 a1 a3 => (a.yw, b.yw) => (c0.y, c1.y, c2.y, c3.y)
-            var oc2 = Sse.Shuffle(c, d, 0x88).AsInt32(); // a0 a2 b0 b2 => (c.xz, d.xz) => (c0.z, c1.z, c2.z, c3.z)
-            var oc3 = Sse.Shuffle(c, d, 0xDD).AsInt32(); // a1 a3 a1 a3 => (c.yw, d.yw) => (c0.w, c1.w, c2.w, c3.w)
-            return (oc0, oc1, oc2, oc3);
+            var oc0 = Sse.Shuffle(a, b, 0x88); // a0 a2 b0 b2 => (a.xz, b.xz) => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Sse.Shuffle(a, b, 0xDD); // a1 a3 a1 a3 => (a.yw, b.yw) => (c0.y, c1.y, c2.y, c3.y)
+            var oc2 = Sse.Shuffle(c, d, 0x88); // a0 a2 b0 b2 => (c.xz, d.xz) => (c0.z, c1.z, c2.z, c3.z)
+            var oc3 = Sse.Shuffle(c, d, 0xDD); // a1 a3 a1 a3 => (c.yw, d.yw) => (c0.w, c1.w, c2.w, c3.w)
+            return (oc0.AsInt32(), oc1.AsInt32(), oc2.AsInt32(), oc3.AsInt32());
         }
         {
             var oc0 = Vector128.Create(c0.GetElement(0), c1.GetElement(0), c2.GetElement(0), c3.GetElement(0));
@@ -115,11 +115,11 @@ public static partial class simd_matrix
             var b = Sse.Shuffle(ic2, ic3, 0x44); // a0 a1 b0 b1 => (c2.xy, c3.xy)
             var c = Sse.Shuffle(ic0, ic1, 0xEE); // a2 a3 b2 b3 => (c0.yz, c1.yz)
             var d = Sse.Shuffle(ic2, ic3, 0xEE); // a2 a3 b2 b3 => (c2.yz, c3.yz)
-            var oc0 = Sse.Shuffle(a, b, 0x88).AsUInt32(); // a0 a2 b0 b2 => (a.xz, b.xz) => (c0.x, c1.x, c2.x, c3.x)
-            var oc1 = Sse.Shuffle(a, b, 0xDD).AsUInt32(); // a1 a3 a1 a3 => (a.yw, b.yw) => (c0.y, c1.y, c2.y, c3.y)
-            var oc2 = Sse.Shuffle(c, d, 0x88).AsUInt32(); // a0 a2 b0 b2 => (c.xz, d.xz) => (c0.z, c1.z, c2.z, c3.z)
-            var oc3 = Sse.Shuffle(c, d, 0xDD).AsUInt32(); // a1 a3 a1 a3 => (c.yw, d.yw) => (c0.w, c1.w, c2.w, c3.w)
-            return (oc0, oc1, oc2, oc3);
+            var oc0 = Sse.Shuffle(a, b, 0x88); // a0 a2 b0 b2 => (a.xz, b.xz) => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Sse.Shuffle(a, b, 0xDD); // a1 a3 a1 a3 => (a.yw, b.yw) => (c0.y, c1.y, c2.y, c3.y)
+            var oc2 = Sse.Shuffle(c, d, 0x88); // a0 a2 b0 b2 => (c.xz, d.xz) => (c0.z, c1.z, c2.z, c3.z)
+            var oc3 = Sse.Shuffle(c, d, 0xDD); // a1 a3 a1 a3 => (c.yw, d.yw) => (c0.w, c1.w, c2.w, c3.w)
+            return (oc0.AsUInt32(), oc1.AsUInt32(), oc2.AsUInt32(), oc3.AsUInt32());
         }
         {
             var oc0 = Vector128.Create(c0.GetElement(0), c1.GetElement(0), c2.GetElement(0), c3.GetElement(0));
@@ -148,11 +148,11 @@ public static partial class simd_matrix
             var b = Avx.Shuffle(ic2, ic3, 0x0); // a0 b0 a2 b2  => (c2.x, c3.x, c2.z, c3.z)
             var c = Avx.Shuffle(ic0, ic1, 0xF); // a1 b1 a3 b3  => (c0.y, c1.y, c0.w, c1.w)
             var d = Avx.Shuffle(ic2, ic3, 0xF); // a1 b1 a3 b3  => (c2.y, c3.y, c2.w, c3.w)
-            var oc0 = Avx.Permute2x128(a, b, 0x20).AsInt64(); // a01 b01 => (c0.x, c1.x, c2.x, c3.x)
-            var oc1 = Avx.Permute2x128(c, d, 0x20).AsInt64(); // a01 b01 => (c0.y, c1.y, c2.y, c3.y)
-            var oc2 = Avx.Permute2x128(a, b, 0x31).AsInt64(); // a23 b23 => (c0.z, c1.z, c2.z, c3.z)
-            var oc3 = Avx.Permute2x128(c, d, 0x31).AsInt64(); // a23 b23 => (c0.w, c1.w, c2.w, c3.w)
-            return (oc0, oc1, oc2, oc3);
+            var oc0 = Avx.Permute2x128(a, b, 0x20); // a01 b01 => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Avx.Permute2x128(c, d, 0x20); // a01 b01 => (c0.y, c1.y, c2.y, c3.y)
+            var oc2 = Avx.Permute2x128(a, b, 0x31); // a23 b23 => (c0.z, c1.z, c2.z, c3.z)
+            var oc3 = Avx.Permute2x128(c, d, 0x31); // a23 b23 => (c0.w, c1.w, c2.w, c3.w)
+            return (oc0.AsInt64(), oc1.AsInt64(), oc2.AsInt64(), oc3.AsInt64());
         }
         {
             var oc0 = Vector256.Create(c0.GetElement(0), c1.GetElement(0), c2.GetElement(0), c3.GetElement(0));
@@ -181,11 +181,11 @@ public static partial class simd_matrix
             var b = Avx.Shuffle(ic2, ic3, 0x0); // a0 b0 a2 b2  => (c2.x, c3.x, c2.z, c3.z)
             var c = Avx.Shuffle(ic0, ic1, 0xF); // a1 b1 a3 b3  => (c0.y, c1.y, c0.w, c1.w)
             var d = Avx.Shuffle(ic2, ic3, 0xF); // a1 b1 a3 b3  => (c2.y, c3.y, c2.w, c3.w)
-            var oc0 = Avx.Permute2x128(a, b, 0x20).AsUInt64(); // a01 b01 => (c0.x, c1.x, c2.x, c3.x)
-            var oc1 = Avx.Permute2x128(c, d, 0x20).AsUInt64(); // a01 b01 => (c0.y, c1.y, c2.y, c3.y)
-            var oc2 = Avx.Permute2x128(a, b, 0x31).AsUInt64(); // a23 b23 => (c0.z, c1.z, c2.z, c3.z)
-            var oc3 = Avx.Permute2x128(c, d, 0x31).AsUInt64(); // a23 b23 => (c0.w, c1.w, c2.w, c3.w)
-            return (oc0, oc1, oc2, oc3);
+            var oc0 = Avx.Permute2x128(a, b, 0x20); // a01 b01 => (c0.x, c1.x, c2.x, c3.x)
+            var oc1 = Avx.Permute2x128(c, d, 0x20); // a01 b01 => (c0.y, c1.y, c2.y, c3.y)
+            var oc2 = Avx.Permute2x128(a, b, 0x31); // a23 b23 => (c0.z, c1.z, c2.z, c3.z)
+            var oc3 = Avx.Permute2x128(c, d, 0x31); // a23 b23 => (c0.w, c1.w, c2.w, c3.w)
+            return (oc0.AsUInt64(), oc1.AsUInt64(), oc2.AsUInt64(), oc3.AsUInt64());
         }
         {
             var oc0 = Vector256.Create(c0.GetElement(0), c1.GetElement(0), c2.GetElement(0), c3.GetElement(0));

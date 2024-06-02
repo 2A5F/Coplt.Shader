@@ -21,6 +21,9 @@
         <TextTemplate Include="mat.json.tt" />
         <TextTemplate Include="mat.str.tt" />
         <TextTemplate Include="simd_matrix_trn_2x2.tt" />
+        <TextTemplate Include="simd_matrix_trn_2x4_to_4x2.tt" />
+        <TextTemplate Include="simd_matrix_trn_3x3.tt" />
+        <TextTemplate Include="simd_matrix_trn_4x2_to_2x4.tt" />
         <TextTemplate Include="simd_matrix_trn_4x4.tt" />
         <TextTemplate Include="vec.arith.float.bin.tt" />
         <TextTemplate Include="vec.arith.float.tt" />
