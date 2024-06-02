@@ -570,6 +570,250 @@ public partial struct double3
 
 #endregion // double3
 
+#region short3
+
+public partial struct short3 
+{
+    public short2 xx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x);
+    }
+    public short2 rr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x);
+    }
+    public short2 xy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; }
+    }
+    public short2 rg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; }
+    }
+    public short2 xz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; }
+    }
+    public short2 rb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; }
+    }
+    public short2 yx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; }
+    }
+    public short2 gr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; }
+    }
+    public short2 yy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y);
+    }
+    public short2 gg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y);
+    }
+    public short2 yz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; }
+    }
+    public short2 gb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; }
+    }
+    public short2 zx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; }
+    }
+    public short2 br
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; }
+    }
+    public short2 zy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; }
+    }
+    public short2 bg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; }
+    }
+    public short2 zz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z);
+    }
+    public short2 bb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z);
+    }
+}
+
+#endregion // short3
+
+#region ushort3
+
+public partial struct ushort3 
+{
+    public ushort2 xx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x);
+    }
+    public ushort2 rr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x);
+    }
+    public ushort2 xy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; }
+    }
+    public ushort2 rg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; }
+    }
+    public ushort2 xz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; }
+    }
+    public ushort2 rb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; }
+    }
+    public ushort2 yx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; }
+    }
+    public ushort2 gr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; }
+    }
+    public ushort2 yy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y);
+    }
+    public ushort2 gg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y);
+    }
+    public ushort2 yz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; }
+    }
+    public ushort2 gb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; }
+    }
+    public ushort2 zx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; }
+    }
+    public ushort2 br
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; }
+    }
+    public ushort2 zy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; }
+    }
+    public ushort2 bg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; }
+    }
+    public ushort2 zz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z);
+    }
+    public ushort2 bb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z);
+    }
+}
+
+#endregion // ushort3
+
 #region int3
 
 public partial struct int3 

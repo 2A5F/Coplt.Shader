@@ -590,6 +590,21 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double fma(this double a, double b, double c) => a * b + c;
     #endif
+    
+    [MethodImpl(256 | 512)]
+    public static ushort fma(this ushort a, ushort b, ushort c) => (ushort)(a * b + c);
+    [MethodImpl(256 | 512)]
+    public static short fma(this short a, short b, short c) => (short)(a * b + c);
+    [MethodImpl(256 | 512)]
+    public static uint fma(this uint a, uint b, uint c) => a * b + c;
+    [MethodImpl(256 | 512)]
+    public static int fma(this int a, int b, int c) => a * b + c;
+    [MethodImpl(256 | 512)]
+    public static ulong fma(this ulong a, ulong b, ulong c) => a * b + c;
+    [MethodImpl(256 | 512)]
+    public static long fma(this long a, long b, long c) => a * b + c;
+    [MethodImpl(256 | 512)]
+    public static decimal fma(this decimal a, decimal b, decimal c) => a * b + c;
 
     #endregion
 

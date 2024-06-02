@@ -260,6 +260,264 @@ public partial struct double4 : IFormattable
 
 #endregion // double4
 
+#region short2
+
+public partial struct short2 : IFormattable
+    #if NET8_0_OR_GREATER
+    , ISpanFormattable
+    , IUtf8SpanFormattable
+    #endif
+{
+    public override string ToString() => $"short2({x}, {y})";
+
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"short2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
+
+    public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "short2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
+        return true;
+    }
+
+    #if NET8_0_OR_GREATER
+    public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "short2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
+        return true;
+    }
+    #endif
+}
+
+#endregion // short2
+
+#region short3
+
+public partial struct short3 : IFormattable
+    #if NET8_0_OR_GREATER
+    , ISpanFormattable
+    , IUtf8SpanFormattable
+    #endif
+{
+    public override string ToString() => $"short3({x}, {y}, {z})";
+
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"short3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
+
+    public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "short3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
+        return true;
+    }
+
+    #if NET8_0_OR_GREATER
+    public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "short3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
+        return true;
+    }
+    #endif
+}
+
+#endregion // short3
+
+#region short4
+
+public partial struct short4 : IFormattable
+    #if NET8_0_OR_GREATER
+    , ISpanFormattable
+    , IUtf8SpanFormattable
+    #endif
+{
+    public override string ToString() => $"short4({x}, {y}, {z}, {w})";
+
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"short4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
+
+    public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "short4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
+        return true;
+    }
+
+    #if NET8_0_OR_GREATER
+    public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "short4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
+        return true;
+    }
+    #endif
+}
+
+#endregion // short4
+
+#region ushort2
+
+public partial struct ushort2 : IFormattable
+    #if NET8_0_OR_GREATER
+    , ISpanFormattable
+    , IUtf8SpanFormattable
+    #endif
+{
+    public override string ToString() => $"ushort2({x}, {y})";
+
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ushort2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
+
+    public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "ushort2(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
+        return true;
+    }
+
+    #if NET8_0_OR_GREATER
+    public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "ushort2("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
+        return true;
+    }
+    #endif
+}
+
+#endregion // ushort2
+
+#region ushort3
+
+public partial struct ushort3 : IFormattable
+    #if NET8_0_OR_GREATER
+    , ISpanFormattable
+    , IUtf8SpanFormattable
+    #endif
+{
+    public override string ToString() => $"ushort3({x}, {y}, {z})";
+
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ushort3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
+
+    public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "ushort3(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
+        return true;
+    }
+
+    #if NET8_0_OR_GREATER
+    public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "ushort3("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
+        return true;
+    }
+    #endif
+}
+
+#endregion // ushort3
+
+#region ushort4
+
+public partial struct ushort4 : IFormattable
+    #if NET8_0_OR_GREATER
+    , ISpanFormattable
+    , IUtf8SpanFormattable
+    #endif
+{
+    public override string ToString() => $"ushort4({x}, {y}, {z}, {w})";
+
+    public string ToString(string? format, IFormatProvider? formatProvider) => $"ushort4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
+
+    public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "ushort4(")) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", ")) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")")) return false;
+        return true;
+    }
+
+    #if NET8_0_OR_GREATER
+    public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        nc = 0;
+        if (!TryFormatPart(ref dst, ref nc, "ushort4("u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, x, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, y, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, z, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ", "u8)) return false;
+        if (!TryFormatPart(ref dst, ref nc, w, format, provider)) return false;
+        if (!TryFormatPart(ref dst, ref nc, ")"u8)) return false;
+        return true;
+    }
+    #endif
+}
+
+#endregion // ushort4
+
 #region int2
 
 public partial struct int2 : IFormattable

@@ -130,12 +130,12 @@ public partial struct float4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        get => new(vector & Vector128.Create(-1, -1, -1, 0).AsSingle());
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
-            Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -148,12 +148,12 @@ public partial struct float4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        get => new(vector & Vector128.Create(-1, -1, -1, 0).AsSingle());
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
-            Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -170,7 +170,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -188,7 +188,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -226,7 +226,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -244,7 +244,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -282,7 +282,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -300,7 +300,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -338,7 +338,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -356,7 +356,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -374,7 +374,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -392,7 +392,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -470,7 +470,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -488,7 +488,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -506,7 +506,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -524,7 +524,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -622,7 +622,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -640,7 +640,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -698,7 +698,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -716,7 +716,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -734,7 +734,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -752,7 +752,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -790,7 +790,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -808,7 +808,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -866,7 +866,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -884,7 +884,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -922,7 +922,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -940,7 +940,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -958,7 +958,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -976,7 +976,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1034,7 +1034,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -1052,7 +1052,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -1150,7 +1150,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -1168,7 +1168,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -1186,7 +1186,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -1204,7 +1204,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -1282,7 +1282,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1300,7 +1300,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1318,7 +1318,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1336,7 +1336,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1374,7 +1374,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1392,7 +1392,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1430,7 +1430,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1448,7 +1448,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1486,7 +1486,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1504,7 +1504,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1522,7 +1522,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1540,7 +1540,7 @@ public partial struct float4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsSingle(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1802,12 +1802,12 @@ public partial struct double4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        get => new(vector & Vector256.Create(-1, -1, -1, 0).AsDouble());
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
-            Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -1820,12 +1820,12 @@ public partial struct double4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        get => new(vector & Vector256.Create(-1, -1, -1, 0).AsDouble());
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
-            Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -1842,7 +1842,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -1860,7 +1860,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -1898,7 +1898,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1916,7 +1916,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -1954,7 +1954,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -1972,7 +1972,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -2010,7 +2010,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2028,7 +2028,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2046,7 +2046,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2064,7 +2064,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2142,7 +2142,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2160,7 +2160,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2178,7 +2178,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -2196,7 +2196,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -2294,7 +2294,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2312,7 +2312,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2370,7 +2370,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -2388,7 +2388,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -2406,7 +2406,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2424,7 +2424,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2462,7 +2462,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2480,7 +2480,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2538,7 +2538,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2556,7 +2556,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2594,7 +2594,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -2612,7 +2612,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -2630,7 +2630,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2648,7 +2648,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2706,7 +2706,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -2724,7 +2724,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -2822,7 +2822,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2840,7 +2840,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2858,7 +2858,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2876,7 +2876,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -2954,7 +2954,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2972,7 +2972,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -2990,7 +2990,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3008,7 +3008,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3046,7 +3046,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3064,7 +3064,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3102,7 +3102,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3120,7 +3120,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3158,7 +3158,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3176,7 +3176,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3194,7 +3194,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3212,7 +3212,7 @@ public partial struct double4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsDouble(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3346,6 +3346,1494 @@ public partial struct double4
 
 #endregion // double4
 
+#region short4
+
+public partial struct short4 
+{
+    public short3 xxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public short3 rrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public short3 xxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public short3 rrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public short3 xxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public short3 rrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public short3 xxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w);
+    }
+    public short3 rra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w);
+    }
+    public short3 xyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public short3 rgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public short3 xyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public short3 rgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public short3 xyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; z = value.z; }
+    }
+    public short3 rgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; z = value.z; }
+    }
+    public short3 xyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; w = value.z; }
+    }
+    public short3 rga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; w = value.z; }
+    }
+    public short3 xzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public short3 rbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public short3 xzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; y = value.z; }
+    }
+    public short3 rbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; y = value.z; }
+    }
+    public short3 xzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public short3 rbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public short3 xzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; w = value.z; }
+    }
+    public short3 rba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; w = value.z; }
+    }
+    public short3 xwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x);
+    }
+    public short3 rar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x);
+    }
+    public short3 xwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; y = value.z; }
+    }
+    public short3 rag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; y = value.z; }
+    }
+    public short3 xwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; z = value.z; }
+    }
+    public short3 rab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; z = value.z; }
+    }
+    public short3 xww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w);
+    }
+    public short3 raa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w);
+    }
+    public short3 yxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public short3 grr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public short3 yxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public short3 grg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public short3 yxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; z = value.z; }
+    }
+    public short3 grb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; z = value.z; }
+    }
+    public short3 yxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; w = value.z; }
+    }
+    public short3 gra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; w = value.z; }
+    }
+    public short3 yyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public short3 ggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public short3 yyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public short3 ggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public short3 yyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public short3 ggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public short3 yyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w);
+    }
+    public short3 gga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w);
+    }
+    public short3 yzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; x = value.z; }
+    }
+    public short3 gbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; x = value.z; }
+    }
+    public short3 yzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public short3 gbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public short3 yzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public short3 gbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public short3 yzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; w = value.z; }
+    }
+    public short3 gba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; w = value.z; }
+    }
+    public short3 ywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; x = value.z; }
+    }
+    public short3 gar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; x = value.z; }
+    }
+    public short3 ywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y);
+    }
+    public short3 gag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y);
+    }
+    public short3 ywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; z = value.z; }
+    }
+    public short3 gab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; z = value.z; }
+    }
+    public short3 yww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w);
+    }
+    public short3 gaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w);
+    }
+    public short3 zxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public short3 brr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public short3 zxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; y = value.z; }
+    }
+    public short3 brg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; y = value.z; }
+    }
+    public short3 zxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public short3 brb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public short3 zxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; w = value.z; }
+    }
+    public short3 bra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; w = value.z; }
+    }
+    public short3 zyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; x = value.z; }
+    }
+    public short3 bgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; x = value.z; }
+    }
+    public short3 zyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public short3 bgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public short3 zyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public short3 bgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public short3 zyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; w = value.z; }
+    }
+    public short3 bga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; w = value.z; }
+    }
+    public short3 zzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public short3 bbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public short3 zzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public short3 bbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public short3 zzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public short3 bbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public short3 zzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w);
+    }
+    public short3 bba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w);
+    }
+    public short3 zwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; x = value.z; }
+    }
+    public short3 bar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; x = value.z; }
+    }
+    public short3 zwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; y = value.z; }
+    }
+    public short3 bag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; y = value.z; }
+    }
+    public short3 zwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z);
+    }
+    public short3 bab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z);
+    }
+    public short3 zww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w);
+    }
+    public short3 baa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w);
+    }
+    public short3 wxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x);
+    }
+    public short3 arr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x);
+    }
+    public short3 wxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; y = value.z; }
+    }
+    public short3 arg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; y = value.z; }
+    }
+    public short3 wxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; z = value.z; }
+    }
+    public short3 arb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; z = value.z; }
+    }
+    public short3 wxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w);
+    }
+    public short3 ara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w);
+    }
+    public short3 wyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; x = value.z; }
+    }
+    public short3 agr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; x = value.z; }
+    }
+    public short3 wyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y);
+    }
+    public short3 agg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y);
+    }
+    public short3 wyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; z = value.z; }
+    }
+    public short3 agb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; z = value.z; }
+    }
+    public short3 wyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w);
+    }
+    public short3 aga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w);
+    }
+    public short3 wzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; x = value.z; }
+    }
+    public short3 abr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; x = value.z; }
+    }
+    public short3 wzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; y = value.z; }
+    }
+    public short3 abg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; y = value.z; }
+    }
+    public short3 wzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z);
+    }
+    public short3 abb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z);
+    }
+    public short3 wzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w);
+    }
+    public short3 aba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w);
+    }
+    public short3 wwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x);
+    }
+    public short3 aar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x);
+    }
+    public short3 wwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y);
+    }
+    public short3 aag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y);
+    }
+    public short3 wwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z);
+    }
+    public short3 aab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z);
+    }
+    public short3 www
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w);
+    }
+    public short3 aaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w);
+    }
+}
+
+#endregion // short4
+
+#region ushort4
+
+public partial struct ushort4 
+{
+    public ushort3 xxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public ushort3 rrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public ushort3 xxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public ushort3 rrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public ushort3 xxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public ushort3 rrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public ushort3 xxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w);
+    }
+    public ushort3 rra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w);
+    }
+    public ushort3 xyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public ushort3 rgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public ushort3 xyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public ushort3 rgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public ushort3 xyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; z = value.z; }
+    }
+    public ushort3 rgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; z = value.z; }
+    }
+    public ushort3 xyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; w = value.z; }
+    }
+    public ushort3 rga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; y = value.y; w = value.z; }
+    }
+    public ushort3 xzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public ushort3 rbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public ushort3 xzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; y = value.z; }
+    }
+    public ushort3 rbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; y = value.z; }
+    }
+    public ushort3 xzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public ushort3 rbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public ushort3 xzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; w = value.z; }
+    }
+    public ushort3 rba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; z = value.y; w = value.z; }
+    }
+    public ushort3 xwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x);
+    }
+    public ushort3 rar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x);
+    }
+    public ushort3 xwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; y = value.z; }
+    }
+    public ushort3 rag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; y = value.z; }
+    }
+    public ushort3 xwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; z = value.z; }
+    }
+    public ushort3 rab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z);
+        [MethodImpl(256 | 512)]
+        set { x = value.x; w = value.y; z = value.z; }
+    }
+    public ushort3 xww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w);
+    }
+    public ushort3 raa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w);
+    }
+    public ushort3 yxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public ushort3 grr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public ushort3 yxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public ushort3 grg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public ushort3 yxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; z = value.z; }
+    }
+    public ushort3 grb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; z = value.z; }
+    }
+    public ushort3 yxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; w = value.z; }
+    }
+    public ushort3 gra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; x = value.y; w = value.z; }
+    }
+    public ushort3 yyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public ushort3 ggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public ushort3 yyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public ushort3 ggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public ushort3 yyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public ushort3 ggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public ushort3 yyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w);
+    }
+    public ushort3 gga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w);
+    }
+    public ushort3 yzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; x = value.z; }
+    }
+    public ushort3 gbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; x = value.z; }
+    }
+    public ushort3 yzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public ushort3 gbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public ushort3 yzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public ushort3 gbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public ushort3 yzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; w = value.z; }
+    }
+    public ushort3 gba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; z = value.y; w = value.z; }
+    }
+    public ushort3 ywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; x = value.z; }
+    }
+    public ushort3 gar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; x = value.z; }
+    }
+    public ushort3 ywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y);
+    }
+    public ushort3 gag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y);
+    }
+    public ushort3 ywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; z = value.z; }
+    }
+    public ushort3 gab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z);
+        [MethodImpl(256 | 512)]
+        set { y = value.x; w = value.y; z = value.z; }
+    }
+    public ushort3 yww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w);
+    }
+    public ushort3 gaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w);
+    }
+    public ushort3 zxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public ushort3 brr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public ushort3 zxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; y = value.z; }
+    }
+    public ushort3 brg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; y = value.z; }
+    }
+    public ushort3 zxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public ushort3 brb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public ushort3 zxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; w = value.z; }
+    }
+    public ushort3 bra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; x = value.y; w = value.z; }
+    }
+    public ushort3 zyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; x = value.z; }
+    }
+    public ushort3 bgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; x = value.z; }
+    }
+    public ushort3 zyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public ushort3 bgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public ushort3 zyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public ushort3 bgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public ushort3 zyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; w = value.z; }
+    }
+    public ushort3 bga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; y = value.y; w = value.z; }
+    }
+    public ushort3 zzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public ushort3 bbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public ushort3 zzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public ushort3 bbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public ushort3 zzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public ushort3 bbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public ushort3 zzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w);
+    }
+    public ushort3 bba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w);
+    }
+    public ushort3 zwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; x = value.z; }
+    }
+    public ushort3 bar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; x = value.z; }
+    }
+    public ushort3 zwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; y = value.z; }
+    }
+    public ushort3 bag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y);
+        [MethodImpl(256 | 512)]
+        set { z = value.x; w = value.y; y = value.z; }
+    }
+    public ushort3 zwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z);
+    }
+    public ushort3 bab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z);
+    }
+    public ushort3 zww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w);
+    }
+    public ushort3 baa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w);
+    }
+    public ushort3 wxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x);
+    }
+    public ushort3 arr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x);
+    }
+    public ushort3 wxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; y = value.z; }
+    }
+    public ushort3 arg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; y = value.z; }
+    }
+    public ushort3 wxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; z = value.z; }
+    }
+    public ushort3 arb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; x = value.y; z = value.z; }
+    }
+    public ushort3 wxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w);
+    }
+    public ushort3 ara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w);
+    }
+    public ushort3 wyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; x = value.z; }
+    }
+    public ushort3 agr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; x = value.z; }
+    }
+    public ushort3 wyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y);
+    }
+    public ushort3 agg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y);
+    }
+    public ushort3 wyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; z = value.z; }
+    }
+    public ushort3 agb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; y = value.y; z = value.z; }
+    }
+    public ushort3 wyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w);
+    }
+    public ushort3 aga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w);
+    }
+    public ushort3 wzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; x = value.z; }
+    }
+    public ushort3 abr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; x = value.z; }
+    }
+    public ushort3 wzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; y = value.z; }
+    }
+    public ushort3 abg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y);
+        [MethodImpl(256 | 512)]
+        set { w = value.x; z = value.y; y = value.z; }
+    }
+    public ushort3 wzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z);
+    }
+    public ushort3 abb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z);
+    }
+    public ushort3 wzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w);
+    }
+    public ushort3 aba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w);
+    }
+    public ushort3 wwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x);
+    }
+    public ushort3 aar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x);
+    }
+    public ushort3 wwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y);
+    }
+    public ushort3 aag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y);
+    }
+    public ushort3 wwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z);
+    }
+    public ushort3 aab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z);
+    }
+    public ushort3 www
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w);
+    }
+    public ushort3 aaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w);
+    }
+}
+
+#endregion // ushort4
+
 #region int4
 
 public partial struct int4 
@@ -3474,12 +4962,12 @@ public partial struct int4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        get => new(vector & Vector128.Create(-1, -1, -1, 0).AsInt32());
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
-            Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -3492,12 +4980,12 @@ public partial struct int4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector128.Shuffle(vector, Vector128.Create(0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsInt32());
+        get => new(vector & Vector128.Create(-1, -1, -1, 0).AsInt32());
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
-            Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -3514,7 +5002,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -3532,7 +5020,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -3570,7 +5058,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3588,7 +5076,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3626,7 +5114,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -3644,7 +5132,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -3682,7 +5170,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -3700,7 +5188,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -3718,7 +5206,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -3736,7 +5224,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -3814,7 +5302,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3832,7 +5320,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3850,7 +5338,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -3868,7 +5356,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -3966,7 +5454,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -3984,7 +5472,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4042,7 +5530,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -4060,7 +5548,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -4078,7 +5566,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -4096,7 +5584,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -4134,7 +5622,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -4152,7 +5640,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -4210,7 +5698,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4228,7 +5716,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4266,7 +5754,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -4284,7 +5772,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -4302,7 +5790,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4320,7 +5808,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4378,7 +5866,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -4396,7 +5884,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -4494,7 +5982,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -4512,7 +6000,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -4530,7 +6018,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -4548,7 +6036,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -4626,7 +6114,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4644,7 +6132,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4662,7 +6150,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4680,7 +6168,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4718,7 +6206,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4736,7 +6224,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4774,7 +6262,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4792,7 +6280,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4830,7 +6318,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4848,7 +6336,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4866,7 +6354,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -4884,7 +6372,7 @@ public partial struct int4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5146,12 +6634,12 @@ public partial struct uint4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        get => new(vector & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
-            Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -5164,12 +6652,12 @@ public partial struct uint4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        get => new(vector & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
-            Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -5186,7 +6674,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5204,7 +6692,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5242,7 +6730,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5260,7 +6748,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5298,7 +6786,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5316,7 +6804,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5354,7 +6842,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -5372,7 +6860,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -5390,7 +6878,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -5408,7 +6896,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -5486,7 +6974,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5504,7 +6992,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5522,7 +7010,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5540,7 +7028,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5638,7 +7126,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5656,7 +7144,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5714,7 +7202,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5732,7 +7220,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5750,7 +7238,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -5768,7 +7256,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -5806,7 +7294,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -5824,7 +7312,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -5882,7 +7370,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5900,7 +7388,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5938,7 +7426,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5956,7 +7444,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -5974,7 +7462,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -5992,7 +7480,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6050,7 +7538,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -6068,7 +7556,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -6166,7 +7654,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -6184,7 +7672,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -6202,7 +7690,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -6220,7 +7708,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -6298,7 +7786,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6316,7 +7804,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6334,7 +7822,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6352,7 +7840,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6390,7 +7878,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6408,7 +7896,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6446,7 +7934,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6464,7 +7952,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6502,7 +7990,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6520,7 +8008,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6538,7 +8026,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6556,7 +8044,7 @@ public partial struct uint4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6818,12 +8306,12 @@ public partial struct long4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        get => new(vector & Vector256.Create(-1, -1, -1, 0).AsInt64());
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
-            Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -6836,12 +8324,12 @@ public partial struct long4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector256.Shuffle(vector, Vector256.Create(0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsInt64());
+        get => new(vector & Vector256.Create(-1, -1, -1, 0).AsInt64());
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
-            Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -6858,7 +8346,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -6876,7 +8364,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -6914,7 +8402,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6932,7 +8420,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -6970,7 +8458,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -6988,7 +8476,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -7026,7 +8514,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7044,7 +8532,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7062,7 +8550,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7080,7 +8568,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7158,7 +8646,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -7176,7 +8664,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -7194,7 +8682,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -7212,7 +8700,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -7310,7 +8798,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -7328,7 +8816,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -7386,7 +8874,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -7404,7 +8892,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -7422,7 +8910,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7440,7 +8928,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7478,7 +8966,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7496,7 +8984,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7554,7 +9042,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -7572,7 +9060,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -7610,7 +9098,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -7628,7 +9116,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -7646,7 +9134,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -7664,7 +9152,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -7722,7 +9210,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -7740,7 +9228,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -7838,7 +9326,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7856,7 +9344,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7874,7 +9362,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7892,7 +9380,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -7970,7 +9458,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -7988,7 +9476,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8006,7 +9494,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8024,7 +9512,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8062,7 +9550,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8080,7 +9568,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8118,7 +9606,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8136,7 +9624,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8174,7 +9662,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8192,7 +9680,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8210,7 +9698,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8228,7 +9716,7 @@ public partial struct long4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create(0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8490,12 +9978,12 @@ public partial struct ulong4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        get => new(vector & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
-            Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -8508,12 +9996,12 @@ public partial struct ulong4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        get => new(vector & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
-            Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -8530,7 +10018,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -8548,7 +10036,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -8586,7 +10074,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8604,7 +10092,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8642,7 +10130,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -8660,7 +10148,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -8698,7 +10186,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -8716,7 +10204,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -8734,7 +10222,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -8752,7 +10240,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -8830,7 +10318,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8848,7 +10336,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -8866,7 +10354,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -8884,7 +10372,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -8982,7 +10470,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9000,7 +10488,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9058,7 +10546,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -9076,7 +10564,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -9094,7 +10582,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -9112,7 +10600,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -9150,7 +10638,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -9168,7 +10656,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -9226,7 +10714,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9244,7 +10732,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9282,7 +10770,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -9300,7 +10788,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -9318,7 +10806,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9336,7 +10824,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9394,7 +10882,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -9412,7 +10900,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -9510,7 +10998,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -9528,7 +11016,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -9546,7 +11034,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -9564,7 +11052,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -9642,7 +11130,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9660,7 +11148,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9678,7 +11166,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9696,7 +11184,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9734,7 +11222,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9752,7 +11240,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9790,7 +11278,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9808,7 +11296,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9846,7 +11334,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9864,7 +11352,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9882,7 +11370,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -9900,7 +11388,7 @@ public partial struct ulong4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -12394,12 +13882,12 @@ public partial struct b32v4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        get => new(vector & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
-            Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -12412,12 +13900,12 @@ public partial struct b32v4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector128.Shuffle(vector, Vector128.Create((uint)0, 1, 2, 3)) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
+        get => new(vector & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
-            Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -12434,7 +13922,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -12452,7 +13940,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -12490,7 +13978,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -12508,7 +13996,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -12546,7 +14034,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -12564,7 +14052,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -12602,7 +14090,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -12620,7 +14108,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -12638,7 +14126,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -12656,7 +14144,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -12734,7 +14222,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -12752,7 +14240,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -12770,7 +14258,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -12788,7 +14276,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -12886,7 +14374,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -12904,7 +14392,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -12962,7 +14450,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -12980,7 +14468,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -12998,7 +14486,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -13016,7 +14504,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -13054,7 +14542,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -13072,7 +14560,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -13130,7 +14618,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13148,7 +14636,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13186,7 +14674,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -13204,7 +14692,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -13222,7 +14710,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13240,7 +14728,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, 0, -1).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13298,7 +14786,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -13316,7 +14804,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -13414,7 +14902,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -13432,7 +14920,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -13450,7 +14938,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -13468,7 +14956,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -13546,7 +15034,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13564,7 +15052,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13582,7 +15070,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13600,7 +15088,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13638,7 +15126,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13656,7 +15144,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, 0, -1, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13694,7 +15182,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13712,7 +15200,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13750,7 +15238,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13768,7 +15256,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(0, -1, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13786,7 +15274,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -13804,7 +15292,7 @@ public partial struct b32v4
         [MethodImpl(256 | 512)]
         set => vector = Vector128.ConditionalSelect(
             Vector128.Create(-1, 0, 0, 0).AsUInt32(), 
-            vector, 
+            vector,
             Vector128.Shuffle(value.vector, Vector128.Create((uint)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14066,12 +15554,12 @@ public partial struct b64v4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        get => new(vector & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
-            Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -14084,12 +15572,12 @@ public partial struct b64v4
     {
 #if NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
-        get => new(Vector256.Shuffle(vector, Vector256.Create((ulong)0, 1, 2, 3)) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
+        get => new(vector & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
-            Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
+            vector,
+            value.vector
         );
 #else // NET8_0_OR_GREATER
         [MethodImpl(256 | 512)]
@@ -14106,7 +15594,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14124,7 +15612,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14162,7 +15650,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14180,7 +15668,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14218,7 +15706,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14236,7 +15724,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14274,7 +15762,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -14292,7 +15780,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -14310,7 +15798,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -14328,7 +15816,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -14406,7 +15894,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14424,7 +15912,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14442,7 +15930,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14460,7 +15948,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14558,7 +16046,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14576,7 +16064,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14634,7 +16122,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14652,7 +16140,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 1, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14670,7 +16158,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -14688,7 +16176,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -14726,7 +16214,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -14744,7 +16232,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 0, 2, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -14802,7 +16290,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14820,7 +16308,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14858,7 +16346,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14876,7 +16364,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14894,7 +16382,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14912,7 +16400,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, 0, -1).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -14970,7 +16458,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -14988,7 +16476,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 0, 2))
         );
 #else // NET8_0_OR_GREATER
@@ -15086,7 +16574,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -15104,7 +16592,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -15122,7 +16610,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -15140,7 +16628,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 0, 1))
         );
 #else // NET8_0_OR_GREATER
@@ -15218,7 +16706,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15236,7 +16724,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 2, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15254,7 +16742,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15272,7 +16760,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)1, 0, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15310,7 +16798,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15328,7 +16816,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, 0, -1, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 1, 0, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15366,7 +16854,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15384,7 +16872,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 1, 2, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15422,7 +16910,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15440,7 +16928,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(0, -1, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)2, 0, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15458,7 +16946,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER
@@ -15476,7 +16964,7 @@ public partial struct b64v4
         [MethodImpl(256 | 512)]
         set => vector = Vector256.ConditionalSelect(
             Vector256.Create(-1, 0, 0, 0).AsUInt64(), 
-            vector, 
+            vector,
             Vector256.Shuffle(value.vector, Vector256.Create((ulong)0, 2, 1, 0))
         );
 #else // NET8_0_OR_GREATER

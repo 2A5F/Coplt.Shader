@@ -10430,6 +10430,5334 @@ public partial struct double4
 
 #endregion // double4
 
+#region short4
+
+public partial struct short4 
+{
+    public short4 xxxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, x);
+    }
+    public short4 rrrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, x);
+    }
+    public short4 xxxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, y);
+    }
+    public short4 rrrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, y);
+    }
+    public short4 xxxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, z);
+    }
+    public short4 rrrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, z);
+    }
+    public short4 xxxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, w);
+    }
+    public short4 rrra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, w);
+    }
+    public short4 xxyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, x);
+    }
+    public short4 rrgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, x);
+    }
+    public short4 xxyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, y);
+    }
+    public short4 rrgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, y);
+    }
+    public short4 xxyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, z);
+    }
+    public short4 rrgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, z);
+    }
+    public short4 xxyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, w);
+    }
+    public short4 rrga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, w);
+    }
+    public short4 xxzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, x);
+    }
+    public short4 rrbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, x);
+    }
+    public short4 xxzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, y);
+    }
+    public short4 rrbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, y);
+    }
+    public short4 xxzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, z);
+    }
+    public short4 rrbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, z);
+    }
+    public short4 xxzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, w);
+    }
+    public short4 rrba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, w);
+    }
+    public short4 xxwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, x);
+    }
+    public short4 rrar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, x);
+    }
+    public short4 xxwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, y);
+    }
+    public short4 rrag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, y);
+    }
+    public short4 xxwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, z);
+    }
+    public short4 rrab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, z);
+    }
+    public short4 xxww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, w);
+    }
+    public short4 rraa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, w);
+    }
+    public short4 xyxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, x);
+    }
+    public short4 rgrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, x);
+    }
+    public short4 xyxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, y);
+    }
+    public short4 rgrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, y);
+    }
+    public short4 xyxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, z);
+    }
+    public short4 rgrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, z);
+    }
+    public short4 xyxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, w);
+    }
+    public short4 rgra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, w);
+    }
+    public short4 xyyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, x);
+    }
+    public short4 rggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, x);
+    }
+    public short4 xyyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, y);
+    }
+    public short4 rggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, y);
+    }
+    public short4 xyyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, z);
+    }
+    public short4 rggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, z);
+    }
+    public short4 xyyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, w);
+    }
+    public short4 rgga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, w);
+    }
+    public short4 xyzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, x);
+    }
+    public short4 rgbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, x);
+    }
+    public short4 xyzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, y);
+    }
+    public short4 rgbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, y);
+    }
+    public short4 xyzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, z);
+    }
+    public short4 rgbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, z);
+    }
+    public short4 xyzw
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public short4 rgba
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public short4 xywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, x);
+    }
+    public short4 rgar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, x);
+    }
+    public short4 xywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, y);
+    }
+    public short4 rgag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, y);
+    }
+    public short4 xywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.xywz;
+    }
+    public short4 rgab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.xywz;
+    }
+    public short4 xyww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, w);
+    }
+    public short4 rgaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, w);
+    }
+    public short4 xzxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, x);
+    }
+    public short4 rbrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, x);
+    }
+    public short4 xzxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, y);
+    }
+    public short4 rbrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, y);
+    }
+    public short4 xzxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, z);
+    }
+    public short4 rbrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, z);
+    }
+    public short4 xzxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, w);
+    }
+    public short4 rbra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, w);
+    }
+    public short4 xzyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, x);
+    }
+    public short4 rbgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, x);
+    }
+    public short4 xzyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, y);
+    }
+    public short4 rbgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, y);
+    }
+    public short4 xzyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, z);
+    }
+    public short4 rbgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, z);
+    }
+    public short4 xzyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzyw;
+    }
+    public short4 rbga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzyw;
+    }
+    public short4 xzzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, x);
+    }
+    public short4 rbbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, x);
+    }
+    public short4 xzzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, y);
+    }
+    public short4 rbbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, y);
+    }
+    public short4 xzzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, z);
+    }
+    public short4 rbbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, z);
+    }
+    public short4 xzzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, w);
+    }
+    public short4 rbba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, w);
+    }
+    public short4 xzwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, x);
+    }
+    public short4 rbar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, x);
+    }
+    public short4 xzwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xwyz;
+    }
+    public short4 rbag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xwyz;
+    }
+    public short4 xzwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, z);
+    }
+    public short4 rbab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, z);
+    }
+    public short4 xzww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, w);
+    }
+    public short4 rbaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, w);
+    }
+    public short4 xwxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, x);
+    }
+    public short4 rarr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, x);
+    }
+    public short4 xwxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, y);
+    }
+    public short4 rarg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, y);
+    }
+    public short4 xwxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, z);
+    }
+    public short4 rarb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, z);
+    }
+    public short4 xwxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, w);
+    }
+    public short4 rara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, w);
+    }
+    public short4 xwyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, x);
+    }
+    public short4 ragr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, x);
+    }
+    public short4 xwyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, y);
+    }
+    public short4 ragg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, y);
+    }
+    public short4 xwyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzwy;
+    }
+    public short4 ragb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzwy;
+    }
+    public short4 xwyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, w);
+    }
+    public short4 raga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, w);
+    }
+    public short4 xwzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, x);
+    }
+    public short4 rabr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, x);
+    }
+    public short4 xwzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xwzy;
+    }
+    public short4 rabg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xwzy;
+    }
+    public short4 xwzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, z);
+    }
+    public short4 rabb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, z);
+    }
+    public short4 xwzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, w);
+    }
+    public short4 raba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, w);
+    }
+    public short4 xwwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, x);
+    }
+    public short4 raar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, x);
+    }
+    public short4 xwwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, y);
+    }
+    public short4 raag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, y);
+    }
+    public short4 xwwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, z);
+    }
+    public short4 raab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, z);
+    }
+    public short4 xwww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, w);
+    }
+    public short4 raaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, w);
+    }
+    public short4 yxxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, x);
+    }
+    public short4 grrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, x);
+    }
+    public short4 yxxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, y);
+    }
+    public short4 grrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, y);
+    }
+    public short4 yxxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, z);
+    }
+    public short4 grrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, z);
+    }
+    public short4 yxxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, w);
+    }
+    public short4 grra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, w);
+    }
+    public short4 yxyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, x);
+    }
+    public short4 grgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, x);
+    }
+    public short4 yxyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, y);
+    }
+    public short4 grgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, y);
+    }
+    public short4 yxyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, z);
+    }
+    public short4 grgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, z);
+    }
+    public short4 yxyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, w);
+    }
+    public short4 grga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, w);
+    }
+    public short4 yxzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, x);
+    }
+    public short4 grbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, x);
+    }
+    public short4 yxzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, y);
+    }
+    public short4 grbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, y);
+    }
+    public short4 yxzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, z);
+    }
+    public short4 grbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, z);
+    }
+    public short4 yxzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxzw;
+    }
+    public short4 grba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxzw;
+    }
+    public short4 yxwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, x);
+    }
+    public short4 grar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, x);
+    }
+    public short4 yxwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, y);
+    }
+    public short4 grag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, y);
+    }
+    public short4 yxwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxwz;
+    }
+    public short4 grab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxwz;
+    }
+    public short4 yxww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, w);
+    }
+    public short4 graa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, w);
+    }
+    public short4 yyxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, x);
+    }
+    public short4 ggrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, x);
+    }
+    public short4 yyxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, y);
+    }
+    public short4 ggrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, y);
+    }
+    public short4 yyxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, z);
+    }
+    public short4 ggrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, z);
+    }
+    public short4 yyxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, w);
+    }
+    public short4 ggra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, w);
+    }
+    public short4 yyyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, x);
+    }
+    public short4 gggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, x);
+    }
+    public short4 yyyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, y);
+    }
+    public short4 gggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, y);
+    }
+    public short4 yyyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, z);
+    }
+    public short4 gggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, z);
+    }
+    public short4 yyyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, w);
+    }
+    public short4 ggga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, w);
+    }
+    public short4 yyzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, x);
+    }
+    public short4 ggbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, x);
+    }
+    public short4 yyzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, y);
+    }
+    public short4 ggbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, y);
+    }
+    public short4 yyzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, z);
+    }
+    public short4 ggbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, z);
+    }
+    public short4 yyzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, w);
+    }
+    public short4 ggba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, w);
+    }
+    public short4 yywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, x);
+    }
+    public short4 ggar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, x);
+    }
+    public short4 yywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, y);
+    }
+    public short4 ggag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, y);
+    }
+    public short4 yywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, z);
+    }
+    public short4 ggab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, z);
+    }
+    public short4 yyww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, w);
+    }
+    public short4 ggaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, w);
+    }
+    public short4 yzxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, x);
+    }
+    public short4 gbrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, x);
+    }
+    public short4 yzxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, y);
+    }
+    public short4 gbrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, y);
+    }
+    public short4 yzxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, z);
+    }
+    public short4 gbrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, z);
+    }
+    public short4 yzxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxyw;
+    }
+    public short4 gbra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxyw;
+    }
+    public short4 yzyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, x);
+    }
+    public short4 gbgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, x);
+    }
+    public short4 yzyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, y);
+    }
+    public short4 gbgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, y);
+    }
+    public short4 yzyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, z);
+    }
+    public short4 gbgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, z);
+    }
+    public short4 yzyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, w);
+    }
+    public short4 gbga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, w);
+    }
+    public short4 yzzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, x);
+    }
+    public short4 gbbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, x);
+    }
+    public short4 yzzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, y);
+    }
+    public short4 gbbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, y);
+    }
+    public short4 yzzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, z);
+    }
+    public short4 gbbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, z);
+    }
+    public short4 yzzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, w);
+    }
+    public short4 gbba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, w);
+    }
+    public short4 yzwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wxyz;
+    }
+    public short4 gbar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wxyz;
+    }
+    public short4 yzwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, y);
+    }
+    public short4 gbag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, y);
+    }
+    public short4 yzwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, z);
+    }
+    public short4 gbab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, z);
+    }
+    public short4 yzww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, w);
+    }
+    public short4 gbaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, w);
+    }
+    public short4 ywxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, x);
+    }
+    public short4 garr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, x);
+    }
+    public short4 ywxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, y);
+    }
+    public short4 garg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, y);
+    }
+    public short4 ywxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxwy;
+    }
+    public short4 garb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxwy;
+    }
+    public short4 ywxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, w);
+    }
+    public short4 gara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, w);
+    }
+    public short4 ywyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, x);
+    }
+    public short4 gagr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, x);
+    }
+    public short4 ywyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, y);
+    }
+    public short4 gagg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, y);
+    }
+    public short4 ywyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, z);
+    }
+    public short4 gagb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, z);
+    }
+    public short4 ywyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, w);
+    }
+    public short4 gaga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, w);
+    }
+    public short4 ywzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wxzy;
+    }
+    public short4 gabr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wxzy;
+    }
+    public short4 ywzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, y);
+    }
+    public short4 gabg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, y);
+    }
+    public short4 ywzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, z);
+    }
+    public short4 gabb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, z);
+    }
+    public short4 ywzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, w);
+    }
+    public short4 gaba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, w);
+    }
+    public short4 ywwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, x);
+    }
+    public short4 gaar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, x);
+    }
+    public short4 ywwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, y);
+    }
+    public short4 gaag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, y);
+    }
+    public short4 ywwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, z);
+    }
+    public short4 gaab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, z);
+    }
+    public short4 ywww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, w);
+    }
+    public short4 gaaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, w);
+    }
+    public short4 zxxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, x);
+    }
+    public short4 brrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, x);
+    }
+    public short4 zxxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, y);
+    }
+    public short4 brrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, y);
+    }
+    public short4 zxxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, z);
+    }
+    public short4 brrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, z);
+    }
+    public short4 zxxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, w);
+    }
+    public short4 brra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, w);
+    }
+    public short4 zxyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, x);
+    }
+    public short4 brgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, x);
+    }
+    public short4 zxyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, y);
+    }
+    public short4 brgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, y);
+    }
+    public short4 zxyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, z);
+    }
+    public short4 brgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, z);
+    }
+    public short4 zxyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzxw;
+    }
+    public short4 brga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzxw;
+    }
+    public short4 zxzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, x);
+    }
+    public short4 brbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, x);
+    }
+    public short4 zxzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, y);
+    }
+    public short4 brbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, y);
+    }
+    public short4 zxzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, z);
+    }
+    public short4 brbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, z);
+    }
+    public short4 zxzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, w);
+    }
+    public short4 brba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, w);
+    }
+    public short4 zxwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, x);
+    }
+    public short4 brar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, x);
+    }
+    public short4 zxwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.ywxz;
+    }
+    public short4 brag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.ywxz;
+    }
+    public short4 zxwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, z);
+    }
+    public short4 brab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, z);
+    }
+    public short4 zxww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, w);
+    }
+    public short4 braa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, w);
+    }
+    public short4 zyxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, x);
+    }
+    public short4 bgrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, x);
+    }
+    public short4 zyxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, y);
+    }
+    public short4 bgrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, y);
+    }
+    public short4 zyxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, z);
+    }
+    public short4 bgrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, z);
+    }
+    public short4 zyxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.zyxw;
+    }
+    public short4 bgra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.zyxw;
+    }
+    public short4 zyyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, x);
+    }
+    public short4 bggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, x);
+    }
+    public short4 zyyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, y);
+    }
+    public short4 bggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, y);
+    }
+    public short4 zyyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, z);
+    }
+    public short4 bggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, z);
+    }
+    public short4 zyyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, w);
+    }
+    public short4 bgga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, w);
+    }
+    public short4 zyzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, x);
+    }
+    public short4 bgbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, x);
+    }
+    public short4 zyzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, y);
+    }
+    public short4 bgbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, y);
+    }
+    public short4 zyzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, z);
+    }
+    public short4 bgbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, z);
+    }
+    public short4 zyzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, w);
+    }
+    public short4 bgba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, w);
+    }
+    public short4 zywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wyxz;
+    }
+    public short4 bgar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wyxz;
+    }
+    public short4 zywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, y);
+    }
+    public short4 bgag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, y);
+    }
+    public short4 zywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, z);
+    }
+    public short4 bgab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, z);
+    }
+    public short4 zyww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, w);
+    }
+    public short4 bgaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, w);
+    }
+    public short4 zzxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, x);
+    }
+    public short4 bbrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, x);
+    }
+    public short4 zzxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, y);
+    }
+    public short4 bbrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, y);
+    }
+    public short4 zzxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, z);
+    }
+    public short4 bbrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, z);
+    }
+    public short4 zzxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, w);
+    }
+    public short4 bbra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, w);
+    }
+    public short4 zzyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, x);
+    }
+    public short4 bbgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, x);
+    }
+    public short4 zzyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, y);
+    }
+    public short4 bbgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, y);
+    }
+    public short4 zzyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, z);
+    }
+    public short4 bbgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, z);
+    }
+    public short4 zzyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, w);
+    }
+    public short4 bbga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, w);
+    }
+    public short4 zzzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, x);
+    }
+    public short4 bbbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, x);
+    }
+    public short4 zzzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, y);
+    }
+    public short4 bbbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, y);
+    }
+    public short4 zzzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, z);
+    }
+    public short4 bbbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, z);
+    }
+    public short4 zzzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, w);
+    }
+    public short4 bbba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, w);
+    }
+    public short4 zzwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, x);
+    }
+    public short4 bbar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, x);
+    }
+    public short4 zzwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, y);
+    }
+    public short4 bbag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, y);
+    }
+    public short4 zzwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, z);
+    }
+    public short4 bbab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, z);
+    }
+    public short4 zzww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, w);
+    }
+    public short4 bbaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, w);
+    }
+    public short4 zwxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, x);
+    }
+    public short4 barr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, x);
+    }
+    public short4 zwxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.zwxy;
+    }
+    public short4 barg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.zwxy;
+    }
+    public short4 zwxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, z);
+    }
+    public short4 barb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, z);
+    }
+    public short4 zwxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, w);
+    }
+    public short4 bara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, w);
+    }
+    public short4 zwyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wzxy;
+    }
+    public short4 bagr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wzxy;
+    }
+    public short4 zwyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, y);
+    }
+    public short4 bagg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, y);
+    }
+    public short4 zwyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, z);
+    }
+    public short4 bagb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, z);
+    }
+    public short4 zwyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, w);
+    }
+    public short4 baga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, w);
+    }
+    public short4 zwzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, x);
+    }
+    public short4 babr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, x);
+    }
+    public short4 zwzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, y);
+    }
+    public short4 babg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, y);
+    }
+    public short4 zwzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, z);
+    }
+    public short4 babb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, z);
+    }
+    public short4 zwzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, w);
+    }
+    public short4 baba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, w);
+    }
+    public short4 zwwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, x);
+    }
+    public short4 baar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, x);
+    }
+    public short4 zwwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, y);
+    }
+    public short4 baag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, y);
+    }
+    public short4 zwwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, z);
+    }
+    public short4 baab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, z);
+    }
+    public short4 zwww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, w);
+    }
+    public short4 baaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, w);
+    }
+    public short4 wxxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, x);
+    }
+    public short4 arrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, x);
+    }
+    public short4 wxxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, y);
+    }
+    public short4 arrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, y);
+    }
+    public short4 wxxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, z);
+    }
+    public short4 arrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, z);
+    }
+    public short4 wxxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, w);
+    }
+    public short4 arra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, w);
+    }
+    public short4 wxyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, x);
+    }
+    public short4 argr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, x);
+    }
+    public short4 wxyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, y);
+    }
+    public short4 argg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, y);
+    }
+    public short4 wxyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzwx;
+    }
+    public short4 argb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzwx;
+    }
+    public short4 wxyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, w);
+    }
+    public short4 arga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, w);
+    }
+    public short4 wxzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, x);
+    }
+    public short4 arbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, x);
+    }
+    public short4 wxzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.ywzx;
+    }
+    public short4 arbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.ywzx;
+    }
+    public short4 wxzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, z);
+    }
+    public short4 arbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, z);
+    }
+    public short4 wxzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, w);
+    }
+    public short4 arba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, w);
+    }
+    public short4 wxwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, x);
+    }
+    public short4 arar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, x);
+    }
+    public short4 wxwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, y);
+    }
+    public short4 arag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, y);
+    }
+    public short4 wxwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, z);
+    }
+    public short4 arab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, z);
+    }
+    public short4 wxww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, w);
+    }
+    public short4 araa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, w);
+    }
+    public short4 wyxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, x);
+    }
+    public short4 agrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, x);
+    }
+    public short4 wyxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, y);
+    }
+    public short4 agrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, y);
+    }
+    public short4 wyxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.zywx;
+    }
+    public short4 agrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.zywx;
+    }
+    public short4 wyxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, w);
+    }
+    public short4 agra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, w);
+    }
+    public short4 wyyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, x);
+    }
+    public short4 aggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, x);
+    }
+    public short4 wyyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, y);
+    }
+    public short4 aggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, y);
+    }
+    public short4 wyyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, z);
+    }
+    public short4 aggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, z);
+    }
+    public short4 wyyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, w);
+    }
+    public short4 agga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, w);
+    }
+    public short4 wyzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wyzx;
+    }
+    public short4 agbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wyzx;
+    }
+    public short4 wyzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, y);
+    }
+    public short4 agbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, y);
+    }
+    public short4 wyzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, z);
+    }
+    public short4 agbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, z);
+    }
+    public short4 wyzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, w);
+    }
+    public short4 agba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, w);
+    }
+    public short4 wywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, x);
+    }
+    public short4 agar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, x);
+    }
+    public short4 wywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, y);
+    }
+    public short4 agag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, y);
+    }
+    public short4 wywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, z);
+    }
+    public short4 agab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, z);
+    }
+    public short4 wyww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, w);
+    }
+    public short4 agaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, w);
+    }
+    public short4 wzxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, x);
+    }
+    public short4 abrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, x);
+    }
+    public short4 wzxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.zwyx;
+    }
+    public short4 abrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.zwyx;
+    }
+    public short4 wzxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, z);
+    }
+    public short4 abrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, z);
+    }
+    public short4 wzxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, w);
+    }
+    public short4 abra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, w);
+    }
+    public short4 wzyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wzyx;
+    }
+    public short4 abgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wzyx;
+    }
+    public short4 wzyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, y);
+    }
+    public short4 abgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, y);
+    }
+    public short4 wzyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, z);
+    }
+    public short4 abgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, z);
+    }
+    public short4 wzyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, w);
+    }
+    public short4 abga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, w);
+    }
+    public short4 wzzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, x);
+    }
+    public short4 abbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, x);
+    }
+    public short4 wzzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, y);
+    }
+    public short4 abbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, y);
+    }
+    public short4 wzzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, z);
+    }
+    public short4 abbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, z);
+    }
+    public short4 wzzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, w);
+    }
+    public short4 abba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, w);
+    }
+    public short4 wzwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, x);
+    }
+    public short4 abar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, x);
+    }
+    public short4 wzwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, y);
+    }
+    public short4 abag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, y);
+    }
+    public short4 wzwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, z);
+    }
+    public short4 abab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, z);
+    }
+    public short4 wzww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, w);
+    }
+    public short4 abaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, w);
+    }
+    public short4 wwxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, x);
+    }
+    public short4 aarr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, x);
+    }
+    public short4 wwxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, y);
+    }
+    public short4 aarg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, y);
+    }
+    public short4 wwxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, z);
+    }
+    public short4 aarb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, z);
+    }
+    public short4 wwxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, w);
+    }
+    public short4 aara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, w);
+    }
+    public short4 wwyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, x);
+    }
+    public short4 aagr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, x);
+    }
+    public short4 wwyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, y);
+    }
+    public short4 aagg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, y);
+    }
+    public short4 wwyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, z);
+    }
+    public short4 aagb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, z);
+    }
+    public short4 wwyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, w);
+    }
+    public short4 aaga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, w);
+    }
+    public short4 wwzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, x);
+    }
+    public short4 aabr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, x);
+    }
+    public short4 wwzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, y);
+    }
+    public short4 aabg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, y);
+    }
+    public short4 wwzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, z);
+    }
+    public short4 aabb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, z);
+    }
+    public short4 wwzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, w);
+    }
+    public short4 aaba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, w);
+    }
+    public short4 wwwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, x);
+    }
+    public short4 aaar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, x);
+    }
+    public short4 wwwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, y);
+    }
+    public short4 aaag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, y);
+    }
+    public short4 wwwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, z);
+    }
+    public short4 aaab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, z);
+    }
+    public short4 wwww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, w);
+    }
+    public short4 aaaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, w);
+    }
+}
+
+#endregion // short4
+
+#region ushort4
+
+public partial struct ushort4 
+{
+    public ushort4 xxxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, x);
+    }
+    public ushort4 rrrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, x);
+    }
+    public ushort4 xxxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, y);
+    }
+    public ushort4 rrrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, y);
+    }
+    public ushort4 xxxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, z);
+    }
+    public ushort4 rrrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, z);
+    }
+    public ushort4 xxxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, w);
+    }
+    public ushort4 rrra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x, w);
+    }
+    public ushort4 xxyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, x);
+    }
+    public ushort4 rrgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, x);
+    }
+    public ushort4 xxyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, y);
+    }
+    public ushort4 rrgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, y);
+    }
+    public ushort4 xxyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, z);
+    }
+    public ushort4 rrgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, z);
+    }
+    public ushort4 xxyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, w);
+    }
+    public ushort4 rrga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y, w);
+    }
+    public ushort4 xxzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, x);
+    }
+    public ushort4 rrbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, x);
+    }
+    public ushort4 xxzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, y);
+    }
+    public ushort4 rrbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, y);
+    }
+    public ushort4 xxzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, z);
+    }
+    public ushort4 rrbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, z);
+    }
+    public ushort4 xxzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, w);
+    }
+    public ushort4 rrba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z, w);
+    }
+    public ushort4 xxwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, x);
+    }
+    public ushort4 rrar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, x);
+    }
+    public ushort4 xxwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, y);
+    }
+    public ushort4 rrag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, y);
+    }
+    public ushort4 xxwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, z);
+    }
+    public ushort4 rrab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, z);
+    }
+    public ushort4 xxww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, w);
+    }
+    public ushort4 rraa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, w, w);
+    }
+    public ushort4 xyxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, x);
+    }
+    public ushort4 rgrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, x);
+    }
+    public ushort4 xyxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, y);
+    }
+    public ushort4 rgrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, y);
+    }
+    public ushort4 xyxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, z);
+    }
+    public ushort4 rgrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, z);
+    }
+    public ushort4 xyxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, w);
+    }
+    public ushort4 rgra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x, w);
+    }
+    public ushort4 xyyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, x);
+    }
+    public ushort4 rggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, x);
+    }
+    public ushort4 xyyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, y);
+    }
+    public ushort4 rggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, y);
+    }
+    public ushort4 xyyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, z);
+    }
+    public ushort4 rggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, z);
+    }
+    public ushort4 xyyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, w);
+    }
+    public ushort4 rgga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y, w);
+    }
+    public ushort4 xyzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, x);
+    }
+    public ushort4 rgbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, x);
+    }
+    public ushort4 xyzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, y);
+    }
+    public ushort4 rgbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, y);
+    }
+    public ushort4 xyzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, z);
+    }
+    public ushort4 rgbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, z, z);
+    }
+    public ushort4 xyzw
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public ushort4 rgba
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public ushort4 xywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, x);
+    }
+    public ushort4 rgar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, x);
+    }
+    public ushort4 xywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, y);
+    }
+    public ushort4 rgag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, y);
+    }
+    public ushort4 xywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.xywz;
+    }
+    public ushort4 rgab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.xywz;
+    }
+    public ushort4 xyww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, w);
+    }
+    public ushort4 rgaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, w, w);
+    }
+    public ushort4 xzxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, x);
+    }
+    public ushort4 rbrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, x);
+    }
+    public ushort4 xzxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, y);
+    }
+    public ushort4 rbrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, y);
+    }
+    public ushort4 xzxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, z);
+    }
+    public ushort4 rbrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, z);
+    }
+    public ushort4 xzxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, w);
+    }
+    public ushort4 rbra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x, w);
+    }
+    public ushort4 xzyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, x);
+    }
+    public ushort4 rbgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, x);
+    }
+    public ushort4 xzyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, y);
+    }
+    public ushort4 rbgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, y);
+    }
+    public ushort4 xzyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, z);
+    }
+    public ushort4 rbgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, z);
+    }
+    public ushort4 xzyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzyw;
+    }
+    public ushort4 rbga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzyw;
+    }
+    public ushort4 xzzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, x);
+    }
+    public ushort4 rbbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, x);
+    }
+    public ushort4 xzzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, y);
+    }
+    public ushort4 rbbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, y);
+    }
+    public ushort4 xzzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, z);
+    }
+    public ushort4 rbbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, z);
+    }
+    public ushort4 xzzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, w);
+    }
+    public ushort4 rbba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z, w);
+    }
+    public ushort4 xzwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, x);
+    }
+    public ushort4 rbar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, x);
+    }
+    public ushort4 xzwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xwyz;
+    }
+    public ushort4 rbag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xwyz;
+    }
+    public ushort4 xzwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, z);
+    }
+    public ushort4 rbab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, z);
+    }
+    public ushort4 xzww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, w);
+    }
+    public ushort4 rbaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, w, w);
+    }
+    public ushort4 xwxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, x);
+    }
+    public ushort4 rarr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, x);
+    }
+    public ushort4 xwxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, y);
+    }
+    public ushort4 rarg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, y);
+    }
+    public ushort4 xwxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, z);
+    }
+    public ushort4 rarb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, z);
+    }
+    public ushort4 xwxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, w);
+    }
+    public ushort4 rara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, x, w);
+    }
+    public ushort4 xwyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, x);
+    }
+    public ushort4 ragr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, x);
+    }
+    public ushort4 xwyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, y);
+    }
+    public ushort4 ragg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, y);
+    }
+    public ushort4 xwyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzwy;
+    }
+    public ushort4 ragb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzwy;
+    }
+    public ushort4 xwyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, w);
+    }
+    public ushort4 raga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, y, w);
+    }
+    public ushort4 xwzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, x);
+    }
+    public ushort4 rabr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, x);
+    }
+    public ushort4 xwzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xwzy;
+    }
+    public ushort4 rabg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xwzy;
+    }
+    public ushort4 xwzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, z);
+    }
+    public ushort4 rabb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, z);
+    }
+    public ushort4 xwzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, w);
+    }
+    public ushort4 raba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, z, w);
+    }
+    public ushort4 xwwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, x);
+    }
+    public ushort4 raar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, x);
+    }
+    public ushort4 xwwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, y);
+    }
+    public ushort4 raag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, y);
+    }
+    public ushort4 xwwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, z);
+    }
+    public ushort4 raab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, z);
+    }
+    public ushort4 xwww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, w);
+    }
+    public ushort4 raaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, w, w, w);
+    }
+    public ushort4 yxxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, x);
+    }
+    public ushort4 grrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, x);
+    }
+    public ushort4 yxxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, y);
+    }
+    public ushort4 grrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, y);
+    }
+    public ushort4 yxxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, z);
+    }
+    public ushort4 grrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, z);
+    }
+    public ushort4 yxxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, w);
+    }
+    public ushort4 grra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x, w);
+    }
+    public ushort4 yxyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, x);
+    }
+    public ushort4 grgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, x);
+    }
+    public ushort4 yxyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, y);
+    }
+    public ushort4 grgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, y);
+    }
+    public ushort4 yxyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, z);
+    }
+    public ushort4 grgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, z);
+    }
+    public ushort4 yxyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, w);
+    }
+    public ushort4 grga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y, w);
+    }
+    public ushort4 yxzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, x);
+    }
+    public ushort4 grbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, x);
+    }
+    public ushort4 yxzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, y);
+    }
+    public ushort4 grbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, y);
+    }
+    public ushort4 yxzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, z);
+    }
+    public ushort4 grbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, z);
+    }
+    public ushort4 yxzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxzw;
+    }
+    public ushort4 grba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxzw;
+    }
+    public ushort4 yxwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, x);
+    }
+    public ushort4 grar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, x);
+    }
+    public ushort4 yxwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, y);
+    }
+    public ushort4 grag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, y);
+    }
+    public ushort4 yxwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxwz;
+    }
+    public ushort4 grab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxwz;
+    }
+    public ushort4 yxww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, w);
+    }
+    public ushort4 graa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, w, w);
+    }
+    public ushort4 yyxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, x);
+    }
+    public ushort4 ggrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, x);
+    }
+    public ushort4 yyxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, y);
+    }
+    public ushort4 ggrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, y);
+    }
+    public ushort4 yyxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, z);
+    }
+    public ushort4 ggrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, z);
+    }
+    public ushort4 yyxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, w);
+    }
+    public ushort4 ggra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x, w);
+    }
+    public ushort4 yyyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, x);
+    }
+    public ushort4 gggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, x);
+    }
+    public ushort4 yyyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, y);
+    }
+    public ushort4 gggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, y);
+    }
+    public ushort4 yyyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, z);
+    }
+    public ushort4 gggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, z);
+    }
+    public ushort4 yyyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, w);
+    }
+    public ushort4 ggga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y, w);
+    }
+    public ushort4 yyzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, x);
+    }
+    public ushort4 ggbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, x);
+    }
+    public ushort4 yyzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, y);
+    }
+    public ushort4 ggbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, y);
+    }
+    public ushort4 yyzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, z);
+    }
+    public ushort4 ggbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, z);
+    }
+    public ushort4 yyzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, w);
+    }
+    public ushort4 ggba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z, w);
+    }
+    public ushort4 yywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, x);
+    }
+    public ushort4 ggar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, x);
+    }
+    public ushort4 yywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, y);
+    }
+    public ushort4 ggag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, y);
+    }
+    public ushort4 yywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, z);
+    }
+    public ushort4 ggab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, z);
+    }
+    public ushort4 yyww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, w);
+    }
+    public ushort4 ggaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, w, w);
+    }
+    public ushort4 yzxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, x);
+    }
+    public ushort4 gbrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, x);
+    }
+    public ushort4 yzxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, y);
+    }
+    public ushort4 gbrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, y);
+    }
+    public ushort4 yzxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, z);
+    }
+    public ushort4 gbrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, z);
+    }
+    public ushort4 yzxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxyw;
+    }
+    public ushort4 gbra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxyw;
+    }
+    public ushort4 yzyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, x);
+    }
+    public ushort4 gbgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, x);
+    }
+    public ushort4 yzyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, y);
+    }
+    public ushort4 gbgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, y);
+    }
+    public ushort4 yzyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, z);
+    }
+    public ushort4 gbgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, z);
+    }
+    public ushort4 yzyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, w);
+    }
+    public ushort4 gbga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y, w);
+    }
+    public ushort4 yzzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, x);
+    }
+    public ushort4 gbbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, x);
+    }
+    public ushort4 yzzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, y);
+    }
+    public ushort4 gbbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, y);
+    }
+    public ushort4 yzzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, z);
+    }
+    public ushort4 gbbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, z);
+    }
+    public ushort4 yzzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, w);
+    }
+    public ushort4 gbba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z, w);
+    }
+    public ushort4 yzwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wxyz;
+    }
+    public ushort4 gbar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wxyz;
+    }
+    public ushort4 yzwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, y);
+    }
+    public ushort4 gbag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, y);
+    }
+    public ushort4 yzwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, z);
+    }
+    public ushort4 gbab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, z);
+    }
+    public ushort4 yzww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, w);
+    }
+    public ushort4 gbaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, w, w);
+    }
+    public ushort4 ywxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, x);
+    }
+    public ushort4 garr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, x);
+    }
+    public ushort4 ywxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, y);
+    }
+    public ushort4 garg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, y);
+    }
+    public ushort4 ywxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxwy;
+    }
+    public ushort4 garb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxwy;
+    }
+    public ushort4 ywxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, w);
+    }
+    public ushort4 gara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, x, w);
+    }
+    public ushort4 ywyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, x);
+    }
+    public ushort4 gagr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, x);
+    }
+    public ushort4 ywyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, y);
+    }
+    public ushort4 gagg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, y);
+    }
+    public ushort4 ywyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, z);
+    }
+    public ushort4 gagb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, z);
+    }
+    public ushort4 ywyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, w);
+    }
+    public ushort4 gaga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, y, w);
+    }
+    public ushort4 ywzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wxzy;
+    }
+    public ushort4 gabr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wxzy;
+    }
+    public ushort4 ywzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, y);
+    }
+    public ushort4 gabg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, y);
+    }
+    public ushort4 ywzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, z);
+    }
+    public ushort4 gabb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, z);
+    }
+    public ushort4 ywzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, w);
+    }
+    public ushort4 gaba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, z, w);
+    }
+    public ushort4 ywwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, x);
+    }
+    public ushort4 gaar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, x);
+    }
+    public ushort4 ywwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, y);
+    }
+    public ushort4 gaag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, y);
+    }
+    public ushort4 ywwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, z);
+    }
+    public ushort4 gaab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, z);
+    }
+    public ushort4 ywww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, w);
+    }
+    public ushort4 gaaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, w, w, w);
+    }
+    public ushort4 zxxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, x);
+    }
+    public ushort4 brrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, x);
+    }
+    public ushort4 zxxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, y);
+    }
+    public ushort4 brrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, y);
+    }
+    public ushort4 zxxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, z);
+    }
+    public ushort4 brrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, z);
+    }
+    public ushort4 zxxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, w);
+    }
+    public ushort4 brra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x, w);
+    }
+    public ushort4 zxyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, x);
+    }
+    public ushort4 brgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, x);
+    }
+    public ushort4 zxyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, y);
+    }
+    public ushort4 brgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, y);
+    }
+    public ushort4 zxyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, z);
+    }
+    public ushort4 brgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, z);
+    }
+    public ushort4 zxyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzxw;
+    }
+    public ushort4 brga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzxw;
+    }
+    public ushort4 zxzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, x);
+    }
+    public ushort4 brbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, x);
+    }
+    public ushort4 zxzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, y);
+    }
+    public ushort4 brbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, y);
+    }
+    public ushort4 zxzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, z);
+    }
+    public ushort4 brbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, z);
+    }
+    public ushort4 zxzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, w);
+    }
+    public ushort4 brba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z, w);
+    }
+    public ushort4 zxwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, x);
+    }
+    public ushort4 brar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, x);
+    }
+    public ushort4 zxwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.ywxz;
+    }
+    public ushort4 brag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.ywxz;
+    }
+    public ushort4 zxwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, z);
+    }
+    public ushort4 brab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, z);
+    }
+    public ushort4 zxww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, w);
+    }
+    public ushort4 braa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, w, w);
+    }
+    public ushort4 zyxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, x);
+    }
+    public ushort4 bgrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, x);
+    }
+    public ushort4 zyxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, y);
+    }
+    public ushort4 bgrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, y);
+    }
+    public ushort4 zyxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, z);
+    }
+    public ushort4 bgrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, z);
+    }
+    public ushort4 zyxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.zyxw;
+    }
+    public ushort4 bgra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x, w);
+        [MethodImpl(256 | 512)]
+        set => this = value.zyxw;
+    }
+    public ushort4 zyyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, x);
+    }
+    public ushort4 bggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, x);
+    }
+    public ushort4 zyyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, y);
+    }
+    public ushort4 bggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, y);
+    }
+    public ushort4 zyyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, z);
+    }
+    public ushort4 bggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, z);
+    }
+    public ushort4 zyyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, w);
+    }
+    public ushort4 bgga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y, w);
+    }
+    public ushort4 zyzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, x);
+    }
+    public ushort4 bgbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, x);
+    }
+    public ushort4 zyzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, y);
+    }
+    public ushort4 bgbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, y);
+    }
+    public ushort4 zyzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, z);
+    }
+    public ushort4 bgbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, z);
+    }
+    public ushort4 zyzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, w);
+    }
+    public ushort4 bgba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z, w);
+    }
+    public ushort4 zywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wyxz;
+    }
+    public ushort4 bgar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wyxz;
+    }
+    public ushort4 zywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, y);
+    }
+    public ushort4 bgag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, y);
+    }
+    public ushort4 zywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, z);
+    }
+    public ushort4 bgab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, z);
+    }
+    public ushort4 zyww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, w);
+    }
+    public ushort4 bgaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, w, w);
+    }
+    public ushort4 zzxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, x);
+    }
+    public ushort4 bbrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, x);
+    }
+    public ushort4 zzxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, y);
+    }
+    public ushort4 bbrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, y);
+    }
+    public ushort4 zzxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, z);
+    }
+    public ushort4 bbrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, z);
+    }
+    public ushort4 zzxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, w);
+    }
+    public ushort4 bbra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x, w);
+    }
+    public ushort4 zzyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, x);
+    }
+    public ushort4 bbgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, x);
+    }
+    public ushort4 zzyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, y);
+    }
+    public ushort4 bbgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, y);
+    }
+    public ushort4 zzyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, z);
+    }
+    public ushort4 bbgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, z);
+    }
+    public ushort4 zzyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, w);
+    }
+    public ushort4 bbga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y, w);
+    }
+    public ushort4 zzzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, x);
+    }
+    public ushort4 bbbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, x);
+    }
+    public ushort4 zzzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, y);
+    }
+    public ushort4 bbbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, y);
+    }
+    public ushort4 zzzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, z);
+    }
+    public ushort4 bbbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, z);
+    }
+    public ushort4 zzzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, w);
+    }
+    public ushort4 bbba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z, w);
+    }
+    public ushort4 zzwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, x);
+    }
+    public ushort4 bbar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, x);
+    }
+    public ushort4 zzwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, y);
+    }
+    public ushort4 bbag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, y);
+    }
+    public ushort4 zzwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, z);
+    }
+    public ushort4 bbab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, z);
+    }
+    public ushort4 zzww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, w);
+    }
+    public ushort4 bbaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, w, w);
+    }
+    public ushort4 zwxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, x);
+    }
+    public ushort4 barr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, x);
+    }
+    public ushort4 zwxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.zwxy;
+    }
+    public ushort4 barg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.zwxy;
+    }
+    public ushort4 zwxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, z);
+    }
+    public ushort4 barb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, z);
+    }
+    public ushort4 zwxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, w);
+    }
+    public ushort4 bara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, x, w);
+    }
+    public ushort4 zwyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wzxy;
+    }
+    public ushort4 bagr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wzxy;
+    }
+    public ushort4 zwyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, y);
+    }
+    public ushort4 bagg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, y);
+    }
+    public ushort4 zwyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, z);
+    }
+    public ushort4 bagb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, z);
+    }
+    public ushort4 zwyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, w);
+    }
+    public ushort4 baga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, y, w);
+    }
+    public ushort4 zwzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, x);
+    }
+    public ushort4 babr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, x);
+    }
+    public ushort4 zwzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, y);
+    }
+    public ushort4 babg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, y);
+    }
+    public ushort4 zwzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, z);
+    }
+    public ushort4 babb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, z);
+    }
+    public ushort4 zwzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, w);
+    }
+    public ushort4 baba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, z, w);
+    }
+    public ushort4 zwwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, x);
+    }
+    public ushort4 baar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, x);
+    }
+    public ushort4 zwwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, y);
+    }
+    public ushort4 baag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, y);
+    }
+    public ushort4 zwwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, z);
+    }
+    public ushort4 baab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, z);
+    }
+    public ushort4 zwww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, w);
+    }
+    public ushort4 baaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, w, w, w);
+    }
+    public ushort4 wxxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, x);
+    }
+    public ushort4 arrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, x);
+    }
+    public ushort4 wxxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, y);
+    }
+    public ushort4 arrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, y);
+    }
+    public ushort4 wxxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, z);
+    }
+    public ushort4 arrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, z);
+    }
+    public ushort4 wxxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, w);
+    }
+    public ushort4 arra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, x, w);
+    }
+    public ushort4 wxyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, x);
+    }
+    public ushort4 argr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, x);
+    }
+    public ushort4 wxyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, y);
+    }
+    public ushort4 argg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, y);
+    }
+    public ushort4 wxyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzwx;
+    }
+    public ushort4 argb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzwx;
+    }
+    public ushort4 wxyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, w);
+    }
+    public ushort4 arga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, y, w);
+    }
+    public ushort4 wxzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, x);
+    }
+    public ushort4 arbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, x);
+    }
+    public ushort4 wxzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.ywzx;
+    }
+    public ushort4 arbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.ywzx;
+    }
+    public ushort4 wxzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, z);
+    }
+    public ushort4 arbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, z);
+    }
+    public ushort4 wxzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, w);
+    }
+    public ushort4 arba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, z, w);
+    }
+    public ushort4 wxwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, x);
+    }
+    public ushort4 arar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, x);
+    }
+    public ushort4 wxwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, y);
+    }
+    public ushort4 arag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, y);
+    }
+    public ushort4 wxwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, z);
+    }
+    public ushort4 arab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, z);
+    }
+    public ushort4 wxww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, w);
+    }
+    public ushort4 araa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, x, w, w);
+    }
+    public ushort4 wyxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, x);
+    }
+    public ushort4 agrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, x);
+    }
+    public ushort4 wyxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, y);
+    }
+    public ushort4 agrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, y);
+    }
+    public ushort4 wyxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.zywx;
+    }
+    public ushort4 agrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.zywx;
+    }
+    public ushort4 wyxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, w);
+    }
+    public ushort4 agra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, x, w);
+    }
+    public ushort4 wyyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, x);
+    }
+    public ushort4 aggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, x);
+    }
+    public ushort4 wyyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, y);
+    }
+    public ushort4 aggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, y);
+    }
+    public ushort4 wyyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, z);
+    }
+    public ushort4 aggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, z);
+    }
+    public ushort4 wyyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, w);
+    }
+    public ushort4 agga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, y, w);
+    }
+    public ushort4 wyzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wyzx;
+    }
+    public ushort4 agbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wyzx;
+    }
+    public ushort4 wyzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, y);
+    }
+    public ushort4 agbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, y);
+    }
+    public ushort4 wyzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, z);
+    }
+    public ushort4 agbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, z);
+    }
+    public ushort4 wyzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, w);
+    }
+    public ushort4 agba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, z, w);
+    }
+    public ushort4 wywx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, x);
+    }
+    public ushort4 agar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, x);
+    }
+    public ushort4 wywy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, y);
+    }
+    public ushort4 agag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, y);
+    }
+    public ushort4 wywz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, z);
+    }
+    public ushort4 agab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, z);
+    }
+    public ushort4 wyww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, w);
+    }
+    public ushort4 agaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, y, w, w);
+    }
+    public ushort4 wzxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, x);
+    }
+    public ushort4 abrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, x);
+    }
+    public ushort4 wzxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.zwyx;
+    }
+    public ushort4 abrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.zwyx;
+    }
+    public ushort4 wzxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, z);
+    }
+    public ushort4 abrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, z);
+    }
+    public ushort4 wzxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, w);
+    }
+    public ushort4 abra
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, x, w);
+    }
+    public ushort4 wzyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wzyx;
+    }
+    public ushort4 abgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.wzyx;
+    }
+    public ushort4 wzyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, y);
+    }
+    public ushort4 abgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, y);
+    }
+    public ushort4 wzyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, z);
+    }
+    public ushort4 abgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, z);
+    }
+    public ushort4 wzyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, w);
+    }
+    public ushort4 abga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, y, w);
+    }
+    public ushort4 wzzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, x);
+    }
+    public ushort4 abbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, x);
+    }
+    public ushort4 wzzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, y);
+    }
+    public ushort4 abbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, y);
+    }
+    public ushort4 wzzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, z);
+    }
+    public ushort4 abbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, z);
+    }
+    public ushort4 wzzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, w);
+    }
+    public ushort4 abba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, z, w);
+    }
+    public ushort4 wzwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, x);
+    }
+    public ushort4 abar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, x);
+    }
+    public ushort4 wzwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, y);
+    }
+    public ushort4 abag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, y);
+    }
+    public ushort4 wzwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, z);
+    }
+    public ushort4 abab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, z);
+    }
+    public ushort4 wzww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, w);
+    }
+    public ushort4 abaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, z, w, w);
+    }
+    public ushort4 wwxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, x);
+    }
+    public ushort4 aarr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, x);
+    }
+    public ushort4 wwxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, y);
+    }
+    public ushort4 aarg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, y);
+    }
+    public ushort4 wwxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, z);
+    }
+    public ushort4 aarb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, z);
+    }
+    public ushort4 wwxw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, w);
+    }
+    public ushort4 aara
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, x, w);
+    }
+    public ushort4 wwyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, x);
+    }
+    public ushort4 aagr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, x);
+    }
+    public ushort4 wwyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, y);
+    }
+    public ushort4 aagg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, y);
+    }
+    public ushort4 wwyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, z);
+    }
+    public ushort4 aagb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, z);
+    }
+    public ushort4 wwyw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, w);
+    }
+    public ushort4 aaga
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, y, w);
+    }
+    public ushort4 wwzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, x);
+    }
+    public ushort4 aabr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, x);
+    }
+    public ushort4 wwzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, y);
+    }
+    public ushort4 aabg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, y);
+    }
+    public ushort4 wwzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, z);
+    }
+    public ushort4 aabb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, z);
+    }
+    public ushort4 wwzw
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, w);
+    }
+    public ushort4 aaba
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, z, w);
+    }
+    public ushort4 wwwx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, x);
+    }
+    public ushort4 aaar
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, x);
+    }
+    public ushort4 wwwy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, y);
+    }
+    public ushort4 aaag
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, y);
+    }
+    public ushort4 wwwz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, z);
+    }
+    public ushort4 aaab
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, z);
+    }
+    public ushort4 wwww
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, w);
+    }
+    public ushort4 aaaa
+    {
+        [MethodImpl(256 | 512)]
+        get => new(w, w, w, w);
+    }
+}
+
+#endregion // ushort4
+
 #region int4
 
 public partial struct int4 

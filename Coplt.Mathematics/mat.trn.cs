@@ -388,6 +388,312 @@ public static partial class math
 
 #endregion // double4x4
 
+#region short2x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2x2 transpose(this short2x2 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x),
+            new(mat.c0.y, mat.c1.y)
+        );
+    }
+}
+
+#endregion // short2x2
+
+#region short2x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3x2 transpose(this short2x3 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y)
+        );
+    }
+}
+
+#endregion // short2x3
+
+#region short2x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4x2 transpose(this short2x4 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x, mat.c3.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y, mat.c3.y)
+        );
+    }
+}
+
+#endregion // short2x4
+
+#region short3x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2x3 transpose(this short3x2 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x),
+            new(mat.c0.y, mat.c1.y),
+            new(mat.c0.z, mat.c1.z)
+        );
+    }
+}
+
+#endregion // short3x2
+
+#region short3x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3x3 transpose(this short3x3 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y),
+            new(mat.c0.z, mat.c1.z, mat.c2.z)
+        );
+    }
+}
+
+#endregion // short3x3
+
+#region short3x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4x3 transpose(this short3x4 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x, mat.c3.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y, mat.c3.y),
+            new(mat.c0.z, mat.c1.z, mat.c2.z, mat.c3.z)
+        );
+    }
+}
+
+#endregion // short3x4
+
+#region short4x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2x4 transpose(this short4x2 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x),
+            new(mat.c0.y, mat.c1.y),
+            new(mat.c0.z, mat.c1.z),
+            new(mat.c0.w, mat.c1.w)
+        );
+    }
+}
+
+#endregion // short4x2
+
+#region short4x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3x4 transpose(this short4x3 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y),
+            new(mat.c0.z, mat.c1.z, mat.c2.z),
+            new(mat.c0.w, mat.c1.w, mat.c2.w)
+        );
+    }
+}
+
+#endregion // short4x3
+
+#region short4x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4x4 transpose(this short4x4 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x, mat.c3.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y, mat.c3.y),
+            new(mat.c0.z, mat.c1.z, mat.c2.z, mat.c3.z),
+            new(mat.c0.w, mat.c1.w, mat.c2.w, mat.c3.w)
+        );
+    }
+}
+
+#endregion // short4x4
+
+#region ushort2x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 transpose(this ushort2x2 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x),
+            new(mat.c0.y, mat.c1.y)
+        );
+    }
+}
+
+#endregion // ushort2x2
+
+#region ushort2x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 transpose(this ushort2x3 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y)
+        );
+    }
+}
+
+#endregion // ushort2x3
+
+#region ushort2x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 transpose(this ushort2x4 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x, mat.c3.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y, mat.c3.y)
+        );
+    }
+}
+
+#endregion // ushort2x4
+
+#region ushort3x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 transpose(this ushort3x2 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x),
+            new(mat.c0.y, mat.c1.y),
+            new(mat.c0.z, mat.c1.z)
+        );
+    }
+}
+
+#endregion // ushort3x2
+
+#region ushort3x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 transpose(this ushort3x3 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y),
+            new(mat.c0.z, mat.c1.z, mat.c2.z)
+        );
+    }
+}
+
+#endregion // ushort3x3
+
+#region ushort3x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 transpose(this ushort3x4 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x, mat.c3.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y, mat.c3.y),
+            new(mat.c0.z, mat.c1.z, mat.c2.z, mat.c3.z)
+        );
+    }
+}
+
+#endregion // ushort3x4
+
+#region ushort4x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 transpose(this ushort4x2 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x),
+            new(mat.c0.y, mat.c1.y),
+            new(mat.c0.z, mat.c1.z),
+            new(mat.c0.w, mat.c1.w)
+        );
+    }
+}
+
+#endregion // ushort4x2
+
+#region ushort4x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 transpose(this ushort4x3 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y),
+            new(mat.c0.z, mat.c1.z, mat.c2.z),
+            new(mat.c0.w, mat.c1.w, mat.c2.w)
+        );
+    }
+}
+
+#endregion // ushort4x3
+
+#region ushort4x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 transpose(this ushort4x4 mat)
+    {
+        return new(
+            new(mat.c0.x, mat.c1.x, mat.c2.x, mat.c3.x),
+            new(mat.c0.y, mat.c1.y, mat.c2.y, mat.c3.y),
+            new(mat.c0.z, mat.c1.z, mat.c2.z, mat.c3.z),
+            new(mat.c0.w, mat.c1.w, mat.c2.w, mat.c3.w)
+        );
+    }
+}
+
+#endregion // ushort4x4
+
 #region int2x2
 
 public static partial class math

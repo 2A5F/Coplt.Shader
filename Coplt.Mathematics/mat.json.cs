@@ -866,6 +866,870 @@ public class double4x4JsonConverter : JsonConverter<double4x4>
 
 #endregion // double4x4
 
+#region short2x2
+
+public class short2x2JsonConverter : JsonConverter<short2x2>
+{
+    public override short2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetInt16();
+        reader.Read();
+        var m01 = reader.GetInt16();
+        reader.Read();
+        var m10 = reader.GetInt16();
+        reader.Read();
+        var m11 = reader.GetInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m10, m11);
+    }
+    public override void Write(Utf8JsonWriter writer, short2x2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // short2x2
+
+#region short2x3
+
+public class short2x3JsonConverter : JsonConverter<short2x3>
+{
+    public override short2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetInt16();
+        reader.Read();
+        var m01 = reader.GetInt16();
+        reader.Read();
+        var m02 = reader.GetInt16();
+        reader.Read();
+        var m10 = reader.GetInt16();
+        reader.Read();
+        var m11 = reader.GetInt16();
+        reader.Read();
+        var m12 = reader.GetInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m10, m11, m12);
+    }
+    public override void Write(Utf8JsonWriter writer, short2x3 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // short2x3
+
+#region short2x4
+
+public class short2x4JsonConverter : JsonConverter<short2x4>
+{
+    public override short2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetInt16();
+        reader.Read();
+        var m01 = reader.GetInt16();
+        reader.Read();
+        var m02 = reader.GetInt16();
+        reader.Read();
+        var m03 = reader.GetInt16();
+        reader.Read();
+        var m10 = reader.GetInt16();
+        reader.Read();
+        var m11 = reader.GetInt16();
+        reader.Read();
+        var m12 = reader.GetInt16();
+        reader.Read();
+        var m13 = reader.GetInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m03, m10, m11, m12, m13);
+    }
+    public override void Write(Utf8JsonWriter writer, short2x4 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m03);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m13);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // short2x4
+
+#region short3x2
+
+public class short3x2JsonConverter : JsonConverter<short3x2>
+{
+    public override short3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetInt16();
+        reader.Read();
+        var m01 = reader.GetInt16();
+        reader.Read();
+        var m10 = reader.GetInt16();
+        reader.Read();
+        var m11 = reader.GetInt16();
+        reader.Read();
+        var m20 = reader.GetInt16();
+        reader.Read();
+        var m21 = reader.GetInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m10, m11, m20, m21);
+    }
+    public override void Write(Utf8JsonWriter writer, short3x2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // short3x2
+
+#region short3x3
+
+public class short3x3JsonConverter : JsonConverter<short3x3>
+{
+    public override short3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetInt16();
+        reader.Read();
+        var m01 = reader.GetInt16();
+        reader.Read();
+        var m02 = reader.GetInt16();
+        reader.Read();
+        var m10 = reader.GetInt16();
+        reader.Read();
+        var m11 = reader.GetInt16();
+        reader.Read();
+        var m12 = reader.GetInt16();
+        reader.Read();
+        var m20 = reader.GetInt16();
+        reader.Read();
+        var m21 = reader.GetInt16();
+        reader.Read();
+        var m22 = reader.GetInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m10, m11, m12, m20, m21, m22);
+    }
+    public override void Write(Utf8JsonWriter writer, short3x3 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m22);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // short3x3
+
+#region short3x4
+
+public class short3x4JsonConverter : JsonConverter<short3x4>
+{
+    public override short3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetInt16();
+        reader.Read();
+        var m01 = reader.GetInt16();
+        reader.Read();
+        var m02 = reader.GetInt16();
+        reader.Read();
+        var m03 = reader.GetInt16();
+        reader.Read();
+        var m10 = reader.GetInt16();
+        reader.Read();
+        var m11 = reader.GetInt16();
+        reader.Read();
+        var m12 = reader.GetInt16();
+        reader.Read();
+        var m13 = reader.GetInt16();
+        reader.Read();
+        var m20 = reader.GetInt16();
+        reader.Read();
+        var m21 = reader.GetInt16();
+        reader.Read();
+        var m22 = reader.GetInt16();
+        reader.Read();
+        var m23 = reader.GetInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23);
+    }
+    public override void Write(Utf8JsonWriter writer, short3x4 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m03);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m13);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m22);
+        writer.WriteNumberValue(value.m23);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // short3x4
+
+#region short4x2
+
+public class short4x2JsonConverter : JsonConverter<short4x2>
+{
+    public override short4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetInt16();
+        reader.Read();
+        var m01 = reader.GetInt16();
+        reader.Read();
+        var m10 = reader.GetInt16();
+        reader.Read();
+        var m11 = reader.GetInt16();
+        reader.Read();
+        var m20 = reader.GetInt16();
+        reader.Read();
+        var m21 = reader.GetInt16();
+        reader.Read();
+        var m30 = reader.GetInt16();
+        reader.Read();
+        var m31 = reader.GetInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m10, m11, m20, m21, m30, m31);
+    }
+    public override void Write(Utf8JsonWriter writer, short4x2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m30);
+        writer.WriteNumberValue(value.m31);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // short4x2
+
+#region short4x3
+
+public class short4x3JsonConverter : JsonConverter<short4x3>
+{
+    public override short4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetInt16();
+        reader.Read();
+        var m01 = reader.GetInt16();
+        reader.Read();
+        var m02 = reader.GetInt16();
+        reader.Read();
+        var m10 = reader.GetInt16();
+        reader.Read();
+        var m11 = reader.GetInt16();
+        reader.Read();
+        var m12 = reader.GetInt16();
+        reader.Read();
+        var m20 = reader.GetInt16();
+        reader.Read();
+        var m21 = reader.GetInt16();
+        reader.Read();
+        var m22 = reader.GetInt16();
+        reader.Read();
+        var m30 = reader.GetInt16();
+        reader.Read();
+        var m31 = reader.GetInt16();
+        reader.Read();
+        var m32 = reader.GetInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m10, m11, m12, m20, m21, m22, m30, m31, m32);
+    }
+    public override void Write(Utf8JsonWriter writer, short4x3 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m22);
+        writer.WriteNumberValue(value.m30);
+        writer.WriteNumberValue(value.m31);
+        writer.WriteNumberValue(value.m32);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // short4x3
+
+#region short4x4
+
+public class short4x4JsonConverter : JsonConverter<short4x4>
+{
+    public override short4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetInt16();
+        reader.Read();
+        var m01 = reader.GetInt16();
+        reader.Read();
+        var m02 = reader.GetInt16();
+        reader.Read();
+        var m03 = reader.GetInt16();
+        reader.Read();
+        var m10 = reader.GetInt16();
+        reader.Read();
+        var m11 = reader.GetInt16();
+        reader.Read();
+        var m12 = reader.GetInt16();
+        reader.Read();
+        var m13 = reader.GetInt16();
+        reader.Read();
+        var m20 = reader.GetInt16();
+        reader.Read();
+        var m21 = reader.GetInt16();
+        reader.Read();
+        var m22 = reader.GetInt16();
+        reader.Read();
+        var m23 = reader.GetInt16();
+        reader.Read();
+        var m30 = reader.GetInt16();
+        reader.Read();
+        var m31 = reader.GetInt16();
+        reader.Read();
+        var m32 = reader.GetInt16();
+        reader.Read();
+        var m33 = reader.GetInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
+    }
+    public override void Write(Utf8JsonWriter writer, short4x4 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m03);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m13);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m22);
+        writer.WriteNumberValue(value.m23);
+        writer.WriteNumberValue(value.m30);
+        writer.WriteNumberValue(value.m31);
+        writer.WriteNumberValue(value.m32);
+        writer.WriteNumberValue(value.m33);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // short4x4
+
+#region ushort2x2
+
+public class ushort2x2JsonConverter : JsonConverter<ushort2x2>
+{
+    public override ushort2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetUInt16();
+        reader.Read();
+        var m01 = reader.GetUInt16();
+        reader.Read();
+        var m10 = reader.GetUInt16();
+        reader.Read();
+        var m11 = reader.GetUInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m10, m11);
+    }
+    public override void Write(Utf8JsonWriter writer, ushort2x2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // ushort2x2
+
+#region ushort2x3
+
+public class ushort2x3JsonConverter : JsonConverter<ushort2x3>
+{
+    public override ushort2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetUInt16();
+        reader.Read();
+        var m01 = reader.GetUInt16();
+        reader.Read();
+        var m02 = reader.GetUInt16();
+        reader.Read();
+        var m10 = reader.GetUInt16();
+        reader.Read();
+        var m11 = reader.GetUInt16();
+        reader.Read();
+        var m12 = reader.GetUInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m10, m11, m12);
+    }
+    public override void Write(Utf8JsonWriter writer, ushort2x3 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // ushort2x3
+
+#region ushort2x4
+
+public class ushort2x4JsonConverter : JsonConverter<ushort2x4>
+{
+    public override ushort2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetUInt16();
+        reader.Read();
+        var m01 = reader.GetUInt16();
+        reader.Read();
+        var m02 = reader.GetUInt16();
+        reader.Read();
+        var m03 = reader.GetUInt16();
+        reader.Read();
+        var m10 = reader.GetUInt16();
+        reader.Read();
+        var m11 = reader.GetUInt16();
+        reader.Read();
+        var m12 = reader.GetUInt16();
+        reader.Read();
+        var m13 = reader.GetUInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m03, m10, m11, m12, m13);
+    }
+    public override void Write(Utf8JsonWriter writer, ushort2x4 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m03);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m13);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // ushort2x4
+
+#region ushort3x2
+
+public class ushort3x2JsonConverter : JsonConverter<ushort3x2>
+{
+    public override ushort3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetUInt16();
+        reader.Read();
+        var m01 = reader.GetUInt16();
+        reader.Read();
+        var m10 = reader.GetUInt16();
+        reader.Read();
+        var m11 = reader.GetUInt16();
+        reader.Read();
+        var m20 = reader.GetUInt16();
+        reader.Read();
+        var m21 = reader.GetUInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m10, m11, m20, m21);
+    }
+    public override void Write(Utf8JsonWriter writer, ushort3x2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // ushort3x2
+
+#region ushort3x3
+
+public class ushort3x3JsonConverter : JsonConverter<ushort3x3>
+{
+    public override ushort3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetUInt16();
+        reader.Read();
+        var m01 = reader.GetUInt16();
+        reader.Read();
+        var m02 = reader.GetUInt16();
+        reader.Read();
+        var m10 = reader.GetUInt16();
+        reader.Read();
+        var m11 = reader.GetUInt16();
+        reader.Read();
+        var m12 = reader.GetUInt16();
+        reader.Read();
+        var m20 = reader.GetUInt16();
+        reader.Read();
+        var m21 = reader.GetUInt16();
+        reader.Read();
+        var m22 = reader.GetUInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m10, m11, m12, m20, m21, m22);
+    }
+    public override void Write(Utf8JsonWriter writer, ushort3x3 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m22);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // ushort3x3
+
+#region ushort3x4
+
+public class ushort3x4JsonConverter : JsonConverter<ushort3x4>
+{
+    public override ushort3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetUInt16();
+        reader.Read();
+        var m01 = reader.GetUInt16();
+        reader.Read();
+        var m02 = reader.GetUInt16();
+        reader.Read();
+        var m03 = reader.GetUInt16();
+        reader.Read();
+        var m10 = reader.GetUInt16();
+        reader.Read();
+        var m11 = reader.GetUInt16();
+        reader.Read();
+        var m12 = reader.GetUInt16();
+        reader.Read();
+        var m13 = reader.GetUInt16();
+        reader.Read();
+        var m20 = reader.GetUInt16();
+        reader.Read();
+        var m21 = reader.GetUInt16();
+        reader.Read();
+        var m22 = reader.GetUInt16();
+        reader.Read();
+        var m23 = reader.GetUInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23);
+    }
+    public override void Write(Utf8JsonWriter writer, ushort3x4 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m03);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m13);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m22);
+        writer.WriteNumberValue(value.m23);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // ushort3x4
+
+#region ushort4x2
+
+public class ushort4x2JsonConverter : JsonConverter<ushort4x2>
+{
+    public override ushort4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetUInt16();
+        reader.Read();
+        var m01 = reader.GetUInt16();
+        reader.Read();
+        var m10 = reader.GetUInt16();
+        reader.Read();
+        var m11 = reader.GetUInt16();
+        reader.Read();
+        var m20 = reader.GetUInt16();
+        reader.Read();
+        var m21 = reader.GetUInt16();
+        reader.Read();
+        var m30 = reader.GetUInt16();
+        reader.Read();
+        var m31 = reader.GetUInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m10, m11, m20, m21, m30, m31);
+    }
+    public override void Write(Utf8JsonWriter writer, ushort4x2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m30);
+        writer.WriteNumberValue(value.m31);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // ushort4x2
+
+#region ushort4x3
+
+public class ushort4x3JsonConverter : JsonConverter<ushort4x3>
+{
+    public override ushort4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetUInt16();
+        reader.Read();
+        var m01 = reader.GetUInt16();
+        reader.Read();
+        var m02 = reader.GetUInt16();
+        reader.Read();
+        var m10 = reader.GetUInt16();
+        reader.Read();
+        var m11 = reader.GetUInt16();
+        reader.Read();
+        var m12 = reader.GetUInt16();
+        reader.Read();
+        var m20 = reader.GetUInt16();
+        reader.Read();
+        var m21 = reader.GetUInt16();
+        reader.Read();
+        var m22 = reader.GetUInt16();
+        reader.Read();
+        var m30 = reader.GetUInt16();
+        reader.Read();
+        var m31 = reader.GetUInt16();
+        reader.Read();
+        var m32 = reader.GetUInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m10, m11, m12, m20, m21, m22, m30, m31, m32);
+    }
+    public override void Write(Utf8JsonWriter writer, ushort4x3 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m22);
+        writer.WriteNumberValue(value.m30);
+        writer.WriteNumberValue(value.m31);
+        writer.WriteNumberValue(value.m32);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // ushort4x3
+
+#region ushort4x4
+
+public class ushort4x4JsonConverter : JsonConverter<ushort4x4>
+{
+    public override ushort4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType is not JsonTokenType.StartArray) 
+            throw new JsonException($"Expected {JsonTokenType.StartArray} but found {reader.TokenType}");
+        reader.Read();
+        var m00 = reader.GetUInt16();
+        reader.Read();
+        var m01 = reader.GetUInt16();
+        reader.Read();
+        var m02 = reader.GetUInt16();
+        reader.Read();
+        var m03 = reader.GetUInt16();
+        reader.Read();
+        var m10 = reader.GetUInt16();
+        reader.Read();
+        var m11 = reader.GetUInt16();
+        reader.Read();
+        var m12 = reader.GetUInt16();
+        reader.Read();
+        var m13 = reader.GetUInt16();
+        reader.Read();
+        var m20 = reader.GetUInt16();
+        reader.Read();
+        var m21 = reader.GetUInt16();
+        reader.Read();
+        var m22 = reader.GetUInt16();
+        reader.Read();
+        var m23 = reader.GetUInt16();
+        reader.Read();
+        var m30 = reader.GetUInt16();
+        reader.Read();
+        var m31 = reader.GetUInt16();
+        reader.Read();
+        var m32 = reader.GetUInt16();
+        reader.Read();
+        var m33 = reader.GetUInt16();
+        if (reader.TokenType is not JsonTokenType.EndArray) 
+            throw new JsonException($"Expected {JsonTokenType.EndArray} but found {reader.TokenType}");
+        return new(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
+    }
+    public override void Write(Utf8JsonWriter writer, ushort4x4 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.m00);
+        writer.WriteNumberValue(value.m01);
+        writer.WriteNumberValue(value.m02);
+        writer.WriteNumberValue(value.m03);
+        writer.WriteNumberValue(value.m10);
+        writer.WriteNumberValue(value.m11);
+        writer.WriteNumberValue(value.m12);
+        writer.WriteNumberValue(value.m13);
+        writer.WriteNumberValue(value.m20);
+        writer.WriteNumberValue(value.m21);
+        writer.WriteNumberValue(value.m22);
+        writer.WriteNumberValue(value.m23);
+        writer.WriteNumberValue(value.m30);
+        writer.WriteNumberValue(value.m31);
+        writer.WriteNumberValue(value.m32);
+        writer.WriteNumberValue(value.m33);
+        writer.WriteEndArray();
+    }
+}
+
+#endregion // ushort4x4
+
 #region int2x2
 
 public class int2x2JsonConverter : JsonConverter<int2x2>

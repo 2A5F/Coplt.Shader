@@ -1126,6 +1126,610 @@ public partial struct double3
 
 #endregion // double3
 
+#region short3
+
+public partial struct short3 
+{
+    public short3 xxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public short3 rrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public short3 xxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public short3 rrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public short3 xxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public short3 rrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public short3 xyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public short3 rgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public short3 xyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public short3 rgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public short3 xyz
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public short3 rgb
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public short3 xzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public short3 rbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public short3 xzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzy;
+    }
+    public short3 rbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzy;
+    }
+    public short3 xzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public short3 rbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public short3 yxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public short3 grr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public short3 yxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public short3 grg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public short3 yxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxz;
+    }
+    public short3 grb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxz;
+    }
+    public short3 yyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public short3 ggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public short3 yyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public short3 ggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public short3 yyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public short3 ggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public short3 yzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxy;
+    }
+    public short3 gbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxy;
+    }
+    public short3 yzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public short3 gbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public short3 yzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public short3 gbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public short3 zxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public short3 brr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public short3 zxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzx;
+    }
+    public short3 brg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzx;
+    }
+    public short3 zxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public short3 brb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public short3 zyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.zyx;
+    }
+    public short3 bgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.zyx;
+    }
+    public short3 zyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public short3 bgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public short3 zyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public short3 bgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public short3 zzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public short3 bbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public short3 zzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public short3 bbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public short3 zzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public short3 bbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+}
+
+#endregion // short3
+
+#region ushort3
+
+public partial struct ushort3 
+{
+    public ushort3 xxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public ushort3 rrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public ushort3 xxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public ushort3 rrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public ushort3 xxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public ushort3 rrb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, z);
+    }
+    public ushort3 xyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public ushort3 rgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public ushort3 xyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public ushort3 rgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public ushort3 xyz
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public ushort3 rgb
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public ushort3 xzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public ushort3 rbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, x);
+    }
+    public ushort3 xzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzy;
+    }
+    public ushort3 rbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.xzy;
+    }
+    public ushort3 xzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public ushort3 rbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, z, z);
+    }
+    public ushort3 yxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public ushort3 grr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public ushort3 yxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public ushort3 grg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public ushort3 yxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxz;
+    }
+    public ushort3 grb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, z);
+        [MethodImpl(256 | 512)]
+        set => this = value.yxz;
+    }
+    public ushort3 yyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public ushort3 ggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public ushort3 yyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public ushort3 ggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public ushort3 yyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public ushort3 ggb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, z);
+    }
+    public ushort3 yzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxy;
+    }
+    public ushort3 gbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.zxy;
+    }
+    public ushort3 yzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public ushort3 gbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, y);
+    }
+    public ushort3 yzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public ushort3 gbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, z, z);
+    }
+    public ushort3 zxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public ushort3 brr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, x);
+    }
+    public ushort3 zxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzx;
+    }
+    public ushort3 brg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, y);
+        [MethodImpl(256 | 512)]
+        set => this = value.yzx;
+    }
+    public ushort3 zxz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public ushort3 brb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, x, z);
+    }
+    public ushort3 zyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.zyx;
+    }
+    public ushort3 bgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.zyx;
+    }
+    public ushort3 zyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public ushort3 bgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, y);
+    }
+    public ushort3 zyz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public ushort3 bgb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, y, z);
+    }
+    public ushort3 zzx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public ushort3 bbr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, x);
+    }
+    public ushort3 zzy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public ushort3 bbg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, y);
+    }
+    public ushort3 zzz
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+    public ushort3 bbb
+    {
+        [MethodImpl(256 | 512)]
+        get => new(z, z, z);
+    }
+}
+
+#endregion // ushort3
+
 #region int3
 
 public partial struct int3 

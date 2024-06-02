@@ -182,6 +182,154 @@ public static partial class math
 
 #endregion // double4
 
+#region short4
+
+public partial struct short4 
+{
+    [MethodImpl(256 | 512)]
+    public short4(short3 xyz, short w)
+    {
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = w;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short4(short x, short3 yzw)
+    {
+        this.x = x;
+        this.y = yzw.x;
+        this.z = yzw.y;
+        this.w = yzw.z;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal short4(short3 xzw, short y, insert_y _)
+    {
+        this.x = xzw.x;
+        this.y = y;
+        this.z = xzw.y;
+        this.w = xzw.z;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal short4(short3 xyw, short z, insert_z _)
+    {
+        this.x = xyw.x;
+        this.y = xyw.y;
+        this.z = z;
+        this.w = xyw.z;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z, w) => (X, y, z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Ix(this short3 yzw, short x) => new(x, yzw);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z, w) => (x, Y, z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Iy(this short3 xzw, short y) => new(xzw, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y, w) => (x, y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Iz(this short3 xyw, short z) => new(xyw, z, new insert_z());
+
+    /// <summary>
+    /// Insert W component
+    /// <code>W -> (x, y, z) => (x, y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Iw(this short3 xyz, short w) => new(xyz, w);
+}
+
+#endregion // short4
+
+#region ushort4
+
+public partial struct ushort4 
+{
+    [MethodImpl(256 | 512)]
+    public ushort4(ushort3 xyz, ushort w)
+    {
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = w;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort4(ushort x, ushort3 yzw)
+    {
+        this.x = x;
+        this.y = yzw.x;
+        this.z = yzw.y;
+        this.w = yzw.z;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal ushort4(ushort3 xzw, ushort y, insert_y _)
+    {
+        this.x = xzw.x;
+        this.y = y;
+        this.z = xzw.y;
+        this.w = xzw.z;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal ushort4(ushort3 xyw, ushort z, insert_z _)
+    {
+        this.x = xyw.x;
+        this.y = xyw.y;
+        this.z = z;
+        this.w = xyw.z;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z, w) => (X, y, z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Ix(this ushort3 yzw, ushort x) => new(x, yzw);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z, w) => (x, Y, z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Iy(this ushort3 xzw, ushort y) => new(xzw, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y, w) => (x, y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Iz(this ushort3 xyw, ushort z) => new(xyw, z, new insert_z());
+
+    /// <summary>
+    /// Insert W component
+    /// <code>W -> (x, y, z) => (x, y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Iw(this ushort3 xyz, ushort w) => new(xyz, w);
+}
+
+#endregion // ushort4
+
 #region int4
 
 public partial struct int4 

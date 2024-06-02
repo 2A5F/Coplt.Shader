@@ -41,7 +41,7 @@ public partial struct <#= typeName #>
 <#
                 }
 #>
-        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"-a.{Typ.xyzw[n]}")) #>);
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"{typ.arithCast}-a.{Typ.xyzw[n]}")) #>);
 <#
                 if (typ.simd)
                 {
@@ -489,6 +489,38 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static <#= typeName #> square(this <#= typeName #> a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> fma(this <#= typeName #> a, <#= typeName #> b, <#= typeName #> c)
+    {
+<#
+            if (typ.simd && typ.f && typ.bin)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(simd.Fma(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.fma(b.{Typ.xyzw[n]}, c.{Typ.xyzw[n]})")) #>);
+<#
+            if (typ.simd && typ.f && typ.bin)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
 }
 
 #endregion // <#= typeName #>

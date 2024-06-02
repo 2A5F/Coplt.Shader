@@ -200,6 +200,204 @@ public static partial class math
 
 #endregion // double4x4
 
+#region short2x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2x2 select(this b16m2x2 c, short2x2 t, short2x2 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1));
+}
+
+#endregion // short2x2
+
+#region short2x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2x3 select(this b16m2x3 c, short2x3 t, short2x3 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2));
+}
+
+#endregion // short2x3
+
+#region short2x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2x4 select(this b16m2x4 c, short2x4 t, short2x4 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2), select(c.c3, t.c3, f.c3));
+}
+
+#endregion // short2x4
+
+#region short3x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3x2 select(this b16m3x2 c, short3x2 t, short3x2 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1));
+}
+
+#endregion // short3x2
+
+#region short3x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3x3 select(this b16m3x3 c, short3x3 t, short3x3 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2));
+}
+
+#endregion // short3x3
+
+#region short3x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3x4 select(this b16m3x4 c, short3x4 t, short3x4 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2), select(c.c3, t.c3, f.c3));
+}
+
+#endregion // short3x4
+
+#region short4x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4x2 select(this b16m4x2 c, short4x2 t, short4x2 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1));
+}
+
+#endregion // short4x2
+
+#region short4x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4x3 select(this b16m4x3 c, short4x3 t, short4x3 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2));
+}
+
+#endregion // short4x3
+
+#region short4x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4x4 select(this b16m4x4 c, short4x4 t, short4x4 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2), select(c.c3, t.c3, f.c3));
+}
+
+#endregion // short4x4
+
+#region ushort2x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 select(this b16m2x2 c, ushort2x2 t, ushort2x2 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1));
+}
+
+#endregion // ushort2x2
+
+#region ushort2x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 select(this b16m2x3 c, ushort2x3 t, ushort2x3 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2));
+}
+
+#endregion // ushort2x3
+
+#region ushort2x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 select(this b16m2x4 c, ushort2x4 t, ushort2x4 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2), select(c.c3, t.c3, f.c3));
+}
+
+#endregion // ushort2x4
+
+#region ushort3x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 select(this b16m3x2 c, ushort3x2 t, ushort3x2 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1));
+}
+
+#endregion // ushort3x2
+
+#region ushort3x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 select(this b16m3x3 c, ushort3x3 t, ushort3x3 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2));
+}
+
+#endregion // ushort3x3
+
+#region ushort3x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 select(this b16m3x4 c, ushort3x4 t, ushort3x4 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2), select(c.c3, t.c3, f.c3));
+}
+
+#endregion // ushort3x4
+
+#region ushort4x2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 select(this b16m4x2 c, ushort4x2 t, ushort4x2 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1));
+}
+
+#endregion // ushort4x2
+
+#region ushort4x3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 select(this b16m4x3 c, ushort4x3 t, ushort4x3 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2));
+}
+
+#endregion // ushort4x3
+
+#region ushort4x4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 select(this b16m4x4 c, ushort4x4 t, ushort4x4 f) =>
+        new(select(c.c0, t.c0, f.c0), select(c.c1, t.c1, f.c1), select(c.c2, t.c2, f.c2), select(c.c3, t.c3, f.c3));
+}
+
+#endregion // ushort4x4
+
 #region int2x2
 
 public static partial class math

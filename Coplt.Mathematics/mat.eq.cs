@@ -830,6 +830,834 @@ public partial struct double4x4 : IEquatable<double4x4>
 
 #endregion // double4x4
 
+#region short2x2
+
+public partial struct short2x2 : IEquatable<short2x2>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<short2x2, short2x2, bool>
+    , IEqualityOperators<short2x2, short2x2, b16m2x2>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(short2x2 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is short2x2 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(short2x2 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(short2x2 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x2 EqualsVector(short2x2 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1));
+
+    [MethodImpl(256 | 512)]
+    public b16m2x2 EqualsVectorNot(short2x2 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short2x2, short2x2, bool>.operator ==(short2x2 left, short2x2 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short2x2, short2x2, bool>.operator !=(short2x2 left, short2x2 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m2x2 operator ==(short2x2 left, short2x2 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m2x2 operator !=(short2x2 left, short2x2 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // short2x2
+
+#region short2x3
+
+public partial struct short2x3 : IEquatable<short2x3>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<short2x3, short2x3, bool>
+    , IEqualityOperators<short2x3, short2x3, b16m2x3>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(short2x3 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is short2x3 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(short2x3 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(short2x3 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x3 EqualsVector(short2x3 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2));
+
+    [MethodImpl(256 | 512)]
+    public b16m2x3 EqualsVectorNot(short2x3 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short2x3, short2x3, bool>.operator ==(short2x3 left, short2x3 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short2x3, short2x3, bool>.operator !=(short2x3 left, short2x3 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m2x3 operator ==(short2x3 left, short2x3 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m2x3 operator !=(short2x3 left, short2x3 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // short2x3
+
+#region short2x4
+
+public partial struct short2x4 : IEquatable<short2x4>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<short2x4, short2x4, bool>
+    , IEqualityOperators<short2x4, short2x4, b16m2x4>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(short2x4 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is short2x4 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode(), c3.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(short2x4 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2) && c3.EqualsAll(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(short2x4 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2) || c3.EqualsAny(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x4 EqualsVector(short2x4 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2), c3.EqualsVector(other.c3));
+
+    [MethodImpl(256 | 512)]
+    public b16m2x4 EqualsVectorNot(short2x4 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2), c3.EqualsVectorNot(other.c3));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short2x4, short2x4, bool>.operator ==(short2x4 left, short2x4 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short2x4, short2x4, bool>.operator !=(short2x4 left, short2x4 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m2x4 operator ==(short2x4 left, short2x4 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m2x4 operator !=(short2x4 left, short2x4 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // short2x4
+
+#region short3x2
+
+public partial struct short3x2 : IEquatable<short3x2>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<short3x2, short3x2, bool>
+    , IEqualityOperators<short3x2, short3x2, b16m3x2>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(short3x2 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is short3x2 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(short3x2 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(short3x2 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x2 EqualsVector(short3x2 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1));
+
+    [MethodImpl(256 | 512)]
+    public b16m3x2 EqualsVectorNot(short3x2 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short3x2, short3x2, bool>.operator ==(short3x2 left, short3x2 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short3x2, short3x2, bool>.operator !=(short3x2 left, short3x2 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m3x2 operator ==(short3x2 left, short3x2 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m3x2 operator !=(short3x2 left, short3x2 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // short3x2
+
+#region short3x3
+
+public partial struct short3x3 : IEquatable<short3x3>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<short3x3, short3x3, bool>
+    , IEqualityOperators<short3x3, short3x3, b16m3x3>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(short3x3 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is short3x3 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(short3x3 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(short3x3 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x3 EqualsVector(short3x3 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2));
+
+    [MethodImpl(256 | 512)]
+    public b16m3x3 EqualsVectorNot(short3x3 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short3x3, short3x3, bool>.operator ==(short3x3 left, short3x3 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short3x3, short3x3, bool>.operator !=(short3x3 left, short3x3 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m3x3 operator ==(short3x3 left, short3x3 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m3x3 operator !=(short3x3 left, short3x3 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // short3x3
+
+#region short3x4
+
+public partial struct short3x4 : IEquatable<short3x4>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<short3x4, short3x4, bool>
+    , IEqualityOperators<short3x4, short3x4, b16m3x4>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(short3x4 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is short3x4 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode(), c3.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(short3x4 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2) && c3.EqualsAll(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(short3x4 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2) || c3.EqualsAny(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x4 EqualsVector(short3x4 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2), c3.EqualsVector(other.c3));
+
+    [MethodImpl(256 | 512)]
+    public b16m3x4 EqualsVectorNot(short3x4 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2), c3.EqualsVectorNot(other.c3));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short3x4, short3x4, bool>.operator ==(short3x4 left, short3x4 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short3x4, short3x4, bool>.operator !=(short3x4 left, short3x4 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m3x4 operator ==(short3x4 left, short3x4 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m3x4 operator !=(short3x4 left, short3x4 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // short3x4
+
+#region short4x2
+
+public partial struct short4x2 : IEquatable<short4x2>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<short4x2, short4x2, bool>
+    , IEqualityOperators<short4x2, short4x2, b16m4x2>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(short4x2 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is short4x2 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(short4x2 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(short4x2 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x2 EqualsVector(short4x2 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1));
+
+    [MethodImpl(256 | 512)]
+    public b16m4x2 EqualsVectorNot(short4x2 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short4x2, short4x2, bool>.operator ==(short4x2 left, short4x2 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short4x2, short4x2, bool>.operator !=(short4x2 left, short4x2 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m4x2 operator ==(short4x2 left, short4x2 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m4x2 operator !=(short4x2 left, short4x2 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // short4x2
+
+#region short4x3
+
+public partial struct short4x3 : IEquatable<short4x3>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<short4x3, short4x3, bool>
+    , IEqualityOperators<short4x3, short4x3, b16m4x3>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(short4x3 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is short4x3 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(short4x3 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(short4x3 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x3 EqualsVector(short4x3 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2));
+
+    [MethodImpl(256 | 512)]
+    public b16m4x3 EqualsVectorNot(short4x3 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short4x3, short4x3, bool>.operator ==(short4x3 left, short4x3 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short4x3, short4x3, bool>.operator !=(short4x3 left, short4x3 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m4x3 operator ==(short4x3 left, short4x3 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m4x3 operator !=(short4x3 left, short4x3 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // short4x3
+
+#region short4x4
+
+public partial struct short4x4 : IEquatable<short4x4>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<short4x4, short4x4, bool>
+    , IEqualityOperators<short4x4, short4x4, b16m4x4>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(short4x4 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is short4x4 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode(), c3.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(short4x4 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2) && c3.EqualsAll(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(short4x4 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2) || c3.EqualsAny(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x4 EqualsVector(short4x4 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2), c3.EqualsVector(other.c3));
+
+    [MethodImpl(256 | 512)]
+    public b16m4x4 EqualsVectorNot(short4x4 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2), c3.EqualsVectorNot(other.c3));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short4x4, short4x4, bool>.operator ==(short4x4 left, short4x4 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<short4x4, short4x4, bool>.operator !=(short4x4 left, short4x4 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m4x4 operator ==(short4x4 left, short4x4 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m4x4 operator !=(short4x4 left, short4x4 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // short4x4
+
+#region ushort2x2
+
+public partial struct ushort2x2 : IEquatable<ushort2x2>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<ushort2x2, ushort2x2, bool>
+    , IEqualityOperators<ushort2x2, ushort2x2, b16m2x2>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(ushort2x2 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is ushort2x2 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(ushort2x2 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(ushort2x2 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x2 EqualsVector(ushort2x2 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1));
+
+    [MethodImpl(256 | 512)]
+    public b16m2x2 EqualsVectorNot(ushort2x2 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort2x2, ushort2x2, bool>.operator ==(ushort2x2 left, ushort2x2 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort2x2, ushort2x2, bool>.operator !=(ushort2x2 left, ushort2x2 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m2x2 operator ==(ushort2x2 left, ushort2x2 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m2x2 operator !=(ushort2x2 left, ushort2x2 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // ushort2x2
+
+#region ushort2x3
+
+public partial struct ushort2x3 : IEquatable<ushort2x3>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<ushort2x3, ushort2x3, bool>
+    , IEqualityOperators<ushort2x3, ushort2x3, b16m2x3>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(ushort2x3 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is ushort2x3 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(ushort2x3 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(ushort2x3 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x3 EqualsVector(ushort2x3 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2));
+
+    [MethodImpl(256 | 512)]
+    public b16m2x3 EqualsVectorNot(ushort2x3 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort2x3, ushort2x3, bool>.operator ==(ushort2x3 left, ushort2x3 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort2x3, ushort2x3, bool>.operator !=(ushort2x3 left, ushort2x3 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m2x3 operator ==(ushort2x3 left, ushort2x3 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m2x3 operator !=(ushort2x3 left, ushort2x3 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // ushort2x3
+
+#region ushort2x4
+
+public partial struct ushort2x4 : IEquatable<ushort2x4>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<ushort2x4, ushort2x4, bool>
+    , IEqualityOperators<ushort2x4, ushort2x4, b16m2x4>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(ushort2x4 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is ushort2x4 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode(), c3.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(ushort2x4 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2) && c3.EqualsAll(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(ushort2x4 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2) || c3.EqualsAny(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public b16m2x4 EqualsVector(ushort2x4 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2), c3.EqualsVector(other.c3));
+
+    [MethodImpl(256 | 512)]
+    public b16m2x4 EqualsVectorNot(ushort2x4 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2), c3.EqualsVectorNot(other.c3));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort2x4, ushort2x4, bool>.operator ==(ushort2x4 left, ushort2x4 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort2x4, ushort2x4, bool>.operator !=(ushort2x4 left, ushort2x4 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m2x4 operator ==(ushort2x4 left, ushort2x4 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m2x4 operator !=(ushort2x4 left, ushort2x4 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // ushort2x4
+
+#region ushort3x2
+
+public partial struct ushort3x2 : IEquatable<ushort3x2>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<ushort3x2, ushort3x2, bool>
+    , IEqualityOperators<ushort3x2, ushort3x2, b16m3x2>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(ushort3x2 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is ushort3x2 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(ushort3x2 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(ushort3x2 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x2 EqualsVector(ushort3x2 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1));
+
+    [MethodImpl(256 | 512)]
+    public b16m3x2 EqualsVectorNot(ushort3x2 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort3x2, ushort3x2, bool>.operator ==(ushort3x2 left, ushort3x2 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort3x2, ushort3x2, bool>.operator !=(ushort3x2 left, ushort3x2 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m3x2 operator ==(ushort3x2 left, ushort3x2 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m3x2 operator !=(ushort3x2 left, ushort3x2 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // ushort3x2
+
+#region ushort3x3
+
+public partial struct ushort3x3 : IEquatable<ushort3x3>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<ushort3x3, ushort3x3, bool>
+    , IEqualityOperators<ushort3x3, ushort3x3, b16m3x3>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(ushort3x3 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is ushort3x3 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(ushort3x3 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(ushort3x3 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x3 EqualsVector(ushort3x3 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2));
+
+    [MethodImpl(256 | 512)]
+    public b16m3x3 EqualsVectorNot(ushort3x3 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort3x3, ushort3x3, bool>.operator ==(ushort3x3 left, ushort3x3 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort3x3, ushort3x3, bool>.operator !=(ushort3x3 left, ushort3x3 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m3x3 operator ==(ushort3x3 left, ushort3x3 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m3x3 operator !=(ushort3x3 left, ushort3x3 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // ushort3x3
+
+#region ushort3x4
+
+public partial struct ushort3x4 : IEquatable<ushort3x4>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<ushort3x4, ushort3x4, bool>
+    , IEqualityOperators<ushort3x4, ushort3x4, b16m3x4>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(ushort3x4 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is ushort3x4 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode(), c3.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(ushort3x4 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2) && c3.EqualsAll(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(ushort3x4 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2) || c3.EqualsAny(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public b16m3x4 EqualsVector(ushort3x4 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2), c3.EqualsVector(other.c3));
+
+    [MethodImpl(256 | 512)]
+    public b16m3x4 EqualsVectorNot(ushort3x4 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2), c3.EqualsVectorNot(other.c3));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort3x4, ushort3x4, bool>.operator ==(ushort3x4 left, ushort3x4 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort3x4, ushort3x4, bool>.operator !=(ushort3x4 left, ushort3x4 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m3x4 operator ==(ushort3x4 left, ushort3x4 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m3x4 operator !=(ushort3x4 left, ushort3x4 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // ushort3x4
+
+#region ushort4x2
+
+public partial struct ushort4x2 : IEquatable<ushort4x2>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<ushort4x2, ushort4x2, bool>
+    , IEqualityOperators<ushort4x2, ushort4x2, b16m4x2>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(ushort4x2 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is ushort4x2 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(ushort4x2 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(ushort4x2 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x2 EqualsVector(ushort4x2 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1));
+
+    [MethodImpl(256 | 512)]
+    public b16m4x2 EqualsVectorNot(ushort4x2 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort4x2, ushort4x2, bool>.operator ==(ushort4x2 left, ushort4x2 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort4x2, ushort4x2, bool>.operator !=(ushort4x2 left, ushort4x2 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m4x2 operator ==(ushort4x2 left, ushort4x2 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m4x2 operator !=(ushort4x2 left, ushort4x2 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // ushort4x2
+
+#region ushort4x3
+
+public partial struct ushort4x3 : IEquatable<ushort4x3>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<ushort4x3, ushort4x3, bool>
+    , IEqualityOperators<ushort4x3, ushort4x3, b16m4x3>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(ushort4x3 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is ushort4x3 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(ushort4x3 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(ushort4x3 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x3 EqualsVector(ushort4x3 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2));
+
+    [MethodImpl(256 | 512)]
+    public b16m4x3 EqualsVectorNot(ushort4x3 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort4x3, ushort4x3, bool>.operator ==(ushort4x3 left, ushort4x3 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort4x3, ushort4x3, bool>.operator !=(ushort4x3 left, ushort4x3 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m4x3 operator ==(ushort4x3 left, ushort4x3 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m4x3 operator !=(ushort4x3 left, ushort4x3 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // ushort4x3
+
+#region ushort4x4
+
+public partial struct ushort4x4 : IEquatable<ushort4x4>
+    #if NET8_0_OR_GREATER
+    , IEqualityOperators<ushort4x4, ushort4x4, bool>
+    , IEqualityOperators<ushort4x4, ushort4x4, b16m4x4>
+    #endif
+{
+    #region Equals
+
+    [MethodImpl(256 | 512)]
+    public bool Equals(ushort4x4 other) => EqualsAll(other);
+    [MethodImpl(256 | 512)]
+    public override bool Equals(object? obj) => obj is ushort4x4 other && Equals(other);
+    [MethodImpl(256 | 512)]
+    public override int GetHashCode() => HashCode.Combine(c0.GetHashCode(), c1.GetHashCode(), c2.GetHashCode(), c3.GetHashCode());
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAll(ushort4x4 other) => c0.EqualsAll(other.c0) && c1.EqualsAll(other.c1) && c2.EqualsAll(other.c2) && c3.EqualsAll(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public bool EqualsAny(ushort4x4 other) => c0.EqualsAny(other.c0) || c1.EqualsAny(other.c1) || c2.EqualsAny(other.c2) || c3.EqualsAny(other.c3);
+
+    [MethodImpl(256 | 512)]
+    public b16m4x4 EqualsVector(ushort4x4 other) => new(c0.EqualsVector(other.c0), c1.EqualsVector(other.c1), c2.EqualsVector(other.c2), c3.EqualsVector(other.c3));
+
+    [MethodImpl(256 | 512)]
+    public b16m4x4 EqualsVectorNot(ushort4x4 other) => new(c0.EqualsVectorNot(other.c0), c1.EqualsVectorNot(other.c1), c2.EqualsVectorNot(other.c2), c3.EqualsVectorNot(other.c3));
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort4x4, ushort4x4, bool>.operator ==(ushort4x4 left, ushort4x4 right) => left.Equals(right);
+    [MethodImpl(256 | 512)]
+    static bool IEqualityOperators<ushort4x4, ushort4x4, bool>.operator !=(ushort4x4 left, ushort4x4 right) => !left.Equals(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static b16m4x4 operator ==(ushort4x4 left, ushort4x4 right) => left.EqualsVector(right);
+    [MethodImpl(256 | 512)]
+    public static b16m4x4 operator !=(ushort4x4 left, ushort4x4 right) => left.EqualsVectorNot(right);
+
+    #endregion
+}
+
+#endregion // ushort4x4
+
 #region int2x2
 
 public partial struct int2x2 : IEquatable<int2x2>

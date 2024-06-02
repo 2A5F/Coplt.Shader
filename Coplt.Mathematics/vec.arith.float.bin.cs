@@ -129,23 +129,6 @@ public static partial class math
         #endif // NET8_0_OR_GREATER
     }
 
-    /// <summary>
-    /// Fusion Addition and Multiplication
-    /// <code>(a * b) + c</code>
-    /// </summary>
-    /// <param name="a">Multiplier a</param>
-    /// <param name="b">Multiplier b</param>
-    /// <param name="c">Addend c</param>
-    [MethodImpl(256 | 512)]
-    public static float2 fma(this float2 a, float2 b, float2 c)
-    {
-        #if NET8_0_OR_GREATER
-        return new(simd.Fma(a.vector, b.vector, c.vector));
-        #else // NET8_0_OR_GREATER
-        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
-        #endif // NET8_0_OR_GREATER
-    }
-
     [MethodImpl(256 | 512)]
     public static float2 sqrt(this float2 a)
     {
@@ -486,23 +469,6 @@ public static partial class math
         return new(simd.Pow(a.vector, b));
         #else // NET8_0_OR_GREATER
         return new(a.x.pow(b), a.y.pow(b), a.z.pow(b));
-        #endif // NET8_0_OR_GREATER
-    }
-
-    /// <summary>
-    /// Fusion Addition and Multiplication
-    /// <code>(a * b) + c</code>
-    /// </summary>
-    /// <param name="a">Multiplier a</param>
-    /// <param name="b">Multiplier b</param>
-    /// <param name="c">Addend c</param>
-    [MethodImpl(256 | 512)]
-    public static float3 fma(this float3 a, float3 b, float3 c)
-    {
-        #if NET8_0_OR_GREATER
-        return new(simd.Fma(a.vector, b.vector, c.vector));
-        #else // NET8_0_OR_GREATER
-        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -848,23 +814,6 @@ public static partial class math
         return new(simd.Pow(a.vector, b));
         #else // NET8_0_OR_GREATER
         return new(a.x.pow(b), a.y.pow(b), a.z.pow(b), a.w.pow(b));
-        #endif // NET8_0_OR_GREATER
-    }
-
-    /// <summary>
-    /// Fusion Addition and Multiplication
-    /// <code>(a * b) + c</code>
-    /// </summary>
-    /// <param name="a">Multiplier a</param>
-    /// <param name="b">Multiplier b</param>
-    /// <param name="c">Addend c</param>
-    [MethodImpl(256 | 512)]
-    public static float4 fma(this float4 a, float4 b, float4 c)
-    {
-        #if NET8_0_OR_GREATER
-        return new(simd.Fma(a.vector, b.vector, c.vector));
-        #else // NET8_0_OR_GREATER
-        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1215,23 +1164,6 @@ public static partial class math
         #endif // NET8_0_OR_GREATER
     }
 
-    /// <summary>
-    /// Fusion Addition and Multiplication
-    /// <code>(a * b) + c</code>
-    /// </summary>
-    /// <param name="a">Multiplier a</param>
-    /// <param name="b">Multiplier b</param>
-    /// <param name="c">Addend c</param>
-    [MethodImpl(256 | 512)]
-    public static double2 fma(this double2 a, double2 b, double2 c)
-    {
-        #if NET8_0_OR_GREATER
-        return new(simd.Fma(a.vector, b.vector, c.vector));
-        #else // NET8_0_OR_GREATER
-        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
-        #endif // NET8_0_OR_GREATER
-    }
-
     [MethodImpl(256 | 512)]
     public static double2 sqrt(this double2 a)
     {
@@ -1572,23 +1504,6 @@ public static partial class math
         return new(simd.Pow(a.vector, b));
         #else // NET8_0_OR_GREATER
         return new(a.x.pow(b), a.y.pow(b), a.z.pow(b));
-        #endif // NET8_0_OR_GREATER
-    }
-
-    /// <summary>
-    /// Fusion Addition and Multiplication
-    /// <code>(a * b) + c</code>
-    /// </summary>
-    /// <param name="a">Multiplier a</param>
-    /// <param name="b">Multiplier b</param>
-    /// <param name="c">Addend c</param>
-    [MethodImpl(256 | 512)]
-    public static double3 fma(this double3 a, double3 b, double3 c)
-    {
-        #if NET8_0_OR_GREATER
-        return new(simd.Fma(a.vector, b.vector, c.vector));
-        #else // NET8_0_OR_GREATER
-        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1937,23 +1852,6 @@ public static partial class math
         #endif // NET8_0_OR_GREATER
     }
 
-    /// <summary>
-    /// Fusion Addition and Multiplication
-    /// <code>(a * b) + c</code>
-    /// </summary>
-    /// <param name="a">Multiplier a</param>
-    /// <param name="b">Multiplier b</param>
-    /// <param name="c">Addend c</param>
-    [MethodImpl(256 | 512)]
-    public static double4 fma(this double4 a, double4 b, double4 c)
-    {
-        #if NET8_0_OR_GREATER
-        return new(simd.Fma(a.vector, b.vector, c.vector));
-        #else // NET8_0_OR_GREATER
-        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
-        #endif // NET8_0_OR_GREATER
-    }
-
     [MethodImpl(256 | 512)]
     public static double4 sqrt(this double4 a)
     {
@@ -2253,19 +2151,6 @@ public static partial class math
         return new(a.x.pow(b), a.y.pow(b));
     }
 
-    /// <summary>
-    /// Fusion Addition and Multiplication
-    /// <code>(a * b) + c</code>
-    /// </summary>
-    /// <param name="a">Multiplier a</param>
-    /// <param name="b">Multiplier b</param>
-    /// <param name="c">Addend c</param>
-    [MethodImpl(256 | 512)]
-    public static half2 fma(this half2 a, half2 b, half2 c)
-    {
-        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
-    }
-
     [MethodImpl(256 | 512)]
     public static half2 sqrt(this half2 a)
     {
@@ -2492,19 +2377,6 @@ public static partial class math
     public static half3 pow(this half3 a, half b)
     {
         return new(a.x.pow(b), a.y.pow(b), a.z.pow(b));
-    }
-
-    /// <summary>
-    /// Fusion Addition and Multiplication
-    /// <code>(a * b) + c</code>
-    /// </summary>
-    /// <param name="a">Multiplier a</param>
-    /// <param name="b">Multiplier b</param>
-    /// <param name="c">Addend c</param>
-    [MethodImpl(256 | 512)]
-    public static half3 fma(this half3 a, half3 b, half3 c)
-    {
-        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
 
     [MethodImpl(256 | 512)]
@@ -2735,19 +2607,6 @@ public static partial class math
     public static half4 pow(this half4 a, half b)
     {
         return new(a.x.pow(b), a.y.pow(b), a.z.pow(b), a.w.pow(b));
-    }
-
-    /// <summary>
-    /// Fusion Addition and Multiplication
-    /// <code>(a * b) + c</code>
-    /// </summary>
-    /// <param name="a">Multiplier a</param>
-    /// <param name="b">Multiplier b</param>
-    /// <param name="c">Addend c</param>
-    [MethodImpl(256 | 512)]
-    public static half4 fma(this half4 a, half4 b, half4 c)
-    {
-        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
     }
 
     [MethodImpl(256 | 512)]

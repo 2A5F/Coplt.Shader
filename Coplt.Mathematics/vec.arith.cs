@@ -192,6 +192,23 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static float2 square(this float2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2 fma(this float2 a, float2 b, float2 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fma(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float2
@@ -389,6 +406,23 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static float3 square(this float3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3 fma(this float3 a, float3 b, float3 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fma(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float3
@@ -583,6 +617,23 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static float4 square(this float4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4 fma(this float4 a, float4 b, float4 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fma(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float4
@@ -777,6 +828,23 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double2 square(this double2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2 fma(this double2 a, double2 b, double2 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fma(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double2
@@ -974,6 +1042,23 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double3 square(this double3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3 fma(this double3 a, double3 b, double3 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fma(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double3
@@ -1168,9 +1253,851 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double4 square(this double4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4 fma(this double4 a, double4 b, double4 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fma(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double4
+
+#region short2
+
+public partial struct short2
+{
+    [MethodImpl(256 | 512)]
+    public static short2 operator +(short2 a) => a;
+    [MethodImpl(256 | 512)]
+    public static short2 operator -(short2 a)
+    {
+        return new((short)-a.x, (short)-a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator +(short2 a, short2 b)
+    {
+        return new((short)(a.x + b.x), (short)(a.y + b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator -(short2 a, short2 b)
+    {
+        return new((short)(a.x - b.x), (short)(a.y - b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator *(short2 a, short2 b)
+    {
+        return new((short)(a.x * b.x), (short)(a.y * b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator *(short a, short2 b)
+    {
+        return new((short)(a * b.x), (short)(a * b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator *(short2 a, short b)
+    {
+        return new((short)(a.x * b), (short)(a.y * b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator /(short2 a, short2 b)
+    {
+        return new((short)(a.x / b.x), (short)(a.y / b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator /(short2 a, short b)
+    {
+        return new((short)(a.x / b), (short)(a.y / b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator %(short2 a, short2 b)
+    {
+        return new((short)(a.x % b.x), (short)(a.y % b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator %(short2 a, short b)
+    {
+        return new((short)(a.x % b), (short)(a.y % b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator --(short2 a) => a - One;
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator ++(short2 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2 abs(this short2 a)
+    {
+        return new(a.x.abs(), a.y.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 sign(this short2 a)
+    {
+        return new(a.x.sign(), a.y.sign());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 min(this short2 a, short2 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 max(this short2 a, short2 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 clamp(this short2 v, short2 min, short2 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short dot(this short2 a, short2 b)
+    {
+        return (short)(a.x * b.x + a.y * b.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short lengthsq(this short2 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short distancesq(this short2 a, short2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static short2 square(this short2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2 fma(this short2 a, short2 b, short2 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+    }
+}
+
+#endregion // short2
+
+#region short3
+
+public partial struct short3
+{
+    [MethodImpl(256 | 512)]
+    public static short3 operator +(short3 a) => a;
+    [MethodImpl(256 | 512)]
+    public static short3 operator -(short3 a)
+    {
+        return new((short)-a.x, (short)-a.y, (short)-a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator +(short3 a, short3 b)
+    {
+        return new((short)(a.x + b.x), (short)(a.y + b.y), (short)(a.z + b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator -(short3 a, short3 b)
+    {
+        return new((short)(a.x - b.x), (short)(a.y - b.y), (short)(a.z - b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator *(short3 a, short3 b)
+    {
+        return new((short)(a.x * b.x), (short)(a.y * b.y), (short)(a.z * b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator *(short a, short3 b)
+    {
+        return new((short)(a * b.x), (short)(a * b.y), (short)(a * b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator *(short3 a, short b)
+    {
+        return new((short)(a.x * b), (short)(a.y * b), (short)(a.z * b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator /(short3 a, short3 b)
+    {
+        return new((short)(a.x / b.x), (short)(a.y / b.y), (short)(a.z / b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator /(short3 a, short b)
+    {
+        return new((short)(a.x / b), (short)(a.y / b), (short)(a.z / b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator %(short3 a, short3 b)
+    {
+        return new((short)(a.x % b.x), (short)(a.y % b.y), (short)(a.z % b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator %(short3 a, short b)
+    {
+        return new((short)(a.x % b), (short)(a.y % b), (short)(a.z % b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator --(short3 a) => a - One;
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator ++(short3 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3 abs(this short3 a)
+    {
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 sign(this short3 a)
+    {
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 min(this short3 a, short3 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 max(this short3 a, short3 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 clamp(this short3 v, short3 min, short3 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short dot(this short3 a, short3 b)
+    {
+        return (short)(a.x * b.x + a.y * b.y + a.z * b.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 cross(this short3 a, short3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static short lengthsq(this short3 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short distancesq(this short3 a, short3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static short3 square(this short3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3 fma(this short3 a, short3 b, short3 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+    }
+}
+
+#endregion // short3
+
+#region short4
+
+public partial struct short4
+{
+    [MethodImpl(256 | 512)]
+    public static short4 operator +(short4 a) => a;
+    [MethodImpl(256 | 512)]
+    public static short4 operator -(short4 a)
+    {
+        return new((short)-a.x, (short)-a.y, (short)-a.z, (short)-a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator +(short4 a, short4 b)
+    {
+        return new((short)(a.x + b.x), (short)(a.y + b.y), (short)(a.z + b.z), (short)(a.w + b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator -(short4 a, short4 b)
+    {
+        return new((short)(a.x - b.x), (short)(a.y - b.y), (short)(a.z - b.z), (short)(a.w - b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator *(short4 a, short4 b)
+    {
+        return new((short)(a.x * b.x), (short)(a.y * b.y), (short)(a.z * b.z), (short)(a.w * b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator *(short a, short4 b)
+    {
+        return new((short)(a * b.x), (short)(a * b.y), (short)(a * b.z), (short)(a * b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator *(short4 a, short b)
+    {
+        return new((short)(a.x * b), (short)(a.y * b), (short)(a.z * b), (short)(a.w * b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator /(short4 a, short4 b)
+    {
+        return new((short)(a.x / b.x), (short)(a.y / b.y), (short)(a.z / b.z), (short)(a.w / b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator /(short4 a, short b)
+    {
+        return new((short)(a.x / b), (short)(a.y / b), (short)(a.z / b), (short)(a.w / b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator %(short4 a, short4 b)
+    {
+        return new((short)(a.x % b.x), (short)(a.y % b.y), (short)(a.z % b.z), (short)(a.w % b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator %(short4 a, short b)
+    {
+        return new((short)(a.x % b), (short)(a.y % b), (short)(a.z % b), (short)(a.w % b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator --(short4 a) => a - One;
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator ++(short4 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4 abs(this short4 a)
+    {
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 sign(this short4 a)
+    {
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 min(this short4 a, short4 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 max(this short4 a, short4 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 clamp(this short4 v, short4 min, short4 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short dot(this short4 a, short4 b)
+    {
+        return (short)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short lengthsq(this short4 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short distancesq(this short4 a, short4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static short4 square(this short4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4 fma(this short4 a, short4 b, short4 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
+}
+
+#endregion // short4
+
+#region ushort2
+
+public partial struct ushort2
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator +(ushort2 a) => a;
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator +(ushort2 a, ushort2 b)
+    {
+        return new((ushort)(a.x + b.x), (ushort)(a.y + b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator -(ushort2 a, ushort2 b)
+    {
+        return new((ushort)(a.x - b.x), (ushort)(a.y - b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator *(ushort2 a, ushort2 b)
+    {
+        return new((ushort)(a.x * b.x), (ushort)(a.y * b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator *(ushort a, ushort2 b)
+    {
+        return new((ushort)(a * b.x), (ushort)(a * b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator *(ushort2 a, ushort b)
+    {
+        return new((ushort)(a.x * b), (ushort)(a.y * b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator /(ushort2 a, ushort2 b)
+    {
+        return new((ushort)(a.x / b.x), (ushort)(a.y / b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator /(ushort2 a, ushort b)
+    {
+        return new((ushort)(a.x / b), (ushort)(a.y / b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator %(ushort2 a, ushort2 b)
+    {
+        return new((ushort)(a.x % b.x), (ushort)(a.y % b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator %(ushort2 a, ushort b)
+    {
+        return new((ushort)(a.x % b), (ushort)(a.y % b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator --(ushort2 a) => a - One;
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator ++(ushort2 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2 abs(this ushort2 a)
+    {
+        return new(a.x.abs(), a.y.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 sign(this ushort2 a)
+    {
+        return new(a.x.sign(), a.y.sign());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 min(this ushort2 a, ushort2 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 max(this ushort2 a, ushort2 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 clamp(this ushort2 v, ushort2 min, ushort2 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort dot(this ushort2 a, ushort2 b)
+    {
+        return (ushort)(a.x * b.x + a.y * b.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort lengthsq(this ushort2 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort distancesq(this ushort2 a, ushort2 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 square(this ushort2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2 fma(this ushort2 a, ushort2 b, ushort2 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+    }
+}
+
+#endregion // ushort2
+
+#region ushort3
+
+public partial struct ushort3
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator +(ushort3 a) => a;
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator +(ushort3 a, ushort3 b)
+    {
+        return new((ushort)(a.x + b.x), (ushort)(a.y + b.y), (ushort)(a.z + b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator -(ushort3 a, ushort3 b)
+    {
+        return new((ushort)(a.x - b.x), (ushort)(a.y - b.y), (ushort)(a.z - b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator *(ushort3 a, ushort3 b)
+    {
+        return new((ushort)(a.x * b.x), (ushort)(a.y * b.y), (ushort)(a.z * b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator *(ushort a, ushort3 b)
+    {
+        return new((ushort)(a * b.x), (ushort)(a * b.y), (ushort)(a * b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator *(ushort3 a, ushort b)
+    {
+        return new((ushort)(a.x * b), (ushort)(a.y * b), (ushort)(a.z * b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator /(ushort3 a, ushort3 b)
+    {
+        return new((ushort)(a.x / b.x), (ushort)(a.y / b.y), (ushort)(a.z / b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator /(ushort3 a, ushort b)
+    {
+        return new((ushort)(a.x / b), (ushort)(a.y / b), (ushort)(a.z / b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator %(ushort3 a, ushort3 b)
+    {
+        return new((ushort)(a.x % b.x), (ushort)(a.y % b.y), (ushort)(a.z % b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator %(ushort3 a, ushort b)
+    {
+        return new((ushort)(a.x % b), (ushort)(a.y % b), (ushort)(a.z % b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator --(ushort3 a) => a - One;
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator ++(ushort3 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3 abs(this ushort3 a)
+    {
+        return new(a.x.abs(), a.y.abs(), a.z.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 sign(this ushort3 a)
+    {
+        return new(a.x.sign(), a.y.sign(), a.z.sign());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 min(this ushort3 a, ushort3 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 max(this ushort3 a, ushort3 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 clamp(this ushort3 v, ushort3 min, ushort3 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort dot(this ushort3 a, ushort3 b)
+    {
+        return (ushort)(a.x * b.x + a.y * b.y + a.z * b.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 cross(this ushort3 a, ushort3 b) => (a * b.yzx - a.yzx * b).yzx;
+
+    [MethodImpl(256 | 512)]
+    public static ushort lengthsq(this ushort3 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort distancesq(this ushort3 a, ushort3 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 square(this ushort3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3 fma(this ushort3 a, ushort3 b, ushort3 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+    }
+}
+
+#endregion // ushort3
+
+#region ushort4
+
+public partial struct ushort4
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator +(ushort4 a) => a;
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator +(ushort4 a, ushort4 b)
+    {
+        return new((ushort)(a.x + b.x), (ushort)(a.y + b.y), (ushort)(a.z + b.z), (ushort)(a.w + b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator -(ushort4 a, ushort4 b)
+    {
+        return new((ushort)(a.x - b.x), (ushort)(a.y - b.y), (ushort)(a.z - b.z), (ushort)(a.w - b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator *(ushort4 a, ushort4 b)
+    {
+        return new((ushort)(a.x * b.x), (ushort)(a.y * b.y), (ushort)(a.z * b.z), (ushort)(a.w * b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator *(ushort a, ushort4 b)
+    {
+        return new((ushort)(a * b.x), (ushort)(a * b.y), (ushort)(a * b.z), (ushort)(a * b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator *(ushort4 a, ushort b)
+    {
+        return new((ushort)(a.x * b), (ushort)(a.y * b), (ushort)(a.z * b), (ushort)(a.w * b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator /(ushort4 a, ushort4 b)
+    {
+        return new((ushort)(a.x / b.x), (ushort)(a.y / b.y), (ushort)(a.z / b.z), (ushort)(a.w / b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator /(ushort4 a, ushort b)
+    {
+        return new((ushort)(a.x / b), (ushort)(a.y / b), (ushort)(a.z / b), (ushort)(a.w / b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator %(ushort4 a, ushort4 b)
+    {
+        return new((ushort)(a.x % b.x), (ushort)(a.y % b.y), (ushort)(a.z % b.z), (ushort)(a.w % b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator %(ushort4 a, ushort b)
+    {
+        return new((ushort)(a.x % b), (ushort)(a.y % b), (ushort)(a.z % b), (ushort)(a.w % b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator --(ushort4 a) => a - One;
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator ++(ushort4 a) => a + One;
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4 abs(this ushort4 a)
+    {
+        return new(a.x.abs(), a.y.abs(), a.z.abs(), a.w.abs());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 sign(this ushort4 a)
+    {
+        return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 min(this ushort4 a, ushort4 b)
+    {
+        return new(a.x.min(b.x), a.y.min(b.y), a.z.min(b.z), a.w.min(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 max(this ushort4 a, ushort4 b)
+    {
+        return new(a.x.max(b.x), a.y.max(b.y), a.z.max(b.z), a.w.max(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 clamp(this ushort4 v, ushort4 min, ushort4 max)
+    {
+        return new(v.x.clamp(min.x, max.x), v.y.clamp(min.y, max.y), v.z.clamp(min.z, max.z), v.w.clamp(min.w, max.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort dot(this ushort4 a, ushort4 b)
+    {
+        return (ushort)(a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort lengthsq(this ushort4 a)
+    {
+        return a.dot(a);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort distancesq(this ushort4 a, ushort4 b) => lengthsq(b - a);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 square(this ushort4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4 fma(this ushort4 a, ushort4 b, ushort4 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
+}
+
+#endregion // ushort4
 
 #region int2
 
@@ -1354,6 +2281,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static int2 square(this int2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2 fma(this int2 a, int2 b, int2 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+    }
 }
 
 #endregion // int2
@@ -1543,6 +2483,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static int3 square(this int3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3 fma(this int3 a, int3 b, int3 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+    }
 }
 
 #endregion // int3
@@ -1729,6 +2682,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static int4 square(this int4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4 fma(this int4 a, int4 b, int4 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
 }
 
 #endregion // int4
@@ -1906,6 +2872,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static uint2 square(this uint2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2 fma(this uint2 a, uint2 b, uint2 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+    }
 }
 
 #endregion // uint2
@@ -2086,6 +3065,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static uint3 square(this uint3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3 fma(this uint3 a, uint3 b, uint3 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+    }
 }
 
 #endregion // uint3
@@ -2263,6 +3255,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static uint4 square(this uint4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4 fma(this uint4 a, uint4 b, uint4 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
 }
 
 #endregion // uint4
@@ -2449,6 +3454,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static long2 square(this long2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2 fma(this long2 a, long2 b, long2 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+    }
 }
 
 #endregion // long2
@@ -2638,6 +3656,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static long3 square(this long3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3 fma(this long3 a, long3 b, long3 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+    }
 }
 
 #endregion // long3
@@ -2824,6 +3855,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static long4 square(this long4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4 fma(this long4 a, long4 b, long4 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
 }
 
 #endregion // long4
@@ -3001,6 +4045,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static ulong2 square(this ulong2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2 fma(this ulong2 a, ulong2 b, ulong2 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+    }
 }
 
 #endregion // ulong2
@@ -3181,6 +4238,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static ulong3 square(this ulong3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3 fma(this ulong3 a, ulong3 b, ulong3 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+    }
 }
 
 #endregion // ulong3
@@ -3358,6 +4428,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static ulong4 square(this ulong4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4 fma(this ulong4 a, ulong4 b, ulong4 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
 }
 
 #endregion // ulong4
@@ -3484,6 +4567,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static decimal2 square(this decimal2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2 fma(this decimal2 a, decimal2 b, decimal2 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+    }
 }
 
 #endregion // decimal2
@@ -3613,6 +4709,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static decimal3 square(this decimal3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3 fma(this decimal3 a, decimal3 b, decimal3 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+    }
 }
 
 #endregion // decimal3
@@ -3739,6 +4848,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static decimal4 square(this decimal4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4 fma(this decimal4 a, decimal4 b, decimal4 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
 }
 
 #endregion // decimal4
@@ -3865,6 +4987,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static half2 square(this half2 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2 fma(this half2 a, half2 b, half2 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+    }
 }
 
 #endregion // half2
@@ -3994,6 +5129,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static half3 square(this half3 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3 fma(this half3 a, half3 b, half3 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
+    }
 }
 
 #endregion // half3
@@ -4120,6 +5268,19 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static half4 square(this half4 a) => a * a;
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4 fma(this half4 a, half4 b, half4 c)
+    {
+        return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
 }
 
 #endregion // half4

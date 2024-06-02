@@ -174,6 +174,118 @@ public partial struct double2
 
 #endregion // double2
 
+#region short2
+
+public partial struct short2 
+{
+    public short2 xx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x);
+    }
+    public short2 rr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x);
+    }
+    public short2 xy
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public short2 rg
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public short2 yx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.yx;
+    }
+    public short2 gr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.yx;
+    }
+    public short2 yy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y);
+    }
+    public short2 gg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y);
+    }
+}
+
+#endregion // short2
+
+#region ushort2
+
+public partial struct ushort2 
+{
+    public ushort2 xx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x);
+    }
+    public ushort2 rr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x);
+    }
+    public ushort2 xy
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public ushort2 rg
+    {
+        [MethodImpl(256 | 512)]
+        get => this;
+        [MethodImpl(256 | 512)]
+        set => this = value;
+    }
+    public ushort2 yx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.yx;
+    }
+    public ushort2 gr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x);
+        [MethodImpl(256 | 512)]
+        set => this = value.yx;
+    }
+    public ushort2 yy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y);
+    }
+    public ushort2 gg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y);
+    }
+}
+
+#endregion // ushort2
+
 #region int2
 
 public partial struct int2 

@@ -24,6 +24,22 @@ internal static class FormatUtils
         return true;
     }
     #else
+    public static bool TryFormatPart(ref Span<char> dst, ref int nc, short part, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        var r = part.TryFormat(dst, out var ic, format, provider);
+        nc += ic;
+        if (!r) return false;
+        dst = dst[ic..];
+        return true;
+    }
+    public static bool TryFormatPart(ref Span<char> dst, ref int nc, ushort part, ReadOnlySpan<char> format, IFormatProvider? provider)
+    {
+        var r = part.TryFormat(dst, out var ic, format, provider);
+        nc += ic;
+        if (!r) return false;
+        dst = dst[ic..];
+        return true;
+    }
     public static bool TryFormatPart(ref Span<char> dst, ref int nc, half part, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         var r = part.TryFormat(dst, out var ic, format, provider);

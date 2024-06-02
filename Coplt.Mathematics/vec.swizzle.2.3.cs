@@ -338,6 +338,182 @@ public partial struct double2
 
 #endregion // double2
 
+#region short2
+
+public partial struct short2 
+{
+    public short3 xxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public short3 rrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public short3 xxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public short3 rrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public short3 xyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public short3 rgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public short3 xyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public short3 rgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public short3 yxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public short3 grr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public short3 yxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public short3 grg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public short3 yyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public short3 ggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public short3 yyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public short3 ggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+}
+
+#endregion // short2
+
+#region ushort2
+
+public partial struct ushort2 
+{
+    public ushort3 xxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public ushort3 rrr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, x);
+    }
+    public ushort3 xxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public ushort3 rrg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, x, y);
+    }
+    public ushort3 xyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public ushort3 rgr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, x);
+    }
+    public ushort3 xyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public ushort3 rgg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(x, y, y);
+    }
+    public ushort3 yxx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public ushort3 grr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, x);
+    }
+    public ushort3 yxy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public ushort3 grg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, x, y);
+    }
+    public ushort3 yyx
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public ushort3 ggr
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, x);
+    }
+    public ushort3 yyy
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+    public ushort3 ggg
+    {
+        [MethodImpl(256 | 512)]
+        get => new(y, y, y);
+    }
+}
+
+#endregion // ushort2
+
 #region int2
 
 public partial struct int2 

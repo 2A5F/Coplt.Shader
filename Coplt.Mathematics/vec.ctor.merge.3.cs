@@ -148,6 +148,116 @@ public static partial class math
 
 #endregion // double3
 
+#region short3
+
+public partial struct short3 
+{
+    [MethodImpl(256 | 512)]
+    public short3(short2 xy, short z)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = z;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short3(short x, short2 yz)
+    {
+        this.x = x;
+        this.y = yz.x;
+        this.z = yz.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal short3(short2 xz, short y, insert_y _)
+    {
+        this.x = xz.x;
+        this.y = y;
+        this.z = xz.y;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z) => (X, y, z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short3 Ix(this short2 yz, short x) => new(x, yz);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z) => (x, Y, z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short3 Iy(this short2 xz, short y) => new(xz, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y) => (x, y, Z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short3 Iz(this short2 xy, short z) => new(xy, z);
+}
+
+#endregion // short3
+
+#region ushort3
+
+public partial struct ushort3 
+{
+    [MethodImpl(256 | 512)]
+    public ushort3(ushort2 xy, ushort z)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = z;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort3(ushort x, ushort2 yz)
+    {
+        this.x = x;
+        this.y = yz.x;
+        this.z = yz.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal ushort3(ushort2 xz, ushort y, insert_y _)
+    {
+        this.x = xz.x;
+        this.y = y;
+        this.z = xz.y;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert X component
+    /// <code>X -> (y, z) => (X, y, z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort3 Ix(this ushort2 yz, ushort x) => new(x, yz);
+
+    /// <summary>
+    /// Insert Y component
+    /// <code>Y -> (x, z) => (x, Y, z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort3 Iy(this ushort2 xz, ushort y) => new(xz, y, new insert_y());
+
+    /// <summary>
+    /// Insert Z component
+    /// <code>Z -> (x, y) => (x, y, Z)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort3 Iz(this ushort2 xy, ushort z) => new(xy, z);
+}
+
+#endregion // ushort3
+
 #region int3
 
 public partial struct int3 

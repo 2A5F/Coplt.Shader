@@ -686,6 +686,444 @@ public partial struct double4 : IComparable<double4>, IComparable
 
 #endregion // double4
 
+#region short2
+
+public partial struct short2 : IComparable<short2>, IComparable
+    #if NET8_0_OR_GREATER
+    , IComparisonOperators<short2, short2, bool>
+    , IComparisonOperators<short2, short2, b16v2>
+    #endif
+{
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return 1;
+        return obj is short2 other ? CompareTo(other) : throw new ArgumentException($"Object must be of type {nameof(short2)}");
+    }
+
+    #if NET8_0_OR_GREATER
+    static bool IComparisonOperators<short2, short2, bool>.operator <(short2 left, short2 right) => 
+        left.LessThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<short2, short2, bool>.operator >(short2 left, short2 right) => 
+        left.GreaterThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<short2, short2, bool>.operator <=(short2 left, short2 right) => 
+        left.LessThanOrEqualAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<short2, short2, bool>.operator >=(short2 left, short2 right) => 
+        left.GreaterThanOrEqualAll(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(short2 other)
+    {
+        if (x < other.x || y < other.y) return -1;
+        if (x > other.x || y > other.y) return 1;
+        return 0;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b16v2 operator <(short2 left, short2 right) =>
+        new(left.x < right.x, left.y < right.y);
+    [MethodImpl(256 | 512)]
+    public static b16v2 operator >(short2 left, short2 right) =>
+        new(left.x > right.x, left.y > right.y);
+    [MethodImpl(256 | 512)]
+    public static b16v2 operator <=(short2 left, short2 right) =>
+        new(left.x <= right.x, left.y <= right.y);
+    [MethodImpl(256 | 512)]
+    public static b16v2 operator >=(short2 left, short2 right) =>
+        new(left.x >= right.x, left.y >= right.y);
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAll(short2 other) => x < other.x && y < other.y;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAll(short2 other) => x > other.x && y > other.y;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAll(short2 other) => x <= other.x && y <= other.y;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAll(short2 other) => x >= other.x && y >= other.y;
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAny(short2 other) => x < other.x || y < other.y;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAny(short2 other) => x > other.x || y > other.y;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAny(short2 other) => x <= other.x || y <= other.y;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAny(short2 other) => x >= other.x || y >= other.y;
+
+}
+
+#endregion // short2
+
+#region short3
+
+public partial struct short3 : IComparable<short3>, IComparable
+    #if NET8_0_OR_GREATER
+    , IComparisonOperators<short3, short3, bool>
+    , IComparisonOperators<short3, short3, b16v3>
+    #endif
+{
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return 1;
+        return obj is short3 other ? CompareTo(other) : throw new ArgumentException($"Object must be of type {nameof(short3)}");
+    }
+
+    #if NET8_0_OR_GREATER
+    static bool IComparisonOperators<short3, short3, bool>.operator <(short3 left, short3 right) => 
+        left.LessThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<short3, short3, bool>.operator >(short3 left, short3 right) => 
+        left.GreaterThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<short3, short3, bool>.operator <=(short3 left, short3 right) => 
+        left.LessThanOrEqualAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<short3, short3, bool>.operator >=(short3 left, short3 right) => 
+        left.GreaterThanOrEqualAll(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(short3 other)
+    {
+        if (x < other.x || y < other.y || z < other.z) return -1;
+        if (x > other.x || y > other.y || z > other.z) return 1;
+        return 0;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b16v3 operator <(short3 left, short3 right) =>
+        new(left.x < right.x, left.y < right.y, left.z < right.z);
+    [MethodImpl(256 | 512)]
+    public static b16v3 operator >(short3 left, short3 right) =>
+        new(left.x > right.x, left.y > right.y, left.z > right.z);
+    [MethodImpl(256 | 512)]
+    public static b16v3 operator <=(short3 left, short3 right) =>
+        new(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+    [MethodImpl(256 | 512)]
+    public static b16v3 operator >=(short3 left, short3 right) =>
+        new(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAll(short3 other) => x < other.x && y < other.y && z < other.z;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAll(short3 other) => x > other.x && y > other.y && z > other.z;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAll(short3 other) => x <= other.x && y <= other.y && z <= other.z;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAll(short3 other) => x >= other.x && y >= other.y && z >= other.z;
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAny(short3 other) => x < other.x || y < other.y || z < other.z;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAny(short3 other) => x > other.x || y > other.y || z > other.z;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAny(short3 other) => x <= other.x || y <= other.y || z <= other.z;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAny(short3 other) => x >= other.x || y >= other.y || z >= other.z;
+
+}
+
+#endregion // short3
+
+#region short4
+
+public partial struct short4 : IComparable<short4>, IComparable
+    #if NET8_0_OR_GREATER
+    , IComparisonOperators<short4, short4, bool>
+    , IComparisonOperators<short4, short4, b16v4>
+    #endif
+{
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return 1;
+        return obj is short4 other ? CompareTo(other) : throw new ArgumentException($"Object must be of type {nameof(short4)}");
+    }
+
+    #if NET8_0_OR_GREATER
+    static bool IComparisonOperators<short4, short4, bool>.operator <(short4 left, short4 right) => 
+        left.LessThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<short4, short4, bool>.operator >(short4 left, short4 right) => 
+        left.GreaterThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<short4, short4, bool>.operator <=(short4 left, short4 right) => 
+        left.LessThanOrEqualAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<short4, short4, bool>.operator >=(short4 left, short4 right) => 
+        left.GreaterThanOrEqualAll(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(short4 other)
+    {
+        if (x < other.x || y < other.y || z < other.z || w < other.w) return -1;
+        if (x > other.x || y > other.y || z > other.z || w > other.w) return 1;
+        return 0;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b16v4 operator <(short4 left, short4 right) =>
+        new(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
+    [MethodImpl(256 | 512)]
+    public static b16v4 operator >(short4 left, short4 right) =>
+        new(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
+    [MethodImpl(256 | 512)]
+    public static b16v4 operator <=(short4 left, short4 right) =>
+        new(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
+    [MethodImpl(256 | 512)]
+    public static b16v4 operator >=(short4 left, short4 right) =>
+        new(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAll(short4 other) => x < other.x && y < other.y && z < other.z && w < other.w;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAll(short4 other) => x > other.x && y > other.y && z > other.z && w > other.w;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAll(short4 other) => x <= other.x && y <= other.y && z <= other.z && w <= other.w;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAll(short4 other) => x >= other.x && y >= other.y && z >= other.z && w >= other.w;
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAny(short4 other) => x < other.x || y < other.y || z < other.z || w < other.w;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAny(short4 other) => x > other.x || y > other.y || z > other.z || w > other.w;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAny(short4 other) => x <= other.x || y <= other.y || z <= other.z || w <= other.w;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAny(short4 other) => x >= other.x || y >= other.y || z >= other.z || w >= other.w;
+
+}
+
+#endregion // short4
+
+#region ushort2
+
+public partial struct ushort2 : IComparable<ushort2>, IComparable
+    #if NET8_0_OR_GREATER
+    , IComparisonOperators<ushort2, ushort2, bool>
+    , IComparisonOperators<ushort2, ushort2, b16v2>
+    #endif
+{
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return 1;
+        return obj is ushort2 other ? CompareTo(other) : throw new ArgumentException($"Object must be of type {nameof(ushort2)}");
+    }
+
+    #if NET8_0_OR_GREATER
+    static bool IComparisonOperators<ushort2, ushort2, bool>.operator <(ushort2 left, ushort2 right) => 
+        left.LessThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<ushort2, ushort2, bool>.operator >(ushort2 left, ushort2 right) => 
+        left.GreaterThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<ushort2, ushort2, bool>.operator <=(ushort2 left, ushort2 right) => 
+        left.LessThanOrEqualAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<ushort2, ushort2, bool>.operator >=(ushort2 left, ushort2 right) => 
+        left.GreaterThanOrEqualAll(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(ushort2 other)
+    {
+        if (x < other.x || y < other.y) return -1;
+        if (x > other.x || y > other.y) return 1;
+        return 0;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b16v2 operator <(ushort2 left, ushort2 right) =>
+        new(left.x < right.x, left.y < right.y);
+    [MethodImpl(256 | 512)]
+    public static b16v2 operator >(ushort2 left, ushort2 right) =>
+        new(left.x > right.x, left.y > right.y);
+    [MethodImpl(256 | 512)]
+    public static b16v2 operator <=(ushort2 left, ushort2 right) =>
+        new(left.x <= right.x, left.y <= right.y);
+    [MethodImpl(256 | 512)]
+    public static b16v2 operator >=(ushort2 left, ushort2 right) =>
+        new(left.x >= right.x, left.y >= right.y);
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAll(ushort2 other) => x < other.x && y < other.y;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAll(ushort2 other) => x > other.x && y > other.y;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAll(ushort2 other) => x <= other.x && y <= other.y;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAll(ushort2 other) => x >= other.x && y >= other.y;
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAny(ushort2 other) => x < other.x || y < other.y;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAny(ushort2 other) => x > other.x || y > other.y;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAny(ushort2 other) => x <= other.x || y <= other.y;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAny(ushort2 other) => x >= other.x || y >= other.y;
+
+}
+
+#endregion // ushort2
+
+#region ushort3
+
+public partial struct ushort3 : IComparable<ushort3>, IComparable
+    #if NET8_0_OR_GREATER
+    , IComparisonOperators<ushort3, ushort3, bool>
+    , IComparisonOperators<ushort3, ushort3, b16v3>
+    #endif
+{
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return 1;
+        return obj is ushort3 other ? CompareTo(other) : throw new ArgumentException($"Object must be of type {nameof(ushort3)}");
+    }
+
+    #if NET8_0_OR_GREATER
+    static bool IComparisonOperators<ushort3, ushort3, bool>.operator <(ushort3 left, ushort3 right) => 
+        left.LessThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<ushort3, ushort3, bool>.operator >(ushort3 left, ushort3 right) => 
+        left.GreaterThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<ushort3, ushort3, bool>.operator <=(ushort3 left, ushort3 right) => 
+        left.LessThanOrEqualAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<ushort3, ushort3, bool>.operator >=(ushort3 left, ushort3 right) => 
+        left.GreaterThanOrEqualAll(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(ushort3 other)
+    {
+        if (x < other.x || y < other.y || z < other.z) return -1;
+        if (x > other.x || y > other.y || z > other.z) return 1;
+        return 0;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b16v3 operator <(ushort3 left, ushort3 right) =>
+        new(left.x < right.x, left.y < right.y, left.z < right.z);
+    [MethodImpl(256 | 512)]
+    public static b16v3 operator >(ushort3 left, ushort3 right) =>
+        new(left.x > right.x, left.y > right.y, left.z > right.z);
+    [MethodImpl(256 | 512)]
+    public static b16v3 operator <=(ushort3 left, ushort3 right) =>
+        new(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+    [MethodImpl(256 | 512)]
+    public static b16v3 operator >=(ushort3 left, ushort3 right) =>
+        new(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAll(ushort3 other) => x < other.x && y < other.y && z < other.z;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAll(ushort3 other) => x > other.x && y > other.y && z > other.z;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAll(ushort3 other) => x <= other.x && y <= other.y && z <= other.z;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAll(ushort3 other) => x >= other.x && y >= other.y && z >= other.z;
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAny(ushort3 other) => x < other.x || y < other.y || z < other.z;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAny(ushort3 other) => x > other.x || y > other.y || z > other.z;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAny(ushort3 other) => x <= other.x || y <= other.y || z <= other.z;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAny(ushort3 other) => x >= other.x || y >= other.y || z >= other.z;
+
+}
+
+#endregion // ushort3
+
+#region ushort4
+
+public partial struct ushort4 : IComparable<ushort4>, IComparable
+    #if NET8_0_OR_GREATER
+    , IComparisonOperators<ushort4, ushort4, bool>
+    , IComparisonOperators<ushort4, ushort4, b16v4>
+    #endif
+{
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return 1;
+        return obj is ushort4 other ? CompareTo(other) : throw new ArgumentException($"Object must be of type {nameof(ushort4)}");
+    }
+
+    #if NET8_0_OR_GREATER
+    static bool IComparisonOperators<ushort4, ushort4, bool>.operator <(ushort4 left, ushort4 right) => 
+        left.LessThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<ushort4, ushort4, bool>.operator >(ushort4 left, ushort4 right) => 
+        left.GreaterThanAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<ushort4, ushort4, bool>.operator <=(ushort4 left, ushort4 right) => 
+        left.LessThanOrEqualAll(right);
+    [MethodImpl(256 | 512)]
+    static bool IComparisonOperators<ushort4, ushort4, bool>.operator >=(ushort4 left, ushort4 right) => 
+        left.GreaterThanOrEqualAll(right);
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public int CompareTo(ushort4 other)
+    {
+        if (x < other.x || y < other.y || z < other.z || w < other.w) return -1;
+        if (x > other.x || y > other.y || z > other.z || w > other.w) return 1;
+        return 0;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static b16v4 operator <(ushort4 left, ushort4 right) =>
+        new(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
+    [MethodImpl(256 | 512)]
+    public static b16v4 operator >(ushort4 left, ushort4 right) =>
+        new(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
+    [MethodImpl(256 | 512)]
+    public static b16v4 operator <=(ushort4 left, ushort4 right) =>
+        new(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
+    [MethodImpl(256 | 512)]
+    public static b16v4 operator >=(ushort4 left, ushort4 right) =>
+        new(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAll(ushort4 other) => x < other.x && y < other.y && z < other.z && w < other.w;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAll(ushort4 other) => x > other.x && y > other.y && z > other.z && w > other.w;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAll(ushort4 other) => x <= other.x && y <= other.y && z <= other.z && w <= other.w;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAll(ushort4 other) => x >= other.x && y >= other.y && z >= other.z && w >= other.w;
+
+    [MethodImpl(256 | 512)]
+    public bool LessThanAny(ushort4 other) => x < other.x || y < other.y || z < other.z || w < other.w;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanAny(ushort4 other) => x > other.x || y > other.y || z > other.z || w > other.w;
+    [MethodImpl(256 | 512)]
+    public bool LessThanOrEqualAny(ushort4 other) => x <= other.x || y <= other.y || z <= other.z || w <= other.w;
+    [MethodImpl(256 | 512)]
+    public bool GreaterThanOrEqualAny(ushort4 other) => x >= other.x || y >= other.y || z >= other.z || w >= other.w;
+
+}
+
+#endregion // ushort4
+
 #region int2
 
 public partial struct int2 : IComparable<int2>, IComparable

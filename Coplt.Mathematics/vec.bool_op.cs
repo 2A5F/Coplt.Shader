@@ -122,6 +122,102 @@ public static partial class math
 
 #endregion // double4
 
+#region short2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2 select(this b16v2 c, short2 t, short2 f) 
+    {
+        return new(c.x ? t.x : f.x, c.y ? t.y : f.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 select(this bool c, short2 t, short2 f) => c ? t : f;
+}
+
+#endregion // short2
+
+#region short3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3 select(this b16v3 c, short3 t, short3 f) 
+    {
+        return new(c.x ? t.x : f.x, c.y ? t.y : f.y, c.z ? t.z : f.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 select(this bool c, short3 t, short3 f) => c ? t : f;
+}
+
+#endregion // short3
+
+#region short4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4 select(this b16v4 c, short4 t, short4 f) 
+    {
+        return new(c.x ? t.x : f.x, c.y ? t.y : f.y, c.z ? t.z : f.z, c.w ? t.w : f.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 select(this bool c, short4 t, short4 f) => c ? t : f;
+}
+
+#endregion // short4
+
+#region ushort2
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2 select(this b16v2 c, ushort2 t, ushort2 f) 
+    {
+        return new(c.x ? t.x : f.x, c.y ? t.y : f.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 select(this bool c, ushort2 t, ushort2 f) => c ? t : f;
+}
+
+#endregion // ushort2
+
+#region ushort3
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3 select(this b16v3 c, ushort3 t, ushort3 f) 
+    {
+        return new(c.x ? t.x : f.x, c.y ? t.y : f.y, c.z ? t.z : f.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 select(this bool c, ushort3 t, ushort3 f) => c ? t : f;
+}
+
+#endregion // ushort3
+
+#region ushort4
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4 select(this b16v4 c, ushort4 t, ushort4 f) 
+    {
+        return new(c.x ? t.x : f.x, c.y ? t.y : f.y, c.z ? t.z : f.z, c.w ? t.w : f.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 select(this bool c, ushort4 t, ushort4 f) => c ? t : f;
+}
+
+#endregion // ushort4
+
 #region int2
 
 public static partial class math

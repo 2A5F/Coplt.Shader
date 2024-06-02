@@ -566,6 +566,378 @@ public static partial class math
 
 #endregion // double4
 
+#region short2
+
+public partial struct short2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short2, short2, short2>
+    , IShiftOperators<short2, int, short2>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short2 operator ~(short2 a)
+    {
+        return new(a.x.BitNot(), a.y.BitNot());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator |(short2 a, short2 b)
+    {
+        return new(a.x.BitOr(b.x), a.y.BitOr(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator &(short2 a, short2 b)
+    {
+        return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator ^(short2 a, short2 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator <<(short2 a, int b)
+    {
+        return new(a.x.BitShiftLeft(b), a.y.BitShiftLeft(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator >>(short2 a, int b)
+    {
+        return new(a.x.BitShiftRight(b), a.y.BitShiftRight(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator >>>(short2 a, int b)
+    {
+        return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b));
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2 BitAndNot(this short2 a, short2 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+    }
+}
+
+#endregion // short2
+
+#region short3
+
+public partial struct short3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short3, short3, short3>
+    , IShiftOperators<short3, int, short3>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short3 operator ~(short3 a)
+    {
+        return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator |(short3 a, short3 b)
+    {
+        return new(a.x.BitOr(b.x), a.y.BitOr(b.y), a.z.BitOr(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator &(short3 a, short3 b)
+    {
+        return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator ^(short3 a, short3 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator <<(short3 a, int b)
+    {
+        return new(a.x.BitShiftLeft(b), a.y.BitShiftLeft(b), a.z.BitShiftLeft(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator >>(short3 a, int b)
+    {
+        return new(a.x.BitShiftRight(b), a.y.BitShiftRight(b), a.z.BitShiftRight(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator >>>(short3 a, int b)
+    {
+        return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b), a.z.BitShiftRightUnsigned(b));
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3 BitAndNot(this short3 a, short3 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+    }
+}
+
+#endregion // short3
+
+#region short4
+
+public partial struct short4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short4, short4, short4>
+    , IShiftOperators<short4, int, short4>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short4 operator ~(short4 a)
+    {
+        return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot(), a.w.BitNot());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator |(short4 a, short4 b)
+    {
+        return new(a.x.BitOr(b.x), a.y.BitOr(b.y), a.z.BitOr(b.z), a.w.BitOr(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator &(short4 a, short4 b)
+    {
+        return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator ^(short4 a, short4 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator <<(short4 a, int b)
+    {
+        return new(a.x.BitShiftLeft(b), a.y.BitShiftLeft(b), a.z.BitShiftLeft(b), a.w.BitShiftLeft(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator >>(short4 a, int b)
+    {
+        return new(a.x.BitShiftRight(b), a.y.BitShiftRight(b), a.z.BitShiftRight(b), a.w.BitShiftRight(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator >>>(short4 a, int b)
+    {
+        return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b), a.z.BitShiftRightUnsigned(b), a.w.BitShiftRightUnsigned(b));
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4 BitAndNot(this short4 a, short4 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+    }
+}
+
+#endregion // short4
+
+#region ushort2
+
+public partial struct ushort2 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort2, ushort2, ushort2>
+    , IShiftOperators<ushort2, int, ushort2>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator ~(ushort2 a)
+    {
+        return new(a.x.BitNot(), a.y.BitNot());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator |(ushort2 a, ushort2 b)
+    {
+        return new(a.x.BitOr(b.x), a.y.BitOr(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator &(ushort2 a, ushort2 b)
+    {
+        return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator ^(ushort2 a, ushort2 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator <<(ushort2 a, int b)
+    {
+        return new(a.x.BitShiftLeft(b), a.y.BitShiftLeft(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator >>(ushort2 a, int b)
+    {
+        return new(a.x.BitShiftRight(b), a.y.BitShiftRight(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator >>>(ushort2 a, int b)
+    {
+        return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b));
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2 BitAndNot(this ushort2 a, ushort2 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+    }
+}
+
+#endregion // ushort2
+
+#region ushort3
+
+public partial struct ushort3 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort3, ushort3, ushort3>
+    , IShiftOperators<ushort3, int, ushort3>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator ~(ushort3 a)
+    {
+        return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator |(ushort3 a, ushort3 b)
+    {
+        return new(a.x.BitOr(b.x), a.y.BitOr(b.y), a.z.BitOr(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator &(ushort3 a, ushort3 b)
+    {
+        return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator ^(ushort3 a, ushort3 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator <<(ushort3 a, int b)
+    {
+        return new(a.x.BitShiftLeft(b), a.y.BitShiftLeft(b), a.z.BitShiftLeft(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator >>(ushort3 a, int b)
+    {
+        return new(a.x.BitShiftRight(b), a.y.BitShiftRight(b), a.z.BitShiftRight(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator >>>(ushort3 a, int b)
+    {
+        return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b), a.z.BitShiftRightUnsigned(b));
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3 BitAndNot(this ushort3 a, ushort3 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+    }
+}
+
+#endregion // ushort3
+
+#region ushort4
+
+public partial struct ushort4 : IVectorBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort4, ushort4, ushort4>
+    , IShiftOperators<ushort4, int, ushort4>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator ~(ushort4 a)
+    {
+        return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot(), a.w.BitNot());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator |(ushort4 a, ushort4 b)
+    {
+        return new(a.x.BitOr(b.x), a.y.BitOr(b.y), a.z.BitOr(b.z), a.w.BitOr(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator &(ushort4 a, ushort4 b)
+    {
+        return new(a.x.BitAnd(b.x), a.y.BitAnd(b.y), a.z.BitAnd(b.z), a.w.BitAnd(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator ^(ushort4 a, ushort4 b)
+    {
+        return new(a.x.BitXor(b.x), a.y.BitXor(b.y), a.z.BitXor(b.z), a.w.BitXor(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator <<(ushort4 a, int b)
+    {
+        return new(a.x.BitShiftLeft(b), a.y.BitShiftLeft(b), a.z.BitShiftLeft(b), a.w.BitShiftLeft(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator >>(ushort4 a, int b)
+    {
+        return new(a.x.BitShiftRight(b), a.y.BitShiftRight(b), a.z.BitShiftRight(b), a.w.BitShiftRight(b));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator >>>(ushort4 a, int b)
+    {
+        return new(a.x.BitShiftRightUnsigned(b), a.y.BitShiftRightUnsigned(b), a.z.BitShiftRightUnsigned(b), a.w.BitShiftRightUnsigned(b));
+    }
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4 BitAndNot(this ushort4 a, ushort4 b)
+    {
+        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+    }
+}
+
+#endregion // ushort4
+
 #region int2
 
 public partial struct int2 : IVectorBitops

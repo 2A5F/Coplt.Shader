@@ -56,20 +56,44 @@ public partial struct <#= typeName #>
                 if (typ.simd)
                 {
                     WriteLine("#if NET8_0_OR_GREATER");
+                    if (a == 0 && b == 1 && c == 2)
+                    {
+#>
+        [MethodImpl(256 | 512)]
+        get => new(vector & Vector<#= bitSize4 #>.Create(-1, -1, -1, 0).As<#= typ.Type #>());
+<#
+                    }
+                    else
+                    {
 #>
         [MethodImpl(256 | 512)]
         get => new(Vector<#= bitSize4 #>.Shuffle(vector, Vector<#= bitSize4 #>.Create(<#= typ.shuffleCast #><#= a #>, <#= b #>, <#= c #>, 3)) & Vector<#= bitSize4 #>.Create(-1, -1, -1, 0).As<#= typ.Type #>());
 <#
+                    }
                     if (no_overlap)
                     {
+                        if (a == 0 && b == 1 && c == 2)
+                        {
 #>
         [MethodImpl(256 | 512)]
         set => vector = Vector<#= bitSize4 #>.ConditionalSelect(
             Vector<#= bitSize4 #>.Create(<#= sel[0] #>, <#= sel[1] #>, <#= sel[2] #>, <#= sel[3] #>).As<#= typ.Type #>(), 
-            vector, 
+            vector,
+            value.vector
+        );
+<#
+                        }
+                        else
+                        {
+#>
+        [MethodImpl(256 | 512)]
+        set => vector = Vector<#= bitSize4 #>.ConditionalSelect(
+            Vector<#= bitSize4 #>.Create(<#= sel[0] #>, <#= sel[1] #>, <#= sel[2] #>, <#= sel[3] #>).As<#= typ.Type #>(), 
+            vector,
             Vector<#= bitSize4 #>.Shuffle(value.vector, Vector<#= bitSize4 #>.Create(<#= typ.shuffleCast #><#= inv[0] #>, <#= inv[1] #>, <#= inv[2] #>, <#= inv[3] #>))
         );
 <#
+                        }
                     }
                     WriteLine("#else // NET8_0_OR_GREATER");
                 }

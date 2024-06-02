@@ -19,6 +19,7 @@
         <TextTemplate Include="mat.bool_op.tt" />
         <TextTemplate Include="mat.eq.tt" />
         <TextTemplate Include="mat.json.tt" />
+        <TextTemplate Include="mat.arith.4x4.tt" />
         <TextTemplate Include="mat.str.tt" />
         <TextTemplate Include="mat.trn.tt" />
         <TextTemplate Include="simd_matrix_trn_2x2.tt" />
@@ -29,6 +30,7 @@
         <TextTemplate Include="vec.arith.float.bin.tt" />
         <TextTemplate Include="vec.arith.float.tt" />
         <TextTemplate Include="vec.arith.tt" />
+        <TextTemplate Include="vec.as.tt" />
         <TextTemplate Include="vec.bitop.tt" />
         <TextTemplate Include="vec.bool_op.tt" />
         <TextTemplate Include="vec.cmp.tt" />
@@ -45,6 +47,7 @@
         <TextTemplate Include="vec.swizzle.3.4.tt" />
         <TextTemplate Include="vec.swizzle.4.tt" />
         <TextTemplate Include="vec.swizzle.4.2.tt" />
+        <TextTemplate Include="vec.swizzle.4.3.tt" />
         <TextTemplate Include="vec.conv.tt" />
         <TextTemplate Include="vec.eq.tt" />
         <TextTemplate Include="vec.str.tt" />

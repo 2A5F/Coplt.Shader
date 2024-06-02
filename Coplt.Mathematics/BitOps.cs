@@ -5,6 +5,16 @@ public static partial class BitOps
     [MethodImpl(256 | 512)]
     public static U UnsafeAs<T, U>(this T v) => Unsafe.As<T, U>(ref v);
 
+    [MethodImpl(256 | 512)]
+    public static U BitCast<T, U>(this T v) where T : struct where U : struct
+    {
+        #if NET8_0_OR_GREATER
+        return Unsafe.BitCast<T, U>(v);
+        #else
+        return v.UnsafeAs<T, U>();
+        #endif
+    }
+
     #region Half As
 
     [MethodImpl(256 | 512)]

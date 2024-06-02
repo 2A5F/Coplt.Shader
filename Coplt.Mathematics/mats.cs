@@ -5618,6 +5618,5622 @@ public partial struct double4x4 :
 
 #endregion // double4x4
 
+#region short2x2
+
+[Serializable]
+[JsonConverter(typeof(short2x2JsonConverter))]
+public partial struct short2x2 :
+    IMatrix2x2<short>, IMatrixSelf<short2x2>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 4; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(2, 2); 
+    }
+
+    public static short2x2 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static short2x2 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((short)1); 
+    }
+
+    public static short2x2 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (short)1, default,
+            default, (short)1
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public short2 c0;
+    public short2 c1;
+
+    #endregion
+
+    #region getter
+
+    public short m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public short m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public short m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public short m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public short2x2(short2 c0, short2 c1)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short2x2((short2 c0, short2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x2((short2 c0, short2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short2x2(
+        short m00, short m01,
+        short m10, short m11
+    )
+    {
+        this.c0 = new(m00, m10);
+        this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x2((
+        short m00, short m01,
+        short m10, short m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short2x2((
+        short m00, short m01,
+        short m10, short m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x2((
+        (short m00, short m01) r0,
+        (short m10, short m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short2x2((
+        (short m00, short m01) r0,
+        (short m10, short m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x2(short value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short2x2(short value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x2(short2 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short2x2(short2 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out short2 c0, out short2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out short m00, out short m01,
+        out short m10, out short m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public short2 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public short this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // short2x2
+
+#region short2x3
+
+[Serializable]
+[JsonConverter(typeof(short2x3JsonConverter))]
+public partial struct short2x3 :
+    IMatrix2x3<short>, IMatrixSelf<short2x3>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 6; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(2, 3); 
+    }
+
+    public static short2x3 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static short2x3 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((short)1); 
+    }
+
+    public static short2x3 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (short)1, default, default,
+            default, (short)1, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public short2 c0;
+    public short2 c1;
+    public short2 c2;
+
+    #endregion
+
+    #region getter
+
+    public short m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public short m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public short m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public short m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public short m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public short m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public short2x3(short2 c0, short2 c1, short2 c2)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short2x3((short2 c0, short2 c1, short2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x3((short2 c0, short2 c1, short2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short2x3(
+        short m00, short m01, short m02,
+        short m10, short m11, short m12
+    )
+    {
+        this.c0 = new(m00, m10);
+        this.c1 = new(m01, m11);
+        this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x3((
+        short m00, short m01, short m02,
+        short m10, short m11, short m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short2x3((
+        short m00, short m01, short m02,
+        short m10, short m11, short m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x3((
+        (short m00, short m01, short m02) r0,
+        (short m10, short m11, short m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short2x3((
+        (short m00, short m01, short m02) r0,
+        (short m10, short m11, short m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x3(short value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short2x3(short value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x3(short2 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short2x3(short2 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out short2 c0, out short2 c1, out short2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out short m00, out short m01, out short m02,
+        out short m10, out short m11, out short m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public short2 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public short this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // short2x3
+
+#region short2x4
+
+[Serializable]
+[JsonConverter(typeof(short2x4JsonConverter))]
+public partial struct short2x4 :
+    IMatrix2x4<short>, IMatrixSelf<short2x4>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 8; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(2, 4); 
+    }
+
+    public static short2x4 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static short2x4 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((short)1); 
+    }
+
+    public static short2x4 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (short)1, default, default, default,
+            default, (short)1, default, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public short2 c0;
+    public short2 c1;
+    public short2 c2;
+    public short2 c3;
+
+    #endregion
+
+    #region getter
+
+    public short m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public short m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public short m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public short m03
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.x;
+        [MethodImpl(256 | 512)]
+        set => c3.x = value;
+    }
+    public short m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public short m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public short m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public short m13
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.y;
+        [MethodImpl(256 | 512)]
+        set => c3.y = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public short2x4(short2 c0, short2 c1, short2 c2, short2 c3)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+        this.c3 = c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short2x4((short2 c0, short2 c1, short2 c2, short2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x4((short2 c0, short2 c1, short2 c2, short2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short2x4(
+        short m00, short m01, short m02, short m03,
+        short m10, short m11, short m12, short m13
+    )
+    {
+        this.c0 = new(m00, m10);
+        this.c1 = new(m01, m11);
+        this.c2 = new(m02, m12);
+        this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x4((
+        short m00, short m01, short m02, short m03,
+        short m10, short m11, short m12, short m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short2x4((
+        short m00, short m01, short m02, short m03,
+        short m10, short m11, short m12, short m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x4((
+        (short m00, short m01, short m02, short m03) r0,
+        (short m10, short m11, short m12, short m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short2x4((
+        (short m00, short m01, short m02, short m03) r0,
+        (short m10, short m11, short m12, short m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x4(short value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short2x4(short value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short2x4(short2 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short2x4(short2 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out short2 c0, out short2 c1, out short2 c2, out short2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out short m00, out short m01, out short m02, out short m03,
+        out short m10, out short m11, out short m12, out short m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public short2 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            3 => c3,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                case 3:
+                    c3 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public short this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            3 => c3[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                case 3:
+                    c3[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // short2x4
+
+#region short3x2
+
+[Serializable]
+[JsonConverter(typeof(short3x2JsonConverter))]
+public partial struct short3x2 :
+    IMatrix3x2<short>, IMatrixSelf<short3x2>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 6; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(3, 2); 
+    }
+
+    public static short3x2 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static short3x2 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((short)1); 
+    }
+
+    public static short3x2 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (short)1, default,
+            default, (short)1,
+            default, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public short3 c0;
+    public short3 c1;
+
+    #endregion
+
+    #region getter
+
+    public short m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public short m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public short m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public short m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public short m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public short m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public short3x2(short3 c0, short3 c1)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short3x2((short3 c0, short3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x2((short3 c0, short3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short3x2(
+        short m00, short m01,
+        short m10, short m11,
+        short m20, short m21
+    )
+    {
+        this.c0 = new(m00, m10, m20);
+        this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x2((
+        short m00, short m01,
+        short m10, short m11,
+        short m20, short m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short3x2((
+        short m00, short m01,
+        short m10, short m11,
+        short m20, short m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x2((
+        (short m00, short m01) r0,
+        (short m10, short m11) r1,
+        (short m20, short m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short3x2((
+        (short m00, short m01) r0,
+        (short m10, short m11) r1,
+        (short m20, short m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x2(short value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short3x2(short value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x2(short3 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short3x2(short3 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out short3 c0, out short3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out short m00, out short m01,
+        out short m10, out short m11,
+        out short m20, out short m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public short3 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public short this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // short3x2
+
+#region short3x3
+
+[Serializable]
+[JsonConverter(typeof(short3x3JsonConverter))]
+public partial struct short3x3 :
+    IMatrix3x3<short>, IMatrixSelf<short3x3>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 9; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(3, 3); 
+    }
+
+    public static short3x3 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static short3x3 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((short)1); 
+    }
+
+    public static short3x3 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (short)1, default, default,
+            default, (short)1, default,
+            default, default, (short)1
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public short3 c0;
+    public short3 c1;
+    public short3 c2;
+
+    #endregion
+
+    #region getter
+
+    public short m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public short m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public short m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public short m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public short m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public short m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public short m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public short m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public short m22
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.z;
+        [MethodImpl(256 | 512)]
+        set => c2.z = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public short3x3(short3 c0, short3 c1, short3 c2)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short3x3((short3 c0, short3 c1, short3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x3((short3 c0, short3 c1, short3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short3x3(
+        short m00, short m01, short m02,
+        short m10, short m11, short m12,
+        short m20, short m21, short m22
+    )
+    {
+        this.c0 = new(m00, m10, m20);
+        this.c1 = new(m01, m11, m21);
+        this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x3((
+        short m00, short m01, short m02,
+        short m10, short m11, short m12,
+        short m20, short m21, short m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short3x3((
+        short m00, short m01, short m02,
+        short m10, short m11, short m12,
+        short m20, short m21, short m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x3((
+        (short m00, short m01, short m02) r0,
+        (short m10, short m11, short m12) r1,
+        (short m20, short m21, short m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short3x3((
+        (short m00, short m01, short m02) r0,
+        (short m10, short m11, short m12) r1,
+        (short m20, short m21, short m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x3(short value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short3x3(short value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x3(short3 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short3x3(short3 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out short3 c0, out short3 c1, out short3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out short m00, out short m01, out short m02,
+        out short m10, out short m11, out short m12,
+        out short m20, out short m21, out short m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public short3 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public short this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // short3x3
+
+#region short3x4
+
+[Serializable]
+[JsonConverter(typeof(short3x4JsonConverter))]
+public partial struct short3x4 :
+    IMatrix3x4<short>, IMatrixSelf<short3x4>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 12; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(3, 4); 
+    }
+
+    public static short3x4 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static short3x4 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((short)1); 
+    }
+
+    public static short3x4 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (short)1, default, default, default,
+            default, (short)1, default, default,
+            default, default, (short)1, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public short3 c0;
+    public short3 c1;
+    public short3 c2;
+    public short3 c3;
+
+    #endregion
+
+    #region getter
+
+    public short m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public short m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public short m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public short m03
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.x;
+        [MethodImpl(256 | 512)]
+        set => c3.x = value;
+    }
+    public short m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public short m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public short m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public short m13
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.y;
+        [MethodImpl(256 | 512)]
+        set => c3.y = value;
+    }
+    public short m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public short m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public short m22
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.z;
+        [MethodImpl(256 | 512)]
+        set => c2.z = value;
+    }
+    public short m23
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.z;
+        [MethodImpl(256 | 512)]
+        set => c3.z = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public short3x4(short3 c0, short3 c1, short3 c2, short3 c3)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+        this.c3 = c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short3x4((short3 c0, short3 c1, short3 c2, short3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x4((short3 c0, short3 c1, short3 c2, short3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short3x4(
+        short m00, short m01, short m02, short m03,
+        short m10, short m11, short m12, short m13,
+        short m20, short m21, short m22, short m23
+    )
+    {
+        this.c0 = new(m00, m10, m20);
+        this.c1 = new(m01, m11, m21);
+        this.c2 = new(m02, m12, m22);
+        this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x4((
+        short m00, short m01, short m02, short m03,
+        short m10, short m11, short m12, short m13,
+        short m20, short m21, short m22, short m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short3x4((
+        short m00, short m01, short m02, short m03,
+        short m10, short m11, short m12, short m13,
+        short m20, short m21, short m22, short m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x4((
+        (short m00, short m01, short m02, short m03) r0,
+        (short m10, short m11, short m12, short m13) r1,
+        (short m20, short m21, short m22, short m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short3x4((
+        (short m00, short m01, short m02, short m03) r0,
+        (short m10, short m11, short m12, short m13) r1,
+        (short m20, short m21, short m22, short m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x4(short value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short3x4(short value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short3x4(short3 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short3x4(short3 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out short3 c0, out short3 c1, out short3 c2, out short3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out short m00, out short m01, out short m02, out short m03,
+        out short m10, out short m11, out short m12, out short m13,
+        out short m20, out short m21, out short m22, out short m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public short3 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            3 => c3,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                case 3:
+                    c3 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public short this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            3 => c3[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                case 3:
+                    c3[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // short3x4
+
+#region short4x2
+
+[Serializable]
+[JsonConverter(typeof(short4x2JsonConverter))]
+public partial struct short4x2 :
+    IMatrix4x2<short>, IMatrixSelf<short4x2>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 8; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(4, 2); 
+    }
+
+    public static short4x2 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static short4x2 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((short)1); 
+    }
+
+    public static short4x2 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (short)1, default,
+            default, (short)1,
+            default, default,
+            default, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public short4 c0;
+    public short4 c1;
+
+    #endregion
+
+    #region getter
+
+    public short m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public short m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public short m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public short m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public short m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public short m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public short m30
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.w;
+        [MethodImpl(256 | 512)]
+        set => c0.w = value;
+    }
+    public short m31
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.w;
+        [MethodImpl(256 | 512)]
+        set => c1.w = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public short4x2(short4 c0, short4 c1)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short4x2((short4 c0, short4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x2((short4 c0, short4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short4x2(
+        short m00, short m01,
+        short m10, short m11,
+        short m20, short m21,
+        short m30, short m31
+    )
+    {
+        this.c0 = new(m00, m10, m20, m30);
+        this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x2((
+        short m00, short m01,
+        short m10, short m11,
+        short m20, short m21,
+        short m30, short m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short4x2((
+        short m00, short m01,
+        short m10, short m11,
+        short m20, short m21,
+        short m30, short m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x2((
+        (short m00, short m01) r0,
+        (short m10, short m11) r1,
+        (short m20, short m21) r2,
+        (short m30, short m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short4x2((
+        (short m00, short m01) r0,
+        (short m10, short m11) r1,
+        (short m20, short m21) r2,
+        (short m30, short m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x2(short value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short4x2(short value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x2(short4 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short4x2(short4 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out short4 c0, out short4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out short m00, out short m01,
+        out short m10, out short m11,
+        out short m20, out short m21,
+        out short m30, out short m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public short4 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public short this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // short4x2
+
+#region short4x3
+
+[Serializable]
+[JsonConverter(typeof(short4x3JsonConverter))]
+public partial struct short4x3 :
+    IMatrix4x3<short>, IMatrixSelf<short4x3>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 12; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(4, 3); 
+    }
+
+    public static short4x3 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static short4x3 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((short)1); 
+    }
+
+    public static short4x3 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (short)1, default, default,
+            default, (short)1, default,
+            default, default, (short)1,
+            default, default, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public short4 c0;
+    public short4 c1;
+    public short4 c2;
+
+    #endregion
+
+    #region getter
+
+    public short m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public short m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public short m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public short m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public short m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public short m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public short m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public short m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public short m22
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.z;
+        [MethodImpl(256 | 512)]
+        set => c2.z = value;
+    }
+    public short m30
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.w;
+        [MethodImpl(256 | 512)]
+        set => c0.w = value;
+    }
+    public short m31
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.w;
+        [MethodImpl(256 | 512)]
+        set => c1.w = value;
+    }
+    public short m32
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.w;
+        [MethodImpl(256 | 512)]
+        set => c2.w = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public short4x3(short4 c0, short4 c1, short4 c2)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short4x3((short4 c0, short4 c1, short4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x3((short4 c0, short4 c1, short4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short4x3(
+        short m00, short m01, short m02,
+        short m10, short m11, short m12,
+        short m20, short m21, short m22,
+        short m30, short m31, short m32
+    )
+    {
+        this.c0 = new(m00, m10, m20, m30);
+        this.c1 = new(m01, m11, m21, m31);
+        this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x3((
+        short m00, short m01, short m02,
+        short m10, short m11, short m12,
+        short m20, short m21, short m22,
+        short m30, short m31, short m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short4x3((
+        short m00, short m01, short m02,
+        short m10, short m11, short m12,
+        short m20, short m21, short m22,
+        short m30, short m31, short m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x3((
+        (short m00, short m01, short m02) r0,
+        (short m10, short m11, short m12) r1,
+        (short m20, short m21, short m22) r2,
+        (short m30, short m31, short m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short4x3((
+        (short m00, short m01, short m02) r0,
+        (short m10, short m11, short m12) r1,
+        (short m20, short m21, short m22) r2,
+        (short m30, short m31, short m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x3(short value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short4x3(short value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x3(short4 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short4x3(short4 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out short4 c0, out short4 c1, out short4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out short m00, out short m01, out short m02,
+        out short m10, out short m11, out short m12,
+        out short m20, out short m21, out short m22,
+        out short m30, out short m31, out short m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public short4 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public short this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // short4x3
+
+#region short4x4
+
+[Serializable]
+[JsonConverter(typeof(short4x4JsonConverter))]
+public partial struct short4x4 :
+    IMatrix4x4<short>, IMatrixSelf<short4x4>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 16; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(4, 4); 
+    }
+
+    public static short4x4 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static short4x4 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((short)1); 
+    }
+
+    public static short4x4 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (short)1, default, default, default,
+            default, (short)1, default, default,
+            default, default, (short)1, default,
+            default, default, default, (short)1
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public short4 c0;
+    public short4 c1;
+    public short4 c2;
+    public short4 c3;
+
+    #endregion
+
+    #region getter
+
+    public short m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public short m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public short m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public short m03
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.x;
+        [MethodImpl(256 | 512)]
+        set => c3.x = value;
+    }
+    public short m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public short m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public short m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public short m13
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.y;
+        [MethodImpl(256 | 512)]
+        set => c3.y = value;
+    }
+    public short m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public short m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public short m22
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.z;
+        [MethodImpl(256 | 512)]
+        set => c2.z = value;
+    }
+    public short m23
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.z;
+        [MethodImpl(256 | 512)]
+        set => c3.z = value;
+    }
+    public short m30
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.w;
+        [MethodImpl(256 | 512)]
+        set => c0.w = value;
+    }
+    public short m31
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.w;
+        [MethodImpl(256 | 512)]
+        set => c1.w = value;
+    }
+    public short m32
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.w;
+        [MethodImpl(256 | 512)]
+        set => c2.w = value;
+    }
+    public short m33
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.w;
+        [MethodImpl(256 | 512)]
+        set => c3.w = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public short4x4(short4 c0, short4 c1, short4 c2, short4 c3)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+        this.c3 = c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short4x4((short4 c0, short4 c1, short4 c2, short4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x4((short4 c0, short4 c1, short4 c2, short4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short4x4(
+        short m00, short m01, short m02, short m03,
+        short m10, short m11, short m12, short m13,
+        short m20, short m21, short m22, short m23,
+        short m30, short m31, short m32, short m33
+    )
+    {
+        this.c0 = new(m00, m10, m20, m30);
+        this.c1 = new(m01, m11, m21, m31);
+        this.c2 = new(m02, m12, m22, m32);
+        this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x4((
+        short m00, short m01, short m02, short m03,
+        short m10, short m11, short m12, short m13,
+        short m20, short m21, short m22, short m23,
+        short m30, short m31, short m32, short m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short4x4((
+        short m00, short m01, short m02, short m03,
+        short m10, short m11, short m12, short m13,
+        short m20, short m21, short m22, short m23,
+        short m30, short m31, short m32, short m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x4((
+        (short m00, short m01, short m02, short m03) r0,
+        (short m10, short m11, short m12, short m13) r1,
+        (short m20, short m21, short m22, short m23) r2,
+        (short m30, short m31, short m32, short m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public short4x4((
+        (short m00, short m01, short m02, short m03) r0,
+        (short m10, short m11, short m12, short m13) r1,
+        (short m20, short m21, short m22, short m23) r2,
+        (short m30, short m31, short m32, short m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x4(short value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short4x4(short value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator short4x4(short4 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public short4x4(short4 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out short4 c0, out short4 c1, out short4 c2, out short4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out short m00, out short m01, out short m02, out short m03,
+        out short m10, out short m11, out short m12, out short m13,
+        out short m20, out short m21, out short m22, out short m23,
+        out short m30, out short m31, out short m32, out short m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public short4 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            3 => c3,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                case 3:
+                    c3 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public short this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            3 => c3[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                case 3:
+                    c3[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // short4x4
+
+#region ushort2x2
+
+[Serializable]
+[JsonConverter(typeof(ushort2x2JsonConverter))]
+public partial struct ushort2x2 :
+    IMatrix2x2<ushort>, IMatrixSelf<ushort2x2>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 4; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(2, 2); 
+    }
+
+    public static ushort2x2 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static ushort2x2 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((ushort)1); 
+    }
+
+    public static ushort2x2 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (ushort)1, default,
+            default, (ushort)1
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public ushort2 c0;
+    public ushort2 c1;
+
+    #endregion
+
+    #region getter
+
+    public ushort m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public ushort m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public ushort m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public ushort m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public ushort2x2(ushort2 c0, ushort2 c1)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort2x2((ushort2 c0, ushort2 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x2((ushort2 c0, ushort2 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x2(
+        ushort m00, ushort m01,
+        ushort m10, ushort m11
+    )
+    {
+        this.c0 = new(m00, m10);
+        this.c1 = new(m01, m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x2((
+        ushort m00, ushort m01,
+        ushort m10, ushort m11
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x2((
+        ushort m00, ushort m01,
+        ushort m10, ushort m11
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x2((
+        (ushort m00, ushort m01) r0,
+        (ushort m10, ushort m11) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x2((
+        (ushort m00, ushort m01) r0,
+        (ushort m10, ushort m11) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x2(ushort value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x2(ushort value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x2(ushort2 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x2(ushort2 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ushort2 c0, out ushort2 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ushort m00, out ushort m01,
+        out ushort m10, out ushort m11
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public ushort2 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public ushort this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // ushort2x2
+
+#region ushort2x3
+
+[Serializable]
+[JsonConverter(typeof(ushort2x3JsonConverter))]
+public partial struct ushort2x3 :
+    IMatrix2x3<ushort>, IMatrixSelf<ushort2x3>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 6; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(2, 3); 
+    }
+
+    public static ushort2x3 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static ushort2x3 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((ushort)1); 
+    }
+
+    public static ushort2x3 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (ushort)1, default, default,
+            default, (ushort)1, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public ushort2 c0;
+    public ushort2 c1;
+    public ushort2 c2;
+
+    #endregion
+
+    #region getter
+
+    public ushort m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public ushort m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public ushort m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public ushort m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public ushort m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public ushort m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public ushort2x3(ushort2 c0, ushort2 c1, ushort2 c2)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort2x3((ushort2 c0, ushort2 c1, ushort2 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x3((ushort2 c0, ushort2 c1, ushort2 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x3(
+        ushort m00, ushort m01, ushort m02,
+        ushort m10, ushort m11, ushort m12
+    )
+    {
+        this.c0 = new(m00, m10);
+        this.c1 = new(m01, m11);
+        this.c2 = new(m02, m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x3((
+        ushort m00, ushort m01, ushort m02,
+        ushort m10, ushort m11, ushort m12
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x3((
+        ushort m00, ushort m01, ushort m02,
+        ushort m10, ushort m11, ushort m12
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x3((
+        (ushort m00, ushort m01, ushort m02) r0,
+        (ushort m10, ushort m11, ushort m12) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x3((
+        (ushort m00, ushort m01, ushort m02) r0,
+        (ushort m10, ushort m11, ushort m12) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x3(ushort value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x3(ushort value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x3(ushort2 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x3(ushort2 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ushort2 c0, out ushort2 c1, out ushort2 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ushort m00, out ushort m01, out ushort m02,
+        out ushort m10, out ushort m11, out ushort m12
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public ushort2 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public ushort this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // ushort2x3
+
+#region ushort2x4
+
+[Serializable]
+[JsonConverter(typeof(ushort2x4JsonConverter))]
+public partial struct ushort2x4 :
+    IMatrix2x4<ushort>, IMatrixSelf<ushort2x4>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 8; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(2, 4); 
+    }
+
+    public static ushort2x4 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static ushort2x4 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((ushort)1); 
+    }
+
+    public static ushort2x4 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (ushort)1, default, default, default,
+            default, (ushort)1, default, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public ushort2 c0;
+    public ushort2 c1;
+    public ushort2 c2;
+    public ushort2 c3;
+
+    #endregion
+
+    #region getter
+
+    public ushort m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public ushort m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public ushort m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public ushort m03
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.x;
+        [MethodImpl(256 | 512)]
+        set => c3.x = value;
+    }
+    public ushort m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public ushort m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public ushort m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public ushort m13
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.y;
+        [MethodImpl(256 | 512)]
+        set => c3.y = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public ushort2x4(ushort2 c0, ushort2 c1, ushort2 c2, ushort2 c3)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+        this.c3 = c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort2x4((ushort2 c0, ushort2 c1, ushort2 c2, ushort2 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x4((ushort2 c0, ushort2 c1, ushort2 c2, ushort2 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x4(
+        ushort m00, ushort m01, ushort m02, ushort m03,
+        ushort m10, ushort m11, ushort m12, ushort m13
+    )
+    {
+        this.c0 = new(m00, m10);
+        this.c1 = new(m01, m11);
+        this.c2 = new(m02, m12);
+        this.c3 = new(m03, m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x4((
+        ushort m00, ushort m01, ushort m02, ushort m03,
+        ushort m10, ushort m11, ushort m12, ushort m13
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x4((
+        ushort m00, ushort m01, ushort m02, ushort m03,
+        ushort m10, ushort m11, ushort m12, ushort m13
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10);
+        this.c1 = new(tuple.m01, tuple.m11);
+        this.c2 = new(tuple.m02, tuple.m12);
+        this.c3 = new(tuple.m03, tuple.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x4((
+        (ushort m00, ushort m01, ushort m02, ushort m03) r0,
+        (ushort m10, ushort m11, ushort m12, ushort m13) r1
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x4((
+        (ushort m00, ushort m01, ushort m02, ushort m03) r0,
+        (ushort m10, ushort m11, ushort m12, ushort m13) r1
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x4(ushort value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x4(ushort value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort2x4(ushort2 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort2x4(ushort2 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ushort2 c0, out ushort2 c1, out ushort2 c2, out ushort2 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ushort m00, out ushort m01, out ushort m02, out ushort m03,
+        out ushort m10, out ushort m11, out ushort m12, out ushort m13
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10);
+        this.c1.Deconstruct(out m01, out m11);
+        this.c2.Deconstruct(out m02, out m12);
+        this.c3.Deconstruct(out m03, out m13);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public ushort2 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            3 => c3,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                case 3:
+                    c3 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public ushort this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            3 => c3[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                case 3:
+                    c3[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // ushort2x4
+
+#region ushort3x2
+
+[Serializable]
+[JsonConverter(typeof(ushort3x2JsonConverter))]
+public partial struct ushort3x2 :
+    IMatrix3x2<ushort>, IMatrixSelf<ushort3x2>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 6; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(3, 2); 
+    }
+
+    public static ushort3x2 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static ushort3x2 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((ushort)1); 
+    }
+
+    public static ushort3x2 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (ushort)1, default,
+            default, (ushort)1,
+            default, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public ushort3 c0;
+    public ushort3 c1;
+
+    #endregion
+
+    #region getter
+
+    public ushort m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public ushort m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public ushort m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public ushort m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public ushort m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public ushort m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public ushort3x2(ushort3 c0, ushort3 c1)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort3x2((ushort3 c0, ushort3 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x2((ushort3 c0, ushort3 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x2(
+        ushort m00, ushort m01,
+        ushort m10, ushort m11,
+        ushort m20, ushort m21
+    )
+    {
+        this.c0 = new(m00, m10, m20);
+        this.c1 = new(m01, m11, m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x2((
+        ushort m00, ushort m01,
+        ushort m10, ushort m11,
+        ushort m20, ushort m21
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x2((
+        ushort m00, ushort m01,
+        ushort m10, ushort m11,
+        ushort m20, ushort m21
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x2((
+        (ushort m00, ushort m01) r0,
+        (ushort m10, ushort m11) r1,
+        (ushort m20, ushort m21) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x2((
+        (ushort m00, ushort m01) r0,
+        (ushort m10, ushort m11) r1,
+        (ushort m20, ushort m21) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x2(ushort value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x2(ushort value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x2(ushort3 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x2(ushort3 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ushort3 c0, out ushort3 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ushort m00, out ushort m01,
+        out ushort m10, out ushort m11,
+        out ushort m20, out ushort m21
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public ushort3 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public ushort this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // ushort3x2
+
+#region ushort3x3
+
+[Serializable]
+[JsonConverter(typeof(ushort3x3JsonConverter))]
+public partial struct ushort3x3 :
+    IMatrix3x3<ushort>, IMatrixSelf<ushort3x3>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 9; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(3, 3); 
+    }
+
+    public static ushort3x3 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static ushort3x3 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((ushort)1); 
+    }
+
+    public static ushort3x3 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (ushort)1, default, default,
+            default, (ushort)1, default,
+            default, default, (ushort)1
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public ushort3 c0;
+    public ushort3 c1;
+    public ushort3 c2;
+
+    #endregion
+
+    #region getter
+
+    public ushort m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public ushort m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public ushort m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public ushort m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public ushort m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public ushort m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public ushort m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public ushort m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public ushort m22
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.z;
+        [MethodImpl(256 | 512)]
+        set => c2.z = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public ushort3x3(ushort3 c0, ushort3 c1, ushort3 c2)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort3x3((ushort3 c0, ushort3 c1, ushort3 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x3((ushort3 c0, ushort3 c1, ushort3 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x3(
+        ushort m00, ushort m01, ushort m02,
+        ushort m10, ushort m11, ushort m12,
+        ushort m20, ushort m21, ushort m22
+    )
+    {
+        this.c0 = new(m00, m10, m20);
+        this.c1 = new(m01, m11, m21);
+        this.c2 = new(m02, m12, m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x3((
+        ushort m00, ushort m01, ushort m02,
+        ushort m10, ushort m11, ushort m12,
+        ushort m20, ushort m21, ushort m22
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x3((
+        ushort m00, ushort m01, ushort m02,
+        ushort m10, ushort m11, ushort m12,
+        ushort m20, ushort m21, ushort m22
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x3((
+        (ushort m00, ushort m01, ushort m02) r0,
+        (ushort m10, ushort m11, ushort m12) r1,
+        (ushort m20, ushort m21, ushort m22) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x3((
+        (ushort m00, ushort m01, ushort m02) r0,
+        (ushort m10, ushort m11, ushort m12) r1,
+        (ushort m20, ushort m21, ushort m22) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x3(ushort value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x3(ushort value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x3(ushort3 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x3(ushort3 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ushort3 c0, out ushort3 c1, out ushort3 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ushort m00, out ushort m01, out ushort m02,
+        out ushort m10, out ushort m11, out ushort m12,
+        out ushort m20, out ushort m21, out ushort m22
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public ushort3 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public ushort this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // ushort3x3
+
+#region ushort3x4
+
+[Serializable]
+[JsonConverter(typeof(ushort3x4JsonConverter))]
+public partial struct ushort3x4 :
+    IMatrix3x4<ushort>, IMatrixSelf<ushort3x4>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 12; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(3, 4); 
+    }
+
+    public static ushort3x4 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static ushort3x4 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((ushort)1); 
+    }
+
+    public static ushort3x4 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (ushort)1, default, default, default,
+            default, (ushort)1, default, default,
+            default, default, (ushort)1, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public ushort3 c0;
+    public ushort3 c1;
+    public ushort3 c2;
+    public ushort3 c3;
+
+    #endregion
+
+    #region getter
+
+    public ushort m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public ushort m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public ushort m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public ushort m03
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.x;
+        [MethodImpl(256 | 512)]
+        set => c3.x = value;
+    }
+    public ushort m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public ushort m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public ushort m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public ushort m13
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.y;
+        [MethodImpl(256 | 512)]
+        set => c3.y = value;
+    }
+    public ushort m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public ushort m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public ushort m22
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.z;
+        [MethodImpl(256 | 512)]
+        set => c2.z = value;
+    }
+    public ushort m23
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.z;
+        [MethodImpl(256 | 512)]
+        set => c3.z = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public ushort3x4(ushort3 c0, ushort3 c1, ushort3 c2, ushort3 c3)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+        this.c3 = c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort3x4((ushort3 c0, ushort3 c1, ushort3 c2, ushort3 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x4((ushort3 c0, ushort3 c1, ushort3 c2, ushort3 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x4(
+        ushort m00, ushort m01, ushort m02, ushort m03,
+        ushort m10, ushort m11, ushort m12, ushort m13,
+        ushort m20, ushort m21, ushort m22, ushort m23
+    )
+    {
+        this.c0 = new(m00, m10, m20);
+        this.c1 = new(m01, m11, m21);
+        this.c2 = new(m02, m12, m22);
+        this.c3 = new(m03, m13, m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x4((
+        ushort m00, ushort m01, ushort m02, ushort m03,
+        ushort m10, ushort m11, ushort m12, ushort m13,
+        ushort m20, ushort m21, ushort m22, ushort m23
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x4((
+        ushort m00, ushort m01, ushort m02, ushort m03,
+        ushort m10, ushort m11, ushort m12, ushort m13,
+        ushort m20, ushort m21, ushort m22, ushort m23
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x4((
+        (ushort m00, ushort m01, ushort m02, ushort m03) r0,
+        (ushort m10, ushort m11, ushort m12, ushort m13) r1,
+        (ushort m20, ushort m21, ushort m22, ushort m23) r2
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x4((
+        (ushort m00, ushort m01, ushort m02, ushort m03) r0,
+        (ushort m10, ushort m11, ushort m12, ushort m13) r1,
+        (ushort m20, ushort m21, ushort m22, ushort m23) r2
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x4(ushort value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x4(ushort value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort3x4(ushort3 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort3x4(ushort3 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ushort3 c0, out ushort3 c1, out ushort3 c2, out ushort3 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ushort m00, out ushort m01, out ushort m02, out ushort m03,
+        out ushort m10, out ushort m11, out ushort m12, out ushort m13,
+        out ushort m20, out ushort m21, out ushort m22, out ushort m23
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20);
+        this.c1.Deconstruct(out m01, out m11, out m21);
+        this.c2.Deconstruct(out m02, out m12, out m22);
+        this.c3.Deconstruct(out m03, out m13, out m23);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public ushort3 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            3 => c3,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                case 3:
+                    c3 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public ushort this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            3 => c3[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                case 3:
+                    c3[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // ushort3x4
+
+#region ushort4x2
+
+[Serializable]
+[JsonConverter(typeof(ushort4x2JsonConverter))]
+public partial struct ushort4x2 :
+    IMatrix4x2<ushort>, IMatrixSelf<ushort4x2>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 8; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(4, 2); 
+    }
+
+    public static ushort4x2 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static ushort4x2 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((ushort)1); 
+    }
+
+    public static ushort4x2 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (ushort)1, default,
+            default, (ushort)1,
+            default, default,
+            default, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public ushort4 c0;
+    public ushort4 c1;
+
+    #endregion
+
+    #region getter
+
+    public ushort m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public ushort m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public ushort m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public ushort m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public ushort m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public ushort m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public ushort m30
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.w;
+        [MethodImpl(256 | 512)]
+        set => c0.w = value;
+    }
+    public ushort m31
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.w;
+        [MethodImpl(256 | 512)]
+        set => c1.w = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public ushort4x2(ushort4 c0, ushort4 c1)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort4x2((ushort4 c0, ushort4 c1) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x2((ushort4 c0, ushort4 c1) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x2(
+        ushort m00, ushort m01,
+        ushort m10, ushort m11,
+        ushort m20, ushort m21,
+        ushort m30, ushort m31
+    )
+    {
+        this.c0 = new(m00, m10, m20, m30);
+        this.c1 = new(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x2((
+        ushort m00, ushort m01,
+        ushort m10, ushort m11,
+        ushort m20, ushort m21,
+        ushort m30, ushort m31
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x2((
+        ushort m00, ushort m01,
+        ushort m10, ushort m11,
+        ushort m20, ushort m21,
+        ushort m30, ushort m31
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x2((
+        (ushort m00, ushort m01) r0,
+        (ushort m10, ushort m11) r1,
+        (ushort m20, ushort m21) r2,
+        (ushort m30, ushort m31) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x2((
+        (ushort m00, ushort m01) r0,
+        (ushort m10, ushort m11) r1,
+        (ushort m20, ushort m21) r2,
+        (ushort m30, ushort m31) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x2(ushort value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x2(ushort value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x2(ushort4 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x2(ushort4 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ushort4 c0, out ushort4 c1)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ushort m00, out ushort m01,
+        out ushort m10, out ushort m11,
+        out ushort m20, out ushort m21,
+        out ushort m30, out ushort m31
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public ushort4 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public ushort this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // ushort4x2
+
+#region ushort4x3
+
+[Serializable]
+[JsonConverter(typeof(ushort4x3JsonConverter))]
+public partial struct ushort4x3 :
+    IMatrix4x3<ushort>, IMatrixSelf<ushort4x3>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 12; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(4, 3); 
+    }
+
+    public static ushort4x3 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static ushort4x3 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((ushort)1); 
+    }
+
+    public static ushort4x3 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (ushort)1, default, default,
+            default, (ushort)1, default,
+            default, default, (ushort)1,
+            default, default, default
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public ushort4 c0;
+    public ushort4 c1;
+    public ushort4 c2;
+
+    #endregion
+
+    #region getter
+
+    public ushort m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public ushort m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public ushort m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public ushort m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public ushort m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public ushort m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public ushort m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public ushort m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public ushort m22
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.z;
+        [MethodImpl(256 | 512)]
+        set => c2.z = value;
+    }
+    public ushort m30
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.w;
+        [MethodImpl(256 | 512)]
+        set => c0.w = value;
+    }
+    public ushort m31
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.w;
+        [MethodImpl(256 | 512)]
+        set => c1.w = value;
+    }
+    public ushort m32
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.w;
+        [MethodImpl(256 | 512)]
+        set => c2.w = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public ushort4x3(ushort4 c0, ushort4 c1, ushort4 c2)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort4x3((ushort4 c0, ushort4 c1, ushort4 c2) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x3((ushort4 c0, ushort4 c1, ushort4 c2) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x3(
+        ushort m00, ushort m01, ushort m02,
+        ushort m10, ushort m11, ushort m12,
+        ushort m20, ushort m21, ushort m22,
+        ushort m30, ushort m31, ushort m32
+    )
+    {
+        this.c0 = new(m00, m10, m20, m30);
+        this.c1 = new(m01, m11, m21, m31);
+        this.c2 = new(m02, m12, m22, m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x3((
+        ushort m00, ushort m01, ushort m02,
+        ushort m10, ushort m11, ushort m12,
+        ushort m20, ushort m21, ushort m22,
+        ushort m30, ushort m31, ushort m32
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x3((
+        ushort m00, ushort m01, ushort m02,
+        ushort m10, ushort m11, ushort m12,
+        ushort m20, ushort m21, ushort m22,
+        ushort m30, ushort m31, ushort m32
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x3((
+        (ushort m00, ushort m01, ushort m02) r0,
+        (ushort m10, ushort m11, ushort m12) r1,
+        (ushort m20, ushort m21, ushort m22) r2,
+        (ushort m30, ushort m31, ushort m32) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x3((
+        (ushort m00, ushort m01, ushort m02) r0,
+        (ushort m10, ushort m11, ushort m12) r1,
+        (ushort m20, ushort m21, ushort m22) r2,
+        (ushort m30, ushort m31, ushort m32) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x3(ushort value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x3(ushort value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x3(ushort4 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x3(ushort4 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ushort4 c0, out ushort4 c1, out ushort4 c2)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ushort m00, out ushort m01, out ushort m02,
+        out ushort m10, out ushort m11, out ushort m12,
+        out ushort m20, out ushort m21, out ushort m22,
+        out ushort m30, out ushort m31, out ushort m32
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public ushort4 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public ushort this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // ushort4x3
+
+#region ushort4x4
+
+[Serializable]
+[JsonConverter(typeof(ushort4x4JsonConverter))]
+public partial struct ushort4x4 :
+    IMatrix4x4<ushort>, IMatrixSelf<ushort4x4>
+{
+    #region Static
+
+    public static bool IsSimdAccelerated
+    { 
+        [MethodImpl(256 | 512)]
+        get => false;
+    }
+
+    public static int Length
+    { 
+        [MethodImpl(256 | 512)]
+        get => 16; 
+    }
+
+    public static int2 Size
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(4, 4); 
+    }
+
+    public static ushort4x4 Zero
+    { 
+        [MethodImpl(256 | 512)]
+        get => default; 
+    }
+
+    public static ushort4x4 One
+    { 
+        [MethodImpl(256 | 512)]
+        get => new((ushort)1); 
+    }
+
+    public static ushort4x4 Identity
+    { 
+        [MethodImpl(256 | 512)]
+        get => new(
+            (ushort)1, default, default, default,
+            default, (ushort)1, default, default,
+            default, default, (ushort)1, default,
+            default, default, default, (ushort)1
+        ); 
+    }
+
+    #endregion
+
+    #region fields
+    public ushort4 c0;
+    public ushort4 c1;
+    public ushort4 c2;
+    public ushort4 c3;
+
+    #endregion
+
+    #region getter
+
+    public ushort m00
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.x;
+        [MethodImpl(256 | 512)]
+        set => c0.x = value;
+    }
+    public ushort m01
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.x;
+        [MethodImpl(256 | 512)]
+        set => c1.x = value;
+    }
+    public ushort m02
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.x;
+        [MethodImpl(256 | 512)]
+        set => c2.x = value;
+    }
+    public ushort m03
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.x;
+        [MethodImpl(256 | 512)]
+        set => c3.x = value;
+    }
+    public ushort m10
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.y;
+        [MethodImpl(256 | 512)]
+        set => c0.y = value;
+    }
+    public ushort m11
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.y;
+        [MethodImpl(256 | 512)]
+        set => c1.y = value;
+    }
+    public ushort m12
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.y;
+        [MethodImpl(256 | 512)]
+        set => c2.y = value;
+    }
+    public ushort m13
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.y;
+        [MethodImpl(256 | 512)]
+        set => c3.y = value;
+    }
+    public ushort m20
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.z;
+        [MethodImpl(256 | 512)]
+        set => c0.z = value;
+    }
+    public ushort m21
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.z;
+        [MethodImpl(256 | 512)]
+        set => c1.z = value;
+    }
+    public ushort m22
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.z;
+        [MethodImpl(256 | 512)]
+        set => c2.z = value;
+    }
+    public ushort m23
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.z;
+        [MethodImpl(256 | 512)]
+        set => c3.z = value;
+    }
+    public ushort m30
+    {
+        [MethodImpl(256 | 512)]
+        get => c0.w;
+        [MethodImpl(256 | 512)]
+        set => c0.w = value;
+    }
+    public ushort m31
+    {
+        [MethodImpl(256 | 512)]
+        get => c1.w;
+        [MethodImpl(256 | 512)]
+        set => c1.w = value;
+    }
+    public ushort m32
+    {
+        [MethodImpl(256 | 512)]
+        get => c2.w;
+        [MethodImpl(256 | 512)]
+        set => c2.w = value;
+    }
+    public ushort m33
+    {
+        [MethodImpl(256 | 512)]
+        get => c3.w;
+        [MethodImpl(256 | 512)]
+        set => c3.w = value;
+    }
+
+    #endregion
+
+    #region ctor
+
+    [MethodImpl(256 | 512)]
+    public ushort4x4(ushort4 c0, ushort4 c1, ushort4 c2, ushort4 c3)
+    {
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+        this.c3 = c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort4x4((ushort4 c0, ushort4 c1, ushort4 c2, ushort4 c3) tuple)
+    {
+        this.c0 = tuple.c0;
+        this.c1 = tuple.c1;
+        this.c2 = tuple.c2;
+        this.c3 = tuple.c3;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x4((ushort4 c0, ushort4 c1, ushort4 c2, ushort4 c3) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x4(
+        ushort m00, ushort m01, ushort m02, ushort m03,
+        ushort m10, ushort m11, ushort m12, ushort m13,
+        ushort m20, ushort m21, ushort m22, ushort m23,
+        ushort m30, ushort m31, ushort m32, ushort m33
+    )
+    {
+        this.c0 = new(m00, m10, m20, m30);
+        this.c1 = new(m01, m11, m21, m31);
+        this.c2 = new(m02, m12, m22, m32);
+        this.c3 = new(m03, m13, m23, m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x4((
+        ushort m00, ushort m01, ushort m02, ushort m03,
+        ushort m10, ushort m11, ushort m12, ushort m13,
+        ushort m20, ushort m21, ushort m22, ushort m23,
+        ushort m30, ushort m31, ushort m32, ushort m33
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x4((
+        ushort m00, ushort m01, ushort m02, ushort m03,
+        ushort m10, ushort m11, ushort m12, ushort m13,
+        ushort m20, ushort m21, ushort m22, ushort m23,
+        ushort m30, ushort m31, ushort m32, ushort m33
+    ) tuple)
+    {
+        this.c0 = new(tuple.m00, tuple.m10, tuple.m20, tuple.m30);
+        this.c1 = new(tuple.m01, tuple.m11, tuple.m21, tuple.m31);
+        this.c2 = new(tuple.m02, tuple.m12, tuple.m22, tuple.m32);
+        this.c3 = new(tuple.m03, tuple.m13, tuple.m23, tuple.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x4((
+        (ushort m00, ushort m01, ushort m02, ushort m03) r0,
+        (ushort m10, ushort m11, ushort m12, ushort m13) r1,
+        (ushort m20, ushort m21, ushort m22, ushort m23) r2,
+        (ushort m30, ushort m31, ushort m32, ushort m33) r3
+    ) tuple) => new(tuple);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x4((
+        (ushort m00, ushort m01, ushort m02, ushort m03) r0,
+        (ushort m10, ushort m11, ushort m12, ushort m13) r1,
+        (ushort m20, ushort m21, ushort m22, ushort m23) r2,
+        (ushort m30, ushort m31, ushort m32, ushort m33) r3
+    ) tuple)
+    {
+        this.c0 = new(tuple.r0.m00, tuple.r1.m10, tuple.r2.m20, tuple.r3.m30);
+        this.c1 = new(tuple.r0.m01, tuple.r1.m11, tuple.r2.m21, tuple.r3.m31);
+        this.c2 = new(tuple.r0.m02, tuple.r1.m12, tuple.r2.m22, tuple.r3.m32);
+        this.c3 = new(tuple.r0.m03, tuple.r1.m13, tuple.r2.m23, tuple.r3.m33);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x4(ushort value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x4(ushort value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static implicit operator ushort4x4(ushort4 value) => new(value);
+
+    [MethodImpl(256 | 512)]
+    public ushort4x4(ushort4 value)
+    {
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    #endregion
+
+    #region deconstruct
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(out ushort4 c0, out ushort4 c1, out ushort4 c2, out ushort4 c3)
+    {
+        c0 = this.c0;
+        c1 = this.c1;
+        c2 = this.c2;
+        c3 = this.c3;
+    }
+    
+    [MethodImpl(256 | 512)]
+    public void Deconstruct(
+        out ushort m00, out ushort m01, out ushort m02, out ushort m03,
+        out ushort m10, out ushort m11, out ushort m12, out ushort m13,
+        out ushort m20, out ushort m21, out ushort m22, out ushort m23,
+        out ushort m30, out ushort m31, out ushort m32, out ushort m33
+    )
+    {
+        this.c0.Deconstruct(out m00, out m10, out m20, out m30);
+        this.c1.Deconstruct(out m01, out m11, out m21, out m31);
+        this.c2.Deconstruct(out m02, out m12, out m22, out m32);
+        this.c3.Deconstruct(out m03, out m13, out m23, out m33);
+    }
+
+    #endregion // deconstruct
+
+    #region index
+
+    public ushort4 this[int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0,
+            1 => c1,
+            2 => c2,
+            3 => c3,
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0 = value;
+                    break;
+                case 1:
+                    c1 = value;
+                    break;
+                case 2:
+                    c2 = value;
+                    break;
+                case 3:
+                    c3 = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    public ushort this[int r, int c]
+    {
+        [MethodImpl(256 | 512)]
+        get => c switch
+        {
+            0 => c0[r],
+            1 => c1[r],
+            2 => c2[r],
+            3 => c3[r],
+            _ => throw new IndexOutOfRangeException(nameof(c)),
+        };
+        [MethodImpl(256 | 512)]
+        set
+        {
+            switch (c)
+            {
+                case 0:
+                    c0[r] = value;
+                    break;
+                case 1:
+                    c1[r] = value;
+                    break;
+                case 2:
+                    c2[r] = value;
+                    break;
+                case 3:
+                    c3[r] = value;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException(nameof(c));
+            }
+        }
+    }
+
+    #endregion // index
+}
+
+#endregion // ushort4x4
+
 #region int2x2
 
 [Serializable]

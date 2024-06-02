@@ -460,6 +460,356 @@ public static partial class math
 
 #endregion // double4
 
+#region short4
+
+public partial struct short4 
+{
+    [MethodImpl(256 | 512)]
+    public short4(short2 xy, short2 zw)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = zw.x;
+        this.w = zw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short4(short2 xy, short z, short w)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = z;
+        this.w = w;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short4(short x, short y, short2 zw)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = zw.x;
+        this.w = zw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    public short4(short x, short2 yz, short w)
+    {
+        this.x = x;
+        this.y = yz.x;
+        this.z = yz.y;
+        this.w = w;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal short4(short2 xw, short2 yz, merge_xw_yz _)
+    {
+        this.x = xw.x;
+        this.y = yz.x;
+        this.z = yz.y;
+        this.w = xw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal short4(short2 xw, short y, short z, insert_yz _)
+    {
+        this.x = xw.x;
+        this.y = y;
+        this.z = z;
+        this.w = xw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal short4(short2 xz, short2 yw, merge_xz_yw _)
+    {
+        this.x = xz.x;
+        this.y = yw.x;
+        this.z = xz.y;
+        this.w = yw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal short4(short2 xz, short y, short w, insert_yw _)
+    {
+        this.x = xz.x;
+        this.y = y;
+        this.z = xz.y;
+        this.w = w;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal short4(short2 yw, short x, short z, insert_xz _)
+    {
+        this.x = x;
+        this.y = yw.x;
+        this.z = z;
+        this.w = yw.y;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert Z W component
+    /// <code>(Z, W) -> (x, y) => (x, y, Z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Izw(this short2 xy, short2 zw) => new(xy, zw);
+
+    /// <summary>
+    /// Insert X Y component
+    /// <code>(X, Y) -> (z, w) => (X, Y, z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Ixy(this short2 zw, short2 xy) => new(xy, zw);
+
+    /// <summary>
+    /// Insert Y Z component
+    /// <code>(Y, Z) -> (x, w) => (x, Y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Iyz(this short2 xw, short2 yz) => new(xw, yz, new merge_xw_yz());
+
+    /// <summary>
+    /// Insert X W component
+    /// <code>(X, W) -> (y, z) => (X, y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Ixw(this short2 yz, short2 xw) => new(xw, yz, new merge_xw_yz());
+
+    /// <summary>
+    /// Insert Y W component
+    /// <code>(Y, W) -> (x, z) => (x, Y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Iyw(this short2 xz, short2 yw) => new(xz, yw, new merge_xz_yw());
+
+    /// <summary>
+    /// Insert X Z component
+    /// <code>(X, Z) -> (y, w) => (X, y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Ixz(this short2 yw, short2 xz) => new(xz, yw, new merge_xz_yw());
+
+    /// <summary>
+    /// Insert Z W component
+    /// <code>Z W -> (x, y) => (x, y, Z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Izw(this short2 xy, short z, short w) => new(xy, z, w);
+
+    /// <summary>
+    /// Insert X Y component
+    /// <code>X Y -> (z, w) => (X, Y, z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Ixy(this short2 zw, short x, short y) => new(x, y, zw);
+
+    /// <summary>
+    /// Insert Y Z component
+    /// <code>Y Z -> (x, w) => (x, Y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Iyz(this short2 xw, short y, short z) => new(xw, y, z, new insert_yz());
+
+    /// <summary>
+    /// Insert X W component
+    /// <code>X W -> (y, z) => (X, y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Ixw(this short2 yz, short x, short w) => new(x, yz, w);
+
+    /// <summary>
+    /// Insert Y W component
+    /// <code>Y W -> (x, z) => (x, Y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Iyw(this short2 xz, short y, short w) => new(xz, y, w, new insert_yw());
+
+    /// <summary>
+    /// Insert X Z component
+    /// <code>X Z -> (y, w) => (X, y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static short4 Ixz(this short2 yw, short x, short z) => new(yw, x, z, new insert_xz());
+}
+
+#endregion // short4
+
+#region ushort4
+
+public partial struct ushort4 
+{
+    [MethodImpl(256 | 512)]
+    public ushort4(ushort2 xy, ushort2 zw)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = zw.x;
+        this.w = zw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort4(ushort2 xy, ushort z, ushort w)
+    {
+        this.x = xy.x;
+        this.y = xy.y;
+        this.z = z;
+        this.w = w;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort4(ushort x, ushort y, ushort2 zw)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = zw.x;
+        this.w = zw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    public ushort4(ushort x, ushort2 yz, ushort w)
+    {
+        this.x = x;
+        this.y = yz.x;
+        this.z = yz.y;
+        this.w = w;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal ushort4(ushort2 xw, ushort2 yz, merge_xw_yz _)
+    {
+        this.x = xw.x;
+        this.y = yz.x;
+        this.z = yz.y;
+        this.w = xw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal ushort4(ushort2 xw, ushort y, ushort z, insert_yz _)
+    {
+        this.x = xw.x;
+        this.y = y;
+        this.z = z;
+        this.w = xw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal ushort4(ushort2 xz, ushort2 yw, merge_xz_yw _)
+    {
+        this.x = xz.x;
+        this.y = yw.x;
+        this.z = xz.y;
+        this.w = yw.y;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal ushort4(ushort2 xz, ushort y, ushort w, insert_yw _)
+    {
+        this.x = xz.x;
+        this.y = y;
+        this.z = xz.y;
+        this.w = w;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal ushort4(ushort2 yw, ushort x, ushort z, insert_xz _)
+    {
+        this.x = x;
+        this.y = yw.x;
+        this.z = z;
+        this.w = yw.y;
+    }
+}
+
+public static partial class math
+{
+    /// <summary>
+    /// Insert Z W component
+    /// <code>(Z, W) -> (x, y) => (x, y, Z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Izw(this ushort2 xy, ushort2 zw) => new(xy, zw);
+
+    /// <summary>
+    /// Insert X Y component
+    /// <code>(X, Y) -> (z, w) => (X, Y, z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Ixy(this ushort2 zw, ushort2 xy) => new(xy, zw);
+
+    /// <summary>
+    /// Insert Y Z component
+    /// <code>(Y, Z) -> (x, w) => (x, Y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Iyz(this ushort2 xw, ushort2 yz) => new(xw, yz, new merge_xw_yz());
+
+    /// <summary>
+    /// Insert X W component
+    /// <code>(X, W) -> (y, z) => (X, y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Ixw(this ushort2 yz, ushort2 xw) => new(xw, yz, new merge_xw_yz());
+
+    /// <summary>
+    /// Insert Y W component
+    /// <code>(Y, W) -> (x, z) => (x, Y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Iyw(this ushort2 xz, ushort2 yw) => new(xz, yw, new merge_xz_yw());
+
+    /// <summary>
+    /// Insert X Z component
+    /// <code>(X, Z) -> (y, w) => (X, y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Ixz(this ushort2 yw, ushort2 xz) => new(xz, yw, new merge_xz_yw());
+
+    /// <summary>
+    /// Insert Z W component
+    /// <code>Z W -> (x, y) => (x, y, Z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Izw(this ushort2 xy, ushort z, ushort w) => new(xy, z, w);
+
+    /// <summary>
+    /// Insert X Y component
+    /// <code>X Y -> (z, w) => (X, Y, z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Ixy(this ushort2 zw, ushort x, ushort y) => new(x, y, zw);
+
+    /// <summary>
+    /// Insert Y Z component
+    /// <code>Y Z -> (x, w) => (x, Y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Iyz(this ushort2 xw, ushort y, ushort z) => new(xw, y, z, new insert_yz());
+
+    /// <summary>
+    /// Insert X W component
+    /// <code>X W -> (y, z) => (X, y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Ixw(this ushort2 yz, ushort x, ushort w) => new(x, yz, w);
+
+    /// <summary>
+    /// Insert Y W component
+    /// <code>Y W -> (x, z) => (x, Y, z, W)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Iyw(this ushort2 xz, ushort y, ushort w) => new(xz, y, w, new insert_yw());
+
+    /// <summary>
+    /// Insert X Z component
+    /// <code>X Z -> (y, w) => (X, y, Z, w)</code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static ushort4 Ixz(this ushort2 yw, ushort x, ushort z) => new(yw, x, z, new insert_xz());
+}
+
+#endregion // ushort4
+
 #region int4
 
 public partial struct int4 

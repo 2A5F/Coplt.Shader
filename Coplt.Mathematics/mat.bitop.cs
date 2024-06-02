@@ -686,6 +686,690 @@ public static partial class math
 
 #endregion // double4x4
 
+#region short2x2
+
+public partial struct short2x2 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short2x2, short2x2, short2x2>
+    , IShiftOperators<short2x2, int, short2x2>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short2x2 operator ~(short2x2 a) => new(~a.c0, ~a.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short2x2 operator |(short2x2 a, short2x2 b) => new(a.c0 | b.c0, a.c1 | b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short2x2 operator &(short2x2 a, short2x2 b) => new(a.c0 & b.c0, a.c1 & b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short2x2 operator ^(short2x2 a, short2x2 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short2x2 operator <<(short2x2 a, int b) => new(a.c0 << b, a.c1 << b);
+
+    [MethodImpl(256 | 512)]
+    public static short2x2 operator >>(short2x2 a, int b) => new(a.c0 >> b, a.c1 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static short2x2 operator >>>(short2x2 a, int b) => new(a.c0 >>> b, a.c1 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2x2 BitAndNot(this short2x2 a, short2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+}
+
+#endregion // short2x2
+
+#region short2x3
+
+public partial struct short2x3 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short2x3, short2x3, short2x3>
+    , IShiftOperators<short2x3, int, short2x3>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short2x3 operator ~(short2x3 a) => new(~a.c0, ~a.c1, ~a.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short2x3 operator |(short2x3 a, short2x3 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short2x3 operator &(short2x3 a, short2x3 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short2x3 operator ^(short2x3 a, short2x3 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short2x3 operator <<(short2x3 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b);
+
+    [MethodImpl(256 | 512)]
+    public static short2x3 operator >>(short2x3 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static short2x3 operator >>>(short2x3 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2x3 BitAndNot(this short2x3 a, short2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+}
+
+#endregion // short2x3
+
+#region short2x4
+
+public partial struct short2x4 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short2x4, short2x4, short2x4>
+    , IShiftOperators<short2x4, int, short2x4>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short2x4 operator ~(short2x4 a) => new(~a.c0, ~a.c1, ~a.c2, ~a.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short2x4 operator |(short2x4 a, short2x4 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2, a.c3 | b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short2x4 operator &(short2x4 a, short2x4 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2, a.c3 & b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short2x4 operator ^(short2x4 a, short2x4 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2, a.c3 ^ b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short2x4 operator <<(short2x4 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b, a.c3 << b);
+
+    [MethodImpl(256 | 512)]
+    public static short2x4 operator >>(short2x4 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b, a.c3 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static short2x4 operator >>>(short2x4 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b, a.c3 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short2x4 BitAndNot(this short2x4 a, short2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+}
+
+#endregion // short2x4
+
+#region short3x2
+
+public partial struct short3x2 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short3x2, short3x2, short3x2>
+    , IShiftOperators<short3x2, int, short3x2>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short3x2 operator ~(short3x2 a) => new(~a.c0, ~a.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short3x2 operator |(short3x2 a, short3x2 b) => new(a.c0 | b.c0, a.c1 | b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short3x2 operator &(short3x2 a, short3x2 b) => new(a.c0 & b.c0, a.c1 & b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short3x2 operator ^(short3x2 a, short3x2 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short3x2 operator <<(short3x2 a, int b) => new(a.c0 << b, a.c1 << b);
+
+    [MethodImpl(256 | 512)]
+    public static short3x2 operator >>(short3x2 a, int b) => new(a.c0 >> b, a.c1 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static short3x2 operator >>>(short3x2 a, int b) => new(a.c0 >>> b, a.c1 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3x2 BitAndNot(this short3x2 a, short3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+}
+
+#endregion // short3x2
+
+#region short3x3
+
+public partial struct short3x3 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short3x3, short3x3, short3x3>
+    , IShiftOperators<short3x3, int, short3x3>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short3x3 operator ~(short3x3 a) => new(~a.c0, ~a.c1, ~a.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short3x3 operator |(short3x3 a, short3x3 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short3x3 operator &(short3x3 a, short3x3 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short3x3 operator ^(short3x3 a, short3x3 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short3x3 operator <<(short3x3 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b);
+
+    [MethodImpl(256 | 512)]
+    public static short3x3 operator >>(short3x3 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static short3x3 operator >>>(short3x3 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3x3 BitAndNot(this short3x3 a, short3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+}
+
+#endregion // short3x3
+
+#region short3x4
+
+public partial struct short3x4 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short3x4, short3x4, short3x4>
+    , IShiftOperators<short3x4, int, short3x4>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short3x4 operator ~(short3x4 a) => new(~a.c0, ~a.c1, ~a.c2, ~a.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short3x4 operator |(short3x4 a, short3x4 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2, a.c3 | b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short3x4 operator &(short3x4 a, short3x4 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2, a.c3 & b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short3x4 operator ^(short3x4 a, short3x4 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2, a.c3 ^ b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short3x4 operator <<(short3x4 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b, a.c3 << b);
+
+    [MethodImpl(256 | 512)]
+    public static short3x4 operator >>(short3x4 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b, a.c3 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static short3x4 operator >>>(short3x4 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b, a.c3 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short3x4 BitAndNot(this short3x4 a, short3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+}
+
+#endregion // short3x4
+
+#region short4x2
+
+public partial struct short4x2 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short4x2, short4x2, short4x2>
+    , IShiftOperators<short4x2, int, short4x2>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short4x2 operator ~(short4x2 a) => new(~a.c0, ~a.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short4x2 operator |(short4x2 a, short4x2 b) => new(a.c0 | b.c0, a.c1 | b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short4x2 operator &(short4x2 a, short4x2 b) => new(a.c0 & b.c0, a.c1 & b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short4x2 operator ^(short4x2 a, short4x2 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static short4x2 operator <<(short4x2 a, int b) => new(a.c0 << b, a.c1 << b);
+
+    [MethodImpl(256 | 512)]
+    public static short4x2 operator >>(short4x2 a, int b) => new(a.c0 >> b, a.c1 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static short4x2 operator >>>(short4x2 a, int b) => new(a.c0 >>> b, a.c1 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4x2 BitAndNot(this short4x2 a, short4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+}
+
+#endregion // short4x2
+
+#region short4x3
+
+public partial struct short4x3 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short4x3, short4x3, short4x3>
+    , IShiftOperators<short4x3, int, short4x3>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short4x3 operator ~(short4x3 a) => new(~a.c0, ~a.c1, ~a.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short4x3 operator |(short4x3 a, short4x3 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short4x3 operator &(short4x3 a, short4x3 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short4x3 operator ^(short4x3 a, short4x3 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static short4x3 operator <<(short4x3 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b);
+
+    [MethodImpl(256 | 512)]
+    public static short4x3 operator >>(short4x3 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static short4x3 operator >>>(short4x3 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4x3 BitAndNot(this short4x3 a, short4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+}
+
+#endregion // short4x3
+
+#region short4x4
+
+public partial struct short4x4 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<short4x4, short4x4, short4x4>
+    , IShiftOperators<short4x4, int, short4x4>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static short4x4 operator ~(short4x4 a) => new(~a.c0, ~a.c1, ~a.c2, ~a.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short4x4 operator |(short4x4 a, short4x4 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2, a.c3 | b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short4x4 operator &(short4x4 a, short4x4 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2, a.c3 & b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short4x4 operator ^(short4x4 a, short4x4 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2, a.c3 ^ b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static short4x4 operator <<(short4x4 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b, a.c3 << b);
+
+    [MethodImpl(256 | 512)]
+    public static short4x4 operator >>(short4x4 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b, a.c3 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static short4x4 operator >>>(short4x4 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b, a.c3 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static short4x4 BitAndNot(this short4x4 a, short4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+}
+
+#endregion // short4x4
+
+#region ushort2x2
+
+public partial struct ushort2x2 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort2x2, ushort2x2, ushort2x2>
+    , IShiftOperators<ushort2x2, int, ushort2x2>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 operator ~(ushort2x2 a) => new(~a.c0, ~a.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 operator |(ushort2x2 a, ushort2x2 b) => new(a.c0 | b.c0, a.c1 | b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 operator &(ushort2x2 a, ushort2x2 b) => new(a.c0 & b.c0, a.c1 & b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 operator ^(ushort2x2 a, ushort2x2 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 operator <<(ushort2x2 a, int b) => new(a.c0 << b, a.c1 << b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 operator >>(ushort2x2 a, int b) => new(a.c0 >> b, a.c1 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 operator >>>(ushort2x2 a, int b) => new(a.c0 >>> b, a.c1 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 BitAndNot(this ushort2x2 a, ushort2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+}
+
+#endregion // ushort2x2
+
+#region ushort2x3
+
+public partial struct ushort2x3 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort2x3, ushort2x3, ushort2x3>
+    , IShiftOperators<ushort2x3, int, ushort2x3>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 operator ~(ushort2x3 a) => new(~a.c0, ~a.c1, ~a.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 operator |(ushort2x3 a, ushort2x3 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 operator &(ushort2x3 a, ushort2x3 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 operator ^(ushort2x3 a, ushort2x3 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 operator <<(ushort2x3 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 operator >>(ushort2x3 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 operator >>>(ushort2x3 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 BitAndNot(this ushort2x3 a, ushort2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+}
+
+#endregion // ushort2x3
+
+#region ushort2x4
+
+public partial struct ushort2x4 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort2x4, ushort2x4, ushort2x4>
+    , IShiftOperators<ushort2x4, int, ushort2x4>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 operator ~(ushort2x4 a) => new(~a.c0, ~a.c1, ~a.c2, ~a.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 operator |(ushort2x4 a, ushort2x4 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2, a.c3 | b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 operator &(ushort2x4 a, ushort2x4 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2, a.c3 & b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 operator ^(ushort2x4 a, ushort2x4 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2, a.c3 ^ b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 operator <<(ushort2x4 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b, a.c3 << b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 operator >>(ushort2x4 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b, a.c3 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 operator >>>(ushort2x4 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b, a.c3 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 BitAndNot(this ushort2x4 a, ushort2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+}
+
+#endregion // ushort2x4
+
+#region ushort3x2
+
+public partial struct ushort3x2 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort3x2, ushort3x2, ushort3x2>
+    , IShiftOperators<ushort3x2, int, ushort3x2>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 operator ~(ushort3x2 a) => new(~a.c0, ~a.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 operator |(ushort3x2 a, ushort3x2 b) => new(a.c0 | b.c0, a.c1 | b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 operator &(ushort3x2 a, ushort3x2 b) => new(a.c0 & b.c0, a.c1 & b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 operator ^(ushort3x2 a, ushort3x2 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 operator <<(ushort3x2 a, int b) => new(a.c0 << b, a.c1 << b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 operator >>(ushort3x2 a, int b) => new(a.c0 >> b, a.c1 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 operator >>>(ushort3x2 a, int b) => new(a.c0 >>> b, a.c1 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 BitAndNot(this ushort3x2 a, ushort3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+}
+
+#endregion // ushort3x2
+
+#region ushort3x3
+
+public partial struct ushort3x3 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort3x3, ushort3x3, ushort3x3>
+    , IShiftOperators<ushort3x3, int, ushort3x3>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 operator ~(ushort3x3 a) => new(~a.c0, ~a.c1, ~a.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 operator |(ushort3x3 a, ushort3x3 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 operator &(ushort3x3 a, ushort3x3 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 operator ^(ushort3x3 a, ushort3x3 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 operator <<(ushort3x3 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 operator >>(ushort3x3 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 operator >>>(ushort3x3 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 BitAndNot(this ushort3x3 a, ushort3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+}
+
+#endregion // ushort3x3
+
+#region ushort3x4
+
+public partial struct ushort3x4 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort3x4, ushort3x4, ushort3x4>
+    , IShiftOperators<ushort3x4, int, ushort3x4>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 operator ~(ushort3x4 a) => new(~a.c0, ~a.c1, ~a.c2, ~a.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 operator |(ushort3x4 a, ushort3x4 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2, a.c3 | b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 operator &(ushort3x4 a, ushort3x4 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2, a.c3 & b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 operator ^(ushort3x4 a, ushort3x4 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2, a.c3 ^ b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 operator <<(ushort3x4 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b, a.c3 << b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 operator >>(ushort3x4 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b, a.c3 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 operator >>>(ushort3x4 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b, a.c3 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 BitAndNot(this ushort3x4 a, ushort3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+}
+
+#endregion // ushort3x4
+
+#region ushort4x2
+
+public partial struct ushort4x2 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort4x2, ushort4x2, ushort4x2>
+    , IShiftOperators<ushort4x2, int, ushort4x2>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 operator ~(ushort4x2 a) => new(~a.c0, ~a.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 operator |(ushort4x2 a, ushort4x2 b) => new(a.c0 | b.c0, a.c1 | b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 operator &(ushort4x2 a, ushort4x2 b) => new(a.c0 & b.c0, a.c1 & b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 operator ^(ushort4x2 a, ushort4x2 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 operator <<(ushort4x2 a, int b) => new(a.c0 << b, a.c1 << b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 operator >>(ushort4x2 a, int b) => new(a.c0 >> b, a.c1 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 operator >>>(ushort4x2 a, int b) => new(a.c0 >>> b, a.c1 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 BitAndNot(this ushort4x2 a, ushort4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+}
+
+#endregion // ushort4x2
+
+#region ushort4x3
+
+public partial struct ushort4x3 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort4x3, ushort4x3, ushort4x3>
+    , IShiftOperators<ushort4x3, int, ushort4x3>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 operator ~(ushort4x3 a) => new(~a.c0, ~a.c1, ~a.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 operator |(ushort4x3 a, ushort4x3 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 operator &(ushort4x3 a, ushort4x3 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 operator ^(ushort4x3 a, ushort4x3 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 operator <<(ushort4x3 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 operator >>(ushort4x3 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 operator >>>(ushort4x3 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 BitAndNot(this ushort4x3 a, ushort4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+}
+
+#endregion // ushort4x3
+
+#region ushort4x4
+
+public partial struct ushort4x4 : IMatrixBitops
+    #if NET8_0_OR_GREATER
+    , IBitwiseOperators<ushort4x4, ushort4x4, ushort4x4>
+    , IShiftOperators<ushort4x4, int, ushort4x4>
+    #endif
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 operator ~(ushort4x4 a) => new(~a.c0, ~a.c1, ~a.c2, ~a.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 operator |(ushort4x4 a, ushort4x4 b) => new(a.c0 | b.c0, a.c1 | b.c1, a.c2 | b.c2, a.c3 | b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 operator &(ushort4x4 a, ushort4x4 b) => new(a.c0 & b.c0, a.c1 & b.c1, a.c2 & b.c2, a.c3 & b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 operator ^(ushort4x4 a, ushort4x4 b) => new(a.c0 ^ b.c0, a.c1 ^ b.c1, a.c2 ^ b.c2, a.c3 ^ b.c3);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 operator <<(ushort4x4 a, int b) => new(a.c0 << b, a.c1 << b, a.c2 << b, a.c3 << b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 operator >>(ushort4x4 a, int b) => new(a.c0 >> b, a.c1 >> b, a.c2 >> b, a.c3 >> b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 operator >>>(ushort4x4 a, int b) => new(a.c0 >>> b, a.c1 >>> b, a.c2 >>> b, a.c3 >>> b);
+}
+
+public static partial class math
+{
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 BitAndNot(this ushort4x4 a, ushort4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+}
+
+#endregion // ushort4x4
+
 #region int2x2
 
 public partial struct int2x2 : IMatrixBitops
