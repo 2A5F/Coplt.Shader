@@ -852,6 +852,85 @@ public static partial class simd
 
     #endregion
 
+    #region Fms
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Fms(Vector64<float> a, Vector64<float> b, Vector64<float> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplySubtract(a.ToVector128(), b.ToVector128(), c.ToVector128()).GetLower();
+        }
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.FusedMultiplySubtract(c, a, b);
+        }
+        return a * b - c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Fms(Vector128<float> a, Vector128<float> b, Vector128<float> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplySubtract(a, b, c);
+        }
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.FusedMultiplySubtract(c, a, b);
+        }
+        return a * b - c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Fms(Vector128<double> a, Vector128<double> b, Vector128<double> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplySubtract(a, b, c);
+        }
+        return a * b - c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<float> Fms(Vector256<float> a, Vector256<float> b, Vector256<float> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplySubtract(a, b, c);
+        }
+        if (AdvSimd.IsSupported)
+        {
+            return Vector256.Create(
+                AdvSimd.FusedMultiplySubtract(c.GetLower(), a.GetLower(), b.GetLower()),
+                AdvSimd.FusedMultiplySubtract(c.GetUpper(), a.GetUpper(), b.GetUpper())
+            );
+        }
+        return a * b - c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Fms(Vector256<double> a, Vector256<double> b, Vector256<double> c)
+    {
+        if (X86.Fma.IsSupported)
+        {
+            return X86.Fma.MultiplySubtract(a, b, c);
+        }
+        return a * b - c;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<double> Fms(Vector512<double> a, Vector512<double> b, Vector512<double> c)
+    {
+        if (Avx512F.IsSupported)
+        {
+            return Avx512F.FusedMultiplySubtract(a, b, c);
+        }
+        return a * b - c;
+    }
+
+    #endregion
+
     #region Fnma
 
     [MethodImpl(256 | 512)]

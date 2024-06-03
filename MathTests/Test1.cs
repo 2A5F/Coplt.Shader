@@ -12,15 +12,14 @@ public class Test1
     [Test]
     public void Foo()
     {
-        var a = new double3(1, 1, 1);
-        var r = double4x4.AxisAngle(a, 45);
-        Console.WriteLine(r.c0);
-        Console.WriteLine(r.c1);
-        Console.WriteLine(r.c2);
-        Console.WriteLine(r.c3);
+        var a = new float3(1, 1, 1);
+        var r = quaternion.AxisAngle(a, 45);
+        var m = new float3x3(r);
+        Console.WriteLine(m);
 
-        var rr = Matrix4x4.CreateFromAxisAngle(new Vector3(1, 1, 1), 45);
-        Console.WriteLine(rr);
+        var r2 = Quaternion.CreateFromAxisAngle(new Vector3(1, 1, 1), 45);
+        var m2 = Matrix4x4.CreateFromQuaternion(r2);
+        Console.WriteLine(m2);
     }
 
     [Test]

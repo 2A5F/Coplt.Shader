@@ -27,6 +27,8 @@
         public static string[] xyzw = { "x", "y", "z", "w" };
         public static string[] rgba = { "r", "g", "b", "a" };
 
+        public string structSuffix = "";
+
         public static Typ[] Typs =
         {
             new("float", nameof(Single), sizeof(float), "f", "1.0f", arith: true, sig: true, f: true, simd: true)
@@ -45,7 +47,8 @@
                 maskType = "ulong",
                 sigMaskType = "long",
                 maskNeg = "0x8000000000000000",
-                maskAll = "0xFFFFFFFFFFFFFFFF"
+                maskAll = "0xFFFFFFFFFFFFFFFF",
+                structSuffix = "_d",
             },
             new("short", nameof(Int16), sizeof(short), "", "(short)1", arith: true, sig: true, i: true) { arithCast = "(short)" },
             new("ushort", nameof(UInt16), sizeof(ushort), "", "(ushort)1", arith: true, i: true) { arithCast = "(ushort)" },
@@ -65,7 +68,8 @@
                 maskType = "ushort",
                 sigMaskType = "short",
                 maskNeg = "0x8000",
-                maskAll = "0xFFFF"
+                maskAll = "0xFFFF",
+                structSuffix = "_h",
             },
             new("b16v", nameof(UInt16), sizeof(ushort), "", "true", shift: false, bol: true) { compType = "b16", jsonType = "Boolean" },
             new("b32v", nameof(UInt32), sizeof(uint), "", "true", simd: true, shuffleCast: "(uint)", shift: false, bol: true)

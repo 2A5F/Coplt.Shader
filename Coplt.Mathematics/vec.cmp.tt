@@ -74,34 +74,54 @@ public partial struct <#= typeName #> : IComparable<<#= typeName #>>, IComparabl
     
     [MethodImpl(256 | 512)]
     public static <#= bTypeName #> operator <(<#= typeName #> left, <#= typeName #> right) => 
-        new(Vector<#= bitSize #>.LessThan(left.vector, right.vector).As<#= bTyp.Type #>());
+        new(Vector<#= bitSize #>.LessThan(left.vector, right.vector).As<#= bTyp.Type #>()<#
+                    if (i == 3)
+                    {
+#> & Vector<#= bitSize #>.Create(-1, -1, -1, 0).As<#= bTyp.Type #>()<#
+                    }
+#>);
     [MethodImpl(256 | 512)]
     public static <#= bTypeName #> operator >(<#= typeName #> left, <#= typeName #> right) => 
-        new(Vector<#= bitSize #>.GreaterThan(left.vector, right.vector).As<#= bTyp.Type #>());
+        new(Vector<#= bitSize #>.GreaterThan(left.vector, right.vector).As<#= bTyp.Type #>()<#
+                    if (i == 3)
+                    {
+#> & Vector<#= bitSize #>.Create(-1, -1, -1, 0).As<#= bTyp.Type #>()<#
+                    }
+#>);
     [MethodImpl(256 | 512)]
     public static <#= bTypeName #> operator <=(<#= typeName #> left, <#= typeName #> right) => 
-        new(Vector<#= bitSize #>.LessThanOrEqual(left.vector, right.vector).As<#= bTyp.Type #>());
+        new(Vector<#= bitSize #>.LessThanOrEqual(left.vector, right.vector).As<#= bTyp.Type #>()<#
+                    if (i == 3)
+                    {
+#> & Vector<#= bitSize #>.Create(-1, -1, -1, 0).As<#= bTyp.Type #>()<#
+                    }
+#>);
     [MethodImpl(256 | 512)]
     public static <#= bTypeName #> operator >=(<#= typeName #> left, <#= typeName #> right) => 
-        new(Vector<#= bitSize #>.GreaterThanOrEqual(left.vector, right.vector).As<#= bTyp.Type #>());
+        new(Vector<#= bitSize #>.GreaterThanOrEqual(left.vector, right.vector).As<#= bTyp.Type #>()<#
+                    if (i == 3)
+                    {
+#> & Vector<#= bitSize #>.Create(-1, -1, -1, 0).As<#= bTyp.Type #>()<#
+                    }
+#>);
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(<#= typeName #> other) => Vector<#= bitSize #>.LessThanAll(vector, other.vector);
+    public bool LessThanAll(<#= typeName #> other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(<#= typeName #> other) => Vector<#= bitSize #>.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(<#= typeName #> other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(<#= typeName #> other) => Vector<#= bitSize #>.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(<#= typeName #> other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(<#= typeName #> other) => Vector<#= bitSize #>.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(<#= typeName #> other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(<#= typeName #> other) => Vector<#= bitSize #>.LessThanAny(vector, other.vector);
+    public bool LessThanAny(<#= typeName #> other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(<#= typeName #> other) => Vector<#= bitSize #>.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(<#= typeName #> other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(<#= typeName #> other) => Vector<#= bitSize #>.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(<#= typeName #> other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(<#= typeName #> other) => Vector<#= bitSize #>.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(<#= typeName #> other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
 <#
             }

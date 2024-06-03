@@ -14,7 +14,7 @@ public partial struct float2
         #if NET8_0_OR_GREATER
         return new(-a.vector);
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y);
+        return new((-a.x), (-a.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -72,7 +72,7 @@ public partial struct float2
     public static float2 operator /(float2 a, float2 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((float)(a.x / b.x), (float)(a.y / b.y));
         #endif // NET8_0_OR_GREATER
@@ -82,7 +82,7 @@ public partial struct float2
     public static float2 operator /(float2 a, float b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((float)(a.x / b), (float)(a.y / b));
         #endif // NET8_0_OR_GREATER
@@ -209,6 +209,23 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2 fms(this float2 a, float2 b, float2 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fms(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float2
@@ -223,9 +240,9 @@ public partial struct float3
     public static float3 operator -(float3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(-a.vector);
+        return new(-a.vector & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y, -a.z);
+        return new((-a.x), (-a.y), (-a.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -283,7 +300,7 @@ public partial struct float3
     public static float3 operator /(float3 a, float3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector) & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
         return new((float)(a.x / b.x), (float)(a.y / b.y), (float)(a.z / b.z));
         #endif // NET8_0_OR_GREATER
@@ -293,7 +310,7 @@ public partial struct float3
     public static float3 operator /(float3 a, float b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b) & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
         return new((float)(a.x / b), (float)(a.y / b), (float)(a.z / b));
         #endif // NET8_0_OR_GREATER
@@ -303,7 +320,7 @@ public partial struct float3
     public static float3 operator %(float3 a, float3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b.vector));
+        return new(simd.Mod(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
         return new((float)(a.x % b.x), (float)(a.y % b.y), (float)(a.z % b.z));
         #endif // NET8_0_OR_GREATER
@@ -313,7 +330,7 @@ public partial struct float3
     public static float3 operator %(float3 a, float b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b));
+        return new(simd.Mod(a.vector, b) & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
         return new((float)(a.x % b), (float)(a.y % b), (float)(a.z % b));
         #endif // NET8_0_OR_GREATER
@@ -342,7 +359,7 @@ public static partial class math
     public static float3 sign(this float3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignFloat(a.vector));
+        return new(simd.SignFloat(a.vector) & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
@@ -423,6 +440,23 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3 fms(this float3 a, float3 b, float3 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fms(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float3
@@ -439,7 +473,7 @@ public partial struct float4
         #if NET8_0_OR_GREATER
         return new(-a.vector);
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y, -a.z, -a.w);
+        return new((-a.x), (-a.y), (-a.z), (-a.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -497,7 +531,7 @@ public partial struct float4
     public static float4 operator /(float4 a, float4 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((float)(a.x / b.x), (float)(a.y / b.y), (float)(a.z / b.z), (float)(a.w / b.w));
         #endif // NET8_0_OR_GREATER
@@ -507,7 +541,7 @@ public partial struct float4
     public static float4 operator /(float4 a, float b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((float)(a.x / b), (float)(a.y / b), (float)(a.z / b), (float)(a.w / b));
         #endif // NET8_0_OR_GREATER
@@ -634,6 +668,23 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4 fms(this float4 a, float4 b, float4 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fms(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // float4
@@ -650,7 +701,7 @@ public partial struct double2
         #if NET8_0_OR_GREATER
         return new(-a.vector);
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y);
+        return new((-a.x), (-a.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -708,7 +759,7 @@ public partial struct double2
     public static double2 operator /(double2 a, double2 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((double)(a.x / b.x), (double)(a.y / b.y));
         #endif // NET8_0_OR_GREATER
@@ -718,7 +769,7 @@ public partial struct double2
     public static double2 operator /(double2 a, double b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((double)(a.x / b), (double)(a.y / b));
         #endif // NET8_0_OR_GREATER
@@ -845,6 +896,23 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2 fms(this double2 a, double2 b, double2 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fms(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double2
@@ -859,9 +927,9 @@ public partial struct double3
     public static double3 operator -(double3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(-a.vector);
+        return new(-a.vector & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y, -a.z);
+        return new((-a.x), (-a.y), (-a.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -919,7 +987,7 @@ public partial struct double3
     public static double3 operator /(double3 a, double3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector) & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
         return new((double)(a.x / b.x), (double)(a.y / b.y), (double)(a.z / b.z));
         #endif // NET8_0_OR_GREATER
@@ -929,7 +997,7 @@ public partial struct double3
     public static double3 operator /(double3 a, double b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b) & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
         return new((double)(a.x / b), (double)(a.y / b), (double)(a.z / b));
         #endif // NET8_0_OR_GREATER
@@ -939,7 +1007,7 @@ public partial struct double3
     public static double3 operator %(double3 a, double3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b.vector));
+        return new(simd.Mod(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
         return new((double)(a.x % b.x), (double)(a.y % b.y), (double)(a.z % b.z));
         #endif // NET8_0_OR_GREATER
@@ -949,7 +1017,7 @@ public partial struct double3
     public static double3 operator %(double3 a, double b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b));
+        return new(simd.Mod(a.vector, b) & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
         return new((double)(a.x % b), (double)(a.y % b), (double)(a.z % b));
         #endif // NET8_0_OR_GREATER
@@ -978,7 +1046,7 @@ public static partial class math
     public static double3 sign(this double3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignFloat(a.vector));
+        return new(simd.SignFloat(a.vector) & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
@@ -1059,6 +1127,23 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3 fms(this double3 a, double3 b, double3 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fms(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double3
@@ -1075,7 +1160,7 @@ public partial struct double4
         #if NET8_0_OR_GREATER
         return new(-a.vector);
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y, -a.z, -a.w);
+        return new((-a.x), (-a.y), (-a.z), (-a.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -1133,7 +1218,7 @@ public partial struct double4
     public static double4 operator /(double4 a, double4 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((double)(a.x / b.x), (double)(a.y / b.y), (double)(a.z / b.z), (double)(a.w / b.w));
         #endif // NET8_0_OR_GREATER
@@ -1143,7 +1228,7 @@ public partial struct double4
     public static double4 operator /(double4 a, double b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((double)(a.x / b), (double)(a.y / b), (double)(a.z / b), (double)(a.w / b));
         #endif // NET8_0_OR_GREATER
@@ -1270,6 +1355,23 @@ public static partial class math
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4 fms(this double4 a, double4 b, double4 c)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Fms(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+        #endif // NET8_0_OR_GREATER
+    }
 }
 
 #endregion // double4
@@ -1283,7 +1385,7 @@ public partial struct short2
     [MethodImpl(256 | 512)]
     public static short2 operator -(short2 a)
     {
-        return new((short)-a.x, (short)-a.y);
+        return new((short)(-a.x), (short)(-a.y));
     }
 
     [MethodImpl(256 | 512)]
@@ -1409,6 +1511,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2 fms(this short2 a, short2 b, short2 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
 }
 
 #endregion // short2
@@ -1422,7 +1537,7 @@ public partial struct short3
     [MethodImpl(256 | 512)]
     public static short3 operator -(short3 a)
     {
-        return new((short)-a.x, (short)-a.y, (short)-a.z);
+        return new((short)(-a.x), (short)(-a.y), (short)(-a.z));
     }
 
     [MethodImpl(256 | 512)]
@@ -1551,6 +1666,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3 fms(this short3 a, short3 b, short3 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+    }
 }
 
 #endregion // short3
@@ -1564,7 +1692,7 @@ public partial struct short4
     [MethodImpl(256 | 512)]
     public static short4 operator -(short4 a)
     {
-        return new((short)-a.x, (short)-a.y, (short)-a.z, (short)-a.w);
+        return new((short)(-a.x), (short)(-a.y), (short)(-a.z), (short)(-a.w));
     }
 
     [MethodImpl(256 | 512)]
@@ -1689,6 +1817,19 @@ public static partial class math
     public static short4 fma(this short4 a, short4 b, short4 c)
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4 fms(this short4 a, short4 b, short4 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
     }
 }
 
@@ -1823,6 +1964,19 @@ public static partial class math
     public static ushort2 fma(this ushort2 a, ushort2 b, ushort2 c)
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
+    }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2 fms(this ushort2 a, ushort2 b, ushort2 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
     }
 }
 
@@ -1961,6 +2115,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3 fms(this ushort3 a, ushort3 b, ushort3 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+    }
 }
 
 #endregion // ushort3
@@ -2095,6 +2262,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4 fms(this ushort4 a, ushort4 b, ushort4 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+    }
 }
 
 #endregion // ushort4
@@ -2111,7 +2291,7 @@ public partial struct int2
         #if NET8_0_OR_GREATER
         return new(-a.vector);
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y);
+        return new((-a.x), (-a.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -2169,7 +2349,7 @@ public partial struct int2
     public static int2 operator /(int2 a, int2 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((int)(a.x / b.x), (int)(a.y / b.y));
         #endif // NET8_0_OR_GREATER
@@ -2179,7 +2359,7 @@ public partial struct int2
     public static int2 operator /(int2 a, int b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((int)(a.x / b), (int)(a.y / b));
         #endif // NET8_0_OR_GREATER
@@ -2220,7 +2400,7 @@ public static partial class math
     public static int2 sign(this int2 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignInt(a.vector)); 
+        return new(simd.SignInt(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
@@ -2294,6 +2474,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2 fms(this int2 a, int2 b, int2 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
 }
 
 #endregion // int2
@@ -2308,9 +2501,9 @@ public partial struct int3
     public static int3 operator -(int3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(-a.vector);
+        return new(-a.vector & Vector128.Create(-1, -1, -1, 0).AsInt32());
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y, -a.z);
+        return new((-a.x), (-a.y), (-a.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -2368,7 +2561,7 @@ public partial struct int3
     public static int3 operator /(int3 a, int3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((int)(a.x / b.x), (int)(a.y / b.y), (int)(a.z / b.z));
         #endif // NET8_0_OR_GREATER
@@ -2378,7 +2571,7 @@ public partial struct int3
     public static int3 operator /(int3 a, int b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((int)(a.x / b), (int)(a.y / b), (int)(a.z / b));
         #endif // NET8_0_OR_GREATER
@@ -2419,7 +2612,7 @@ public static partial class math
     public static int3 sign(this int3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignInt(a.vector)); 
+        return new(simd.SignInt(a.vector) & Vector128.Create(-1, -1, -1, 0).AsInt32());
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
@@ -2496,6 +2689,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3 fms(this int3 a, int3 b, int3 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+    }
 }
 
 #endregion // int3
@@ -2512,7 +2718,7 @@ public partial struct int4
         #if NET8_0_OR_GREATER
         return new(-a.vector);
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y, -a.z, -a.w);
+        return new((-a.x), (-a.y), (-a.z), (-a.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -2570,7 +2776,7 @@ public partial struct int4
     public static int4 operator /(int4 a, int4 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((int)(a.x / b.x), (int)(a.y / b.y), (int)(a.z / b.z), (int)(a.w / b.w));
         #endif // NET8_0_OR_GREATER
@@ -2580,7 +2786,7 @@ public partial struct int4
     public static int4 operator /(int4 a, int b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((int)(a.x / b), (int)(a.y / b), (int)(a.z / b), (int)(a.w / b));
         #endif // NET8_0_OR_GREATER
@@ -2621,7 +2827,7 @@ public static partial class math
     public static int4 sign(this int4 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignInt(a.vector)); 
+        return new(simd.SignInt(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
@@ -2695,6 +2901,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4 fms(this int4 a, int4 b, int4 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+    }
 }
 
 #endregion // int4
@@ -2760,7 +2979,7 @@ public partial struct uint2
     public static uint2 operator /(uint2 a, uint2 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((uint)(a.x / b.x), (uint)(a.y / b.y));
         #endif // NET8_0_OR_GREATER
@@ -2770,7 +2989,7 @@ public partial struct uint2
     public static uint2 operator /(uint2 a, uint b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((uint)(a.x / b), (uint)(a.y / b));
         #endif // NET8_0_OR_GREATER
@@ -2811,7 +3030,7 @@ public static partial class math
     public static uint2 sign(this uint2 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignUInt(a.vector)); 
+        return new(simd.SignUInt(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
@@ -2885,6 +3104,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2 fms(this uint2 a, uint2 b, uint2 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
 }
 
 #endregion // uint2
@@ -2950,7 +3182,7 @@ public partial struct uint3
     public static uint3 operator /(uint3 a, uint3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((uint)(a.x / b.x), (uint)(a.y / b.y), (uint)(a.z / b.z));
         #endif // NET8_0_OR_GREATER
@@ -2960,7 +3192,7 @@ public partial struct uint3
     public static uint3 operator /(uint3 a, uint b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((uint)(a.x / b), (uint)(a.y / b), (uint)(a.z / b));
         #endif // NET8_0_OR_GREATER
@@ -3001,7 +3233,7 @@ public static partial class math
     public static uint3 sign(this uint3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignUInt(a.vector)); 
+        return new(simd.SignUInt(a.vector) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
@@ -3078,6 +3310,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3 fms(this uint3 a, uint3 b, uint3 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+    }
 }
 
 #endregion // uint3
@@ -3143,7 +3388,7 @@ public partial struct uint4
     public static uint4 operator /(uint4 a, uint4 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((uint)(a.x / b.x), (uint)(a.y / b.y), (uint)(a.z / b.z), (uint)(a.w / b.w));
         #endif // NET8_0_OR_GREATER
@@ -3153,7 +3398,7 @@ public partial struct uint4
     public static uint4 operator /(uint4 a, uint b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((uint)(a.x / b), (uint)(a.y / b), (uint)(a.z / b), (uint)(a.w / b));
         #endif // NET8_0_OR_GREATER
@@ -3194,7 +3439,7 @@ public static partial class math
     public static uint4 sign(this uint4 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignUInt(a.vector)); 
+        return new(simd.SignUInt(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
@@ -3268,6 +3513,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4 fms(this uint4 a, uint4 b, uint4 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+    }
 }
 
 #endregion // uint4
@@ -3284,7 +3542,7 @@ public partial struct long2
         #if NET8_0_OR_GREATER
         return new(-a.vector);
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y);
+        return new((-a.x), (-a.y));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -3342,7 +3600,7 @@ public partial struct long2
     public static long2 operator /(long2 a, long2 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((long)(a.x / b.x), (long)(a.y / b.y));
         #endif // NET8_0_OR_GREATER
@@ -3352,7 +3610,7 @@ public partial struct long2
     public static long2 operator /(long2 a, long b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((long)(a.x / b), (long)(a.y / b));
         #endif // NET8_0_OR_GREATER
@@ -3393,7 +3651,7 @@ public static partial class math
     public static long2 sign(this long2 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignInt(a.vector)); 
+        return new(simd.SignInt(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
@@ -3467,6 +3725,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2 fms(this long2 a, long2 b, long2 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
 }
 
 #endregion // long2
@@ -3481,9 +3752,9 @@ public partial struct long3
     public static long3 operator -(long3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(-a.vector);
+        return new(-a.vector & Vector256.Create(-1, -1, -1, 0).AsInt64());
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y, -a.z);
+        return new((-a.x), (-a.y), (-a.z));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -3541,7 +3812,7 @@ public partial struct long3
     public static long3 operator /(long3 a, long3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((long)(a.x / b.x), (long)(a.y / b.y), (long)(a.z / b.z));
         #endif // NET8_0_OR_GREATER
@@ -3551,7 +3822,7 @@ public partial struct long3
     public static long3 operator /(long3 a, long b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((long)(a.x / b), (long)(a.y / b), (long)(a.z / b));
         #endif // NET8_0_OR_GREATER
@@ -3592,7 +3863,7 @@ public static partial class math
     public static long3 sign(this long3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignInt(a.vector)); 
+        return new(simd.SignInt(a.vector) & Vector256.Create(-1, -1, -1, 0).AsInt64());
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
@@ -3669,6 +3940,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3 fms(this long3 a, long3 b, long3 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+    }
 }
 
 #endregion // long3
@@ -3685,7 +3969,7 @@ public partial struct long4
         #if NET8_0_OR_GREATER
         return new(-a.vector);
         #else // NET8_0_OR_GREATER
-        return new(-a.x, -a.y, -a.z, -a.w);
+        return new((-a.x), (-a.y), (-a.z), (-a.w));
         #endif // NET8_0_OR_GREATER
     }
 
@@ -3743,7 +4027,7 @@ public partial struct long4
     public static long4 operator /(long4 a, long4 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((long)(a.x / b.x), (long)(a.y / b.y), (long)(a.z / b.z), (long)(a.w / b.w));
         #endif // NET8_0_OR_GREATER
@@ -3753,7 +4037,7 @@ public partial struct long4
     public static long4 operator /(long4 a, long b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((long)(a.x / b), (long)(a.y / b), (long)(a.z / b), (long)(a.w / b));
         #endif // NET8_0_OR_GREATER
@@ -3794,7 +4078,7 @@ public static partial class math
     public static long4 sign(this long4 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignInt(a.vector)); 
+        return new(simd.SignInt(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
@@ -3868,6 +4152,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4 fms(this long4 a, long4 b, long4 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+    }
 }
 
 #endregion // long4
@@ -3933,7 +4230,7 @@ public partial struct ulong2
     public static ulong2 operator /(ulong2 a, ulong2 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((ulong)(a.x / b.x), (ulong)(a.y / b.y));
         #endif // NET8_0_OR_GREATER
@@ -3943,7 +4240,7 @@ public partial struct ulong2
     public static ulong2 operator /(ulong2 a, ulong b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((ulong)(a.x / b), (ulong)(a.y / b));
         #endif // NET8_0_OR_GREATER
@@ -3984,7 +4281,7 @@ public static partial class math
     public static ulong2 sign(this ulong2 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignUInt(a.vector)); 
+        return new(simd.SignUInt(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign());
         #endif // NET8_0_OR_GREATER
@@ -4058,6 +4355,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2 fms(this ulong2 a, ulong2 b, ulong2 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
 }
 
 #endregion // ulong2
@@ -4123,7 +4433,7 @@ public partial struct ulong3
     public static ulong3 operator /(ulong3 a, ulong3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((ulong)(a.x / b.x), (ulong)(a.y / b.y), (ulong)(a.z / b.z));
         #endif // NET8_0_OR_GREATER
@@ -4133,7 +4443,7 @@ public partial struct ulong3
     public static ulong3 operator /(ulong3 a, ulong b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((ulong)(a.x / b), (ulong)(a.y / b), (ulong)(a.z / b));
         #endif // NET8_0_OR_GREATER
@@ -4174,7 +4484,7 @@ public static partial class math
     public static ulong3 sign(this ulong3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignUInt(a.vector)); 
+        return new(simd.SignUInt(a.vector) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign());
         #endif // NET8_0_OR_GREATER
@@ -4251,6 +4561,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3 fms(this ulong3 a, ulong3 b, ulong3 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+    }
 }
 
 #endregion // ulong3
@@ -4316,7 +4639,7 @@ public partial struct ulong4
     public static ulong4 operator /(ulong4 a, ulong4 b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b.vector);
+        return new((a.vector / b.vector));
         #else // NET8_0_OR_GREATER
         return new((ulong)(a.x / b.x), (ulong)(a.y / b.y), (ulong)(a.z / b.z), (ulong)(a.w / b.w));
         #endif // NET8_0_OR_GREATER
@@ -4326,7 +4649,7 @@ public partial struct ulong4
     public static ulong4 operator /(ulong4 a, ulong b)
     {
         #if NET8_0_OR_GREATER
-        return new(a.vector / b);
+        return new((a.vector / b));
         #else // NET8_0_OR_GREATER
         return new((ulong)(a.x / b), (ulong)(a.y / b), (ulong)(a.z / b), (ulong)(a.w / b));
         #endif // NET8_0_OR_GREATER
@@ -4367,7 +4690,7 @@ public static partial class math
     public static ulong4 sign(this ulong4 a)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.SignUInt(a.vector)); 
+        return new(simd.SignUInt(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.sign(), a.y.sign(), a.z.sign(), a.w.sign());
         #endif // NET8_0_OR_GREATER
@@ -4441,6 +4764,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4 fms(this ulong4 a, ulong4 b, ulong4 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+    }
 }
 
 #endregion // ulong4
@@ -4454,7 +4790,7 @@ public partial struct decimal2
     [MethodImpl(256 | 512)]
     public static decimal2 operator -(decimal2 a)
     {
-        return new(-a.x, -a.y);
+        return new((-a.x), (-a.y));
     }
 
     [MethodImpl(256 | 512)]
@@ -4580,6 +4916,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2 fms(this decimal2 a, decimal2 b, decimal2 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
 }
 
 #endregion // decimal2
@@ -4593,7 +4942,7 @@ public partial struct decimal3
     [MethodImpl(256 | 512)]
     public static decimal3 operator -(decimal3 a)
     {
-        return new(-a.x, -a.y, -a.z);
+        return new((-a.x), (-a.y), (-a.z));
     }
 
     [MethodImpl(256 | 512)]
@@ -4722,6 +5071,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3 fms(this decimal3 a, decimal3 b, decimal3 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+    }
 }
 
 #endregion // decimal3
@@ -4735,7 +5097,7 @@ public partial struct decimal4
     [MethodImpl(256 | 512)]
     public static decimal4 operator -(decimal4 a)
     {
-        return new(-a.x, -a.y, -a.z, -a.w);
+        return new((-a.x), (-a.y), (-a.z), (-a.w));
     }
 
     [MethodImpl(256 | 512)]
@@ -4861,6 +5223,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4 fms(this decimal4 a, decimal4 b, decimal4 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+    }
 }
 
 #endregion // decimal4
@@ -4874,7 +5249,7 @@ public partial struct half2
     [MethodImpl(256 | 512)]
     public static half2 operator -(half2 a)
     {
-        return new(-a.x, -a.y);
+        return new((half)(-a.x), (half)(-a.y));
     }
 
     [MethodImpl(256 | 512)]
@@ -5000,6 +5375,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2 fms(this half2 a, half2 b, half2 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
 }
 
 #endregion // half2
@@ -5013,7 +5401,7 @@ public partial struct half3
     [MethodImpl(256 | 512)]
     public static half3 operator -(half3 a)
     {
-        return new(-a.x, -a.y, -a.z);
+        return new((half)(-a.x), (half)(-a.y), (half)(-a.z));
     }
 
     [MethodImpl(256 | 512)]
@@ -5142,6 +5530,19 @@ public static partial class math
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z));
     }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3 fms(this half3 a, half3 b, half3 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
+    }
 }
 
 #endregion // half3
@@ -5155,7 +5556,7 @@ public partial struct half4
     [MethodImpl(256 | 512)]
     public static half4 operator -(half4 a)
     {
-        return new(-a.x, -a.y, -a.z, -a.w);
+        return new((half)(-a.x), (half)(-a.y), (half)(-a.z), (half)(-a.w));
     }
 
     [MethodImpl(256 | 512)]
@@ -5280,6 +5681,19 @@ public static partial class math
     public static half4 fma(this half4 a, half4 b, half4 c)
     {
         return new(a.x.fma(b.x, c.x), a.y.fma(b.y, c.y), a.z.fma(b.z, c.z), a.w.fma(b.w, c.w));
+    }
+
+    /// <summary>
+    /// Fusion Subtraction and Multiplication
+    /// <code>(a * b) - c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Subtrahend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4 fms(this half4 a, half4 b, half4 c)
+    {
+        return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
     }
 }
 

@@ -17,6 +17,24 @@ public partial struct float3x3
         c1 = m4x4.c1.xyz;
         c2 = m4x4.c2.xyz;
     }
+
+    /// <summary>Constructs a float3x3 matrix from a unit quaternion</summary>
+    /// <param name="q">The quaternion rotation</param>
+    [MethodImpl(256 | 512)]
+    public float3x3(quaternion q)
+    {
+        var v = q.value;
+        var v2 = v + v;
+
+        var npn = new uint3(0x80000000, default, 0x80000000).asf();
+        var nnp = new uint3(0x80000000, 0x80000000, default).asf();
+        var pnn = new uint3(default, 0x80000000, 0x80000000).asf();
+
+        c0 = v2.yyy.fms(v.yxw ^ npn, v2.zzz * (v.zwx ^ pnn)) + new float3(1.0f, default, default);
+        c1 = v2.zzz.fms(v.wzy ^ nnp, v2.xxx * (v.yxw ^ npn)) + new float3(default, 1.0f, default);
+        c2 = v2.xxx.fms(v.zwx ^ pnn, v2.yyy * (v.wzy ^ nnp)) + new float3(default, default, 1.0f);
+    }
+
     /// <summary>
     /// Returns a float3x3 view rotation matrix given a unit length forward vector and a unit length up vector
     /// The two input vectors are assumed to be unit length and not collinear
@@ -33,13 +51,13 @@ public partial struct float3x3
     }
 
     /// <summary>
-    /// Returns a float3x3 view rotation matrix given a forward vector and an up vector.
-    /// The two input vectors are not assumed to be unit length.
+    /// Returns a float3x3 view rotation matrix given a forward vector and an up vector
+    /// The two input vectors are not assumed to be unit length
     /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
-    /// the identity will be returned instead.
+    /// the identity will be returned instead
     /// </summary>
-    /// <param name="forward">The forward vector to align the center of view with.</param>
-    /// <param name="up">The up vector to point top of view toward.</param>
+    /// <param name="forward">The forward vector to align the center of view with</param>
+    /// <param name="up">The up vector to point top of view toward</param>
     /// <returns>The float3x3 view rotation matrix or the identity matrix.</returns>
     [MethodImpl(256 | 512)]
     public static float3x3 LookRotationSafe(float3 forward, float3 up)
@@ -64,11 +82,11 @@ public partial struct float3x3
     }
     
     /// <summary>
-    /// Returns a float3x3 matrix representing a rotation around a unit axis by an angle in radians.
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
+    /// Returns a float3x3 matrix representing a rotation around a unit axis by an angle in radians
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="axis">The rotation axis.</param>
-    /// <param name="angle">The angle of rotation in radians.</param>
+    /// <param name="axis">The rotation axis</param>
+    /// <param name="angle">The angle of rotation in radians</param>
     /// <returns>The float3x3 matrix representing the rotation around an axis.</returns>
     [MethodImpl(256 | 512)]
     public static float3x3 AxisAngle(float3 axis, float angle)
@@ -296,6 +314,24 @@ public partial struct double3x3
         c1 = m4x4.c1.xyz;
         c2 = m4x4.c2.xyz;
     }
+
+    /// <summary>Constructs a double3x3 matrix from a unit quaternion</summary>
+    /// <param name="q">The quaternion rotation</param>
+    [MethodImpl(256 | 512)]
+    public double3x3(quaternion_d q)
+    {
+        var v = q.value;
+        var v2 = v + v;
+
+        var npn = new ulong3(0x8000000000000000, default, 0x8000000000000000).asf();
+        var nnp = new ulong3(0x8000000000000000, 0x8000000000000000, default).asf();
+        var pnn = new ulong3(default, 0x8000000000000000, 0x8000000000000000).asf();
+
+        c0 = v2.yyy.fms(v.yxw ^ npn, v2.zzz * (v.zwx ^ pnn)) + new double3(1.0, default, default);
+        c1 = v2.zzz.fms(v.wzy ^ nnp, v2.xxx * (v.yxw ^ npn)) + new double3(default, 1.0, default);
+        c2 = v2.xxx.fms(v.zwx ^ pnn, v2.yyy * (v.wzy ^ nnp)) + new double3(default, default, 1.0);
+    }
+
     /// <summary>
     /// Returns a double3x3 view rotation matrix given a unit length forward vector and a unit length up vector
     /// The two input vectors are assumed to be unit length and not collinear
@@ -312,13 +348,13 @@ public partial struct double3x3
     }
 
     /// <summary>
-    /// Returns a double3x3 view rotation matrix given a forward vector and an up vector.
-    /// The two input vectors are not assumed to be unit length.
+    /// Returns a double3x3 view rotation matrix given a forward vector and an up vector
+    /// The two input vectors are not assumed to be unit length
     /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
-    /// the identity will be returned instead.
+    /// the identity will be returned instead
     /// </summary>
-    /// <param name="forward">The forward vector to align the center of view with.</param>
-    /// <param name="up">The up vector to point top of view toward.</param>
+    /// <param name="forward">The forward vector to align the center of view with</param>
+    /// <param name="up">The up vector to point top of view toward</param>
     /// <returns>The double3x3 view rotation matrix or the identity matrix.</returns>
     [MethodImpl(256 | 512)]
     public static double3x3 LookRotationSafe(double3 forward, double3 up)
@@ -343,11 +379,11 @@ public partial struct double3x3
     }
     
     /// <summary>
-    /// Returns a double3x3 matrix representing a rotation around a unit axis by an angle in radians.
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
+    /// Returns a double3x3 matrix representing a rotation around a unit axis by an angle in radians
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="axis">The rotation axis.</param>
-    /// <param name="angle">The angle of rotation in radians.</param>
+    /// <param name="axis">The rotation axis</param>
+    /// <param name="angle">The angle of rotation in radians</param>
     /// <returns>The double3x3 matrix representing the rotation around an axis.</returns>
     [MethodImpl(256 | 512)]
     public static double3x3 AxisAngle(double3 axis, double angle)
@@ -1016,6 +1052,24 @@ public partial struct half3x3
         c1 = m4x4.c1.xyz;
         c2 = m4x4.c2.xyz;
     }
+
+    /// <summary>Constructs a half3x3 matrix from a unit quaternion</summary>
+    /// <param name="q">The quaternion rotation</param>
+    [MethodImpl(256 | 512)]
+    public half3x3(quaternion_h q)
+    {
+        var v = q.value;
+        var v2 = v + v;
+
+        var npn = new ushort3(0x8000, default, 0x8000).asf();
+        var nnp = new ushort3(0x8000, 0x8000, default).asf();
+        var pnn = new ushort3(default, 0x8000, 0x8000).asf();
+
+        c0 = v2.yyy.fms(v.yxw ^ npn, v2.zzz * (v.zwx ^ pnn)) + new half3((half)1.0, default, default);
+        c1 = v2.zzz.fms(v.wzy ^ nnp, v2.xxx * (v.yxw ^ npn)) + new half3(default, (half)1.0, default);
+        c2 = v2.xxx.fms(v.zwx ^ pnn, v2.yyy * (v.wzy ^ nnp)) + new half3(default, default, (half)1.0);
+    }
+
     /// <summary>
     /// Returns a half3x3 view rotation matrix given a unit length forward vector and a unit length up vector
     /// The two input vectors are assumed to be unit length and not collinear
@@ -1032,13 +1086,13 @@ public partial struct half3x3
     }
 
     /// <summary>
-    /// Returns a half3x3 view rotation matrix given a forward vector and an up vector.
-    /// The two input vectors are not assumed to be unit length.
+    /// Returns a half3x3 view rotation matrix given a forward vector and an up vector
+    /// The two input vectors are not assumed to be unit length
     /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
-    /// the identity will be returned instead.
+    /// the identity will be returned instead
     /// </summary>
-    /// <param name="forward">The forward vector to align the center of view with.</param>
-    /// <param name="up">The up vector to point top of view toward.</param>
+    /// <param name="forward">The forward vector to align the center of view with</param>
+    /// <param name="up">The up vector to point top of view toward</param>
     /// <returns>The half3x3 view rotation matrix or the identity matrix.</returns>
     [MethodImpl(256 | 512)]
     public static half3x3 LookRotationSafe(half3 forward, half3 up)
@@ -1063,11 +1117,11 @@ public partial struct half3x3
     }
     
     /// <summary>
-    /// Returns a half3x3 matrix representing a rotation around a unit axis by an angle in radians.
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
+    /// Returns a half3x3 matrix representing a rotation around a unit axis by an angle in radians
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="axis">The rotation axis.</param>
-    /// <param name="angle">The angle of rotation in radians.</param>
+    /// <param name="axis">The rotation axis</param>
+    /// <param name="angle">The angle of rotation in radians</param>
     /// <returns>The half3x3 matrix representing the rotation around an axis.</returns>
     [MethodImpl(256 | 512)]
     public static half3x3 AxisAngle(half3 axis, half angle)

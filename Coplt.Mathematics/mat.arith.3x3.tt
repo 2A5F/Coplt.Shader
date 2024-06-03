@@ -18,6 +18,8 @@ namespace Coplt.Mathematics;
 
         var vecTypeName4 = $"{typ.name}{4}";
         var typeName4x4 = $"{typ.name.Replace('v', 'm')}{4}x{4}";
+
+        var quaternionName = $"quaternion{typ.structSuffix}";
 #>
 
 #region <#= typeName #>
@@ -39,6 +41,24 @@ public partial struct <#= typeName #>
         if (typ.f && typ.bin)
         {
 #>
+
+    /// <summary>Constructs a <#= typeName #> matrix from a unit quaternion</summary>
+    /// <param name="q">The quaternion rotation</param>
+    [MethodImpl(256 | 512)]
+    public <#= typeName #>(<#= quaternionName #> q)
+    {
+        var v = q.value;
+        var v2 = v + v;
+
+        var npn = new <#= typ.maskType #>3(<#= typ.maskNeg #>, default, <#= typ.maskNeg #>).asf();
+        var nnp = new <#= typ.maskType #>3(<#= typ.maskNeg #>, <#= typ.maskNeg #>, default).asf();
+        var pnn = new <#= typ.maskType #>3(default, <#= typ.maskNeg #>, <#= typ.maskNeg #>).asf();
+
+        c0 = v2.yyy.fms(v.yxw ^ npn, v2.zzz * (v.zwx ^ pnn)) + new <#= vecTypeName #>(<#=typ.one#>, default, default);
+        c1 = v2.zzz.fms(v.wzy ^ nnp, v2.xxx * (v.yxw ^ npn)) + new <#= vecTypeName #>(default, <#=typ.one#>, default);
+        c2 = v2.xxx.fms(v.zwx ^ pnn, v2.yyy * (v.wzy ^ nnp)) + new <#= vecTypeName #>(default, default, <#=typ.one#>);
+    }
+
     /// <summary>
     /// Returns a <#= typeName #> view rotation matrix given a unit length forward vector and a unit length up vector
     /// The two input vectors are assumed to be unit length and not collinear
@@ -55,13 +75,13 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> view rotation matrix given a forward vector and an up vector.
-    /// The two input vectors are not assumed to be unit length.
+    /// Returns a <#= typeName #> view rotation matrix given a forward vector and an up vector
+    /// The two input vectors are not assumed to be unit length
     /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
-    /// the identity will be returned instead.
+    /// the identity will be returned instead
     /// </summary>
-    /// <param name="forward">The forward vector to align the center of view with.</param>
-    /// <param name="up">The up vector to point top of view toward.</param>
+    /// <param name="forward">The forward vector to align the center of view with</param>
+    /// <param name="up">The up vector to point top of view toward</param>
     /// <returns>The <#= typeName #> view rotation matrix or the identity matrix.</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> LookRotationSafe(<#= vecTypeName #> forward, <#= vecTypeName #> up)
@@ -86,11 +106,11 @@ public partial struct <#= typeName #>
     }
     
     /// <summary>
-    /// Returns a <#= typeName #> matrix representing a rotation around a unit axis by an angle in radians.
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
+    /// Returns a <#= typeName #> matrix representing a rotation around a unit axis by an angle in radians
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="axis">The rotation axis.</param>
-    /// <param name="angle">The angle of rotation in radians.</param>
+    /// <param name="axis">The rotation axis</param>
+    /// <param name="angle">The angle of rotation in radians</param>
     /// <returns>The <#= typeName #> matrix representing the rotation around an axis.</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> AxisAngle(<#= vecTypeName #> axis, <#= typ.compType #> angle)

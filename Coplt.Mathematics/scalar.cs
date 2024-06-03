@@ -1,7 +1,83 @@
-﻿namespace Coplt.Mathematics;
+﻿#if NET8_0_OR_GREATER
+using System.Runtime.Intrinsics.Arm;
+using System.Runtime.Intrinsics.Wasm;
+using System.Runtime.Intrinsics.X86;
+using X86 = System.Runtime.Intrinsics.X86;
+#endif
+
+namespace Coplt.Mathematics;
 
 public static partial class math
 {
+    #region asf
+
+    [MethodImpl(256 | 512)]
+    public static half asf(this ushort v) => v.BitCast<ushort, half>();
+    [MethodImpl(256 | 512)]
+    public static half asf(this short v) => v.BitCast<short, half>();
+    [MethodImpl(256 | 512)]
+    public static float asf(this uint v) => v.BitCast<uint, float>();
+    [MethodImpl(256 | 512)]
+    public static float asf(this int v) => v.BitCast<int, float>();
+    [MethodImpl(256 | 512)]
+    public static double asf(this ulong v) => v.BitCast<ulong, double>();
+    [MethodImpl(256 | 512)]
+    public static double asf(this long v) => v.BitCast<long, double>();
+    [MethodImpl(256 | 512)]
+    public static half asf(this half v) => v;
+    [MethodImpl(256 | 512)]
+    public static float asf(this float v) => v;
+    [MethodImpl(256 | 512)]
+    public static double asf(this double v) => v;
+
+    #endregion
+
+    #region asu
+
+    [MethodImpl(256 | 512)]
+    public static ushort asu(this ushort v) => v;
+    [MethodImpl(256 | 512)]
+    public static ushort asu(this short v) => (ushort)v;
+    [MethodImpl(256 | 512)]
+    public static uint asu(this uint v) => v;
+    [MethodImpl(256 | 512)]
+    public static uint asu(this int v) => (uint)v;
+    [MethodImpl(256 | 512)]
+    public static ulong asu(this ulong v) => v;
+    [MethodImpl(256 | 512)]
+    public static ulong asu(this long v) => (ulong)v;
+    [MethodImpl(256 | 512)]
+    public static ushort asu(this half v) => v.BitCast<half, ushort>();
+    [MethodImpl(256 | 512)]
+    public static uint asu(this float v) => v.BitCast<float, uint>();
+    [MethodImpl(256 | 512)]
+    public static ulong asu(this double v) => v.BitCast<double, ulong>();
+
+    #endregion
+
+    #region asi
+
+    [MethodImpl(256 | 512)]
+    public static short asi(this ushort v) => (short)v;
+    [MethodImpl(256 | 512)]
+    public static short asi(this short v) => v;
+    [MethodImpl(256 | 512)]
+    public static int asi(this uint v) => (int)v;
+    [MethodImpl(256 | 512)]
+    public static int asi(this int v) => v;
+    [MethodImpl(256 | 512)]
+    public static long asi(this ulong v) => (long)v;
+    [MethodImpl(256 | 512)]
+    public static long asi(this long v) => v;
+    [MethodImpl(256 | 512)]
+    public static short asi(this half v) => v.BitCast<half, short>();
+    [MethodImpl(256 | 512)]
+    public static int asi(this float v) => v.BitCast<float, int>();
+    [MethodImpl(256 | 512)]
+    public static long asi(this double v) => v.BitCast<double, long>();
+
+    #endregion
+    
     #region select
 
     [MethodImpl(256 | 512)]
@@ -286,15 +362,15 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static bool isFinite(this half v) => half.IsFinite(v);
-    
+
     [MethodImpl(256 | 512)]
     public static bool isFinite(this float v) => float.IsFinite(v);
-    
+
     [MethodImpl(256 | 512)]
     public static bool isFinite(this double v) => double.IsFinite(v);
 
     #endregion
-    
+
     #region Abs
 
     [MethodImpl(256 | 512)]
@@ -603,7 +679,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double fma(this double a, double b, double c) => a * b + c;
     #endif
-    
+
     [MethodImpl(256 | 512)]
     public static ushort fma(this ushort a, ushort b, ushort c) => (ushort)(a * b + c);
     [MethodImpl(256 | 512)]
@@ -621,6 +697,41 @@ public static partial class math
 
     #endregion
 
+    #region Fms
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    public static half fms(this half a, half b, half c) => (half)fms((float)a, (float)b, (float)c);
+    [MethodImpl(256 | 512)]
+    public static float fms(this float a, float b, float c) => MathF.FusedMultiplyAdd(a, b, -c);
+    [MethodImpl(256 | 512)]
+    public static double fms(this double a, double b, double c) => Math.FusedMultiplyAdd(a, b, -c);
+    #else
+    [MethodImpl(256 | 512)]
+    public static half fms(this half a, half b, half c) => (half)(a * b - c);
+    [MethodImpl(256 | 512)]
+    public static float fms(this float a, float b, float c) => a * b - c;
+    [MethodImpl(256 | 512)]
+    public static double fms(this double a, double b, double c) => a * b - c;
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static ushort fms(this ushort a, ushort b, ushort c) => (ushort)(a * b - c);
+    [MethodImpl(256 | 512)]
+    public static short fms(this short a, short b, short c) => (short)(a * b - c);
+    [MethodImpl(256 | 512)]
+    public static uint fms(this uint a, uint b, uint c) => a * b - c;
+    [MethodImpl(256 | 512)]
+    public static int fms(this int a, int b, int c) => a * b - c;
+    [MethodImpl(256 | 512)]
+    public static ulong fms(this ulong a, ulong b, ulong c) => a * b - c;
+    [MethodImpl(256 | 512)]
+    public static long fms(this long a, long b, long c) => a * b - c;
+    [MethodImpl(256 | 512)]
+    public static decimal fms(this decimal a, decimal b, decimal c) => a * b - c;
+
+    #endregion
+    
     #region Log
 
     [MethodImpl(256 | 512)]
@@ -1035,7 +1146,7 @@ public static partial class math
     public static double tan(this double a) => Math.Tan(a);
 
     #endregion
-    
+
     #region Asin
 
     [MethodImpl(256 | 512)]
@@ -1170,7 +1281,7 @@ public static partial class math
     public static double acosh(this double a) => Math.Acosh(a);
 
     #endregion
-    
+
     #region Atanh
 
     [MethodImpl(256 | 512)]

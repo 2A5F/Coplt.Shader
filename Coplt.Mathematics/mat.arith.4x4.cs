@@ -24,6 +24,13 @@ public partial struct float4x4
         c3 = new(translation, 1.0f);
     }
 
+    /// <summary>Constructs a float4x4 from a quaternion and a float3 translation vector</summary>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <param name="translation">The translation vector</param>
+    [MethodImpl(256 | 512)]
+    public float4x4(quaternion rotation, float3 translation) 
+        : this(new float3x3(rotation), translation) {}
+
     /// <summary>
     /// Returns a float4x4 matrix representing a rotation around a unit axis by an angle in radians
     /// The rotation direction is clockwise when looking along the rotation axis towards the origin
@@ -312,6 +319,24 @@ public partial struct float4x4
         );
     }
 
+    /// <summary>
+    /// Returns a float4x4 matrix representing a combined scale-, rotation- and translation transform
+    /// Equivalent to mul(translationTransform, mul(rotationTransform, scaleTransform))
+    /// </summary>
+    /// <param name="translation">The translation vector</param>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <param name="scale">The scaling factors of each axis</param>
+    /// <returns>The float4x4 matrix representing the translation, rotation, and scale by the inputs</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 TRS(float3 translation, quaternion rotation, float3 scale)
+    {
+        var r = new float3x3(rotation);
+        r.c0 *= scale.xxx;
+        r.c1 *= scale.yyy;
+        r.c2 *= scale.zzz;
+        return new(r, translation);
+    }
+
     /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
     /// <returns>The float4x4 matrix that represents a uniform scale</returns>
@@ -390,6 +415,13 @@ public partial struct double4x4
         #endif // NET8_0_OR_GREATER
         c3 = new(translation, 1.0);
     }
+
+    /// <summary>Constructs a double4x4 from a quaternion and a double3 translation vector</summary>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <param name="translation">The translation vector</param>
+    [MethodImpl(256 | 512)]
+    public double4x4(quaternion_d rotation, double3 translation) 
+        : this(new double3x3(rotation), translation) {}
 
     /// <summary>
     /// Returns a double4x4 matrix representing a rotation around a unit axis by an angle in radians
@@ -677,6 +709,24 @@ public partial struct double4x4
             default,                       default,                       ((far + near) * rcpdz),          (2.0 * near * far * rcpdz),
             default,                       default,                       -1.0,                         default
         );
+    }
+
+    /// <summary>
+    /// Returns a double4x4 matrix representing a combined scale-, rotation- and translation transform
+    /// Equivalent to mul(translationTransform, mul(rotationTransform, scaleTransform))
+    /// </summary>
+    /// <param name="translation">The translation vector</param>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <param name="scale">The scaling factors of each axis</param>
+    /// <returns>The double4x4 matrix representing the translation, rotation, and scale by the inputs</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 TRS(double3 translation, quaternion_d rotation, double3 scale)
+    {
+        var r = new double3x3(rotation);
+        r.c0 *= scale.xxx;
+        r.c1 *= scale.yyy;
+        r.c2 *= scale.zzz;
+        return new(r, translation);
     }
 
     /// <summary>Returns a double4x4 scale matrix given 3 axis scales</summary>
@@ -1287,6 +1337,13 @@ public partial struct half4x4
         c3 = new(translation, (half)1.0);
     }
 
+    /// <summary>Constructs a half4x4 from a quaternion and a half3 translation vector</summary>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <param name="translation">The translation vector</param>
+    [MethodImpl(256 | 512)]
+    public half4x4(quaternion_h rotation, half3 translation) 
+        : this(new half3x3(rotation), translation) {}
+
     /// <summary>
     /// Returns a half4x4 matrix representing a rotation around a unit axis by an angle in radians
     /// The rotation direction is clockwise when looking along the rotation axis towards the origin
@@ -1573,6 +1630,24 @@ public partial struct half4x4
             default,                       default,                       (half)((far + near) * rcpdz),          (half)((half)2.0f * near * far * rcpdz),
             default,                       default,                       -(half)1.0,                         default
         );
+    }
+
+    /// <summary>
+    /// Returns a half4x4 matrix representing a combined scale-, rotation- and translation transform
+    /// Equivalent to mul(translationTransform, mul(rotationTransform, scaleTransform))
+    /// </summary>
+    /// <param name="translation">The translation vector</param>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <param name="scale">The scaling factors of each axis</param>
+    /// <returns>The half4x4 matrix representing the translation, rotation, and scale by the inputs</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 TRS(half3 translation, quaternion_h rotation, half3 scale)
+    {
+        var r = new half3x3(rotation);
+        r.c0 *= scale.xxx;
+        r.c1 *= scale.yyy;
+        r.c2 *= scale.zzz;
+        return new(r, translation);
     }
 
     /// <summary>Returns a half4x4 scale matrix given 3 axis scales</summary>

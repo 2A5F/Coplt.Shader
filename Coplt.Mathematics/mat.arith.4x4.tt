@@ -17,6 +17,8 @@ namespace Coplt.Mathematics;
         var typeName = $"{typ.name.Replace('v', 'm')}{4}x{4}";
         var vecTypeName3 = $"{typ.name}{3}";
         var typeName3x3 = $"{typ.name.Replace('v', 'm')}{3}x{3}";
+
+        var quaternionName = $"quaternion{typ.structSuffix}";
 #>
 
 #region <#= typeName #>
@@ -58,6 +60,13 @@ public partial struct <#= typeName #>
         if (typ.f && typ.bin)
         {
 #>
+
+    /// <summary>Constructs a <#= typeName #> from a quaternion and a <#= vecTypeName3 #> translation vector</summary>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <param name="translation">The translation vector</param>
+    [MethodImpl(256 | 512)]
+    public <#= typeName #>(<#= quaternionName #> rotation, <#= vecTypeName3 #> translation) 
+        : this(new <#= typeName3x3 #>(rotation), translation) {}
 
     /// <summary>
     /// Returns a <#= typeName #> matrix representing a rotation around a unit axis by an angle in radians
@@ -278,9 +287,9 @@ public partial struct <#= typeName #>
         var rcpdz = <#= typ.one #> / (far - near);
 
         return new(
-            <#=typ.arithCast#>(<#= typ.two #> * rcpdx),       default,            default,            default,
-            default,           <#=typ.arithCast#>(<#= typ.two #> * rcpdy),        default,            default,
-            default,           default,            <#=typ.arithCast#>(-<#= typ.two #> * rcpdz),       <#=typ.arithCast#>(-(far + near) * rcpdz),
+            <#= typ.arithCast #>(<#= typ.two #> * rcpdx),       default,            default,            default,
+            default,           <#= typ.arithCast #>(<#= typ.two #> * rcpdy),        default,            default,
+            default,           default,            <#= typ.arithCast #>(-<#= typ.two #> * rcpdz),       <#= typ.arithCast #>(-(far + near) * rcpdz),
             default,           default,            default,            <#= typ.one #>
        );
     }
@@ -303,9 +312,9 @@ public partial struct <#= typeName #>
         var rcpdz = <#= typ.one #> / (far - near);
 
         return new(
-            <#=typ.arithCast#>(<#= typ.two #> * rcpdx),      default,           default,                <#=typ.arithCast#>(-(right + left) * rcpdx),
-            default,           <#=typ.arithCast#>(<#= typ.two #> * rcpdy),      default,                <#=typ.arithCast#>(-(top + bottom) * rcpdy),
-            default,           default,           <#=typ.arithCast#>(-<#= typ.two #> * rcpdz),          <#=typ.arithCast#>(-(far + near) * rcpdz),
+            <#= typ.arithCast #>(<#= typ.two #> * rcpdx),      default,           default,                <#= typ.arithCast #>(-(right + left) * rcpdx),
+            default,           <#= typ.arithCast #>(<#= typ.two #> * rcpdy),      default,                <#= typ.arithCast #>(-(top + bottom) * rcpdy),
+            default,           default,           <#= typ.arithCast #>(-<#= typ.two #> * rcpdz),          <#= typ.arithCast #>(-(far + near) * rcpdz),
             default,           default,           default,                <#= typ.one #>
         );
     }
@@ -325,9 +334,9 @@ public partial struct <#= typeName #>
         var rcpdz = <#= typ.one #> / (near - far);
 
         return new(
-            <#=typ.arithCast#>(cotangent / aspect),    default,       default,                   default,
-            default,               <#=typ.arithCast#>cotangent,     default,                   default,
-            default,               default,       <#=typ.arithCast#>((far + near) * rcpdz),      <#=typ.arithCast#>(<#= typ.two #> * near * far * rcpdz),
+            <#= typ.arithCast #>(cotangent / aspect),    default,       default,                   default,
+            default,               <#= typ.arithCast #>cotangent,     default,                   default,
+            default,               default,       <#= typ.arithCast #>((far + near) * rcpdz),      <#= typ.arithCast #>(<#= typ.two #> * near * far * rcpdz),
             default,               default,       -<#= typ.one #>,                     default
         );
     }
@@ -340,11 +349,29 @@ public partial struct <#= typeName #>
         var rcpHeight = <#= typ.one #> / (top - bottom);
 
         return new(
-            <#=typ.arithCast#>(<#= typ.two #> * near * rcpWidth),        default,                       <#=typ.arithCast#>((left + right) * rcpWidth),     default,
-            default,                       <#=typ.arithCast#>(<#= typ.two #> * near * rcpHeight),       <#=typ.arithCast#>((bottom + top) * rcpHeight),    default,
-            default,                       default,                       <#=typ.arithCast#>((far + near) * rcpdz),          <#=typ.arithCast#>(<#= typ.two #> * near * far * rcpdz),
+            <#= typ.arithCast #>(<#= typ.two #> * near * rcpWidth),        default,                       <#= typ.arithCast #>((left + right) * rcpWidth),     default,
+            default,                       <#= typ.arithCast #>(<#= typ.two #> * near * rcpHeight),       <#= typ.arithCast #>((bottom + top) * rcpHeight),    default,
+            default,                       default,                       <#= typ.arithCast #>((far + near) * rcpdz),          <#= typ.arithCast #>(<#= typ.two #> * near * far * rcpdz),
             default,                       default,                       -<#= typ.one #>,                         default
         );
+    }
+
+    /// <summary>
+    /// Returns a <#= typeName #> matrix representing a combined scale-, rotation- and translation transform
+    /// Equivalent to mul(translationTransform, mul(rotationTransform, scaleTransform))
+    /// </summary>
+    /// <param name="translation">The translation vector</param>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <param name="scale">The scaling factors of each axis</param>
+    /// <returns>The <#= typeName #> matrix representing the translation, rotation, and scale by the inputs</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> TRS(<#= vecTypeName3 #> translation, <#= quaternionName #> rotation, <#= vecTypeName3 #> scale)
+    {
+        var r = new <#= typeName3x3 #>(rotation);
+        r.c0 *= scale.xxx;
+        r.c1 *= scale.yyy;
+        r.c2 *= scale.zzz;
+        return new(r, translation);
     }
 <#
         }

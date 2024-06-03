@@ -108,7 +108,7 @@ public partial struct float3 : IVectorBitops
     public static float3 operator ~(float3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(~a.vector);
+        return new(~a.vector & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
         #endif // NET8_0_OR_GREATER
@@ -181,7 +181,7 @@ public static partial class math
     public static float3 BitAndNot(this float3 a, float3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector128.AndNot(a.vector, b.vector));
+        return new(Vector128.AndNot(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
@@ -390,7 +390,7 @@ public partial struct double3 : IVectorBitops
     public static double3 operator ~(double3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(~a.vector);
+        return new(~a.vector & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
         #endif // NET8_0_OR_GREATER
@@ -463,7 +463,7 @@ public static partial class math
     public static double3 BitAndNot(this double3 a, double3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector256.AndNot(a.vector, b.vector));
+        return new(Vector256.AndNot(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
@@ -1044,7 +1044,7 @@ public partial struct int3 : IVectorBitops
     public static int3 operator ~(int3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(~a.vector);
+        return new(~a.vector & Vector128.Create(-1, -1, -1, 0).AsInt32());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
         #endif // NET8_0_OR_GREATER
@@ -1117,7 +1117,7 @@ public static partial class math
     public static int3 BitAndNot(this int3 a, int3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector128.AndNot(a.vector, b.vector));
+        return new(Vector128.AndNot(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsInt32());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
@@ -1326,7 +1326,7 @@ public partial struct uint3 : IVectorBitops
     public static uint3 operator ~(uint3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(~a.vector);
+        return new(~a.vector & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
         #endif // NET8_0_OR_GREATER
@@ -1399,7 +1399,7 @@ public static partial class math
     public static uint3 BitAndNot(this uint3 a, uint3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector128.AndNot(a.vector, b.vector));
+        return new(Vector128.AndNot(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
@@ -1608,7 +1608,7 @@ public partial struct long3 : IVectorBitops
     public static long3 operator ~(long3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(~a.vector);
+        return new(~a.vector & Vector256.Create(-1, -1, -1, 0).AsInt64());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
         #endif // NET8_0_OR_GREATER
@@ -1681,7 +1681,7 @@ public static partial class math
     public static long3 BitAndNot(this long3 a, long3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector256.AndNot(a.vector, b.vector));
+        return new(Vector256.AndNot(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsInt64());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
@@ -1890,7 +1890,7 @@ public partial struct ulong3 : IVectorBitops
     public static ulong3 operator ~(ulong3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(~a.vector);
+        return new(~a.vector & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
         #endif // NET8_0_OR_GREATER
@@ -1963,7 +1963,7 @@ public static partial class math
     public static ulong3 BitAndNot(this ulong3 a, ulong3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector256.AndNot(a.vector, b.vector));
+        return new(Vector256.AndNot(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
@@ -2455,7 +2455,7 @@ public partial struct b32v3 : IVectorBitops
     public static b32v3 operator ~(b32v3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(~a.vector);
+        return new(~a.vector & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
         #endif // NET8_0_OR_GREATER
@@ -2498,7 +2498,7 @@ public static partial class math
     public static b32v3 BitAndNot(this b32v3 a, b32v3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector128.AndNot(a.vector, b.vector));
+        return new(Vector128.AndNot(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER
@@ -2644,7 +2644,7 @@ public partial struct b64v3 : IVectorBitops
     public static b64v3 operator ~(b64v3 a)
     {
         #if NET8_0_OR_GREATER
-        return new(~a.vector);
+        return new(~a.vector & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitNot(), a.y.BitNot(), a.z.BitNot());
         #endif // NET8_0_OR_GREATER
@@ -2687,7 +2687,7 @@ public static partial class math
     public static b64v3 BitAndNot(this b64v3 a, b64v3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector256.AndNot(a.vector, b.vector));
+        return new(Vector256.AndNot(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
         #endif // NET8_0_OR_GREATER

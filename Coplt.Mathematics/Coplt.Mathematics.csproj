@@ -24,6 +24,7 @@
         <TextTemplate Include="mat.arith.4x4.tt" />
         <TextTemplate Include="mat.str.tt" />
         <TextTemplate Include="mat.trn.tt" />
+        <TextTemplate Include="quaternion.tt" />
         <TextTemplate Include="simd_matrix_trn_2x2.tt" />
         <TextTemplate Include="simd_matrix_trn_2x4_to_4x2.tt" />
         <TextTemplate Include="simd_matrix_trn_3x3.tt" />
@@ -32,6 +33,7 @@
         <TextTemplate Include="vec.arith.float.bin.tt" />
         <TextTemplate Include="vec.arith.float.tt" />
         <TextTemplate Include="vec.arith.tt" />
+        <TextTemplate Include="vec.as.common.tt" />
         <TextTemplate Include="vec.as.tt" />
         <TextTemplate Include="vec.bitop.tt" />
         <TextTemplate Include="vec.bool_op.tt" />

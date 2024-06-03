@@ -55,22 +55,22 @@ public partial struct float2 : IComparable<float2>, IComparable
         new(Vector64.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(float2 other) => Vector64.LessThanAll(vector, other.vector);
+    public bool LessThanAll(float2 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(float2 other) => Vector64.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(float2 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(float2 other) => Vector64.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(float2 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(float2 other) => Vector64.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(float2 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(float2 other) => Vector64.LessThanAny(vector, other.vector);
+    public bool LessThanAny(float2 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(float2 other) => Vector64.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(float2 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(float2 other) => Vector64.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(float2 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(float2 other) => Vector64.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(float2 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(float2 other)
@@ -157,34 +157,34 @@ public partial struct float3 : IComparable<float3>, IComparable
     
     [MethodImpl(256 | 512)]
     public static b32v3 operator <(float3 left, float3 right) => 
-        new(Vector128.LessThan(left.vector, right.vector).AsUInt32());
+        new(Vector128.LessThan(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator >(float3 left, float3 right) => 
-        new(Vector128.GreaterThan(left.vector, right.vector).AsUInt32());
+        new(Vector128.GreaterThan(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator <=(float3 left, float3 right) => 
-        new(Vector128.LessThanOrEqual(left.vector, right.vector).AsUInt32());
+        new(Vector128.LessThanOrEqual(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator >=(float3 left, float3 right) => 
-        new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
+        new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(float3 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(float3 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(float3 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(float3 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(float3 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(float3 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(float3 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(float3 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(float3 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(float3 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(float3 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(float3 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(float3 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(float3 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(float3 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(float3 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(float3 other)
@@ -283,22 +283,22 @@ public partial struct float4 : IComparable<float4>, IComparable
         new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(float4 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(float4 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(float4 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(float4 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(float4 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(float4 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(float4 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(float4 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(float4 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(float4 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(float4 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(float4 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(float4 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(float4 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(float4 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(float4 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(float4 other)
@@ -397,22 +397,22 @@ public partial struct double2 : IComparable<double2>, IComparable
         new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(double2 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(double2 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(double2 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(double2 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(double2 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(double2 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(double2 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(double2 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(double2 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(double2 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(double2 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(double2 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(double2 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(double2 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(double2 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(double2 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(double2 other)
@@ -499,34 +499,34 @@ public partial struct double3 : IComparable<double3>, IComparable
     
     [MethodImpl(256 | 512)]
     public static b64v3 operator <(double3 left, double3 right) => 
-        new(Vector256.LessThan(left.vector, right.vector).AsUInt64());
+        new(Vector256.LessThan(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator >(double3 left, double3 right) => 
-        new(Vector256.GreaterThan(left.vector, right.vector).AsUInt64());
+        new(Vector256.GreaterThan(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator <=(double3 left, double3 right) => 
-        new(Vector256.LessThanOrEqual(left.vector, right.vector).AsUInt64());
+        new(Vector256.LessThanOrEqual(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator >=(double3 left, double3 right) => 
-        new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
+        new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(double3 other) => Vector256.LessThanAll(vector, other.vector);
+    public bool LessThanAll(double3 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(double3 other) => Vector256.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(double3 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(double3 other) => Vector256.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(double3 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(double3 other) => Vector256.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(double3 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(double3 other) => Vector256.LessThanAny(vector, other.vector);
+    public bool LessThanAny(double3 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(double3 other) => Vector256.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(double3 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(double3 other) => Vector256.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(double3 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(double3 other) => Vector256.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(double3 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(double3 other)
@@ -625,22 +625,22 @@ public partial struct double4 : IComparable<double4>, IComparable
         new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(double4 other) => Vector256.LessThanAll(vector, other.vector);
+    public bool LessThanAll(double4 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(double4 other) => Vector256.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(double4 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(double4 other) => Vector256.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(double4 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(double4 other) => Vector256.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(double4 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(double4 other) => Vector256.LessThanAny(vector, other.vector);
+    public bool LessThanAny(double4 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(double4 other) => Vector256.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(double4 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(double4 other) => Vector256.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(double4 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(double4 other) => Vector256.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(double4 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(double4 other)
@@ -1177,22 +1177,22 @@ public partial struct int2 : IComparable<int2>, IComparable
         new(Vector64.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(int2 other) => Vector64.LessThanAll(vector, other.vector);
+    public bool LessThanAll(int2 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(int2 other) => Vector64.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(int2 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(int2 other) => Vector64.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(int2 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(int2 other) => Vector64.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(int2 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(int2 other) => Vector64.LessThanAny(vector, other.vector);
+    public bool LessThanAny(int2 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(int2 other) => Vector64.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(int2 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(int2 other) => Vector64.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(int2 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(int2 other) => Vector64.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(int2 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(int2 other)
@@ -1279,34 +1279,34 @@ public partial struct int3 : IComparable<int3>, IComparable
     
     [MethodImpl(256 | 512)]
     public static b32v3 operator <(int3 left, int3 right) => 
-        new(Vector128.LessThan(left.vector, right.vector).AsUInt32());
+        new(Vector128.LessThan(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator >(int3 left, int3 right) => 
-        new(Vector128.GreaterThan(left.vector, right.vector).AsUInt32());
+        new(Vector128.GreaterThan(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator <=(int3 left, int3 right) => 
-        new(Vector128.LessThanOrEqual(left.vector, right.vector).AsUInt32());
+        new(Vector128.LessThanOrEqual(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator >=(int3 left, int3 right) => 
-        new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
+        new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(int3 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(int3 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(int3 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(int3 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(int3 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(int3 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(int3 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(int3 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(int3 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(int3 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(int3 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(int3 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(int3 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(int3 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(int3 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(int3 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(int3 other)
@@ -1405,22 +1405,22 @@ public partial struct int4 : IComparable<int4>, IComparable
         new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(int4 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(int4 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(int4 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(int4 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(int4 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(int4 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(int4 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(int4 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(int4 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(int4 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(int4 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(int4 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(int4 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(int4 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(int4 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(int4 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(int4 other)
@@ -1519,22 +1519,22 @@ public partial struct uint2 : IComparable<uint2>, IComparable
         new(Vector64.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(uint2 other) => Vector64.LessThanAll(vector, other.vector);
+    public bool LessThanAll(uint2 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(uint2 other) => Vector64.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(uint2 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(uint2 other) => Vector64.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(uint2 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(uint2 other) => Vector64.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(uint2 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(uint2 other) => Vector64.LessThanAny(vector, other.vector);
+    public bool LessThanAny(uint2 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(uint2 other) => Vector64.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(uint2 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(uint2 other) => Vector64.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(uint2 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(uint2 other) => Vector64.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(uint2 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(uint2 other)
@@ -1621,34 +1621,34 @@ public partial struct uint3 : IComparable<uint3>, IComparable
     
     [MethodImpl(256 | 512)]
     public static b32v3 operator <(uint3 left, uint3 right) => 
-        new(Vector128.LessThan(left.vector, right.vector).AsUInt32());
+        new(Vector128.LessThan(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator >(uint3 left, uint3 right) => 
-        new(Vector128.GreaterThan(left.vector, right.vector).AsUInt32());
+        new(Vector128.GreaterThan(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator <=(uint3 left, uint3 right) => 
-        new(Vector128.LessThanOrEqual(left.vector, right.vector).AsUInt32());
+        new(Vector128.LessThanOrEqual(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator >=(uint3 left, uint3 right) => 
-        new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
+        new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(uint3 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(uint3 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(uint3 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(uint3 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(uint3 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(uint3 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(uint3 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(uint3 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(uint3 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(uint3 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(uint3 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(uint3 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(uint3 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(uint3 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(uint3 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(uint3 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(uint3 other)
@@ -1747,22 +1747,22 @@ public partial struct uint4 : IComparable<uint4>, IComparable
         new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(uint4 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(uint4 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(uint4 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(uint4 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(uint4 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(uint4 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(uint4 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(uint4 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(uint4 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(uint4 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(uint4 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(uint4 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(uint4 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(uint4 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(uint4 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(uint4 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(uint4 other)
@@ -1861,22 +1861,22 @@ public partial struct long2 : IComparable<long2>, IComparable
         new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(long2 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(long2 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(long2 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(long2 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(long2 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(long2 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(long2 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(long2 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(long2 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(long2 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(long2 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(long2 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(long2 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(long2 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(long2 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(long2 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(long2 other)
@@ -1963,34 +1963,34 @@ public partial struct long3 : IComparable<long3>, IComparable
     
     [MethodImpl(256 | 512)]
     public static b64v3 operator <(long3 left, long3 right) => 
-        new(Vector256.LessThan(left.vector, right.vector).AsUInt64());
+        new(Vector256.LessThan(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator >(long3 left, long3 right) => 
-        new(Vector256.GreaterThan(left.vector, right.vector).AsUInt64());
+        new(Vector256.GreaterThan(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator <=(long3 left, long3 right) => 
-        new(Vector256.LessThanOrEqual(left.vector, right.vector).AsUInt64());
+        new(Vector256.LessThanOrEqual(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator >=(long3 left, long3 right) => 
-        new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
+        new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(long3 other) => Vector256.LessThanAll(vector, other.vector);
+    public bool LessThanAll(long3 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(long3 other) => Vector256.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(long3 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(long3 other) => Vector256.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(long3 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(long3 other) => Vector256.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(long3 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(long3 other) => Vector256.LessThanAny(vector, other.vector);
+    public bool LessThanAny(long3 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(long3 other) => Vector256.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(long3 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(long3 other) => Vector256.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(long3 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(long3 other) => Vector256.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(long3 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(long3 other)
@@ -2089,22 +2089,22 @@ public partial struct long4 : IComparable<long4>, IComparable
         new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(long4 other) => Vector256.LessThanAll(vector, other.vector);
+    public bool LessThanAll(long4 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(long4 other) => Vector256.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(long4 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(long4 other) => Vector256.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(long4 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(long4 other) => Vector256.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(long4 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(long4 other) => Vector256.LessThanAny(vector, other.vector);
+    public bool LessThanAny(long4 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(long4 other) => Vector256.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(long4 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(long4 other) => Vector256.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(long4 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(long4 other) => Vector256.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(long4 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(long4 other)
@@ -2203,22 +2203,22 @@ public partial struct ulong2 : IComparable<ulong2>, IComparable
         new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(ulong2 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(ulong2 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(ulong2 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(ulong2 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(ulong2 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(ulong2 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(ulong2 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(ulong2 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(ulong2 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(ulong2 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(ulong2 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(ulong2 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(ulong2 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(ulong2 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(ulong2 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(ulong2 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(ulong2 other)
@@ -2305,34 +2305,34 @@ public partial struct ulong3 : IComparable<ulong3>, IComparable
     
     [MethodImpl(256 | 512)]
     public static b64v3 operator <(ulong3 left, ulong3 right) => 
-        new(Vector256.LessThan(left.vector, right.vector).AsUInt64());
+        new(Vector256.LessThan(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator >(ulong3 left, ulong3 right) => 
-        new(Vector256.GreaterThan(left.vector, right.vector).AsUInt64());
+        new(Vector256.GreaterThan(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator <=(ulong3 left, ulong3 right) => 
-        new(Vector256.LessThanOrEqual(left.vector, right.vector).AsUInt64());
+        new(Vector256.LessThanOrEqual(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator >=(ulong3 left, ulong3 right) => 
-        new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
+        new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(ulong3 other) => Vector256.LessThanAll(vector, other.vector);
+    public bool LessThanAll(ulong3 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(ulong3 other) => Vector256.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(ulong3 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(ulong3 other) => Vector256.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(ulong3 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(ulong3 other) => Vector256.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(ulong3 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(ulong3 other) => Vector256.LessThanAny(vector, other.vector);
+    public bool LessThanAny(ulong3 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(ulong3 other) => Vector256.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(ulong3 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(ulong3 other) => Vector256.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(ulong3 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(ulong3 other) => Vector256.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(ulong3 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(ulong3 other)
@@ -2431,22 +2431,22 @@ public partial struct ulong4 : IComparable<ulong4>, IComparable
         new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(ulong4 other) => Vector256.LessThanAll(vector, other.vector);
+    public bool LessThanAll(ulong4 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(ulong4 other) => Vector256.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(ulong4 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(ulong4 other) => Vector256.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(ulong4 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(ulong4 other) => Vector256.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(ulong4 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(ulong4 other) => Vector256.LessThanAny(vector, other.vector);
+    public bool LessThanAny(ulong4 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(ulong4 other) => Vector256.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(ulong4 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(ulong4 other) => Vector256.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(ulong4 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(ulong4 other) => Vector256.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(ulong4 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(ulong4 other)
@@ -2983,22 +2983,22 @@ public partial struct b32v2 : IComparable<b32v2>, IComparable
         new(Vector64.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(b32v2 other) => Vector64.LessThanAll(vector, other.vector);
+    public bool LessThanAll(b32v2 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(b32v2 other) => Vector64.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(b32v2 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(b32v2 other) => Vector64.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(b32v2 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(b32v2 other) => Vector64.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(b32v2 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(b32v2 other) => Vector64.LessThanAny(vector, other.vector);
+    public bool LessThanAny(b32v2 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(b32v2 other) => Vector64.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(b32v2 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(b32v2 other) => Vector64.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(b32v2 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(b32v2 other) => Vector64.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(b32v2 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(b32v2 other)
@@ -3085,34 +3085,34 @@ public partial struct b32v3 : IComparable<b32v3>, IComparable
     
     [MethodImpl(256 | 512)]
     public static b32v3 operator <(b32v3 left, b32v3 right) => 
-        new(Vector128.LessThan(left.vector, right.vector).AsUInt32());
+        new(Vector128.LessThan(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator >(b32v3 left, b32v3 right) => 
-        new(Vector128.GreaterThan(left.vector, right.vector).AsUInt32());
+        new(Vector128.GreaterThan(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator <=(b32v3 left, b32v3 right) => 
-        new(Vector128.LessThanOrEqual(left.vector, right.vector).AsUInt32());
+        new(Vector128.LessThanOrEqual(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     [MethodImpl(256 | 512)]
     public static b32v3 operator >=(b32v3 left, b32v3 right) => 
-        new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
+        new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(b32v3 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(b32v3 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(b32v3 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(b32v3 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(b32v3 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(b32v3 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(b32v3 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(b32v3 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(b32v3 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(b32v3 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(b32v3 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(b32v3 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(b32v3 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(b32v3 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(b32v3 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(b32v3 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(b32v3 other)
@@ -3211,22 +3211,22 @@ public partial struct b32v4 : IComparable<b32v4>, IComparable
         new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt32());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(b32v4 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(b32v4 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(b32v4 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(b32v4 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(b32v4 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(b32v4 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(b32v4 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(b32v4 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(b32v4 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(b32v4 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(b32v4 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(b32v4 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(b32v4 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(b32v4 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(b32v4 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(b32v4 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(b32v4 other)
@@ -3325,22 +3325,22 @@ public partial struct b64v2 : IComparable<b64v2>, IComparable
         new(Vector128.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(b64v2 other) => Vector128.LessThanAll(vector, other.vector);
+    public bool LessThanAll(b64v2 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(b64v2 other) => Vector128.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(b64v2 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(b64v2 other) => Vector128.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(b64v2 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(b64v2 other) => Vector128.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(b64v2 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(b64v2 other) => Vector128.LessThanAny(vector, other.vector);
+    public bool LessThanAny(b64v2 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(b64v2 other) => Vector128.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(b64v2 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(b64v2 other) => Vector128.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(b64v2 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(b64v2 other) => Vector128.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(b64v2 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(b64v2 other)
@@ -3427,34 +3427,34 @@ public partial struct b64v3 : IComparable<b64v3>, IComparable
     
     [MethodImpl(256 | 512)]
     public static b64v3 operator <(b64v3 left, b64v3 right) => 
-        new(Vector256.LessThan(left.vector, right.vector).AsUInt64());
+        new(Vector256.LessThan(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator >(b64v3 left, b64v3 right) => 
-        new(Vector256.GreaterThan(left.vector, right.vector).AsUInt64());
+        new(Vector256.GreaterThan(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator <=(b64v3 left, b64v3 right) => 
-        new(Vector256.LessThanOrEqual(left.vector, right.vector).AsUInt64());
+        new(Vector256.LessThanOrEqual(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     [MethodImpl(256 | 512)]
     public static b64v3 operator >=(b64v3 left, b64v3 right) => 
-        new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
+        new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(b64v3 other) => Vector256.LessThanAll(vector, other.vector);
+    public bool LessThanAll(b64v3 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(b64v3 other) => Vector256.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(b64v3 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(b64v3 other) => Vector256.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(b64v3 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(b64v3 other) => Vector256.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(b64v3 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(b64v3 other) => Vector256.LessThanAny(vector, other.vector);
+    public bool LessThanAny(b64v3 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(b64v3 other) => Vector256.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(b64v3 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(b64v3 other) => Vector256.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(b64v3 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(b64v3 other) => Vector256.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(b64v3 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(b64v3 other)
@@ -3553,22 +3553,22 @@ public partial struct b64v4 : IComparable<b64v4>, IComparable
         new(Vector256.GreaterThanOrEqual(left.vector, right.vector).AsUInt64());
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAll(b64v4 other) => Vector256.LessThanAll(vector, other.vector);
+    public bool LessThanAll(b64v4 other) => (this < other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAll(b64v4 other) => Vector256.GreaterThanAll(vector, other.vector);
+    public bool GreaterThanAll(b64v4 other) => (this > other).all();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAll(b64v4 other) => Vector256.LessThanOrEqualAll(vector, other.vector);
+    public bool LessThanOrEqualAll(b64v4 other) => (this <= other).all();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAll(b64v4 other) => Vector256.GreaterThanOrEqualAll(vector, other.vector);
+    public bool GreaterThanOrEqualAll(b64v4 other) => (this >= other).all();
     
     [MethodImpl(256 | 512)]
-    public bool LessThanAny(b64v4 other) => Vector256.LessThanAny(vector, other.vector);
+    public bool LessThanAny(b64v4 other) => (this < other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanAny(b64v4 other) => Vector256.GreaterThanAny(vector, other.vector);
+    public bool GreaterThanAny(b64v4 other) => (this > other).any();
     [MethodImpl(256 | 512)]
-    public bool LessThanOrEqualAny(b64v4 other) => Vector256.LessThanOrEqualAny(vector, other.vector);
+    public bool LessThanOrEqualAny(b64v4 other) => (this <= other).any();
     [MethodImpl(256 | 512)]
-    public bool GreaterThanOrEqualAny(b64v4 other) => Vector256.GreaterThanOrEqualAny(vector, other.vector);
+    public bool GreaterThanOrEqualAny(b64v4 other) => (this >= other).any();
     #else // NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
     public int CompareTo(b64v4 other)

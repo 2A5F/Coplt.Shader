@@ -30,7 +30,7 @@ public partial struct float2 : IEquatable<float2>
     public bool EqualsAll(float2 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -40,7 +40,7 @@ public partial struct float2 : IEquatable<float2>
     public bool EqualsAny(float2 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector64.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -111,7 +111,7 @@ public partial struct float3 : IEquatable<float3>
     public bool EqualsAll(float3 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -121,7 +121,7 @@ public partial struct float3 : IEquatable<float3>
     public bool EqualsAny(float3 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -131,7 +131,7 @@ public partial struct float3 : IEquatable<float3>
     public b32v3 EqualsVector(float3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector128.Equals(vector, other.vector).AsUInt32());
+        return new(Vector128.Equals(vector, other.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x == other.x, y == other.y, z == other.z);
         #endif // NET8_0_OR_GREATER
@@ -141,7 +141,7 @@ public partial struct float3 : IEquatable<float3>
     public b32v3 EqualsVectorNot(float3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Ne(vector, other.vector).AsUInt32());
+        return new(simd.Ne(vector, other.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -192,7 +192,7 @@ public partial struct float4 : IEquatable<float4>
     public bool EqualsAll(float4 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z && w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -202,7 +202,7 @@ public partial struct float4 : IEquatable<float4>
     public bool EqualsAny(float4 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z || w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -273,7 +273,7 @@ public partial struct double2 : IEquatable<double2>
     public bool EqualsAll(double2 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -283,7 +283,7 @@ public partial struct double2 : IEquatable<double2>
     public bool EqualsAny(double2 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -354,7 +354,7 @@ public partial struct double3 : IEquatable<double3>
     public bool EqualsAll(double3 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -364,7 +364,7 @@ public partial struct double3 : IEquatable<double3>
     public bool EqualsAny(double3 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector256.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -374,7 +374,7 @@ public partial struct double3 : IEquatable<double3>
     public b64v3 EqualsVector(double3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector256.Equals(vector, other.vector).AsUInt64());
+        return new(Vector256.Equals(vector, other.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x == other.x, y == other.y, z == other.z);
         #endif // NET8_0_OR_GREATER
@@ -384,7 +384,7 @@ public partial struct double3 : IEquatable<double3>
     public b64v3 EqualsVectorNot(double3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Ne(vector, other.vector).AsUInt64());
+        return new(simd.Ne(vector, other.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -435,7 +435,7 @@ public partial struct double4 : IEquatable<double4>
     public bool EqualsAll(double4 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z && w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -445,7 +445,7 @@ public partial struct double4 : IEquatable<double4>
     public bool EqualsAny(double4 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector256.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z || w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -882,7 +882,7 @@ public partial struct int2 : IEquatable<int2>
     public bool EqualsAll(int2 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -892,7 +892,7 @@ public partial struct int2 : IEquatable<int2>
     public bool EqualsAny(int2 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector64.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -963,7 +963,7 @@ public partial struct int3 : IEquatable<int3>
     public bool EqualsAll(int3 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -973,7 +973,7 @@ public partial struct int3 : IEquatable<int3>
     public bool EqualsAny(int3 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -983,7 +983,7 @@ public partial struct int3 : IEquatable<int3>
     public b32v3 EqualsVector(int3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector128.Equals(vector, other.vector).AsUInt32());
+        return new(Vector128.Equals(vector, other.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x == other.x, y == other.y, z == other.z);
         #endif // NET8_0_OR_GREATER
@@ -993,7 +993,7 @@ public partial struct int3 : IEquatable<int3>
     public b32v3 EqualsVectorNot(int3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector128.Equals(vector, other.vector).AsUInt32());
+        return new(~Vector128.Equals(vector, other.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -1044,7 +1044,7 @@ public partial struct int4 : IEquatable<int4>
     public bool EqualsAll(int4 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z && w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -1054,7 +1054,7 @@ public partial struct int4 : IEquatable<int4>
     public bool EqualsAny(int4 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z || w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -1125,7 +1125,7 @@ public partial struct uint2 : IEquatable<uint2>
     public bool EqualsAll(uint2 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -1135,7 +1135,7 @@ public partial struct uint2 : IEquatable<uint2>
     public bool EqualsAny(uint2 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector64.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -1206,7 +1206,7 @@ public partial struct uint3 : IEquatable<uint3>
     public bool EqualsAll(uint3 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -1216,7 +1216,7 @@ public partial struct uint3 : IEquatable<uint3>
     public bool EqualsAny(uint3 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -1226,7 +1226,7 @@ public partial struct uint3 : IEquatable<uint3>
     public b32v3 EqualsVector(uint3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector128.Equals(vector, other.vector).AsUInt32());
+        return new(Vector128.Equals(vector, other.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x == other.x, y == other.y, z == other.z);
         #endif // NET8_0_OR_GREATER
@@ -1236,7 +1236,7 @@ public partial struct uint3 : IEquatable<uint3>
     public b32v3 EqualsVectorNot(uint3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector128.Equals(vector, other.vector).AsUInt32());
+        return new(~Vector128.Equals(vector, other.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -1287,7 +1287,7 @@ public partial struct uint4 : IEquatable<uint4>
     public bool EqualsAll(uint4 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z && w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -1297,7 +1297,7 @@ public partial struct uint4 : IEquatable<uint4>
     public bool EqualsAny(uint4 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z || w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -1368,7 +1368,7 @@ public partial struct long2 : IEquatable<long2>
     public bool EqualsAll(long2 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -1378,7 +1378,7 @@ public partial struct long2 : IEquatable<long2>
     public bool EqualsAny(long2 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -1449,7 +1449,7 @@ public partial struct long3 : IEquatable<long3>
     public bool EqualsAll(long3 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -1459,7 +1459,7 @@ public partial struct long3 : IEquatable<long3>
     public bool EqualsAny(long3 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector256.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -1469,7 +1469,7 @@ public partial struct long3 : IEquatable<long3>
     public b64v3 EqualsVector(long3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector256.Equals(vector, other.vector).AsUInt64());
+        return new(Vector256.Equals(vector, other.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x == other.x, y == other.y, z == other.z);
         #endif // NET8_0_OR_GREATER
@@ -1479,7 +1479,7 @@ public partial struct long3 : IEquatable<long3>
     public b64v3 EqualsVectorNot(long3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector256.Equals(vector, other.vector).AsUInt64());
+        return new(~Vector256.Equals(vector, other.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -1530,7 +1530,7 @@ public partial struct long4 : IEquatable<long4>
     public bool EqualsAll(long4 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z && w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -1540,7 +1540,7 @@ public partial struct long4 : IEquatable<long4>
     public bool EqualsAny(long4 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector256.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z || w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -1611,7 +1611,7 @@ public partial struct ulong2 : IEquatable<ulong2>
     public bool EqualsAll(ulong2 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -1621,7 +1621,7 @@ public partial struct ulong2 : IEquatable<ulong2>
     public bool EqualsAny(ulong2 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -1692,7 +1692,7 @@ public partial struct ulong3 : IEquatable<ulong3>
     public bool EqualsAll(ulong3 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -1702,7 +1702,7 @@ public partial struct ulong3 : IEquatable<ulong3>
     public bool EqualsAny(ulong3 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector256.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -1712,7 +1712,7 @@ public partial struct ulong3 : IEquatable<ulong3>
     public b64v3 EqualsVector(ulong3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector256.Equals(vector, other.vector).AsUInt64());
+        return new(Vector256.Equals(vector, other.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x == other.x, y == other.y, z == other.z);
         #endif // NET8_0_OR_GREATER
@@ -1722,7 +1722,7 @@ public partial struct ulong3 : IEquatable<ulong3>
     public b64v3 EqualsVectorNot(ulong3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector256.Equals(vector, other.vector).AsUInt64());
+        return new(~Vector256.Equals(vector, other.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -1773,7 +1773,7 @@ public partial struct ulong4 : IEquatable<ulong4>
     public bool EqualsAll(ulong4 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z && w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -1783,7 +1783,7 @@ public partial struct ulong4 : IEquatable<ulong4>
     public bool EqualsAny(ulong4 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector256.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z || w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -2349,7 +2349,7 @@ public partial struct b32v2 : IEquatable<b32v2>
     public bool EqualsAll(b32v2 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -2359,7 +2359,7 @@ public partial struct b32v2 : IEquatable<b32v2>
     public bool EqualsAny(b32v2 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector64.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -2430,7 +2430,7 @@ public partial struct b32v3 : IEquatable<b32v3>
     public bool EqualsAll(b32v3 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -2440,7 +2440,7 @@ public partial struct b32v3 : IEquatable<b32v3>
     public bool EqualsAny(b32v3 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -2450,7 +2450,7 @@ public partial struct b32v3 : IEquatable<b32v3>
     public b32v3 EqualsVector(b32v3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector128.Equals(vector, other.vector).AsUInt32());
+        return new(Vector128.Equals(vector, other.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x == other.x, y == other.y, z == other.z);
         #endif // NET8_0_OR_GREATER
@@ -2460,7 +2460,7 @@ public partial struct b32v3 : IEquatable<b32v3>
     public b32v3 EqualsVectorNot(b32v3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector128.Equals(vector, other.vector).AsUInt32());
+        return new(~Vector128.Equals(vector, other.vector).AsUInt32() & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -2511,7 +2511,7 @@ public partial struct b32v4 : IEquatable<b32v4>
     public bool EqualsAll(b32v4 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z && w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -2521,7 +2521,7 @@ public partial struct b32v4 : IEquatable<b32v4>
     public bool EqualsAny(b32v4 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z || w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -2592,7 +2592,7 @@ public partial struct b64v2 : IEquatable<b64v2>
     public bool EqualsAll(b64v2 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -2602,7 +2602,7 @@ public partial struct b64v2 : IEquatable<b64v2>
     public bool EqualsAny(b64v2 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector128.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y;
         #endif // NET8_0_OR_GREATER
@@ -2673,7 +2673,7 @@ public partial struct b64v3 : IEquatable<b64v3>
     public bool EqualsAll(b64v3 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -2683,7 +2683,7 @@ public partial struct b64v3 : IEquatable<b64v3>
     public bool EqualsAny(b64v3 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector256.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z;
         #endif // NET8_0_OR_GREATER
@@ -2693,7 +2693,7 @@ public partial struct b64v3 : IEquatable<b64v3>
     public b64v3 EqualsVector(b64v3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(Vector256.Equals(vector, other.vector).AsUInt64());
+        return new(Vector256.Equals(vector, other.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x == other.x, y == other.y, z == other.z);
         #endif // NET8_0_OR_GREATER
@@ -2703,7 +2703,7 @@ public partial struct b64v3 : IEquatable<b64v3>
     public b64v3 EqualsVectorNot(b64v3 other)
     {
         #if NET8_0_OR_GREATER
-        return new(~Vector256.Equals(vector, other.vector).AsUInt64());
+        return new(~Vector256.Equals(vector, other.vector).AsUInt64() & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
         return new(x != other.x, y != other.y, z != other.z);
         #endif // NET8_0_OR_GREATER
@@ -2754,7 +2754,7 @@ public partial struct b64v4 : IEquatable<b64v4>
     public bool EqualsAll(b64v4 other)
     {
         #if NET8_0_OR_GREATER
-        return vector.Equals(other.vector);
+        return (this == other).all();
         #else // NET8_0_OR_GREATER
         return x == other.x && y == other.y && z == other.z && w == other.w;
         #endif // NET8_0_OR_GREATER
@@ -2764,7 +2764,7 @@ public partial struct b64v4 : IEquatable<b64v4>
     public bool EqualsAny(b64v4 other)
     {
         #if NET8_0_OR_GREATER
-        return Vector256.EqualsAny(vector, other.vector);
+        return (this == other).any();
         #else // NET8_0_OR_GREATER
         return x == other.x || y == other.y || z == other.z || w == other.w;
         #endif // NET8_0_OR_GREATER
