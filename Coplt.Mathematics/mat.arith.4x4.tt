@@ -23,8 +23,8 @@ namespace Coplt.Mathematics;
 
 public partial struct <#= typeName #>
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a <#= typeName #> from a <#= typeName3x3 #> rotation matrix and a <#= vecTypeName3 #> translation vector</summary>
+    /// <param name="rotation">The <#= typeName3x3 #> rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= typeName3x3 #> rotation, <#= vecTypeName3 #> translation)
@@ -60,12 +60,12 @@ public partial struct <#= typeName #>
 #>
 
     /// <summary>
-    /// Returns a float4x4 matrix representing a rotation around a unit axis by an angle in radians
+    /// Returns a <#= typeName #> matrix representing a rotation around a unit axis by an angle in radians
     /// The rotation direction is clockwise when looking along the rotation axis towards the origin
     /// </summary>
     /// <param name="axis">The axis of rotation</param>
     /// <param name="angle">The angle of rotation in radians</param>
-    /// <returns>The float4x4 matrix representing the rotation about an axis</returns>
+    /// <returns>The <#= typeName #> matrix representing the rotation about an axis</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> AxisAngle(<#= vecTypeName3 #> axis, <#= typ.compType #> angle)
     {
@@ -88,11 +88,11 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in x-y-z order</returns>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in x-y-z order</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> EulerXYZ(<#= vecTypeName3 #> xyz)
     {
@@ -106,11 +106,11 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in x-z-y order</returns>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in x-z-y order</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> EulerXZY(<#= vecTypeName3 #> xyz)
     {
@@ -124,11 +124,11 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in y-x-z order</returns>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in y-x-z order</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> EulerYXZ(<#= vecTypeName3 #> xyz)
     {
@@ -142,11 +142,11 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in y-z-x order</returns>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in y-z-x order</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> EulerYZX(<#= vecTypeName3 #> xyz)
     {
@@ -160,12 +160,12 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// This is the default order rotation order in Unity
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in z-x-y order</returns>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in z-x-y order</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> EulerZXY(<#= vecTypeName3 #> xyz)
     {
@@ -179,11 +179,11 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in z-y-x order</returns>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in z-y-x order</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> EulerZYX(<#= vecTypeName3 #> xyz)
     {
@@ -196,9 +196,9 @@ public partial struct <#= typeName #>
         );
     }
 
-    /// <summary>Returns a float4x4 matrix that rotates around the x-axis by a given number of radians</summary>
+    /// <summary>Returns a <#= typeName #> matrix that rotates around the x-axis by a given number of radians</summary>
     /// <param name="angle">The clockwise rotation angle when looking along the x-axis towards the origin in radians</param>
-    /// <returns>The float4x4 rotation matrix that rotates around the x-axis</returns>
+    /// <returns>The <#= typeName #> rotation matrix that rotates around the x-axis</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> RotateX(<#= typ.compType #> angle)
     {
@@ -211,9 +211,9 @@ public partial struct <#= typeName #>
         );
     }
 
-    /// <summary>Returns a float4x4 matrix that rotates around the y-axis by a given number of radians</summary>
+    /// <summary>Returns a <#= typeName #> matrix that rotates around the y-axis by a given number of radians</summary>
     /// <param name="angle">The clockwise rotation angle when looking along the y-axis towards the origin in radians</param>
-    /// <returns>The float4x4 rotation matrix that rotates around the y-axis</returns>
+    /// <returns>The <#= typeName #> rotation matrix that rotates around the y-axis</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> RotateY(<#= typ.compType #> angle)
     {
@@ -226,9 +226,9 @@ public partial struct <#= typeName #>
         );
     }
 
-    /// <summary>Returns a float4x4 matrix that rotates around the z-axis by a given number of radians</summary>
+    /// <summary>Returns a <#= typeName #> matrix that rotates around the z-axis by a given number of radians</summary>
     /// <param name="angle">The clockwise rotation angle when looking along the z-axis towards the origin in radians</param>
-    /// <returns>The float4x4 rotation matrix that rotates around the z-axis</returns>
+    /// <returns>The <#= typeName #> rotation matrix that rotates around the z-axis</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> RotateZ(<#= typ.compType #> angle)
     {
@@ -240,13 +240,119 @@ public partial struct <#= typeName #>
             default, default, default, <#= typ.one #>
         );
     }
+
+    /// <summary>
+    /// Returns a <#= typeName #> view matrix given an eye position, a target point and a unit length up vector
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookAt(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> target, <#= vecTypeName3 #> up)
+    {
+        var rot = <#= typeName3x3 #>.LookRotation((target - eye).normalize(), up);
+        return new(
+            new(rot.c0, default),
+            new(rot.c1, default),
+            new(rot.c2, default),
+            new(eye, <#= typ.one #>)
+        );
+    }
+
+    /// <summary>
+    /// Returns a <#= typeName #> centered orthographic projection matrix
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The <#= typeName #> centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> Ortho(<#= typ.compType #> width, <#= typ.compType #> height, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var rcpdx = <#= typ.one #> / width;
+        var rcpdy = <#= typ.one #> / height;
+        var rcpdz = <#= typ.one #> / (far - near);
+
+        return new(
+            <#=typ.arithCast#>(<#= typ.two #> * rcpdx),       default,            default,            default,
+            default,           <#=typ.arithCast#>(<#= typ.two #> * rcpdy),        default,            default,
+            default,           default,            <#=typ.arithCast#>(-<#= typ.two #> * rcpdz),       <#=typ.arithCast#>(-(far + near) * rcpdz),
+            default,           default,            default,            <#= typ.one #>
+       );
+    }
+
+    /// <summary>
+    /// Returns a <#= typeName #> off-center orthographic projection matrix
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The <#= typeName #> off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> OrthoOffCenter(<#= typ.compType #> left, <#= typ.compType #> right, <#= typ.compType #> bottom, <#= typ.compType #> top, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var rcpdx = <#= typ.one #> / (right - left);
+        var rcpdy = <#= typ.one #> / (top - bottom);
+        var rcpdz = <#= typ.one #> / (far - near);
+
+        return new(
+            <#=typ.arithCast#>(<#= typ.two #> * rcpdx),      default,           default,                <#=typ.arithCast#>(-(right + left) * rcpdx),
+            default,           <#=typ.arithCast#>(<#= typ.two #> * rcpdy),      default,                <#=typ.arithCast#>(-(top + bottom) * rcpdy),
+            default,           default,           <#=typ.arithCast#>(-<#= typ.two #> * rcpdz),          <#=typ.arithCast#>(-(far + near) * rcpdz),
+            default,           default,           default,                <#= typ.one #>
+        );
+    }
+
+    /// <summary>
+    /// Returns a <#= typeName #> perspective projection matrix based on field of view
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The <#= typeName #> perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> PerspectiveFov(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var cotangent = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
+        var rcpdz = <#= typ.one #> / (near - far);
+
+        return new(
+            <#=typ.arithCast#>(cotangent / aspect),    default,       default,                   default,
+            default,               <#=typ.arithCast#>cotangent,     default,                   default,
+            default,               default,       <#=typ.arithCast#>((far + near) * rcpdz),      <#=typ.arithCast#>(<#= typ.two #> * near * far * rcpdz),
+            default,               default,       -<#= typ.one #>,                     default
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> PerspectiveOffCenter(<#= typ.compType #> left, <#= typ.compType #> right, <#= typ.compType #> bottom, <#= typ.compType #> top, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var rcpdz = <#= typ.one #> / (near - far);
+        var rcpWidth = <#= typ.one #> / (right - left);
+        var rcpHeight = <#= typ.one #> / (top - bottom);
+
+        return new(
+            <#=typ.arithCast#>(<#= typ.two #> * near * rcpWidth),        default,                       <#=typ.arithCast#>((left + right) * rcpWidth),     default,
+            default,                       <#=typ.arithCast#>(<#= typ.two #> * near * rcpHeight),       <#=typ.arithCast#>((bottom + top) * rcpHeight),    default,
+            default,                       default,                       <#=typ.arithCast#>((far + near) * rcpdz),          <#=typ.arithCast#>(<#= typ.two #> * near * far * rcpdz),
+            default,                       default,                       -<#= typ.one #>,                         default
+        );
+    }
 <#
         }
 #>
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>Returns a <#= typeName #> scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The <#= typeName #> matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> Scale(<#= typ.compType #> s) => new(
         s,    default, default, default,
@@ -255,11 +361,11 @@ public partial struct <#= typeName #>
         default, default, default, <#= typ.one #>
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a <#= typeName #> scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The <#= typeName #> matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> Scale(<#= typ.compType #> x, <#= typ.compType #> y, <#= typ.compType #> z) => new(
         x,    default, default, default,
@@ -268,15 +374,15 @@ public partial struct <#= typeName #>
         default, default, default, <#= typ.one #>
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a <#= typeName #> scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The <#= typeName #> matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> Scale(<#= vecTypeName3 #> scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a <#= typeName #> translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The <#= typeName #> translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> Translate(<#= vecTypeName3 #> vector) => new(
         new(<#= typ.one #>, default, default, default),

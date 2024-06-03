@@ -21,6 +21,9 @@
 
         public string arithCast { get; set; } = "";
 
+        public string two { get; set; } = $"({one} + {one})";
+        public string half { get; set; } = "";
+
         public static string[] xyzw = { "x", "y", "z", "w" };
         public static string[] rgba = { "r", "g", "b", "a" };
 
@@ -28,6 +31,8 @@
         {
             new("float", nameof(Single), sizeof(float), "f", "1.0f", arith: true, sig: true, f: true, simd: true)
             {
+                two = "2.0f",
+                half = "0.5f",
                 maskType = "uint",
                 sigMaskType = "int",
                 maskNeg = "0x80000000",
@@ -35,6 +40,8 @@
             },
             new("double", nameof(Double), sizeof(double), "", "1.0", arith: true, sig: true, f: true, simd: true)
             {
+                two = "2.0",
+                half = "0.5",
                 maskType = "ulong",
                 sigMaskType = "long",
                 maskNeg = "0x8000000000000000",
@@ -49,6 +56,8 @@
             new("decimal", nameof(Decimal), sizeof(decimal), "m", "1m", arith: true, f: true, sig: true, bitop: false, bin: false),
             new("half", "Half", sizeof(ushort), "f.half()", "(half)1.0", arith: true, sig: true, f: true)
             {
+                two = "(half)2.0f",
+                half = "(half)0.5f",
                 jsonCast = "(float)",
                 jsonCastBack = "(half)",
                 arithCast = "(half)",

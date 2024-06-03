@@ -282,6 +282,19 @@ public static partial class math
 
     #endregion
 
+    #region isFinite
+
+    [MethodImpl(256 | 512)]
+    public static bool isFinite(this half v) => half.IsFinite(v);
+    
+    [MethodImpl(256 | 512)]
+    public static bool isFinite(this float v) => float.IsFinite(v);
+    
+    [MethodImpl(256 | 512)]
+    public static bool isFinite(this double v) => double.IsFinite(v);
+
+    #endregion
+    
     #region Abs
 
     [MethodImpl(256 | 512)]

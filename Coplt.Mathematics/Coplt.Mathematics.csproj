@@ -14,6 +14,8 @@
     <ItemGroup>
         <TextTemplate Include="bool.tt" />
         <TextTemplate Include="interface.tt"/>
+        <TextTemplate Include="mat.arith.2x2.tt" />
+        <TextTemplate Include="mat.arith.3x3.tt" />
         <TextTemplate Include="mat.bitop.tt" />
         <TextTemplate Include="mat.bool.tt" />
         <TextTemplate Include="mat.bool_op.tt" />

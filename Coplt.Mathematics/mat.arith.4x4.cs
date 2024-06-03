@@ -206,6 +206,112 @@ public partial struct float4x4
         );
     }
 
+    /// <summary>
+    /// Returns a float4x4 view matrix given an eye position, a target point and a unit length up vector
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookAt(float3 eye, float3 target, float3 up)
+    {
+        var rot = float3x3.LookRotation((target - eye).normalize(), up);
+        return new(
+            new(rot.c0, default),
+            new(rot.c1, default),
+            new(rot.c2, default),
+            new(eye, 1.0f)
+        );
+    }
+
+    /// <summary>
+    /// Returns a float4x4 centered orthographic projection matrix
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The float4x4 centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 Ortho(float width, float height, float near, float far)
+    {
+        var rcpdx = 1.0f / width;
+        var rcpdy = 1.0f / height;
+        var rcpdz = 1.0f / (far - near);
+
+        return new(
+            (2.0f * rcpdx),       default,            default,            default,
+            default,           (2.0f * rcpdy),        default,            default,
+            default,           default,            (-2.0f * rcpdz),       (-(far + near) * rcpdz),
+            default,           default,            default,            1.0f
+       );
+    }
+
+    /// <summary>
+    /// Returns a float4x4 off-center orthographic projection matrix
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The float4x4 off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 OrthoOffCenter(float left, float right, float bottom, float top, float near, float far)
+    {
+        var rcpdx = 1.0f / (right - left);
+        var rcpdy = 1.0f / (top - bottom);
+        var rcpdz = 1.0f / (far - near);
+
+        return new(
+            (2.0f * rcpdx),      default,           default,                (-(right + left) * rcpdx),
+            default,           (2.0f * rcpdy),      default,                (-(top + bottom) * rcpdy),
+            default,           default,           (-2.0f * rcpdz),          (-(far + near) * rcpdz),
+            default,           default,           default,                1.0f
+        );
+    }
+
+    /// <summary>
+    /// Returns a float4x4 perspective projection matrix based on field of view
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The float4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 PerspectiveFov(float verticalFov, float aspect, float near, float far)
+    {
+        var cotangent = 1.0f / math.tan(verticalFov * 0.5f);
+        var rcpdz = 1.0f / (near - far);
+
+        return new(
+            (cotangent / aspect),    default,       default,                   default,
+            default,               cotangent,     default,                   default,
+            default,               default,       ((far + near) * rcpdz),      (2.0f * near * far * rcpdz),
+            default,               default,       -1.0f,                     default
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float4x4 PerspectiveOffCenter(float left, float right, float bottom, float top, float near, float far)
+    {
+        var rcpdz = 1.0f / (near - far);
+        var rcpWidth = 1.0f / (right - left);
+        var rcpHeight = 1.0f / (top - bottom);
+
+        return new(
+            (2.0f * near * rcpWidth),        default,                       ((left + right) * rcpWidth),     default,
+            default,                       (2.0f * near * rcpHeight),       ((bottom + top) * rcpHeight),    default,
+            default,                       default,                       ((far + near) * rcpdz),          (2.0f * near * far * rcpdz),
+            default,                       default,                       -1.0f,                         default
+        );
+    }
+
     /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
     /// <returns>The float4x4 matrix that represents a uniform scale</returns>
@@ -267,8 +373,8 @@ public static partial class math
 
 public partial struct double4x4
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a double4x4 from a double3x3 rotation matrix and a double3 translation vector</summary>
+    /// <param name="rotation">The double3x3 rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public double4x4(double3x3 rotation, double3 translation)
@@ -286,12 +392,12 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 matrix representing a rotation around a unit axis by an angle in radians
+    /// Returns a double4x4 matrix representing a rotation around a unit axis by an angle in radians
     /// The rotation direction is clockwise when looking along the rotation axis towards the origin
     /// </summary>
     /// <param name="axis">The axis of rotation</param>
     /// <param name="angle">The angle of rotation in radians</param>
-    /// <returns>The float4x4 matrix representing the rotation about an axis</returns>
+    /// <returns>The double4x4 matrix representing the rotation about an axis</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 AxisAngle(double3 axis, double angle)
     {
@@ -314,11 +420,11 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in x-y-z order</returns>
+    /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The double4x4 rotation matrix of the Euler angle rotation in x-y-z order</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 EulerXYZ(double3 xyz)
     {
@@ -332,11 +438,11 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in x-z-y order</returns>
+    /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The double4x4 rotation matrix of the Euler angle rotation in x-z-y order</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 EulerXZY(double3 xyz)
     {
@@ -350,11 +456,11 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in y-x-z order</returns>
+    /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The double4x4 rotation matrix of the Euler angle rotation in y-x-z order</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 EulerYXZ(double3 xyz)
     {
@@ -368,11 +474,11 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in y-z-x order</returns>
+    /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The double4x4 rotation matrix of the Euler angle rotation in y-z-x order</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 EulerYZX(double3 xyz)
     {
@@ -386,12 +492,12 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// This is the default order rotation order in Unity
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in z-x-y order</returns>
+    /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The double4x4 rotation matrix of the Euler angle rotation in z-x-y order</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 EulerZXY(double3 xyz)
     {
@@ -405,11 +511,11 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in z-y-x order</returns>
+    /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The double4x4 rotation matrix of the Euler angle rotation in z-y-x order</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 EulerZYX(double3 xyz)
     {
@@ -422,9 +528,9 @@ public partial struct double4x4
         );
     }
 
-    /// <summary>Returns a float4x4 matrix that rotates around the x-axis by a given number of radians</summary>
+    /// <summary>Returns a double4x4 matrix that rotates around the x-axis by a given number of radians</summary>
     /// <param name="angle">The clockwise rotation angle when looking along the x-axis towards the origin in radians</param>
-    /// <returns>The float4x4 rotation matrix that rotates around the x-axis</returns>
+    /// <returns>The double4x4 rotation matrix that rotates around the x-axis</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 RotateX(double angle)
     {
@@ -437,9 +543,9 @@ public partial struct double4x4
         );
     }
 
-    /// <summary>Returns a float4x4 matrix that rotates around the y-axis by a given number of radians</summary>
+    /// <summary>Returns a double4x4 matrix that rotates around the y-axis by a given number of radians</summary>
     /// <param name="angle">The clockwise rotation angle when looking along the y-axis towards the origin in radians</param>
-    /// <returns>The float4x4 rotation matrix that rotates around the y-axis</returns>
+    /// <returns>The double4x4 rotation matrix that rotates around the y-axis</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 RotateY(double angle)
     {
@@ -452,9 +558,9 @@ public partial struct double4x4
         );
     }
 
-    /// <summary>Returns a float4x4 matrix that rotates around the z-axis by a given number of radians</summary>
+    /// <summary>Returns a double4x4 matrix that rotates around the z-axis by a given number of radians</summary>
     /// <param name="angle">The clockwise rotation angle when looking along the z-axis towards the origin in radians</param>
-    /// <returns>The float4x4 rotation matrix that rotates around the z-axis</returns>
+    /// <returns>The double4x4 rotation matrix that rotates around the z-axis</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 RotateZ(double angle)
     {
@@ -467,9 +573,115 @@ public partial struct double4x4
         );
     }
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>
+    /// Returns a double4x4 view matrix given an eye position, a target point and a unit length up vector
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookAt(double3 eye, double3 target, double3 up)
+    {
+        var rot = double3x3.LookRotation((target - eye).normalize(), up);
+        return new(
+            new(rot.c0, default),
+            new(rot.c1, default),
+            new(rot.c2, default),
+            new(eye, 1.0)
+        );
+    }
+
+    /// <summary>
+    /// Returns a double4x4 centered orthographic projection matrix
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The double4x4 centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 Ortho(double width, double height, double near, double far)
+    {
+        var rcpdx = 1.0 / width;
+        var rcpdy = 1.0 / height;
+        var rcpdz = 1.0 / (far - near);
+
+        return new(
+            (2.0 * rcpdx),       default,            default,            default,
+            default,           (2.0 * rcpdy),        default,            default,
+            default,           default,            (-2.0 * rcpdz),       (-(far + near) * rcpdz),
+            default,           default,            default,            1.0
+       );
+    }
+
+    /// <summary>
+    /// Returns a double4x4 off-center orthographic projection matrix
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The double4x4 off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 OrthoOffCenter(double left, double right, double bottom, double top, double near, double far)
+    {
+        var rcpdx = 1.0 / (right - left);
+        var rcpdy = 1.0 / (top - bottom);
+        var rcpdz = 1.0 / (far - near);
+
+        return new(
+            (2.0 * rcpdx),      default,           default,                (-(right + left) * rcpdx),
+            default,           (2.0 * rcpdy),      default,                (-(top + bottom) * rcpdy),
+            default,           default,           (-2.0 * rcpdz),          (-(far + near) * rcpdz),
+            default,           default,           default,                1.0
+        );
+    }
+
+    /// <summary>
+    /// Returns a double4x4 perspective projection matrix based on field of view
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The double4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 PerspectiveFov(double verticalFov, double aspect, double near, double far)
+    {
+        var cotangent = 1.0 / math.tan(verticalFov * 0.5);
+        var rcpdz = 1.0 / (near - far);
+
+        return new(
+            (cotangent / aspect),    default,       default,                   default,
+            default,               cotangent,     default,                   default,
+            default,               default,       ((far + near) * rcpdz),      (2.0 * near * far * rcpdz),
+            default,               default,       -1.0,                     default
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double4x4 PerspectiveOffCenter(double left, double right, double bottom, double top, double near, double far)
+    {
+        var rcpdz = 1.0 / (near - far);
+        var rcpWidth = 1.0 / (right - left);
+        var rcpHeight = 1.0 / (top - bottom);
+
+        return new(
+            (2.0 * near * rcpWidth),        default,                       ((left + right) * rcpWidth),     default,
+            default,                       (2.0 * near * rcpHeight),       ((bottom + top) * rcpHeight),    default,
+            default,                       default,                       ((far + near) * rcpdz),          (2.0 * near * far * rcpdz),
+            default,                       default,                       -1.0,                         default
+        );
+    }
+
+    /// <summary>Returns a double4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The double4x4 matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 Scale(double s) => new(
         s,    default, default, default,
@@ -478,11 +690,11 @@ public partial struct double4x4
         default, default, default, 1.0
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a double4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The double4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 Scale(double x, double y, double z) => new(
         x,    default, default, default,
@@ -491,15 +703,15 @@ public partial struct double4x4
         default, default, default, 1.0
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a double4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The double4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 Scale(double3 scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a double4x4 translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The double4x4 translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 Translate(double3 vector) => new(
         new(1.0, default, default, default),
@@ -528,8 +740,8 @@ public static partial class math
 
 public partial struct short4x4
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a short4x4 from a short3x3 rotation matrix and a short3 translation vector</summary>
+    /// <param name="rotation">The short3x3 rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public short4x4(short3x3 rotation, short3 translation)
@@ -540,9 +752,9 @@ public partial struct short4x4
         c3 = new(translation, (short)1);
     }
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>Returns a short4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The short4x4 matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static short4x4 Scale(short s) => new(
         s,    default, default, default,
@@ -551,11 +763,11 @@ public partial struct short4x4
         default, default, default, (short)1
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a short4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The short4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static short4x4 Scale(short x, short y, short z) => new(
         x,    default, default, default,
@@ -564,15 +776,15 @@ public partial struct short4x4
         default, default, default, (short)1
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a short4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The short4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static short4x4 Scale(short3 scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a short4x4 translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The short4x4 translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static short4x4 Translate(short3 vector) => new(
         new((short)1, default, default, default),
@@ -601,8 +813,8 @@ public static partial class math
 
 public partial struct ushort4x4
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a ushort4x4 from a ushort3x3 rotation matrix and a ushort3 translation vector</summary>
+    /// <param name="rotation">The ushort3x3 rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public ushort4x4(ushort3x3 rotation, ushort3 translation)
@@ -613,9 +825,9 @@ public partial struct ushort4x4
         c3 = new(translation, (ushort)1);
     }
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>Returns a ushort4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The ushort4x4 matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static ushort4x4 Scale(ushort s) => new(
         s,    default, default, default,
@@ -624,11 +836,11 @@ public partial struct ushort4x4
         default, default, default, (ushort)1
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a ushort4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The ushort4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static ushort4x4 Scale(ushort x, ushort y, ushort z) => new(
         x,    default, default, default,
@@ -637,15 +849,15 @@ public partial struct ushort4x4
         default, default, default, (ushort)1
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a ushort4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The ushort4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static ushort4x4 Scale(ushort3 scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a ushort4x4 translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The ushort4x4 translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static ushort4x4 Translate(ushort3 vector) => new(
         new((ushort)1, default, default, default),
@@ -674,8 +886,8 @@ public static partial class math
 
 public partial struct int4x4
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a int4x4 from a int3x3 rotation matrix and a int3 translation vector</summary>
+    /// <param name="rotation">The int3x3 rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public int4x4(int3x3 rotation, int3 translation)
@@ -692,9 +904,9 @@ public partial struct int4x4
         c3 = new(translation, 1);
     }
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>Returns a int4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The int4x4 matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static int4x4 Scale(int s) => new(
         s,    default, default, default,
@@ -703,11 +915,11 @@ public partial struct int4x4
         default, default, default, 1
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a int4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The int4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static int4x4 Scale(int x, int y, int z) => new(
         x,    default, default, default,
@@ -716,15 +928,15 @@ public partial struct int4x4
         default, default, default, 1
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a int4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The int4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static int4x4 Scale(int3 scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a int4x4 translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The int4x4 translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static int4x4 Translate(int3 vector) => new(
         new(1, default, default, default),
@@ -753,8 +965,8 @@ public static partial class math
 
 public partial struct uint4x4
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a uint4x4 from a uint3x3 rotation matrix and a uint3 translation vector</summary>
+    /// <param name="rotation">The uint3x3 rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public uint4x4(uint3x3 rotation, uint3 translation)
@@ -771,9 +983,9 @@ public partial struct uint4x4
         c3 = new(translation, 1u);
     }
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>Returns a uint4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The uint4x4 matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static uint4x4 Scale(uint s) => new(
         s,    default, default, default,
@@ -782,11 +994,11 @@ public partial struct uint4x4
         default, default, default, 1u
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a uint4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The uint4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static uint4x4 Scale(uint x, uint y, uint z) => new(
         x,    default, default, default,
@@ -795,15 +1007,15 @@ public partial struct uint4x4
         default, default, default, 1u
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a uint4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The uint4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static uint4x4 Scale(uint3 scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a uint4x4 translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The uint4x4 translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static uint4x4 Translate(uint3 vector) => new(
         new(1u, default, default, default),
@@ -832,8 +1044,8 @@ public static partial class math
 
 public partial struct long4x4
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a long4x4 from a long3x3 rotation matrix and a long3 translation vector</summary>
+    /// <param name="rotation">The long3x3 rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public long4x4(long3x3 rotation, long3 translation)
@@ -850,9 +1062,9 @@ public partial struct long4x4
         c3 = new(translation, 1L);
     }
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>Returns a long4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The long4x4 matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static long4x4 Scale(long s) => new(
         s,    default, default, default,
@@ -861,11 +1073,11 @@ public partial struct long4x4
         default, default, default, 1L
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a long4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The long4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static long4x4 Scale(long x, long y, long z) => new(
         x,    default, default, default,
@@ -874,15 +1086,15 @@ public partial struct long4x4
         default, default, default, 1L
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a long4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The long4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static long4x4 Scale(long3 scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a long4x4 translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The long4x4 translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static long4x4 Translate(long3 vector) => new(
         new(1L, default, default, default),
@@ -911,8 +1123,8 @@ public static partial class math
 
 public partial struct ulong4x4
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a ulong4x4 from a ulong3x3 rotation matrix and a ulong3 translation vector</summary>
+    /// <param name="rotation">The ulong3x3 rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public ulong4x4(ulong3x3 rotation, ulong3 translation)
@@ -929,9 +1141,9 @@ public partial struct ulong4x4
         c3 = new(translation, 1UL);
     }
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>Returns a ulong4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The ulong4x4 matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static ulong4x4 Scale(ulong s) => new(
         s,    default, default, default,
@@ -940,11 +1152,11 @@ public partial struct ulong4x4
         default, default, default, 1UL
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a ulong4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The ulong4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static ulong4x4 Scale(ulong x, ulong y, ulong z) => new(
         x,    default, default, default,
@@ -953,15 +1165,15 @@ public partial struct ulong4x4
         default, default, default, 1UL
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a ulong4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The ulong4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static ulong4x4 Scale(ulong3 scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a ulong4x4 translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The ulong4x4 translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static ulong4x4 Translate(ulong3 vector) => new(
         new(1UL, default, default, default),
@@ -990,8 +1202,8 @@ public static partial class math
 
 public partial struct decimal4x4
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a decimal4x4 from a decimal3x3 rotation matrix and a decimal3 translation vector</summary>
+    /// <param name="rotation">The decimal3x3 rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public decimal4x4(decimal3x3 rotation, decimal3 translation)
@@ -1002,9 +1214,9 @@ public partial struct decimal4x4
         c3 = new(translation, 1m);
     }
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>Returns a decimal4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The decimal4x4 matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static decimal4x4 Scale(decimal s) => new(
         s,    default, default, default,
@@ -1013,11 +1225,11 @@ public partial struct decimal4x4
         default, default, default, 1m
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a decimal4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The decimal4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static decimal4x4 Scale(decimal x, decimal y, decimal z) => new(
         x,    default, default, default,
@@ -1026,15 +1238,15 @@ public partial struct decimal4x4
         default, default, default, 1m
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a decimal4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The decimal4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static decimal4x4 Scale(decimal3 scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a decimal4x4 translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The decimal4x4 translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static decimal4x4 Translate(decimal3 vector) => new(
         new(1m, default, default, default),
@@ -1063,8 +1275,8 @@ public static partial class math
 
 public partial struct half4x4
 {
-    /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector</summary>
-    /// <param name="rotation">The float3x3 rotation matrix</param>
+    /// <summary>Constructs a half4x4 from a half3x3 rotation matrix and a half3 translation vector</summary>
+    /// <param name="rotation">The half3x3 rotation matrix</param>
     /// <param name="translation">The translation vector</param>
     [MethodImpl(256 | 512)]
     public half4x4(half3x3 rotation, half3 translation)
@@ -1076,12 +1288,12 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 matrix representing a rotation around a unit axis by an angle in radians
+    /// Returns a half4x4 matrix representing a rotation around a unit axis by an angle in radians
     /// The rotation direction is clockwise when looking along the rotation axis towards the origin
     /// </summary>
     /// <param name="axis">The axis of rotation</param>
     /// <param name="angle">The angle of rotation in radians</param>
-    /// <returns>The float4x4 matrix representing the rotation about an axis</returns>
+    /// <returns>The half4x4 matrix representing the rotation about an axis</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 AxisAngle(half3 axis, half angle)
     {
@@ -1104,11 +1316,11 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in x-y-z order</returns>
+    /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The half4x4 rotation matrix of the Euler angle rotation in x-y-z order</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 EulerXYZ(half3 xyz)
     {
@@ -1122,11 +1334,11 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in x-z-y order</returns>
+    /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The half4x4 rotation matrix of the Euler angle rotation in x-z-y order</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 EulerXZY(half3 xyz)
     {
@@ -1140,11 +1352,11 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in y-x-z order</returns>
+    /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The half4x4 rotation matrix of the Euler angle rotation in y-x-z order</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 EulerYXZ(half3 xyz)
     {
@@ -1158,11 +1370,11 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in y-z-x order</returns>
+    /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The half4x4 rotation matrix of the Euler angle rotation in y-z-x order</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 EulerYZX(half3 xyz)
     {
@@ -1176,12 +1388,12 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// This is the default order rotation order in Unity
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in z-x-y order</returns>
+    /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The half4x4 rotation matrix of the Euler angle rotation in z-x-y order</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 EulerZXY(half3 xyz)
     {
@@ -1195,11 +1407,11 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
     /// </summary>
-    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
-    /// <returns>The float4x4 rotation matrix of the Euler angle rotation in z-y-x order</returns>
+    /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The half4x4 rotation matrix of the Euler angle rotation in z-y-x order</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 EulerZYX(half3 xyz)
     {
@@ -1212,9 +1424,9 @@ public partial struct half4x4
         );
     }
 
-    /// <summary>Returns a float4x4 matrix that rotates around the x-axis by a given number of radians</summary>
+    /// <summary>Returns a half4x4 matrix that rotates around the x-axis by a given number of radians</summary>
     /// <param name="angle">The clockwise rotation angle when looking along the x-axis towards the origin in radians</param>
-    /// <returns>The float4x4 rotation matrix that rotates around the x-axis</returns>
+    /// <returns>The half4x4 rotation matrix that rotates around the x-axis</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 RotateX(half angle)
     {
@@ -1227,9 +1439,9 @@ public partial struct half4x4
         );
     }
 
-    /// <summary>Returns a float4x4 matrix that rotates around the y-axis by a given number of radians</summary>
+    /// <summary>Returns a half4x4 matrix that rotates around the y-axis by a given number of radians</summary>
     /// <param name="angle">The clockwise rotation angle when looking along the y-axis towards the origin in radians</param>
-    /// <returns>The float4x4 rotation matrix that rotates around the y-axis</returns>
+    /// <returns>The half4x4 rotation matrix that rotates around the y-axis</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 RotateY(half angle)
     {
@@ -1242,9 +1454,9 @@ public partial struct half4x4
         );
     }
 
-    /// <summary>Returns a float4x4 matrix that rotates around the z-axis by a given number of radians</summary>
+    /// <summary>Returns a half4x4 matrix that rotates around the z-axis by a given number of radians</summary>
     /// <param name="angle">The clockwise rotation angle when looking along the z-axis towards the origin in radians</param>
-    /// <returns>The float4x4 rotation matrix that rotates around the z-axis</returns>
+    /// <returns>The half4x4 rotation matrix that rotates around the z-axis</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 RotateZ(half angle)
     {
@@ -1257,9 +1469,115 @@ public partial struct half4x4
         );
     }
 
-    /// <summary>Returns a float4x4 scale matrix given 3 axis scales</summary>
+    /// <summary>
+    /// Returns a half4x4 view matrix given an eye position, a target point and a unit length up vector
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookAt(half3 eye, half3 target, half3 up)
+    {
+        var rot = half3x3.LookRotation((target - eye).normalize(), up);
+        return new(
+            new(rot.c0, default),
+            new(rot.c1, default),
+            new(rot.c2, default),
+            new(eye, (half)1.0)
+        );
+    }
+
+    /// <summary>
+    /// Returns a half4x4 centered orthographic projection matrix
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The half4x4 centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 Ortho(half width, half height, half near, half far)
+    {
+        var rcpdx = (half)1.0 / width;
+        var rcpdy = (half)1.0 / height;
+        var rcpdz = (half)1.0 / (far - near);
+
+        return new(
+            (half)((half)2.0f * rcpdx),       default,            default,            default,
+            default,           (half)((half)2.0f * rcpdy),        default,            default,
+            default,           default,            (half)(-(half)2.0f * rcpdz),       (half)(-(far + near) * rcpdz),
+            default,           default,            default,            (half)1.0
+       );
+    }
+
+    /// <summary>
+    /// Returns a half4x4 off-center orthographic projection matrix
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The half4x4 off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 OrthoOffCenter(half left, half right, half bottom, half top, half near, half far)
+    {
+        var rcpdx = (half)1.0 / (right - left);
+        var rcpdy = (half)1.0 / (top - bottom);
+        var rcpdz = (half)1.0 / (far - near);
+
+        return new(
+            (half)((half)2.0f * rcpdx),      default,           default,                (half)(-(right + left) * rcpdx),
+            default,           (half)((half)2.0f * rcpdy),      default,                (half)(-(top + bottom) * rcpdy),
+            default,           default,           (half)(-(half)2.0f * rcpdz),          (half)(-(far + near) * rcpdz),
+            default,           default,           default,                (half)1.0
+        );
+    }
+
+    /// <summary>
+    /// Returns a half4x4 perspective projection matrix based on field of view
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The half4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 PerspectiveFov(half verticalFov, half aspect, half near, half far)
+    {
+        var cotangent = (half)1.0 / math.tan(verticalFov * (half)0.5f);
+        var rcpdz = (half)1.0 / (near - far);
+
+        return new(
+            (half)(cotangent / aspect),    default,       default,                   default,
+            default,               (half)cotangent,     default,                   default,
+            default,               default,       (half)((far + near) * rcpdz),      (half)((half)2.0f * near * far * rcpdz),
+            default,               default,       -(half)1.0,                     default
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half4x4 PerspectiveOffCenter(half left, half right, half bottom, half top, half near, half far)
+    {
+        var rcpdz = (half)1.0 / (near - far);
+        var rcpWidth = (half)1.0 / (right - left);
+        var rcpHeight = (half)1.0 / (top - bottom);
+
+        return new(
+            (half)((half)2.0f * near * rcpWidth),        default,                       (half)((left + right) * rcpWidth),     default,
+            default,                       (half)((half)2.0f * near * rcpHeight),       (half)((bottom + top) * rcpHeight),    default,
+            default,                       default,                       (half)((far + near) * rcpdz),          (half)((half)2.0f * near * far * rcpdz),
+            default,                       default,                       -(half)1.0,                         default
+        );
+    }
+
+    /// <summary>Returns a half4x4 scale matrix given 3 axis scales</summary>
     /// <param name="s">The uniform scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a uniform scale</returns>
+    /// <returns>The half4x4 matrix that represents a uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 Scale(half s) => new(
         s,    default, default, default,
@@ -1268,11 +1586,11 @@ public partial struct half4x4
         default, default, default, (half)1.0
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a half4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="x">The x-axis scaling factor</param>
     /// <param name="y">The y-axis scaling factor</param>
     /// <param name="z">The z-axis scaling factor</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The half4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 Scale(half x, half y, half z) => new(
         x,    default, default, default,
@@ -1281,15 +1599,15 @@ public partial struct half4x4
         default, default, default, (half)1.0
     );
 
-    /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
+    /// <summary>Returns a half4x4 scale matrix given a float3 vector containing the 3 axis scales</summary>
     /// <param name="scales">The vector containing scale factors for each axis</param>
-    /// <returns>The float4x4 matrix that represents a non-uniform scale</returns>
+    /// <returns>The half4x4 matrix that represents a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 Scale(half3 scales) => Scale(scales.x, scales.y, scales.z);
 
-    /// <summary>Returns a float4x4 translation matrix given a float3 translation vector</summary>
+    /// <summary>Returns a half4x4 translation matrix given a float3 translation vector</summary>
     /// <param name="vector">The translation vector</param>
-    /// <returns>The float4x4 translation matrix</returns>
+    /// <returns>The half4x4 translation matrix</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 Translate(half3 vector) => new(
         new((half)1.0, default, default, default),
