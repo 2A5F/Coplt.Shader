@@ -3,7 +3,7 @@
 using System.Runtime.Intrinsics.X86;
 using System.Runtime.Intrinsics.Arm;
 
-namespace Coplt.Mathematics;
+namespace Coplt.Mathematics.Simd;
 
 public static partial class simd_matrix
 {

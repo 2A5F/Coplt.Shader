@@ -56,9 +56,10 @@ public class Shader1 : IShaderModule
     [VertexShader]
     public V2P Vertex(VI vi)
     {
-        var obj = objects[vi.iid];
-        var pos = scene.view.proj * (scene.view.view * (obj.transform * vi.pos));
-        return new() { pos = pos, uv = vi.uv, iid = vi.iid };
+        return default;
+        // var obj = objects[vi.iid];
+        // var pos = scene.view.proj * (scene.view.view * (obj.transform * vi.pos));
+        // return new() { pos = pos, uv = vi.uv, iid = vi.iid };
     }
 
     [PixelShader]

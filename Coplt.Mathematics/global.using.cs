@@ -2,6 +2,7 @@
 #if NET8_0_OR_GREATER
 global using System.Numerics;
 global using System.Runtime.Intrinsics;
+global using Coplt.Mathematics.Simd;
 #endif
 global using System.Runtime.CompilerServices;
 global using System.Runtime.InteropServices;

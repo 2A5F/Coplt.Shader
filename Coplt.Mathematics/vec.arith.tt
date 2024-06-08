@@ -577,6 +577,42 @@ public static partial class math
             }
 #>
     }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.compType #> csum(this <#= typeName #> a)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return Vector<#= bitSize #>.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return <#= typ.arithCast #>(<#= string.Join(" + ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}")) #>);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.compType #> cmin(this <#= typeName #> a)
+    {
+        return a.x<#= string.Join("", Enumerable.Range(1, i - 1).Select(n => $".min(a.{Typ.xyzw[n]})")) #>;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.compType #> cmax(this <#= typeName #> a)
+    {
+        return a.x<#= string.Join("", Enumerable.Range(1, i - 1).Select(n => $".max(a.{Typ.xyzw[n]})")) #>;
+    }
 }
 
 #endregion // <#= typeName #>

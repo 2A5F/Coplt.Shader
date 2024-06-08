@@ -2,6 +2,7 @@
 using Coplt.Mathematics;
 
 #if NET8_0_OR_GREATER
+using Coplt.Mathematics.Simd;
 namespace MathTests;
 
 public class TestSinCos

@@ -35,7 +35,7 @@ public partial struct float2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float2x2 BitAndNot(this float2x2 a, float2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static float2x2 andnot(this float2x2 a, float2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // float2x2
@@ -73,7 +73,7 @@ public partial struct float2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float2x3 BitAndNot(this float2x3 a, float2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static float2x3 andnot(this float2x3 a, float2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // float2x3
@@ -111,7 +111,7 @@ public partial struct float2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float2x4 BitAndNot(this float2x4 a, float2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static float2x4 andnot(this float2x4 a, float2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // float2x4
@@ -149,7 +149,7 @@ public partial struct float3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float3x2 BitAndNot(this float3x2 a, float3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static float3x2 andnot(this float3x2 a, float3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // float3x2
@@ -187,7 +187,7 @@ public partial struct float3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float3x3 BitAndNot(this float3x3 a, float3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static float3x3 andnot(this float3x3 a, float3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // float3x3
@@ -225,7 +225,7 @@ public partial struct float3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float3x4 BitAndNot(this float3x4 a, float3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static float3x4 andnot(this float3x4 a, float3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // float3x4
@@ -263,7 +263,7 @@ public partial struct float4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float4x2 BitAndNot(this float4x2 a, float4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static float4x2 andnot(this float4x2 a, float4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // float4x2
@@ -301,7 +301,7 @@ public partial struct float4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float4x3 BitAndNot(this float4x3 a, float4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static float4x3 andnot(this float4x3 a, float4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // float4x3
@@ -339,7 +339,7 @@ public partial struct float4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float4x4 BitAndNot(this float4x4 a, float4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static float4x4 andnot(this float4x4 a, float4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // float4x4
@@ -377,7 +377,7 @@ public partial struct double2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double2x2 BitAndNot(this double2x2 a, double2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static double2x2 andnot(this double2x2 a, double2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // double2x2
@@ -415,7 +415,7 @@ public partial struct double2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double2x3 BitAndNot(this double2x3 a, double2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static double2x3 andnot(this double2x3 a, double2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // double2x3
@@ -453,7 +453,7 @@ public partial struct double2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double2x4 BitAndNot(this double2x4 a, double2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static double2x4 andnot(this double2x4 a, double2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // double2x4
@@ -491,7 +491,7 @@ public partial struct double3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double3x2 BitAndNot(this double3x2 a, double3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static double3x2 andnot(this double3x2 a, double3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // double3x2
@@ -529,7 +529,7 @@ public partial struct double3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double3x3 BitAndNot(this double3x3 a, double3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static double3x3 andnot(this double3x3 a, double3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // double3x3
@@ -567,7 +567,7 @@ public partial struct double3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double3x4 BitAndNot(this double3x4 a, double3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static double3x4 andnot(this double3x4 a, double3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // double3x4
@@ -605,7 +605,7 @@ public partial struct double4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double4x2 BitAndNot(this double4x2 a, double4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static double4x2 andnot(this double4x2 a, double4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // double4x2
@@ -643,7 +643,7 @@ public partial struct double4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double4x3 BitAndNot(this double4x3 a, double4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static double4x3 andnot(this double4x3 a, double4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // double4x3
@@ -681,7 +681,7 @@ public partial struct double4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double4x4 BitAndNot(this double4x4 a, double4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static double4x4 andnot(this double4x4 a, double4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // double4x4
@@ -719,7 +719,7 @@ public partial struct short2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short2x2 BitAndNot(this short2x2 a, short2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static short2x2 andnot(this short2x2 a, short2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // short2x2
@@ -757,7 +757,7 @@ public partial struct short2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short2x3 BitAndNot(this short2x3 a, short2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static short2x3 andnot(this short2x3 a, short2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // short2x3
@@ -795,7 +795,7 @@ public partial struct short2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short2x4 BitAndNot(this short2x4 a, short2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static short2x4 andnot(this short2x4 a, short2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // short2x4
@@ -833,7 +833,7 @@ public partial struct short3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short3x2 BitAndNot(this short3x2 a, short3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static short3x2 andnot(this short3x2 a, short3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // short3x2
@@ -871,7 +871,7 @@ public partial struct short3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short3x3 BitAndNot(this short3x3 a, short3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static short3x3 andnot(this short3x3 a, short3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // short3x3
@@ -909,7 +909,7 @@ public partial struct short3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short3x4 BitAndNot(this short3x4 a, short3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static short3x4 andnot(this short3x4 a, short3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // short3x4
@@ -947,7 +947,7 @@ public partial struct short4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short4x2 BitAndNot(this short4x2 a, short4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static short4x2 andnot(this short4x2 a, short4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // short4x2
@@ -985,7 +985,7 @@ public partial struct short4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short4x3 BitAndNot(this short4x3 a, short4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static short4x3 andnot(this short4x3 a, short4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // short4x3
@@ -1023,7 +1023,7 @@ public partial struct short4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short4x4 BitAndNot(this short4x4 a, short4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static short4x4 andnot(this short4x4 a, short4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // short4x4
@@ -1061,7 +1061,7 @@ public partial struct ushort2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort2x2 BitAndNot(this ushort2x2 a, ushort2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static ushort2x2 andnot(this ushort2x2 a, ushort2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // ushort2x2
@@ -1099,7 +1099,7 @@ public partial struct ushort2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort2x3 BitAndNot(this ushort2x3 a, ushort2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static ushort2x3 andnot(this ushort2x3 a, ushort2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // ushort2x3
@@ -1137,7 +1137,7 @@ public partial struct ushort2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort2x4 BitAndNot(this ushort2x4 a, ushort2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static ushort2x4 andnot(this ushort2x4 a, ushort2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // ushort2x4
@@ -1175,7 +1175,7 @@ public partial struct ushort3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort3x2 BitAndNot(this ushort3x2 a, ushort3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static ushort3x2 andnot(this ushort3x2 a, ushort3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // ushort3x2
@@ -1213,7 +1213,7 @@ public partial struct ushort3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort3x3 BitAndNot(this ushort3x3 a, ushort3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static ushort3x3 andnot(this ushort3x3 a, ushort3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // ushort3x3
@@ -1251,7 +1251,7 @@ public partial struct ushort3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort3x4 BitAndNot(this ushort3x4 a, ushort3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static ushort3x4 andnot(this ushort3x4 a, ushort3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // ushort3x4
@@ -1289,7 +1289,7 @@ public partial struct ushort4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort4x2 BitAndNot(this ushort4x2 a, ushort4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static ushort4x2 andnot(this ushort4x2 a, ushort4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // ushort4x2
@@ -1327,7 +1327,7 @@ public partial struct ushort4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort4x3 BitAndNot(this ushort4x3 a, ushort4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static ushort4x3 andnot(this ushort4x3 a, ushort4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // ushort4x3
@@ -1365,7 +1365,7 @@ public partial struct ushort4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort4x4 BitAndNot(this ushort4x4 a, ushort4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static ushort4x4 andnot(this ushort4x4 a, ushort4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // ushort4x4
@@ -1403,7 +1403,7 @@ public partial struct int2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int2x2 BitAndNot(this int2x2 a, int2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static int2x2 andnot(this int2x2 a, int2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // int2x2
@@ -1441,7 +1441,7 @@ public partial struct int2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int2x3 BitAndNot(this int2x3 a, int2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static int2x3 andnot(this int2x3 a, int2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // int2x3
@@ -1479,7 +1479,7 @@ public partial struct int2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int2x4 BitAndNot(this int2x4 a, int2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static int2x4 andnot(this int2x4 a, int2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // int2x4
@@ -1517,7 +1517,7 @@ public partial struct int3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int3x2 BitAndNot(this int3x2 a, int3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static int3x2 andnot(this int3x2 a, int3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // int3x2
@@ -1555,7 +1555,7 @@ public partial struct int3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int3x3 BitAndNot(this int3x3 a, int3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static int3x3 andnot(this int3x3 a, int3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // int3x3
@@ -1593,7 +1593,7 @@ public partial struct int3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int3x4 BitAndNot(this int3x4 a, int3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static int3x4 andnot(this int3x4 a, int3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // int3x4
@@ -1631,7 +1631,7 @@ public partial struct int4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int4x2 BitAndNot(this int4x2 a, int4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static int4x2 andnot(this int4x2 a, int4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // int4x2
@@ -1669,7 +1669,7 @@ public partial struct int4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int4x3 BitAndNot(this int4x3 a, int4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static int4x3 andnot(this int4x3 a, int4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // int4x3
@@ -1707,7 +1707,7 @@ public partial struct int4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int4x4 BitAndNot(this int4x4 a, int4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static int4x4 andnot(this int4x4 a, int4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // int4x4
@@ -1745,7 +1745,7 @@ public partial struct uint2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint2x2 BitAndNot(this uint2x2 a, uint2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static uint2x2 andnot(this uint2x2 a, uint2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // uint2x2
@@ -1783,7 +1783,7 @@ public partial struct uint2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint2x3 BitAndNot(this uint2x3 a, uint2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static uint2x3 andnot(this uint2x3 a, uint2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // uint2x3
@@ -1821,7 +1821,7 @@ public partial struct uint2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint2x4 BitAndNot(this uint2x4 a, uint2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static uint2x4 andnot(this uint2x4 a, uint2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // uint2x4
@@ -1859,7 +1859,7 @@ public partial struct uint3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint3x2 BitAndNot(this uint3x2 a, uint3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static uint3x2 andnot(this uint3x2 a, uint3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // uint3x2
@@ -1897,7 +1897,7 @@ public partial struct uint3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint3x3 BitAndNot(this uint3x3 a, uint3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static uint3x3 andnot(this uint3x3 a, uint3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // uint3x3
@@ -1935,7 +1935,7 @@ public partial struct uint3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint3x4 BitAndNot(this uint3x4 a, uint3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static uint3x4 andnot(this uint3x4 a, uint3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // uint3x4
@@ -1973,7 +1973,7 @@ public partial struct uint4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint4x2 BitAndNot(this uint4x2 a, uint4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static uint4x2 andnot(this uint4x2 a, uint4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // uint4x2
@@ -2011,7 +2011,7 @@ public partial struct uint4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint4x3 BitAndNot(this uint4x3 a, uint4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static uint4x3 andnot(this uint4x3 a, uint4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // uint4x3
@@ -2049,7 +2049,7 @@ public partial struct uint4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint4x4 BitAndNot(this uint4x4 a, uint4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static uint4x4 andnot(this uint4x4 a, uint4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // uint4x4
@@ -2087,7 +2087,7 @@ public partial struct long2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long2x2 BitAndNot(this long2x2 a, long2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static long2x2 andnot(this long2x2 a, long2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // long2x2
@@ -2125,7 +2125,7 @@ public partial struct long2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long2x3 BitAndNot(this long2x3 a, long2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static long2x3 andnot(this long2x3 a, long2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // long2x3
@@ -2163,7 +2163,7 @@ public partial struct long2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long2x4 BitAndNot(this long2x4 a, long2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static long2x4 andnot(this long2x4 a, long2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // long2x4
@@ -2201,7 +2201,7 @@ public partial struct long3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long3x2 BitAndNot(this long3x2 a, long3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static long3x2 andnot(this long3x2 a, long3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // long3x2
@@ -2239,7 +2239,7 @@ public partial struct long3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long3x3 BitAndNot(this long3x3 a, long3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static long3x3 andnot(this long3x3 a, long3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // long3x3
@@ -2277,7 +2277,7 @@ public partial struct long3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long3x4 BitAndNot(this long3x4 a, long3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static long3x4 andnot(this long3x4 a, long3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // long3x4
@@ -2315,7 +2315,7 @@ public partial struct long4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long4x2 BitAndNot(this long4x2 a, long4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static long4x2 andnot(this long4x2 a, long4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // long4x2
@@ -2353,7 +2353,7 @@ public partial struct long4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long4x3 BitAndNot(this long4x3 a, long4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static long4x3 andnot(this long4x3 a, long4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // long4x3
@@ -2391,7 +2391,7 @@ public partial struct long4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long4x4 BitAndNot(this long4x4 a, long4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static long4x4 andnot(this long4x4 a, long4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // long4x4
@@ -2429,7 +2429,7 @@ public partial struct ulong2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong2x2 BitAndNot(this ulong2x2 a, ulong2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static ulong2x2 andnot(this ulong2x2 a, ulong2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // ulong2x2
@@ -2467,7 +2467,7 @@ public partial struct ulong2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong2x3 BitAndNot(this ulong2x3 a, ulong2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static ulong2x3 andnot(this ulong2x3 a, ulong2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // ulong2x3
@@ -2505,7 +2505,7 @@ public partial struct ulong2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong2x4 BitAndNot(this ulong2x4 a, ulong2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static ulong2x4 andnot(this ulong2x4 a, ulong2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // ulong2x4
@@ -2543,7 +2543,7 @@ public partial struct ulong3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong3x2 BitAndNot(this ulong3x2 a, ulong3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static ulong3x2 andnot(this ulong3x2 a, ulong3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // ulong3x2
@@ -2581,7 +2581,7 @@ public partial struct ulong3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong3x3 BitAndNot(this ulong3x3 a, ulong3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static ulong3x3 andnot(this ulong3x3 a, ulong3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // ulong3x3
@@ -2619,7 +2619,7 @@ public partial struct ulong3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong3x4 BitAndNot(this ulong3x4 a, ulong3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static ulong3x4 andnot(this ulong3x4 a, ulong3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // ulong3x4
@@ -2657,7 +2657,7 @@ public partial struct ulong4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong4x2 BitAndNot(this ulong4x2 a, ulong4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static ulong4x2 andnot(this ulong4x2 a, ulong4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // ulong4x2
@@ -2695,7 +2695,7 @@ public partial struct ulong4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong4x3 BitAndNot(this ulong4x3 a, ulong4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static ulong4x3 andnot(this ulong4x3 a, ulong4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // ulong4x3
@@ -2733,7 +2733,7 @@ public partial struct ulong4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong4x4 BitAndNot(this ulong4x4 a, ulong4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static ulong4x4 andnot(this ulong4x4 a, ulong4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // ulong4x4
@@ -2771,7 +2771,7 @@ public partial struct half2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half2x2 BitAndNot(this half2x2 a, half2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static half2x2 andnot(this half2x2 a, half2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // half2x2
@@ -2809,7 +2809,7 @@ public partial struct half2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half2x3 BitAndNot(this half2x3 a, half2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static half2x3 andnot(this half2x3 a, half2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // half2x3
@@ -2847,7 +2847,7 @@ public partial struct half2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half2x4 BitAndNot(this half2x4 a, half2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static half2x4 andnot(this half2x4 a, half2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // half2x4
@@ -2885,7 +2885,7 @@ public partial struct half3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half3x2 BitAndNot(this half3x2 a, half3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static half3x2 andnot(this half3x2 a, half3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // half3x2
@@ -2923,7 +2923,7 @@ public partial struct half3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half3x3 BitAndNot(this half3x3 a, half3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static half3x3 andnot(this half3x3 a, half3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // half3x3
@@ -2961,7 +2961,7 @@ public partial struct half3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half3x4 BitAndNot(this half3x4 a, half3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static half3x4 andnot(this half3x4 a, half3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // half3x4
@@ -2999,7 +2999,7 @@ public partial struct half4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half4x2 BitAndNot(this half4x2 a, half4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static half4x2 andnot(this half4x2 a, half4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // half4x2
@@ -3037,7 +3037,7 @@ public partial struct half4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half4x3 BitAndNot(this half4x3 a, half4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static half4x3 andnot(this half4x3 a, half4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // half4x3
@@ -3075,7 +3075,7 @@ public partial struct half4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half4x4 BitAndNot(this half4x4 a, half4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static half4x4 andnot(this half4x4 a, half4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // half4x4
@@ -3103,7 +3103,7 @@ public partial struct b16m2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16m2x2 BitAndNot(this b16m2x2 a, b16m2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static b16m2x2 andnot(this b16m2x2 a, b16m2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // b16m2x2
@@ -3131,7 +3131,7 @@ public partial struct b16m2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16m2x3 BitAndNot(this b16m2x3 a, b16m2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static b16m2x3 andnot(this b16m2x3 a, b16m2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // b16m2x3
@@ -3159,7 +3159,7 @@ public partial struct b16m2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16m2x4 BitAndNot(this b16m2x4 a, b16m2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static b16m2x4 andnot(this b16m2x4 a, b16m2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // b16m2x4
@@ -3187,7 +3187,7 @@ public partial struct b16m3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16m3x2 BitAndNot(this b16m3x2 a, b16m3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static b16m3x2 andnot(this b16m3x2 a, b16m3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // b16m3x2
@@ -3215,7 +3215,7 @@ public partial struct b16m3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16m3x3 BitAndNot(this b16m3x3 a, b16m3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static b16m3x3 andnot(this b16m3x3 a, b16m3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // b16m3x3
@@ -3243,7 +3243,7 @@ public partial struct b16m3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16m3x4 BitAndNot(this b16m3x4 a, b16m3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static b16m3x4 andnot(this b16m3x4 a, b16m3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // b16m3x4
@@ -3271,7 +3271,7 @@ public partial struct b16m4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16m4x2 BitAndNot(this b16m4x2 a, b16m4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static b16m4x2 andnot(this b16m4x2 a, b16m4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // b16m4x2
@@ -3299,7 +3299,7 @@ public partial struct b16m4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16m4x3 BitAndNot(this b16m4x3 a, b16m4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static b16m4x3 andnot(this b16m4x3 a, b16m4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // b16m4x3
@@ -3327,7 +3327,7 @@ public partial struct b16m4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16m4x4 BitAndNot(this b16m4x4 a, b16m4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static b16m4x4 andnot(this b16m4x4 a, b16m4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // b16m4x4
@@ -3355,7 +3355,7 @@ public partial struct b32m2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32m2x2 BitAndNot(this b32m2x2 a, b32m2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static b32m2x2 andnot(this b32m2x2 a, b32m2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // b32m2x2
@@ -3383,7 +3383,7 @@ public partial struct b32m2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32m2x3 BitAndNot(this b32m2x3 a, b32m2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static b32m2x3 andnot(this b32m2x3 a, b32m2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // b32m2x3
@@ -3411,7 +3411,7 @@ public partial struct b32m2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32m2x4 BitAndNot(this b32m2x4 a, b32m2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static b32m2x4 andnot(this b32m2x4 a, b32m2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // b32m2x4
@@ -3439,7 +3439,7 @@ public partial struct b32m3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32m3x2 BitAndNot(this b32m3x2 a, b32m3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static b32m3x2 andnot(this b32m3x2 a, b32m3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // b32m3x2
@@ -3467,7 +3467,7 @@ public partial struct b32m3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32m3x3 BitAndNot(this b32m3x3 a, b32m3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static b32m3x3 andnot(this b32m3x3 a, b32m3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // b32m3x3
@@ -3495,7 +3495,7 @@ public partial struct b32m3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32m3x4 BitAndNot(this b32m3x4 a, b32m3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static b32m3x4 andnot(this b32m3x4 a, b32m3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // b32m3x4
@@ -3523,7 +3523,7 @@ public partial struct b32m4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32m4x2 BitAndNot(this b32m4x2 a, b32m4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static b32m4x2 andnot(this b32m4x2 a, b32m4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // b32m4x2
@@ -3551,7 +3551,7 @@ public partial struct b32m4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32m4x3 BitAndNot(this b32m4x3 a, b32m4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static b32m4x3 andnot(this b32m4x3 a, b32m4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // b32m4x3
@@ -3579,7 +3579,7 @@ public partial struct b32m4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32m4x4 BitAndNot(this b32m4x4 a, b32m4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static b32m4x4 andnot(this b32m4x4 a, b32m4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // b32m4x4
@@ -3607,7 +3607,7 @@ public partial struct b64m2x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64m2x2 BitAndNot(this b64m2x2 a, b64m2x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static b64m2x2 andnot(this b64m2x2 a, b64m2x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // b64m2x2
@@ -3635,7 +3635,7 @@ public partial struct b64m2x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64m2x3 BitAndNot(this b64m2x3 a, b64m2x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static b64m2x3 andnot(this b64m2x3 a, b64m2x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // b64m2x3
@@ -3663,7 +3663,7 @@ public partial struct b64m2x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64m2x4 BitAndNot(this b64m2x4 a, b64m2x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static b64m2x4 andnot(this b64m2x4 a, b64m2x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // b64m2x4
@@ -3691,7 +3691,7 @@ public partial struct b64m3x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64m3x2 BitAndNot(this b64m3x2 a, b64m3x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static b64m3x2 andnot(this b64m3x2 a, b64m3x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // b64m3x2
@@ -3719,7 +3719,7 @@ public partial struct b64m3x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64m3x3 BitAndNot(this b64m3x3 a, b64m3x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static b64m3x3 andnot(this b64m3x3 a, b64m3x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // b64m3x3
@@ -3747,7 +3747,7 @@ public partial struct b64m3x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64m3x4 BitAndNot(this b64m3x4 a, b64m3x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static b64m3x4 andnot(this b64m3x4 a, b64m3x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // b64m3x4
@@ -3775,7 +3775,7 @@ public partial struct b64m4x2 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64m4x2 BitAndNot(this b64m4x2 a, b64m4x2 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1));
+    public static b64m4x2 andnot(this b64m4x2 a, b64m4x2 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1));
 }
 
 #endregion // b64m4x2
@@ -3803,7 +3803,7 @@ public partial struct b64m4x3 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64m4x3 BitAndNot(this b64m4x3 a, b64m4x3 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2));
+    public static b64m4x3 andnot(this b64m4x3 a, b64m4x3 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2));
 }
 
 #endregion // b64m4x3
@@ -3831,7 +3831,7 @@ public partial struct b64m4x4 : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64m4x4 BitAndNot(this b64m4x4 a, b64m4x4 b) => new(a.c0.BitAndNot(b.c0), a.c1.BitAndNot(b.c1), a.c2.BitAndNot(b.c2), a.c3.BitAndNot(b.c3));
+    public static b64m4x4 andnot(this b64m4x4 a, b64m4x4 b) => new(a.c0.andnot(b.c0), a.c1.andnot(b.c1), a.c2.andnot(b.c2), a.c3.andnot(b.c3));
 }
 
 #endregion // b64m4x4

@@ -84,13 +84,31 @@ public partial struct float2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float2 BitAndNot(this float2 a, float2 b)
+    public static float2 andnot(this float2 a, float2 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector64.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 popcnt(this float2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 lzcnt(this float2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 tzcnt(this float2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -178,13 +196,31 @@ public partial struct float3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float3 BitAndNot(this float3 a, float3 b)
+    public static float3 andnot(this float3 a, float3 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 popcnt(this float3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 lzcnt(this float3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 tzcnt(this float3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -272,13 +308,31 @@ public partial struct float4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static float4 BitAndNot(this float4 a, float4 b)
+    public static float4 andnot(this float4 a, float4 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 popcnt(this float4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 lzcnt(this float4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 tzcnt(this float4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -366,13 +420,31 @@ public partial struct double2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double2 BitAndNot(this double2 a, double2 b)
+    public static double2 andnot(this double2 a, double2 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 popcnt(this double2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 lzcnt(this double2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 tzcnt(this double2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -460,13 +532,31 @@ public partial struct double3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double3 BitAndNot(this double3 a, double3 b)
+    public static double3 andnot(this double3 a, double3 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector256.AndNot(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 popcnt(this double3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 lzcnt(this double3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 tzcnt(this double3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -554,13 +644,31 @@ public partial struct double4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static double4 BitAndNot(this double4 a, double4 b)
+    public static double4 andnot(this double4 a, double4 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector256.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 popcnt(this double4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 lzcnt(this double4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 tzcnt(this double4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -620,9 +728,27 @@ public partial struct short2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short2 BitAndNot(this short2 a, short2 b)
+    public static short2 andnot(this short2 a, short2 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 popcnt(this short2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 lzcnt(this short2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 tzcnt(this short2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -682,9 +808,27 @@ public partial struct short3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short3 BitAndNot(this short3 a, short3 b)
+    public static short3 andnot(this short3 a, short3 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 popcnt(this short3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 lzcnt(this short3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 tzcnt(this short3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -744,9 +888,27 @@ public partial struct short4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static short4 BitAndNot(this short4 a, short4 b)
+    public static short4 andnot(this short4 a, short4 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 popcnt(this short4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 lzcnt(this short4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 tzcnt(this short4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -806,9 +968,27 @@ public partial struct ushort2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort2 BitAndNot(this ushort2 a, ushort2 b)
+    public static ushort2 andnot(this ushort2 a, ushort2 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 popcnt(this ushort2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 lzcnt(this ushort2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 tzcnt(this ushort2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -868,9 +1048,27 @@ public partial struct ushort3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort3 BitAndNot(this ushort3 a, ushort3 b)
+    public static ushort3 andnot(this ushort3 a, ushort3 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 popcnt(this ushort3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 lzcnt(this ushort3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 tzcnt(this ushort3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -930,9 +1128,27 @@ public partial struct ushort4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ushort4 BitAndNot(this ushort4 a, ushort4 b)
+    public static ushort4 andnot(this ushort4 a, ushort4 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 popcnt(this ushort4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 lzcnt(this ushort4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 tzcnt(this ushort4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -1020,13 +1236,31 @@ public partial struct int2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int2 BitAndNot(this int2 a, int2 b)
+    public static int2 andnot(this int2 a, int2 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector64.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 popcnt(this int2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 lzcnt(this int2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 tzcnt(this int2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -1114,13 +1348,31 @@ public partial struct int3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int3 BitAndNot(this int3 a, int3 b)
+    public static int3 andnot(this int3 a, int3 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsInt32());
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 popcnt(this int3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 lzcnt(this int3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 tzcnt(this int3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -1208,13 +1460,31 @@ public partial struct int4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static int4 BitAndNot(this int4 a, int4 b)
+    public static int4 andnot(this int4 a, int4 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 popcnt(this int4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 lzcnt(this int4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 tzcnt(this int4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -1302,13 +1572,31 @@ public partial struct uint2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint2 BitAndNot(this uint2 a, uint2 b)
+    public static uint2 andnot(this uint2 a, uint2 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector64.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 popcnt(this uint2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 lzcnt(this uint2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 tzcnt(this uint2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -1396,13 +1684,31 @@ public partial struct uint3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint3 BitAndNot(this uint3 a, uint3 b)
+    public static uint3 andnot(this uint3 a, uint3 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 popcnt(this uint3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 lzcnt(this uint3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 tzcnt(this uint3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -1490,13 +1796,31 @@ public partial struct uint4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static uint4 BitAndNot(this uint4 a, uint4 b)
+    public static uint4 andnot(this uint4 a, uint4 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 popcnt(this uint4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 lzcnt(this uint4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 tzcnt(this uint4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -1584,13 +1908,31 @@ public partial struct long2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long2 BitAndNot(this long2 a, long2 b)
+    public static long2 andnot(this long2 a, long2 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 popcnt(this long2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 lzcnt(this long2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 tzcnt(this long2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -1678,13 +2020,31 @@ public partial struct long3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long3 BitAndNot(this long3 a, long3 b)
+    public static long3 andnot(this long3 a, long3 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector256.AndNot(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsInt64());
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 popcnt(this long3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 lzcnt(this long3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 tzcnt(this long3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -1772,13 +2132,31 @@ public partial struct long4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static long4 BitAndNot(this long4 a, long4 b)
+    public static long4 andnot(this long4 a, long4 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector256.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 popcnt(this long4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 lzcnt(this long4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 tzcnt(this long4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -1866,13 +2244,31 @@ public partial struct ulong2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong2 BitAndNot(this ulong2 a, ulong2 b)
+    public static ulong2 andnot(this ulong2 a, ulong2 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 popcnt(this ulong2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 lzcnt(this ulong2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 tzcnt(this ulong2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -1960,13 +2356,31 @@ public partial struct ulong3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong3 BitAndNot(this ulong3 a, ulong3 b)
+    public static ulong3 andnot(this ulong3 a, ulong3 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector256.AndNot(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 popcnt(this ulong3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 lzcnt(this ulong3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 tzcnt(this ulong3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -2054,13 +2468,31 @@ public partial struct ulong4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static ulong4 BitAndNot(this ulong4 a, ulong4 b)
+    public static ulong4 andnot(this ulong4 a, ulong4 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector256.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 popcnt(this ulong4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 lzcnt(this ulong4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 tzcnt(this ulong4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -2120,9 +2552,27 @@ public partial struct half2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half2 BitAndNot(this half2 a, half2 b)
+    public static half2 andnot(this half2 a, half2 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 popcnt(this half2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 lzcnt(this half2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 tzcnt(this half2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -2182,9 +2632,27 @@ public partial struct half3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half3 BitAndNot(this half3 a, half3 b)
+    public static half3 andnot(this half3 a, half3 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 popcnt(this half3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 lzcnt(this half3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 tzcnt(this half3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -2244,9 +2712,27 @@ public partial struct half4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static half4 BitAndNot(this half4 a, half4 b)
+    public static half4 andnot(this half4 a, half4 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 popcnt(this half4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 lzcnt(this half4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 tzcnt(this half4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -2287,9 +2773,27 @@ public partial struct b16v2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16v2 BitAndNot(this b16v2 a, b16v2 b)
+    public static b16v2 andnot(this b16v2 a, b16v2 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 popcnt(this b16v2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 lzcnt(this b16v2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short2 tzcnt(this b16v2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -2330,9 +2834,27 @@ public partial struct b16v3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16v3 BitAndNot(this b16v3 a, b16v3 b)
+    public static b16v3 andnot(this b16v3 a, b16v3 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 popcnt(this b16v3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 lzcnt(this b16v3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short3 tzcnt(this b16v3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -2373,9 +2895,27 @@ public partial struct b16v4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b16v4 BitAndNot(this b16v4 a, b16v4 b)
+    public static b16v4 andnot(this b16v4 a, b16v4 b)
     {
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 popcnt(this b16v4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 lzcnt(this b16v4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short4 tzcnt(this b16v4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -2432,13 +2972,31 @@ public partial struct b32v2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32v2 BitAndNot(this b32v2 a, b32v2 b)
+    public static b32v2 andnot(this b32v2 a, b32v2 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector64.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 popcnt(this b32v2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 lzcnt(this b32v2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int2 tzcnt(this b32v2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -2495,13 +3053,31 @@ public partial struct b32v3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32v3 BitAndNot(this b32v3 a, b32v3 b)
+    public static b32v3 andnot(this b32v3 a, b32v3 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsUInt32());
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 popcnt(this b32v3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 lzcnt(this b32v3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int3 tzcnt(this b32v3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -2558,13 +3134,31 @@ public partial struct b32v4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b32v4 BitAndNot(this b32v4 a, b32v4 b)
+    public static b32v4 andnot(this b32v4 a, b32v4 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 popcnt(this b32v4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 lzcnt(this b32v4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int4 tzcnt(this b32v4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 
@@ -2621,13 +3215,31 @@ public partial struct b64v2 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64v2 BitAndNot(this b64v2 a, b64v2 b)
+    public static b64v2 andnot(this b64v2 a, b64v2 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector128.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 popcnt(this b64v2 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 lzcnt(this b64v2 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long2 tzcnt(this b64v2 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt());
     }
 }
 
@@ -2684,13 +3296,31 @@ public partial struct b64v3 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64v3 BitAndNot(this b64v3 a, b64v3 b)
+    public static b64v3 andnot(this b64v3 a, b64v3 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector256.AndNot(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsUInt64());
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 popcnt(this b64v3 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 lzcnt(this b64v3 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long3 tzcnt(this b64v3 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt());
     }
 }
 
@@ -2747,13 +3377,31 @@ public partial struct b64v4 : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static b64v4 BitAndNot(this b64v4 a, b64v4 b)
+    public static b64v4 andnot(this b64v4 a, b64v4 b)
     {
         #if NET8_0_OR_GREATER
         return new(Vector256.AndNot(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
-        return new(a.x.BitAndNot(b.x), a.y.BitAndNot(b.y), a.z.BitAndNot(b.z), a.w.BitAndNot(b.w));
+        return new(a.x.andnot(b.x), a.y.andnot(b.y), a.z.andnot(b.z), a.w.andnot(b.w));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 popcnt(this b64v4 a)
+    {
+        return new(a.x.asu().popcnt(), a.y.asu().popcnt(), a.z.asu().popcnt(), a.w.asu().popcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 lzcnt(this b64v4 a)
+    {
+        return new(a.x.asu().lzcnt(), a.y.asu().lzcnt(), a.z.asu().lzcnt(), a.w.asu().lzcnt());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long4 tzcnt(this b64v4 a)
+    {
+        return new(a.x.asu().tzcnt(), a.y.asu().tzcnt(), a.z.asu().tzcnt(), a.w.asu().tzcnt());
     }
 }
 

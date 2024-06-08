@@ -222,7 +222,7 @@ public partial struct <#= typeName #> : IVectorBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> BitAndNot(this <#= typeName #> a, <#= typeName #> b)
+    public static <#= typeName #> andnot(this <#= typeName #> a, <#= typeName #> b)
     {
 <#
             if (typ.simd)
@@ -239,7 +239,7 @@ public static partial class math
 <#
             }
 #>
-        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.BitAndNot(b.{Typ.xyzw[n]})")) #>);
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.andnot(b.{Typ.xyzw[n]})")) #>);
 <#
             if (typ.simd)
             {
@@ -249,6 +249,77 @@ public static partial class math
             }
 #>
     }
+<#
+            if (typ.size == 2)
+            {
+#>
+
+    [MethodImpl(256 | 512)]
+    public static short<#= i #> popcnt(this <#= typeName #> a)
+    {
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.asu().popcnt()")) #>);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short<#= i #> lzcnt(this <#= typeName #> a)
+    {
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.asu().lzcnt()")) #>);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short<#= i #> tzcnt(this <#= typeName #> a)
+    {
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.asu().tzcnt()")) #>);
+    }
+<#
+            }
+            else if (typ.size == 4)
+            {
+#>
+
+    [MethodImpl(256 | 512)]
+    public static int<#= i #> popcnt(this <#= typeName #> a)
+    {
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.asu().popcnt()")) #>);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int<#= i #> lzcnt(this <#= typeName #> a)
+    {
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.asu().lzcnt()")) #>);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int<#= i #> tzcnt(this <#= typeName #> a)
+    {
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.asu().tzcnt()")) #>);
+    }
+<#
+            }
+            else if (typ.size == 8)
+            {
+#>
+
+    [MethodImpl(256 | 512)]
+    public static long<#= i #> popcnt(this <#= typeName #> a)
+    {
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.asu().popcnt()")) #>);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long<#= i #> lzcnt(this <#= typeName #> a)
+    {
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.asu().lzcnt()")) #>);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long<#= i #> tzcnt(this <#= typeName #> a)
+    {
+        return new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.asu().tzcnt()")) #>);
+    }
+<#
+            }
+#>
 }
 
 #endregion // <#= typeName #>

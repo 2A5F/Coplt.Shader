@@ -57,6 +57,43 @@ public partial struct <#= typeName #>
     );
 }
 
+public static partial class math
+{
+<#
+        if (typ.f)
+        {
+#>
+    /// <summary>Returns the determinant of a <#= typeName #> matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> inverse(<#= typeName #> m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        var det = <#= typ.arithCast #>(a * d - b * c);
+
+        return new <#= typeName #>(d, -b, -c, a) * <#= typ.arithCast #>(<#= typ.one #> / det);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.compType #> determinant(<#= typeName #> m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        return <#= typ.arithCast #>(a * d - b * c);
+    }
+<#
+        }
+#>
+}
+
 #endregion // <#= typeName #>
 <#
     }

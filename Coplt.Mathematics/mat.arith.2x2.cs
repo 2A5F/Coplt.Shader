@@ -35,6 +35,36 @@ public partial struct float2x2
     );
 }
 
+public static partial class math
+{
+    /// <summary>Returns the determinant of a float2x2 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float2x2 inverse(float2x2 m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        var det = (a * d - b * c);
+
+        return new float2x2(d, -b, -c, a) * (1.0f / det);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float determinant(float2x2 m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        return (a * d - b * c);
+    }
+}
+
 #endregion // float2x2
 
 #region double2x2
@@ -70,6 +100,36 @@ public partial struct double2x2
     );
 }
 
+public static partial class math
+{
+    /// <summary>Returns the determinant of a double2x2 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double2x2 inverse(double2x2 m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        var det = (a * d - b * c);
+
+        return new double2x2(d, -b, -c, a) * (1.0 / det);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double determinant(double2x2 m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        return (a * d - b * c);
+    }
+}
+
 #endregion // double2x2
 
 #region short2x2
@@ -93,6 +153,10 @@ public partial struct short2x2
         v.x,   default,
         default, v.y
     );
+}
+
+public static partial class math
+{
 }
 
 #endregion // short2x2
@@ -120,6 +184,10 @@ public partial struct ushort2x2
     );
 }
 
+public static partial class math
+{
+}
+
 #endregion // ushort2x2
 
 #region int2x2
@@ -143,6 +211,10 @@ public partial struct int2x2
         v.x,   default,
         default, v.y
     );
+}
+
+public static partial class math
+{
 }
 
 #endregion // int2x2
@@ -170,6 +242,10 @@ public partial struct uint2x2
     );
 }
 
+public static partial class math
+{
+}
+
 #endregion // uint2x2
 
 #region long2x2
@@ -193,6 +269,10 @@ public partial struct long2x2
         v.x,   default,
         default, v.y
     );
+}
+
+public static partial class math
+{
 }
 
 #endregion // long2x2
@@ -220,6 +300,10 @@ public partial struct ulong2x2
     );
 }
 
+public static partial class math
+{
+}
+
 #endregion // ulong2x2
 
 #region decimal2x2
@@ -243,6 +327,36 @@ public partial struct decimal2x2
         v.x,   default,
         default, v.y
     );
+}
+
+public static partial class math
+{
+    /// <summary>Returns the determinant of a decimal2x2 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static decimal2x2 inverse(decimal2x2 m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        var det = (a * d - b * c);
+
+        return new decimal2x2(d, -b, -c, a) * (1m / det);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal determinant(decimal2x2 m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        return (a * d - b * c);
+    }
 }
 
 #endregion // decimal2x2
@@ -278,6 +392,36 @@ public partial struct half2x2
         v.x,   default,
         default, v.y
     );
+}
+
+public static partial class math
+{
+    /// <summary>Returns the determinant of a half2x2 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half2x2 inverse(half2x2 m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        var det = (half)(a * d - b * c);
+
+        return new half2x2(d, -b, -c, a) * (half)((half)1.0 / det);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half determinant(half2x2 m)
+    {
+        var a = m.c0.x;
+        var b = m.c1.x;
+        var c = m.c0.y;
+        var d = m.c1.y;
+
+        return (half)(a * d - b * c);
+    }
 }
 
 #endregion // half2x2

@@ -226,6 +226,28 @@ public static partial class math
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float csum(this float2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector64.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float cmin(this float2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float cmax(this float2 a)
+    {
+        return a.x.max(a.y);
+    }
 }
 
 #endregion // float2
@@ -457,6 +479,28 @@ public static partial class math
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float csum(this float3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float cmin(this float3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float cmax(this float3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // float3
@@ -685,6 +729,28 @@ public static partial class math
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float csum(this float4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z + a.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float cmin(this float4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float cmax(this float4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
+    }
 }
 
 #endregion // float4
@@ -912,6 +978,28 @@ public static partial class math
         #else // NET8_0_OR_GREATER
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
         #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double csum(this double2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double cmin(this double2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double cmax(this double2 a)
+    {
+        return a.x.max(a.y);
     }
 }
 
@@ -1144,6 +1232,28 @@ public static partial class math
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double csum(this double3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double cmin(this double3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double cmax(this double3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // double3
@@ -1372,6 +1482,28 @@ public static partial class math
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double csum(this double4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z + a.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double cmin(this double4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double cmax(this double4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
+    }
 }
 
 #endregion // double4
@@ -1523,6 +1655,24 @@ public static partial class math
     public static short2 fms(this short2 a, short2 b, short2 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short csum(this short2 a)
+    {
+        return (short)(a.x + a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short cmin(this short2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short cmax(this short2 a)
+    {
+        return a.x.max(a.y);
     }
 }
 
@@ -1679,6 +1829,24 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static short csum(this short3 a)
+    {
+        return (short)(a.x + a.y + a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short cmin(this short3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short cmax(this short3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // short3
@@ -1831,6 +1999,24 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static short csum(this short4 a)
+    {
+        return (short)(a.x + a.y + a.z + a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short cmin(this short4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short cmax(this short4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
+    }
 }
 
 #endregion // short4
@@ -1977,6 +2163,24 @@ public static partial class math
     public static ushort2 fms(this ushort2 a, ushort2 b, ushort2 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort csum(this ushort2 a)
+    {
+        return (ushort)(a.x + a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort cmin(this ushort2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort cmax(this ushort2 a)
+    {
+        return a.x.max(a.y);
     }
 }
 
@@ -2128,6 +2332,24 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ushort csum(this ushort3 a)
+    {
+        return (ushort)(a.x + a.y + a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort cmin(this ushort3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort cmax(this ushort3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // ushort3
@@ -2274,6 +2496,24 @@ public static partial class math
     public static ushort4 fms(this ushort4 a, ushort4 b, ushort4 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort csum(this ushort4 a)
+    {
+        return (ushort)(a.x + a.y + a.z + a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort cmin(this ushort4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort cmax(this ushort4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
     }
 }
 
@@ -2486,6 +2726,28 @@ public static partial class math
     public static int2 fms(this int2 a, int2 b, int2 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int csum(this int2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector64.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int cmin(this int2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int cmax(this int2 a)
+    {
+        return a.x.max(a.y);
     }
 }
 
@@ -2702,6 +2964,28 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static int csum(this int3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int cmin(this int3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int cmax(this int3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // int3
@@ -2914,6 +3198,28 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static int csum(this int4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z + a.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int cmin(this int4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int cmax(this int4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
+    }
 }
 
 #endregion // int4
@@ -3116,6 +3422,28 @@ public static partial class math
     public static uint2 fms(this uint2 a, uint2 b, uint2 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint csum(this uint2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector64.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint cmin(this uint2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint cmax(this uint2 a)
+    {
+        return a.x.max(a.y);
     }
 }
 
@@ -3323,6 +3651,28 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint csum(this uint3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint cmin(this uint3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint cmax(this uint3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // uint3
@@ -3525,6 +3875,28 @@ public static partial class math
     public static uint4 fms(this uint4 a, uint4 b, uint4 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint csum(this uint4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z + a.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint cmin(this uint4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint cmax(this uint4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
     }
 }
 
@@ -3737,6 +4109,28 @@ public static partial class math
     public static long2 fms(this long2 a, long2 b, long2 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long csum(this long2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long cmin(this long2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long cmax(this long2 a)
+    {
+        return a.x.max(a.y);
     }
 }
 
@@ -3953,6 +4347,28 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static long csum(this long3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long cmin(this long3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long cmax(this long3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // long3
@@ -4165,6 +4581,28 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static long csum(this long4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z + a.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long cmin(this long4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long cmax(this long4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
+    }
 }
 
 #endregion // long4
@@ -4367,6 +4805,28 @@ public static partial class math
     public static ulong2 fms(this ulong2 a, ulong2 b, ulong2 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong csum(this ulong2 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector128.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong cmin(this ulong2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong cmax(this ulong2 a)
+    {
+        return a.x.max(a.y);
     }
 }
 
@@ -4574,6 +5034,28 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong csum(this ulong3 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong cmin(this ulong3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong cmax(this ulong3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // ulong3
@@ -4777,6 +5259,28 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong csum(this ulong4 a)
+    {
+        #if NET8_0_OR_GREATER
+        return Vector256.Sum(a.vector);
+        #else // NET8_0_OR_GREATER
+        return (a.x + a.y + a.z + a.w);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong cmin(this ulong4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong cmax(this ulong4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
+    }
 }
 
 #endregion // ulong4
@@ -4928,6 +5432,24 @@ public static partial class math
     public static decimal2 fms(this decimal2 a, decimal2 b, decimal2 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal csum(this decimal2 a)
+    {
+        return (a.x + a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal cmin(this decimal2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal cmax(this decimal2 a)
+    {
+        return a.x.max(a.y);
     }
 }
 
@@ -5084,6 +5606,24 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal csum(this decimal3 a)
+    {
+        return (a.x + a.y + a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal cmin(this decimal3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal cmax(this decimal3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // decimal3
@@ -5236,6 +5776,24 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal csum(this decimal4 a)
+    {
+        return (a.x + a.y + a.z + a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal cmin(this decimal4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal cmax(this decimal4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
+    }
 }
 
 #endregion // decimal4
@@ -5387,6 +5945,24 @@ public static partial class math
     public static half2 fms(this half2 a, half2 b, half2 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half csum(this half2 a)
+    {
+        return (half)(a.x + a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half cmin(this half2 a)
+    {
+        return a.x.min(a.y);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half cmax(this half2 a)
+    {
+        return a.x.max(a.y);
     }
 }
 
@@ -5543,6 +6119,24 @@ public static partial class math
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half csum(this half3 a)
+    {
+        return (half)(a.x + a.y + a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half cmin(this half3 a)
+    {
+        return a.x.min(a.y).min(a.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half cmax(this half3 a)
+    {
+        return a.x.max(a.y).max(a.z);
+    }
 }
 
 #endregion // half3
@@ -5694,6 +6288,24 @@ public static partial class math
     public static half4 fms(this half4 a, half4 b, half4 c)
     {
         return new(a.x.fms(b.x, c.x), a.y.fms(b.y, c.y), a.z.fms(b.z, c.z), a.w.fms(b.w, c.w));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half csum(this half4 a)
+    {
+        return (half)(a.x + a.y + a.z + a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half cmin(this half4 a)
+    {
+        return a.x.min(a.y).min(a.z).min(a.w);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half cmax(this half4 a)
+    {
+        return a.x.max(a.y).max(a.z).max(a.w);
     }
 }
 

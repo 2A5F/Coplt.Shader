@@ -390,6 +390,12 @@ public static partial class math
     public static float3 transform(this float4x4 a, float3 b) 
         => b.xxxx.fma(a.c0, b.yyyy.fma(a.c1, b.zzzz.fma(a.c2, a.c3))).xyz;
         // (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
+
+    [MethodImpl(256 | 512)]
+    public static float4x4 inverse(float4x4 m)
+    {
+        return default;
+    }
 }
 
 #endregion // float4x4
@@ -782,6 +788,12 @@ public static partial class math
     public static double3 transform(this double4x4 a, double3 b) 
         => b.xxxx.fma(a.c0, b.yyyy.fma(a.c1, b.zzzz.fma(a.c2, a.c3))).xyz;
         // (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
+
+    [MethodImpl(256 | 512)]
+    public static double4x4 inverse(double4x4 m)
+    {
+        return default;
+    }
 }
 
 #endregion // double4x4
@@ -1317,6 +1329,12 @@ public static partial class math
     public static decimal3 transform(this decimal4x4 a, decimal3 b) 
         => b.xxxx.fma(a.c0, b.yyyy.fma(a.c1, b.zzzz.fma(a.c2, a.c3))).xyz;
         // (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
+
+    [MethodImpl(256 | 512)]
+    public static decimal4x4 inverse(decimal4x4 m)
+    {
+        return default;
+    }
 }
 
 #endregion // decimal4x4
@@ -1703,6 +1721,12 @@ public static partial class math
     public static half3 transform(this half4x4 a, half3 b) 
         => b.xxxx.fma(a.c0, b.yyyy.fma(a.c1, b.zzzz.fma(a.c2, a.c3))).xyz;
         // (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
+
+    [MethodImpl(256 | 512)]
+    public static half4x4 inverse(half4x4 m)
+    {
+        return default;
+    }
 }
 
 #endregion // half4x4

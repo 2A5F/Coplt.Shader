@@ -16,13 +16,19 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half asf(this short v) => v.BitCast<short, half>();
     [MethodImpl(256 | 512)]
+    public static half asf(this b16 v) => v.BitCast<b16, half>();
+    [MethodImpl(256 | 512)]
     public static float asf(this uint v) => v.BitCast<uint, float>();
     [MethodImpl(256 | 512)]
     public static float asf(this int v) => v.BitCast<int, float>();
     [MethodImpl(256 | 512)]
+    public static float asf(this b32 v) => v.BitCast<b32, float>();
+    [MethodImpl(256 | 512)]
     public static double asf(this ulong v) => v.BitCast<ulong, double>();
     [MethodImpl(256 | 512)]
     public static double asf(this long v) => v.BitCast<long, double>();
+    [MethodImpl(256 | 512)]
+    public static double asf(this b64 v) => v.BitCast<b64, double>();
     [MethodImpl(256 | 512)]
     public static half asf(this half v) => v;
     [MethodImpl(256 | 512)]
@@ -39,13 +45,19 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ushort asu(this short v) => (ushort)v;
     [MethodImpl(256 | 512)]
+    public static ushort asu(this b16 v) => v;
+    [MethodImpl(256 | 512)]
     public static uint asu(this uint v) => v;
     [MethodImpl(256 | 512)]
     public static uint asu(this int v) => (uint)v;
     [MethodImpl(256 | 512)]
+    public static uint asu(this b32 v) => v;
+    [MethodImpl(256 | 512)]
     public static ulong asu(this ulong v) => v;
     [MethodImpl(256 | 512)]
     public static ulong asu(this long v) => (ulong)v;
+    [MethodImpl(256 | 512)]
+    public static ulong asu(this b64 v) => v;
     [MethodImpl(256 | 512)]
     public static ushort asu(this half v) => v.BitCast<half, ushort>();
     [MethodImpl(256 | 512)]
@@ -62,13 +74,19 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static short asi(this short v) => v;
     [MethodImpl(256 | 512)]
+    public static short asi(this b16 v) => (short)(ushort)v;
+    [MethodImpl(256 | 512)]
     public static int asi(this uint v) => (int)v;
     [MethodImpl(256 | 512)]
     public static int asi(this int v) => v;
     [MethodImpl(256 | 512)]
+    public static uint asi(this b32 v) => (uint)(int)v;
+    [MethodImpl(256 | 512)]
     public static long asi(this ulong v) => (long)v;
     [MethodImpl(256 | 512)]
     public static long asi(this long v) => v;
+    [MethodImpl(256 | 512)]
+    public static long asi(this b64 v) => (long)(ulong)v;
     [MethodImpl(256 | 512)]
     public static short asi(this half v) => v.BitCast<half, short>();
     [MethodImpl(256 | 512)]
@@ -77,7 +95,291 @@ public static partial class math
     public static long asi(this double v) => v.BitCast<double, long>();
 
     #endregion
-    
+
+    #region popcnt
+
+    [MethodImpl(256 | 512)]
+    public static short popcnt(this half c) => popcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static short popcnt(this short c) => popcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static short popcnt(this ushort c) => (short)popcnt((uint)c);
+
+    [MethodImpl(256 | 512)]
+    public static int popcnt(this float c) => popcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int popcnt(this int c) => popcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int popcnt(this uint c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.PopCount(c);
+        #else
+        return SoftwareFallback(c);
+
+        [MethodImpl(256 | 512)]
+        static int SoftwareFallback(uint value)
+        {
+            value -= value >> 1 & 1431655765U;
+            value = (uint)(((int)value & 858993459) + ((int)(value >> 2) & 858993459));
+            value = (uint)(((int)value + (int)(value >> 4) & 252645135) * 16843009 >>> 24);
+            return (int)value;
+        }
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int popcnt(this double c) => popcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int popcnt(this long c) => popcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int popcnt(this ulong c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.PopCount(c);
+        #else
+        return SoftwareFallback(c);
+
+        [MethodImpl(256 | 512)]
+        static int SoftwareFallback(ulong value)
+        {
+            value -= value >> 1 & 6148914691236517205UL;
+            value = (ulong)(((long)value & 3689348814741910323L) + ((long)(value >> 2) & 3689348814741910323L));
+            value = (ulong)(((long)value + (long)(value >> 4) & 1085102592571150095L) * 72340172838076673L >>> 56);
+            return (int)value;
+        }
+        #endif
+    }
+
+    #endregion
+
+    #region lzcnt
+
+    [MethodImpl(256 | 512)]
+    public static short lzcnt(this half c) => lzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static short lzcnt(this short c) => lzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static short lzcnt(this ushort c) => (short)lzcnt((uint)c);
+
+    [MethodImpl(256 | 512)]
+    public static int lzcnt(this float c) => lzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int lzcnt(this int c) => lzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int lzcnt(this uint c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.LeadingZeroCount(c);
+        #else
+        if (c == 0) return 32;
+        return 31 ^ BitOps.Log2SoftwareFallback(c);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int lzcnt(this double c) => lzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int lzcnt(this long c) => lzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int lzcnt(this ulong c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.LeadingZeroCount(c);
+        #else
+        var hi = (uint)(c >> 32);
+
+        if (hi == 0)
+        {
+            return 32 + lzcnt((uint)c);
+        }
+
+        return lzcnt(hi);
+        #endif
+    }
+
+    #endregion
+
+    #region tzcnt
+
+    [MethodImpl(256 | 512)]
+    public static short tzcnt(this half c) => tzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static short tzcnt(this short c) => tzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static short tzcnt(this ushort c) => (short)tzcnt((uint)c);
+
+    [MethodImpl(256 | 512)]
+    public static int tzcnt(this float c) => tzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int tzcnt(this int c) => tzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int tzcnt(this uint c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.TrailingZeroCount(c);
+        #else
+        if (c == 0)
+        {
+            return 32;
+        }
+
+        // uint.MaxValue >> 27 is always in range [0 - 31] so we use Unsafe.AddByteOffset to avoid bounds check
+        return Unsafe.AddByteOffset(
+            // Using deBruijn sequence, k=2, n=5 (2^5=32) : 0b_0000_0111_0111_1100_1011_0101_0011_0001u
+            ref MemoryMarshal.GetReference(BitOps.TrailingZeroCountDeBruijn),
+            // uint|long -> IntPtr cast on 32-bit platforms does expensive overflow checks not needed here
+            (IntPtr)(int)(((c & (uint)-(int)c) * 0x077CB531u) >> 27));
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int tzcnt(this double c) => tzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int tzcnt(this long c) => tzcnt(c.asu());
+
+    [MethodImpl(256 | 512)]
+    public static int tzcnt(this ulong c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.TrailingZeroCount(c);
+        #else
+        var lo = (uint)c;
+
+        if (lo == 0)
+        {
+            return 32 + tzcnt((uint)(c >> 32));
+        }
+
+        return tzcnt(lo);
+        #endif
+    }
+
+    #endregion
+
+    #region up2pow2
+
+    [MethodImpl(256 | 512)]
+    public static ushort up2pow2(this ushort c) 
+    {
+        #if NET8_0_OR_GREATER
+        return (ushort)up2pow2((uint)c);
+        #else
+        // Based on https://graphics.stanford.edu/~seander/bithacks.html#RoundUpPowerOf2
+        var v = (uint)c;
+        --v;
+        v |= v >> 1;
+        v |= v >> 2;
+        v |= v >> 4;
+        v |= v >> 8;
+        return (ushort)(v + 1);
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint up2pow2(this uint c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.RoundUpToPowerOf2(c);
+        #else
+        // Based on https://graphics.stanford.edu/~seander/bithacks.html#RoundUpPowerOf2
+        --c;
+        c |= c >> 1;
+        c |= c >> 2;
+        c |= c >> 4;
+        c |= c >> 8;
+        c |= c >> 16;
+        return c + 1;
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong up2pow2(this ulong c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.RoundUpToPowerOf2(c);
+        #else
+        // Based on https://graphics.stanford.edu/~seander/bithacks.html#RoundUpPowerOf2
+        --c;
+        c |= c >> 1;
+        c |= c >> 2;
+        c |= c >> 4;
+        c |= c >> 8;
+        c |= c >> 16;
+        c |= c >> 32;
+        return c + 1;
+        #endif
+    }
+
+    #endregion
+
+    #region isPow2
+
+    [MethodImpl(256 | 512)]
+    public static bool isPow2(this short c) => isPow2((int)c);
+
+    [MethodImpl(256 | 512)]
+    public static bool isPow2(this ushort c) => isPow2((uint)c);
+
+    [MethodImpl(256 | 512)]
+    public static bool isPow2(this int c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.IsPow2(c);
+        #else
+        return (c & (c - 1)) == 0 && c > 0;
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static bool isPow2(this uint c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.IsPow2(c);
+        #else
+        return (c & (c - 1)) == 0 && c != 0;
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static bool isPow2(this long c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.IsPow2(c);
+        #else
+        return (c & (c - 1)) == 0 && c > 0;
+        #endif
+    }
+
+    [MethodImpl(256 | 512)]
+    public static bool isPow2(this ulong c)
+    {
+        #if NET8_0_OR_GREATER
+        return BitOperations.IsPow2(c);
+        #else
+        return (c & (c - 1)) == 0 && c != 0;
+        #endif
+    }
+
+    #endregion
+
     #region select
 
     [MethodImpl(256 | 512)]
@@ -110,251 +412,251 @@ public static partial class math
     #region BitNot
 
     [MethodImpl(256 | 512)]
-    public static b16 BitNot(this b16 v) => ~v;
+    internal static b16 BitNot(this b16 v) => ~v;
     [MethodImpl(256 | 512)]
-    public static b32 BitNot(this b32 v) => ~v;
+    internal static b32 BitNot(this b32 v) => ~v;
     [MethodImpl(256 | 512)]
-    public static b64 BitNot(this b64 v) => ~v;
+    internal static b64 BitNot(this b64 v) => ~v;
 
     [MethodImpl(256 | 512)]
-    public static byte BitNot(this byte v) => (byte)~(uint)v;
+    internal static byte BitNot(this byte v) => (byte)~(uint)v;
     [MethodImpl(256 | 512)]
-    public static sbyte BitNot(this sbyte v) => (sbyte)~(uint)v;
+    internal static sbyte BitNot(this sbyte v) => (sbyte)~(uint)v;
     [MethodImpl(256 | 512)]
-    public static ushort BitNot(this ushort v) => (ushort)~v;
+    internal static ushort BitNot(this ushort v) => (ushort)~v;
     [MethodImpl(256 | 512)]
-    public static short BitNot(this short v) => (short)~v;
+    internal static short BitNot(this short v) => (short)~v;
     [MethodImpl(256 | 512)]
-    public static uint BitNot(this uint v) => ~v;
+    internal static uint BitNot(this uint v) => ~v;
     [MethodImpl(256 | 512)]
-    public static int BitNot(this int v) => ~v;
+    internal static int BitNot(this int v) => ~v;
     [MethodImpl(256 | 512)]
-    public static ulong BitNot(this ulong v) => ~v;
+    internal static ulong BitNot(this ulong v) => ~v;
     [MethodImpl(256 | 512)]
-    public static long BitNot(this long v) => ~v;
+    internal static long BitNot(this long v) => ~v;
     [MethodImpl(256 | 512)]
-    public static half BitNot(this half v) => ((ushort)~v.AsUInt16()).AsHalf();
+    internal static half BitNot(this half v) => ((ushort)~v.AsUInt16()).AsHalf();
     [MethodImpl(256 | 512)]
-    public static float BitNot(this float v) => (~v.AsUInt32()).AsSingle();
+    internal static float BitNot(this float v) => (~v.AsUInt32()).AsSingle();
     [MethodImpl(256 | 512)]
-    public static double BitNot(this double v) => (~v.AsUInt32()).AsDouble();
+    internal static double BitNot(this double v) => (~v.AsUInt32()).AsDouble();
 
     #endregion
 
     #region BitOr
 
     [MethodImpl(256 | 512)]
-    public static b16 BitOr(this b16 a, b16 b) => a | b;
+    internal static b16 BitOr(this b16 a, b16 b) => a | b;
     [MethodImpl(256 | 512)]
-    public static b32 BitOr(this b32 a, b32 b) => a | b;
+    internal static b32 BitOr(this b32 a, b32 b) => a | b;
     [MethodImpl(256 | 512)]
-    public static b64 BitOr(this b64 a, b64 b) => a | b;
+    internal static b64 BitOr(this b64 a, b64 b) => a | b;
 
     [MethodImpl(256 | 512)]
-    public static byte BitOr(this byte a, byte b) => (byte)(a | b);
+    internal static byte BitOr(this byte a, byte b) => (byte)(a | b);
     [MethodImpl(256 | 512)]
-    public static sbyte BitOr(this sbyte a, sbyte b) => (sbyte)(a | b);
+    internal static sbyte BitOr(this sbyte a, sbyte b) => (sbyte)(a | b);
     [MethodImpl(256 | 512)]
-    public static ushort BitOr(this ushort a, ushort b) => (ushort)(a | b);
+    internal static ushort BitOr(this ushort a, ushort b) => (ushort)(a | b);
     [MethodImpl(256 | 512)]
-    public static short BitOr(this short a, short b) => (short)(a | b);
+    internal static short BitOr(this short a, short b) => (short)(a | b);
     [MethodImpl(256 | 512)]
-    public static uint BitOr(this uint a, uint b) => a | b;
+    internal static uint BitOr(this uint a, uint b) => a | b;
     [MethodImpl(256 | 512)]
-    public static int BitOr(this int a, int b) => a | b;
+    internal static int BitOr(this int a, int b) => a | b;
     [MethodImpl(256 | 512)]
-    public static ulong BitOr(this ulong a, ulong b) => a | b;
+    internal static ulong BitOr(this ulong a, ulong b) => a | b;
     [MethodImpl(256 | 512)]
-    public static long BitOr(this long a, long b) => a | b;
+    internal static long BitOr(this long a, long b) => a | b;
     [MethodImpl(256 | 512)]
-    public static half BitOr(this half a, half b) => ((ushort)(a.AsUInt16() | b.AsUInt16())).AsHalf();
+    internal static half BitOr(this half a, half b) => ((ushort)(a.AsUInt16() | b.AsUInt16())).AsHalf();
     [MethodImpl(256 | 512)]
-    public static float BitOr(this float a, float b) => (a.AsUInt32() | b.AsUInt32()).AsSingle();
+    internal static float BitOr(this float a, float b) => (a.AsUInt32() | b.AsUInt32()).AsSingle();
     [MethodImpl(256 | 512)]
-    public static double BitOr(this double a, double b) => (a.AsUInt32() | b.AsUInt32()).AsDouble();
+    internal static double BitOr(this double a, double b) => (a.AsUInt32() | b.AsUInt32()).AsDouble();
 
     #endregion
 
     #region BitAnd
 
     [MethodImpl(256 | 512)]
-    public static b16 BitAnd(this b16 a, b16 b) => a & b;
+    internal static b16 BitAnd(this b16 a, b16 b) => a & b;
     [MethodImpl(256 | 512)]
-    public static b32 BitAnd(this b32 a, b32 b) => a & b;
+    internal static b32 BitAnd(this b32 a, b32 b) => a & b;
     [MethodImpl(256 | 512)]
-    public static b64 BitAnd(this b64 a, b64 b) => a & b;
+    internal static b64 BitAnd(this b64 a, b64 b) => a & b;
 
     [MethodImpl(256 | 512)]
-    public static byte BitAnd(this byte a, byte b) => (byte)(a & b);
+    internal static byte BitAnd(this byte a, byte b) => (byte)(a & b);
     [MethodImpl(256 | 512)]
-    public static sbyte BitAnd(this sbyte a, sbyte b) => (sbyte)(a & b);
+    internal static sbyte BitAnd(this sbyte a, sbyte b) => (sbyte)(a & b);
     [MethodImpl(256 | 512)]
-    public static ushort BitAnd(this ushort a, ushort b) => (ushort)(a & b);
+    internal static ushort BitAnd(this ushort a, ushort b) => (ushort)(a & b);
     [MethodImpl(256 | 512)]
-    public static short BitAnd(this short a, short b) => (short)(a & b);
+    internal static short BitAnd(this short a, short b) => (short)(a & b);
     [MethodImpl(256 | 512)]
-    public static uint BitAnd(this uint a, uint b) => a & b;
+    internal static uint BitAnd(this uint a, uint b) => a & b;
     [MethodImpl(256 | 512)]
-    public static int BitAnd(this int a, int b) => a & b;
+    internal static int BitAnd(this int a, int b) => a & b;
     [MethodImpl(256 | 512)]
-    public static ulong BitAnd(this ulong a, ulong b) => a & b;
+    internal static ulong BitAnd(this ulong a, ulong b) => a & b;
     [MethodImpl(256 | 512)]
-    public static long BitAnd(this long a, long b) => a & b;
+    internal static long BitAnd(this long a, long b) => a & b;
     [MethodImpl(256 | 512)]
-    public static half BitAnd(this half a, half b) => ((ushort)(a.AsUInt16() & b.AsUInt16())).AsHalf();
+    internal static half BitAnd(this half a, half b) => ((ushort)(a.AsUInt16() & b.AsUInt16())).AsHalf();
     [MethodImpl(256 | 512)]
-    public static float BitAnd(this float a, float b) => (a.AsUInt32() & b.AsUInt32()).AsSingle();
+    internal static float BitAnd(this float a, float b) => (a.AsUInt32() & b.AsUInt32()).AsSingle();
     [MethodImpl(256 | 512)]
-    public static double BitAnd(this double a, double b) => (a.AsUInt32() & b.AsUInt32()).AsDouble();
+    internal static double BitAnd(this double a, double b) => (a.AsUInt32() & b.AsUInt32()).AsDouble();
 
     #endregion
 
     #region BitXor
 
     [MethodImpl(256 | 512)]
-    public static b16 BitXor(this b16 a, b16 b) => a ^ b;
+    internal static b16 BitXor(this b16 a, b16 b) => a ^ b;
     [MethodImpl(256 | 512)]
-    public static b32 BitXor(this b32 a, b32 b) => a ^ b;
+    internal static b32 BitXor(this b32 a, b32 b) => a ^ b;
     [MethodImpl(256 | 512)]
-    public static b64 BitXor(this b64 a, b64 b) => a ^ b;
+    internal static b64 BitXor(this b64 a, b64 b) => a ^ b;
 
     [MethodImpl(256 | 512)]
-    public static byte BitXor(this byte a, byte b) => (byte)(a ^ b);
+    internal static byte BitXor(this byte a, byte b) => (byte)(a ^ b);
     [MethodImpl(256 | 512)]
-    public static sbyte BitXor(this sbyte a, sbyte b) => (sbyte)(a ^ b);
+    internal static sbyte BitXor(this sbyte a, sbyte b) => (sbyte)(a ^ b);
     [MethodImpl(256 | 512)]
-    public static ushort BitXor(this ushort a, ushort b) => (ushort)(a ^ b);
+    internal static ushort BitXor(this ushort a, ushort b) => (ushort)(a ^ b);
     [MethodImpl(256 | 512)]
-    public static short BitXor(this short a, short b) => (short)(a ^ b);
+    internal static short BitXor(this short a, short b) => (short)(a ^ b);
     [MethodImpl(256 | 512)]
-    public static uint BitXor(this uint a, uint b) => a ^ b;
+    internal static uint BitXor(this uint a, uint b) => a ^ b;
     [MethodImpl(256 | 512)]
-    public static int BitXor(this int a, int b) => a ^ b;
+    internal static int BitXor(this int a, int b) => a ^ b;
     [MethodImpl(256 | 512)]
-    public static ulong BitXor(this ulong a, ulong b) => a ^ b;
+    internal static ulong BitXor(this ulong a, ulong b) => a ^ b;
     [MethodImpl(256 | 512)]
-    public static long BitXor(this long a, long b) => a ^ b;
+    internal static long BitXor(this long a, long b) => a ^ b;
     [MethodImpl(256 | 512)]
-    public static half BitXor(this half a, half b) => ((ushort)(a.AsUInt16() ^ b.AsUInt16())).AsHalf();
+    internal static half BitXor(this half a, half b) => ((ushort)(a.AsUInt16() ^ b.AsUInt16())).AsHalf();
     [MethodImpl(256 | 512)]
-    public static float BitXor(this float a, float b) => (a.AsUInt32() ^ b.AsUInt32()).AsSingle();
+    internal static float BitXor(this float a, float b) => (a.AsUInt32() ^ b.AsUInt32()).AsSingle();
     [MethodImpl(256 | 512)]
-    public static double BitXor(this double a, double b) => (a.AsUInt32() ^ b.AsUInt32()).AsDouble();
+    internal static double BitXor(this double a, double b) => (a.AsUInt32() ^ b.AsUInt32()).AsDouble();
 
     #endregion
 
     #region BitAndNot
 
     [MethodImpl(256 | 512)]
-    public static b16 BitAndNot(this b16 a, b16 b) => a & ~b;
+    public static b16 andnot(this b16 a, b16 b) => a & ~b;
     [MethodImpl(256 | 512)]
-    public static b32 BitAndNot(this b32 a, b32 b) => a & ~b;
+    public static b32 andnot(this b32 a, b32 b) => a & ~b;
     [MethodImpl(256 | 512)]
-    public static b64 BitAndNot(this b64 a, b64 b) => a & ~b;
+    public static b64 andnot(this b64 a, b64 b) => a & ~b;
 
     [MethodImpl(256 | 512)]
-    public static byte BitAndNot(this byte a, byte b) => (byte)(a & ~b);
+    public static byte andnot(this byte a, byte b) => (byte)(a & ~b);
     [MethodImpl(256 | 512)]
-    public static sbyte BitAndNot(this sbyte a, sbyte b) => (sbyte)(a & ~b);
+    public static sbyte andnot(this sbyte a, sbyte b) => (sbyte)(a & ~b);
     [MethodImpl(256 | 512)]
-    public static ushort BitAndNot(this ushort a, ushort b) => (ushort)(a & ~b);
+    public static ushort andnot(this ushort a, ushort b) => (ushort)(a & ~b);
     [MethodImpl(256 | 512)]
-    public static short BitAndNot(this short a, short b) => (short)(a & ~b);
+    public static short andnot(this short a, short b) => (short)(a & ~b);
     [MethodImpl(256 | 512)]
-    public static uint BitAndNot(this uint a, uint b) => a & ~b;
+    public static uint andnot(this uint a, uint b) => a & ~b;
     [MethodImpl(256 | 512)]
-    public static int BitAndNot(this int a, int b) => a & ~b;
+    public static int andnot(this int a, int b) => a & ~b;
     [MethodImpl(256 | 512)]
-    public static ulong BitAndNot(this ulong a, ulong b) => a & ~b;
+    public static ulong andnot(this ulong a, ulong b) => a & ~b;
     [MethodImpl(256 | 512)]
-    public static long BitAndNot(this long a, long b) => a & ~b;
+    public static long andnot(this long a, long b) => a & ~b;
     [MethodImpl(256 | 512)]
-    public static half BitAndNot(this half a, half b) => ((ushort)(a.AsUInt16() & ~b.AsUInt16())).AsHalf();
+    public static half andnot(this half a, half b) => ((ushort)(a.AsUInt16() & ~b.AsUInt16())).AsHalf();
     [MethodImpl(256 | 512)]
-    public static float BitAndNot(this float a, float b) => (a.AsUInt32() & ~b.AsUInt32()).AsSingle();
+    public static float andnot(this float a, float b) => (a.AsUInt32() & ~b.AsUInt32()).AsSingle();
     [MethodImpl(256 | 512)]
-    public static double BitAndNot(this double a, double b) => (a.AsUInt32() & ~b.AsUInt32()).AsDouble();
+    public static double andnot(this double a, double b) => (a.AsUInt32() & ~b.AsUInt32()).AsDouble();
 
     #endregion
 
     #region BitShiftLeft
 
     [MethodImpl(256 | 512)]
-    public static byte BitShiftLeft(this byte a, int b) => (byte)(a << b);
+    internal static byte BitShiftLeft(this byte a, int b) => (byte)(a << b);
     [MethodImpl(256 | 512)]
-    public static sbyte BitShiftLeft(this sbyte a, int b) => (sbyte)(a << b);
+    internal static sbyte BitShiftLeft(this sbyte a, int b) => (sbyte)(a << b);
     [MethodImpl(256 | 512)]
-    public static ushort BitShiftLeft(this ushort a, int b) => (ushort)(a << b);
+    internal static ushort BitShiftLeft(this ushort a, int b) => (ushort)(a << b);
     [MethodImpl(256 | 512)]
-    public static short BitShiftLeft(this short a, int b) => (short)(a << b);
+    internal static short BitShiftLeft(this short a, int b) => (short)(a << b);
     [MethodImpl(256 | 512)]
-    public static uint BitShiftLeft(this uint a, int b) => a << b;
+    internal static uint BitShiftLeft(this uint a, int b) => a << b;
     [MethodImpl(256 | 512)]
-    public static int BitShiftLeft(this int a, int b) => a << b;
+    internal static int BitShiftLeft(this int a, int b) => a << b;
     [MethodImpl(256 | 512)]
-    public static ulong BitShiftLeft(this ulong a, int b) => a << b;
+    internal static ulong BitShiftLeft(this ulong a, int b) => a << b;
     [MethodImpl(256 | 512)]
-    public static long BitShiftLeft(this long a, int b) => a << b;
+    internal static long BitShiftLeft(this long a, int b) => a << b;
     [MethodImpl(256 | 512)]
-    public static half BitShiftLeft(this half a, int b) => ((ushort)(a.AsUInt16() << b)).AsHalf();
+    internal static half BitShiftLeft(this half a, int b) => ((ushort)(a.AsUInt16() << b)).AsHalf();
     [MethodImpl(256 | 512)]
-    public static float BitShiftLeft(this float a, int b) => (a.AsUInt32() << b).AsSingle();
+    internal static float BitShiftLeft(this float a, int b) => (a.AsUInt32() << b).AsSingle();
     [MethodImpl(256 | 512)]
-    public static double BitShiftLeft(this double a, int b) => (a.AsUInt32() << b).AsDouble();
+    internal static double BitShiftLeft(this double a, int b) => (a.AsUInt32() << b).AsDouble();
 
     #endregion
 
     #region BitShiftRight
 
     [MethodImpl(256 | 512)]
-    public static byte BitShiftRight(this byte a, int b) => (byte)(a >> b);
+    internal static byte BitShiftRight(this byte a, int b) => (byte)(a >> b);
     [MethodImpl(256 | 512)]
-    public static sbyte BitShiftRight(this sbyte a, int b) => (sbyte)(a >> b);
+    internal static sbyte BitShiftRight(this sbyte a, int b) => (sbyte)(a >> b);
     [MethodImpl(256 | 512)]
-    public static ushort BitShiftRight(this ushort a, int b) => (ushort)(a >> b);
+    internal static ushort BitShiftRight(this ushort a, int b) => (ushort)(a >> b);
     [MethodImpl(256 | 512)]
-    public static short BitShiftRight(this short a, int b) => (short)(a >> b);
+    internal static short BitShiftRight(this short a, int b) => (short)(a >> b);
     [MethodImpl(256 | 512)]
-    public static uint BitShiftRight(this uint a, int b) => a >> b;
+    internal static uint BitShiftRight(this uint a, int b) => a >> b;
     [MethodImpl(256 | 512)]
-    public static int BitShiftRight(this int a, int b) => a >> b;
+    internal static int BitShiftRight(this int a, int b) => a >> b;
     [MethodImpl(256 | 512)]
-    public static ulong BitShiftRight(this ulong a, int b) => a >> b;
+    internal static ulong BitShiftRight(this ulong a, int b) => a >> b;
     [MethodImpl(256 | 512)]
-    public static long BitShiftRight(this long a, int b) => a >> b;
+    internal static long BitShiftRight(this long a, int b) => a >> b;
     [MethodImpl(256 | 512)]
-    public static half BitShiftRight(this half a, int b) => ((ushort)(a.AsUInt16() >> b)).AsHalf();
+    internal static half BitShiftRight(this half a, int b) => ((ushort)(a.AsUInt16() >> b)).AsHalf();
     [MethodImpl(256 | 512)]
-    public static float BitShiftRight(this float a, int b) => (a.AsUInt32() >> b).AsSingle();
+    internal static float BitShiftRight(this float a, int b) => (a.AsUInt32() >> b).AsSingle();
     [MethodImpl(256 | 512)]
-    public static double BitShiftRight(this double a, int b) => (a.AsUInt32() >> b).AsDouble();
+    internal static double BitShiftRight(this double a, int b) => (a.AsUInt32() >> b).AsDouble();
 
     #endregion
 
     #region BitShiftRightUnsigned
 
     [MethodImpl(256 | 512)]
-    public static byte BitShiftRightUnsigned(this byte a, int b) => (byte)(a >>> b);
+    internal static byte BitShiftRightUnsigned(this byte a, int b) => (byte)(a >>> b);
     [MethodImpl(256 | 512)]
-    public static sbyte BitShiftRightUnsigned(this sbyte a, int b) => (sbyte)(a >>> b);
+    internal static sbyte BitShiftRightUnsigned(this sbyte a, int b) => (sbyte)(a >>> b);
     [MethodImpl(256 | 512)]
-    public static ushort BitShiftRightUnsigned(this ushort a, int b) => (ushort)(a >>> b);
+    internal static ushort BitShiftRightUnsigned(this ushort a, int b) => (ushort)(a >>> b);
     [MethodImpl(256 | 512)]
-    public static short BitShiftRightUnsigned(this short a, int b) => (short)(a >>> b);
+    internal static short BitShiftRightUnsigned(this short a, int b) => (short)(a >>> b);
     [MethodImpl(256 | 512)]
-    public static uint BitShiftRightUnsigned(this uint a, int b) => a >>> b;
+    internal static uint BitShiftRightUnsigned(this uint a, int b) => a >>> b;
     [MethodImpl(256 | 512)]
-    public static int BitShiftRightUnsigned(this int a, int b) => a >>> b;
+    internal static int BitShiftRightUnsigned(this int a, int b) => a >>> b;
     [MethodImpl(256 | 512)]
-    public static ulong BitShiftRightUnsigned(this ulong a, int b) => a >>> b;
+    internal static ulong BitShiftRightUnsigned(this ulong a, int b) => a >>> b;
     [MethodImpl(256 | 512)]
-    public static long BitShiftRightUnsigned(this long a, int b) => a >>> b;
+    internal static long BitShiftRightUnsigned(this long a, int b) => a >>> b;
     [MethodImpl(256 | 512)]
-    public static half BitShiftRightUnsigned(this half a, int b) => ((ushort)(a.AsUInt16() >>> b)).AsHalf();
+    internal static half BitShiftRightUnsigned(this half a, int b) => ((ushort)(a.AsUInt16() >>> b)).AsHalf();
     [MethodImpl(256 | 512)]
-    public static float BitShiftRightUnsigned(this float a, int b) => (a.AsUInt32() >>> b).AsSingle();
+    internal static float BitShiftRightUnsigned(this float a, int b) => (a.AsUInt32() >>> b).AsSingle();
     [MethodImpl(256 | 512)]
-    public static double BitShiftRightUnsigned(this double a, int b) => (a.AsUInt32() >>> b).AsDouble();
+    internal static double BitShiftRightUnsigned(this double a, int b) => (a.AsUInt32() >>> b).AsDouble();
 
     #endregion
 
@@ -731,7 +1033,7 @@ public static partial class math
     public static decimal fms(this decimal a, decimal b, decimal c) => a * b - c;
 
     #endregion
-    
+
     #region Log
 
     [MethodImpl(256 | 512)]

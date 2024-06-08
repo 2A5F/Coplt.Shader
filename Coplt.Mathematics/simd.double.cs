@@ -1,5 +1,5 @@
 ﻿#if NET8_0_OR_GREATER
-namespace Coplt.Mathematics;
+namespace Coplt.Mathematics.Simd;
 
 public static partial class simd_double
 {

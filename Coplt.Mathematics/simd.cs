@@ -4,7 +4,7 @@ using System.Runtime.Intrinsics.Wasm;
 using System.Runtime.Intrinsics.X86;
 using X86 = System.Runtime.Intrinsics.X86;
 
-namespace Coplt.Mathematics;
+namespace Coplt.Mathematics.Simd;
 
 public static partial class simd
 {
@@ -84,6 +84,82 @@ public static partial class simd
         }
         var (l, u) = Vector128.Widen(v);
         return Vector256.Create(Vector128.ConvertToDouble(l), Vector128.ConvertToDouble(u));
+    }
+
+    #endregion
+
+    #region Low2LowHigh
+
+    /// <summary>
+    /// <code>
+    /// a (x0, y0, z0, w0) (l0, h0)
+    /// b (x1, y1, z1, w1) (l1, h1)
+    /// r (x0, y0, x1, y1) (l0, l1)
+    /// </code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static Vector128<T> MoveLowToHigh<T>(Vector128<T> a, Vector128<T> b)
+    {
+        if (Sse.IsSupported)
+        {
+            return Sse.MoveLowToHigh(a.As<T, float>(), b.As<T, float>()).As<float, T>();
+        }
+        return a.WithUpper(b.GetLower());
+    }
+
+    /// <summary>
+    /// <code>
+    /// a (x0, y0, z0, w0) (l0, h0)
+    /// b (x1, y1, z1, w1) (l1, h1)
+    /// r (x0, y0, x1, y1) (l0, l1)
+    /// </code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static Vector256<T> MoveLowToHigh<T>(Vector256<T> a, Vector256<T> b)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.Permute2x128(a.As<T, double>(), b.As<T, double>(), 0b0010_0000).As<double, T>();
+        }
+        return a.WithUpper(b.GetLower());
+    }
+
+    #endregion
+
+    #region High2HighLow
+
+    /// <summary>
+    /// <code>
+    /// a (x0, y0, z0, w0) (l0, h0)
+    /// b (x1, y1, z1, w1) (l1, h1)
+    /// r (z1, w1, z0, w0) (h1, h0)
+    /// </code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static Vector128<T> MoveHighToLow<T>(Vector128<T> a, Vector128<T> b)
+    {
+        if (Sse.IsSupported)
+        {
+            return Sse.MoveHighToLow(a.As<T, float>(), b.As<T, float>()).As<float, T>();
+        }
+        return a.WithLower(b.GetUpper());
+    }
+
+    /// <summary>
+    /// <code>
+    /// a (x0, y0, z0, w0) (l0, h0)
+    /// b (x1, y1, z1, w1) (l1, h1)
+    /// r (z1, w1, z0, w0) (h1, h0)
+    /// </code>
+    /// </summary>
+    [MethodImpl(256 | 512)]
+    public static Vector256<T> MoveHighToLow<T>(Vector256<T> a, Vector256<T> b)
+    {
+        if (Avx.IsSupported)
+        {
+            return Avx.Permute2x128(a.As<T, double>(), b.As<T, double>(), 0b0001_0011).As<double, T>();
+        }
+        return a.WithLower(b.GetUpper());
     }
 
     #endregion

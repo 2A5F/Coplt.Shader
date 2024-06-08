@@ -72,7 +72,7 @@ public partial struct <#= typeName #> : IMatrixBitops
 public static partial class math
 {
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> BitAndNot(this <#= typeName #> a, <#= typeName #> b) => new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i}.BitAndNot(b.c{i})")) #>);
+    public static <#= typeName #> andnot(this <#= typeName #> a, <#= typeName #> b) => new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i}.andnot(b.c{i})")) #>);
 }
 
 #endregion // <#= typeName #>

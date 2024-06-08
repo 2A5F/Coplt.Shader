@@ -430,6 +430,19 @@ public static partial class math
     public static <#= typ.name #>3 transform(this <#= typeName #> a, <#= typ.name #>3 b) 
         => b.xxxx.fma(a.c0, b.yyyy.fma(a.c1, b.zzzz.fma(a.c2, a.c3))).xyz;
         // (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
+<#
+        if (typ.f)
+        {
+#>
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> inverse(<#= typeName #> m)
+    {
+        return default;
+    }
+<#
+        }
+#>
 }
 
 #endregion // <#= typeName #>

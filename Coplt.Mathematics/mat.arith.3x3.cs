@@ -295,6 +295,40 @@ public partial struct float3x3
 
 public static partial class math
 {
+
+    /// <summary>Returns the float3x3 full inverse of a float3x3 matrix</summary>
+    /// <param name="m">Matrix to invert</param>
+    /// <returns>The inverted matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float3x3 inverse(float3x3 m)
+    {
+        var (c0, c1, c2) = m;
+        // var t0 = new float3(c1.x, c2.x, c0.x);
+        // var t1 = new float3(c1.y, c2.y, c0.y);
+        // var t2 = new float3(c1.z, c2.z, c0.z);
+        var (t0, t1, t2) = transpose(new float3x3(c1, c2, c0));
+    
+        var m0 = t1 * t2.yzx - t1.yzx * t2;
+        var m1 = t0.yzx * t2 - t0 * t2.yzx;
+        var m2 = t0 * t1.yzx - t0.yzx * t1;
+    
+        var rcpDet = (1.0f / csum(t0.zxy * m0));
+        return new float3x3(m0, m1, m2) * rcpDet;
+    }
+
+    // <summary>Returns the determinant of a float3x3 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float determinant(float3x3 m)
+    {
+        var (c0, c1, c2) = m;
+        var m00 = (c1.y * c2.z - c1.z * c2.y);
+        var m01 = (c0.y * c2.z - c0.z * c2.y);
+        var m02 = (c0.y * c1.z - c0.z * c1.y);
+
+        return (c0.x * m00 - c1.x * m01 + c2.x * m02);
+    }
 }
 
 #endregion // float3x3
@@ -592,6 +626,40 @@ public partial struct double3x3
 
 public static partial class math
 {
+
+    /// <summary>Returns the double3x3 full inverse of a double3x3 matrix</summary>
+    /// <param name="m">Matrix to invert</param>
+    /// <returns>The inverted matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double3x3 inverse(double3x3 m)
+    {
+        var (c0, c1, c2) = m;
+        // var t0 = new double3(c1.x, c2.x, c0.x);
+        // var t1 = new double3(c1.y, c2.y, c0.y);
+        // var t2 = new double3(c1.z, c2.z, c0.z);
+        var (t0, t1, t2) = transpose(new double3x3(c1, c2, c0));
+    
+        var m0 = t1 * t2.yzx - t1.yzx * t2;
+        var m1 = t0.yzx * t2 - t0 * t2.yzx;
+        var m2 = t0 * t1.yzx - t0.yzx * t1;
+    
+        var rcpDet = (1.0 / csum(t0.zxy * m0));
+        return new double3x3(m0, m1, m2) * rcpDet;
+    }
+
+    // <summary>Returns the determinant of a double3x3 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double determinant(double3x3 m)
+    {
+        var (c0, c1, c2) = m;
+        var m00 = (c1.y * c2.z - c1.z * c2.y);
+        var m01 = (c0.y * c2.z - c0.z * c2.y);
+        var m02 = (c0.y * c1.z - c0.z * c1.y);
+
+        return (c0.x * m00 - c1.x * m01 + c2.x * m02);
+    }
 }
 
 #endregion // double3x3
@@ -1033,6 +1101,40 @@ public partial struct decimal3x3
 
 public static partial class math
 {
+
+    /// <summary>Returns the decimal3x3 full inverse of a decimal3x3 matrix</summary>
+    /// <param name="m">Matrix to invert</param>
+    /// <returns>The inverted matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static decimal3x3 inverse(decimal3x3 m)
+    {
+        var (c0, c1, c2) = m;
+        // var t0 = new decimal3(c1.x, c2.x, c0.x);
+        // var t1 = new decimal3(c1.y, c2.y, c0.y);
+        // var t2 = new decimal3(c1.z, c2.z, c0.z);
+        var (t0, t1, t2) = transpose(new decimal3x3(c1, c2, c0));
+    
+        var m0 = t1 * t2.yzx - t1.yzx * t2;
+        var m1 = t0.yzx * t2 - t0 * t2.yzx;
+        var m2 = t0 * t1.yzx - t0.yzx * t1;
+    
+        var rcpDet = (1m / csum(t0.zxy * m0));
+        return new decimal3x3(m0, m1, m2) * rcpDet;
+    }
+
+    // <summary>Returns the determinant of a decimal3x3 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static decimal determinant(decimal3x3 m)
+    {
+        var (c0, c1, c2) = m;
+        var m00 = (c1.y * c2.z - c1.z * c2.y);
+        var m01 = (c0.y * c2.z - c0.z * c2.y);
+        var m02 = (c0.y * c1.z - c0.z * c1.y);
+
+        return (c0.x * m00 - c1.x * m01 + c2.x * m02);
+    }
 }
 
 #endregion // decimal3x3
@@ -1330,6 +1432,40 @@ public partial struct half3x3
 
 public static partial class math
 {
+
+    /// <summary>Returns the half3x3 full inverse of a half3x3 matrix</summary>
+    /// <param name="m">Matrix to invert</param>
+    /// <returns>The inverted matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half3x3 inverse(half3x3 m)
+    {
+        var (c0, c1, c2) = m;
+        // var t0 = new half3(c1.x, c2.x, c0.x);
+        // var t1 = new half3(c1.y, c2.y, c0.y);
+        // var t2 = new half3(c1.z, c2.z, c0.z);
+        var (t0, t1, t2) = transpose(new half3x3(c1, c2, c0));
+    
+        var m0 = t1 * t2.yzx - t1.yzx * t2;
+        var m1 = t0.yzx * t2 - t0 * t2.yzx;
+        var m2 = t0 * t1.yzx - t0.yzx * t1;
+    
+        var rcpDet = (half)((half)1.0 / csum(t0.zxy * m0));
+        return new half3x3(m0, m1, m2) * rcpDet;
+    }
+
+    // <summary>Returns the determinant of a half3x3 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half determinant(half3x3 m)
+    {
+        var (c0, c1, c2) = m;
+        var m00 = (half)(c1.y * c2.z - c1.z * c2.y);
+        var m01 = (half)(c0.y * c2.z - c0.z * c2.y);
+        var m02 = (half)(c0.y * c1.z - c0.z * c1.y);
+
+        return (half)(c0.x * m00 - c1.x * m01 + c2.x * m02);
+    }
 }
 
 #endregion // half3x3
