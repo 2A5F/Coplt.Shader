@@ -401,16 +401,16 @@ public static partial class math
         var r2y_r3y_r2x_r3x = movehl(c0, c1); // (z1, w1, z0, w0)
         var r2z_r3z_r2w_r3w = movehl(c3, c2); // (z2, w2, z3, w3)
 
-        var r0_wzyx = shuffle(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x, Shuffle42.zx_xz); // x3 x2 x1 x0
-        var r1_wzyx = shuffle(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x, Shuffle42.wy_yw); // y3 y2 y1 y0
-        var r2_wzyx = shuffle(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x, Shuffle42.zx_xz); // z3 z2 z1 z0
-        var r3_wzyx = shuffle(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x, Shuffle42.wy_yw); // w3 w2 w1 w0
+        var r0_wzyx = shuffle_zx_xz(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x); // x3 x2 x1 x0
+        var r1_wzyx = shuffle_wy_yw(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x); // y3 y2 y1 y0
+        var r2_wzyx = shuffle_zx_xz(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x); // z3 z2 z1 z0
+        var r3_wzyx = shuffle_wy_yw(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x); // w3 w2 w1 w0
         var r0_xyzw = r0_wzyx.wzyx; // x0 x1 x2 x3
 
-        var r1y_r2y_r1x_r2x = shuffle(c1, c0, Shuffle42.yz_yz); // (y1, z1, y0, z0)
-        var r1z_r2z_r1w_r2w = shuffle(c2, c3, Shuffle42.yz_yz); // (y2, z2, y3, z3)
-        var r3y_r0y_r3x_r0x = shuffle(c1, c0, Shuffle42.wx_wx); // (w1, x1, w0, x0)
-        var r3z_r0z_r3w_r0w = shuffle(c2, c3, Shuffle42.wx_wx); // (w2, x2, w3, x3)
+        var r1y_r2y_r1x_r2x = shuffle_yz_yz(c1, c0); // (y1, z1, y0, z0)
+        var r1z_r2z_r1w_r2w = shuffle_yz_yz(c2, c3); // (y2, z2, y3, z3)
+        var r3y_r0y_r3x_r0x = shuffle_wx_wx(c1, c0); // (w1, x1, w0, x0)
+        var r3z_r0z_r3w_r0w = shuffle_wx_wx(c2, c3); // (w2, x2, w3, x3)
 
         // Calculate remaining inner term pairs. inner terms have zw=-xy, so we only have to calculate xy and can pack two pairs per vector
         var inner12_23 = r1y_r2y_r1x_r2x * r2z_r3z_r2w_r3w - r1z_r2z_r1w_r2w * r2y_r3y_r2x_r3x;
@@ -853,16 +853,16 @@ public static partial class math
         var r2y_r3y_r2x_r3x = movehl(c0, c1); // (z1, w1, z0, w0)
         var r2z_r3z_r2w_r3w = movehl(c3, c2); // (z2, w2, z3, w3)
 
-        var r0_wzyx = shuffle(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x, Shuffle42.zx_xz); // x3 x2 x1 x0
-        var r1_wzyx = shuffle(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x, Shuffle42.wy_yw); // y3 y2 y1 y0
-        var r2_wzyx = shuffle(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x, Shuffle42.zx_xz); // z3 z2 z1 z0
-        var r3_wzyx = shuffle(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x, Shuffle42.wy_yw); // w3 w2 w1 w0
+        var r0_wzyx = shuffle_zx_xz(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x); // x3 x2 x1 x0
+        var r1_wzyx = shuffle_wy_yw(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x); // y3 y2 y1 y0
+        var r2_wzyx = shuffle_zx_xz(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x); // z3 z2 z1 z0
+        var r3_wzyx = shuffle_wy_yw(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x); // w3 w2 w1 w0
         var r0_xyzw = r0_wzyx.wzyx; // x0 x1 x2 x3
 
-        var r1y_r2y_r1x_r2x = shuffle(c1, c0, Shuffle42.yz_yz); // (y1, z1, y0, z0)
-        var r1z_r2z_r1w_r2w = shuffle(c2, c3, Shuffle42.yz_yz); // (y2, z2, y3, z3)
-        var r3y_r0y_r3x_r0x = shuffle(c1, c0, Shuffle42.wx_wx); // (w1, x1, w0, x0)
-        var r3z_r0z_r3w_r0w = shuffle(c2, c3, Shuffle42.wx_wx); // (w2, x2, w3, x3)
+        var r1y_r2y_r1x_r2x = shuffle_yz_yz(c1, c0); // (y1, z1, y0, z0)
+        var r1z_r2z_r1w_r2w = shuffle_yz_yz(c2, c3); // (y2, z2, y3, z3)
+        var r3y_r0y_r3x_r0x = shuffle_wx_wx(c1, c0); // (w1, x1, w0, x0)
+        var r3z_r0z_r3w_r0w = shuffle_wx_wx(c2, c3); // (w2, x2, w3, x3)
 
         // Calculate remaining inner term pairs. inner terms have zw=-xy, so we only have to calculate xy and can pack two pairs per vector
         var inner12_23 = r1y_r2y_r1x_r2x * r2z_r3z_r2w_r3w - r1z_r2z_r1w_r2w * r2y_r3y_r2x_r3x;
@@ -1448,16 +1448,16 @@ public static partial class math
         var r2y_r3y_r2x_r3x = movehl(c0, c1); // (z1, w1, z0, w0)
         var r2z_r3z_r2w_r3w = movehl(c3, c2); // (z2, w2, z3, w3)
 
-        var r0_wzyx = shuffle(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x, Shuffle42.zx_xz); // x3 x2 x1 x0
-        var r1_wzyx = shuffle(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x, Shuffle42.wy_yw); // y3 y2 y1 y0
-        var r2_wzyx = shuffle(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x, Shuffle42.zx_xz); // z3 z2 z1 z0
-        var r3_wzyx = shuffle(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x, Shuffle42.wy_yw); // w3 w2 w1 w0
+        var r0_wzyx = shuffle_zx_xz(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x); // x3 x2 x1 x0
+        var r1_wzyx = shuffle_wy_yw(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x); // y3 y2 y1 y0
+        var r2_wzyx = shuffle_zx_xz(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x); // z3 z2 z1 z0
+        var r3_wzyx = shuffle_wy_yw(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x); // w3 w2 w1 w0
         var r0_xyzw = r0_wzyx.wzyx; // x0 x1 x2 x3
 
-        var r1y_r2y_r1x_r2x = shuffle(c1, c0, Shuffle42.yz_yz); // (y1, z1, y0, z0)
-        var r1z_r2z_r1w_r2w = shuffle(c2, c3, Shuffle42.yz_yz); // (y2, z2, y3, z3)
-        var r3y_r0y_r3x_r0x = shuffle(c1, c0, Shuffle42.wx_wx); // (w1, x1, w0, x0)
-        var r3z_r0z_r3w_r0w = shuffle(c2, c3, Shuffle42.wx_wx); // (w2, x2, w3, x3)
+        var r1y_r2y_r1x_r2x = shuffle_yz_yz(c1, c0); // (y1, z1, y0, z0)
+        var r1z_r2z_r1w_r2w = shuffle_yz_yz(c2, c3); // (y2, z2, y3, z3)
+        var r3y_r0y_r3x_r0x = shuffle_wx_wx(c1, c0); // (w1, x1, w0, x0)
+        var r3z_r0z_r3w_r0w = shuffle_wx_wx(c2, c3); // (w2, x2, w3, x3)
 
         // Calculate remaining inner term pairs. inner terms have zw=-xy, so we only have to calculate xy and can pack two pairs per vector
         var inner12_23 = r1y_r2y_r1x_r2x * r2z_r3z_r2w_r3w - r1z_r2z_r1w_r2w * r2y_r3y_r2x_r3x;
@@ -1894,16 +1894,16 @@ public static partial class math
         var r2y_r3y_r2x_r3x = movehl(c0, c1); // (z1, w1, z0, w0)
         var r2z_r3z_r2w_r3w = movehl(c3, c2); // (z2, w2, z3, w3)
 
-        var r0_wzyx = shuffle(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x, Shuffle42.zx_xz); // x3 x2 x1 x0
-        var r1_wzyx = shuffle(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x, Shuffle42.wy_yw); // y3 y2 y1 y0
-        var r2_wzyx = shuffle(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x, Shuffle42.zx_xz); // z3 z2 z1 z0
-        var r3_wzyx = shuffle(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x, Shuffle42.wy_yw); // w3 w2 w1 w0
+        var r0_wzyx = shuffle_zx_xz(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x); // x3 x2 x1 x0
+        var r1_wzyx = shuffle_wy_yw(r0z_r1z_r0w_r1w, r0y_r1y_r0x_r1x); // y3 y2 y1 y0
+        var r2_wzyx = shuffle_zx_xz(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x); // z3 z2 z1 z0
+        var r3_wzyx = shuffle_wy_yw(r2z_r3z_r2w_r3w, r2y_r3y_r2x_r3x); // w3 w2 w1 w0
         var r0_xyzw = r0_wzyx.wzyx; // x0 x1 x2 x3
 
-        var r1y_r2y_r1x_r2x = shuffle(c1, c0, Shuffle42.yz_yz); // (y1, z1, y0, z0)
-        var r1z_r2z_r1w_r2w = shuffle(c2, c3, Shuffle42.yz_yz); // (y2, z2, y3, z3)
-        var r3y_r0y_r3x_r0x = shuffle(c1, c0, Shuffle42.wx_wx); // (w1, x1, w0, x0)
-        var r3z_r0z_r3w_r0w = shuffle(c2, c3, Shuffle42.wx_wx); // (w2, x2, w3, x3)
+        var r1y_r2y_r1x_r2x = shuffle_yz_yz(c1, c0); // (y1, z1, y0, z0)
+        var r1z_r2z_r1w_r2w = shuffle_yz_yz(c2, c3); // (y2, z2, y3, z3)
+        var r3y_r0y_r3x_r0x = shuffle_wx_wx(c1, c0); // (w1, x1, w0, x0)
+        var r3z_r0z_r3w_r0w = shuffle_wx_wx(c2, c3); // (w2, x2, w3, x3)
 
         // Calculate remaining inner term pairs. inner terms have zw=-xy, so we only have to calculate xy and can pack two pairs per vector
         var inner12_23 = r1y_r2y_r1x_r2x * r2z_r3z_r2w_r3w - r1z_r2z_r1w_r2w * r2y_r3y_r2x_r3x;
