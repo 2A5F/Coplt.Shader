@@ -19,11 +19,11 @@ public class Test1
         // var b = new double4(5, 6, 7, 8).UnsafeGetInner();
         // var r = simd_shuffle.Shuffle(a, b, Shuffle42.zx_xz);
         // Console.WriteLine(r);
-        var a = new float4(.1f, .2f, .3f, .4f).UnsafeGetInner();
-        var b = new float4(.5f, .6f, .7f, .8f).UnsafeGetInner();
-        var c = new float4(.9f, .10f, .11f, .12f).UnsafeGetInner();
-        var d = new float4(.13f, .14f, .15f, .16f).UnsafeGetInner();
-        var r = simd_matrix.Inverse4x4(a, b, c, d);
+        var a = new float4(.1f, .2f, .3f, .4f);
+        var b = new float4(.5f, .6f, .7f, .8f);
+        var c = new float4(.9f, .10f, .11f, .12f);
+        var d = new float4(.13f, .14f, .15f, .16f);
+        var r = math.inverse(new float4x4(a, b, c, d));
         Console.WriteLine(r.c0);
         Console.WriteLine(r.c1);
         Console.WriteLine(r.c2);

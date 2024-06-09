@@ -33,6 +33,7 @@
         <TextTemplate Include="simd_matrix_trn_4x2_to_2x4.tt" />
         <TextTemplate Include="simd_matrix_trn_4x4.tt" />
         <TextTemplate Include="simd_shuffle.4.2.tt" />
+        <TextTemplate Include="soft_shuffle.4.2.tt" />
         <TextTemplate Include="vec.arith.float.bin.tt" />
         <TextTemplate Include="vec.arith.float.tt" />
         <TextTemplate Include="vec.arith.int.tt" />
@@ -43,6 +44,7 @@
         <TextTemplate Include="vec.bool_op.tt" />
         <TextTemplate Include="vec.cmp.tt" />
         <TextTemplate Include="vec.json.tt" />
+        <TextTemplate Include="vec.shuffle.4.tt" />
         <TextTemplate Include="vecs.tt" />
         <TextTemplate Include="vec.ctor.merge.3.tt" />
         <TextTemplate Include="vec.ctor.merge.4.2.tt" />

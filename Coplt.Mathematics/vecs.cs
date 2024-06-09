@@ -6,7 +6,7 @@ namespace Coplt.Mathematics;
 [Serializable]
 [JsonConverter(typeof(float2JsonConverter))]
 public partial struct float2 : 
-    IVector2<float>, IVectorSelf<float2>
+    IVector2<float>, IVectorSelf<float2>, IVectorSelf<float, float2>
 {
 
     #region Static
@@ -14,34 +14,34 @@ public partial struct float2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static float2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static float2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1.0f); 
+        get => new(1.0f);
     }
 
     #endregion
@@ -51,7 +51,7 @@ public partial struct float2 :
     #if NET8_0_OR_GREATER
     internal Vector64<float> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector64<float>(float2 self) => self.vector;
@@ -245,7 +245,7 @@ public partial struct float2 :
 [Serializable]
 [JsonConverter(typeof(float3JsonConverter))]
 public partial struct float3 : 
-    IVector3<float>, IVectorSelf<float3>
+    IVector3<float>, IVectorSelf<float3>, IVectorSelf<float, float3>
 {
 
     #region Static
@@ -253,34 +253,34 @@ public partial struct float3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static float3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static float3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1.0f); 
+        get => new(1.0f);
     }
 
     #endregion
@@ -290,7 +290,7 @@ public partial struct float3 :
     #if NET8_0_OR_GREATER
     internal Vector128<float> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<float>(float3 self) => self.vector;
@@ -516,7 +516,7 @@ public partial struct float3 :
 [Serializable]
 [JsonConverter(typeof(float4JsonConverter))]
 public partial struct float4 : 
-    IVector4<float>, IVectorSelf<float4>
+    IVector4<float>, IVectorSelf<float4>, IVectorSelf<float, float4>
 {
 
     #region Static
@@ -524,34 +524,34 @@ public partial struct float4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static float4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static float4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1.0f); 
+        get => new(1.0f);
     }
 
     #endregion
@@ -561,7 +561,7 @@ public partial struct float4 :
     #if NET8_0_OR_GREATER
     internal Vector128<float> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<float>(float4 self) => self.vector;
@@ -817,7 +817,7 @@ public partial struct float4 :
 [Serializable]
 [JsonConverter(typeof(double2JsonConverter))]
 public partial struct double2 : 
-    IVector2<double>, IVectorSelf<double2>
+    IVector2<double>, IVectorSelf<double2>, IVectorSelf<double, double2>
 {
 
     #region Static
@@ -825,34 +825,34 @@ public partial struct double2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static double2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static double2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1.0); 
+        get => new(1.0);
     }
 
     #endregion
@@ -862,7 +862,7 @@ public partial struct double2 :
     #if NET8_0_OR_GREATER
     internal Vector128<double> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<double>(double2 self) => self.vector;
@@ -1056,7 +1056,7 @@ public partial struct double2 :
 [Serializable]
 [JsonConverter(typeof(double3JsonConverter))]
 public partial struct double3 : 
-    IVector3<double>, IVectorSelf<double3>
+    IVector3<double>, IVectorSelf<double3>, IVectorSelf<double, double3>
 {
 
     #region Static
@@ -1064,34 +1064,34 @@ public partial struct double3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 256; 
+        get => 256;
     }
 
     public static double3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static double3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1.0); 
+        get => new(1.0);
     }
 
     #endregion
@@ -1101,7 +1101,7 @@ public partial struct double3 :
     #if NET8_0_OR_GREATER
     internal Vector256<double> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<double>(double3 self) => self.vector;
@@ -1327,7 +1327,7 @@ public partial struct double3 :
 [Serializable]
 [JsonConverter(typeof(double4JsonConverter))]
 public partial struct double4 : 
-    IVector4<double>, IVectorSelf<double4>
+    IVector4<double>, IVectorSelf<double4>, IVectorSelf<double, double4>
 {
 
     #region Static
@@ -1335,34 +1335,34 @@ public partial struct double4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 256; 
+        get => 256;
     }
 
     public static double4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static double4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1.0); 
+        get => new(1.0);
     }
 
     #endregion
@@ -1372,7 +1372,7 @@ public partial struct double4 :
     #if NET8_0_OR_GREATER
     internal Vector256<double> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<double>(double4 self) => self.vector;
@@ -1628,7 +1628,7 @@ public partial struct double4 :
 [Serializable]
 [JsonConverter(typeof(short2JsonConverter))]
 public partial struct short2 : 
-    IVector2<short>, IVectorSelf<short2>
+    IVector2<short>, IVectorSelf<short2>, IVectorSelf<short, short2>
 {
 
     #region Static
@@ -1636,34 +1636,34 @@ public partial struct short2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
 
     public static short2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static short2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new((short)1); 
+        get => new((short)1);
     }
 
     #endregion
@@ -1808,7 +1808,7 @@ public partial struct short2 :
 [Serializable]
 [JsonConverter(typeof(short3JsonConverter))]
 public partial struct short3 : 
-    IVector3<short>, IVectorSelf<short3>
+    IVector3<short>, IVectorSelf<short3>, IVectorSelf<short, short3>
 {
 
     #region Static
@@ -1816,34 +1816,34 @@ public partial struct short3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static short3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static short3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new((short)1); 
+        get => new((short)1);
     }
 
     #endregion
@@ -2013,7 +2013,7 @@ public partial struct short3 :
 [Serializable]
 [JsonConverter(typeof(short4JsonConverter))]
 public partial struct short4 : 
-    IVector4<short>, IVectorSelf<short4>
+    IVector4<short>, IVectorSelf<short4>, IVectorSelf<short, short4>
 {
 
     #region Static
@@ -2021,34 +2021,34 @@ public partial struct short4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static short4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static short4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new((short)1); 
+        get => new((short)1);
     }
 
     #endregion
@@ -2241,7 +2241,7 @@ public partial struct short4 :
 [Serializable]
 [JsonConverter(typeof(ushort2JsonConverter))]
 public partial struct ushort2 : 
-    IVector2<ushort>, IVectorSelf<ushort2>
+    IVector2<ushort>, IVectorSelf<ushort2>, IVectorSelf<ushort, ushort2>
 {
 
     #region Static
@@ -2249,34 +2249,34 @@ public partial struct ushort2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
 
     public static ushort2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static ushort2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new((ushort)1); 
+        get => new((ushort)1);
     }
 
     #endregion
@@ -2421,7 +2421,7 @@ public partial struct ushort2 :
 [Serializable]
 [JsonConverter(typeof(ushort3JsonConverter))]
 public partial struct ushort3 : 
-    IVector3<ushort>, IVectorSelf<ushort3>
+    IVector3<ushort>, IVectorSelf<ushort3>, IVectorSelf<ushort, ushort3>
 {
 
     #region Static
@@ -2429,34 +2429,34 @@ public partial struct ushort3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static ushort3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static ushort3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new((ushort)1); 
+        get => new((ushort)1);
     }
 
     #endregion
@@ -2626,7 +2626,7 @@ public partial struct ushort3 :
 [Serializable]
 [JsonConverter(typeof(ushort4JsonConverter))]
 public partial struct ushort4 : 
-    IVector4<ushort>, IVectorSelf<ushort4>
+    IVector4<ushort>, IVectorSelf<ushort4>, IVectorSelf<ushort, ushort4>
 {
 
     #region Static
@@ -2634,34 +2634,34 @@ public partial struct ushort4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static ushort4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static ushort4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new((ushort)1); 
+        get => new((ushort)1);
     }
 
     #endregion
@@ -2854,7 +2854,7 @@ public partial struct ushort4 :
 [Serializable]
 [JsonConverter(typeof(int2JsonConverter))]
 public partial struct int2 : 
-    IVector2<int>, IVectorSelf<int2>
+    IVector2<int>, IVectorSelf<int2>, IVectorSelf<int, int2>
 {
 
     #region Static
@@ -2862,34 +2862,34 @@ public partial struct int2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static int2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static int2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1); 
+        get => new(1);
     }
 
     #endregion
@@ -2899,7 +2899,7 @@ public partial struct int2 :
     #if NET8_0_OR_GREATER
     internal Vector64<int> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector64<int>(int2 self) => self.vector;
@@ -3093,7 +3093,7 @@ public partial struct int2 :
 [Serializable]
 [JsonConverter(typeof(int3JsonConverter))]
 public partial struct int3 : 
-    IVector3<int>, IVectorSelf<int3>
+    IVector3<int>, IVectorSelf<int3>, IVectorSelf<int, int3>
 {
 
     #region Static
@@ -3101,34 +3101,34 @@ public partial struct int3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static int3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static int3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1); 
+        get => new(1);
     }
 
     #endregion
@@ -3138,7 +3138,7 @@ public partial struct int3 :
     #if NET8_0_OR_GREATER
     internal Vector128<int> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<int>(int3 self) => self.vector;
@@ -3364,7 +3364,7 @@ public partial struct int3 :
 [Serializable]
 [JsonConverter(typeof(int4JsonConverter))]
 public partial struct int4 : 
-    IVector4<int>, IVectorSelf<int4>
+    IVector4<int>, IVectorSelf<int4>, IVectorSelf<int, int4>
 {
 
     #region Static
@@ -3372,34 +3372,34 @@ public partial struct int4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static int4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static int4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1); 
+        get => new(1);
     }
 
     #endregion
@@ -3409,7 +3409,7 @@ public partial struct int4 :
     #if NET8_0_OR_GREATER
     internal Vector128<int> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<int>(int4 self) => self.vector;
@@ -3665,7 +3665,7 @@ public partial struct int4 :
 [Serializable]
 [JsonConverter(typeof(uint2JsonConverter))]
 public partial struct uint2 : 
-    IVector2<uint>, IVectorSelf<uint2>
+    IVector2<uint>, IVectorSelf<uint2>, IVectorSelf<uint, uint2>
 {
 
     #region Static
@@ -3673,34 +3673,34 @@ public partial struct uint2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static uint2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static uint2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1u); 
+        get => new(1u);
     }
 
     #endregion
@@ -3710,7 +3710,7 @@ public partial struct uint2 :
     #if NET8_0_OR_GREATER
     internal Vector64<uint> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector64<uint>(uint2 self) => self.vector;
@@ -3904,7 +3904,7 @@ public partial struct uint2 :
 [Serializable]
 [JsonConverter(typeof(uint3JsonConverter))]
 public partial struct uint3 : 
-    IVector3<uint>, IVectorSelf<uint3>
+    IVector3<uint>, IVectorSelf<uint3>, IVectorSelf<uint, uint3>
 {
 
     #region Static
@@ -3912,34 +3912,34 @@ public partial struct uint3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static uint3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static uint3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1u); 
+        get => new(1u);
     }
 
     #endregion
@@ -3949,7 +3949,7 @@ public partial struct uint3 :
     #if NET8_0_OR_GREATER
     internal Vector128<uint> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<uint>(uint3 self) => self.vector;
@@ -4175,7 +4175,7 @@ public partial struct uint3 :
 [Serializable]
 [JsonConverter(typeof(uint4JsonConverter))]
 public partial struct uint4 : 
-    IVector4<uint>, IVectorSelf<uint4>
+    IVector4<uint>, IVectorSelf<uint4>, IVectorSelf<uint, uint4>
 {
 
     #region Static
@@ -4183,34 +4183,34 @@ public partial struct uint4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static uint4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static uint4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1u); 
+        get => new(1u);
     }
 
     #endregion
@@ -4220,7 +4220,7 @@ public partial struct uint4 :
     #if NET8_0_OR_GREATER
     internal Vector128<uint> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<uint>(uint4 self) => self.vector;
@@ -4476,7 +4476,7 @@ public partial struct uint4 :
 [Serializable]
 [JsonConverter(typeof(long2JsonConverter))]
 public partial struct long2 : 
-    IVector2<long>, IVectorSelf<long2>
+    IVector2<long>, IVectorSelf<long2>, IVectorSelf<long, long2>
 {
 
     #region Static
@@ -4484,34 +4484,34 @@ public partial struct long2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static long2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static long2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1L); 
+        get => new(1L);
     }
 
     #endregion
@@ -4521,7 +4521,7 @@ public partial struct long2 :
     #if NET8_0_OR_GREATER
     internal Vector128<long> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<long>(long2 self) => self.vector;
@@ -4715,7 +4715,7 @@ public partial struct long2 :
 [Serializable]
 [JsonConverter(typeof(long3JsonConverter))]
 public partial struct long3 : 
-    IVector3<long>, IVectorSelf<long3>
+    IVector3<long>, IVectorSelf<long3>, IVectorSelf<long, long3>
 {
 
     #region Static
@@ -4723,34 +4723,34 @@ public partial struct long3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 256; 
+        get => 256;
     }
 
     public static long3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static long3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1L); 
+        get => new(1L);
     }
 
     #endregion
@@ -4760,7 +4760,7 @@ public partial struct long3 :
     #if NET8_0_OR_GREATER
     internal Vector256<long> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<long>(long3 self) => self.vector;
@@ -4986,7 +4986,7 @@ public partial struct long3 :
 [Serializable]
 [JsonConverter(typeof(long4JsonConverter))]
 public partial struct long4 : 
-    IVector4<long>, IVectorSelf<long4>
+    IVector4<long>, IVectorSelf<long4>, IVectorSelf<long, long4>
 {
 
     #region Static
@@ -4994,34 +4994,34 @@ public partial struct long4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 256; 
+        get => 256;
     }
 
     public static long4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static long4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1L); 
+        get => new(1L);
     }
 
     #endregion
@@ -5031,7 +5031,7 @@ public partial struct long4 :
     #if NET8_0_OR_GREATER
     internal Vector256<long> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<long>(long4 self) => self.vector;
@@ -5287,7 +5287,7 @@ public partial struct long4 :
 [Serializable]
 [JsonConverter(typeof(ulong2JsonConverter))]
 public partial struct ulong2 : 
-    IVector2<ulong>, IVectorSelf<ulong2>
+    IVector2<ulong>, IVectorSelf<ulong2>, IVectorSelf<ulong, ulong2>
 {
 
     #region Static
@@ -5295,34 +5295,34 @@ public partial struct ulong2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static ulong2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static ulong2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1UL); 
+        get => new(1UL);
     }
 
     #endregion
@@ -5332,7 +5332,7 @@ public partial struct ulong2 :
     #if NET8_0_OR_GREATER
     internal Vector128<ulong> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<ulong>(ulong2 self) => self.vector;
@@ -5526,7 +5526,7 @@ public partial struct ulong2 :
 [Serializable]
 [JsonConverter(typeof(ulong3JsonConverter))]
 public partial struct ulong3 : 
-    IVector3<ulong>, IVectorSelf<ulong3>
+    IVector3<ulong>, IVectorSelf<ulong3>, IVectorSelf<ulong, ulong3>
 {
 
     #region Static
@@ -5534,34 +5534,34 @@ public partial struct ulong3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 256; 
+        get => 256;
     }
 
     public static ulong3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static ulong3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1UL); 
+        get => new(1UL);
     }
 
     #endregion
@@ -5571,7 +5571,7 @@ public partial struct ulong3 :
     #if NET8_0_OR_GREATER
     internal Vector256<ulong> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<ulong>(ulong3 self) => self.vector;
@@ -5797,7 +5797,7 @@ public partial struct ulong3 :
 [Serializable]
 [JsonConverter(typeof(ulong4JsonConverter))]
 public partial struct ulong4 : 
-    IVector4<ulong>, IVectorSelf<ulong4>
+    IVector4<ulong>, IVectorSelf<ulong4>, IVectorSelf<ulong, ulong4>
 {
 
     #region Static
@@ -5805,34 +5805,34 @@ public partial struct ulong4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 256; 
+        get => 256;
     }
 
     public static ulong4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static ulong4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1UL); 
+        get => new(1UL);
     }
 
     #endregion
@@ -5842,7 +5842,7 @@ public partial struct ulong4 :
     #if NET8_0_OR_GREATER
     internal Vector256<ulong> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<ulong>(ulong4 self) => self.vector;
@@ -6098,7 +6098,7 @@ public partial struct ulong4 :
 [Serializable]
 [JsonConverter(typeof(decimal2JsonConverter))]
 public partial struct decimal2 : 
-    IVector2<decimal>, IVectorSelf<decimal2>
+    IVector2<decimal>, IVectorSelf<decimal2>, IVectorSelf<decimal, decimal2>
 {
 
     #region Static
@@ -6106,34 +6106,34 @@ public partial struct decimal2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 256; 
+        get => 256;
     }
 
     public static decimal2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static decimal2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1m); 
+        get => new(1m);
     }
 
     #endregion
@@ -6278,7 +6278,7 @@ public partial struct decimal2 :
 [Serializable]
 [JsonConverter(typeof(decimal3JsonConverter))]
 public partial struct decimal3 : 
-    IVector3<decimal>, IVectorSelf<decimal3>
+    IVector3<decimal>, IVectorSelf<decimal3>, IVectorSelf<decimal, decimal3>
 {
 
     #region Static
@@ -6286,34 +6286,34 @@ public partial struct decimal3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 512; 
+        get => 512;
     }
 
     public static decimal3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static decimal3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1m); 
+        get => new(1m);
     }
 
     #endregion
@@ -6483,7 +6483,7 @@ public partial struct decimal3 :
 [Serializable]
 [JsonConverter(typeof(decimal4JsonConverter))]
 public partial struct decimal4 : 
-    IVector4<decimal>, IVectorSelf<decimal4>
+    IVector4<decimal>, IVectorSelf<decimal4>, IVectorSelf<decimal, decimal4>
 {
 
     #region Static
@@ -6491,34 +6491,34 @@ public partial struct decimal4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 512; 
+        get => 512;
     }
 
     public static decimal4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static decimal4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(1m); 
+        get => new(1m);
     }
 
     #endregion
@@ -6711,7 +6711,7 @@ public partial struct decimal4 :
 [Serializable]
 [JsonConverter(typeof(half2JsonConverter))]
 public partial struct half2 : 
-    IVector2<half>, IVectorSelf<half2>
+    IVector2<half>, IVectorSelf<half2>, IVectorSelf<half, half2>
 {
 
     #region Static
@@ -6719,34 +6719,34 @@ public partial struct half2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
 
     public static half2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static half2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new((half)1.0); 
+        get => new((half)1.0);
     }
 
     #endregion
@@ -6891,7 +6891,7 @@ public partial struct half2 :
 [Serializable]
 [JsonConverter(typeof(half3JsonConverter))]
 public partial struct half3 : 
-    IVector3<half>, IVectorSelf<half3>
+    IVector3<half>, IVectorSelf<half3>, IVectorSelf<half, half3>
 {
 
     #region Static
@@ -6899,34 +6899,34 @@ public partial struct half3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static half3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static half3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new((half)1.0); 
+        get => new((half)1.0);
     }
 
     #endregion
@@ -7096,7 +7096,7 @@ public partial struct half3 :
 [Serializable]
 [JsonConverter(typeof(half4JsonConverter))]
 public partial struct half4 : 
-    IVector4<half>, IVectorSelf<half4>
+    IVector4<half>, IVectorSelf<half4>, IVectorSelf<half, half4>
 {
 
     #region Static
@@ -7104,34 +7104,34 @@ public partial struct half4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static half4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static half4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new((half)1.0); 
+        get => new((half)1.0);
     }
 
     #endregion
@@ -7324,7 +7324,7 @@ public partial struct half4 :
 [Serializable]
 [JsonConverter(typeof(b16v2JsonConverter))]
 public partial struct b16v2 : 
-    IVector2<b16>, IVectorSelf<b16v2>
+    IVector2<b16>, IVectorSelf<b16v2>, IVectorSelf<b16, b16v2>
 {
 
     #region Static
@@ -7332,34 +7332,34 @@ public partial struct b16v2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
 
     public static b16v2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static b16v2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(true); 
+        get => new(true);
     }
 
     #endregion
@@ -7504,7 +7504,7 @@ public partial struct b16v2 :
 [Serializable]
 [JsonConverter(typeof(b16v3JsonConverter))]
 public partial struct b16v3 : 
-    IVector3<b16>, IVectorSelf<b16v3>
+    IVector3<b16>, IVectorSelf<b16v3>, IVectorSelf<b16, b16v3>
 {
 
     #region Static
@@ -7512,34 +7512,34 @@ public partial struct b16v3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static b16v3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static b16v3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(true); 
+        get => new(true);
     }
 
     #endregion
@@ -7709,7 +7709,7 @@ public partial struct b16v3 :
 [Serializable]
 [JsonConverter(typeof(b16v4JsonConverter))]
 public partial struct b16v4 : 
-    IVector4<b16>, IVectorSelf<b16v4>
+    IVector4<b16>, IVectorSelf<b16v4>, IVectorSelf<b16, b16v4>
 {
 
     #region Static
@@ -7717,34 +7717,34 @@ public partial struct b16v4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => false; 
+        get => false;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static b16v4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static b16v4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(true); 
+        get => new(true);
     }
 
     #endregion
@@ -7937,7 +7937,7 @@ public partial struct b16v4 :
 [Serializable]
 [JsonConverter(typeof(b32v2JsonConverter))]
 public partial struct b32v2 : 
-    IVector2<b32>, IVectorSelf<b32v2>
+    IVector2<b32>, IVectorSelf<b32v2>, IVectorSelf<b32, b32v2>
 {
 
     #region Static
@@ -7945,34 +7945,34 @@ public partial struct b32v2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 8; 
+        get => 8;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 64; 
+        get => 64;
     }
 
     public static b32v2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static b32v2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(true); 
+        get => new(true);
     }
 
     #endregion
@@ -7982,7 +7982,7 @@ public partial struct b32v2 :
     #if NET8_0_OR_GREATER
     internal Vector64<uint> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector64<uint>(b32v2 self) => self.vector;
@@ -8176,7 +8176,7 @@ public partial struct b32v2 :
 [Serializable]
 [JsonConverter(typeof(b32v3JsonConverter))]
 public partial struct b32v3 : 
-    IVector3<b32>, IVectorSelf<b32v3>
+    IVector3<b32>, IVectorSelf<b32v3>, IVectorSelf<b32, b32v3>
 {
 
     #region Static
@@ -8184,34 +8184,34 @@ public partial struct b32v3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static b32v3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static b32v3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(true); 
+        get => new(true);
     }
 
     #endregion
@@ -8221,7 +8221,7 @@ public partial struct b32v3 :
     #if NET8_0_OR_GREATER
     internal Vector128<uint> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<uint>(b32v3 self) => self.vector;
@@ -8447,7 +8447,7 @@ public partial struct b32v3 :
 [Serializable]
 [JsonConverter(typeof(b32v4JsonConverter))]
 public partial struct b32v4 : 
-    IVector4<b32>, IVectorSelf<b32v4>
+    IVector4<b32>, IVectorSelf<b32v4>, IVectorSelf<b32, b32v4>
 {
 
     #region Static
@@ -8455,34 +8455,34 @@ public partial struct b32v4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static b32v4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static b32v4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(true); 
+        get => new(true);
     }
 
     #endregion
@@ -8492,7 +8492,7 @@ public partial struct b32v4 :
     #if NET8_0_OR_GREATER
     internal Vector128<uint> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<uint>(b32v4 self) => self.vector;
@@ -8748,7 +8748,7 @@ public partial struct b32v4 :
 [Serializable]
 [JsonConverter(typeof(b64v2JsonConverter))]
 public partial struct b64v2 : 
-    IVector2<b64>, IVectorSelf<b64v2>
+    IVector2<b64>, IVectorSelf<b64v2>, IVectorSelf<b64, b64v2>
 {
 
     #region Static
@@ -8756,34 +8756,34 @@ public partial struct b64v2 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 2; 
+        get => 2;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 16; 
+        get => 16;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 128; 
+        get => 128;
     }
 
     public static b64v2 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static b64v2 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(true); 
+        get => new(true);
     }
 
     #endregion
@@ -8793,7 +8793,7 @@ public partial struct b64v2 :
     #if NET8_0_OR_GREATER
     internal Vector128<ulong> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<ulong>(b64v2 self) => self.vector;
@@ -8987,7 +8987,7 @@ public partial struct b64v2 :
 [Serializable]
 [JsonConverter(typeof(b64v3JsonConverter))]
 public partial struct b64v3 : 
-    IVector3<b64>, IVectorSelf<b64v3>
+    IVector3<b64>, IVectorSelf<b64v3>, IVectorSelf<b64, b64v3>
 {
 
     #region Static
@@ -8995,34 +8995,34 @@ public partial struct b64v3 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 3; 
+        get => 3;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 256; 
+        get => 256;
     }
 
     public static b64v3 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static b64v3 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(true); 
+        get => new(true);
     }
 
     #endregion
@@ -9032,7 +9032,7 @@ public partial struct b64v3 :
     #if NET8_0_OR_GREATER
     internal Vector256<ulong> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<ulong>(b64v3 self) => self.vector;
@@ -9258,7 +9258,7 @@ public partial struct b64v3 :
 [Serializable]
 [JsonConverter(typeof(b64v4JsonConverter))]
 public partial struct b64v4 : 
-    IVector4<b64>, IVectorSelf<b64v4>
+    IVector4<b64>, IVectorSelf<b64v4>, IVectorSelf<b64, b64v4>
 {
 
     #region Static
@@ -9266,34 +9266,34 @@ public partial struct b64v4 :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => true; 
+        get => true;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => 4; 
+        get => 4;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => 32; 
+        get => 32;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => 256; 
+        get => 256;
     }
 
     public static b64v4 Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static b64v4 One
     { 
         [MethodImpl(256 | 512)]
-        get => new(true); 
+        get => new(true);
     }
 
     #endregion
@@ -9303,7 +9303,7 @@ public partial struct b64v4 :
     #if NET8_0_OR_GREATER
     internal Vector256<ulong> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<ulong>(b64v4 self) => self.vector;

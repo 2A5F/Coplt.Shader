@@ -110,7 +110,7 @@ namespace Coplt.Mathematics;
 [Serializable]
 [JsonConverter(typeof(<#= typeName #>JsonConverter))]
 public partial struct <#= typeName #> : 
-    IVector<#= i #><<#= typ.compType #>>, IVectorSelf<<#= typeName #>>
+    IVector<#= i #><<#= typ.compType #>>, IVectorSelf<<#= typeName #>>, IVectorSelf<<#= typ.compType #>, <#= typeName #>>
 {
 
     #region Static
@@ -118,34 +118,34 @@ public partial struct <#= typeName #> :
     public static bool IsSimdAccelerated
     { 
         [MethodImpl(256 | 512)]
-        get => <#= typ.simd ? "true" : "false" #>; 
+        get => <#= typ.simd ? "true" : "false" #>;
     }
     public static int Length
     { 
         [MethodImpl(256 | 512)]
-        get => <#= i #>; 
+        get => <#= i #>;
     }
     public static int SizeByte
     { 
         [MethodImpl(256 | 512)]
-        get => <#= byteSize #>; 
+        get => <#= byteSize #>;
     }
     public static int SizeBit
     { 
         [MethodImpl(256 | 512)]
-        get => <#= bitSize #>; 
+        get => <#= bitSize #>;
     }
 
     public static <#= typeName #> Zero
     { 
         [MethodImpl(256 | 512)]
-        get => default; 
+        get => default;
     }
 
     public static <#= typeName #> One
     { 
         [MethodImpl(256 | 512)]
-        get => new(<#= typ.one #>); 
+        get => new(<#= typ.one #>);
     }
 
     #endregion
@@ -159,7 +159,7 @@ public partial struct <#= typeName #> :
 #>
     internal Vector<#= bitSize #><<#= typ.simdComp #>> vector;
     
-    #region Unsafe Inner    
+    #region Unsafe Inner
 
     [MethodImpl(256 | 512)]
     public static explicit operator Vector<#= bitSize #><<#= typ.simdComp #>>(<#= typeName #> self) => self.vector;
