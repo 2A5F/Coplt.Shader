@@ -3,6 +3,7 @@ using System.Runtime.Intrinsics.Arm;
 
 namespace Coplt.Mathematics.Simd;
 
+[CpuOnly]
 public static partial class simd_shuffle
 {
     [MethodImpl(256 | 512)]

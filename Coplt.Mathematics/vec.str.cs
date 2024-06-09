@@ -10,10 +10,13 @@ public partial struct float2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"float2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"float2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -26,6 +29,7 @@ public partial struct float2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -49,10 +53,13 @@ public partial struct float3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"float3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"float3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -67,6 +74,7 @@ public partial struct float3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -92,10 +100,13 @@ public partial struct float4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"float4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"float4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -112,6 +123,7 @@ public partial struct float4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -139,10 +151,13 @@ public partial struct double2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"double2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"double2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -155,6 +170,7 @@ public partial struct double2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -178,10 +194,13 @@ public partial struct double3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"double3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"double3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -196,6 +215,7 @@ public partial struct double3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -221,10 +241,13 @@ public partial struct double4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"double4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"double4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -241,6 +264,7 @@ public partial struct double4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -268,10 +292,13 @@ public partial struct short2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"short2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"short2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -284,6 +311,7 @@ public partial struct short2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -307,10 +335,13 @@ public partial struct short3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"short3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"short3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -325,6 +356,7 @@ public partial struct short3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -350,10 +382,13 @@ public partial struct short4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"short4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"short4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -370,6 +405,7 @@ public partial struct short4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -397,10 +433,13 @@ public partial struct ushort2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"ushort2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"ushort2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -413,6 +452,7 @@ public partial struct ushort2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -436,10 +476,13 @@ public partial struct ushort3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"ushort3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"ushort3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -454,6 +497,7 @@ public partial struct ushort3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -479,10 +523,13 @@ public partial struct ushort4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"ushort4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"ushort4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -499,6 +546,7 @@ public partial struct ushort4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -526,10 +574,13 @@ public partial struct int2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"int2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"int2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -542,6 +593,7 @@ public partial struct int2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -565,10 +617,13 @@ public partial struct int3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"int3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"int3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -583,6 +638,7 @@ public partial struct int3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -608,10 +664,13 @@ public partial struct int4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"int4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"int4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -628,6 +687,7 @@ public partial struct int4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -655,10 +715,13 @@ public partial struct uint2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"uint2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"uint2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -671,6 +734,7 @@ public partial struct uint2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -694,10 +758,13 @@ public partial struct uint3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"uint3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"uint3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -712,6 +779,7 @@ public partial struct uint3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -737,10 +805,13 @@ public partial struct uint4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"uint4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"uint4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -757,6 +828,7 @@ public partial struct uint4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -784,10 +856,13 @@ public partial struct long2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"long2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"long2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -800,6 +875,7 @@ public partial struct long2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -823,10 +899,13 @@ public partial struct long3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"long3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"long3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -841,6 +920,7 @@ public partial struct long3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -866,10 +946,13 @@ public partial struct long4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"long4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"long4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -886,6 +969,7 @@ public partial struct long4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -913,10 +997,13 @@ public partial struct ulong2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"ulong2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -929,6 +1016,7 @@ public partial struct ulong2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -952,10 +1040,13 @@ public partial struct ulong3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"ulong3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -970,6 +1061,7 @@ public partial struct ulong3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -995,10 +1087,13 @@ public partial struct ulong4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"ulong4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"ulong4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1015,6 +1110,7 @@ public partial struct ulong4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1042,10 +1138,13 @@ public partial struct decimal2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"decimal2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1058,6 +1157,7 @@ public partial struct decimal2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1081,10 +1181,13 @@ public partial struct decimal3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"decimal3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1099,6 +1202,7 @@ public partial struct decimal3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1124,10 +1228,13 @@ public partial struct decimal4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"decimal4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"decimal4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1144,6 +1251,7 @@ public partial struct decimal4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1171,10 +1279,13 @@ public partial struct half2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"half2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"half2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1187,6 +1298,7 @@ public partial struct half2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1210,10 +1322,13 @@ public partial struct half3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"half3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"half3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1228,6 +1343,7 @@ public partial struct half3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1253,10 +1369,13 @@ public partial struct half4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"half4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"half4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1273,6 +1392,7 @@ public partial struct half4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1300,10 +1420,13 @@ public partial struct b16v2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"b16v2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"b16v2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1316,6 +1439,7 @@ public partial struct b16v2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1339,10 +1463,13 @@ public partial struct b16v3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"b16v3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"b16v3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1357,6 +1484,7 @@ public partial struct b16v3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1382,10 +1510,13 @@ public partial struct b16v4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"b16v4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"b16v4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1402,6 +1533,7 @@ public partial struct b16v4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1429,10 +1561,13 @@ public partial struct b32v2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"b32v2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"b32v2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1445,6 +1580,7 @@ public partial struct b32v2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1468,10 +1604,13 @@ public partial struct b32v3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"b32v3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"b32v3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1486,6 +1625,7 @@ public partial struct b32v3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1511,10 +1651,13 @@ public partial struct b32v4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"b32v4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"b32v4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1531,6 +1674,7 @@ public partial struct b32v4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1558,10 +1702,13 @@ public partial struct b64v2 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"b64v2({x}, {y})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"b64v2({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1574,6 +1721,7 @@ public partial struct b64v2 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1597,10 +1745,13 @@ public partial struct b64v3 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"b64v3({x}, {y}, {z})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"b64v3({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1615,6 +1766,7 @@ public partial struct b64v3 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1640,10 +1792,13 @@ public partial struct b64v4 : IFormattable
     , IUtf8SpanFormattable
     #endif
 {
+    [CpuOnly]
     public override string ToString() => $"b64v4({x}, {y}, {z}, {w})";
 
+    [CpuOnly]
     public string ToString(string? format, IFormatProvider? formatProvider) => $"b64v4({x.ToString(format, formatProvider)}, {y.ToString(format, formatProvider)}, {z.ToString(format, formatProvider)}, {w.ToString(format, formatProvider)})";
 
+    [CpuOnly]
     public bool TryFormat(Span<char> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;
@@ -1660,6 +1815,7 @@ public partial struct b64v4 : IFormattable
     }
 
     #if NET8_0_OR_GREATER
+    [CpuOnly]
     public bool TryFormat(Span<byte> dst, out int nc, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         nc = 0;

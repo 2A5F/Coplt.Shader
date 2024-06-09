@@ -4,6 +4,7 @@ namespace Coplt.Mathematics.Json;
 
 #region float2x2
 
+[CpuOnly]
 public class float2x2JsonConverter : JsonConverter<float2x2>
 {
     public override float2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -37,6 +38,7 @@ public class float2x2JsonConverter : JsonConverter<float2x2>
 
 #region float2x3
 
+[CpuOnly]
 public class float2x3JsonConverter : JsonConverter<float2x3>
 {
     public override float2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -76,6 +78,7 @@ public class float2x3JsonConverter : JsonConverter<float2x3>
 
 #region float2x4
 
+[CpuOnly]
 public class float2x4JsonConverter : JsonConverter<float2x4>
 {
     public override float2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -121,6 +124,7 @@ public class float2x4JsonConverter : JsonConverter<float2x4>
 
 #region float3x2
 
+[CpuOnly]
 public class float3x2JsonConverter : JsonConverter<float3x2>
 {
     public override float3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -160,6 +164,7 @@ public class float3x2JsonConverter : JsonConverter<float3x2>
 
 #region float3x3
 
+[CpuOnly]
 public class float3x3JsonConverter : JsonConverter<float3x3>
 {
     public override float3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -208,6 +213,7 @@ public class float3x3JsonConverter : JsonConverter<float3x3>
 
 #region float3x4
 
+[CpuOnly]
 public class float3x4JsonConverter : JsonConverter<float3x4>
 {
     public override float3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -265,6 +271,7 @@ public class float3x4JsonConverter : JsonConverter<float3x4>
 
 #region float4x2
 
+[CpuOnly]
 public class float4x2JsonConverter : JsonConverter<float4x2>
 {
     public override float4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -310,6 +317,7 @@ public class float4x2JsonConverter : JsonConverter<float4x2>
 
 #region float4x3
 
+[CpuOnly]
 public class float4x3JsonConverter : JsonConverter<float4x3>
 {
     public override float4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -367,6 +375,7 @@ public class float4x3JsonConverter : JsonConverter<float4x3>
 
 #region float4x4
 
+[CpuOnly]
 public class float4x4JsonConverter : JsonConverter<float4x4>
 {
     public override float4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -436,6 +445,7 @@ public class float4x4JsonConverter : JsonConverter<float4x4>
 
 #region double2x2
 
+[CpuOnly]
 public class double2x2JsonConverter : JsonConverter<double2x2>
 {
     public override double2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -469,6 +479,7 @@ public class double2x2JsonConverter : JsonConverter<double2x2>
 
 #region double2x3
 
+[CpuOnly]
 public class double2x3JsonConverter : JsonConverter<double2x3>
 {
     public override double2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -508,6 +519,7 @@ public class double2x3JsonConverter : JsonConverter<double2x3>
 
 #region double2x4
 
+[CpuOnly]
 public class double2x4JsonConverter : JsonConverter<double2x4>
 {
     public override double2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -553,6 +565,7 @@ public class double2x4JsonConverter : JsonConverter<double2x4>
 
 #region double3x2
 
+[CpuOnly]
 public class double3x2JsonConverter : JsonConverter<double3x2>
 {
     public override double3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -592,6 +605,7 @@ public class double3x2JsonConverter : JsonConverter<double3x2>
 
 #region double3x3
 
+[CpuOnly]
 public class double3x3JsonConverter : JsonConverter<double3x3>
 {
     public override double3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -640,6 +654,7 @@ public class double3x3JsonConverter : JsonConverter<double3x3>
 
 #region double3x4
 
+[CpuOnly]
 public class double3x4JsonConverter : JsonConverter<double3x4>
 {
     public override double3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -697,6 +712,7 @@ public class double3x4JsonConverter : JsonConverter<double3x4>
 
 #region double4x2
 
+[CpuOnly]
 public class double4x2JsonConverter : JsonConverter<double4x2>
 {
     public override double4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -742,6 +758,7 @@ public class double4x2JsonConverter : JsonConverter<double4x2>
 
 #region double4x3
 
+[CpuOnly]
 public class double4x3JsonConverter : JsonConverter<double4x3>
 {
     public override double4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -799,6 +816,7 @@ public class double4x3JsonConverter : JsonConverter<double4x3>
 
 #region double4x4
 
+[CpuOnly]
 public class double4x4JsonConverter : JsonConverter<double4x4>
 {
     public override double4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -868,6 +886,7 @@ public class double4x4JsonConverter : JsonConverter<double4x4>
 
 #region short2x2
 
+[CpuOnly]
 public class short2x2JsonConverter : JsonConverter<short2x2>
 {
     public override short2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -901,6 +920,7 @@ public class short2x2JsonConverter : JsonConverter<short2x2>
 
 #region short2x3
 
+[CpuOnly]
 public class short2x3JsonConverter : JsonConverter<short2x3>
 {
     public override short2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -940,6 +960,7 @@ public class short2x3JsonConverter : JsonConverter<short2x3>
 
 #region short2x4
 
+[CpuOnly]
 public class short2x4JsonConverter : JsonConverter<short2x4>
 {
     public override short2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -985,6 +1006,7 @@ public class short2x4JsonConverter : JsonConverter<short2x4>
 
 #region short3x2
 
+[CpuOnly]
 public class short3x2JsonConverter : JsonConverter<short3x2>
 {
     public override short3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1024,6 +1046,7 @@ public class short3x2JsonConverter : JsonConverter<short3x2>
 
 #region short3x3
 
+[CpuOnly]
 public class short3x3JsonConverter : JsonConverter<short3x3>
 {
     public override short3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1072,6 +1095,7 @@ public class short3x3JsonConverter : JsonConverter<short3x3>
 
 #region short3x4
 
+[CpuOnly]
 public class short3x4JsonConverter : JsonConverter<short3x4>
 {
     public override short3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1129,6 +1153,7 @@ public class short3x4JsonConverter : JsonConverter<short3x4>
 
 #region short4x2
 
+[CpuOnly]
 public class short4x2JsonConverter : JsonConverter<short4x2>
 {
     public override short4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1174,6 +1199,7 @@ public class short4x2JsonConverter : JsonConverter<short4x2>
 
 #region short4x3
 
+[CpuOnly]
 public class short4x3JsonConverter : JsonConverter<short4x3>
 {
     public override short4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1231,6 +1257,7 @@ public class short4x3JsonConverter : JsonConverter<short4x3>
 
 #region short4x4
 
+[CpuOnly]
 public class short4x4JsonConverter : JsonConverter<short4x4>
 {
     public override short4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1300,6 +1327,7 @@ public class short4x4JsonConverter : JsonConverter<short4x4>
 
 #region ushort2x2
 
+[CpuOnly]
 public class ushort2x2JsonConverter : JsonConverter<ushort2x2>
 {
     public override ushort2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1333,6 +1361,7 @@ public class ushort2x2JsonConverter : JsonConverter<ushort2x2>
 
 #region ushort2x3
 
+[CpuOnly]
 public class ushort2x3JsonConverter : JsonConverter<ushort2x3>
 {
     public override ushort2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1372,6 +1401,7 @@ public class ushort2x3JsonConverter : JsonConverter<ushort2x3>
 
 #region ushort2x4
 
+[CpuOnly]
 public class ushort2x4JsonConverter : JsonConverter<ushort2x4>
 {
     public override ushort2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1417,6 +1447,7 @@ public class ushort2x4JsonConverter : JsonConverter<ushort2x4>
 
 #region ushort3x2
 
+[CpuOnly]
 public class ushort3x2JsonConverter : JsonConverter<ushort3x2>
 {
     public override ushort3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1456,6 +1487,7 @@ public class ushort3x2JsonConverter : JsonConverter<ushort3x2>
 
 #region ushort3x3
 
+[CpuOnly]
 public class ushort3x3JsonConverter : JsonConverter<ushort3x3>
 {
     public override ushort3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1504,6 +1536,7 @@ public class ushort3x3JsonConverter : JsonConverter<ushort3x3>
 
 #region ushort3x4
 
+[CpuOnly]
 public class ushort3x4JsonConverter : JsonConverter<ushort3x4>
 {
     public override ushort3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1561,6 +1594,7 @@ public class ushort3x4JsonConverter : JsonConverter<ushort3x4>
 
 #region ushort4x2
 
+[CpuOnly]
 public class ushort4x2JsonConverter : JsonConverter<ushort4x2>
 {
     public override ushort4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1606,6 +1640,7 @@ public class ushort4x2JsonConverter : JsonConverter<ushort4x2>
 
 #region ushort4x3
 
+[CpuOnly]
 public class ushort4x3JsonConverter : JsonConverter<ushort4x3>
 {
     public override ushort4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1663,6 +1698,7 @@ public class ushort4x3JsonConverter : JsonConverter<ushort4x3>
 
 #region ushort4x4
 
+[CpuOnly]
 public class ushort4x4JsonConverter : JsonConverter<ushort4x4>
 {
     public override ushort4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1732,6 +1768,7 @@ public class ushort4x4JsonConverter : JsonConverter<ushort4x4>
 
 #region int2x2
 
+[CpuOnly]
 public class int2x2JsonConverter : JsonConverter<int2x2>
 {
     public override int2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1765,6 +1802,7 @@ public class int2x2JsonConverter : JsonConverter<int2x2>
 
 #region int2x3
 
+[CpuOnly]
 public class int2x3JsonConverter : JsonConverter<int2x3>
 {
     public override int2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1804,6 +1842,7 @@ public class int2x3JsonConverter : JsonConverter<int2x3>
 
 #region int2x4
 
+[CpuOnly]
 public class int2x4JsonConverter : JsonConverter<int2x4>
 {
     public override int2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1849,6 +1888,7 @@ public class int2x4JsonConverter : JsonConverter<int2x4>
 
 #region int3x2
 
+[CpuOnly]
 public class int3x2JsonConverter : JsonConverter<int3x2>
 {
     public override int3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1888,6 +1928,7 @@ public class int3x2JsonConverter : JsonConverter<int3x2>
 
 #region int3x3
 
+[CpuOnly]
 public class int3x3JsonConverter : JsonConverter<int3x3>
 {
     public override int3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1936,6 +1977,7 @@ public class int3x3JsonConverter : JsonConverter<int3x3>
 
 #region int3x4
 
+[CpuOnly]
 public class int3x4JsonConverter : JsonConverter<int3x4>
 {
     public override int3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1993,6 +2035,7 @@ public class int3x4JsonConverter : JsonConverter<int3x4>
 
 #region int4x2
 
+[CpuOnly]
 public class int4x2JsonConverter : JsonConverter<int4x2>
 {
     public override int4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2038,6 +2081,7 @@ public class int4x2JsonConverter : JsonConverter<int4x2>
 
 #region int4x3
 
+[CpuOnly]
 public class int4x3JsonConverter : JsonConverter<int4x3>
 {
     public override int4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2095,6 +2139,7 @@ public class int4x3JsonConverter : JsonConverter<int4x3>
 
 #region int4x4
 
+[CpuOnly]
 public class int4x4JsonConverter : JsonConverter<int4x4>
 {
     public override int4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2164,6 +2209,7 @@ public class int4x4JsonConverter : JsonConverter<int4x4>
 
 #region uint2x2
 
+[CpuOnly]
 public class uint2x2JsonConverter : JsonConverter<uint2x2>
 {
     public override uint2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2197,6 +2243,7 @@ public class uint2x2JsonConverter : JsonConverter<uint2x2>
 
 #region uint2x3
 
+[CpuOnly]
 public class uint2x3JsonConverter : JsonConverter<uint2x3>
 {
     public override uint2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2236,6 +2283,7 @@ public class uint2x3JsonConverter : JsonConverter<uint2x3>
 
 #region uint2x4
 
+[CpuOnly]
 public class uint2x4JsonConverter : JsonConverter<uint2x4>
 {
     public override uint2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2281,6 +2329,7 @@ public class uint2x4JsonConverter : JsonConverter<uint2x4>
 
 #region uint3x2
 
+[CpuOnly]
 public class uint3x2JsonConverter : JsonConverter<uint3x2>
 {
     public override uint3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2320,6 +2369,7 @@ public class uint3x2JsonConverter : JsonConverter<uint3x2>
 
 #region uint3x3
 
+[CpuOnly]
 public class uint3x3JsonConverter : JsonConverter<uint3x3>
 {
     public override uint3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2368,6 +2418,7 @@ public class uint3x3JsonConverter : JsonConverter<uint3x3>
 
 #region uint3x4
 
+[CpuOnly]
 public class uint3x4JsonConverter : JsonConverter<uint3x4>
 {
     public override uint3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2425,6 +2476,7 @@ public class uint3x4JsonConverter : JsonConverter<uint3x4>
 
 #region uint4x2
 
+[CpuOnly]
 public class uint4x2JsonConverter : JsonConverter<uint4x2>
 {
     public override uint4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2470,6 +2522,7 @@ public class uint4x2JsonConverter : JsonConverter<uint4x2>
 
 #region uint4x3
 
+[CpuOnly]
 public class uint4x3JsonConverter : JsonConverter<uint4x3>
 {
     public override uint4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2527,6 +2580,7 @@ public class uint4x3JsonConverter : JsonConverter<uint4x3>
 
 #region uint4x4
 
+[CpuOnly]
 public class uint4x4JsonConverter : JsonConverter<uint4x4>
 {
     public override uint4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2596,6 +2650,7 @@ public class uint4x4JsonConverter : JsonConverter<uint4x4>
 
 #region long2x2
 
+[CpuOnly]
 public class long2x2JsonConverter : JsonConverter<long2x2>
 {
     public override long2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2629,6 +2684,7 @@ public class long2x2JsonConverter : JsonConverter<long2x2>
 
 #region long2x3
 
+[CpuOnly]
 public class long2x3JsonConverter : JsonConverter<long2x3>
 {
     public override long2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2668,6 +2724,7 @@ public class long2x3JsonConverter : JsonConverter<long2x3>
 
 #region long2x4
 
+[CpuOnly]
 public class long2x4JsonConverter : JsonConverter<long2x4>
 {
     public override long2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2713,6 +2770,7 @@ public class long2x4JsonConverter : JsonConverter<long2x4>
 
 #region long3x2
 
+[CpuOnly]
 public class long3x2JsonConverter : JsonConverter<long3x2>
 {
     public override long3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2752,6 +2810,7 @@ public class long3x2JsonConverter : JsonConverter<long3x2>
 
 #region long3x3
 
+[CpuOnly]
 public class long3x3JsonConverter : JsonConverter<long3x3>
 {
     public override long3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2800,6 +2859,7 @@ public class long3x3JsonConverter : JsonConverter<long3x3>
 
 #region long3x4
 
+[CpuOnly]
 public class long3x4JsonConverter : JsonConverter<long3x4>
 {
     public override long3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2857,6 +2917,7 @@ public class long3x4JsonConverter : JsonConverter<long3x4>
 
 #region long4x2
 
+[CpuOnly]
 public class long4x2JsonConverter : JsonConverter<long4x2>
 {
     public override long4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2902,6 +2963,7 @@ public class long4x2JsonConverter : JsonConverter<long4x2>
 
 #region long4x3
 
+[CpuOnly]
 public class long4x3JsonConverter : JsonConverter<long4x3>
 {
     public override long4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -2959,6 +3021,7 @@ public class long4x3JsonConverter : JsonConverter<long4x3>
 
 #region long4x4
 
+[CpuOnly]
 public class long4x4JsonConverter : JsonConverter<long4x4>
 {
     public override long4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3028,6 +3091,7 @@ public class long4x4JsonConverter : JsonConverter<long4x4>
 
 #region ulong2x2
 
+[CpuOnly]
 public class ulong2x2JsonConverter : JsonConverter<ulong2x2>
 {
     public override ulong2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3061,6 +3125,7 @@ public class ulong2x2JsonConverter : JsonConverter<ulong2x2>
 
 #region ulong2x3
 
+[CpuOnly]
 public class ulong2x3JsonConverter : JsonConverter<ulong2x3>
 {
     public override ulong2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3100,6 +3165,7 @@ public class ulong2x3JsonConverter : JsonConverter<ulong2x3>
 
 #region ulong2x4
 
+[CpuOnly]
 public class ulong2x4JsonConverter : JsonConverter<ulong2x4>
 {
     public override ulong2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3145,6 +3211,7 @@ public class ulong2x4JsonConverter : JsonConverter<ulong2x4>
 
 #region ulong3x2
 
+[CpuOnly]
 public class ulong3x2JsonConverter : JsonConverter<ulong3x2>
 {
     public override ulong3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3184,6 +3251,7 @@ public class ulong3x2JsonConverter : JsonConverter<ulong3x2>
 
 #region ulong3x3
 
+[CpuOnly]
 public class ulong3x3JsonConverter : JsonConverter<ulong3x3>
 {
     public override ulong3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3232,6 +3300,7 @@ public class ulong3x3JsonConverter : JsonConverter<ulong3x3>
 
 #region ulong3x4
 
+[CpuOnly]
 public class ulong3x4JsonConverter : JsonConverter<ulong3x4>
 {
     public override ulong3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3289,6 +3358,7 @@ public class ulong3x4JsonConverter : JsonConverter<ulong3x4>
 
 #region ulong4x2
 
+[CpuOnly]
 public class ulong4x2JsonConverter : JsonConverter<ulong4x2>
 {
     public override ulong4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3334,6 +3404,7 @@ public class ulong4x2JsonConverter : JsonConverter<ulong4x2>
 
 #region ulong4x3
 
+[CpuOnly]
 public class ulong4x3JsonConverter : JsonConverter<ulong4x3>
 {
     public override ulong4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3391,6 +3462,7 @@ public class ulong4x3JsonConverter : JsonConverter<ulong4x3>
 
 #region ulong4x4
 
+[CpuOnly]
 public class ulong4x4JsonConverter : JsonConverter<ulong4x4>
 {
     public override ulong4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3460,6 +3532,7 @@ public class ulong4x4JsonConverter : JsonConverter<ulong4x4>
 
 #region decimal2x2
 
+[CpuOnly]
 public class decimal2x2JsonConverter : JsonConverter<decimal2x2>
 {
     public override decimal2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3493,6 +3566,7 @@ public class decimal2x2JsonConverter : JsonConverter<decimal2x2>
 
 #region decimal2x3
 
+[CpuOnly]
 public class decimal2x3JsonConverter : JsonConverter<decimal2x3>
 {
     public override decimal2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3532,6 +3606,7 @@ public class decimal2x3JsonConverter : JsonConverter<decimal2x3>
 
 #region decimal2x4
 
+[CpuOnly]
 public class decimal2x4JsonConverter : JsonConverter<decimal2x4>
 {
     public override decimal2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3577,6 +3652,7 @@ public class decimal2x4JsonConverter : JsonConverter<decimal2x4>
 
 #region decimal3x2
 
+[CpuOnly]
 public class decimal3x2JsonConverter : JsonConverter<decimal3x2>
 {
     public override decimal3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3616,6 +3692,7 @@ public class decimal3x2JsonConverter : JsonConverter<decimal3x2>
 
 #region decimal3x3
 
+[CpuOnly]
 public class decimal3x3JsonConverter : JsonConverter<decimal3x3>
 {
     public override decimal3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3664,6 +3741,7 @@ public class decimal3x3JsonConverter : JsonConverter<decimal3x3>
 
 #region decimal3x4
 
+[CpuOnly]
 public class decimal3x4JsonConverter : JsonConverter<decimal3x4>
 {
     public override decimal3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3721,6 +3799,7 @@ public class decimal3x4JsonConverter : JsonConverter<decimal3x4>
 
 #region decimal4x2
 
+[CpuOnly]
 public class decimal4x2JsonConverter : JsonConverter<decimal4x2>
 {
     public override decimal4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3766,6 +3845,7 @@ public class decimal4x2JsonConverter : JsonConverter<decimal4x2>
 
 #region decimal4x3
 
+[CpuOnly]
 public class decimal4x3JsonConverter : JsonConverter<decimal4x3>
 {
     public override decimal4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3823,6 +3903,7 @@ public class decimal4x3JsonConverter : JsonConverter<decimal4x3>
 
 #region decimal4x4
 
+[CpuOnly]
 public class decimal4x4JsonConverter : JsonConverter<decimal4x4>
 {
     public override decimal4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3892,6 +3973,7 @@ public class decimal4x4JsonConverter : JsonConverter<decimal4x4>
 
 #region half2x2
 
+[CpuOnly]
 public class half2x2JsonConverter : JsonConverter<half2x2>
 {
     public override half2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3925,6 +4007,7 @@ public class half2x2JsonConverter : JsonConverter<half2x2>
 
 #region half2x3
 
+[CpuOnly]
 public class half2x3JsonConverter : JsonConverter<half2x3>
 {
     public override half2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -3964,6 +4047,7 @@ public class half2x3JsonConverter : JsonConverter<half2x3>
 
 #region half2x4
 
+[CpuOnly]
 public class half2x4JsonConverter : JsonConverter<half2x4>
 {
     public override half2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4009,6 +4093,7 @@ public class half2x4JsonConverter : JsonConverter<half2x4>
 
 #region half3x2
 
+[CpuOnly]
 public class half3x2JsonConverter : JsonConverter<half3x2>
 {
     public override half3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4048,6 +4133,7 @@ public class half3x2JsonConverter : JsonConverter<half3x2>
 
 #region half3x3
 
+[CpuOnly]
 public class half3x3JsonConverter : JsonConverter<half3x3>
 {
     public override half3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4096,6 +4182,7 @@ public class half3x3JsonConverter : JsonConverter<half3x3>
 
 #region half3x4
 
+[CpuOnly]
 public class half3x4JsonConverter : JsonConverter<half3x4>
 {
     public override half3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4153,6 +4240,7 @@ public class half3x4JsonConverter : JsonConverter<half3x4>
 
 #region half4x2
 
+[CpuOnly]
 public class half4x2JsonConverter : JsonConverter<half4x2>
 {
     public override half4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4198,6 +4286,7 @@ public class half4x2JsonConverter : JsonConverter<half4x2>
 
 #region half4x3
 
+[CpuOnly]
 public class half4x3JsonConverter : JsonConverter<half4x3>
 {
     public override half4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4255,6 +4344,7 @@ public class half4x3JsonConverter : JsonConverter<half4x3>
 
 #region half4x4
 
+[CpuOnly]
 public class half4x4JsonConverter : JsonConverter<half4x4>
 {
     public override half4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4324,6 +4414,7 @@ public class half4x4JsonConverter : JsonConverter<half4x4>
 
 #region b16m2x2
 
+[CpuOnly]
 public class b16m2x2JsonConverter : JsonConverter<b16m2x2>
 {
     public override b16m2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4357,6 +4448,7 @@ public class b16m2x2JsonConverter : JsonConverter<b16m2x2>
 
 #region b16m2x3
 
+[CpuOnly]
 public class b16m2x3JsonConverter : JsonConverter<b16m2x3>
 {
     public override b16m2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4396,6 +4488,7 @@ public class b16m2x3JsonConverter : JsonConverter<b16m2x3>
 
 #region b16m2x4
 
+[CpuOnly]
 public class b16m2x4JsonConverter : JsonConverter<b16m2x4>
 {
     public override b16m2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4441,6 +4534,7 @@ public class b16m2x4JsonConverter : JsonConverter<b16m2x4>
 
 #region b16m3x2
 
+[CpuOnly]
 public class b16m3x2JsonConverter : JsonConverter<b16m3x2>
 {
     public override b16m3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4480,6 +4574,7 @@ public class b16m3x2JsonConverter : JsonConverter<b16m3x2>
 
 #region b16m3x3
 
+[CpuOnly]
 public class b16m3x3JsonConverter : JsonConverter<b16m3x3>
 {
     public override b16m3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4528,6 +4623,7 @@ public class b16m3x3JsonConverter : JsonConverter<b16m3x3>
 
 #region b16m3x4
 
+[CpuOnly]
 public class b16m3x4JsonConverter : JsonConverter<b16m3x4>
 {
     public override b16m3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4585,6 +4681,7 @@ public class b16m3x4JsonConverter : JsonConverter<b16m3x4>
 
 #region b16m4x2
 
+[CpuOnly]
 public class b16m4x2JsonConverter : JsonConverter<b16m4x2>
 {
     public override b16m4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4630,6 +4727,7 @@ public class b16m4x2JsonConverter : JsonConverter<b16m4x2>
 
 #region b16m4x3
 
+[CpuOnly]
 public class b16m4x3JsonConverter : JsonConverter<b16m4x3>
 {
     public override b16m4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4687,6 +4785,7 @@ public class b16m4x3JsonConverter : JsonConverter<b16m4x3>
 
 #region b16m4x4
 
+[CpuOnly]
 public class b16m4x4JsonConverter : JsonConverter<b16m4x4>
 {
     public override b16m4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4756,6 +4855,7 @@ public class b16m4x4JsonConverter : JsonConverter<b16m4x4>
 
 #region b32m2x2
 
+[CpuOnly]
 public class b32m2x2JsonConverter : JsonConverter<b32m2x2>
 {
     public override b32m2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4789,6 +4889,7 @@ public class b32m2x2JsonConverter : JsonConverter<b32m2x2>
 
 #region b32m2x3
 
+[CpuOnly]
 public class b32m2x3JsonConverter : JsonConverter<b32m2x3>
 {
     public override b32m2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4828,6 +4929,7 @@ public class b32m2x3JsonConverter : JsonConverter<b32m2x3>
 
 #region b32m2x4
 
+[CpuOnly]
 public class b32m2x4JsonConverter : JsonConverter<b32m2x4>
 {
     public override b32m2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4873,6 +4975,7 @@ public class b32m2x4JsonConverter : JsonConverter<b32m2x4>
 
 #region b32m3x2
 
+[CpuOnly]
 public class b32m3x2JsonConverter : JsonConverter<b32m3x2>
 {
     public override b32m3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4912,6 +5015,7 @@ public class b32m3x2JsonConverter : JsonConverter<b32m3x2>
 
 #region b32m3x3
 
+[CpuOnly]
 public class b32m3x3JsonConverter : JsonConverter<b32m3x3>
 {
     public override b32m3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -4960,6 +5064,7 @@ public class b32m3x3JsonConverter : JsonConverter<b32m3x3>
 
 #region b32m3x4
 
+[CpuOnly]
 public class b32m3x4JsonConverter : JsonConverter<b32m3x4>
 {
     public override b32m3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5017,6 +5122,7 @@ public class b32m3x4JsonConverter : JsonConverter<b32m3x4>
 
 #region b32m4x2
 
+[CpuOnly]
 public class b32m4x2JsonConverter : JsonConverter<b32m4x2>
 {
     public override b32m4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5062,6 +5168,7 @@ public class b32m4x2JsonConverter : JsonConverter<b32m4x2>
 
 #region b32m4x3
 
+[CpuOnly]
 public class b32m4x3JsonConverter : JsonConverter<b32m4x3>
 {
     public override b32m4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5119,6 +5226,7 @@ public class b32m4x3JsonConverter : JsonConverter<b32m4x3>
 
 #region b32m4x4
 
+[CpuOnly]
 public class b32m4x4JsonConverter : JsonConverter<b32m4x4>
 {
     public override b32m4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5188,6 +5296,7 @@ public class b32m4x4JsonConverter : JsonConverter<b32m4x4>
 
 #region b64m2x2
 
+[CpuOnly]
 public class b64m2x2JsonConverter : JsonConverter<b64m2x2>
 {
     public override b64m2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5221,6 +5330,7 @@ public class b64m2x2JsonConverter : JsonConverter<b64m2x2>
 
 #region b64m2x3
 
+[CpuOnly]
 public class b64m2x3JsonConverter : JsonConverter<b64m2x3>
 {
     public override b64m2x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5260,6 +5370,7 @@ public class b64m2x3JsonConverter : JsonConverter<b64m2x3>
 
 #region b64m2x4
 
+[CpuOnly]
 public class b64m2x4JsonConverter : JsonConverter<b64m2x4>
 {
     public override b64m2x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5305,6 +5416,7 @@ public class b64m2x4JsonConverter : JsonConverter<b64m2x4>
 
 #region b64m3x2
 
+[CpuOnly]
 public class b64m3x2JsonConverter : JsonConverter<b64m3x2>
 {
     public override b64m3x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5344,6 +5456,7 @@ public class b64m3x2JsonConverter : JsonConverter<b64m3x2>
 
 #region b64m3x3
 
+[CpuOnly]
 public class b64m3x3JsonConverter : JsonConverter<b64m3x3>
 {
     public override b64m3x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5392,6 +5505,7 @@ public class b64m3x3JsonConverter : JsonConverter<b64m3x3>
 
 #region b64m3x4
 
+[CpuOnly]
 public class b64m3x4JsonConverter : JsonConverter<b64m3x4>
 {
     public override b64m3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5449,6 +5563,7 @@ public class b64m3x4JsonConverter : JsonConverter<b64m3x4>
 
 #region b64m4x2
 
+[CpuOnly]
 public class b64m4x2JsonConverter : JsonConverter<b64m4x2>
 {
     public override b64m4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5494,6 +5609,7 @@ public class b64m4x2JsonConverter : JsonConverter<b64m4x2>
 
 #region b64m4x3
 
+[CpuOnly]
 public class b64m4x3JsonConverter : JsonConverter<b64m4x3>
 {
     public override b64m4x3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -5551,6 +5667,7 @@ public class b64m4x3JsonConverter : JsonConverter<b64m4x3>
 
 #region b64m4x4
 
+[CpuOnly]
 public class b64m4x4JsonConverter : JsonConverter<b64m4x4>
 {
     public override b64m4x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

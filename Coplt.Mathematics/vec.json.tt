@@ -18,6 +18,7 @@ namespace Coplt.Mathematics.Json;
 
 #region <#= typeName #>
 
+[CpuOnly]
 public class <#= typeName #>JsonConverter : JsonConverter<<#= typeName #>>
 {
     public override <#= typeName #> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

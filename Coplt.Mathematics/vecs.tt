@@ -164,11 +164,11 @@ public partial struct <#= typeName #> :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector<#= bitSize #><<#= typ.simdComp #>>(<#= typeName #> self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector<#= bitSize #><<#= typ.simdComp #>> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector<#= bitSize #><<#= typ.simdComp #>> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector<#= bitSize #><<#= typ.simdComp #>> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -191,9 +191,9 @@ public partial struct <#= typeName #> :
             {
                 WriteLine($"    #if NET8_0_OR_GREATER");
 #>
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal <#= typeName #>(Vector<#= bitSize #><<#= typ.simdComp #>> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static <#= typeName #> UnsafeFromInner(Vector<#= bitSize #><<#= typ.simdComp #>> vector) => new(vector);
 <#
                 WriteLine($"    #endif // NET8_0_OR_GREATER");
@@ -266,10 +266,10 @@ public partial struct <#= typeName #> :
 #>
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static <#= typeName #> Load(ReadOnlySpan<<#= typ.compType #>> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public <#= typeName #>(ReadOnlySpan<<#= typ.compType #>> span)
     {
 <#
@@ -296,10 +296,10 @@ public partial struct <#= typeName #> :
 #>
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe <#= typeName #> Load(<#= typ.compType #>* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe <#= typeName #>(<#= typ.compType #>* ptr)
     {
 <#

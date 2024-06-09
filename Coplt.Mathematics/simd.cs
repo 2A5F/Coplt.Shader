@@ -6,6 +6,7 @@ using X86 = System.Runtime.Intrinsics.X86;
 
 namespace Coplt.Mathematics.Simd;
 
+[CpuOnly]
 public static partial class simd
 {
     #region Convert

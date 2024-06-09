@@ -4,6 +4,7 @@ namespace Coplt.Mathematics.Json;
 
 #region float2
 
+[CpuOnly]
 public class float2JsonConverter : JsonConverter<float2>
 {
     public override float2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -31,6 +32,7 @@ public class float2JsonConverter : JsonConverter<float2>
 
 #region float3
 
+[CpuOnly]
 public class float3JsonConverter : JsonConverter<float3>
 {
     public override float3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -61,6 +63,7 @@ public class float3JsonConverter : JsonConverter<float3>
 
 #region float4
 
+[CpuOnly]
 public class float4JsonConverter : JsonConverter<float4>
 {
     public override float4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -94,6 +97,7 @@ public class float4JsonConverter : JsonConverter<float4>
 
 #region double2
 
+[CpuOnly]
 public class double2JsonConverter : JsonConverter<double2>
 {
     public override double2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -121,6 +125,7 @@ public class double2JsonConverter : JsonConverter<double2>
 
 #region double3
 
+[CpuOnly]
 public class double3JsonConverter : JsonConverter<double3>
 {
     public override double3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -151,6 +156,7 @@ public class double3JsonConverter : JsonConverter<double3>
 
 #region double4
 
+[CpuOnly]
 public class double4JsonConverter : JsonConverter<double4>
 {
     public override double4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -184,6 +190,7 @@ public class double4JsonConverter : JsonConverter<double4>
 
 #region short2
 
+[CpuOnly]
 public class short2JsonConverter : JsonConverter<short2>
 {
     public override short2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -211,6 +218,7 @@ public class short2JsonConverter : JsonConverter<short2>
 
 #region short3
 
+[CpuOnly]
 public class short3JsonConverter : JsonConverter<short3>
 {
     public override short3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -241,6 +249,7 @@ public class short3JsonConverter : JsonConverter<short3>
 
 #region short4
 
+[CpuOnly]
 public class short4JsonConverter : JsonConverter<short4>
 {
     public override short4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -274,6 +283,7 @@ public class short4JsonConverter : JsonConverter<short4>
 
 #region ushort2
 
+[CpuOnly]
 public class ushort2JsonConverter : JsonConverter<ushort2>
 {
     public override ushort2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -301,6 +311,7 @@ public class ushort2JsonConverter : JsonConverter<ushort2>
 
 #region ushort3
 
+[CpuOnly]
 public class ushort3JsonConverter : JsonConverter<ushort3>
 {
     public override ushort3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -331,6 +342,7 @@ public class ushort3JsonConverter : JsonConverter<ushort3>
 
 #region ushort4
 
+[CpuOnly]
 public class ushort4JsonConverter : JsonConverter<ushort4>
 {
     public override ushort4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -364,6 +376,7 @@ public class ushort4JsonConverter : JsonConverter<ushort4>
 
 #region int2
 
+[CpuOnly]
 public class int2JsonConverter : JsonConverter<int2>
 {
     public override int2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -391,6 +404,7 @@ public class int2JsonConverter : JsonConverter<int2>
 
 #region int3
 
+[CpuOnly]
 public class int3JsonConverter : JsonConverter<int3>
 {
     public override int3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -421,6 +435,7 @@ public class int3JsonConverter : JsonConverter<int3>
 
 #region int4
 
+[CpuOnly]
 public class int4JsonConverter : JsonConverter<int4>
 {
     public override int4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -454,6 +469,7 @@ public class int4JsonConverter : JsonConverter<int4>
 
 #region uint2
 
+[CpuOnly]
 public class uint2JsonConverter : JsonConverter<uint2>
 {
     public override uint2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -481,6 +497,7 @@ public class uint2JsonConverter : JsonConverter<uint2>
 
 #region uint3
 
+[CpuOnly]
 public class uint3JsonConverter : JsonConverter<uint3>
 {
     public override uint3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -511,6 +528,7 @@ public class uint3JsonConverter : JsonConverter<uint3>
 
 #region uint4
 
+[CpuOnly]
 public class uint4JsonConverter : JsonConverter<uint4>
 {
     public override uint4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -544,6 +562,7 @@ public class uint4JsonConverter : JsonConverter<uint4>
 
 #region long2
 
+[CpuOnly]
 public class long2JsonConverter : JsonConverter<long2>
 {
     public override long2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -571,6 +590,7 @@ public class long2JsonConverter : JsonConverter<long2>
 
 #region long3
 
+[CpuOnly]
 public class long3JsonConverter : JsonConverter<long3>
 {
     public override long3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -601,6 +621,7 @@ public class long3JsonConverter : JsonConverter<long3>
 
 #region long4
 
+[CpuOnly]
 public class long4JsonConverter : JsonConverter<long4>
 {
     public override long4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -634,6 +655,7 @@ public class long4JsonConverter : JsonConverter<long4>
 
 #region ulong2
 
+[CpuOnly]
 public class ulong2JsonConverter : JsonConverter<ulong2>
 {
     public override ulong2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -661,6 +683,7 @@ public class ulong2JsonConverter : JsonConverter<ulong2>
 
 #region ulong3
 
+[CpuOnly]
 public class ulong3JsonConverter : JsonConverter<ulong3>
 {
     public override ulong3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -691,6 +714,7 @@ public class ulong3JsonConverter : JsonConverter<ulong3>
 
 #region ulong4
 
+[CpuOnly]
 public class ulong4JsonConverter : JsonConverter<ulong4>
 {
     public override ulong4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -724,6 +748,7 @@ public class ulong4JsonConverter : JsonConverter<ulong4>
 
 #region decimal2
 
+[CpuOnly]
 public class decimal2JsonConverter : JsonConverter<decimal2>
 {
     public override decimal2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -751,6 +776,7 @@ public class decimal2JsonConverter : JsonConverter<decimal2>
 
 #region decimal3
 
+[CpuOnly]
 public class decimal3JsonConverter : JsonConverter<decimal3>
 {
     public override decimal3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -781,6 +807,7 @@ public class decimal3JsonConverter : JsonConverter<decimal3>
 
 #region decimal4
 
+[CpuOnly]
 public class decimal4JsonConverter : JsonConverter<decimal4>
 {
     public override decimal4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -814,6 +841,7 @@ public class decimal4JsonConverter : JsonConverter<decimal4>
 
 #region half2
 
+[CpuOnly]
 public class half2JsonConverter : JsonConverter<half2>
 {
     public override half2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -841,6 +869,7 @@ public class half2JsonConverter : JsonConverter<half2>
 
 #region half3
 
+[CpuOnly]
 public class half3JsonConverter : JsonConverter<half3>
 {
     public override half3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -871,6 +900,7 @@ public class half3JsonConverter : JsonConverter<half3>
 
 #region half4
 
+[CpuOnly]
 public class half4JsonConverter : JsonConverter<half4>
 {
     public override half4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -904,6 +934,7 @@ public class half4JsonConverter : JsonConverter<half4>
 
 #region b16v2
 
+[CpuOnly]
 public class b16v2JsonConverter : JsonConverter<b16v2>
 {
     public override b16v2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -931,6 +962,7 @@ public class b16v2JsonConverter : JsonConverter<b16v2>
 
 #region b16v3
 
+[CpuOnly]
 public class b16v3JsonConverter : JsonConverter<b16v3>
 {
     public override b16v3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -961,6 +993,7 @@ public class b16v3JsonConverter : JsonConverter<b16v3>
 
 #region b16v4
 
+[CpuOnly]
 public class b16v4JsonConverter : JsonConverter<b16v4>
 {
     public override b16v4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -994,6 +1027,7 @@ public class b16v4JsonConverter : JsonConverter<b16v4>
 
 #region b32v2
 
+[CpuOnly]
 public class b32v2JsonConverter : JsonConverter<b32v2>
 {
     public override b32v2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1021,6 +1055,7 @@ public class b32v2JsonConverter : JsonConverter<b32v2>
 
 #region b32v3
 
+[CpuOnly]
 public class b32v3JsonConverter : JsonConverter<b32v3>
 {
     public override b32v3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1051,6 +1086,7 @@ public class b32v3JsonConverter : JsonConverter<b32v3>
 
 #region b32v4
 
+[CpuOnly]
 public class b32v4JsonConverter : JsonConverter<b32v4>
 {
     public override b32v4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1084,6 +1120,7 @@ public class b32v4JsonConverter : JsonConverter<b32v4>
 
 #region b64v2
 
+[CpuOnly]
 public class b64v2JsonConverter : JsonConverter<b64v2>
 {
     public override b64v2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1111,6 +1148,7 @@ public class b64v2JsonConverter : JsonConverter<b64v2>
 
 #region b64v3
 
+[CpuOnly]
 public class b64v3JsonConverter : JsonConverter<b64v3>
 {
     public override b64v3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1141,6 +1179,7 @@ public class b64v3JsonConverter : JsonConverter<b64v3>
 
 #region b64v4
 
+[CpuOnly]
 public class b64v4JsonConverter : JsonConverter<b64v4>
 {
     public override b64v4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

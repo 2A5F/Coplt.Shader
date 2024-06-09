@@ -56,11 +56,11 @@ public partial struct float2 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector64<float>(float2 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector64<float> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector64<float> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector64<float> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -117,9 +117,9 @@ public partial struct float2 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal float2(Vector64<float> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static float2 UnsafeFromInner(Vector64<float> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -167,10 +167,10 @@ public partial struct float2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static float2 Load(ReadOnlySpan<float> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public float2(ReadOnlySpan<float> span)
     {
         #if NET8_0_OR_GREATER
@@ -181,10 +181,10 @@ public partial struct float2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe float2 Load(float* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe float2(float* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -295,11 +295,11 @@ public partial struct float3 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<float>(float3 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<float> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<float> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<float> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -379,9 +379,9 @@ public partial struct float3 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal float3(Vector128<float> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static float3 UnsafeFromInner(Vector128<float> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -431,10 +431,10 @@ public partial struct float3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static float3 Load(ReadOnlySpan<float> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public float3(ReadOnlySpan<float> span)
     {
         #if NET8_0_OR_GREATER
@@ -446,10 +446,10 @@ public partial struct float3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe float3 Load(float* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe float3(float* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -566,11 +566,11 @@ public partial struct float4 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<float>(float4 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<float> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<float> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<float> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -671,9 +671,9 @@ public partial struct float4 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal float4(Vector128<float> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static float4 UnsafeFromInner(Vector128<float> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -725,10 +725,10 @@ public partial struct float4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static float4 Load(ReadOnlySpan<float> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public float4(ReadOnlySpan<float> span)
     {
         #if NET8_0_OR_GREATER
@@ -741,10 +741,10 @@ public partial struct float4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe float4 Load(float* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe float4(float* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -867,11 +867,11 @@ public partial struct double2 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<double>(double2 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<double> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<double> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<double> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -928,9 +928,9 @@ public partial struct double2 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal double2(Vector128<double> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static double2 UnsafeFromInner(Vector128<double> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -978,10 +978,10 @@ public partial struct double2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static double2 Load(ReadOnlySpan<double> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public double2(ReadOnlySpan<double> span)
     {
         #if NET8_0_OR_GREATER
@@ -992,10 +992,10 @@ public partial struct double2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe double2 Load(double* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe double2(double* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -1106,11 +1106,11 @@ public partial struct double3 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<double>(double3 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector256<double> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector256<double> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector256<double> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -1190,9 +1190,9 @@ public partial struct double3 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal double3(Vector256<double> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static double3 UnsafeFromInner(Vector256<double> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -1242,10 +1242,10 @@ public partial struct double3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static double3 Load(ReadOnlySpan<double> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public double3(ReadOnlySpan<double> span)
     {
         #if NET8_0_OR_GREATER
@@ -1257,10 +1257,10 @@ public partial struct double3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe double3 Load(double* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe double3(double* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -1377,11 +1377,11 @@ public partial struct double4 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<double>(double4 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector256<double> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector256<double> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector256<double> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -1482,9 +1482,9 @@ public partial struct double4 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal double4(Vector256<double> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static double4 UnsafeFromInner(Vector256<double> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -1536,10 +1536,10 @@ public partial struct double4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static double4 Load(ReadOnlySpan<double> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public double4(ReadOnlySpan<double> span)
     {
         #if NET8_0_OR_GREATER
@@ -1552,10 +1552,10 @@ public partial struct double4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe double4 Load(double* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe double4(double* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -1738,20 +1738,20 @@ public partial struct short2 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static short2 Load(ReadOnlySpan<short> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public short2(ReadOnlySpan<short> span)
     {
         this.x = span[0];
         this.y = span[1];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe short2 Load(short* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe short2(short* ptr)
     {
         this.x = ptr[0];
@@ -1936,10 +1936,10 @@ public partial struct short3 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static short3 Load(ReadOnlySpan<short> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public short3(ReadOnlySpan<short> span)
     {
         this.x = span[0];
@@ -1947,10 +1947,10 @@ public partial struct short3 :
         this.z = span[2];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe short3 Load(short* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe short3(short* ptr)
     {
         this.x = ptr[0];
@@ -2157,10 +2157,10 @@ public partial struct short4 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static short4 Load(ReadOnlySpan<short> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public short4(ReadOnlySpan<short> span)
     {
         this.x = span[0];
@@ -2169,10 +2169,10 @@ public partial struct short4 :
         this.w = span[3];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe short4 Load(short* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe short4(short* ptr)
     {
         this.x = ptr[0];
@@ -2351,20 +2351,20 @@ public partial struct ushort2 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static ushort2 Load(ReadOnlySpan<ushort> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public ushort2(ReadOnlySpan<ushort> span)
     {
         this.x = span[0];
         this.y = span[1];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe ushort2 Load(ushort* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe ushort2(ushort* ptr)
     {
         this.x = ptr[0];
@@ -2549,10 +2549,10 @@ public partial struct ushort3 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static ushort3 Load(ReadOnlySpan<ushort> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public ushort3(ReadOnlySpan<ushort> span)
     {
         this.x = span[0];
@@ -2560,10 +2560,10 @@ public partial struct ushort3 :
         this.z = span[2];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe ushort3 Load(ushort* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe ushort3(ushort* ptr)
     {
         this.x = ptr[0];
@@ -2770,10 +2770,10 @@ public partial struct ushort4 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static ushort4 Load(ReadOnlySpan<ushort> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public ushort4(ReadOnlySpan<ushort> span)
     {
         this.x = span[0];
@@ -2782,10 +2782,10 @@ public partial struct ushort4 :
         this.w = span[3];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe ushort4 Load(ushort* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe ushort4(ushort* ptr)
     {
         this.x = ptr[0];
@@ -2904,11 +2904,11 @@ public partial struct int2 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector64<int>(int2 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector64<int> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector64<int> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector64<int> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -2965,9 +2965,9 @@ public partial struct int2 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal int2(Vector64<int> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static int2 UnsafeFromInner(Vector64<int> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -3015,10 +3015,10 @@ public partial struct int2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static int2 Load(ReadOnlySpan<int> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public int2(ReadOnlySpan<int> span)
     {
         #if NET8_0_OR_GREATER
@@ -3029,10 +3029,10 @@ public partial struct int2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe int2 Load(int* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe int2(int* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -3143,11 +3143,11 @@ public partial struct int3 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<int>(int3 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<int> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<int> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<int> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -3227,9 +3227,9 @@ public partial struct int3 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal int3(Vector128<int> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static int3 UnsafeFromInner(Vector128<int> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -3279,10 +3279,10 @@ public partial struct int3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static int3 Load(ReadOnlySpan<int> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public int3(ReadOnlySpan<int> span)
     {
         #if NET8_0_OR_GREATER
@@ -3294,10 +3294,10 @@ public partial struct int3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe int3 Load(int* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe int3(int* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -3414,11 +3414,11 @@ public partial struct int4 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<int>(int4 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<int> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<int> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<int> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -3519,9 +3519,9 @@ public partial struct int4 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal int4(Vector128<int> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static int4 UnsafeFromInner(Vector128<int> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -3573,10 +3573,10 @@ public partial struct int4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static int4 Load(ReadOnlySpan<int> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public int4(ReadOnlySpan<int> span)
     {
         #if NET8_0_OR_GREATER
@@ -3589,10 +3589,10 @@ public partial struct int4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe int4 Load(int* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe int4(int* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -3715,11 +3715,11 @@ public partial struct uint2 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector64<uint>(uint2 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector64<uint> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector64<uint> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector64<uint> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -3776,9 +3776,9 @@ public partial struct uint2 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal uint2(Vector64<uint> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static uint2 UnsafeFromInner(Vector64<uint> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -3826,10 +3826,10 @@ public partial struct uint2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static uint2 Load(ReadOnlySpan<uint> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public uint2(ReadOnlySpan<uint> span)
     {
         #if NET8_0_OR_GREATER
@@ -3840,10 +3840,10 @@ public partial struct uint2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe uint2 Load(uint* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe uint2(uint* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -3954,11 +3954,11 @@ public partial struct uint3 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<uint>(uint3 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<uint> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<uint> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<uint> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -4038,9 +4038,9 @@ public partial struct uint3 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal uint3(Vector128<uint> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static uint3 UnsafeFromInner(Vector128<uint> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -4090,10 +4090,10 @@ public partial struct uint3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static uint3 Load(ReadOnlySpan<uint> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public uint3(ReadOnlySpan<uint> span)
     {
         #if NET8_0_OR_GREATER
@@ -4105,10 +4105,10 @@ public partial struct uint3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe uint3 Load(uint* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe uint3(uint* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -4225,11 +4225,11 @@ public partial struct uint4 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<uint>(uint4 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<uint> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<uint> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<uint> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -4330,9 +4330,9 @@ public partial struct uint4 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal uint4(Vector128<uint> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static uint4 UnsafeFromInner(Vector128<uint> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -4384,10 +4384,10 @@ public partial struct uint4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static uint4 Load(ReadOnlySpan<uint> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public uint4(ReadOnlySpan<uint> span)
     {
         #if NET8_0_OR_GREATER
@@ -4400,10 +4400,10 @@ public partial struct uint4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe uint4 Load(uint* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe uint4(uint* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -4526,11 +4526,11 @@ public partial struct long2 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<long>(long2 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<long> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<long> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<long> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -4587,9 +4587,9 @@ public partial struct long2 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal long2(Vector128<long> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static long2 UnsafeFromInner(Vector128<long> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -4637,10 +4637,10 @@ public partial struct long2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static long2 Load(ReadOnlySpan<long> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public long2(ReadOnlySpan<long> span)
     {
         #if NET8_0_OR_GREATER
@@ -4651,10 +4651,10 @@ public partial struct long2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe long2 Load(long* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe long2(long* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -4765,11 +4765,11 @@ public partial struct long3 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<long>(long3 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector256<long> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector256<long> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector256<long> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -4849,9 +4849,9 @@ public partial struct long3 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal long3(Vector256<long> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static long3 UnsafeFromInner(Vector256<long> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -4901,10 +4901,10 @@ public partial struct long3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static long3 Load(ReadOnlySpan<long> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public long3(ReadOnlySpan<long> span)
     {
         #if NET8_0_OR_GREATER
@@ -4916,10 +4916,10 @@ public partial struct long3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe long3 Load(long* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe long3(long* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -5036,11 +5036,11 @@ public partial struct long4 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<long>(long4 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector256<long> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector256<long> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector256<long> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -5141,9 +5141,9 @@ public partial struct long4 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal long4(Vector256<long> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static long4 UnsafeFromInner(Vector256<long> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -5195,10 +5195,10 @@ public partial struct long4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static long4 Load(ReadOnlySpan<long> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public long4(ReadOnlySpan<long> span)
     {
         #if NET8_0_OR_GREATER
@@ -5211,10 +5211,10 @@ public partial struct long4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe long4 Load(long* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe long4(long* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -5337,11 +5337,11 @@ public partial struct ulong2 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<ulong>(ulong2 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<ulong> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<ulong> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<ulong> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -5398,9 +5398,9 @@ public partial struct ulong2 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal ulong2(Vector128<ulong> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static ulong2 UnsafeFromInner(Vector128<ulong> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -5448,10 +5448,10 @@ public partial struct ulong2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static ulong2 Load(ReadOnlySpan<ulong> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public ulong2(ReadOnlySpan<ulong> span)
     {
         #if NET8_0_OR_GREATER
@@ -5462,10 +5462,10 @@ public partial struct ulong2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe ulong2 Load(ulong* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe ulong2(ulong* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -5576,11 +5576,11 @@ public partial struct ulong3 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<ulong>(ulong3 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector256<ulong> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector256<ulong> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector256<ulong> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -5660,9 +5660,9 @@ public partial struct ulong3 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal ulong3(Vector256<ulong> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static ulong3 UnsafeFromInner(Vector256<ulong> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -5712,10 +5712,10 @@ public partial struct ulong3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static ulong3 Load(ReadOnlySpan<ulong> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public ulong3(ReadOnlySpan<ulong> span)
     {
         #if NET8_0_OR_GREATER
@@ -5727,10 +5727,10 @@ public partial struct ulong3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe ulong3 Load(ulong* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe ulong3(ulong* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -5847,11 +5847,11 @@ public partial struct ulong4 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<ulong>(ulong4 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector256<ulong> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector256<ulong> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector256<ulong> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -5952,9 +5952,9 @@ public partial struct ulong4 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal ulong4(Vector256<ulong> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static ulong4 UnsafeFromInner(Vector256<ulong> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -6006,10 +6006,10 @@ public partial struct ulong4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static ulong4 Load(ReadOnlySpan<ulong> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public ulong4(ReadOnlySpan<ulong> span)
     {
         #if NET8_0_OR_GREATER
@@ -6022,10 +6022,10 @@ public partial struct ulong4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe ulong4 Load(ulong* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe ulong4(ulong* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -6208,20 +6208,20 @@ public partial struct decimal2 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static decimal2 Load(ReadOnlySpan<decimal> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public decimal2(ReadOnlySpan<decimal> span)
     {
         this.x = span[0];
         this.y = span[1];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe decimal2 Load(decimal* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe decimal2(decimal* ptr)
     {
         this.x = ptr[0];
@@ -6406,10 +6406,10 @@ public partial struct decimal3 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static decimal3 Load(ReadOnlySpan<decimal> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public decimal3(ReadOnlySpan<decimal> span)
     {
         this.x = span[0];
@@ -6417,10 +6417,10 @@ public partial struct decimal3 :
         this.z = span[2];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe decimal3 Load(decimal* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe decimal3(decimal* ptr)
     {
         this.x = ptr[0];
@@ -6627,10 +6627,10 @@ public partial struct decimal4 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static decimal4 Load(ReadOnlySpan<decimal> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public decimal4(ReadOnlySpan<decimal> span)
     {
         this.x = span[0];
@@ -6639,10 +6639,10 @@ public partial struct decimal4 :
         this.w = span[3];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe decimal4 Load(decimal* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe decimal4(decimal* ptr)
     {
         this.x = ptr[0];
@@ -6821,20 +6821,20 @@ public partial struct half2 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static half2 Load(ReadOnlySpan<half> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public half2(ReadOnlySpan<half> span)
     {
         this.x = span[0];
         this.y = span[1];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe half2 Load(half* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe half2(half* ptr)
     {
         this.x = ptr[0];
@@ -7019,10 +7019,10 @@ public partial struct half3 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static half3 Load(ReadOnlySpan<half> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public half3(ReadOnlySpan<half> span)
     {
         this.x = span[0];
@@ -7030,10 +7030,10 @@ public partial struct half3 :
         this.z = span[2];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe half3 Load(half* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe half3(half* ptr)
     {
         this.x = ptr[0];
@@ -7240,10 +7240,10 @@ public partial struct half4 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static half4 Load(ReadOnlySpan<half> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public half4(ReadOnlySpan<half> span)
     {
         this.x = span[0];
@@ -7252,10 +7252,10 @@ public partial struct half4 :
         this.w = span[3];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe half4 Load(half* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe half4(half* ptr)
     {
         this.x = ptr[0];
@@ -7434,20 +7434,20 @@ public partial struct b16v2 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b16v2 Load(ReadOnlySpan<b16> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public b16v2(ReadOnlySpan<b16> span)
     {
         this.x = span[0];
         this.y = span[1];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe b16v2 Load(b16* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe b16v2(b16* ptr)
     {
         this.x = ptr[0];
@@ -7632,10 +7632,10 @@ public partial struct b16v3 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b16v3 Load(ReadOnlySpan<b16> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public b16v3(ReadOnlySpan<b16> span)
     {
         this.x = span[0];
@@ -7643,10 +7643,10 @@ public partial struct b16v3 :
         this.z = span[2];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe b16v3 Load(b16* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe b16v3(b16* ptr)
     {
         this.x = ptr[0];
@@ -7853,10 +7853,10 @@ public partial struct b16v4 :
         this.x = value;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b16v4 Load(ReadOnlySpan<b16> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public b16v4(ReadOnlySpan<b16> span)
     {
         this.x = span[0];
@@ -7865,10 +7865,10 @@ public partial struct b16v4 :
         this.w = span[3];
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe b16v4 Load(b16* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe b16v4(b16* ptr)
     {
         this.x = ptr[0];
@@ -7987,11 +7987,11 @@ public partial struct b32v2 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector64<uint>(b32v2 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector64<uint> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector64<uint> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector64<uint> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -8048,9 +8048,9 @@ public partial struct b32v2 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal b32v2(Vector64<uint> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b32v2 UnsafeFromInner(Vector64<uint> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -8098,10 +8098,10 @@ public partial struct b32v2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b32v2 Load(ReadOnlySpan<b32> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public b32v2(ReadOnlySpan<b32> span)
     {
         #if NET8_0_OR_GREATER
@@ -8112,10 +8112,10 @@ public partial struct b32v2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe b32v2 Load(b32* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe b32v2(b32* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -8226,11 +8226,11 @@ public partial struct b32v3 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<uint>(b32v3 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<uint> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<uint> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<uint> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -8310,9 +8310,9 @@ public partial struct b32v3 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal b32v3(Vector128<uint> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b32v3 UnsafeFromInner(Vector128<uint> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -8362,10 +8362,10 @@ public partial struct b32v3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b32v3 Load(ReadOnlySpan<b32> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public b32v3(ReadOnlySpan<b32> span)
     {
         #if NET8_0_OR_GREATER
@@ -8377,10 +8377,10 @@ public partial struct b32v3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe b32v3 Load(b32* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe b32v3(b32* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -8497,11 +8497,11 @@ public partial struct b32v4 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<uint>(b32v4 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<uint> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<uint> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<uint> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -8602,9 +8602,9 @@ public partial struct b32v4 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal b32v4(Vector128<uint> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b32v4 UnsafeFromInner(Vector128<uint> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -8656,10 +8656,10 @@ public partial struct b32v4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b32v4 Load(ReadOnlySpan<b32> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public b32v4(ReadOnlySpan<b32> span)
     {
         #if NET8_0_OR_GREATER
@@ -8672,10 +8672,10 @@ public partial struct b32v4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe b32v4 Load(b32* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe b32v4(b32* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -8798,11 +8798,11 @@ public partial struct b64v2 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector128<ulong>(b64v2 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector128<ulong> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector128<ulong> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector128<ulong> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -8859,9 +8859,9 @@ public partial struct b64v2 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal b64v2(Vector128<ulong> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b64v2 UnsafeFromInner(Vector128<ulong> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -8909,10 +8909,10 @@ public partial struct b64v2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b64v2 Load(ReadOnlySpan<b64> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public b64v2(ReadOnlySpan<b64> span)
     {
         #if NET8_0_OR_GREATER
@@ -8923,10 +8923,10 @@ public partial struct b64v2 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe b64v2 Load(b64* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe b64v2(b64* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -9037,11 +9037,11 @@ public partial struct b64v3 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<ulong>(b64v3 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector256<ulong> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector256<ulong> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector256<ulong> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -9121,9 +9121,9 @@ public partial struct b64v3 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal b64v3(Vector256<ulong> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b64v3 UnsafeFromInner(Vector256<ulong> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -9173,10 +9173,10 @@ public partial struct b64v3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b64v3 Load(ReadOnlySpan<b64> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public b64v3(ReadOnlySpan<b64> span)
     {
         #if NET8_0_OR_GREATER
@@ -9188,10 +9188,10 @@ public partial struct b64v3 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe b64v3 Load(b64* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe b64v3(b64* ptr)
     {
         #if NET8_0_OR_GREATER
@@ -9308,11 +9308,11 @@ public partial struct b64v4 :
     [MethodImpl(256 | 512)]
     public static explicit operator Vector256<ulong>(b64v4 self) => self.vector;
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public Vector256<ulong> UnsafeGetInner() => vector;
-    [MethodImpl(256 | 512), UnscopedRef]
+    [MethodImpl(256 | 512), UnscopedRef, CpuOnly]
     public ref Vector256<ulong> UnsafeGetInnerRef() => ref vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public void UnsafeSetInner(Vector256<ulong> vector) => this.vector = vector;
    
     #endregion // Unsafe Inner    
@@ -9413,9 +9413,9 @@ public partial struct b64v4 :
     #region ctors
 
     #if NET8_0_OR_GREATER
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     internal b64v4(Vector256<ulong> vector) => this.vector = vector;
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b64v4 UnsafeFromInner(Vector256<ulong> vector) => new(vector);
     #endif // NET8_0_OR_GREATER
 
@@ -9467,10 +9467,10 @@ public partial struct b64v4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static b64v4 Load(ReadOnlySpan<b64> span) => new(span);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public b64v4(ReadOnlySpan<b64> span)
     {
         #if NET8_0_OR_GREATER
@@ -9483,10 +9483,10 @@ public partial struct b64v4 :
         #endif // NET8_0_OR_GREATER
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public static unsafe b64v4 Load(b64* ptr) => new(ptr);
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(256 | 512), CpuOnly]
     public unsafe b64v4(b64* ptr)
     {
         #if NET8_0_OR_GREATER

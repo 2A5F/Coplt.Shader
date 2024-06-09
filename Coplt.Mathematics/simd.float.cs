@@ -4,6 +4,7 @@ namespace Coplt.Mathematics.Simd;
 // log fast : https://stackoverflow.com/questions/39821367/very-fast-approximate-logarithm-natural-log-function-in-c
 // log fast2 : https://stackoverflow.com/questions/9411823/fast-log2float-x-implementation-c
 
+[CpuOnly]
 public static partial class simd_float
 {
     #region Mod v64
