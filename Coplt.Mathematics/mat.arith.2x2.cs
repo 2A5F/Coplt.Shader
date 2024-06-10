@@ -41,7 +41,7 @@ public static partial class math
     /// <param name="m">Matrix to use when computing determinant</param>
     /// <returns>The determinant of the matrix</returns>
     [MethodImpl(256 | 512)]
-    public static float2x2 inverse(float2x2 m)
+    public static float2x2 inverse(this float2x2 m)
     {
         var a = m.c0.x;
         var b = m.c1.x;
@@ -54,7 +54,7 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
-    public static float determinant(float2x2 m)
+    public static float determinant(this float2x2 m)
     {
         var a = m.c0.x;
         var b = m.c1.x;
@@ -106,7 +106,7 @@ public static partial class math
     /// <param name="m">Matrix to use when computing determinant</param>
     /// <returns>The determinant of the matrix</returns>
     [MethodImpl(256 | 512)]
-    public static double2x2 inverse(double2x2 m)
+    public static double2x2 inverse(this double2x2 m)
     {
         var a = m.c0.x;
         var b = m.c1.x;
@@ -119,7 +119,7 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
-    public static double determinant(double2x2 m)
+    public static double determinant(this double2x2 m)
     {
         var a = m.c0.x;
         var b = m.c1.x;
@@ -335,7 +335,7 @@ public static partial class math
     /// <param name="m">Matrix to use when computing determinant</param>
     /// <returns>The determinant of the matrix</returns>
     [MethodImpl(256 | 512)]
-    public static decimal2x2 inverse(decimal2x2 m)
+    public static decimal2x2 inverse(this decimal2x2 m)
     {
         var a = m.c0.x;
         var b = m.c1.x;
@@ -348,7 +348,7 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
-    public static decimal determinant(decimal2x2 m)
+    public static decimal determinant(this decimal2x2 m)
     {
         var a = m.c0.x;
         var b = m.c1.x;
@@ -400,7 +400,7 @@ public static partial class math
     /// <param name="m">Matrix to use when computing determinant</param>
     /// <returns>The determinant of the matrix</returns>
     [MethodImpl(256 | 512)]
-    public static half2x2 inverse(half2x2 m)
+    public static half2x2 inverse(this half2x2 m)
     {
         var a = m.c0.x;
         var b = m.c1.x;
@@ -413,7 +413,7 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
-    public static half determinant(half2x2 m)
+    public static half determinant(this half2x2 m)
     {
         var a = m.c0.x;
         var b = m.c1.x;

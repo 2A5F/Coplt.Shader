@@ -67,7 +67,7 @@ public static partial class math
     /// <param name="m">Matrix to use when computing determinant</param>
     /// <returns>The determinant of the matrix</returns>
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> inverse(<#= typeName #> m)
+    public static <#= typeName #> inverse(this <#= typeName #> m)
     {
         var a = m.c0.x;
         var b = m.c1.x;
@@ -80,7 +80,7 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
-    public static <#= typ.compType #> determinant(<#= typeName #> m)
+    public static <#= typ.compType #> determinant(this <#= typeName #> m)
     {
         var a = m.c0.x;
         var b = m.c1.x;

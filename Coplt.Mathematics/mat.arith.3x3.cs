@@ -300,7 +300,7 @@ public static partial class math
     /// <param name="m">Matrix to invert</param>
     /// <returns>The inverted matrix</returns>
     [MethodImpl(256 | 512)]
-    public static float3x3 inverse(float3x3 m)
+    public static float3x3 inverse(this float3x3 m)
     {
         var (c0, c1, c2) = m;
         // var t0 = new float3(c1.x, c2.x, c0.x);
@@ -320,7 +320,7 @@ public static partial class math
     /// <param name="m">Matrix to use when computing determinant</param>
     /// <returns>The determinant of the matrix</returns>
     [MethodImpl(256 | 512)]
-    public static float determinant(float3x3 m)
+    public static float determinant(this float3x3 m)
     {
         var (c0, c1, c2) = m;
 
@@ -634,7 +634,7 @@ public static partial class math
     /// <param name="m">Matrix to invert</param>
     /// <returns>The inverted matrix</returns>
     [MethodImpl(256 | 512)]
-    public static double3x3 inverse(double3x3 m)
+    public static double3x3 inverse(this double3x3 m)
     {
         var (c0, c1, c2) = m;
         // var t0 = new double3(c1.x, c2.x, c0.x);
@@ -654,7 +654,7 @@ public static partial class math
     /// <param name="m">Matrix to use when computing determinant</param>
     /// <returns>The determinant of the matrix</returns>
     [MethodImpl(256 | 512)]
-    public static double determinant(double3x3 m)
+    public static double determinant(this double3x3 m)
     {
         var (c0, c1, c2) = m;
 
@@ -1112,7 +1112,7 @@ public static partial class math
     /// <param name="m">Matrix to invert</param>
     /// <returns>The inverted matrix</returns>
     [MethodImpl(256 | 512)]
-    public static decimal3x3 inverse(decimal3x3 m)
+    public static decimal3x3 inverse(this decimal3x3 m)
     {
         var (c0, c1, c2) = m;
         // var t0 = new decimal3(c1.x, c2.x, c0.x);
@@ -1132,7 +1132,7 @@ public static partial class math
     /// <param name="m">Matrix to use when computing determinant</param>
     /// <returns>The determinant of the matrix</returns>
     [MethodImpl(256 | 512)]
-    public static decimal determinant(decimal3x3 m)
+    public static decimal determinant(this decimal3x3 m)
     {
         var (c0, c1, c2) = m;
 
@@ -1446,7 +1446,7 @@ public static partial class math
     /// <param name="m">Matrix to invert</param>
     /// <returns>The inverted matrix</returns>
     [MethodImpl(256 | 512)]
-    public static half3x3 inverse(half3x3 m)
+    public static half3x3 inverse(this half3x3 m)
     {
         var (c0, c1, c2) = m;
         // var t0 = new half3(c1.x, c2.x, c0.x);
@@ -1466,7 +1466,7 @@ public static partial class math
     /// <param name="m">Matrix to use when computing determinant</param>
     /// <returns>The determinant of the matrix</returns>
     [MethodImpl(256 | 512)]
-    public static half determinant(half3x3 m)
+    public static half determinant(this half3x3 m)
     {
         var (c0, c1, c2) = m;
 
