@@ -15,19 +15,20 @@ public class Test1
     [Test]
     public void Foo()
     {
-        // var a = new double4(1, 2, 3, 4).UnsafeGetInner();
-        // var b = new double4(5, 6, 7, 8).UnsafeGetInner();
-        // var r = simd_shuffle.Shuffle(a, b, Shuffle42.zx_xz);
+        var a = new double4(1, 2, 3, 4).UnsafeGetInner();
+        var b = new double4(5, 6, 7, 8).UnsafeGetInner();
+        var r = simd.UnpackHigh(a, b);
+        Console.WriteLine(r);
+        // var a = new float4(.01f, .02f, .03f, .04f);
+        // var b = new float4(.05f, .06f, .07f, .08f);
+        // var c = new float4(.09f, .10f, .11f, .12f);
+        // var d = new float4(.13f, .14f, .15f, .16f);
+        // var r = math.determinant(new float4x4(a, b, c, d));
         // Console.WriteLine(r);
-        var a = new float4(.1f, .2f, .3f, .4f);
-        var b = new float4(.5f, .6f, .7f, .8f);
-        var c = new float4(.9f, .10f, .11f, .12f);
-        var d = new float4(.13f, .14f, .15f, .16f);
-        var r = math.inverse(new float4x4(a, b, c, d));
-        Console.WriteLine(r.c0);
-        Console.WriteLine(r.c1);
-        Console.WriteLine(r.c2);
-        Console.WriteLine(r.c3);
+        // Console.WriteLine(r.c0);
+        // Console.WriteLine(r.c1);
+        // Console.WriteLine(r.c2);
+        // Console.WriteLine(r.c3);
     }
 
     [Test]

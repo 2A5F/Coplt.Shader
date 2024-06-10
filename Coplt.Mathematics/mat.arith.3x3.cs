@@ -323,11 +323,14 @@ public static partial class math
     public static float determinant(float3x3 m)
     {
         var (c0, c1, c2) = m;
-        var m00 = (c1.y * c2.z - c1.z * c2.y);
-        var m01 = (c0.y * c2.z - c0.z * c2.y);
-        var m02 = (c0.y * c1.z - c0.z * c1.y);
 
-        return (c0.x * m00 - c1.x * m01 + c2.x * m02);
+        var m00 = c1.y * c2.z - c1.z * c2.y;
+        var m01 = c0.y * c2.z - c0.z * c2.y;
+        var m02 = c0.y * c1.z - c0.z * c1.y;
+
+        var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+
+        return r;
     }
 }
 
@@ -654,11 +657,14 @@ public static partial class math
     public static double determinant(double3x3 m)
     {
         var (c0, c1, c2) = m;
-        var m00 = (c1.y * c2.z - c1.z * c2.y);
-        var m01 = (c0.y * c2.z - c0.z * c2.y);
-        var m02 = (c0.y * c1.z - c0.z * c1.y);
 
-        return (c0.x * m00 - c1.x * m01 + c2.x * m02);
+        var m00 = c1.y * c2.z - c1.z * c2.y;
+        var m01 = c0.y * c2.z - c0.z * c2.y;
+        var m02 = c0.y * c1.z - c0.z * c1.y;
+
+        var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+
+        return r;
     }
 }
 
@@ -1129,11 +1135,14 @@ public static partial class math
     public static decimal determinant(decimal3x3 m)
     {
         var (c0, c1, c2) = m;
-        var m00 = (c1.y * c2.z - c1.z * c2.y);
-        var m01 = (c0.y * c2.z - c0.z * c2.y);
-        var m02 = (c0.y * c1.z - c0.z * c1.y);
 
-        return (c0.x * m00 - c1.x * m01 + c2.x * m02);
+        var m00 = c1.y * c2.z - c1.z * c2.y;
+        var m01 = c0.y * c2.z - c0.z * c2.y;
+        var m02 = c0.y * c1.z - c0.z * c1.y;
+
+        var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+
+        return r;
     }
 }
 
@@ -1460,11 +1469,14 @@ public static partial class math
     public static half determinant(half3x3 m)
     {
         var (c0, c1, c2) = m;
-        var m00 = (half)(c1.y * c2.z - c1.z * c2.y);
-        var m01 = (half)(c0.y * c2.z - c0.z * c2.y);
-        var m02 = (half)(c0.y * c1.z - c0.z * c1.y);
 
-        return (half)(c0.x * m00 - c1.x * m01 + c2.x * m02);
+        var m00 = c1.y * c2.z - c1.z * c2.y;
+        var m01 = c0.y * c2.z - c0.z * c2.y;
+        var m02 = c0.y * c1.z - c0.z * c1.y;
+
+        var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+
+        return (half)r;
     }
 }
 

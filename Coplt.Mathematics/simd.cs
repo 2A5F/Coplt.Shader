@@ -89,7 +89,7 @@ public static partial class simd
 
     #endregion
 
-    #region Low2LowHigh
+    #region MoveLowToHigh
 
     /// <summary>
     /// <code>
@@ -127,7 +127,7 @@ public static partial class simd
 
     #endregion
 
-    #region High2HighLow
+    #region MoveHighToLow
 
     /// <summary>
     /// <code>
@@ -161,6 +161,69 @@ public static partial class simd
             return Avx.Permute2x128(a.As<T, double>(), b.As<T, double>(), 0b0001_0011).As<double, T>();
         }
         return a.WithLower(b.GetUpper());
+    }
+
+    #endregion
+
+    #region UnpackLow
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<T> UnpackLow<T>(Vector128<T> a, Vector128<T> b) =>
+        UnpackLow(a.AsSingle(), b.AsSingle()).As<float, T>();
+    
+    [MethodImpl(256 | 512)]
+    public static Vector256<T> UnpackLow<T>(Vector256<T> a, Vector256<T> b) =>
+        UnpackLow(a.AsDouble(), b.AsDouble()).As<double, T>();
+
+    [MethodImpl(256 | 512)]
+    private static Vector128<float> UnpackLow(Vector128<float> a, Vector128<float> b)
+    {
+        if (Sse.IsSupported)
+        {
+            return Sse.UnpackLow(a, b);
+        }
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return AdvSimd.Arm64.ZipLow(a, b);
+        }
+        return Vector128.Shuffle(MoveLowToHigh(a, b), Vector128.Create(0, 2, 1, 3));
+    }
+    [MethodImpl(256 | 512)]
+    private static Vector256<double> UnpackLow(Vector256<double> a, Vector256<double> b)
+    {
+        return Vector256.Shuffle(MoveLowToHigh(a, b), Vector256.Create(0, 2, 1, 3));
+    }
+
+    #endregion
+
+    #region UnpackHigh
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<T> UnpackHigh<T>(Vector128<T> a, Vector128<T> b) =>
+        UnpackHigh(a.AsSingle(), b.AsSingle()).As<float, T>();
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<T> UnpackHigh<T>(Vector256<T> a, Vector256<T> b) =>
+        UnpackHigh(a.AsDouble(), b.AsDouble()).As<double, T>();
+    
+    [MethodImpl(256 | 512)]
+    private static Vector128<float> UnpackHigh(Vector128<float> a, Vector128<float> b)
+    {
+        if (Sse.IsSupported)
+        {
+            return Sse.UnpackHigh(a, b);
+        }
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return AdvSimd.Arm64.ZipHigh(a, b);
+        }
+        return Vector128.Shuffle(MoveHighToLow(b, a), Vector128.Create(0, 2, 1, 3));
+    }
+
+    [MethodImpl(256 | 512)]
+    private static Vector256<double> UnpackHigh(Vector256<double> a, Vector256<double> b)
+    {
+        return Vector256.Shuffle(MoveHighToLow(b, a), Vector256.Create(0, 2, 1, 3));
     }
 
     #endregion

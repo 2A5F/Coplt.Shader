@@ -48,6 +48,7 @@
         <TextTemplate Include="vec.mov_lh_hl.4.tt" />
         <TextTemplate Include="vec.shuffle.4.tt" />
         <TextTemplate Include="vec.shuffle.table.4.tt" />
+        <TextTemplate Include="vec.unpack.4.tt" />
         <TextTemplate Include="vecs.tt" />
         <TextTemplate Include="vec.ctor.merge.3.tt" />
         <TextTemplate Include="vec.ctor.merge.4.2.tt" />

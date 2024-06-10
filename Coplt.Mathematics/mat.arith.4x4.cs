@@ -392,7 +392,7 @@ public static partial class math
         // (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
 
     [MethodImpl(256 | 512)]
-    public static float4x4 inverse(float4x4 m)
+    public static float4x4 inverse(this float4x4 m)
     {
         var (c0, c1, c2, c3) = m;
 
@@ -449,6 +449,71 @@ public static partial class math
         var rc3 = minors3 * rcp_denom_ppnn;
 
         return new(rc0, rc1, rc2, rc3);
+    }
+
+    /// <summary>Fast matrix inverse for rigid transforms (orthonormal basis and translation)</summary>
+    /// <param name="m">Matrix to invert</param>
+    /// <returns>The inverted matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 fastinverse(this float4x4 m)
+    {
+        var (c0, c1, c2, pos) = m;
+
+        var t0 = unpacklo(c0, c2);
+        var t1 = unpacklo(c1, default);
+        var t2 = unpackhi(c0, c2);
+        var t3 = unpackhi(c1, default);
+
+        var r0 = unpacklo(t0, t1);
+        var r1 = unpackhi(t0, t1);
+        var r2 = unpacklo(t2, t3);
+
+        pos = -(r0 * pos.x + r1 * pos.y + r2 * pos.z);
+        pos.w = 1.0f;
+
+        return new(r0, r1, r2, pos);
+    }
+
+    /// <summary>Returns the determinant of a float4x4 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float determinant(this float4x4 m)
+    {
+        var (c0, c1, c2, c3) = m;
+
+        // var m00 = c1.y * (c2.z * c3.w - c2.w * c3.z) - c2.y * (c1.z * c3.w - c1.w * c3.z) + c3.y * (c1.z * c2.w - c1.w * c2.z);
+        // var m01 = c0.y * (c2.z * c3.w - c2.w * c3.z) - c2.y * (c0.z * c3.w - c0.w * c3.z) + c3.y * (c0.z * c2.w - c0.w * c2.z);
+        // var m02 = c0.y * (c1.z * c3.w - c1.w * c3.z) - c1.y * (c0.z * c3.w - c0.w * c3.z) + c3.y * (c0.z * c1.w - c0.w * c1.z);
+        // var m03 = c0.y * (c1.z * c2.w - c1.w * c2.z) - c1.y * (c0.z * c2.w - c0.w * c2.z) + c2.y * (c0.z * c1.w - c0.w * c1.z);
+        
+        // var r = c0.x * m00 - c1.x * m01 + c2.x * m02 - c3.x * m03;
+        
+        var x1_y1_x0_y0 = movelh(c1, c0); // (x1, y1, x0, y0)
+        var x2_y2_x3_y3 = movelh(c2, c3); // (x2, y2, x3, y3)
+        var z1_w1_z0_w0 = movehl(c0, c1); // (z1, w1, z0, w0)
+        var z2_w2_z3_w3 = movehl(c3, c2); // (z2, w2, z3, w3)
+        
+        var x2_y2_x1_y1 = movelh(c2, c1); // (x2, y2, x1, y1)
+        var z2_w2_z1_w1 = movehl(c1, c2); // (z2, w2, z1, w1)
+
+        var x0_x1_x2_x3 = shuffle_zx_xz(x1_y1_x0_y0, x2_y2_x3_y3); // x0 x1 x2 x3
+
+        var y1000 = x1_y1_x0_y0.ywww;
+        var z1000 = z1_w1_z0_w0.xzzz;
+        var w1000 = z1_w1_z0_w0.ywww;
+        var y2211 = x2_y2_x1_y1.yyww;
+        var z2211 = z2_w2_z1_w1.xxzz;
+        var w2211 = z2_w2_z1_w1.yyww;
+        var y3332 = x2_y2_x3_y3.wwwy;
+        var z3332 = z2_w2_z3_w3.zzzx;
+        var w3332 = z2_w2_z3_w3.wwwy;
+        
+        var a = y1000 * (z2211 * w3332 - w2211 * z3332) - y2211 * (z1000 * w3332 - w1000 * z3332) + y3332 * (z1000 * w2211 - w1000 * z2211);
+        var b = x0_x1_x2_x3 * a;
+        var r = b.x - b.y + b.z - b.w;
+        
+        return r;
     }
 }
 
@@ -844,7 +909,7 @@ public static partial class math
         // (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
 
     [MethodImpl(256 | 512)]
-    public static double4x4 inverse(double4x4 m)
+    public static double4x4 inverse(this double4x4 m)
     {
         var (c0, c1, c2, c3) = m;
 
@@ -901,6 +966,71 @@ public static partial class math
         var rc3 = minors3 * rcp_denom_ppnn;
 
         return new(rc0, rc1, rc2, rc3);
+    }
+
+    /// <summary>Fast matrix inverse for rigid transforms (orthonormal basis and translation)</summary>
+    /// <param name="m">Matrix to invert</param>
+    /// <returns>The inverted matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 fastinverse(this double4x4 m)
+    {
+        var (c0, c1, c2, pos) = m;
+
+        var t0 = unpacklo(c0, c2);
+        var t1 = unpacklo(c1, default);
+        var t2 = unpackhi(c0, c2);
+        var t3 = unpackhi(c1, default);
+
+        var r0 = unpacklo(t0, t1);
+        var r1 = unpackhi(t0, t1);
+        var r2 = unpacklo(t2, t3);
+
+        pos = -(r0 * pos.x + r1 * pos.y + r2 * pos.z);
+        pos.w = 1.0;
+
+        return new(r0, r1, r2, pos);
+    }
+
+    /// <summary>Returns the determinant of a double4x4 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double determinant(this double4x4 m)
+    {
+        var (c0, c1, c2, c3) = m;
+
+        // var m00 = c1.y * (c2.z * c3.w - c2.w * c3.z) - c2.y * (c1.z * c3.w - c1.w * c3.z) + c3.y * (c1.z * c2.w - c1.w * c2.z);
+        // var m01 = c0.y * (c2.z * c3.w - c2.w * c3.z) - c2.y * (c0.z * c3.w - c0.w * c3.z) + c3.y * (c0.z * c2.w - c0.w * c2.z);
+        // var m02 = c0.y * (c1.z * c3.w - c1.w * c3.z) - c1.y * (c0.z * c3.w - c0.w * c3.z) + c3.y * (c0.z * c1.w - c0.w * c1.z);
+        // var m03 = c0.y * (c1.z * c2.w - c1.w * c2.z) - c1.y * (c0.z * c2.w - c0.w * c2.z) + c2.y * (c0.z * c1.w - c0.w * c1.z);
+        
+        // var r = c0.x * m00 - c1.x * m01 + c2.x * m02 - c3.x * m03;
+        
+        var x1_y1_x0_y0 = movelh(c1, c0); // (x1, y1, x0, y0)
+        var x2_y2_x3_y3 = movelh(c2, c3); // (x2, y2, x3, y3)
+        var z1_w1_z0_w0 = movehl(c0, c1); // (z1, w1, z0, w0)
+        var z2_w2_z3_w3 = movehl(c3, c2); // (z2, w2, z3, w3)
+        
+        var x2_y2_x1_y1 = movelh(c2, c1); // (x2, y2, x1, y1)
+        var z2_w2_z1_w1 = movehl(c1, c2); // (z2, w2, z1, w1)
+
+        var x0_x1_x2_x3 = shuffle_zx_xz(x1_y1_x0_y0, x2_y2_x3_y3); // x0 x1 x2 x3
+
+        var y1000 = x1_y1_x0_y0.ywww;
+        var z1000 = z1_w1_z0_w0.xzzz;
+        var w1000 = z1_w1_z0_w0.ywww;
+        var y2211 = x2_y2_x1_y1.yyww;
+        var z2211 = z2_w2_z1_w1.xxzz;
+        var w2211 = z2_w2_z1_w1.yyww;
+        var y3332 = x2_y2_x3_y3.wwwy;
+        var z3332 = z2_w2_z3_w3.zzzx;
+        var w3332 = z2_w2_z3_w3.wwwy;
+        
+        var a = y1000 * (z2211 * w3332 - w2211 * z3332) - y2211 * (z1000 * w3332 - w1000 * z3332) + y3332 * (z1000 * w2211 - w1000 * z2211);
+        var b = x0_x1_x2_x3 * a;
+        var r = b.x - b.y + b.z - b.w;
+        
+        return r;
     }
 }
 
@@ -1439,7 +1569,7 @@ public static partial class math
         // (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
 
     [MethodImpl(256 | 512)]
-    public static decimal4x4 inverse(decimal4x4 m)
+    public static decimal4x4 inverse(this decimal4x4 m)
     {
         var (c0, c1, c2, c3) = m;
 
@@ -1496,6 +1626,71 @@ public static partial class math
         var rc3 = minors3 * rcp_denom_ppnn;
 
         return new(rc0, rc1, rc2, rc3);
+    }
+
+    /// <summary>Fast matrix inverse for rigid transforms (orthonormal basis and translation)</summary>
+    /// <param name="m">Matrix to invert</param>
+    /// <returns>The inverted matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static decimal4x4 fastinverse(this decimal4x4 m)
+    {
+        var (c0, c1, c2, pos) = m;
+
+        var t0 = unpacklo(c0, c2);
+        var t1 = unpacklo(c1, default);
+        var t2 = unpackhi(c0, c2);
+        var t3 = unpackhi(c1, default);
+
+        var r0 = unpacklo(t0, t1);
+        var r1 = unpackhi(t0, t1);
+        var r2 = unpacklo(t2, t3);
+
+        pos = -(r0 * pos.x + r1 * pos.y + r2 * pos.z);
+        pos.w = 1m;
+
+        return new(r0, r1, r2, pos);
+    }
+
+    /// <summary>Returns the determinant of a decimal4x4 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static decimal determinant(this decimal4x4 m)
+    {
+        var (c0, c1, c2, c3) = m;
+
+        // var m00 = c1.y * (c2.z * c3.w - c2.w * c3.z) - c2.y * (c1.z * c3.w - c1.w * c3.z) + c3.y * (c1.z * c2.w - c1.w * c2.z);
+        // var m01 = c0.y * (c2.z * c3.w - c2.w * c3.z) - c2.y * (c0.z * c3.w - c0.w * c3.z) + c3.y * (c0.z * c2.w - c0.w * c2.z);
+        // var m02 = c0.y * (c1.z * c3.w - c1.w * c3.z) - c1.y * (c0.z * c3.w - c0.w * c3.z) + c3.y * (c0.z * c1.w - c0.w * c1.z);
+        // var m03 = c0.y * (c1.z * c2.w - c1.w * c2.z) - c1.y * (c0.z * c2.w - c0.w * c2.z) + c2.y * (c0.z * c1.w - c0.w * c1.z);
+        
+        // var r = c0.x * m00 - c1.x * m01 + c2.x * m02 - c3.x * m03;
+        
+        var x1_y1_x0_y0 = movelh(c1, c0); // (x1, y1, x0, y0)
+        var x2_y2_x3_y3 = movelh(c2, c3); // (x2, y2, x3, y3)
+        var z1_w1_z0_w0 = movehl(c0, c1); // (z1, w1, z0, w0)
+        var z2_w2_z3_w3 = movehl(c3, c2); // (z2, w2, z3, w3)
+        
+        var x2_y2_x1_y1 = movelh(c2, c1); // (x2, y2, x1, y1)
+        var z2_w2_z1_w1 = movehl(c1, c2); // (z2, w2, z1, w1)
+
+        var x0_x1_x2_x3 = shuffle_zx_xz(x1_y1_x0_y0, x2_y2_x3_y3); // x0 x1 x2 x3
+
+        var y1000 = x1_y1_x0_y0.ywww;
+        var z1000 = z1_w1_z0_w0.xzzz;
+        var w1000 = z1_w1_z0_w0.ywww;
+        var y2211 = x2_y2_x1_y1.yyww;
+        var z2211 = z2_w2_z1_w1.xxzz;
+        var w2211 = z2_w2_z1_w1.yyww;
+        var y3332 = x2_y2_x3_y3.wwwy;
+        var z3332 = z2_w2_z3_w3.zzzx;
+        var w3332 = z2_w2_z3_w3.wwwy;
+        
+        var a = y1000 * (z2211 * w3332 - w2211 * z3332) - y2211 * (z1000 * w3332 - w1000 * z3332) + y3332 * (z1000 * w2211 - w1000 * z2211);
+        var b = x0_x1_x2_x3 * a;
+        var r = b.x - b.y + b.z - b.w;
+        
+        return r;
     }
 }
 
@@ -1885,7 +2080,7 @@ public static partial class math
         // (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
 
     [MethodImpl(256 | 512)]
-    public static half4x4 inverse(half4x4 m)
+    public static half4x4 inverse(this half4x4 m)
     {
         var (c0, c1, c2, c3) = m;
 
@@ -1942,6 +2137,71 @@ public static partial class math
         var rc3 = minors3 * rcp_denom_ppnn;
 
         return new(rc0, rc1, rc2, rc3);
+    }
+
+    /// <summary>Fast matrix inverse for rigid transforms (orthonormal basis and translation)</summary>
+    /// <param name="m">Matrix to invert</param>
+    /// <returns>The inverted matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 fastinverse(this half4x4 m)
+    {
+        var (c0, c1, c2, pos) = m;
+
+        var t0 = unpacklo(c0, c2);
+        var t1 = unpacklo(c1, default);
+        var t2 = unpackhi(c0, c2);
+        var t3 = unpackhi(c1, default);
+
+        var r0 = unpacklo(t0, t1);
+        var r1 = unpackhi(t0, t1);
+        var r2 = unpacklo(t2, t3);
+
+        pos = -(r0 * pos.x + r1 * pos.y + r2 * pos.z);
+        pos.w = (half)1.0;
+
+        return new(r0, r1, r2, pos);
+    }
+
+    /// <summary>Returns the determinant of a half4x4 matrix</summary>
+    /// <param name="m">Matrix to use when computing determinant</param>
+    /// <returns>The determinant of the matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half determinant(this half4x4 m)
+    {
+        var (c0, c1, c2, c3) = m;
+
+        // var m00 = c1.y * (c2.z * c3.w - c2.w * c3.z) - c2.y * (c1.z * c3.w - c1.w * c3.z) + c3.y * (c1.z * c2.w - c1.w * c2.z);
+        // var m01 = c0.y * (c2.z * c3.w - c2.w * c3.z) - c2.y * (c0.z * c3.w - c0.w * c3.z) + c3.y * (c0.z * c2.w - c0.w * c2.z);
+        // var m02 = c0.y * (c1.z * c3.w - c1.w * c3.z) - c1.y * (c0.z * c3.w - c0.w * c3.z) + c3.y * (c0.z * c1.w - c0.w * c1.z);
+        // var m03 = c0.y * (c1.z * c2.w - c1.w * c2.z) - c1.y * (c0.z * c2.w - c0.w * c2.z) + c2.y * (c0.z * c1.w - c0.w * c1.z);
+        
+        // var r = c0.x * m00 - c1.x * m01 + c2.x * m02 - c3.x * m03;
+        
+        var x1_y1_x0_y0 = movelh(c1, c0); // (x1, y1, x0, y0)
+        var x2_y2_x3_y3 = movelh(c2, c3); // (x2, y2, x3, y3)
+        var z1_w1_z0_w0 = movehl(c0, c1); // (z1, w1, z0, w0)
+        var z2_w2_z3_w3 = movehl(c3, c2); // (z2, w2, z3, w3)
+        
+        var x2_y2_x1_y1 = movelh(c2, c1); // (x2, y2, x1, y1)
+        var z2_w2_z1_w1 = movehl(c1, c2); // (z2, w2, z1, w1)
+
+        var x0_x1_x2_x3 = shuffle_zx_xz(x1_y1_x0_y0, x2_y2_x3_y3); // x0 x1 x2 x3
+
+        var y1000 = x1_y1_x0_y0.ywww;
+        var z1000 = z1_w1_z0_w0.xzzz;
+        var w1000 = z1_w1_z0_w0.ywww;
+        var y2211 = x2_y2_x1_y1.yyww;
+        var z2211 = z2_w2_z1_w1.xxzz;
+        var w2211 = z2_w2_z1_w1.yyww;
+        var y3332 = x2_y2_x3_y3.wwwy;
+        var z3332 = z2_w2_z3_w3.zzzx;
+        var w3332 = z2_w2_z3_w3.wwwy;
+        
+        var a = y1000 * (z2211 * w3332 - w2211 * z3332) - y2211 * (z1000 * w3332 - w1000 * z3332) + y3332 * (z1000 * w2211 - w1000 * z2211);
+        var b = x0_x1_x2_x3 * a;
+        var r = b.x - b.y + b.z - b.w;
+        
+        return (half)r;
     }
 }
 
