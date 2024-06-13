@@ -277,7 +277,7 @@ public static partial class math
     #region up2pow2
 
     [MethodImpl(256 | 512)]
-    public static ushort up2pow2(this ushort c) 
+    public static ushort up2pow2(this ushort c)
     {
         #if NET8_0_OR_GREATER
         return (ushort)up2pow2((uint)c);
@@ -947,6 +947,254 @@ public static partial class math
 
     #endregion
 
+    #region Lerp
+
+    [MethodImpl(256 | 512)]
+    public static sbyte lerp(this sbyte t, sbyte start, sbyte end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, (sbyte)(end - start), start);
+        #else // NET8_0_OR_GREATER
+        return (sbyte)(start + t * (end - start));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static byte lerp(this byte t, byte start, byte end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, (byte)(end - start), start);
+        #else // NET8_0_OR_GREATER
+        return (byte)(start + t * (end - start));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static short lerp(this short t, short start, short end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, (short)(end - start), start);
+        #else // NET8_0_OR_GREATER
+        return (short)(start + t * (end - start));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ushort lerp(this ushort t, ushort start, ushort end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, (ushort)(end - start), start);
+        #else // NET8_0_OR_GREATER
+        return (ushort)(start + t * (end - start));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static int lerp(this int t, int start, int end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static uint lerp(this uint t, uint start, uint end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static long lerp(this long t, long start, long end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static ulong lerp(this ulong t, ulong start, ulong end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static half lerp(this half t, half start, half end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return (half)(start + t * (end - start));
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float lerp(this float t, float start, float end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double lerp(this double t, double start, double end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal lerp(this decimal t, decimal start, decimal end)
+    {
+        #if NET8_0_OR_GREATER
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    #endregion
+
+    #region Unlerp
+
+    [MethodImpl(256 | 512)]
+    public static byte unlerp(this byte a, byte start, byte end) => (byte)((a - start) / (end - start));
+    
+    [MethodImpl(256 | 512)]
+    public static sbyte unlerp(this sbyte a, sbyte start, sbyte end) => (sbyte)((a - start) / (end - start));
+    
+    [MethodImpl(256 | 512)]
+    public static ushort unlerp(this ushort a, ushort start, ushort end) => (ushort)((a - start) / (end - start));
+    
+    [MethodImpl(256 | 512)]
+    public static short unlerp(this short a, short start, short end) => (short)((a - start) / (end - start));
+    
+    [MethodImpl(256 | 512)]
+    public static uint unlerp(this uint a, uint start, uint end) => (a - start) / (end - start);
+    
+    [MethodImpl(256 | 512)]
+    public static int unlerp(this int a, int start, int end) => (a - start) / (end - start);
+    
+    [MethodImpl(256 | 512)]
+    public static ulong unlerp(this ulong a, ulong start, ulong end) => (a - start) / (end - start);
+    
+    [MethodImpl(256 | 512)]
+    public static long unlerp(this long a, long start, long end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static half unlerp(this half a, half start, half end) => (half)((a - start) / (end - start));
+
+    [MethodImpl(256 | 512)]
+    public static float unlerp(this float a, float start, float end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static double unlerp(this double a, double start, double end) => (a - start) / (end - start);
+    
+    [MethodImpl(256 | 512)]
+    public static decimal unlerp(this decimal a, decimal start, decimal end) => (a - start) / (end - start);
+
+    #endregion
+
+    #region Remap
+    
+    [MethodImpl(256 | 512)]
+    public static byte remap(this byte a, byte srcStart, byte srcEnd, byte dstStart, byte dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+    
+    [MethodImpl(256 | 512)]
+    public static sbyte remap(this sbyte a, sbyte srcStart, sbyte srcEnd, sbyte dstStart, sbyte dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+    
+    [MethodImpl(256 | 512)]
+    public static ushort remap(this ushort a, ushort srcStart, ushort srcEnd, ushort dstStart, ushort dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+    
+    [MethodImpl(256 | 512)]
+    public static short remap(this short a, short srcStart, short srcEnd, short dstStart, short dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static uint remap(this uint a, uint srcStart, uint srcEnd, uint dstStart, uint dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+    
+    [MethodImpl(256 | 512)]
+    public static int remap(this int a, int srcStart, int srcEnd, int dstStart, int dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+    
+    [MethodImpl(256 | 512)]
+    public static ulong remap(this ulong a, ulong srcStart, ulong srcEnd, ulong dstStart, ulong dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+    
+    [MethodImpl(256 | 512)]
+    public static long remap(this long a, long srcStart, long srcEnd, long dstStart, long dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static half remap(this half a, half srcStart, half srcEnd, half dstStart, half dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static float remap(this float a, float srcStart, float srcEnd, float dstStart, float dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static double remap(this double a, double srcStart, double srcEnd, double dstStart, double dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+    
+    [MethodImpl(256 | 512)]
+    public static decimal remap(this decimal a, decimal srcStart, decimal srcEnd, decimal dstStart, decimal dstEnd) =>
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    #endregion
+
+    #region SmoothStep
+
+    [MethodImpl(256 | 512)]
+    public static half smoothstep(this half a, half min, half max)
+    {
+        var t = saturate(((float)a - (float)min) / ((float)max - (float)min));
+        return (half)(t * t * (3.0f - (2.0f * t)));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float smoothstep(this float a, float min, float max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0f - (2.0f * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double smoothstep(this double a, double min, double max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0 - (2.0 * t));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static decimal smoothstep(this decimal a, decimal min, decimal max)
+    {
+        var t = saturate((a - min) / (max - min));
+        return t * t * (3.0m - (2.0m * t));
+    }
+
+    #endregion
+
     #region rcp
 
     [MethodImpl(256 | 512)]
@@ -982,6 +1230,10 @@ public static partial class math
     public static double fma(this double a, double b, double c) => a * b + c;
     #endif
 
+    [MethodImpl(256 | 512)]
+    public static byte fma(this byte a, byte b, byte c) => (byte)(a * b + c);
+    [MethodImpl(256 | 512)]
+    public static sbyte fma(this sbyte a, sbyte b, sbyte c) => (sbyte)(a * b + c);
     [MethodImpl(256 | 512)]
     public static ushort fma(this ushort a, ushort b, ushort c) => (ushort)(a * b + c);
     [MethodImpl(256 | 512)]

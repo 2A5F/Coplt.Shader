@@ -25,6 +25,7 @@
         <TextTemplate Include="mat.arith.4x4.tt" />
         <TextTemplate Include="mat.str.tt" />
         <TextTemplate Include="mat.trn.tt" />
+        <TextTemplate Include="norm.tt" />
         <TextTemplate Include="quaternion.tt" />
         <TextTemplate Include="Shuffle.4.2.tt" />
         <TextTemplate Include="simd_matrix_trn_2x2.tt" />

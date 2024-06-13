@@ -451,6 +451,66 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static <#= typeName #> lerp(this <#= typeName #> t, <#= typeName #> start, <#= typeName #> end)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, end - start, start);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return start + t * (end - start);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> lerp(this <#= typ.simdComp #> t, <#= typeName #> start, <#= typeName #> end)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(new(t), end - start, start);
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return start + t * (end - start);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> unlerp(this <#= typeName #> a, <#= typeName #> start, <#= typeName #> end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> unlerp(this <#= typ.simdComp #> a, <#= typeName #> start, <#= typeName #> end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> remap(this <#= typeName #> a, <#= typeName #> srcStart, <#= typeName #> srcEnd, <#= typeName #> dstStart, <#= typeName #> dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
     public static <#= typ.simdComp #> dot(this <#= typeName #> a, <#= typeName #> b)
     {
 <#
