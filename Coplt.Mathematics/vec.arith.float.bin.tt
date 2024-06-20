@@ -355,10 +355,10 @@ public static partial class math
     public static <#= typeName #> rsqrt(this <#= typeName #> a) => <#= typeName #>.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> length(this <#= typeName #> a) => dot(a, a).sqrt();
+    public static <#= typ.compType #> length(this <#= typeName #> a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> distance(this <#= typeName #> a, <#= typeName #> b) => length(b - a);
+    public static <#= typ.compType #> distance(this <#= typeName #> a, <#= typeName #> b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static <#= typeName #> normalize(this <#= typeName #> a) => a * dot(a, a).rsqrt();

@@ -143,10 +143,10 @@ public static partial class math
     public static float2 rsqrt(this float2 a) => float2.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static float2 length(this float2 a) => dot(a, a).sqrt();
+    public static float length(this float2 a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static float2 distance(this float2 a, float2 b) => length(b - a);
+    public static float distance(this float2 a, float2 b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static float2 normalize(this float2 a) => a * dot(a, a).rsqrt();
@@ -486,10 +486,10 @@ public static partial class math
     public static float3 rsqrt(this float3 a) => float3.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static float3 length(this float3 a) => dot(a, a).sqrt();
+    public static float length(this float3 a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static float3 distance(this float3 a, float3 b) => length(b - a);
+    public static float distance(this float3 a, float3 b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static float3 normalize(this float3 a) => a * dot(a, a).rsqrt();
@@ -831,10 +831,10 @@ public static partial class math
     public static float4 rsqrt(this float4 a) => float4.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static float4 length(this float4 a) => dot(a, a).sqrt();
+    public static float length(this float4 a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static float4 distance(this float4 a, float4 b) => length(b - a);
+    public static float distance(this float4 a, float4 b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static float4 normalize(this float4 a) => a * dot(a, a).rsqrt();
@@ -1178,10 +1178,10 @@ public static partial class math
     public static double2 rsqrt(this double2 a) => double2.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static double2 length(this double2 a) => dot(a, a).sqrt();
+    public static double length(this double2 a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static double2 distance(this double2 a, double2 b) => length(b - a);
+    public static double distance(this double2 a, double2 b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static double2 normalize(this double2 a) => a * dot(a, a).rsqrt();
@@ -1521,10 +1521,10 @@ public static partial class math
     public static double3 rsqrt(this double3 a) => double3.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static double3 length(this double3 a) => dot(a, a).sqrt();
+    public static double length(this double3 a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static double3 distance(this double3 a, double3 b) => length(b - a);
+    public static double distance(this double3 a, double3 b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static double3 normalize(this double3 a) => a * dot(a, a).rsqrt();
@@ -1866,10 +1866,10 @@ public static partial class math
     public static double4 rsqrt(this double4 a) => double4.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static double4 length(this double4 a) => dot(a, a).sqrt();
+    public static double length(this double4 a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static double4 distance(this double4 a, double4 b) => length(b - a);
+    public static double distance(this double4 a, double4 b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static double4 normalize(this double4 a) => a * dot(a, a).rsqrt();
@@ -2161,10 +2161,10 @@ public static partial class math
     public static half2 rsqrt(this half2 a) => half2.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static half2 length(this half2 a) => dot(a, a).sqrt();
+    public static half length(this half2 a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static half2 distance(this half2 a, half2 b) => length(b - a);
+    public static half distance(this half2 a, half2 b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static half2 normalize(this half2 a) => a * dot(a, a).rsqrt();
@@ -2389,10 +2389,10 @@ public static partial class math
     public static half3 rsqrt(this half3 a) => half3.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static half3 length(this half3 a) => dot(a, a).sqrt();
+    public static half length(this half3 a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static half3 distance(this half3 a, half3 b) => length(b - a);
+    public static half distance(this half3 a, half3 b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static half3 normalize(this half3 a) => a * dot(a, a).rsqrt();
@@ -2619,10 +2619,10 @@ public static partial class math
     public static half4 rsqrt(this half4 a) => half4.One / sqrt(a);
 
     [MethodImpl(256 | 512)]
-    public static half4 length(this half4 a) => dot(a, a).sqrt();
+    public static half length(this half4 a) => dot(a, a).sqrt();
 
     [MethodImpl(256 | 512)]
-    public static half4 distance(this half4 a, half4 b) => length(b - a);
+    public static half distance(this half4 a, half4 b) => length(b - a);
 
     [MethodImpl(256 | 512)]
     public static half4 normalize(this half4 a) => a * dot(a, a).rsqrt();
