@@ -52,10 +52,16 @@ public partial struct <#= typeName #>
     public static <#= typeName #> operator -(<#= typeName #> a, <#= typeName #> b) => 
         new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i} - b.c{i}")) #>);
 
+    /// <summary>
+    /// Scale a <#= typeName #> by <#= typeName #>
+    /// </summary>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator *(<#= typeName #> a, <#= typeName #> b) => 
         new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i} * b.c{i}")) #>);
 
+    /// <summary>
+    /// Scale a <#= typeName #> by <#= typ.compType #>
+    /// </summary>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator *(<#= typeName #> a, <#= typ.compType #> b) => 
         new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i} * b")) #>);

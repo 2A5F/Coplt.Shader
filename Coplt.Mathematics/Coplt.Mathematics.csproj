@@ -16,6 +16,8 @@
         <TextTemplate Include="interface.tt"/>
         <TextTemplate Include="mat.arith.2x2.tt" />
         <TextTemplate Include="mat.arith.3x3.tt" />
+        <TextTemplate Include="mat.arith.mul.tt" />
+        <TextTemplate Include="mat.arith.mul.vec.tt" />
         <TextTemplate Include="mat.arith.tt" />
         <TextTemplate Include="mat.bitop.tt" />
         <TextTemplate Include="mat.bool.tt" />
