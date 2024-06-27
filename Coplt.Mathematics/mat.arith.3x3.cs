@@ -36,9 +36,9 @@ public partial struct float3x3
     }
 
     /// <summary>
-    /// Returns a float3x3 view rotation matrix given a unit length forward vector and a unit length up vector
-    /// The two input vectors are assumed to be unit length and not collinear
-    /// If these assumptions are not met use <see cref="float3x3.LookRotationSafe" /> instead
+    /// Returns a float3x3 view rotation matrix given a unit length forward vector and a unit length up vector.
+    /// The two input vectors are assumed to be unit length and not collinear.
+    /// If these assumptions are not met use <see cref="float3x3.LookRotationSafe" /> instead.
     /// </summary>
     /// <param name="forward">The forward vector to align the center of view with</param>
     /// <param name="up">The up vector to point top of view toward</param>
@@ -51,10 +51,10 @@ public partial struct float3x3
     }
 
     /// <summary>
-    /// Returns a float3x3 view rotation matrix given a forward vector and an up vector
-    /// The two input vectors are not assumed to be unit length
+    /// Returns a float3x3 view rotation matrix given a forward vector and an up vector.
+    /// The two input vectors are not assumed to be unit length.
     /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
-    /// the identity will be returned instead
+    /// the identity will be returned instead.
     /// </summary>
     /// <param name="forward">The forward vector to align the center of view with</param>
     /// <param name="up">The up vector to point top of view toward</param>
@@ -75,15 +75,15 @@ public partial struct float3x3
         var mn = forwardLengthSq.min(upLengthSq).min(tLengthSq);
         var mx = forwardLengthSq.max(upLengthSq).max(tLengthSq);
 
-        var accept = mn > float.MinValue && mx < float.MaxValue 
+        var accept = mn > math.MinRotateSafe<float>() && mx < math.MaxRotateSafe<float>()
             && forwardLengthSq.isFinite() && upLengthSq.isFinite() && tLengthSq.isFinite();
         if (!accept) return Identity;
         return new(t, forward.cross(t), forward);
     }
     
     /// <summary>
-    /// Returns a float3x3 matrix representing a rotation around a unit axis by an angle in radians
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin
+    /// Returns a float3x3 matrix representing a rotation around a unit axis by an angle in radians.
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="axis">The rotation axis</param>
     /// <param name="angle">The angle of rotation in radians</param>
@@ -108,8 +108,8 @@ public partial struct float3x3
     }
 
     /// <summary>
-    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float3x3 rotation matrix of the Euler angle rotation in x-y-z order</returns>
@@ -125,8 +125,8 @@ public partial struct float3x3
     }
 
     /// <summary>
-    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float3x3 rotation matrix of the Euler angle rotation in x-z-y order</returns>
@@ -142,8 +142,8 @@ public partial struct float3x3
     }
 
     /// <summary>
-    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float3x3 rotation matrix of the Euler angle rotation in y-x-z order</returns>
@@ -159,8 +159,8 @@ public partial struct float3x3
     }
 
     /// <summary>
-    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float3x3 rotation matrix of the Euler angle rotation in y-z-x order</returns>
@@ -176,9 +176,8 @@ public partial struct float3x3
     }
 
     /// <summary>
-    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
-    /// This is the default order rotation order in Unity
+    /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float3x3 rotation matrix of the Euler angle rotation in z-x-y order</returns>
@@ -274,7 +273,7 @@ public partial struct float3x3
         default, default, z
     );
 
-    /// <summary>Returns a float3x3 matrix representing a non-uniform axis scaling by the components of the float3 vector v.</summary>
+    /// <summary>Returns a float3x3 matrix representing a non-uniform axis scaling by the components of the float3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The float3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -285,10 +284,10 @@ public partial struct float3x3
     );
 
     /// <summary>
-    /// Converts a float4x4 to a float3x3.
+    /// Converts a float4x4 to a float3x3
     /// </summary>
-    /// <param name="m4x4">The float4x4 to convert to a float3x3.</param>
-    /// <returns>The float3x3 constructed from the upper left 3x3 of the input float4x4 matrix.</returns>
+    /// <param name="m4x4">The float4x4 to convert to a float3x3</param>
+    /// <returns>The float3x3 constructed from the upper left 3x3 of the input float4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator float3x3(float4x4 m4x4) => new(m4x4);
 }
@@ -370,9 +369,9 @@ public partial struct double3x3
     }
 
     /// <summary>
-    /// Returns a double3x3 view rotation matrix given a unit length forward vector and a unit length up vector
-    /// The two input vectors are assumed to be unit length and not collinear
-    /// If these assumptions are not met use <see cref="double3x3.LookRotationSafe" /> instead
+    /// Returns a double3x3 view rotation matrix given a unit length forward vector and a unit length up vector.
+    /// The two input vectors are assumed to be unit length and not collinear.
+    /// If these assumptions are not met use <see cref="double3x3.LookRotationSafe" /> instead.
     /// </summary>
     /// <param name="forward">The forward vector to align the center of view with</param>
     /// <param name="up">The up vector to point top of view toward</param>
@@ -385,10 +384,10 @@ public partial struct double3x3
     }
 
     /// <summary>
-    /// Returns a double3x3 view rotation matrix given a forward vector and an up vector
-    /// The two input vectors are not assumed to be unit length
+    /// Returns a double3x3 view rotation matrix given a forward vector and an up vector.
+    /// The two input vectors are not assumed to be unit length.
     /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
-    /// the identity will be returned instead
+    /// the identity will be returned instead.
     /// </summary>
     /// <param name="forward">The forward vector to align the center of view with</param>
     /// <param name="up">The up vector to point top of view toward</param>
@@ -409,15 +408,15 @@ public partial struct double3x3
         var mn = forwardLengthSq.min(upLengthSq).min(tLengthSq);
         var mx = forwardLengthSq.max(upLengthSq).max(tLengthSq);
 
-        var accept = mn > double.MinValue && mx < double.MaxValue 
+        var accept = mn > math.MinRotateSafe<double>() && mx < math.MaxRotateSafe<double>()
             && forwardLengthSq.isFinite() && upLengthSq.isFinite() && tLengthSq.isFinite();
         if (!accept) return Identity;
         return new(t, forward.cross(t), forward);
     }
     
     /// <summary>
-    /// Returns a double3x3 matrix representing a rotation around a unit axis by an angle in radians
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin
+    /// Returns a double3x3 matrix representing a rotation around a unit axis by an angle in radians.
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="axis">The rotation axis</param>
     /// <param name="angle">The angle of rotation in radians</param>
@@ -442,8 +441,8 @@ public partial struct double3x3
     }
 
     /// <summary>
-    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double3x3 rotation matrix of the Euler angle rotation in x-y-z order</returns>
@@ -459,8 +458,8 @@ public partial struct double3x3
     }
 
     /// <summary>
-    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double3x3 rotation matrix of the Euler angle rotation in x-z-y order</returns>
@@ -476,8 +475,8 @@ public partial struct double3x3
     }
 
     /// <summary>
-    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double3x3 rotation matrix of the Euler angle rotation in y-x-z order</returns>
@@ -493,8 +492,8 @@ public partial struct double3x3
     }
 
     /// <summary>
-    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double3x3 rotation matrix of the Euler angle rotation in y-z-x order</returns>
@@ -510,9 +509,8 @@ public partial struct double3x3
     }
 
     /// <summary>
-    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
-    /// This is the default order rotation order in Unity
+    /// Returns a double3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double3x3 rotation matrix of the Euler angle rotation in z-x-y order</returns>
@@ -608,7 +606,7 @@ public partial struct double3x3
         default, default, z
     );
 
-    /// <summary>Returns a double3x3 matrix representing a non-uniform axis scaling by the components of the double3 vector v.</summary>
+    /// <summary>Returns a double3x3 matrix representing a non-uniform axis scaling by the components of the double3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The double3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -619,10 +617,10 @@ public partial struct double3x3
     );
 
     /// <summary>
-    /// Converts a double4x4 to a double3x3.
+    /// Converts a double4x4 to a double3x3
     /// </summary>
-    /// <param name="m4x4">The double4x4 to convert to a double3x3.</param>
-    /// <returns>The double3x3 constructed from the upper left 3x3 of the input double4x4 matrix.</returns>
+    /// <param name="m4x4">The double4x4 to convert to a double3x3</param>
+    /// <returns>The double3x3 constructed from the upper left 3x3 of the input double4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator double3x3(double4x4 m4x4) => new(m4x4);
 }
@@ -708,7 +706,7 @@ public partial struct short3x3
         default, default, z
     );
 
-    /// <summary>Returns a short3x3 matrix representing a non-uniform axis scaling by the components of the short3 vector v.</summary>
+    /// <summary>Returns a short3x3 matrix representing a non-uniform axis scaling by the components of the short3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The short3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -719,10 +717,10 @@ public partial struct short3x3
     );
 
     /// <summary>
-    /// Converts a short4x4 to a short3x3.
+    /// Converts a short4x4 to a short3x3
     /// </summary>
-    /// <param name="m4x4">The short4x4 to convert to a short3x3.</param>
-    /// <returns>The short3x3 constructed from the upper left 3x3 of the input short4x4 matrix.</returns>
+    /// <param name="m4x4">The short4x4 to convert to a short3x3</param>
+    /// <returns>The short3x3 constructed from the upper left 3x3 of the input short4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator short3x3(short4x4 m4x4) => new(m4x4);
 }
@@ -771,7 +769,7 @@ public partial struct ushort3x3
         default, default, z
     );
 
-    /// <summary>Returns a ushort3x3 matrix representing a non-uniform axis scaling by the components of the ushort3 vector v.</summary>
+    /// <summary>Returns a ushort3x3 matrix representing a non-uniform axis scaling by the components of the ushort3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The ushort3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -782,10 +780,10 @@ public partial struct ushort3x3
     );
 
     /// <summary>
-    /// Converts a ushort4x4 to a ushort3x3.
+    /// Converts a ushort4x4 to a ushort3x3
     /// </summary>
-    /// <param name="m4x4">The ushort4x4 to convert to a ushort3x3.</param>
-    /// <returns>The ushort3x3 constructed from the upper left 3x3 of the input ushort4x4 matrix.</returns>
+    /// <param name="m4x4">The ushort4x4 to convert to a ushort3x3</param>
+    /// <returns>The ushort3x3 constructed from the upper left 3x3 of the input ushort4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator ushort3x3(ushort4x4 m4x4) => new(m4x4);
 }
@@ -834,7 +832,7 @@ public partial struct int3x3
         default, default, z
     );
 
-    /// <summary>Returns a int3x3 matrix representing a non-uniform axis scaling by the components of the int3 vector v.</summary>
+    /// <summary>Returns a int3x3 matrix representing a non-uniform axis scaling by the components of the int3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The int3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -845,10 +843,10 @@ public partial struct int3x3
     );
 
     /// <summary>
-    /// Converts a int4x4 to a int3x3.
+    /// Converts a int4x4 to a int3x3
     /// </summary>
-    /// <param name="m4x4">The int4x4 to convert to a int3x3.</param>
-    /// <returns>The int3x3 constructed from the upper left 3x3 of the input int4x4 matrix.</returns>
+    /// <param name="m4x4">The int4x4 to convert to a int3x3</param>
+    /// <returns>The int3x3 constructed from the upper left 3x3 of the input int4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator int3x3(int4x4 m4x4) => new(m4x4);
 }
@@ -897,7 +895,7 @@ public partial struct uint3x3
         default, default, z
     );
 
-    /// <summary>Returns a uint3x3 matrix representing a non-uniform axis scaling by the components of the uint3 vector v.</summary>
+    /// <summary>Returns a uint3x3 matrix representing a non-uniform axis scaling by the components of the uint3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The uint3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -908,10 +906,10 @@ public partial struct uint3x3
     );
 
     /// <summary>
-    /// Converts a uint4x4 to a uint3x3.
+    /// Converts a uint4x4 to a uint3x3
     /// </summary>
-    /// <param name="m4x4">The uint4x4 to convert to a uint3x3.</param>
-    /// <returns>The uint3x3 constructed from the upper left 3x3 of the input uint4x4 matrix.</returns>
+    /// <param name="m4x4">The uint4x4 to convert to a uint3x3</param>
+    /// <returns>The uint3x3 constructed from the upper left 3x3 of the input uint4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator uint3x3(uint4x4 m4x4) => new(m4x4);
 }
@@ -960,7 +958,7 @@ public partial struct long3x3
         default, default, z
     );
 
-    /// <summary>Returns a long3x3 matrix representing a non-uniform axis scaling by the components of the long3 vector v.</summary>
+    /// <summary>Returns a long3x3 matrix representing a non-uniform axis scaling by the components of the long3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The long3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -971,10 +969,10 @@ public partial struct long3x3
     );
 
     /// <summary>
-    /// Converts a long4x4 to a long3x3.
+    /// Converts a long4x4 to a long3x3
     /// </summary>
-    /// <param name="m4x4">The long4x4 to convert to a long3x3.</param>
-    /// <returns>The long3x3 constructed from the upper left 3x3 of the input long4x4 matrix.</returns>
+    /// <param name="m4x4">The long4x4 to convert to a long3x3</param>
+    /// <returns>The long3x3 constructed from the upper left 3x3 of the input long4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator long3x3(long4x4 m4x4) => new(m4x4);
 }
@@ -1023,7 +1021,7 @@ public partial struct ulong3x3
         default, default, z
     );
 
-    /// <summary>Returns a ulong3x3 matrix representing a non-uniform axis scaling by the components of the ulong3 vector v.</summary>
+    /// <summary>Returns a ulong3x3 matrix representing a non-uniform axis scaling by the components of the ulong3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The ulong3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -1034,10 +1032,10 @@ public partial struct ulong3x3
     );
 
     /// <summary>
-    /// Converts a ulong4x4 to a ulong3x3.
+    /// Converts a ulong4x4 to a ulong3x3
     /// </summary>
-    /// <param name="m4x4">The ulong4x4 to convert to a ulong3x3.</param>
-    /// <returns>The ulong3x3 constructed from the upper left 3x3 of the input ulong4x4 matrix.</returns>
+    /// <param name="m4x4">The ulong4x4 to convert to a ulong3x3</param>
+    /// <returns>The ulong3x3 constructed from the upper left 3x3 of the input ulong4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator ulong3x3(ulong4x4 m4x4) => new(m4x4);
 }
@@ -1086,7 +1084,7 @@ public partial struct decimal3x3
         default, default, z
     );
 
-    /// <summary>Returns a decimal3x3 matrix representing a non-uniform axis scaling by the components of the decimal3 vector v.</summary>
+    /// <summary>Returns a decimal3x3 matrix representing a non-uniform axis scaling by the components of the decimal3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The decimal3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -1097,10 +1095,10 @@ public partial struct decimal3x3
     );
 
     /// <summary>
-    /// Converts a decimal4x4 to a decimal3x3.
+    /// Converts a decimal4x4 to a decimal3x3
     /// </summary>
-    /// <param name="m4x4">The decimal4x4 to convert to a decimal3x3.</param>
-    /// <returns>The decimal3x3 constructed from the upper left 3x3 of the input decimal4x4 matrix.</returns>
+    /// <param name="m4x4">The decimal4x4 to convert to a decimal3x3</param>
+    /// <returns>The decimal3x3 constructed from the upper left 3x3 of the input decimal4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator decimal3x3(decimal4x4 m4x4) => new(m4x4);
 }
@@ -1182,9 +1180,9 @@ public partial struct half3x3
     }
 
     /// <summary>
-    /// Returns a half3x3 view rotation matrix given a unit length forward vector and a unit length up vector
-    /// The two input vectors are assumed to be unit length and not collinear
-    /// If these assumptions are not met use <see cref="half3x3.LookRotationSafe" /> instead
+    /// Returns a half3x3 view rotation matrix given a unit length forward vector and a unit length up vector.
+    /// The two input vectors are assumed to be unit length and not collinear.
+    /// If these assumptions are not met use <see cref="half3x3.LookRotationSafe" /> instead.
     /// </summary>
     /// <param name="forward">The forward vector to align the center of view with</param>
     /// <param name="up">The up vector to point top of view toward</param>
@@ -1197,10 +1195,10 @@ public partial struct half3x3
     }
 
     /// <summary>
-    /// Returns a half3x3 view rotation matrix given a forward vector and an up vector
-    /// The two input vectors are not assumed to be unit length
+    /// Returns a half3x3 view rotation matrix given a forward vector and an up vector.
+    /// The two input vectors are not assumed to be unit length.
     /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
-    /// the identity will be returned instead
+    /// the identity will be returned instead.
     /// </summary>
     /// <param name="forward">The forward vector to align the center of view with</param>
     /// <param name="up">The up vector to point top of view toward</param>
@@ -1221,15 +1219,15 @@ public partial struct half3x3
         var mn = forwardLengthSq.min(upLengthSq).min(tLengthSq);
         var mx = forwardLengthSq.max(upLengthSq).max(tLengthSq);
 
-        var accept = mn > half.MinValue && mx < half.MaxValue 
+        var accept = mn > math.MinRotateSafe<half>() && mx < math.MaxRotateSafe<half>()
             && forwardLengthSq.isFinite() && upLengthSq.isFinite() && tLengthSq.isFinite();
         if (!accept) return Identity;
         return new(t, forward.cross(t), forward);
     }
     
     /// <summary>
-    /// Returns a half3x3 matrix representing a rotation around a unit axis by an angle in radians
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin
+    /// Returns a half3x3 matrix representing a rotation around a unit axis by an angle in radians.
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="axis">The rotation axis</param>
     /// <param name="angle">The angle of rotation in radians</param>
@@ -1254,8 +1252,8 @@ public partial struct half3x3
     }
 
     /// <summary>
-    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half3x3 rotation matrix of the Euler angle rotation in x-y-z order</returns>
@@ -1271,8 +1269,8 @@ public partial struct half3x3
     }
 
     /// <summary>
-    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half3x3 rotation matrix of the Euler angle rotation in x-z-y order</returns>
@@ -1288,8 +1286,8 @@ public partial struct half3x3
     }
 
     /// <summary>
-    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half3x3 rotation matrix of the Euler angle rotation in y-x-z order</returns>
@@ -1305,8 +1303,8 @@ public partial struct half3x3
     }
 
     /// <summary>
-    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half3x3 rotation matrix of the Euler angle rotation in y-z-x order</returns>
@@ -1322,9 +1320,8 @@ public partial struct half3x3
     }
 
     /// <summary>
-    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
-    /// This is the default order rotation order in Unity
+    /// Returns a half3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half3x3 rotation matrix of the Euler angle rotation in z-x-y order</returns>
@@ -1420,7 +1417,7 @@ public partial struct half3x3
         default, default, z
     );
 
-    /// <summary>Returns a half3x3 matrix representing a non-uniform axis scaling by the components of the half3 vector v.</summary>
+    /// <summary>Returns a half3x3 matrix representing a non-uniform axis scaling by the components of the half3 vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The half3x3 rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -1431,10 +1428,10 @@ public partial struct half3x3
     );
 
     /// <summary>
-    /// Converts a half4x4 to a half3x3.
+    /// Converts a half4x4 to a half3x3
     /// </summary>
-    /// <param name="m4x4">The half4x4 to convert to a half3x3.</param>
-    /// <returns>The half3x3 constructed from the upper left 3x3 of the input half4x4 matrix.</returns>
+    /// <param name="m4x4">The half4x4 to convert to a half3x3</param>
+    /// <returns>The half3x3 constructed from the upper left 3x3 of the input half4x4 matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator half3x3(half4x4 m4x4) => new(m4x4);
 }

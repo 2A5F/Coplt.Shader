@@ -124,6 +124,16 @@ public static partial class math
     /// </summary>
     public const double D_DegToRad = 0.0174532925199432957692369076848861271344287188854172545609719144;
 
+    /// <summary>
+    /// <code>The smallest positive normal number representable in a float</code>
+    /// </summary>
+    public const float F_MinNormal = 1.175494351e-38f;
+
+    /// <summary>
+    /// <code>The smallest positive normal number representable in a double</code>
+    /// </summary>
+    public const double D_MinNormal = 2.2250738585072014e-308;
+
     #region rcp fast
 
     [MethodImpl(256 | 512)]
@@ -251,6 +261,33 @@ public static partial class math
     }
 
     #endregion
+
+    [MethodImpl(256 | 512)]
+    internal static T MinNormal<T>() where T : unmanaged
+    {
+        if (typeof(T) == typeof(float)) return F_MinNormal.BitCast<float, T>();
+        if (typeof(T) == typeof(double)) return D_MinNormal.BitCast<double, T>();
+        if (typeof(T) == typeof(half)) return ((short)0x0400).BitCast<short, T>();
+        throw new NotSupportedException();
+    }
+
+    [MethodImpl(256 | 512)]
+    internal static T MinRotateSafe<T>() where T : unmanaged
+    {
+        if (typeof(T) == typeof(float)) return 1e-35f.BitCast<float, T>();
+        if (typeof(T) == typeof(double)) return 1e-290.BitCast<double, T>();
+        if (typeof(T) == typeof(half)) return ((half)1e-5f).BitCast<half, T>();
+        throw new NotSupportedException();
+    }
+
+    [MethodImpl(256 | 512)]
+    internal static T MaxRotateSafe<T>() where T : unmanaged
+    {
+        if (typeof(T) == typeof(float)) return 1e35f.BitCast<float, T>();
+        if (typeof(T) == typeof(double)) return 1e290.BitCast<double, T>();
+        if (typeof(T) == typeof(half)) return ((half)1e5f).BitCast<half, T>();
+        throw new NotSupportedException();
+    }
 }
 
 public static partial class ctor

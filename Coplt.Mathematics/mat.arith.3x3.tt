@@ -60,9 +60,9 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> view rotation matrix given a unit length forward vector and a unit length up vector
-    /// The two input vectors are assumed to be unit length and not collinear
-    /// If these assumptions are not met use <see cref="<#= typeName #>.LookRotationSafe" /> instead
+    /// Returns a <#= typeName #> view rotation matrix given a unit length forward vector and a unit length up vector.
+    /// The two input vectors are assumed to be unit length and not collinear.
+    /// If these assumptions are not met use <see cref="<#= typeName #>.LookRotationSafe" /> instead.
     /// </summary>
     /// <param name="forward">The forward vector to align the center of view with</param>
     /// <param name="up">The up vector to point top of view toward</param>
@@ -75,10 +75,10 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> view rotation matrix given a forward vector and an up vector
-    /// The two input vectors are not assumed to be unit length
+    /// Returns a <#= typeName #> view rotation matrix given a forward vector and an up vector.
+    /// The two input vectors are not assumed to be unit length.
     /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
-    /// the identity will be returned instead
+    /// the identity will be returned instead.
     /// </summary>
     /// <param name="forward">The forward vector to align the center of view with</param>
     /// <param name="up">The up vector to point top of view toward</param>
@@ -99,15 +99,15 @@ public partial struct <#= typeName #>
         var mn = forwardLengthSq.min(upLengthSq).min(tLengthSq);
         var mx = forwardLengthSq.max(upLengthSq).max(tLengthSq);
 
-        var accept = mn > <#= typ.compType #>.MinValue && mx < <#= typ.compType #>.MaxValue 
+        var accept = mn > math.MinRotateSafe<<#= typ.compType #>>() && mx < math.MaxRotateSafe<<#= typ.compType #>>()
             && forwardLengthSq.isFinite() && upLengthSq.isFinite() && tLengthSq.isFinite();
         if (!accept) return Identity;
         return new(t, forward.cross(t), forward);
     }
     
     /// <summary>
-    /// Returns a <#= typeName #> matrix representing a rotation around a unit axis by an angle in radians
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin
+    /// Returns a <#= typeName #> matrix representing a rotation around a unit axis by an angle in radians.
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="axis">The rotation axis</param>
     /// <param name="angle">The angle of rotation in radians</param>
@@ -132,8 +132,8 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A <#= vecTypeName #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in x-y-z order</returns>
@@ -149,8 +149,8 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A <#= vecTypeName #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in x-z-y order</returns>
@@ -166,8 +166,8 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A <#= vecTypeName #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in y-x-z order</returns>
@@ -183,8 +183,8 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A <#= vecTypeName #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in y-z-x order</returns>
@@ -200,9 +200,8 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
-    /// This is the default order rotation order in Unity
+    /// Returns a <#= typeName #> rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A <#= vecTypeName #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The <#= typeName #> rotation matrix of the Euler angle rotation in z-x-y order</returns>
@@ -301,7 +300,7 @@ public partial struct <#= typeName #>
         default, default, z
     );
 
-    /// <summary>Returns a <#= typeName #> matrix representing a non-uniform axis scaling by the components of the <#= vecTypeName #> vector v.</summary>
+    /// <summary>Returns a <#= typeName #> matrix representing a non-uniform axis scaling by the components of the <#= vecTypeName #> vector v</summary>
     /// <param name="v">The vector containing non-uniform scaling factors</param>
     /// <returns>The <#= typeName #> rotation matrix representing a non-uniform scale</returns>
     [MethodImpl(256 | 512)]
@@ -312,10 +311,10 @@ public partial struct <#= typeName #>
     );
 
     /// <summary>
-    /// Converts a <#= typeName4x4 #> to a <#= typeName #>.
+    /// Converts a <#= typeName4x4 #> to a <#= typeName #>
     /// </summary>
-    /// <param name="m4x4">The <#= typeName4x4 #> to convert to a <#= typeName #>.</param>
-    /// <returns>The <#= typeName #> constructed from the upper left 3x3 of the input <#= typeName4x4 #> matrix.</returns>
+    /// <param name="m4x4">The <#= typeName4x4 #> to convert to a <#= typeName #></param>
+    /// <returns>The <#= typeName #> constructed from the upper left 3x3 of the input <#= typeName4x4 #> matrix</returns>
     [MethodImpl(256 | 512)]
     public static explicit operator <#= typeName #>(<#= typeName4x4 #> m4x4) => new(m4x4);
 }

@@ -17,6 +17,7 @@ namespace Coplt.Mathematics;
 
         var vecTypeName = $"{typ.name}{4}";
         var vecTypeName3 = $"{typ.name}{3}";
+        var vecTypeName2 = $"{typ.name}{2}";
         var matTypeName3x3 = $"{typ.name}{3}x{3}";
         var matTypeName4x4 = $"{typ.name}{4}x{4}";
         var typeName = $"quaternion{typ.structSuffix}";
@@ -101,8 +102,8 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a quaternion representing a rotation around a unit axis by an angle in radians
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin
+    /// Returns a quaternion representing a rotation around a unit axis by an angle in radians.
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="axis">The axis of rotation</param>
     /// <param name="angle">The angle of rotation in radians</param>
@@ -113,7 +114,511 @@ public partial struct <#= typeName #>
         math.sincos(<#= typ.arithCast #>(<#= typ.half #> * angle), out var sina, out var cosa);
         return new(new <#= vecTypeName #>(axis * sina, cosa));
     }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The quaternion representing the Euler angle rotation in x-y-z order</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> EulerXYZ(<#= vecTypeName3 #> xyz)
+    {
+        var (s, c) = (xyz * 0.5<#= typ.suffix #>).sincos();
+        return new(
+            new <#= vecTypeName #>(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new <#= vecTypeName #>(c.xyz, s.x) * new <#= vecTypeName #>(-1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>)
+        );
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The quaternion representing the Euler angle rotation in x-z-y order</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> EulerXZY(<#= vecTypeName3 #> xyz)
+    {
+        var (s, c) = (xyz * 0.5<#= typ.suffix #>).sincos();
+        return new(
+            new <#= vecTypeName #>(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new <#= vecTypeName #>(c.xyz, s.x) * new <#= vecTypeName #>(1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>)
+        );
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The quaternion representing the Euler angle rotation in y-x-z order</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> EulerYXZ(<#= vecTypeName3 #> xyz)
+    {
+        var (s, c) = (xyz * 0.5<#= typ.suffix #>).sincos();
+        return new(
+            new <#= vecTypeName #>(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new <#= vecTypeName #>(c.xyz, s.x) * new <#= vecTypeName #>(-1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>)
+        );
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The quaternion representing the Euler angle rotation in y-z-x order</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> EulerYZX(<#= vecTypeName3 #> xyz)
+    {
+        var (s, c) = (xyz * 0.5<#= typ.suffix #>).sincos();
+        return new(
+            new <#= vecTypeName #>(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new <#= vecTypeName #>(c.xyz, s.x) * new <#= vecTypeName #>(-1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>)
+        );
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The quaternion representing the Euler angle rotation in z-x-y order</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> EulerZXY(<#= vecTypeName3 #> xyz)
+    {
+        var (s, c) = (xyz * 0.5<#= typ.suffix #>).sincos();
+        return new(
+            new <#= vecTypeName #>(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new <#= vecTypeName #>(c.xyz, s.x) * new <#= vecTypeName #>(1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>)
+        );
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A <#= vecTypeName3 #> vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
+    /// <returns>The quaternion representing the Euler angle rotation in z-y-x order</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> EulerZYX(<#= vecTypeName3 #> xyz)
+    {
+        var (s, c) = (xyz * 0.5<#= typ.suffix #>).sincos();
+        return new(
+            new <#= vecTypeName #>(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new <#= vecTypeName #>(c.xyz, s.x) * new <#= vecTypeName #>(1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>)
+        );
+    }
+
+    /// <summary>Returns a quaternion that rotates around the x-axis by a given number of radians</summary>
+    /// <param name="angle">The clockwise rotation angle when looking along the x-axis towards the origin in radians</param>
+    /// <returns>The quaternion representing a rotation around the x-axis</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> RotateX(<#= typ.compType #> angle)
+    {
+        var (sina, cosa) = math.sincos(<#= typ.arithCast #>(angle * 0.5<#= typ.suffix #>));
+        return new(sina, default, default, cosa);
+    }
+
+    /// <summary>Returns a quaternion that rotates around the y-axis by a given number of radians</summary>
+    /// <param name="angle">The clockwise rotation angle when looking along the y-axis towards the origin in radians</param>
+    /// <returns>The quaternion representing a rotation around the y-axis</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> RotateY(<#= typ.compType #> angle)
+    {
+        var (sina, cosa) = math.sincos(<#= typ.arithCast #>(angle * 0.5<#= typ.suffix #>));
+        return new(default, sina, default, cosa);
+    }
+
+    /// <summary>Returns a quaternion that rotates around the z-axis by a given number of radians.</summary>
+    /// <param name="angle">The clockwise rotation angle when looking along the z-axis towards the origin in radians</param>
+    /// <returns>The quaternion representing a rotation around the z-axis</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> RotateZ(<#= typ.compType #> angle)
+    {
+        var (sina, cosa) = math.sincos(<#= typ.arithCast #>(angle * 0.5<#= typ.suffix #>));
+        return new(default, default, sina, cosa);
+    }
+
+    /// <summary>
+    /// Returns a quaternion view rotation given a unit length forward vector and a unit length up vector.
+    /// The two input vectors are assumed to be unit length and not collinear.
+    /// If these assumptions are not met use <see cref="<#= typeName #>.LookRotationSafe" /> instead.
+    /// </summary>
+    /// <param name="forward">The view forward direction</param>
+    /// <param name="up">The view up direction</param>
+    /// <returns>The quaternion view rotation</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookRotation(<#= vecTypeName3 #> forward, <#= vecTypeName3 #> up)
+    {
+        var t = up.cross(forward).normalize();
+        return new(new <#= matTypeName3x3 #>(t, forward.cross(t), forward));
+    }
+
+    /// <summary>
+    /// Returns a quaternion view rotation given a forward vector and an up vector.
+    /// The two input vectors are not assumed to be unit length.
+    /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
+    /// the identity will be returned instead.
+    /// </summary>
+    /// <param name="forward">The view forward direction</param>
+    /// <param name="up">The view up direction</param>
+    /// <returns>The quaternion view rotation or the identity quaternion</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookRotationSafe(<#= vecTypeName3 #> forward, <#= vecTypeName3 #> up)
+    {
+        var forwardLengthSq = forward.dot(forward);
+        var upLengthSq = up.dot(up);
+
+        forward *= forwardLengthSq.rsqrt();
+        up *= upLengthSq.rsqrt();
+
+        var t = up.cross(forward);
+        var tLengthSq = t.dot(t);
+        t *= tLengthSq.rsqrt();
+
+        var mn = forwardLengthSq.min(upLengthSq).min(tLengthSq);
+        var mx = forwardLengthSq.max(upLengthSq).max(tLengthSq);
+
+        var accept = mn > math.MinRotateSafe<<#= typ.compType #>>() && mx < math.MaxRotateSafe<<#= typ.compType #>>()
+             && forwardLengthSq.isFinite() && upLengthSq.isFinite() && tLengthSq.isFinite();
+        return accept
+            ? new <#= typeName #>(new <#= matTypeName3x3 #>(t, forward.cross(t), forward))
+            : new <#= typeName #>(default, default, default, <#= typ.one #>);
+    }
 }
+
+public static partial class math
+{
+    /// <summary>Returns the conjugate of a quaternion value</summary>
+    /// <param name="q">The quaternion to conjugate</param>
+    /// <returns>The conjugate of the input quaternion</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> conjugate(this <#= typeName #> q) => 
+        new(q.value * new <#= vecTypeName #>(-1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>));
+
+    /// <summary>Returns the inverse of a quaternion value</summary>
+    /// <param name="q">The quaternion to invert</param>
+    /// <returns>The quaternion inverse of the input quaternion</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> inverse(this <#= typeName #> q) => 
+        new(q.dot(q).rcp() * q.value *  new <#= vecTypeName #>(-1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>));
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.compType #> dot(this <#= typeName #> a, <#= typeName #> b) => a.value.dot(b.value);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.compType #> length(this <#= typeName #> q) => q.lengthsq().sqrt();
+
+    [MethodImpl(256 | 512)]
+    public static <#= typ.compType #> lengthsq(this <#= typeName #> q) => q.dot(q);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> normalize(this <#= typeName #> q) => new(q.dot(q).rsqrt() * q.value);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> normalizesafe(this <#= typeName #> q)
+    {
+        var len = q.lengthsq();
+        if (len > MinNormal<<#= typ.compType #>>()) return <#= typeName #>.Identity;
+        return new(len.rsqrt() * q.value);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> normalizesafe(this <#= typeName #> q, <#= typeName #> defaultValue)
+    {
+        var len = q.lengthsq();
+        if (len > MinNormal<<#= typ.compType #>>()) return defaultValue;
+        return new(len.rsqrt() * q.value);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> unitexp(this <#= typeName #> q)
+    {
+        var v_rcp_len = q.value.xyz.lengthsq().rsqrt();
+        var v_len = v_rcp_len.rcp();
+        v_len.sincos(out var sin_v_len, out var cos_v_len);
+        return new(new <#= vecTypeName #>(q.value.xyz * v_rcp_len * sin_v_len, cos_v_len));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> exp(this <#= typeName #> q)
+    {
+        var v_rcp_len = q.value.xyz.lengthsq().rsqrt();
+        var v_len = v_rcp_len.rcp();
+        v_len.sincos(out var sin_v_len, out var cos_v_len);
+        return new(new <#= vecTypeName #>(q.value.xyz * v_rcp_len * sin_v_len, cos_v_len) * q.value.w.exp());
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> unitlog(this <#= typeName #> q)
+    {
+        var w = q.value.w.clamp(-1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>);
+        var s = <#= typ.arithCast #>(acos(w) * rsqrt(1.0<#= typ.suffix #> - w*w));
+        return new(new <#= vecTypeName #>(q.value.xyz * s, default));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> log(this <#= typeName #> q)
+    {
+        var v_len_sq = q.value.xyz.lengthsq();
+        var q_len_sq = v_len_sq + q.value.w * q.value.w;
+
+        var s = <#= typ.arithCast #>(acos(clamp(q.value.w * q_len_sq.rsqrt(), -1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>)) * v_len_sq.rsqrt());
+        return new(new <#= vecTypeName #>(q.value.xyz * s, <#= typ.arithCast #>(0.5<#= typ.suffix #> * q_len_sq.log())));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> mul(this <#= typeName #> a, <#= typeName #> b) => new(
+        a.value.wwww * b.value + (a.value.xyzx * b.value.wwwx + a.value.yzxy * b.value.zxyy) 
+        * new <#= vecTypeName #>(1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>, 1.0<#= typ.suffix #>, -1.0<#= typ.suffix #>) - a.value.zxyz * b.value.yzxz
+    );
+
+    [MethodImpl(256 | 512)]
+    public static <#= vecTypeName3 #> mul(this <#= typeName #> q, <#= vecTypeName3 #> v)
+    {
+        var t = <#= typ.two #> * q.value.xyz.cross(v);
+        return v + q.value.w * t + q.value.xyz.cross(t);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= vecTypeName3 #> rotate(this <#= typeName #> q, <#= vecTypeName3 #> v) => mul(q, v);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> nlerp(this <#= typeName #> q1, <#= typeName #> q2, <#= typ.compType #> t) => 
+        normalize(q1.value + t * (chgsign(q2.value, dot(q1, q2)) - q1.value));
+    
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> slerp(this <#= typeName #> q1, <#= typeName #> q2, <#= typ.compType #> t)
+    {
+        var dt = dot(q1, q2);
+        if (dt < 0.0<#= typ.suffix #>)
+        {
+            dt = -dt;
+            q2.value = -q2.value;
+        }
+
+        if (dt < 0.9995<#= typ.suffix #>)
+        {
+            var angle = dt.acos();
+            var s = <#= typ.arithCast #>(rsqrt(1.0<#= typ.suffix #> - dt * dt));    // 1.0f / sin(angle)
+            var w1 = <#= typ.arithCast #>(sin(angle * (1.0<#= typ.suffix #> - t)) * s);
+            var w2 = <#= typ.arithCast #>(sin(angle * t) * s);
+            return new <#= typeName #>(q1.value * w1 + q2.value * w2);
+        }
+        else
+        {
+            // if the angle is small, use linear interpolation
+            return nlerp(q1, q2, t);
+        }
+    }
+    
+    [MethodImpl(256 | 512)]
+    public static <#= typ.compType #> angle(this <#= typeName #> q1, <#= typeName #> q2)
+    {
+        var diff = q1.conjugate().mul(q2).normalize().value.xyz.length().asin();
+        return <#= typ.arithCast #>(diff + diff);
+    }
+    
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> rotation(this <#= matTypeName3x3 #> m)
+    {
+        var det = m.determinant();
+        if (math.abs(1<#= typ.suffix #> - det) < svd.k_EpsilonDeterminant_<#= typ.compType #>)
+            return new(m);
+
+        if (det.abs() > svd.k_EpsilonDeterminant_<#= typ.compType #>)
+        {
+            var tmp = m * new <#= vecTypeName3 #>(m.c0.lengthsq(), m.c1.lengthsq(), m.c2.lengthsq()).rsqrt();
+            if (math.abs(1<#= typ.suffix #> - math.determinant(tmp)) < svd.k_EpsilonDeterminant_<#= typ.compType #>)
+                return new(tmp);
+        }
+
+        return svd.svdRotation(m);
+    }
+    
+    [MethodImpl(256 | 512)]
+    public static <#= matTypeName3x3 #> adj(this <#= matTypeName3x3 #> m, out <#= typ.compType #> det)
+    {
+        <#= matTypeName3x3 #> adjT;
+        adjT.c0 = m.c1.cross(m.c2);
+        adjT.c1 = m.c2.cross(m.c0);
+        adjT.c2 = m.c0.cross(m.c1);
+        det = m.c0.dot(adjT.c0);
+
+        return adjT.transpose();
+    }
+    
+    [MethodImpl(256 | 512)]
+    public static bool adj(this <#= matTypeName3x3 #> m, out <#= matTypeName3x3 #> i)
+    {
+        var epsilon = <#= typ.compType switch { "half" => "1e-5", "float" => "1e-30", "double" => "1e-300", _ => "0" } #><#= typ.suffix #>;
+        return m.adj(out i, epsilon);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static bool adj(this <#= matTypeName3x3 #> m, out <#= matTypeName3x3 #> i, <#= typ.compType #> epsilon)
+    {
+        i = adj(m, out <#= typ.compType #> det);
+        var c = det.abs() > epsilon;
+        var detInv = c ? det.rcp() : new <#= vecTypeName3 #>(<#= typ.one #>) ;
+        i = detInv * i;
+        return c;
+    }
+}
+
+#region svd
+
+internal static partial class svd
+{
+    public static <#= typ.compType #> k_EpsilonDeterminant_<#= typ.compType #>
+    {
+        [MethodImpl(256 | 512)]
+        get => <#= typ.compType switch { "half" => "1e-2", "float" => "1e-6", "double" => "1e-50", _ => "0" } #><#= typ.suffix #>;
+    }
+    public static <#= typ.compType #> k_EpsilonNormalSqrt_<#= typ.compType #>
+    {
+        [MethodImpl(256 | 512)]
+        get => <#= typ.compType switch { "half" => "1e-3", "float" => "1e-15", "double" => "1e-150", _ => "0" } #><#= typ.suffix #>;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> svdRotation(<#= matTypeName3x3 #> a)
+    {
+        // todo
+        return new();
+    }
+
+    [MethodImpl(256 | 512)]
+    private static <#= vecTypeName3 #> singularValuesDecomposition(<#= matTypeName3x3 #> a, out <#= typeName #> u, out <#= typeName #> v)
+    {
+        u = <#= typeName #>.Identity;
+        v = <#= typeName #>.Identity;
+
+        var s = a.transpose().mul(a);
+        v = jacobiIteration(ref s);
+        var b = new <#= matTypeName3x3 #>(v);
+        b = a.mul(b);
+        sortSingularValues(ref b, ref v);
+        u = givensQRFactorization(b, out var e);
+
+        return new(e.c0.x, e.c1.y, e.c2.z);
+    }
+
+    [MethodImpl(256 | 512)]
+    private static <#= typeName #> jacobiIteration(ref <#= matTypeName3x3 #> s, int iterations = 5)
+    {
+        <#= matTypeName3x3 #> qm;
+        <#= typeName #> q;
+        <#= typeName #> v = <#= typeName #>.Identity;
+
+        for (var i = 0; i < iterations; ++i)
+        {
+            q = approxGivensQuat(new <#= vecTypeName3 #>(s.c0.x, s.c1.y, s.c0.y), new <#= vecTypeName #>(0<#= typ.suffix #>, 0<#= typ.suffix #>, 1<#= typ.suffix #>, 1<#= typ.suffix #>));
+            v = v.mul(q);
+            qm = new <#= matTypeName3x3 #>(q);
+            s = qm.transpose().mul(s).mul(qm);
+
+            q = approxGivensQuat(new <#= vecTypeName3 #>(s.c1.y, s.c2.z, s.c1.z), new <#= vecTypeName #>(1<#= typ.suffix #>, 0<#= typ.suffix #>, 0<#= typ.suffix #>, 1<#= typ.suffix #>));
+            v = v.mul(q);
+            qm = new <#= matTypeName3x3 #>(q);
+            s = qm.transpose().mul(s).mul(qm);
+
+            q = approxGivensQuat(new <#= vecTypeName3 #>(s.c2.z, s.c0.x, s.c2.x), new <#= vecTypeName #>(0<#= typ.suffix #>, 1<#= typ.suffix #>, 0<#= typ.suffix #>, 1<#= typ.suffix #>));
+            v = v.mul(q);
+            qm = new <#= matTypeName3x3 #>(q);
+            s = qm.transpose().mul(s).mul(qm);
+        } 
+
+        return v;
+    }
+
+    [MethodImpl(256 | 512)]
+    private static <#= typeName #> approxGivensQuat(<#= vecTypeName3 #> pq, <#= vecTypeName #> mask)
+    {
+        var c8 = 0.9238795325112867561281831893967882868224166258636424861150977312<#= typ.suffix #>; // cos(pi/8)
+        var s8 = 0.3826834323650897717284599840303988667613445624856270414338006356<#= typ.suffix #>; // sin(pi/8)
+        var g = 5.8284271247461900976033774484193961571393437507538961463533594759<#= typ.suffix #>; // 3 + 2 * sqrt(2)
+
+        var ch = <#= typ.arithCast #>(<#= typ.two #> * (pq.x - pq.y)); // approx cos(a/2)
+        var sh = pq.z; // approx sin(a/2)
+        var r = (g * sh * sh < ch * ch ? new <#= vecTypeName #>(sh, sh, sh, ch) : new <#= vecTypeName #>(s8, s8, s8, c8)) * mask;
+        return r.normalize();
+    }
+
+    [MethodImpl(256 | 512)]
+    private static void sortSingularValues(ref <#= matTypeName3x3 #> b, ref <#= typeName #> v)
+    {
+        var l0 = b.c0.lengthsq();
+        var l1 = b.c1.lengthsq();
+        var l2 = b.c2.lengthsq();
+
+        var c = l0 < l1;
+        condNegSwap(c, ref b.c0, ref b.c1);
+        v = condNegSwapQuat(c, v, new <#= vecTypeName #>(0<#= typ.suffix #>, 0<#= typ.suffix #>, 1<#= typ.suffix #>, 1<#= typ.suffix #>));
+        condSwap(c, ref l0, ref l1);
+
+        c = l0 < l2;
+        condNegSwap(c, ref b.c0, ref b.c2);
+        v = condNegSwapQuat(c, v, new <#= vecTypeName #>(0<#= typ.suffix #>, -1<#= typ.suffix #>, 0<#= typ.suffix #>, 1<#= typ.suffix #>));
+        condSwap(c, ref l0, ref l2);
+
+        c = l1 < l2;
+        condNegSwap(c, ref b.c1, ref b.c2);
+        v = condNegSwapQuat(c, v, new <#= vecTypeName #>(1<#= typ.suffix #>, 0<#= typ.suffix #>, 0<#= typ.suffix #>, 1<#= typ.suffix #>));
+    }
+
+    [MethodImpl(256 | 512)]
+    private static void condNegSwap(bool c, ref <#= vecTypeName3 #> x, ref <#= vecTypeName3 #> y)
+    {
+        var tmp = -x;
+        x = c ? y : x;
+        y = c ? tmp : y;
+    }
+
+    [MethodImpl(256 | 512)]
+    private static void condSwap(bool c, ref <#= typ.compType #> x, ref <#= typ.compType #> y)
+    {
+        var tmp = x;
+        x = c ? y : x;
+        y = c ? tmp : y;
+    }
+
+    [MethodImpl(256 | 512)]
+    private static <#= typeName #> condNegSwapQuat(bool c, <#= typeName #> q, <#= vecTypeName #> mask)
+    {
+        var halfSqrt2 = 0.7071067811865475244008443621048490392848359376884740365883398689<#= typ.suffix #>;
+        return q.mul(c ? mask * halfSqrt2 : <#= typeName #>.Identity.value);
+    }
+
+    [MethodImpl(256 | 512)]
+    private static <#= typeName #> givensQRFactorization(<#= matTypeName3x3 #> b, out <#= matTypeName3x3 #> r)
+    {
+        var u = qrGivensQuat(new <#= vecTypeName2 #>(b.c0.x, b.c0.y), new <#= vecTypeName #>(0<#= typ.suffix #>, 0<#= typ.suffix #>, 1<#= typ.suffix #>, 1<#= typ.suffix #>));
+        var qmt = new <#= matTypeName3x3 #>(u.conjugate());
+        r = qmt.mul(b);
+
+        var q = qrGivensQuat(new <#= vecTypeName2 #>(r.c0.x, r.c0.z), new <#= vecTypeName #>(0<#= typ.suffix #>, -1<#= typ.suffix #>, 0<#= typ.suffix #>, 1<#= typ.suffix #>));
+        u = u.mul(q);
+        qmt = new <#= matTypeName3x3 #>(q.conjugate());
+        r = qmt.mul(r);
+
+        q = qrGivensQuat(new <#= vecTypeName2 #>(r.c1.y, r.c1.z), new <#= vecTypeName #>(1<#= typ.suffix #>, 0<#= typ.suffix #>, 0<#= typ.suffix #>, 1<#= typ.suffix #>));
+        u = u.mul(q);
+        qmt = new <#= matTypeName3x3 #>(q.conjugate());
+        r = qmt.mul(r);
+
+        return u;
+    }
+
+    [MethodImpl(256 | 512)]
+    private static <#= typeName #> qrGivensQuat(<#= vecTypeName2 #> pq, <#= vecTypeName #> mask)
+    {
+        var l = <#= typ.arithCast #>(math.sqrt(pq.x * pq.x + pq.y * pq.y));
+        var sh = l > k_EpsilonNormalSqrt_<#= typ.compType #> ? pq.y : default;
+        var ch = <#= typ.arithCast #>(pq.x.abs() + l.max(k_EpsilonNormalSqrt_<#= typ.compType #>));
+        condSwap(pq.x < 0<#= typ.suffix #>, ref sh, ref ch);
+
+        return math.normalize(new <#= vecTypeName #>(sh, sh, sh, ch) * mask);
+    }
+}
+
+#endregion // svd
 
 #endregion // <#= typeName #>
 <#

@@ -31,17 +31,18 @@ namespace Coplt.Mathematics;
 public partial struct <#= typeName #>
 {
     /// <summary>
-    /// Scale a <#= typeName #> by <#= vecTypeName #>
+    /// Scale a <#= typeName #> columns by <#= vecTypeNameM #>
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> operator *(<#= typeName #> a, <#= vecTypeName #> b) 
-        => new(<#= string.Join(", ", Enumerable.Range(0, m).Select(c => $"a.c{c} * b")) #>);
+    public static <#= typeName #> operator *(<#= typeName #> a, <#= vecTypeNameM #> b) 
+        => new(<#= string.Join(", ", Enumerable.Range(0, m).Select(c => $"a.c{c} * b.{string.Join("", Enumerable.Repeat(Typ.xyzw[c], n))}")) #>);
 
     /// <summary>
-    /// Scale a <#= typeName #> by <#= vecTypeName #>
+    /// Scale a <#= typeName #> rows by <#= vecTypeName #>
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> operator *(<#= vecTypeName #> a, <#= typeName #> b) => b * a;
+    public static <#= typeName #> operator *(<#= vecTypeName #> a, <#= typeName #> b)
+        => new(<#= string.Join(", ", Enumerable.Range(0, m).Select(c => $"b.c{c} * a")) #>);
 }
 
 public static partial class math

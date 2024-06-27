@@ -7,17 +7,18 @@ namespace Coplt.Mathematics;
 public partial struct float2x2
 {
     /// <summary>
-    /// Scale a float2x2 by float2
+    /// Scale a float2x2 columns by float2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static float2x2 operator *(float2x2 a, float2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a float2x2 by float2
+    /// Scale a float2x2 rows by float2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float2x2 operator *(float2 a, float2x2 b) => b * a;
+    public static float2x2 operator *(float2 a, float2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -38,17 +39,18 @@ public static partial class math
 public partial struct float2x3
 {
     /// <summary>
-    /// Scale a float2x3 by float2
+    /// Scale a float2x3 columns by float3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float2x3 operator *(float2x3 a, float2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static float2x3 operator *(float2x3 a, float3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a float2x3 by float2
+    /// Scale a float2x3 rows by float2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float2x3 operator *(float2 a, float2x3 b) => b * a;
+    public static float2x3 operator *(float2 a, float2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -69,17 +71,18 @@ public static partial class math
 public partial struct float2x4
 {
     /// <summary>
-    /// Scale a float2x4 by float2
+    /// Scale a float2x4 columns by float4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float2x4 operator *(float2x4 a, float2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static float2x4 operator *(float2x4 a, float4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a float2x4 by float2
+    /// Scale a float2x4 rows by float2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float2x4 operator *(float2 a, float2x4 b) => b * a;
+    public static float2x4 operator *(float2 a, float2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -100,17 +103,18 @@ public static partial class math
 public partial struct float3x2
 {
     /// <summary>
-    /// Scale a float3x2 by float3
+    /// Scale a float3x2 columns by float2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float3x2 operator *(float3x2 a, float3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static float3x2 operator *(float3x2 a, float2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a float3x2 by float3
+    /// Scale a float3x2 rows by float3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float3x2 operator *(float3 a, float3x2 b) => b * a;
+    public static float3x2 operator *(float3 a, float3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -131,17 +135,18 @@ public static partial class math
 public partial struct float3x3
 {
     /// <summary>
-    /// Scale a float3x3 by float3
+    /// Scale a float3x3 columns by float3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static float3x3 operator *(float3x3 a, float3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a float3x3 by float3
+    /// Scale a float3x3 rows by float3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float3x3 operator *(float3 a, float3x3 b) => b * a;
+    public static float3x3 operator *(float3 a, float3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -162,17 +167,18 @@ public static partial class math
 public partial struct float3x4
 {
     /// <summary>
-    /// Scale a float3x4 by float3
+    /// Scale a float3x4 columns by float4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float3x4 operator *(float3x4 a, float3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static float3x4 operator *(float3x4 a, float4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a float3x4 by float3
+    /// Scale a float3x4 rows by float3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float3x4 operator *(float3 a, float3x4 b) => b * a;
+    public static float3x4 operator *(float3 a, float3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -193,17 +199,18 @@ public static partial class math
 public partial struct float4x2
 {
     /// <summary>
-    /// Scale a float4x2 by float4
+    /// Scale a float4x2 columns by float2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float4x2 operator *(float4x2 a, float4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static float4x2 operator *(float4x2 a, float2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a float4x2 by float4
+    /// Scale a float4x2 rows by float4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float4x2 operator *(float4 a, float4x2 b) => b * a;
+    public static float4x2 operator *(float4 a, float4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -224,17 +231,18 @@ public static partial class math
 public partial struct float4x3
 {
     /// <summary>
-    /// Scale a float4x3 by float4
+    /// Scale a float4x3 columns by float3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float4x3 operator *(float4x3 a, float4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static float4x3 operator *(float4x3 a, float3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a float4x3 by float4
+    /// Scale a float4x3 rows by float4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float4x3 operator *(float4 a, float4x3 b) => b * a;
+    public static float4x3 operator *(float4 a, float4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -255,17 +263,18 @@ public static partial class math
 public partial struct float4x4
 {
     /// <summary>
-    /// Scale a float4x4 by float4
+    /// Scale a float4x4 columns by float4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static float4x4 operator *(float4x4 a, float4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a float4x4 by float4
+    /// Scale a float4x4 rows by float4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static float4x4 operator *(float4 a, float4x4 b) => b * a;
+    public static float4x4 operator *(float4 a, float4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -286,17 +295,18 @@ public static partial class math
 public partial struct double2x2
 {
     /// <summary>
-    /// Scale a double2x2 by double2
+    /// Scale a double2x2 columns by double2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static double2x2 operator *(double2x2 a, double2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a double2x2 by double2
+    /// Scale a double2x2 rows by double2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double2x2 operator *(double2 a, double2x2 b) => b * a;
+    public static double2x2 operator *(double2 a, double2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -317,17 +327,18 @@ public static partial class math
 public partial struct double2x3
 {
     /// <summary>
-    /// Scale a double2x3 by double2
+    /// Scale a double2x3 columns by double3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double2x3 operator *(double2x3 a, double2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static double2x3 operator *(double2x3 a, double3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a double2x3 by double2
+    /// Scale a double2x3 rows by double2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double2x3 operator *(double2 a, double2x3 b) => b * a;
+    public static double2x3 operator *(double2 a, double2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -348,17 +359,18 @@ public static partial class math
 public partial struct double2x4
 {
     /// <summary>
-    /// Scale a double2x4 by double2
+    /// Scale a double2x4 columns by double4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double2x4 operator *(double2x4 a, double2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static double2x4 operator *(double2x4 a, double4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a double2x4 by double2
+    /// Scale a double2x4 rows by double2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double2x4 operator *(double2 a, double2x4 b) => b * a;
+    public static double2x4 operator *(double2 a, double2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -379,17 +391,18 @@ public static partial class math
 public partial struct double3x2
 {
     /// <summary>
-    /// Scale a double3x2 by double3
+    /// Scale a double3x2 columns by double2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double3x2 operator *(double3x2 a, double3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static double3x2 operator *(double3x2 a, double2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a double3x2 by double3
+    /// Scale a double3x2 rows by double3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double3x2 operator *(double3 a, double3x2 b) => b * a;
+    public static double3x2 operator *(double3 a, double3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -410,17 +423,18 @@ public static partial class math
 public partial struct double3x3
 {
     /// <summary>
-    /// Scale a double3x3 by double3
+    /// Scale a double3x3 columns by double3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static double3x3 operator *(double3x3 a, double3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a double3x3 by double3
+    /// Scale a double3x3 rows by double3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double3x3 operator *(double3 a, double3x3 b) => b * a;
+    public static double3x3 operator *(double3 a, double3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -441,17 +455,18 @@ public static partial class math
 public partial struct double3x4
 {
     /// <summary>
-    /// Scale a double3x4 by double3
+    /// Scale a double3x4 columns by double4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double3x4 operator *(double3x4 a, double3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static double3x4 operator *(double3x4 a, double4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a double3x4 by double3
+    /// Scale a double3x4 rows by double3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double3x4 operator *(double3 a, double3x4 b) => b * a;
+    public static double3x4 operator *(double3 a, double3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -472,17 +487,18 @@ public static partial class math
 public partial struct double4x2
 {
     /// <summary>
-    /// Scale a double4x2 by double4
+    /// Scale a double4x2 columns by double2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double4x2 operator *(double4x2 a, double4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static double4x2 operator *(double4x2 a, double2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a double4x2 by double4
+    /// Scale a double4x2 rows by double4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double4x2 operator *(double4 a, double4x2 b) => b * a;
+    public static double4x2 operator *(double4 a, double4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -503,17 +519,18 @@ public static partial class math
 public partial struct double4x3
 {
     /// <summary>
-    /// Scale a double4x3 by double4
+    /// Scale a double4x3 columns by double3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double4x3 operator *(double4x3 a, double4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static double4x3 operator *(double4x3 a, double3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a double4x3 by double4
+    /// Scale a double4x3 rows by double4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double4x3 operator *(double4 a, double4x3 b) => b * a;
+    public static double4x3 operator *(double4 a, double4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -534,17 +551,18 @@ public static partial class math
 public partial struct double4x4
 {
     /// <summary>
-    /// Scale a double4x4 by double4
+    /// Scale a double4x4 columns by double4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static double4x4 operator *(double4x4 a, double4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a double4x4 by double4
+    /// Scale a double4x4 rows by double4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static double4x4 operator *(double4 a, double4x4 b) => b * a;
+    public static double4x4 operator *(double4 a, double4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -565,17 +583,18 @@ public static partial class math
 public partial struct short2x2
 {
     /// <summary>
-    /// Scale a short2x2 by short2
+    /// Scale a short2x2 columns by short2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static short2x2 operator *(short2x2 a, short2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a short2x2 by short2
+    /// Scale a short2x2 rows by short2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short2x2 operator *(short2 a, short2x2 b) => b * a;
+    public static short2x2 operator *(short2 a, short2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -596,17 +615,18 @@ public static partial class math
 public partial struct short2x3
 {
     /// <summary>
-    /// Scale a short2x3 by short2
+    /// Scale a short2x3 columns by short3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short2x3 operator *(short2x3 a, short2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static short2x3 operator *(short2x3 a, short3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a short2x3 by short2
+    /// Scale a short2x3 rows by short2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short2x3 operator *(short2 a, short2x3 b) => b * a;
+    public static short2x3 operator *(short2 a, short2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -627,17 +647,18 @@ public static partial class math
 public partial struct short2x4
 {
     /// <summary>
-    /// Scale a short2x4 by short2
+    /// Scale a short2x4 columns by short4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short2x4 operator *(short2x4 a, short2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static short2x4 operator *(short2x4 a, short4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a short2x4 by short2
+    /// Scale a short2x4 rows by short2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short2x4 operator *(short2 a, short2x4 b) => b * a;
+    public static short2x4 operator *(short2 a, short2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -658,17 +679,18 @@ public static partial class math
 public partial struct short3x2
 {
     /// <summary>
-    /// Scale a short3x2 by short3
+    /// Scale a short3x2 columns by short2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short3x2 operator *(short3x2 a, short3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static short3x2 operator *(short3x2 a, short2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a short3x2 by short3
+    /// Scale a short3x2 rows by short3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short3x2 operator *(short3 a, short3x2 b) => b * a;
+    public static short3x2 operator *(short3 a, short3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -689,17 +711,18 @@ public static partial class math
 public partial struct short3x3
 {
     /// <summary>
-    /// Scale a short3x3 by short3
+    /// Scale a short3x3 columns by short3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static short3x3 operator *(short3x3 a, short3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a short3x3 by short3
+    /// Scale a short3x3 rows by short3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short3x3 operator *(short3 a, short3x3 b) => b * a;
+    public static short3x3 operator *(short3 a, short3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -720,17 +743,18 @@ public static partial class math
 public partial struct short3x4
 {
     /// <summary>
-    /// Scale a short3x4 by short3
+    /// Scale a short3x4 columns by short4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short3x4 operator *(short3x4 a, short3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static short3x4 operator *(short3x4 a, short4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a short3x4 by short3
+    /// Scale a short3x4 rows by short3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short3x4 operator *(short3 a, short3x4 b) => b * a;
+    public static short3x4 operator *(short3 a, short3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -751,17 +775,18 @@ public static partial class math
 public partial struct short4x2
 {
     /// <summary>
-    /// Scale a short4x2 by short4
+    /// Scale a short4x2 columns by short2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short4x2 operator *(short4x2 a, short4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static short4x2 operator *(short4x2 a, short2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a short4x2 by short4
+    /// Scale a short4x2 rows by short4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short4x2 operator *(short4 a, short4x2 b) => b * a;
+    public static short4x2 operator *(short4 a, short4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -782,17 +807,18 @@ public static partial class math
 public partial struct short4x3
 {
     /// <summary>
-    /// Scale a short4x3 by short4
+    /// Scale a short4x3 columns by short3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short4x3 operator *(short4x3 a, short4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static short4x3 operator *(short4x3 a, short3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a short4x3 by short4
+    /// Scale a short4x3 rows by short4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short4x3 operator *(short4 a, short4x3 b) => b * a;
+    public static short4x3 operator *(short4 a, short4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -813,17 +839,18 @@ public static partial class math
 public partial struct short4x4
 {
     /// <summary>
-    /// Scale a short4x4 by short4
+    /// Scale a short4x4 columns by short4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static short4x4 operator *(short4x4 a, short4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a short4x4 by short4
+    /// Scale a short4x4 rows by short4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static short4x4 operator *(short4 a, short4x4 b) => b * a;
+    public static short4x4 operator *(short4 a, short4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -844,17 +871,18 @@ public static partial class math
 public partial struct ushort2x2
 {
     /// <summary>
-    /// Scale a ushort2x2 by ushort2
+    /// Scale a ushort2x2 columns by ushort2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static ushort2x2 operator *(ushort2x2 a, ushort2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a ushort2x2 by ushort2
+    /// Scale a ushort2x2 rows by ushort2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort2x2 operator *(ushort2 a, ushort2x2 b) => b * a;
+    public static ushort2x2 operator *(ushort2 a, ushort2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -875,17 +903,18 @@ public static partial class math
 public partial struct ushort2x3
 {
     /// <summary>
-    /// Scale a ushort2x3 by ushort2
+    /// Scale a ushort2x3 columns by ushort3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort2x3 operator *(ushort2x3 a, ushort2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static ushort2x3 operator *(ushort2x3 a, ushort3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a ushort2x3 by ushort2
+    /// Scale a ushort2x3 rows by ushort2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort2x3 operator *(ushort2 a, ushort2x3 b) => b * a;
+    public static ushort2x3 operator *(ushort2 a, ushort2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -906,17 +935,18 @@ public static partial class math
 public partial struct ushort2x4
 {
     /// <summary>
-    /// Scale a ushort2x4 by ushort2
+    /// Scale a ushort2x4 columns by ushort4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort2x4 operator *(ushort2x4 a, ushort2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static ushort2x4 operator *(ushort2x4 a, ushort4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a ushort2x4 by ushort2
+    /// Scale a ushort2x4 rows by ushort2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort2x4 operator *(ushort2 a, ushort2x4 b) => b * a;
+    public static ushort2x4 operator *(ushort2 a, ushort2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -937,17 +967,18 @@ public static partial class math
 public partial struct ushort3x2
 {
     /// <summary>
-    /// Scale a ushort3x2 by ushort3
+    /// Scale a ushort3x2 columns by ushort2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort3x2 operator *(ushort3x2 a, ushort3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static ushort3x2 operator *(ushort3x2 a, ushort2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a ushort3x2 by ushort3
+    /// Scale a ushort3x2 rows by ushort3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort3x2 operator *(ushort3 a, ushort3x2 b) => b * a;
+    public static ushort3x2 operator *(ushort3 a, ushort3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -968,17 +999,18 @@ public static partial class math
 public partial struct ushort3x3
 {
     /// <summary>
-    /// Scale a ushort3x3 by ushort3
+    /// Scale a ushort3x3 columns by ushort3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static ushort3x3 operator *(ushort3x3 a, ushort3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a ushort3x3 by ushort3
+    /// Scale a ushort3x3 rows by ushort3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort3x3 operator *(ushort3 a, ushort3x3 b) => b * a;
+    public static ushort3x3 operator *(ushort3 a, ushort3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -999,17 +1031,18 @@ public static partial class math
 public partial struct ushort3x4
 {
     /// <summary>
-    /// Scale a ushort3x4 by ushort3
+    /// Scale a ushort3x4 columns by ushort4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort3x4 operator *(ushort3x4 a, ushort3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static ushort3x4 operator *(ushort3x4 a, ushort4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a ushort3x4 by ushort3
+    /// Scale a ushort3x4 rows by ushort3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort3x4 operator *(ushort3 a, ushort3x4 b) => b * a;
+    public static ushort3x4 operator *(ushort3 a, ushort3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1030,17 +1063,18 @@ public static partial class math
 public partial struct ushort4x2
 {
     /// <summary>
-    /// Scale a ushort4x2 by ushort4
+    /// Scale a ushort4x2 columns by ushort2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort4x2 operator *(ushort4x2 a, ushort4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static ushort4x2 operator *(ushort4x2 a, ushort2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a ushort4x2 by ushort4
+    /// Scale a ushort4x2 rows by ushort4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort4x2 operator *(ushort4 a, ushort4x2 b) => b * a;
+    public static ushort4x2 operator *(ushort4 a, ushort4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1061,17 +1095,18 @@ public static partial class math
 public partial struct ushort4x3
 {
     /// <summary>
-    /// Scale a ushort4x3 by ushort4
+    /// Scale a ushort4x3 columns by ushort3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort4x3 operator *(ushort4x3 a, ushort4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static ushort4x3 operator *(ushort4x3 a, ushort3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a ushort4x3 by ushort4
+    /// Scale a ushort4x3 rows by ushort4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort4x3 operator *(ushort4 a, ushort4x3 b) => b * a;
+    public static ushort4x3 operator *(ushort4 a, ushort4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1092,17 +1127,18 @@ public static partial class math
 public partial struct ushort4x4
 {
     /// <summary>
-    /// Scale a ushort4x4 by ushort4
+    /// Scale a ushort4x4 columns by ushort4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static ushort4x4 operator *(ushort4x4 a, ushort4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a ushort4x4 by ushort4
+    /// Scale a ushort4x4 rows by ushort4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ushort4x4 operator *(ushort4 a, ushort4x4 b) => b * a;
+    public static ushort4x4 operator *(ushort4 a, ushort4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1123,17 +1159,18 @@ public static partial class math
 public partial struct int2x2
 {
     /// <summary>
-    /// Scale a int2x2 by int2
+    /// Scale a int2x2 columns by int2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static int2x2 operator *(int2x2 a, int2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a int2x2 by int2
+    /// Scale a int2x2 rows by int2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int2x2 operator *(int2 a, int2x2 b) => b * a;
+    public static int2x2 operator *(int2 a, int2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1154,17 +1191,18 @@ public static partial class math
 public partial struct int2x3
 {
     /// <summary>
-    /// Scale a int2x3 by int2
+    /// Scale a int2x3 columns by int3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int2x3 operator *(int2x3 a, int2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static int2x3 operator *(int2x3 a, int3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a int2x3 by int2
+    /// Scale a int2x3 rows by int2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int2x3 operator *(int2 a, int2x3 b) => b * a;
+    public static int2x3 operator *(int2 a, int2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1185,17 +1223,18 @@ public static partial class math
 public partial struct int2x4
 {
     /// <summary>
-    /// Scale a int2x4 by int2
+    /// Scale a int2x4 columns by int4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int2x4 operator *(int2x4 a, int2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static int2x4 operator *(int2x4 a, int4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a int2x4 by int2
+    /// Scale a int2x4 rows by int2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int2x4 operator *(int2 a, int2x4 b) => b * a;
+    public static int2x4 operator *(int2 a, int2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1216,17 +1255,18 @@ public static partial class math
 public partial struct int3x2
 {
     /// <summary>
-    /// Scale a int3x2 by int3
+    /// Scale a int3x2 columns by int2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int3x2 operator *(int3x2 a, int3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static int3x2 operator *(int3x2 a, int2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a int3x2 by int3
+    /// Scale a int3x2 rows by int3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int3x2 operator *(int3 a, int3x2 b) => b * a;
+    public static int3x2 operator *(int3 a, int3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1247,17 +1287,18 @@ public static partial class math
 public partial struct int3x3
 {
     /// <summary>
-    /// Scale a int3x3 by int3
+    /// Scale a int3x3 columns by int3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static int3x3 operator *(int3x3 a, int3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a int3x3 by int3
+    /// Scale a int3x3 rows by int3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int3x3 operator *(int3 a, int3x3 b) => b * a;
+    public static int3x3 operator *(int3 a, int3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1278,17 +1319,18 @@ public static partial class math
 public partial struct int3x4
 {
     /// <summary>
-    /// Scale a int3x4 by int3
+    /// Scale a int3x4 columns by int4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int3x4 operator *(int3x4 a, int3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static int3x4 operator *(int3x4 a, int4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a int3x4 by int3
+    /// Scale a int3x4 rows by int3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int3x4 operator *(int3 a, int3x4 b) => b * a;
+    public static int3x4 operator *(int3 a, int3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1309,17 +1351,18 @@ public static partial class math
 public partial struct int4x2
 {
     /// <summary>
-    /// Scale a int4x2 by int4
+    /// Scale a int4x2 columns by int2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int4x2 operator *(int4x2 a, int4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static int4x2 operator *(int4x2 a, int2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a int4x2 by int4
+    /// Scale a int4x2 rows by int4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int4x2 operator *(int4 a, int4x2 b) => b * a;
+    public static int4x2 operator *(int4 a, int4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1340,17 +1383,18 @@ public static partial class math
 public partial struct int4x3
 {
     /// <summary>
-    /// Scale a int4x3 by int4
+    /// Scale a int4x3 columns by int3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int4x3 operator *(int4x3 a, int4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static int4x3 operator *(int4x3 a, int3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a int4x3 by int4
+    /// Scale a int4x3 rows by int4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int4x3 operator *(int4 a, int4x3 b) => b * a;
+    public static int4x3 operator *(int4 a, int4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1371,17 +1415,18 @@ public static partial class math
 public partial struct int4x4
 {
     /// <summary>
-    /// Scale a int4x4 by int4
+    /// Scale a int4x4 columns by int4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static int4x4 operator *(int4x4 a, int4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a int4x4 by int4
+    /// Scale a int4x4 rows by int4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static int4x4 operator *(int4 a, int4x4 b) => b * a;
+    public static int4x4 operator *(int4 a, int4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1402,17 +1447,18 @@ public static partial class math
 public partial struct uint2x2
 {
     /// <summary>
-    /// Scale a uint2x2 by uint2
+    /// Scale a uint2x2 columns by uint2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static uint2x2 operator *(uint2x2 a, uint2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a uint2x2 by uint2
+    /// Scale a uint2x2 rows by uint2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint2x2 operator *(uint2 a, uint2x2 b) => b * a;
+    public static uint2x2 operator *(uint2 a, uint2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1433,17 +1479,18 @@ public static partial class math
 public partial struct uint2x3
 {
     /// <summary>
-    /// Scale a uint2x3 by uint2
+    /// Scale a uint2x3 columns by uint3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint2x3 operator *(uint2x3 a, uint2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static uint2x3 operator *(uint2x3 a, uint3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a uint2x3 by uint2
+    /// Scale a uint2x3 rows by uint2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint2x3 operator *(uint2 a, uint2x3 b) => b * a;
+    public static uint2x3 operator *(uint2 a, uint2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1464,17 +1511,18 @@ public static partial class math
 public partial struct uint2x4
 {
     /// <summary>
-    /// Scale a uint2x4 by uint2
+    /// Scale a uint2x4 columns by uint4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint2x4 operator *(uint2x4 a, uint2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static uint2x4 operator *(uint2x4 a, uint4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a uint2x4 by uint2
+    /// Scale a uint2x4 rows by uint2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint2x4 operator *(uint2 a, uint2x4 b) => b * a;
+    public static uint2x4 operator *(uint2 a, uint2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1495,17 +1543,18 @@ public static partial class math
 public partial struct uint3x2
 {
     /// <summary>
-    /// Scale a uint3x2 by uint3
+    /// Scale a uint3x2 columns by uint2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint3x2 operator *(uint3x2 a, uint3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static uint3x2 operator *(uint3x2 a, uint2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a uint3x2 by uint3
+    /// Scale a uint3x2 rows by uint3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint3x2 operator *(uint3 a, uint3x2 b) => b * a;
+    public static uint3x2 operator *(uint3 a, uint3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1526,17 +1575,18 @@ public static partial class math
 public partial struct uint3x3
 {
     /// <summary>
-    /// Scale a uint3x3 by uint3
+    /// Scale a uint3x3 columns by uint3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static uint3x3 operator *(uint3x3 a, uint3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a uint3x3 by uint3
+    /// Scale a uint3x3 rows by uint3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint3x3 operator *(uint3 a, uint3x3 b) => b * a;
+    public static uint3x3 operator *(uint3 a, uint3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1557,17 +1607,18 @@ public static partial class math
 public partial struct uint3x4
 {
     /// <summary>
-    /// Scale a uint3x4 by uint3
+    /// Scale a uint3x4 columns by uint4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint3x4 operator *(uint3x4 a, uint3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static uint3x4 operator *(uint3x4 a, uint4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a uint3x4 by uint3
+    /// Scale a uint3x4 rows by uint3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint3x4 operator *(uint3 a, uint3x4 b) => b * a;
+    public static uint3x4 operator *(uint3 a, uint3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1588,17 +1639,18 @@ public static partial class math
 public partial struct uint4x2
 {
     /// <summary>
-    /// Scale a uint4x2 by uint4
+    /// Scale a uint4x2 columns by uint2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint4x2 operator *(uint4x2 a, uint4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static uint4x2 operator *(uint4x2 a, uint2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a uint4x2 by uint4
+    /// Scale a uint4x2 rows by uint4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint4x2 operator *(uint4 a, uint4x2 b) => b * a;
+    public static uint4x2 operator *(uint4 a, uint4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1619,17 +1671,18 @@ public static partial class math
 public partial struct uint4x3
 {
     /// <summary>
-    /// Scale a uint4x3 by uint4
+    /// Scale a uint4x3 columns by uint3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint4x3 operator *(uint4x3 a, uint4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static uint4x3 operator *(uint4x3 a, uint3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a uint4x3 by uint4
+    /// Scale a uint4x3 rows by uint4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint4x3 operator *(uint4 a, uint4x3 b) => b * a;
+    public static uint4x3 operator *(uint4 a, uint4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1650,17 +1703,18 @@ public static partial class math
 public partial struct uint4x4
 {
     /// <summary>
-    /// Scale a uint4x4 by uint4
+    /// Scale a uint4x4 columns by uint4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static uint4x4 operator *(uint4x4 a, uint4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a uint4x4 by uint4
+    /// Scale a uint4x4 rows by uint4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static uint4x4 operator *(uint4 a, uint4x4 b) => b * a;
+    public static uint4x4 operator *(uint4 a, uint4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1681,17 +1735,18 @@ public static partial class math
 public partial struct long2x2
 {
     /// <summary>
-    /// Scale a long2x2 by long2
+    /// Scale a long2x2 columns by long2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static long2x2 operator *(long2x2 a, long2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a long2x2 by long2
+    /// Scale a long2x2 rows by long2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long2x2 operator *(long2 a, long2x2 b) => b * a;
+    public static long2x2 operator *(long2 a, long2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1712,17 +1767,18 @@ public static partial class math
 public partial struct long2x3
 {
     /// <summary>
-    /// Scale a long2x3 by long2
+    /// Scale a long2x3 columns by long3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long2x3 operator *(long2x3 a, long2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static long2x3 operator *(long2x3 a, long3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a long2x3 by long2
+    /// Scale a long2x3 rows by long2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long2x3 operator *(long2 a, long2x3 b) => b * a;
+    public static long2x3 operator *(long2 a, long2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1743,17 +1799,18 @@ public static partial class math
 public partial struct long2x4
 {
     /// <summary>
-    /// Scale a long2x4 by long2
+    /// Scale a long2x4 columns by long4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long2x4 operator *(long2x4 a, long2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static long2x4 operator *(long2x4 a, long4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a long2x4 by long2
+    /// Scale a long2x4 rows by long2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long2x4 operator *(long2 a, long2x4 b) => b * a;
+    public static long2x4 operator *(long2 a, long2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1774,17 +1831,18 @@ public static partial class math
 public partial struct long3x2
 {
     /// <summary>
-    /// Scale a long3x2 by long3
+    /// Scale a long3x2 columns by long2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long3x2 operator *(long3x2 a, long3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static long3x2 operator *(long3x2 a, long2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a long3x2 by long3
+    /// Scale a long3x2 rows by long3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long3x2 operator *(long3 a, long3x2 b) => b * a;
+    public static long3x2 operator *(long3 a, long3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1805,17 +1863,18 @@ public static partial class math
 public partial struct long3x3
 {
     /// <summary>
-    /// Scale a long3x3 by long3
+    /// Scale a long3x3 columns by long3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static long3x3 operator *(long3x3 a, long3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a long3x3 by long3
+    /// Scale a long3x3 rows by long3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long3x3 operator *(long3 a, long3x3 b) => b * a;
+    public static long3x3 operator *(long3 a, long3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1836,17 +1895,18 @@ public static partial class math
 public partial struct long3x4
 {
     /// <summary>
-    /// Scale a long3x4 by long3
+    /// Scale a long3x4 columns by long4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long3x4 operator *(long3x4 a, long3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static long3x4 operator *(long3x4 a, long4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a long3x4 by long3
+    /// Scale a long3x4 rows by long3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long3x4 operator *(long3 a, long3x4 b) => b * a;
+    public static long3x4 operator *(long3 a, long3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1867,17 +1927,18 @@ public static partial class math
 public partial struct long4x2
 {
     /// <summary>
-    /// Scale a long4x2 by long4
+    /// Scale a long4x2 columns by long2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long4x2 operator *(long4x2 a, long4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static long4x2 operator *(long4x2 a, long2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a long4x2 by long4
+    /// Scale a long4x2 rows by long4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long4x2 operator *(long4 a, long4x2 b) => b * a;
+    public static long4x2 operator *(long4 a, long4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1898,17 +1959,18 @@ public static partial class math
 public partial struct long4x3
 {
     /// <summary>
-    /// Scale a long4x3 by long4
+    /// Scale a long4x3 columns by long3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long4x3 operator *(long4x3 a, long4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static long4x3 operator *(long4x3 a, long3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a long4x3 by long4
+    /// Scale a long4x3 rows by long4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long4x3 operator *(long4 a, long4x3 b) => b * a;
+    public static long4x3 operator *(long4 a, long4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -1929,17 +1991,18 @@ public static partial class math
 public partial struct long4x4
 {
     /// <summary>
-    /// Scale a long4x4 by long4
+    /// Scale a long4x4 columns by long4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static long4x4 operator *(long4x4 a, long4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a long4x4 by long4
+    /// Scale a long4x4 rows by long4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static long4x4 operator *(long4 a, long4x4 b) => b * a;
+    public static long4x4 operator *(long4 a, long4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -1960,17 +2023,18 @@ public static partial class math
 public partial struct ulong2x2
 {
     /// <summary>
-    /// Scale a ulong2x2 by ulong2
+    /// Scale a ulong2x2 columns by ulong2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static ulong2x2 operator *(ulong2x2 a, ulong2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a ulong2x2 by ulong2
+    /// Scale a ulong2x2 rows by ulong2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong2x2 operator *(ulong2 a, ulong2x2 b) => b * a;
+    public static ulong2x2 operator *(ulong2 a, ulong2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -1991,17 +2055,18 @@ public static partial class math
 public partial struct ulong2x3
 {
     /// <summary>
-    /// Scale a ulong2x3 by ulong2
+    /// Scale a ulong2x3 columns by ulong3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong2x3 operator *(ulong2x3 a, ulong2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static ulong2x3 operator *(ulong2x3 a, ulong3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a ulong2x3 by ulong2
+    /// Scale a ulong2x3 rows by ulong2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong2x3 operator *(ulong2 a, ulong2x3 b) => b * a;
+    public static ulong2x3 operator *(ulong2 a, ulong2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -2022,17 +2087,18 @@ public static partial class math
 public partial struct ulong2x4
 {
     /// <summary>
-    /// Scale a ulong2x4 by ulong2
+    /// Scale a ulong2x4 columns by ulong4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong2x4 operator *(ulong2x4 a, ulong2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static ulong2x4 operator *(ulong2x4 a, ulong4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a ulong2x4 by ulong2
+    /// Scale a ulong2x4 rows by ulong2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong2x4 operator *(ulong2 a, ulong2x4 b) => b * a;
+    public static ulong2x4 operator *(ulong2 a, ulong2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -2053,17 +2119,18 @@ public static partial class math
 public partial struct ulong3x2
 {
     /// <summary>
-    /// Scale a ulong3x2 by ulong3
+    /// Scale a ulong3x2 columns by ulong2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong3x2 operator *(ulong3x2 a, ulong3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static ulong3x2 operator *(ulong3x2 a, ulong2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a ulong3x2 by ulong3
+    /// Scale a ulong3x2 rows by ulong3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong3x2 operator *(ulong3 a, ulong3x2 b) => b * a;
+    public static ulong3x2 operator *(ulong3 a, ulong3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -2084,17 +2151,18 @@ public static partial class math
 public partial struct ulong3x3
 {
     /// <summary>
-    /// Scale a ulong3x3 by ulong3
+    /// Scale a ulong3x3 columns by ulong3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static ulong3x3 operator *(ulong3x3 a, ulong3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a ulong3x3 by ulong3
+    /// Scale a ulong3x3 rows by ulong3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong3x3 operator *(ulong3 a, ulong3x3 b) => b * a;
+    public static ulong3x3 operator *(ulong3 a, ulong3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -2115,17 +2183,18 @@ public static partial class math
 public partial struct ulong3x4
 {
     /// <summary>
-    /// Scale a ulong3x4 by ulong3
+    /// Scale a ulong3x4 columns by ulong4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong3x4 operator *(ulong3x4 a, ulong3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static ulong3x4 operator *(ulong3x4 a, ulong4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a ulong3x4 by ulong3
+    /// Scale a ulong3x4 rows by ulong3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong3x4 operator *(ulong3 a, ulong3x4 b) => b * a;
+    public static ulong3x4 operator *(ulong3 a, ulong3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -2146,17 +2215,18 @@ public static partial class math
 public partial struct ulong4x2
 {
     /// <summary>
-    /// Scale a ulong4x2 by ulong4
+    /// Scale a ulong4x2 columns by ulong2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong4x2 operator *(ulong4x2 a, ulong4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static ulong4x2 operator *(ulong4x2 a, ulong2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a ulong4x2 by ulong4
+    /// Scale a ulong4x2 rows by ulong4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong4x2 operator *(ulong4 a, ulong4x2 b) => b * a;
+    public static ulong4x2 operator *(ulong4 a, ulong4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -2177,17 +2247,18 @@ public static partial class math
 public partial struct ulong4x3
 {
     /// <summary>
-    /// Scale a ulong4x3 by ulong4
+    /// Scale a ulong4x3 columns by ulong3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong4x3 operator *(ulong4x3 a, ulong4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static ulong4x3 operator *(ulong4x3 a, ulong3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a ulong4x3 by ulong4
+    /// Scale a ulong4x3 rows by ulong4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong4x3 operator *(ulong4 a, ulong4x3 b) => b * a;
+    public static ulong4x3 operator *(ulong4 a, ulong4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -2208,17 +2279,18 @@ public static partial class math
 public partial struct ulong4x4
 {
     /// <summary>
-    /// Scale a ulong4x4 by ulong4
+    /// Scale a ulong4x4 columns by ulong4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static ulong4x4 operator *(ulong4x4 a, ulong4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a ulong4x4 by ulong4
+    /// Scale a ulong4x4 rows by ulong4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static ulong4x4 operator *(ulong4 a, ulong4x4 b) => b * a;
+    public static ulong4x4 operator *(ulong4 a, ulong4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -2239,17 +2311,18 @@ public static partial class math
 public partial struct decimal2x2
 {
     /// <summary>
-    /// Scale a decimal2x2 by decimal2
+    /// Scale a decimal2x2 columns by decimal2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static decimal2x2 operator *(decimal2x2 a, decimal2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a decimal2x2 by decimal2
+    /// Scale a decimal2x2 rows by decimal2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal2x2 operator *(decimal2 a, decimal2x2 b) => b * a;
+    public static decimal2x2 operator *(decimal2 a, decimal2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -2270,17 +2343,18 @@ public static partial class math
 public partial struct decimal2x3
 {
     /// <summary>
-    /// Scale a decimal2x3 by decimal2
+    /// Scale a decimal2x3 columns by decimal3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal2x3 operator *(decimal2x3 a, decimal2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static decimal2x3 operator *(decimal2x3 a, decimal3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a decimal2x3 by decimal2
+    /// Scale a decimal2x3 rows by decimal2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal2x3 operator *(decimal2 a, decimal2x3 b) => b * a;
+    public static decimal2x3 operator *(decimal2 a, decimal2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -2301,17 +2375,18 @@ public static partial class math
 public partial struct decimal2x4
 {
     /// <summary>
-    /// Scale a decimal2x4 by decimal2
+    /// Scale a decimal2x4 columns by decimal4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal2x4 operator *(decimal2x4 a, decimal2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static decimal2x4 operator *(decimal2x4 a, decimal4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a decimal2x4 by decimal2
+    /// Scale a decimal2x4 rows by decimal2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal2x4 operator *(decimal2 a, decimal2x4 b) => b * a;
+    public static decimal2x4 operator *(decimal2 a, decimal2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -2332,17 +2407,18 @@ public static partial class math
 public partial struct decimal3x2
 {
     /// <summary>
-    /// Scale a decimal3x2 by decimal3
+    /// Scale a decimal3x2 columns by decimal2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal3x2 operator *(decimal3x2 a, decimal3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static decimal3x2 operator *(decimal3x2 a, decimal2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a decimal3x2 by decimal3
+    /// Scale a decimal3x2 rows by decimal3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal3x2 operator *(decimal3 a, decimal3x2 b) => b * a;
+    public static decimal3x2 operator *(decimal3 a, decimal3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -2363,17 +2439,18 @@ public static partial class math
 public partial struct decimal3x3
 {
     /// <summary>
-    /// Scale a decimal3x3 by decimal3
+    /// Scale a decimal3x3 columns by decimal3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static decimal3x3 operator *(decimal3x3 a, decimal3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a decimal3x3 by decimal3
+    /// Scale a decimal3x3 rows by decimal3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal3x3 operator *(decimal3 a, decimal3x3 b) => b * a;
+    public static decimal3x3 operator *(decimal3 a, decimal3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -2394,17 +2471,18 @@ public static partial class math
 public partial struct decimal3x4
 {
     /// <summary>
-    /// Scale a decimal3x4 by decimal3
+    /// Scale a decimal3x4 columns by decimal4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal3x4 operator *(decimal3x4 a, decimal3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static decimal3x4 operator *(decimal3x4 a, decimal4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a decimal3x4 by decimal3
+    /// Scale a decimal3x4 rows by decimal3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal3x4 operator *(decimal3 a, decimal3x4 b) => b * a;
+    public static decimal3x4 operator *(decimal3 a, decimal3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -2425,17 +2503,18 @@ public static partial class math
 public partial struct decimal4x2
 {
     /// <summary>
-    /// Scale a decimal4x2 by decimal4
+    /// Scale a decimal4x2 columns by decimal2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal4x2 operator *(decimal4x2 a, decimal4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static decimal4x2 operator *(decimal4x2 a, decimal2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a decimal4x2 by decimal4
+    /// Scale a decimal4x2 rows by decimal4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal4x2 operator *(decimal4 a, decimal4x2 b) => b * a;
+    public static decimal4x2 operator *(decimal4 a, decimal4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -2456,17 +2535,18 @@ public static partial class math
 public partial struct decimal4x3
 {
     /// <summary>
-    /// Scale a decimal4x3 by decimal4
+    /// Scale a decimal4x3 columns by decimal3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal4x3 operator *(decimal4x3 a, decimal4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static decimal4x3 operator *(decimal4x3 a, decimal3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a decimal4x3 by decimal4
+    /// Scale a decimal4x3 rows by decimal4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal4x3 operator *(decimal4 a, decimal4x3 b) => b * a;
+    public static decimal4x3 operator *(decimal4 a, decimal4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -2487,17 +2567,18 @@ public static partial class math
 public partial struct decimal4x4
 {
     /// <summary>
-    /// Scale a decimal4x4 by decimal4
+    /// Scale a decimal4x4 columns by decimal4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static decimal4x4 operator *(decimal4x4 a, decimal4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a decimal4x4 by decimal4
+    /// Scale a decimal4x4 rows by decimal4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static decimal4x4 operator *(decimal4 a, decimal4x4 b) => b * a;
+    public static decimal4x4 operator *(decimal4 a, decimal4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -2518,17 +2599,18 @@ public static partial class math
 public partial struct half2x2
 {
     /// <summary>
-    /// Scale a half2x2 by half2
+    /// Scale a half2x2 columns by half2
     /// </summary>
     [MethodImpl(256 | 512)]
     public static half2x2 operator *(half2x2 a, half2 b) 
-        => new(a.c0 * b, a.c1 * b);
+        => new(a.c0 * b.xx, a.c1 * b.yy);
 
     /// <summary>
-    /// Scale a half2x2 by half2
+    /// Scale a half2x2 rows by half2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half2x2 operator *(half2 a, half2x2 b) => b * a;
+    public static half2x2 operator *(half2 a, half2x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -2549,17 +2631,18 @@ public static partial class math
 public partial struct half2x3
 {
     /// <summary>
-    /// Scale a half2x3 by half2
+    /// Scale a half2x3 columns by half3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half2x3 operator *(half2x3 a, half2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static half2x3 operator *(half2x3 a, half3 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz);
 
     /// <summary>
-    /// Scale a half2x3 by half2
+    /// Scale a half2x3 rows by half2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half2x3 operator *(half2 a, half2x3 b) => b * a;
+    public static half2x3 operator *(half2 a, half2x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -2580,17 +2663,18 @@ public static partial class math
 public partial struct half2x4
 {
     /// <summary>
-    /// Scale a half2x4 by half2
+    /// Scale a half2x4 columns by half4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half2x4 operator *(half2x4 a, half2 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static half2x4 operator *(half2x4 a, half4 b) 
+        => new(a.c0 * b.xx, a.c1 * b.yy, a.c2 * b.zz, a.c3 * b.ww);
 
     /// <summary>
-    /// Scale a half2x4 by half2
+    /// Scale a half2x4 rows by half2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half2x4 operator *(half2 a, half2x4 b) => b * a;
+    public static half2x4 operator *(half2 a, half2x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -2611,17 +2695,18 @@ public static partial class math
 public partial struct half3x2
 {
     /// <summary>
-    /// Scale a half3x2 by half3
+    /// Scale a half3x2 columns by half2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half3x2 operator *(half3x2 a, half3 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static half3x2 operator *(half3x2 a, half2 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy);
 
     /// <summary>
-    /// Scale a half3x2 by half3
+    /// Scale a half3x2 rows by half3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half3x2 operator *(half3 a, half3x2 b) => b * a;
+    public static half3x2 operator *(half3 a, half3x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -2642,17 +2727,18 @@ public static partial class math
 public partial struct half3x3
 {
     /// <summary>
-    /// Scale a half3x3 by half3
+    /// Scale a half3x3 columns by half3
     /// </summary>
     [MethodImpl(256 | 512)]
     public static half3x3 operator *(half3x3 a, half3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz);
 
     /// <summary>
-    /// Scale a half3x3 by half3
+    /// Scale a half3x3 rows by half3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half3x3 operator *(half3 a, half3x3 b) => b * a;
+    public static half3x3 operator *(half3 a, half3x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -2673,17 +2759,18 @@ public static partial class math
 public partial struct half3x4
 {
     /// <summary>
-    /// Scale a half3x4 by half3
+    /// Scale a half3x4 columns by half4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half3x4 operator *(half3x4 a, half3 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+    public static half3x4 operator *(half3x4 a, half4 b) 
+        => new(a.c0 * b.xxx, a.c1 * b.yyy, a.c2 * b.zzz, a.c3 * b.www);
 
     /// <summary>
-    /// Scale a half3x4 by half3
+    /// Scale a half3x4 rows by half3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half3x4 operator *(half3 a, half3x4 b) => b * a;
+    public static half3x4 operator *(half3 a, half3x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math
@@ -2704,17 +2791,18 @@ public static partial class math
 public partial struct half4x2
 {
     /// <summary>
-    /// Scale a half4x2 by half4
+    /// Scale a half4x2 columns by half2
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half4x2 operator *(half4x2 a, half4 b) 
-        => new(a.c0 * b, a.c1 * b);
+    public static half4x2 operator *(half4x2 a, half2 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy);
 
     /// <summary>
-    /// Scale a half4x2 by half4
+    /// Scale a half4x2 rows by half4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half4x2 operator *(half4 a, half4x2 b) => b * a;
+    public static half4x2 operator *(half4 a, half4x2 b)
+        => new(b.c0 * a, b.c1 * a);
 }
 
 public static partial class math
@@ -2735,17 +2823,18 @@ public static partial class math
 public partial struct half4x3
 {
     /// <summary>
-    /// Scale a half4x3 by half4
+    /// Scale a half4x3 columns by half3
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half4x3 operator *(half4x3 a, half4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b);
+    public static half4x3 operator *(half4x3 a, half3 b) 
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz);
 
     /// <summary>
-    /// Scale a half4x3 by half4
+    /// Scale a half4x3 rows by half4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half4x3 operator *(half4 a, half4x3 b) => b * a;
+    public static half4x3 operator *(half4 a, half4x3 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a);
 }
 
 public static partial class math
@@ -2766,17 +2855,18 @@ public static partial class math
 public partial struct half4x4
 {
     /// <summary>
-    /// Scale a half4x4 by half4
+    /// Scale a half4x4 columns by half4
     /// </summary>
     [MethodImpl(256 | 512)]
     public static half4x4 operator *(half4x4 a, half4 b) 
-        => new(a.c0 * b, a.c1 * b, a.c2 * b, a.c3 * b);
+        => new(a.c0 * b.xxxx, a.c1 * b.yyyy, a.c2 * b.zzzz, a.c3 * b.wwww);
 
     /// <summary>
-    /// Scale a half4x4 by half4
+    /// Scale a half4x4 rows by half4
     /// </summary>
     [MethodImpl(256 | 512)]
-    public static half4x4 operator *(half4 a, half4x4 b) => b * a;
+    public static half4x4 operator *(half4 a, half4x4 b)
+        => new(b.c0 * a, b.c1 * a, b.c2 * a, b.c3 * a);
 }
 
 public static partial class math

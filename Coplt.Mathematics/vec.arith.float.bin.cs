@@ -341,6 +341,14 @@ public static partial class math
         return new(a.x.atanh(), a.y.atanh());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float2 chgsign(this float2 a, float2 b)
+    {
+        var sig = new uint2(0x8000_0000).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // float2
@@ -686,6 +694,14 @@ public static partial class math
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float3 chgsign(this float3 a, float3 b)
+    {
+        var sig = new uint3(0x8000_0000).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // float3
@@ -1033,6 +1049,14 @@ public static partial class math
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh(), a.w.atanh());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float4 chgsign(this float4 a, float4 b)
+    {
+        var sig = new uint4(0x8000_0000).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // float4
@@ -1376,6 +1400,14 @@ public static partial class math
         return new(a.x.atanh(), a.y.atanh());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double2 chgsign(this double2 a, double2 b)
+    {
+        var sig = new ulong2(0x8000_0000_0000_0000).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // double2
@@ -1721,6 +1753,14 @@ public static partial class math
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double3 chgsign(this double3 a, double3 b)
+    {
+        var sig = new ulong3(0x8000_0000_0000_0000).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // double3
@@ -2068,6 +2108,14 @@ public static partial class math
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh(), a.w.atanh());
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double4 chgsign(this double4 a, double4 b)
+    {
+        var sig = new ulong4(0x8000_0000_0000_0000).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // double4
@@ -2296,6 +2344,14 @@ public static partial class math
     {
         return new(a.x.atanh(), a.y.atanh());
     }
+
+    [MethodImpl(256 | 512)]
+    public static half2 chgsign(this half2 a, half2 b)
+    {
+        var sig = new ushort2(0x8000).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // half2
@@ -2526,6 +2582,14 @@ public static partial class math
     {
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh());
     }
+
+    [MethodImpl(256 | 512)]
+    public static half3 chgsign(this half3 a, half3 b)
+    {
+        var sig = new ushort3(0x8000).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // half3
@@ -2758,6 +2822,14 @@ public static partial class math
     {
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh(), a.w.atanh());
     }
+
+    [MethodImpl(256 | 512)]
+    public static half4 chgsign(this half4 a, half4 b)
+    {
+        var sig = new ushort4(0x8000).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // half4

@@ -455,7 +455,8 @@ public static partial class math
 <#
             }
 #>
-        <#= string.Join(";\n        ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.sincos(out var sin{n}, out var cos{n})")) #>;
+        <#=
+                string.Join(";\n        ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.sincos(out var sin{n}, out var cos{n})")) #>;
         return (
             new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"sin{n}")) #>),
             new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"cos{n}")) #>)
@@ -485,7 +486,8 @@ public static partial class math
 <#
             }
 #>
-        <#= string.Join(";\n        ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.sincos(out var sin{n}, out var cos{n})")) #>;
+        <#=
+                string.Join(";\n        ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.sincos(out var sin{n}, out var cos{n})")) #>;
         sin = new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"sin{n}")) #>);
         cos = new(<#= string.Join(", ", Enumerable.Range(0, i).Select(n => $"cos{n}")) #>);
 <#
@@ -761,6 +763,15 @@ public static partial class math
             }
 #>
     }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> chgsign(this <#= typeName #> a, <#= typeName #> b)
+    {
+        var sig = new <#= typ.maskType #><#= i #>(<#=
+                    typ.name switch { "half" => "0x8000", "float" => "0x8000_0000", "double" => "0x8000_0000_0000_0000", _ => "" } #>).asf();
+        return (b & sig) ^ a;
+    }
+
 }
 
 #endregion // <#= typeName #>

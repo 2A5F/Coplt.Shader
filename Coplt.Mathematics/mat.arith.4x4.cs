@@ -60,8 +60,8 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float4x4 rotation matrix of the Euler angle rotation in x-y-z order</returns>
@@ -78,8 +78,8 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float4x4 rotation matrix of the Euler angle rotation in x-z-y order</returns>
@@ -96,8 +96,8 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float4x4 rotation matrix of the Euler angle rotation in y-x-z order</returns>
@@ -114,8 +114,8 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float4x4 rotation matrix of the Euler angle rotation in y-z-x order</returns>
@@ -132,9 +132,8 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
-    /// This is the default order rotation order in Unity
+    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float4x4 rotation matrix of the Euler angle rotation in z-x-y order</returns>
@@ -151,8 +150,8 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The float4x4 rotation matrix of the Euler angle rotation in z-y-x order</returns>
@@ -214,9 +213,9 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 view matrix given an eye position, a target point and a unit length up vector
+    /// Returns a float4x4 view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
-    /// the vector between them is assumes to be collinear with the up vector
+    /// the vector between them is assumes to be collinear with the up vector.
     /// </summary>
     /// <param name="eye">The eye position</param>
     /// <param name="target">The view target position</param>
@@ -320,7 +319,7 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 matrix representing a combined scale-, rotation- and translation transform
+    /// Returns a float4x4 matrix representing a combined scale-, rotation- and translation transform.
     /// Equivalent to mul(translationTransform, mul(rotationTransform, scaleTransform))
     /// </summary>
     /// <param name="translation">The translation vector</param>
@@ -577,8 +576,8 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double4x4 rotation matrix of the Euler angle rotation in x-y-z order</returns>
@@ -595,8 +594,8 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double4x4 rotation matrix of the Euler angle rotation in x-z-y order</returns>
@@ -613,8 +612,8 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double4x4 rotation matrix of the Euler angle rotation in y-x-z order</returns>
@@ -631,8 +630,8 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double4x4 rotation matrix of the Euler angle rotation in y-z-x order</returns>
@@ -649,9 +648,8 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
-    /// This is the default order rotation order in Unity
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double4x4 rotation matrix of the Euler angle rotation in z-x-y order</returns>
@@ -668,8 +666,8 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a double4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A double3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The double4x4 rotation matrix of the Euler angle rotation in z-y-x order</returns>
@@ -731,9 +729,9 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 view matrix given an eye position, a target point and a unit length up vector
+    /// Returns a double4x4 view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
-    /// the vector between them is assumes to be collinear with the up vector
+    /// the vector between them is assumes to be collinear with the up vector.
     /// </summary>
     /// <param name="eye">The eye position</param>
     /// <param name="target">The view target position</param>
@@ -837,7 +835,7 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 matrix representing a combined scale-, rotation- and translation transform
+    /// Returns a double4x4 matrix representing a combined scale-, rotation- and translation transform.
     /// Equivalent to mul(translationTransform, mul(rotationTransform, scaleTransform))
     /// </summary>
     /// <param name="translation">The translation vector</param>
@@ -1748,8 +1746,8 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half4x4 rotation matrix of the Euler angle rotation in x-y-z order</returns>
@@ -1766,8 +1764,8 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half4x4 rotation matrix of the Euler angle rotation in x-z-y order</returns>
@@ -1784,8 +1782,8 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half4x4 rotation matrix of the Euler angle rotation in y-x-z order</returns>
@@ -1802,8 +1800,8 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half4x4 rotation matrix of the Euler angle rotation in y-z-x order</returns>
@@ -1820,9 +1818,8 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
-    /// This is the default order rotation order in Unity
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half4x4 rotation matrix of the Euler angle rotation in z-x-y order</returns>
@@ -1839,8 +1836,8 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis
-    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin
+    /// Returns a half4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
     /// </summary>
     /// <param name="xyz">A half3 vector containing the rotation angles around the x-, y- and z-axis measures in radians</param>
     /// <returns>The half4x4 rotation matrix of the Euler angle rotation in z-y-x order</returns>
@@ -1902,9 +1899,9 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 view matrix given an eye position, a target point and a unit length up vector
+    /// Returns a half4x4 view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
-    /// the vector between them is assumes to be collinear with the up vector
+    /// the vector between them is assumes to be collinear with the up vector.
     /// </summary>
     /// <param name="eye">The eye position</param>
     /// <param name="target">The view target position</param>
@@ -2008,7 +2005,7 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 matrix representing a combined scale-, rotation- and translation transform
+    /// Returns a half4x4 matrix representing a combined scale-, rotation- and translation transform.
     /// Equivalent to mul(translationTransform, mul(rotationTransform, scaleTransform))
     /// </summary>
     /// <param name="translation">The translation vector</param>
