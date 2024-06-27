@@ -10,6 +10,15 @@ namespace Coplt.Mathematics;
 
     foreach (var typ in Typ.Typs)
     {
+        if (!Typ.ExplicitConverts.TryGetValue(typ.name, out var exp)) exp = [];
+        if (!Typ.ImplicitConverts.TryGetValue(typ.name, out var imp)) imp = [];
+
+        if (exp.Length + imp.Length == 0) continue;
+            
+        var convs = exp.AsParallel().AsOrdered().Select(a => (c:"explicit", t:TypMap.TryGetValue(a, out var b) ? b : default))
+                .Concat(imp.AsParallel().AsOrdered().Select(a => (c:"implicit", t:TypMap.TryGetValue(a, out var b) ? b : default)))
+                .Where(a => a.t.name != null).ToArray();
+        
         for (var i = 2; i <= 4; i++)
         {
             var typeName = $"{typ.name}{i}";
@@ -17,15 +26,6 @@ namespace Coplt.Mathematics;
 
             var byteSize = typ.size * (i is 3 ? 4 : i);
             var bitSize = 8 * byteSize;
-
-            if (!Typ.ExplicitConverts.TryGetValue(typ.name, out var exp)) exp = [];
-            if (!Typ.ImplicitConverts.TryGetValue(typ.name, out var imp)) imp = [];
-
-            if (exp.Length + imp.Length == 0) continue;
-
-            var convs = exp.AsParallel().AsOrdered().Select(a => (c:"explicit", t:TypMap.TryGetValue(a, out var b) ? b : default))
-                .Concat(imp.AsParallel().AsOrdered().Select(a => (c:"implicit", t:TypMap.TryGetValue(a, out var b) ? b : default)))
-                .Where(a => a.t.name != null).ToArray();
 #>
 
 #region <#= typeName #>
