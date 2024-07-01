@@ -9,11 +9,29 @@
         <NoWarn>CS8981;CS0169</NoWarn>
         <RunPostBuildEvent>Always</RunPostBuildEvent>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>0.0.0</Version>
+        <Description>hlsl-style linear algebra library</Description>
+        <PackageProjectUrl>https://github.com/2A5F/Coplt.Shader</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/2A5F/Coplt.Shader</RepositoryUrl>
+        <PackageReadmeFile>Readme.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     </PropertyGroup>
 
     <ItemGroup>
+	  <None Include=".\Readme.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+      <None Include="..\LICENSE.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
         <TextTemplate Include="bool.tt" />
-        <TextTemplate Include="interface.tt"/>
+        <TextTemplate Include="interface.tt" />
         <TextTemplate Include="mat.arith.2x2.tt" />
         <TextTemplate Include="mat.arith.3x3.tt" />
         <TextTemplate Include="mat.arith.float.bin.tt" />
@@ -81,11 +99,11 @@
 
     <ItemGroup>
         <PackageReference Include="System.Text.Json" Version="8.0.3" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
-        <PackageReference Include="Ultz.Bcl.Half" Version="1.0.0" Condition="'$(TargetFramework)' == 'netstandard2.1'"/>
+        <PackageReference Include="Ultz.Bcl.Half" Version="1.0.0" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
     </ItemGroup>
 
 <!--    Inputs="@(TextTemplate)" Outputs="@(TextTemplate->'%(RelativeDir)%(Filename).cs')"-->
     <Target Name="TextTemplateTransform" BeforeTargets="PrepareForBuild" Inputs="@(TextTemplate)" Outputs="@(TextTemplate->'%(RelativeDir)%(Filename).cs')">
-        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool run t4 -v %(TextTemplate.Identity) -o %(TextTemplate.RelativeDir)%(TextTemplate.Filename).cs -I=%(TextTemplate.RelativeDir)" EnvironmentVariables="ProjectDir=$(ProjectDir)"/>
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool run t4 -v %(TextTemplate.Identity) -o %(TextTemplate.RelativeDir)%(TextTemplate.Filename).cs -I=%(TextTemplate.RelativeDir)" EnvironmentVariables="ProjectDir=$(ProjectDir)" />
     </Target>
 </Project>

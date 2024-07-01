@@ -1,5 +1,7 @@
 # Coplt.Mathematics
 
+[![Nuget](https://img.shields.io/nuget/v/Coplt.Mathematics)](https://www.nuget.org/packages/Coplt.Mathematics/)
+
 hlsl-style linear algebra library
 
 - bool (b16 b32 b64)、half、float、double、short、ushort、int、uint、long、ulong、decimal
