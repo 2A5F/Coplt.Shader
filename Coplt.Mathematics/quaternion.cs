@@ -359,11 +359,11 @@ public static partial class math
     public static float3 rotate(this quaternion q, float3 v) => mul(q, v);
 
     [MethodImpl(256 | 512)]
-    public static quaternion nlerp(this quaternion q1, quaternion q2, float t) => 
+    public static quaternion nlerp(this float t, quaternion q1, quaternion q2) => 
         normalize(q1.value + t * (chgsign(q2.value, dot(q1, q2)) - q1.value));
     
     [MethodImpl(256 | 512)]
-    public static quaternion slerp(this quaternion q1, quaternion q2, float t)
+    public static quaternion slerp(this float t, quaternion q1, quaternion q2)
     {
         var dt = dot(q1, q2);
         if (dt < 0.0f)
@@ -383,7 +383,7 @@ public static partial class math
         else
         {
             // if the angle is small, use linear interpolation
-            return nlerp(q1, q2, t);
+            return t.nlerp(q1, q2);
         }
     }
     
@@ -958,11 +958,11 @@ public static partial class math
     public static double3 rotate(this quaternion_d q, double3 v) => mul(q, v);
 
     [MethodImpl(256 | 512)]
-    public static quaternion_d nlerp(this quaternion_d q1, quaternion_d q2, double t) => 
+    public static quaternion_d nlerp(this double t, quaternion_d q1, quaternion_d q2) => 
         normalize(q1.value + t * (chgsign(q2.value, dot(q1, q2)) - q1.value));
     
     [MethodImpl(256 | 512)]
-    public static quaternion_d slerp(this quaternion_d q1, quaternion_d q2, double t)
+    public static quaternion_d slerp(this double t, quaternion_d q1, quaternion_d q2)
     {
         var dt = dot(q1, q2);
         if (dt < 0.0)
@@ -982,7 +982,7 @@ public static partial class math
         else
         {
             // if the angle is small, use linear interpolation
-            return nlerp(q1, q2, t);
+            return t.nlerp(q1, q2);
         }
     }
     
@@ -1557,11 +1557,11 @@ public static partial class math
     public static half3 rotate(this quaternion_h q, half3 v) => mul(q, v);
 
     [MethodImpl(256 | 512)]
-    public static quaternion_h nlerp(this quaternion_h q1, quaternion_h q2, half t) => 
+    public static quaternion_h nlerp(this half t, quaternion_h q1, quaternion_h q2) => 
         normalize(q1.value + t * (chgsign(q2.value, dot(q1, q2)) - q1.value));
     
     [MethodImpl(256 | 512)]
-    public static quaternion_h slerp(this quaternion_h q1, quaternion_h q2, half t)
+    public static quaternion_h slerp(this half t, quaternion_h q1, quaternion_h q2)
     {
         var dt = dot(q1, q2);
         if (dt < 0.0f.half())
@@ -1581,7 +1581,7 @@ public static partial class math
         else
         {
             // if the angle is small, use linear interpolation
-            return nlerp(q1, q2, t);
+            return t.nlerp(q1, q2);
         }
     }
     

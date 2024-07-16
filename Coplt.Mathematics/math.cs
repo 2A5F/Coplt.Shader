@@ -288,6 +288,136 @@ public static partial class math
         if (typeof(T) == typeof(half)) return ((half)1e5f).BitCast<half, T>();
         throw new NotSupportedException();
     }
+
+    [MethodImpl(256 | 512)]
+    internal static float3 FastOrthogonal(float3 v, bool normalize = true)
+    {
+        var sqr = v.xy.lengthsq();
+        if (sqr > 0f)
+        {
+            // (0,0,1) x (x,y,z)
+            var im = normalize ? 1f / sqr.sqrt() : 1f;
+            // new(-v.y * im, v.x * im, 0f)
+            return v.yxz * new float3(-1, 1, 0) * im;
+        }
+        else
+        {
+            // (1,0,0) x (x,y,z)
+            sqr = v.yz.lengthsq();
+            var im = normalize ? 1f / sqr.sqrt() : 1f;
+            // new(0f, -v.z * im, v.y * im);
+            return v.xzy * new float3(0, -1, 1) * im;
+        }
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 slerp(this float t, float3 a, float3 b)
+    {
+        var it = 1f - t; // inverse of t
+        var m0 = a.length();
+        var m1 = b.length();
+        var mm = m0 * m1; // combined magnitude
+        if (mm == 0f) return a * it + b * t; // use lerp if one of the vectors is zero
+        var d = a.dot(b) / mm; // unit dot
+        if (1f - d.abs() <= 1E-5f)
+        {
+            // abs(dot) is close to 1
+            return d > 0f
+                ? a * it + b * t // << use lerp for very small angles
+                : quaternion.AxisAngle(FastOrthogonal(a), MathF.PI * t).mul((it + (m1 / m0) * t) * a);
+        } // ^^ vectors are antiparallel, apply rotation on orthogonal axis, lerp mag
+        var th = acos(d);
+        // var s = sin(th) * mm;
+        // var j = sin(it * th);
+        // var k = sin(t * th);
+        var th_it_t_one = new float4(th, it, t, 1);
+        var sjk = sin(th_it_t_one.xyz * th_it_t_one.wxx) * new float3(mm, 1, 1);
+        // left-hand-side scalar part = mag lerp
+        // right-hand-side vector part = actual slerp
+        return (m0 * it + m1 * t) * (sjk.y * m1 * a + sjk.z * m0 * b) / sjk.x;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static float3 slerp_unit(this float t, float3 a, float3 b)
+    {
+        var d = a.dot(b);
+        if (1f - d.abs() <= 1e-6f) // smaller epsilon
+            return d > 0f
+                ? a * (1f - t) + b * t
+                : quaternion.AxisAngle(FastOrthogonal(a, normalize: false), MathF.PI * t).mul(a);
+        var th = acos(d);
+        // var s = sin(th);
+        // var j = sin((1f - t) * th);
+        // var k = sin(t * th);
+        var one_it_t = new float3(1, 1f - t, t);
+        var sjk = sin(one_it_t * th);
+        return (sjk.y * a + sjk.z * b) / sjk.x;
+    }
+
+    [MethodImpl(256 | 512)]
+    internal static double3 FastOrthogonal(double3 v, bool normalize = true)
+    {
+        var sqr = v.xy.lengthsq();
+        if (sqr > 0)
+        {
+            // (0,0,1) x (x,y,z)
+            var im = normalize ? 1 / sqr.sqrt() : 1;
+            // new(-v.y * im, v.x * im, 0f)
+            return v.yxz * new double3(-1, 1, 0) * im;
+        }
+        else
+        {
+            // (1,0,0) x (x,y,z)
+            sqr = v.yz.lengthsq();
+            var im = normalize ? 1 / sqr.sqrt() : 1;
+            // new(0f, -v.z * im, v.y * im);
+            return v.xzy * new double3(0, -1, 1) * im;
+        }
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 slerp(this float t, double3 a, double3 b)
+    {
+        var it = 1 - t; // inverse of t
+        var m0 = a.length();
+        var m1 = b.length();
+        var mm = m0 * m1; // combined magnitude
+        if (mm == 0) return a * it + b * t; // use lerp if one of the vectors is zero
+        var d = a.dot(b) / mm; // unit dot
+        if (1 - d.abs() <= 1E-5)
+        {
+            // abs(dot) is close to 1
+            return d > 0
+                ? a * it + b * t // << use lerp for very small angles
+                : quaternion_d.AxisAngle(FastOrthogonal(a), Math.PI * t).mul((it + (m1 / m0) * t) * a);
+        } // ^^ vectors are antiparallel, apply rotation on orthogonal axis, lerp mag
+        var th = acos(d);
+        // var s = sin(th) * mm;
+        // var j = sin(it * th);
+        // var k = sin(t * th);
+        var th_it_t_one = new double4(th, it, t, 1);
+        var sjk = sin(th_it_t_one.xyz * th_it_t_one.wxx) * new double3(mm, 1, 1);
+        // left-hand-side scalar part = mag lerp
+        // right-hand-side vector part = actual slerp
+        return (m0 * it + m1 * t) * (sjk.y * m1 * a + sjk.z * m0 * b) / sjk.x;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static double3 slerp_unit(this float t, double3 a, double3 b)
+    {
+        var d = a.dot(b);
+        if (1 - d.abs() <= 1e-6) // smaller epsilon
+            return d > 0
+                ? a * (1 - t) + b * t
+                : quaternion_d.AxisAngle(FastOrthogonal(a, normalize: false), Math.PI * t).mul(a);
+        var th = acos(d);
+        // var s = sin(th);
+        // var j = sin((1f - t) * th);
+        // var k = sin(t * th);
+        var one_it_t = new double3(1, 1 - t, t);
+        var sjk = sin(one_it_t * th);
+        return (sjk.y * a + sjk.z * b) / sjk.x;
+    }
 }
 
 public static partial class ctor
