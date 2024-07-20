@@ -1,4 +1,4 @@
-﻿namespace Coplt.Mathematics.Sdf;
+﻿namespace Coplt.Mathematics.SignedDistances;
 
 public interface ISdfShape<out T, in V> where V : IVector<T>
 {

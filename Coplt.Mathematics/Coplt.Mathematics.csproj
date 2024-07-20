@@ -10,7 +10,7 @@
         <RunPostBuildEvent>Always</RunPostBuildEvent>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>0.0.0</Version>
+        <Version>0.1.0</Version>
         <Description>hlsl-style linear algebra library</Description>
         <PackageProjectUrl>https://github.com/2A5F/Coplt.Shader</PackageProjectUrl>
         <RepositoryUrl>https://github.com/2A5F/Coplt.Shader</RepositoryUrl>
@@ -54,11 +54,6 @@
         <TextTemplate Include="mat.trn.tt" />
         <TextTemplate Include="norm.tt" />
         <TextTemplate Include="quaternion.tt" />
-        <TextTemplate Include="sdf.2d.shape.tt" />
-        <TextTemplate Include="sdf.2d.tt" />
-        <TextTemplate Include="sdf.3d.shape.tt" />
-        <TextTemplate Include="sdf.3d.tt" />
-        <TextTemplate Include="sdf.tt" />
         <TextTemplate Include="Shuffle.4.2.tt" />
         <TextTemplate Include="simd_matrix_trn_2x2.tt" />
         <TextTemplate Include="simd_matrix_trn_2x4_to_4x2.tt" />
