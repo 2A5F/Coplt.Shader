@@ -616,6 +616,142 @@ public static partial class simd
 
     #endregion
 
+    #region Rem
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Rem(Vector64<float> a, Vector64<float> b)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Rem(a, b);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Rem(a.ToVector128(), b.ToVector128()).GetLower();
+        }
+
+        return Vector64.Create(
+            a.GetElement(0) % b.GetElement(0),
+            a.GetElement(1) % b.GetElement(1)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Rem(Vector128<float> a, Vector128<float> b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Rem(a, b);
+        }
+
+        return Vector128.Create(
+            a.GetElement(0) % b.GetElement(0),
+            a.GetElement(1) % b.GetElement(1),
+            a.GetElement(2) % b.GetElement(2),
+            a.GetElement(3) % b.GetElement(3)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Rem(Vector128<double> a, Vector128<double> b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Rem(a, b);
+        }
+
+        return Vector128.Create(
+            a.GetElement(0) % b.GetElement(0),
+            a.GetElement(1) % b.GetElement(1)
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Rem(Vector256<double> a, Vector256<double> b)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Rem(a, b);
+        }
+
+        return Vector256.Create(
+            a.GetElement(0) % b.GetElement(0),
+            a.GetElement(1) % b.GetElement(1),
+            a.GetElement(2) % b.GetElement(2),
+            a.GetElement(3) % b.GetElement(3)
+        );
+    }
+
+    #endregion
+
+    #region Rem Scalar
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Rem(Vector64<float> a, float b)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_float.Rem(a, b);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Rem(a.ToVector128(), b).GetLower();
+        }
+
+        return Vector64.Create(
+            a.GetElement(0) % b,
+            a.GetElement(1) % b
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Rem(Vector128<float> a, float b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_float.Rem(a, b);
+        }
+
+        return Vector128.Create(
+            a.GetElement(0) % b,
+            a.GetElement(1) % b,
+            a.GetElement(2) % b,
+            a.GetElement(3) % b
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Rem(Vector128<double> a, double b)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_double.Rem(a, b);
+        }
+
+        return Vector128.Create(
+            a.GetElement(0) % b,
+            a.GetElement(1) % b
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Rem(Vector256<double> a, double b)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_double.Rem(a, b);
+        }
+
+        return Vector256.Create(
+            a.GetElement(0) % b,
+            a.GetElement(1) % b,
+            a.GetElement(2) % b,
+            a.GetElement(3) % b
+        );
+    }
+
+    #endregion
+
     #region Mod
 
     [MethodImpl(256 | 512)]
@@ -631,8 +767,8 @@ public static partial class simd
         }
 
         return Vector64.Create(
-            a.GetElement(0) % b.GetElement(0),
-            a.GetElement(1) % b.GetElement(1)
+            a.GetElement(0).mod(b.GetElement(0)),
+            a.GetElement(1).mod(b.GetElement(1))
         );
     }
 
@@ -645,10 +781,10 @@ public static partial class simd
         }
 
         return Vector128.Create(
-            a.GetElement(0) % b.GetElement(0),
-            a.GetElement(1) % b.GetElement(1),
-            a.GetElement(2) % b.GetElement(2),
-            a.GetElement(3) % b.GetElement(3)
+            a.GetElement(0).mod(b.GetElement(0)),
+            a.GetElement(1).mod(b.GetElement(1)),
+            a.GetElement(2).mod(b.GetElement(2)),
+            a.GetElement(3).mod(b.GetElement(3))
         );
     }
 
@@ -661,8 +797,8 @@ public static partial class simd
         }
 
         return Vector128.Create(
-            a.GetElement(0) % b.GetElement(0),
-            a.GetElement(1) % b.GetElement(1)
+            a.GetElement(0).mod(b.GetElement(0)),
+            a.GetElement(1).mod(b.GetElement(1))
         );
     }
 
@@ -675,10 +811,10 @@ public static partial class simd
         }
 
         return Vector256.Create(
-            a.GetElement(0) % b.GetElement(0),
-            a.GetElement(1) % b.GetElement(1),
-            a.GetElement(2) % b.GetElement(2),
-            a.GetElement(3) % b.GetElement(3)
+            a.GetElement(0).mod(b.GetElement(0)),
+            a.GetElement(1).mod(b.GetElement(1)),
+            a.GetElement(2).mod(b.GetElement(2)),
+            a.GetElement(3).mod(b.GetElement(3))
         );
     }
 
@@ -699,8 +835,8 @@ public static partial class simd
         }
 
         return Vector64.Create(
-            a.GetElement(0) % b,
-            a.GetElement(1) % b
+            a.GetElement(0).mod(b),
+            a.GetElement(1).mod(b)
         );
     }
 
@@ -713,10 +849,10 @@ public static partial class simd
         }
 
         return Vector128.Create(
-            a.GetElement(0) % b,
-            a.GetElement(1) % b,
-            a.GetElement(2) % b,
-            a.GetElement(3) % b
+            a.GetElement(0).mod(b),
+            a.GetElement(1).mod(b),
+            a.GetElement(2).mod(b),
+            a.GetElement(3).mod(b)
         );
     }
 
@@ -729,8 +865,8 @@ public static partial class simd
         }
 
         return Vector128.Create(
-            a.GetElement(0) % b,
-            a.GetElement(1) % b
+            a.GetElement(0).mod(b),
+            a.GetElement(1).mod(b)
         );
     }
 
@@ -743,15 +879,15 @@ public static partial class simd
         }
 
         return Vector256.Create(
-            a.GetElement(0) % b,
-            a.GetElement(1) % b,
-            a.GetElement(2) % b,
-            a.GetElement(3) % b
+            a.GetElement(0).mod(b),
+            a.GetElement(1).mod(b),
+            a.GetElement(2).mod(b),
+            a.GetElement(3).mod(b)
         );
     }
 
     #endregion
-
+    
     #region ModF
 
     [MethodImpl(256 | 512)]

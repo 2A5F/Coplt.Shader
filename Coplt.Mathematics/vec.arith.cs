@@ -92,7 +92,7 @@ public partial struct float2
     public static float2 operator %(float2 a, float2 b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b.vector));
+        return new(simd.Rem(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new((float)(a.x % b.x), (float)(a.y % b.y));
         #endif // NET8_0_OR_GREATER
@@ -102,7 +102,7 @@ public partial struct float2
     public static float2 operator %(float2 a, float b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b));
+        return new(simd.Rem(a.vector, b));
         #else // NET8_0_OR_GREATER
         return new((float)(a.x % b), (float)(a.y % b));
         #endif // NET8_0_OR_GREATER
@@ -374,7 +374,7 @@ public partial struct float3
     public static float3 operator %(float3 a, float3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        return new(simd.Rem(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
         return new((float)(a.x % b.x), (float)(a.y % b.y), (float)(a.z % b.z));
         #endif // NET8_0_OR_GREATER
@@ -384,7 +384,7 @@ public partial struct float3
     public static float3 operator %(float3 a, float b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        return new(simd.Rem(a.vector, b) & Vector128.Create(-1, -1, -1, 0).AsSingle());
         #else // NET8_0_OR_GREATER
         return new((float)(a.x % b), (float)(a.y % b), (float)(a.z % b));
         #endif // NET8_0_OR_GREATER
@@ -659,7 +659,7 @@ public partial struct float4
     public static float4 operator %(float4 a, float4 b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b.vector));
+        return new(simd.Rem(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new((float)(a.x % b.x), (float)(a.y % b.y), (float)(a.z % b.z), (float)(a.w % b.w));
         #endif // NET8_0_OR_GREATER
@@ -669,7 +669,7 @@ public partial struct float4
     public static float4 operator %(float4 a, float b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b));
+        return new(simd.Rem(a.vector, b));
         #else // NET8_0_OR_GREATER
         return new((float)(a.x % b), (float)(a.y % b), (float)(a.z % b), (float)(a.w % b));
         #endif // NET8_0_OR_GREATER
@@ -941,7 +941,7 @@ public partial struct double2
     public static double2 operator %(double2 a, double2 b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b.vector));
+        return new(simd.Rem(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new((double)(a.x % b.x), (double)(a.y % b.y));
         #endif // NET8_0_OR_GREATER
@@ -951,7 +951,7 @@ public partial struct double2
     public static double2 operator %(double2 a, double b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b));
+        return new(simd.Rem(a.vector, b));
         #else // NET8_0_OR_GREATER
         return new((double)(a.x % b), (double)(a.y % b));
         #endif // NET8_0_OR_GREATER
@@ -1223,7 +1223,7 @@ public partial struct double3
     public static double3 operator %(double3 a, double3 b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        return new(simd.Rem(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
         return new((double)(a.x % b.x), (double)(a.y % b.y), (double)(a.z % b.z));
         #endif // NET8_0_OR_GREATER
@@ -1233,7 +1233,7 @@ public partial struct double3
     public static double3 operator %(double3 a, double b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        return new(simd.Rem(a.vector, b) & Vector256.Create(-1, -1, -1, 0).AsDouble());
         #else // NET8_0_OR_GREATER
         return new((double)(a.x % b), (double)(a.y % b), (double)(a.z % b));
         #endif // NET8_0_OR_GREATER
@@ -1508,7 +1508,7 @@ public partial struct double4
     public static double4 operator %(double4 a, double4 b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b.vector));
+        return new(simd.Rem(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new((double)(a.x % b.x), (double)(a.y % b.y), (double)(a.z % b.z), (double)(a.w % b.w));
         #endif // NET8_0_OR_GREATER
@@ -1518,7 +1518,7 @@ public partial struct double4
     public static double4 operator %(double4 a, double b)
     {
         #if NET8_0_OR_GREATER
-        return new(simd.Mod(a.vector, b));
+        return new(simd.Rem(a.vector, b));
         #else // NET8_0_OR_GREATER
         return new((double)(a.x % b), (double)(a.y % b), (double)(a.z % b), (double)(a.w % b));
         #endif // NET8_0_OR_GREATER

@@ -845,6 +845,19 @@ public static partial class math
 
     #endregion
 
+    #region Mod
+
+    [MethodImpl(256 | 512)]
+    public static half mod(this half a, half b) => (half)mod((float)a, (float)b);
+    [MethodImpl(256 | 512)]
+    public static float mod(this float a, float b) => a - b * MathF.Floor(a / b);
+    [MethodImpl(256 | 512)]
+    public static double mod(this double a, double b) => a - b * Math.Floor(a / b);
+    [MethodImpl(256 | 512)]
+    public static decimal mod(this decimal a, decimal b) => a - b * decimal.Floor(a / b);
+
+    #endregion
+
     #region Min
 
     [MethodImpl(256 | 512)]

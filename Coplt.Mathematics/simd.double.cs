@@ -10,12 +10,52 @@ public static partial class simd_double
     public static Vector128<double> Mod(Vector128<double> x, Vector128<double> y)
     {
         var div = x / y;
-        var flr = simd.RoundToZero(div);
+        var flr = Vector128.Floor(div);
         return simd.Fnma(flr, y, x);
     }
 
     [MethodImpl(256 | 512)]
     public static Vector128<double> Mod(Vector128<double> x, double y)
+    {
+        var div = x / y;
+        var flr = Vector128.Floor(div);
+        return simd.Fnma(flr, Vector128.Create(y), x);
+    }
+
+    #endregion
+    
+    #region Mod v256
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Mod(Vector256<double> x, Vector256<double> y)
+    {
+        var div = x / y;
+        var flr = Vector256.Floor(div);
+        return simd.Fnma(flr, y, x);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Mod(Vector256<double> x, double y)
+    {
+        var div = x / y;
+        var flr = Vector256.Floor(div);
+        return simd.Fnma(flr, Vector256.Create(y), x);
+    }
+
+    #endregion
+    
+    #region Rem v128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Rem(Vector128<double> x, Vector128<double> y)
+    {
+        var div = x / y;
+        var flr = simd.RoundToZero(div);
+        return simd.Fnma(flr, y, x);
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Rem(Vector128<double> x, double y)
     {
         var div = x / y;
         var flr = simd.RoundToZero(div);
@@ -24,10 +64,10 @@ public static partial class simd_double
 
     #endregion
 
-    #region Mod v256
+    #region Rem v256
 
     [MethodImpl(256 | 512)]
-    public static Vector256<double> Mod(Vector256<double> x, Vector256<double> y)
+    public static Vector256<double> Rem(Vector256<double> x, Vector256<double> y)
     {
         var div = x / y;
         var flr = simd.RoundToZero(div);
@@ -35,7 +75,7 @@ public static partial class simd_double
     }
 
     [MethodImpl(256 | 512)]
-    public static Vector256<double> Mod(Vector256<double> x, double y)
+    public static Vector256<double> Rem(Vector256<double> x, double y)
     {
         var div = x / y;
         var flr = simd.RoundToZero(div);
@@ -50,7 +90,7 @@ public static partial class simd_double
     public static Vector128<double> Wrap(Vector128<double> x, Vector128<double> min, Vector128<double> max)
     {
         var add = Vector128.ConditionalSelect(Vector128.GreaterThanOrEqual(x, default), min, max);
-        var off = Mod(x, max - min);
+        var off = Rem(x, max - min);
         return add + off;
     }
 
@@ -58,7 +98,7 @@ public static partial class simd_double
     public static Vector128<double> Wrap(Vector128<double> x, double min, double max)
     {
         var add = Vector128.ConditionalSelect(Vector128.GreaterThanOrEqual(x, default), Vector128.Create(min), Vector128.Create(max));
-        var off = Mod(x, max - min);
+        var off = Rem(x, max - min);
         return add + off;
     }
 
@@ -97,7 +137,7 @@ public static partial class simd_double
     public static Vector256<double> Wrap(Vector256<double> x, Vector256<double> min, Vector256<double> max)
     {
         var add = Vector256.ConditionalSelect(Vector256.GreaterThanOrEqual(x, default), min, max);
-        var off = Mod(x, max - min);
+        var off = Rem(x, max - min);
         return add + off;
     }
 
@@ -105,7 +145,7 @@ public static partial class simd_double
     public static Vector256<double> Wrap(Vector256<double> x, double min, double max)
     {
         var add = Vector256.ConditionalSelect(Vector256.GreaterThanOrEqual(x, default), Vector256.Create(min), Vector256.Create(max));
-        var off = Mod(x, max - min);
+        var off = Rem(x, max - min);
         return add + off;
     }
 
@@ -478,7 +518,7 @@ public static partial class simd_double
     public static Vector128<double> Pow(Vector128<double> a, Vector128<double> b)
     {
         var sig = Vector128.LessThan(a, default)
-                  & simd.Ne(Mod(b, Vector128.Create(2.0)), default)
+                  & simd.Ne(Rem(b, Vector128.Create(2.0)), default)
                   & Vector128.Create(0x8000_0000_0000_0000).AsDouble();
         var r = Exp2(Log2(Vector128.Abs(a)) * b);
         return r | sig;
@@ -495,7 +535,7 @@ public static partial class simd_double
     public static Vector256<double> Pow(Vector256<double> a, Vector256<double> b)
     {
         var sig = Vector256.LessThan(a, default)
-                  & simd.Ne(Mod(b, Vector256.Create(2.0)), default)
+                  & simd.Ne(Rem(b, Vector256.Create(2.0)), default)
                   & Vector256.Create(0x8000_0000_0000_0000).AsDouble();
         var r = Exp2(Log2(Vector256.Abs(a)) * b);
         return r | sig;

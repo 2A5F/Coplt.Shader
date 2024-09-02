@@ -66,6 +66,15 @@ public partial struct float2
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static float2 mod(this float2 a, float2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.mod(b.x), a.y.mod(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
     public static float2 ceil(this float2 a)
@@ -238,6 +247,15 @@ public partial struct float3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static float3 mod(this float3 a, float3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector) & Vector128.Create(-1, -1, -1, 0).AsSingle());
+        #else // NET8_0_OR_GREATER
+        return new(a.x.mod(b.x), a.y.mod(b.y), a.z.mod(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
     public static float3 ceil(this float3 a)
@@ -410,6 +428,15 @@ public partial struct float4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static float4 mod(this float4 a, float4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.mod(b.x), a.y.mod(b.y), a.z.mod(b.z), a.w.mod(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
     public static float4 ceil(this float4 a)
@@ -582,6 +609,15 @@ public partial struct double2
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static double2 mod(this double2 a, double2 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.mod(b.x), a.y.mod(b.y));
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
     public static double2 ceil(this double2 a)
@@ -754,6 +790,15 @@ public partial struct double3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static double3 mod(this double3 a, double3 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector) & Vector256.Create(-1, -1, -1, 0).AsDouble());
+        #else // NET8_0_OR_GREATER
+        return new(a.x.mod(b.x), a.y.mod(b.y), a.z.mod(b.z));
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
     public static double3 ceil(this double3 a)
@@ -926,6 +971,15 @@ public partial struct double4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static double4 mod(this double4 a, double4 b)
+    {
+        #if NET8_0_OR_GREATER
+        return new(simd.Mod(a.vector, b.vector));
+        #else // NET8_0_OR_GREATER
+        return new(a.x.mod(b.x), a.y.mod(b.y), a.z.mod(b.z), a.w.mod(b.w));
+        #endif // NET8_0_OR_GREATER
+    }
 
     [MethodImpl(256 | 512)]
     public static double4 ceil(this double4 a)
@@ -1098,6 +1152,11 @@ public partial struct decimal2
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static decimal2 mod(this decimal2 a, decimal2 b)
+    {
+        return new(a.x.mod(b.x), a.y.mod(b.y));
+    }
 
     [MethodImpl(256 | 512)]
     public static decimal2 ceil(this decimal2 a)
@@ -1236,6 +1295,11 @@ public partial struct decimal3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static decimal3 mod(this decimal3 a, decimal3 b)
+    {
+        return new(a.x.mod(b.x), a.y.mod(b.y), a.z.mod(b.z));
+    }
 
     [MethodImpl(256 | 512)]
     public static decimal3 ceil(this decimal3 a)
@@ -1374,6 +1438,11 @@ public partial struct decimal4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static decimal4 mod(this decimal4 a, decimal4 b)
+    {
+        return new(a.x.mod(b.x), a.y.mod(b.y), a.z.mod(b.z), a.w.mod(b.w));
+    }
 
     [MethodImpl(256 | 512)]
     public static decimal4 ceil(this decimal4 a)
@@ -1512,6 +1581,11 @@ public partial struct half2
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static half2 mod(this half2 a, half2 b)
+    {
+        return new(a.x.mod(b.x), a.y.mod(b.y));
+    }
 
     [MethodImpl(256 | 512)]
     public static half2 ceil(this half2 a)
@@ -1650,6 +1724,11 @@ public partial struct half3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static half3 mod(this half3 a, half3 b)
+    {
+        return new(a.x.mod(b.x), a.y.mod(b.y), a.z.mod(b.z));
+    }
 
     [MethodImpl(256 | 512)]
     public static half3 ceil(this half3 a)
@@ -1788,6 +1867,11 @@ public partial struct half4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static half4 mod(this half4 a, half4 b)
+    {
+        return new(a.x.mod(b.x), a.y.mod(b.y), a.z.mod(b.z), a.w.mod(b.w));
+    }
 
     [MethodImpl(256 | 512)]
     public static half4 ceil(this half4 a)
