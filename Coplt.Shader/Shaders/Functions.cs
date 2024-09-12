@@ -1,6 +1,6 @@
 ﻿namespace Coplt.Shader.Shaders;
 
-public static partial class ShaderOp
+public static partial class Shader
 {
     public static T Ddx<T>(T v) => GpuOnly<T>();
     public static T Ddy<T>(T v) => GpuOnly<T>();

@@ -2,10 +2,14 @@
 
 namespace Coplt.Shader;
 
-/// <summary>
-/// Shader module
-/// </summary>
-public interface IShaderModule { }
+
+public enum ShaderTarget
+{
+    Other,
+    DirectX,
+    Vulkan,
+    WebGpu,
+}
 
 public enum ShaderModuleType
 {
@@ -16,14 +20,10 @@ public enum ShaderModuleType
     Wgsl,
 }
 
-public record struct ShaderModuleConfig
-{
-    public ShaderModuleType RequiredType { get; set; }
-}
-
 public abstract class ShaderModule
 {
     public abstract ShaderModuleType Type { get; }
+    public abstract ShaderTarget Target { get; }
 
     public abstract ReadOnlySpan<byte> Blob();
 

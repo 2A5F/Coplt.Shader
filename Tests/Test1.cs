@@ -5,26 +5,22 @@ using Coplt.Mathematics;
 
 namespace Tests.Test1;
 
-[ShaderMemoryLayout]
 public struct SceneInfo
 {
     public ViewInfo view;
 }
 
-[ShaderMemoryLayout]
 public struct ViewInfo
 {
     public float4x4 proj;
     public float4x4 view;
 }
 
-[ShaderMemoryLayout]
 public struct ObjectInfo
 {
     public float4x4 transform;
 }
 
-[Shader]
 public class Shader1 : IShaderModule
 {
     [Uniform]
@@ -32,44 +28,45 @@ public class Shader1 : IShaderModule
     [Storage]
     public ObjectInfo[] objects = null!;
 
-    public Texture2d<float4> tex;
+    public Texture2D<float4> tex;
     public SamplerState ss;
 
-    public struct VI
+    public struct Attributes
     {
+        [Semantic("POSITION")]
         public float4 pos;
+        [Semantic("TEXCOORD")]
         public float2 uv;
-        [Builtin(Semantics.InstanceId)]
+        [SV_InstanceID]
         public uint iid;
     }
 
-    public struct V2P
+    public struct Varyings
     {
-        [Builtin(Semantics.Position)]
+        [SV_Position]
         public float4 pos;
         public float2 uv;
-        [Builtin(Semantics.InstanceId)]
-        [Interpolate(Interpolate.Flat)]
+        [NoInterpolation]
         public uint iid;
     }
 
-    [VertexShader]
-    public V2P Vertex(VI vi)
+    [Shader("vertex")]
+    public Varyings Vertex(Attributes input)
     {
-        var obj = objects[vi.iid];
-        var pos = scene.view.proj.mul(scene.view.view.mul(obj.transform.mul(vi.pos)));
-        return new() { pos = pos, uv = vi.uv, iid = vi.iid };
+        var obj = objects[input.iid];
+        var pos = scene.view.proj.mul(scene.view.view.mul(obj.transform.mul(input.pos)));
+        return new() { pos = pos, uv = input.uv, iid = input.iid };
     }
 
-    [PixelShader]
-    public float4 Pixel(V2P v2p) => tex.Sample(ss, v2p.uv);
+    [Shader("pixel"), SV_Target]
+    public float4 Pixel(Varyings input) => tex.Sample(ss, input.uv);
 }
 
 public static class Test1
 {
     public static void Foo()
     {
-        var shader = ShaderLoader.Load<Shader1>(new() { RequiredType = ShaderModuleType.Hlsl });
+        var shader = ShaderLoader.Of<Shader1>().Load(ShaderTarget.DirectX, ShaderModuleType.Hlsl);
         var code = MemoryMarshal.Cast<byte, char>(shader.Blob()).ToString();
         Console.WriteLine(code);
     }
