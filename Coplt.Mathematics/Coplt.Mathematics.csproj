@@ -57,7 +57,6 @@
         <TextTemplate Include="misc\norm.tt" />
         <TextTemplate Include="misc\Shuffle.4.2.tt" />
         <TextTemplate Include="misc\soft_shuffle.4.2.tt" />
-        <TextTemplate Include="simd\functions\log.tt" />
         <TextTemplate Include="simd\matrix\simd_matrix_trn_2x2.tt" />
         <TextTemplate Include="simd\matrix\simd_matrix_trn_2x4_to_4x2.tt" />
         <TextTemplate Include="simd\matrix\simd_matrix_trn_3x3.tt" />
@@ -101,6 +100,10 @@
     <ItemGroup>
         <PackageReference Include="System.Text.Json" Version="8.0.4" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
         <PackageReference Include="Ultz.Bcl.Half" Version="1.0.0" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="simd\functions\" />
     </ItemGroup>
 
 <!--    Inputs="@(TextTemplate)" Outputs="@(TextTemplate->'%(RelativeDir)%(Filename).cs')"-->
