@@ -1,4 +1,4 @@
-﻿namespace Coplt.Mathematics;
+﻿namespace Coplt.Mathematics.Geometries;
 
 public struct box
 {
