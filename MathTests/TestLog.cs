@@ -72,6 +72,17 @@ public class TestLog
         Console.WriteLine($"{b}");
         Assert.That(b, Is.EqualTo(a));
     }
+    
+    [Test]
+    [Parallelizable]
+    public void FloatTestLog2Scalar([Random(0.000_1f, 1_000_000.0f, 1000)] float v)
+    {
+        var a = simd_float.Log2Scalar(v);
+        var b = MathF.Log2(v);
+        Console.WriteLine($"{a}");
+        Console.WriteLine($"{b}");
+        Assert.That(a, Is.EqualTo(b).Within(0.000_1f).Percent);
+    }
 }
 
 #endif

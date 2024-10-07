@@ -4,6 +4,19 @@ namespace Coplt.Mathematics.Simd;
 [CpuOnly]
 public static partial class simd_double
 {
+    #region Consts
+
+    public const i32 EXP_LEN = 11;
+    public const i32 SIG_LEN = 52;
+    public const i32 EXP_BIAS = (1 << (EXP_LEN - 1)) - 1;
+    public const i32 MAX_EXP_BIAS = (1 << EXP_LEN) - 1;
+    public const f64 MIN_NORMAL = 2.2250738585072014e-308; //0x0010000000000000
+    public const f64 MAX_NORMAL = 1.7976931348623157e+308; //0x7FEFFFFFFFFFFFFF
+    public const u64 EXP_MASK = 0x7FF0000000000000;
+    public const u64 MAN_MASK = 0x000FFFFFFFFFFFFF;
+
+    #endregion
+
     #region Mod v128
 
     [MethodImpl(256 | 512)]
@@ -23,7 +36,7 @@ public static partial class simd_double
     }
 
     #endregion
-    
+
     #region Mod v256
 
     [MethodImpl(256 | 512)]
@@ -43,7 +56,7 @@ public static partial class simd_double
     }
 
     #endregion
-    
+
     #region Rem v128
 
     [MethodImpl(256 | 512)]
