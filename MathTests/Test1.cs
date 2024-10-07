@@ -15,10 +15,13 @@ public class Test1
     [Test]
     public void Foo()
     {
-        var a = new double4(1, 2, 3, 4).UnsafeGetInner();
-        var b = new double4(5, 6, 7, 8).UnsafeGetInner();
-        var r = simd.UnpackHigh(a, b);
+        var a = new float4(-1f, 0, 0.25f, 5f).UnsafeGetInner();
+        var r = simd_float.AsinFast(a);
         Console.WriteLine(r);
+        //var a = new double4(1, 2, 3, 4).UnsafeGetInner();
+        //var b = new double4(5, 6, 7, 8).UnsafeGetInner();
+        //var r = simd.UnpackHigh(a, b);
+        //Console.WriteLine(r);
         // var a = new float4(.01f, .02f, .03f, .04f);
         // var b = new float4(.05f, .06f, .07f, .08f);
         // var c = new float4(.09f, .10f, .11f, .12f);

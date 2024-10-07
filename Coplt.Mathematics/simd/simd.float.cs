@@ -46,7 +46,7 @@ public static partial class simd_float
     }
 
     #endregion
-    
+
     #region Rem v64
 
     [MethodImpl(256 | 512)]
@@ -1020,6 +1020,61 @@ public static partial class simd_float
         r += x;
         r = Log(r);
         return r;
+    }
+
+    #endregion
+
+    #region ASin V128
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> AsinFast(Vector128<float> d)
+    {
+        var abs = Vector128.Abs(d);
+        var o = Vector128.LessThan(abs, Vector128.Create(0.5f));
+        var x2 = Vector128.ConditionalSelect(o, d * d, (Vector128.Create(1f) - abs) * Vector128.Create(0.5f));
+        var x = Vector128.ConditionalSelect(o, abs, Vector128.Sqrt(x2));
+
+        var u = Vector128.Create(0.4197454825e-1f);
+        u = simd.Fma(u, x2, Vector128.Create(0.2424046025e-1f));
+        u = simd.Fma(u, x2, Vector128.Create(0.4547423869e-1f));
+        u = simd.Fma(u, x2, Vector128.Create(0.7495029271e-1f));
+        u = simd.Fma(u, x2, Vector128.Create(0.1666677296e+0f));
+        u = simd.Fma(u, x * x2, x);
+
+        var r = simd.Fnma(u, Vector128.Create(2f), Vector128.Create(math.F_Half_PI));
+        r = Vector128.ConditionalSelect(o, u, r);
+        
+        r ^= d & -Vector128<float>.Zero;
+        return r;
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Asin(Vector128<float> d)
+    {
+        var is_one = Vector128.Equals(d, Vector128.Create(1f));
+
+        var abs = Vector128.Abs(d);
+        var o = Vector128.LessThan(abs, Vector128.Create(0.5f));
+        var x2 = Vector128.ConditionalSelect(o, d * d, (Vector128.Create(1f) - abs) * Vector128.Create(0.5f));
+
+        var t = Vector128.Sqrt(x2);
+        var s = simd.Fma(t, t, d) * (Vector128.Create(1f) / t);
+        var xx = Vector128.ConditionalSelect(o, abs, s * Vector128.Create(0.5f));
+        xx = Vector128.ConditionalSelect(is_one, default, xx);
+
+        var u = Vector128.Create(0.4197454825e-1f);
+        u = simd.Fma(u, x2, Vector128.Create(0.2424046025e-1f));
+        u = simd.Fma(u, x2, Vector128.Create(0.4547423869e-1f));
+        u = simd.Fma(u, x2, Vector128.Create(0.7495029271e-1f));
+        u = simd.Fma(u, x2, Vector128.Create(0.1666677296e+0f));
+        u *= x2 * xx;
+
+        var yx = Vector128.Create(math.F_Quarter_PI) - xx - u;
+
+        var a = 1;
+        // todo
+
+        return default;
     }
 
     #endregion
