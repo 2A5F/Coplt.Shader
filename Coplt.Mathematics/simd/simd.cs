@@ -2760,6 +2760,84 @@ public static partial class simd
     }
 
     #endregion
+    
+    #region Asin
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Asin(Vector64<float> a)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_math.Asin(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Asin(a.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).asin(),
+            a.GetElement(1).asin()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Asin(Vector128<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Asin(a);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_math.Asin(a.GetLower()),
+                simd_math.Asin(a.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).asin(),
+            a.GetElement(1).asin(),
+            a.GetElement(2).asin(),
+            a.GetElement(3).asin()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Asin(Vector128<double> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Asin(a);
+        }
+        return Vector128.Create(
+            a.GetElement(0).asin(),
+            a.GetElement(1).asin()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Asin(Vector256<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_math.Asin(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_math.Asin(a.GetLower()),
+                simd_math.Asin(a.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).asin(),
+            a.GetElement(1).asin(),
+            a.GetElement(2).asin(),
+            a.GetElement(3).asin()
+        );
+    }
+
+    #endregion
 }
 
 #endif

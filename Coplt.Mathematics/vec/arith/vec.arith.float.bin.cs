@@ -245,7 +245,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float2 asin(this float2 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Asin(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.asin(), a.y.asin());
@@ -598,7 +598,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float3 asin(this float3 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Asin(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.asin(), a.y.asin(), a.z.asin());
@@ -953,7 +953,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float4 asin(this float4 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Asin(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.asin(), a.y.asin(), a.z.asin(), a.w.asin());
@@ -1304,7 +1304,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double2 asin(this double2 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Asin(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.asin(), a.y.asin());
@@ -1657,7 +1657,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double3 asin(this double3 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Asin(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.asin(), a.y.asin(), a.z.asin());
@@ -2012,7 +2012,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double4 asin(this double4 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Asin(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.asin(), a.y.asin(), a.z.asin(), a.w.asin());

@@ -485,7 +485,7 @@ public static partial class simd_math
 
     #region Vector64<f32>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector64<f32> Asinh(Vector64<f32> x)
     {
         var r = simd.Fma(x, x, Vector64<f32>.One);
@@ -495,7 +495,7 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector64<f32> Acosh(Vector64<f32> x)
     {
         var r = simd.Fma(x, x, -Vector64<f32>.One);
@@ -509,7 +509,7 @@ public static partial class simd_math
 
     #region Vector128<f32>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector128<f32> Asinh(Vector128<f32> x)
     {
         var r = simd.Fma(x, x, Vector128<f32>.One);
@@ -519,7 +519,7 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector128<f32> Acosh(Vector128<f32> x)
     {
         var r = simd.Fma(x, x, -Vector128<f32>.One);
@@ -533,7 +533,7 @@ public static partial class simd_math
 
     #region Vector256<f32>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector256<f32> Asinh(Vector256<f32> x)
     {
         var r = simd.Fma(x, x, Vector256<f32>.One);
@@ -543,7 +543,7 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector256<f32> Acosh(Vector256<f32> x)
     {
         var r = simd.Fma(x, x, -Vector256<f32>.One);
@@ -557,7 +557,7 @@ public static partial class simd_math
 
     #region AsinhAcosh
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector128<f32> AsinhAcosh(Vector128<f32> x)
     {
         var r = simd.Fma(x, x, Vector128.Create(1.0f, 1.0f, -1.0f, -1.0f));
@@ -567,7 +567,7 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector256<f32> AsinhAcosh(Vector256<f32> x)
     {
         var r = simd.Fma(x, x, Vector256.Create(1.0f, 1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f));
@@ -585,12 +585,12 @@ public static partial class simd_math
 
     #region Vector64<f32>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector64<f32> Asin(Vector64<f32> d)
     {
         var abs = Vector64.Abs(d);
         var o = Vector64.LessThan(abs, Vector64.Create(0.5f));
-        var x2 = Vector64.ConditionalSelect(o, d * d, (Vector64.Create(1f) - abs) * Vector64.Create(0.5f));
+        var x2 = Vector64.ConditionalSelect(o, d * d, (Vector64<f32>.One - abs) * Vector64.Create(0.5f));
         var x = Vector64.ConditionalSelect(o, abs, Vector64.Sqrt(x2));
 
         var u = Vector64.Create(0.4197454825e-1f);
@@ -611,12 +611,12 @@ public static partial class simd_math
 
     #region Vector128<f32>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector128<f32> Asin(Vector128<f32> d)
     {
         var abs = Vector128.Abs(d);
         var o = Vector128.LessThan(abs, Vector128.Create(0.5f));
-        var x2 = Vector128.ConditionalSelect(o, d * d, (Vector128.Create(1f) - abs) * Vector128.Create(0.5f));
+        var x2 = Vector128.ConditionalSelect(o, d * d, (Vector128<f32>.One - abs) * Vector128.Create(0.5f));
         var x = Vector128.ConditionalSelect(o, abs, Vector128.Sqrt(x2));
 
         var u = Vector128.Create(0.4197454825e-1f);
@@ -637,12 +637,12 @@ public static partial class simd_math
 
     #region Vector256<f32>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector256<f32> Asin(Vector256<f32> d)
     {
         var abs = Vector256.Abs(d);
         var o = Vector256.LessThan(abs, Vector256.Create(0.5f));
-        var x2 = Vector256.ConditionalSelect(o, d * d, (Vector256.Create(1f) - abs) * Vector256.Create(0.5f));
+        var x2 = Vector256.ConditionalSelect(o, d * d, (Vector256<f32>.One - abs) * Vector256.Create(0.5f));
         var x = Vector256.ConditionalSelect(o, abs, Vector256.Sqrt(x2));
 
         var u = Vector256.Create(0.4197454825e-1f);
@@ -660,7 +660,6 @@ public static partial class simd_math
     }
 
     #endregion
-
 
     #endregion
 }

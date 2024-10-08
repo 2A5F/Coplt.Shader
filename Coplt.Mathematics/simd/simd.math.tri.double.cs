@@ -476,7 +476,7 @@ public static partial class simd_math
 
     #region Vector128<f64>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector128<f64> Asinh(Vector128<f64> x)
     {
         var r = simd.Fma(x, x, Vector128<f64>.One);
@@ -486,7 +486,7 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector128<f64> Acosh(Vector128<f64> x)
     {
         var r = simd.Fma(x, x, -Vector128<f64>.One);
@@ -500,7 +500,7 @@ public static partial class simd_math
 
     #region Vector256<f64>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector256<f64> Asinh(Vector256<f64> x)
     {
         var r = simd.Fma(x, x, Vector256<f64>.One);
@@ -510,7 +510,7 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector256<f64> Acosh(Vector256<f64> x)
     {
         var r = simd.Fma(x, x, -Vector256<f64>.One);
@@ -524,7 +524,7 @@ public static partial class simd_math
 
     #region Vector512<f64>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector512<f64> Asinh(Vector512<f64> x)
     {
         var r = simd.Fma(x, x, Vector512<f64>.One);
@@ -534,7 +534,7 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector512<f64> Acosh(Vector512<f64> x)
     {
         var r = simd.Fma(x, x, -Vector512<f64>.One);
@@ -548,7 +548,7 @@ public static partial class simd_math
 
     #region AsinhAcosh
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector256<f64> AsinhAcosh(Vector256<f64> x)
     {
         var r = simd.Fma(x, x, Vector256.Create(1.0, 1.0, -1.0, -1.0));
@@ -558,13 +558,143 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static Vector512<f64> AsinhAcosh(Vector512<f64> x)
     {
         var r = simd.Fma(x, x, Vector512.Create(1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0));
         r = Vector512.Sqrt(r);
         r += x;
         r = Log(r);
+        return r;
+    }
+
+    #endregion
+
+    #endregion
+
+    #region Asin
+
+    #region Vector128<f64>
+
+    [MethodImpl(512)]
+    public static Vector128<f64> Asin(Vector128<f64> d)
+    {
+        var abs = Vector128.Abs(d);
+        var o = Vector128.LessThan(abs, Vector128.Create(0.5));
+        var x2 = Vector128.ConditionalSelect(o, d * d, (Vector128<f64>.One - abs) * Vector128.Create(0.5));
+        var x = Vector128.ConditionalSelect(o, abs, Vector128.Sqrt(x2));
+
+        var x4 = x2 * x2;
+        var x8 = x4 * x4;
+        var x16 = x8 * x8;
+
+        var u = simd.Fma(x16,
+            simd.Fma(x4,
+                simd.Fma(x2, Vector128.Create(+0.3161587650653934628e-1), Vector128.Create(-0.1581918243329996643e-1)),
+                simd.Fma(x2, Vector128.Create(+0.1929045477267910674e-1), Vector128.Create(+0.6606077476277170610e-2))
+            ),
+            simd.Fma(x8,
+                simd.Fma(x4,
+                    simd.Fma(x2, Vector128.Create(+0.1215360525577377331e-1), Vector128.Create(+0.1388715184501609218e-1)),
+                    simd.Fma(x2, Vector128.Create(+0.1735956991223614604e-1), Vector128.Create(+0.2237176181932048341e-1))
+                ),
+                simd.Fma(x4,
+                    simd.Fma(x2, Vector128.Create(+0.3038195928038132237e-1), Vector128.Create(+0.4464285681377102438e-1)),
+                    simd.Fma(x2, Vector128.Create(+0.7500000000378581611e-1), Vector128.Create(+0.1666666666666497543e+0))
+                )
+            )
+        );
+
+        u = simd.Fma(u, x * x2, x);
+
+        var r = simd.Fnma(u, Vector128.Create(2.0), Vector128.Create(math.D_Half_PI));
+        r = Vector128.ConditionalSelect(o, u, r);
+
+        r ^= d & -Vector128<f64>.Zero;
+        return r;
+    }
+
+    #endregion
+
+    #region Vector256<f64>
+
+    [MethodImpl(512)]
+    public static Vector256<f64> Asin(Vector256<f64> d)
+    {
+        var abs = Vector256.Abs(d);
+        var o = Vector256.LessThan(abs, Vector256.Create(0.5));
+        var x2 = Vector256.ConditionalSelect(o, d * d, (Vector256<f64>.One - abs) * Vector256.Create(0.5));
+        var x = Vector256.ConditionalSelect(o, abs, Vector256.Sqrt(x2));
+
+        var x4 = x2 * x2;
+        var x8 = x4 * x4;
+        var x16 = x8 * x8;
+
+        var u = simd.Fma(x16,
+            simd.Fma(x4,
+                simd.Fma(x2, Vector256.Create(+0.3161587650653934628e-1), Vector256.Create(-0.1581918243329996643e-1)),
+                simd.Fma(x2, Vector256.Create(+0.1929045477267910674e-1), Vector256.Create(+0.6606077476277170610e-2))
+            ),
+            simd.Fma(x8,
+                simd.Fma(x4,
+                    simd.Fma(x2, Vector256.Create(+0.1215360525577377331e-1), Vector256.Create(+0.1388715184501609218e-1)),
+                    simd.Fma(x2, Vector256.Create(+0.1735956991223614604e-1), Vector256.Create(+0.2237176181932048341e-1))
+                ),
+                simd.Fma(x4,
+                    simd.Fma(x2, Vector256.Create(+0.3038195928038132237e-1), Vector256.Create(+0.4464285681377102438e-1)),
+                    simd.Fma(x2, Vector256.Create(+0.7500000000378581611e-1), Vector256.Create(+0.1666666666666497543e+0))
+                )
+            )
+        );
+
+        u = simd.Fma(u, x * x2, x);
+
+        var r = simd.Fnma(u, Vector256.Create(2.0), Vector256.Create(math.D_Half_PI));
+        r = Vector256.ConditionalSelect(o, u, r);
+
+        r ^= d & -Vector256<f64>.Zero;
+        return r;
+    }
+
+    #endregion
+
+    #region Vector512<f64>
+
+    [MethodImpl(512)]
+    public static Vector512<f64> Asin(Vector512<f64> d)
+    {
+        var abs = Vector512.Abs(d);
+        var o = Vector512.LessThan(abs, Vector512.Create(0.5));
+        var x2 = Vector512.ConditionalSelect(o, d * d, (Vector512<f64>.One - abs) * Vector512.Create(0.5));
+        var x = Vector512.ConditionalSelect(o, abs, Vector512.Sqrt(x2));
+
+        var x4 = x2 * x2;
+        var x8 = x4 * x4;
+        var x16 = x8 * x8;
+
+        var u = simd.Fma(x16,
+            simd.Fma(x4,
+                simd.Fma(x2, Vector512.Create(+0.3161587650653934628e-1), Vector512.Create(-0.1581918243329996643e-1)),
+                simd.Fma(x2, Vector512.Create(+0.1929045477267910674e-1), Vector512.Create(+0.6606077476277170610e-2))
+            ),
+            simd.Fma(x8,
+                simd.Fma(x4,
+                    simd.Fma(x2, Vector512.Create(+0.1215360525577377331e-1), Vector512.Create(+0.1388715184501609218e-1)),
+                    simd.Fma(x2, Vector512.Create(+0.1735956991223614604e-1), Vector512.Create(+0.2237176181932048341e-1))
+                ),
+                simd.Fma(x4,
+                    simd.Fma(x2, Vector512.Create(+0.3038195928038132237e-1), Vector512.Create(+0.4464285681377102438e-1)),
+                    simd.Fma(x2, Vector512.Create(+0.7500000000378581611e-1), Vector512.Create(+0.1666666666666497543e+0))
+                )
+            )
+        );
+
+        u = simd.Fma(u, x * x2, x);
+
+        var r = simd.Fnma(u, Vector512.Create(2.0), Vector512.Create(math.D_Half_PI));
+        r = Vector512.ConditionalSelect(o, u, r);
+
+        r ^= d & -Vector512<f64>.Zero;
         return r;
     }
 

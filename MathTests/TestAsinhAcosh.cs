@@ -5,6 +5,7 @@ using Coplt.Mathematics;
 using Coplt.Mathematics.Simd;
 namespace MathTests;
 
+[Parallelizable]
 public class TestAsinhAcosh
 {
     [Test]
@@ -15,7 +16,7 @@ public class TestAsinhAcosh
         var b = MathF.Asinh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.002f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(50).Ulps);
     }
 
     [Test]
@@ -26,7 +27,7 @@ public class TestAsinhAcosh
         var b = Math.Asinh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(100).Ulps);
     }
     
     [Test]
@@ -37,7 +38,7 @@ public class TestAsinhAcosh
         var b = MathF.Acosh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.001f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(10).Ulps);
     }
 
     [Test]
@@ -48,7 +49,7 @@ public class TestAsinhAcosh
         var b = Math.Acosh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(10).Ulps);
     }
 }
 

@@ -5,6 +5,7 @@ using Coplt.Mathematics;
 using Coplt.Mathematics.Simd;
 namespace MathTests;
 
+[Parallelizable]
 public class TestLog
 {
     [Test]
@@ -15,7 +16,7 @@ public class TestLog
         var b = MathF.Log2(v);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(a, Is.EqualTo(b).Within(0.000_1f).Percent);
+        Assert.That(a, Is.EqualTo(b).Within(1).Ulps);
     }
     
     [Test]
@@ -48,7 +49,7 @@ public class TestLog
         var b = Math.Log2(v);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(a, Is.EqualTo(b).Within(0.000_000_000_1f).Percent);
+        Assert.That(a, Is.EqualTo(b).Within(2).Ulps);
     }
     
     [Test]

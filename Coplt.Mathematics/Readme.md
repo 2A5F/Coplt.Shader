@@ -11,7 +11,17 @@ hlsl-style linear algebra library
 - Full simd support (net8 only)
 - Simd accelerated log, exp, pow, fmod, trigonometry (Lower precision than C# standard library)
 
+## Function ULPs
+
+| function | float | double |
+|----------|-------|--------|
+| log      |   1   |   2    |
+| asin     |   2   |   2    |
+
+- The function that needs to be rewritten due to insufficient precision is not in the table
+
 ## Todo
+
 - [ ] tests
-- [ ] simd impl of asin acos atan atan2 atanh
-- [ ] higher precision single float trigonometric functions impl
+- [ ] simd impl of acos atan atan2 atanh
+- [ ] rewrite the function with too low precision

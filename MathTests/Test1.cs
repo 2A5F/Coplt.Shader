@@ -9,6 +9,7 @@ using Coplt.Mathematics.Simd;
 
 namespace MathTests;
 
+[Parallelizable]
 public class Test1
 {
     #if NET8_0_OR_GREATER

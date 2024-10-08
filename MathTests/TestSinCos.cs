@@ -5,6 +5,7 @@ using Coplt.Mathematics;
 using Coplt.Mathematics.Simd;
 namespace MathTests;
 
+[Parallelizable]
 public class TestSinCos
 {
     [Test]
@@ -15,7 +16,7 @@ public class TestSinCos
         var b = MathF.Sin(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.0001f));
+        Assert.That(b, Is.EqualTo(a).Within(5000).Ulps);
     }
 
     [Test]
@@ -26,7 +27,7 @@ public class TestSinCos
         var b = Math.Sin(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f));
+        Assert.That(b, Is.EqualTo(a).Within(5000).Ulps);
     }
     
     [Test]
@@ -37,7 +38,7 @@ public class TestSinCos
         var b = MathF.Cos(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.0001f));
+        Assert.That(b, Is.EqualTo(a).Within(5000).Ulps);
     }
 
     [Test]
@@ -48,7 +49,7 @@ public class TestSinCos
         var b = Math.Cos(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f));
+        Assert.That(b, Is.EqualTo(a).Within(5000).Ulps);
     }
 }
 

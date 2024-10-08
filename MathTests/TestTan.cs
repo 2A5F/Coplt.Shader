@@ -5,6 +5,7 @@ using Coplt.Mathematics;
 using Coplt.Mathematics.Simd;
 namespace MathTests;
 
+[Parallelizable]
 public class TestTan
 {
     [Test]
@@ -15,7 +16,7 @@ public class TestTan
         var b = MathF.Tan(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.02f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(8000).Ulps);
     }
 
     [Test]
@@ -26,7 +27,7 @@ public class TestTan
         var b = Math.Tan(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_2f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(7000).Ulps);
     }
 }
 

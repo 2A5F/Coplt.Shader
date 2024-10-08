@@ -5,6 +5,7 @@ using Coplt.Mathematics;
 using Coplt.Mathematics.Simd;
 namespace MathTests;
 
+[Parallelizable]
 public class TestPow
 {
     [Test]
@@ -15,7 +16,7 @@ public class TestPow
         var b = MathF.Pow(x, y);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.001f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(50).Ulps);
     }
     
     [Test]
@@ -26,7 +27,7 @@ public class TestPow
         var b = MathF.Pow(2, y);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.001f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(20).Ulps);
     }
   
     [Test]
@@ -37,7 +38,7 @@ public class TestPow
         var b = Math.Pow(x, y);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(2000).Ulps);
     }
     
     [Test]
@@ -48,7 +49,7 @@ public class TestPow
         var b = Math.Pow(2, y);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(2000).Ulps);
     }
 }
 

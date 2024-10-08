@@ -262,7 +262,7 @@ public static partial class simd_math
 #>
     #region <#= vt #>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static <#= vt #> Asinh(<#= vt #> x)
     {
         var r = simd.Fma(x, x, <#= vt #>.One);
@@ -272,7 +272,7 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static <#= vt #> Acosh(<#= vt #> x)
     {
         var r = simd.Fma(x, x, -<#= vt #>.One);
@@ -289,7 +289,7 @@ public static partial class simd_math
 #>
     #region AsinhAcosh
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static <#= vt128 #> AsinhAcosh(<#= vt128 #> x)
     {
         var r = simd.Fma(x, x, <#= v128 #>.Create(1.0f, 1.0f, -1.0f, -1.0f));
@@ -299,7 +299,7 @@ public static partial class simd_math
         return r;
     }
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static <#= vt256 #> AsinhAcosh(<#= vt256 #> x)
     {
         var r = simd.Fma(x, x, <#= v256 #>.Create(1.0f, 1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f));
@@ -323,12 +323,12 @@ public static partial class simd_math
 #>
     #region <#= vt #>
 
-    [MethodImpl(256 | 512)]
+    [MethodImpl(512)]
     public static <#= vt #> Asin(<#= vt #> d)
     {
         var abs = <#= vector #>.Abs(d);
         var o = <#= vector #>.LessThan(abs, <#= vector #>.Create(0.5f));
-        var x2 = <#= vector #>.ConditionalSelect(o, d * d, (<#= vector #>.Create(1f) - abs) * <#= vector #>.Create(0.5f));
+        var x2 = <#= vector #>.ConditionalSelect(o, d * d, (<#= vt #>.One - abs) * <#= vector #>.Create(0.5f));
         var x = <#= vector #>.ConditionalSelect(o, abs, <#= vector #>.Sqrt(x2));
 
         var u = <#= vector #>.Create(0.4197454825e-1f);
@@ -350,7 +350,6 @@ public static partial class simd_math
 <#
     }
 #>
-
     #endregion
 }
 

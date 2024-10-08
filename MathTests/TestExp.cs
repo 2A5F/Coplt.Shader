@@ -5,6 +5,7 @@ using Coplt.Mathematics;
 using Coplt.Mathematics.Simd;
 namespace MathTests;
 
+[Parallelizable]
 public class TestExp
 {
     [Test]
@@ -15,7 +16,7 @@ public class TestExp
         var b = MathF.Exp(v);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.001f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(55).Ulps);
     }
     
     [Test]
@@ -48,7 +49,7 @@ public class TestExp
         var b = Math.Exp(v);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
-        Assert.That(b, Is.EqualTo(a).Within(0.000_000_000_1f).Percent);
+        Assert.That(b, Is.EqualTo(a).Within(500).Ulps);
     }
     
     [Test]
