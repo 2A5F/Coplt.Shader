@@ -28,7 +28,7 @@ public class Shader1 : IShaderModule
     [Storage]
     public ObjectInfo[] objects = null!;
 
-    public Texture2D<float4> tex;
+    public Texture2D<float4> tex = null!;
     public SamplerState ss;
 
     public struct Attributes

@@ -11,7 +11,7 @@ public class TestAsinhAcosh
     [Parallelizable]
     public void FloatTestAsinh([Random(-10f, 10.0f, 100)] float x)
     {
-        var a = simd_float.Asinh(new float4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Asinh(new float4(x).UnsafeGetInner()).GetElement(0);
         var b = MathF.Asinh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
@@ -22,7 +22,7 @@ public class TestAsinhAcosh
     [Parallelizable]
     public void DoubleTestAsinh([Random(-10, 10.0, 100)] double x)
     {
-        var a = simd_double.Asinh(new double4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Asinh(new double4(x).UnsafeGetInner()).GetElement(0);
         var b = Math.Asinh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
@@ -33,7 +33,7 @@ public class TestAsinhAcosh
     [Parallelizable]
     public void FloatTestAcosh([Random(1, 10.0f, 100)] float x)
     {
-        var a = simd_float.Acosh(new float4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Acosh(new float4(x).UnsafeGetInner()).GetElement(0);
         var b = MathF.Acosh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
@@ -44,7 +44,7 @@ public class TestAsinhAcosh
     [Parallelizable]
     public void DoubleTestAcosh([Random(1, 10.0, 100)] double x)
     {
-        var a = simd_double.Acosh(new double4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Acosh(new double4(x).UnsafeGetInner()).GetElement(0);
         var b = Math.Acosh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");

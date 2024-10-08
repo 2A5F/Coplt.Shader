@@ -64,6 +64,9 @@
         <TextTemplate Include="simd\matrix\simd_matrix_trn_4x4.tt" />
         <TextTemplate Include="simd\shuffle\simd_shuffle.4.2.table.tt" />
         <TextTemplate Include="simd\shuffle\simd_shuffle.4.2.tt" />
+        <TextTemplate Include="simd\simd.math.tri.double.tt" />
+        <TextTemplate Include="simd\simd.math.tri.float.tt" />
+        <TextTemplate Include="simd\simd.math.tt" />
         <TextTemplate Include="vec\arith\vec.arith.float.bin.tt" />
         <TextTemplate Include="vec\arith\vec.arith.float.tt" />
         <TextTemplate Include="vec\arith\vec.arith.int.tt" />

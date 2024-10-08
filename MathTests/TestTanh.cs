@@ -11,7 +11,7 @@ public class TestTanh
     [Parallelizable]
     public void FloatTestTanh([Random(-10f, 10.0f, 100)] float x)
     {
-        var a = simd_float.Tanh(new float4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Tanh(new float4(x).UnsafeGetInner()).GetElement(0);
         var b = MathF.Tanh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
@@ -22,7 +22,7 @@ public class TestTanh
     [Parallelizable]
     public void DoubleTestTanh([Random(-10, 10.0, 100)] double x)
     {
-        var a = simd_double.Tanh(new double4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Tanh(new double4(x).UnsafeGetInner()).GetElement(0);
         var b = Math.Tanh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");

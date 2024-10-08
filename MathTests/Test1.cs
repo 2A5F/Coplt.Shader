@@ -15,9 +15,9 @@ public class Test1
     [Test]
     public void Foo()
     {
-        var a = new float4(-1f, 0, 0.25f, 5f).UnsafeGetInner();
-        var r = simd_float.AsinFast(a);
-        Console.WriteLine(r);
+        //var a = new float4(-1f, 0, 0.25f, 5f).UnsafeGetInner();
+        //var r = simd_float.Asin(a);
+        //Console.WriteLine(r);
         //var a = new double4(1, 2, 3, 4).UnsafeGetInner();
         //var b = new double4(5, 6, 7, 8).UnsafeGetInner();
         //var r = simd.UnpackHigh(a, b);
@@ -38,7 +38,7 @@ public class Test1
     public void Float()
     {
         var a = new float4(9);
-        var r = simd_float.AsinhAcosh(a.UnsafeGetInner());
+        var r = simd_math.AsinhAcosh(a.UnsafeGetInner());
         Console.WriteLine(r);
         Console.WriteLine(MathF.Acosh(9));
     }
@@ -46,7 +46,7 @@ public class Test1
     public void Double()
     {
         var a = new double4(9);
-        var r = simd_double.AsinhAcosh(a.UnsafeGetInner());
+        var r = simd_math.AsinhAcosh(a.UnsafeGetInner());
         Console.WriteLine(r);
         Console.WriteLine(Math.Acosh(9.0));
     }

@@ -11,7 +11,7 @@ public class TestSinhCosh
     [Parallelizable]
     public void FloatTestSinh([Random(-10f, 10.0f, 100)] float x)
     {
-        var a = simd_float.Sinh(new float4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Sinh(new float4(x).UnsafeGetInner()).GetElement(0);
         var b = MathF.Sinh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
@@ -22,7 +22,7 @@ public class TestSinhCosh
     [Parallelizable]
     public void DoubleTestSinh([Random(-10, 10.0, 100)] double x)
     {
-        var a = simd_double.Sinh(new double4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Sinh(new double4(x).UnsafeGetInner()).GetElement(0);
         var b = Math.Sinh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
@@ -33,7 +33,7 @@ public class TestSinhCosh
     [Parallelizable]
     public void FloatTestCosh([Random(-10f, 10.0f, 100)] float x)
     {
-        var a = simd_float.Cosh(new float4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Cosh(new float4(x).UnsafeGetInner()).GetElement(0);
         var b = MathF.Cosh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
@@ -44,7 +44,7 @@ public class TestSinhCosh
     [Parallelizable]
     public void DoubleTestCosh([Random(-10, 10.0, 100)] double x)
     {
-        var a = simd_double.Cosh(new double4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Cosh(new double4(x).UnsafeGetInner()).GetElement(0);
         var b = Math.Cosh(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");

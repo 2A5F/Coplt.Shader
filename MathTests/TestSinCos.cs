@@ -22,7 +22,7 @@ public class TestSinCos
     [Parallelizable]
     public void DoubleTestSin([Random(-10, 100.0, 100)] double x)
     {
-        var a = simd_double.Sin(new double4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd.Sin(new double4(x).UnsafeGetInner()).GetElement(0);
         var b = Math.Sin(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
@@ -44,7 +44,7 @@ public class TestSinCos
     [Parallelizable]
     public void DoubleTestCos([Random(-10, 100.0, 100)] double x)
     {
-        var a = simd_double.Cos(new double4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd.Cos(new double4(x).UnsafeGetInner()).GetElement(0);
         var b = Math.Cos(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");

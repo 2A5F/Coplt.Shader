@@ -33,7 +33,7 @@ public class TestPow
     [Parallelizable]
     public void DoubleTestPow([Random(-10, 100.0, 100)] double x, [Random(-100, 100, 10)] double y)
     {
-        var a = simd_double.Pow(new double4(x).UnsafeGetInner(), new double4(y).UnsafeGetInner()).GetElement(0);
+        var a = simd.Pow(new double4(x).UnsafeGetInner(), new double4(y).UnsafeGetInner()).GetElement(0);
         var b = Math.Pow(x, y);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");

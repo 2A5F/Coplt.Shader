@@ -10,9 +10,9 @@ public class TestAsin
 {
     [Test]
     [Parallelizable]
-    public void FloatTestASin([Random(-1.5707964f, 1.5707964f, 100)] float x)
+    public void FloatTestASin([Random(-1.1f, 1.1f, 100)] float x)
     {
-        var a = simd_float.AsinFast(new float4(x).UnsafeGetInner()).GetElement(0);
+        var a = simd_math.Asin(new float4(x).UnsafeGetInner()).GetElement(0);
         var b = MathF.Asin(x);
         Console.WriteLine($"{a}");
         Console.WriteLine($"{b}");
