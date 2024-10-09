@@ -17,13 +17,13 @@ hlsl-style linear algebra library
 > <a name="note-2"></a>
 > 2. Cpu only
 > <a name="note-3"></a>
-> 3. Lower precision than C# standard library
+> 3. Lower precision than C# system library
 
-### Function ULPs
+### Function ULPs (vs C# system library)
 
 | function | float | double |
 |----------|-------|--------|
-| log      |   1   |   2    |
+| log2     |   1   |   2    |
 | asin     |   2   |   2    |
 | acos     |   2   |   2    |
 | atan     |   2   |   2    |

@@ -1051,6 +1051,7 @@ public static partial class simd
 
     #region Fma
 
+    /// <returns><code>a * b + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector64<float> Fma(Vector64<float> a, Vector64<float> b, Vector64<float> c)
     {
@@ -1065,6 +1066,7 @@ public static partial class simd
         return a * b + c;
     }
 
+    /// <returns><code>a * b + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector128<float> Fma(Vector128<float> a, Vector128<float> b, Vector128<float> c)
     {
@@ -1079,6 +1081,7 @@ public static partial class simd
         return a * b + c;
     }
 
+    /// <returns><code>a * b + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector128<double> Fma(Vector128<double> a, Vector128<double> b, Vector128<double> c)
     {
@@ -1086,9 +1089,14 @@ public static partial class simd
         {
             return X86.Fma.MultiplyAdd(a, b, c);
         }
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return AdvSimd.Arm64.FusedMultiplyAdd(c, a, b);
+        }
         return a * b + c;
     }
 
+    /// <returns><code>a * b + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector256<float> Fma(Vector256<float> a, Vector256<float> b, Vector256<float> c)
     {
@@ -1106,6 +1114,7 @@ public static partial class simd
         return a * b + c;
     }
 
+    /// <returns><code>a * b + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector256<double> Fma(Vector256<double> a, Vector256<double> b, Vector256<double> c)
     {
@@ -1113,15 +1122,30 @@ public static partial class simd
         {
             return X86.Fma.MultiplyAdd(a, b, c);
         }
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return Vector256.Create(
+                AdvSimd.Arm64.FusedMultiplyAdd(c.GetLower(), a.GetLower(), b.GetLower()),
+                AdvSimd.Arm64.FusedMultiplyAdd(c.GetUpper(), a.GetUpper(), b.GetUpper())
+            );
+        }
         return a * b + c;
     }
 
+    /// <returns><code>a * b + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector512<double> Fma(Vector512<double> a, Vector512<double> b, Vector512<double> c)
     {
         if (Avx512F.IsSupported)
         {
             return Avx512F.FusedMultiplyAdd(a, b, c);
+        }
+        if (X86.Fma.IsSupported)
+        {
+            return Vector512.Create(
+                X86.Fma.MultiplyAdd(a.GetLower(), b.GetLower(), c.GetLower()),
+                X86.Fma.MultiplyAdd(a.GetUpper(), b.GetUpper(), c.GetUpper())
+            );
         }
         return a * b + c;
     }
@@ -1130,6 +1154,7 @@ public static partial class simd
 
     #region Fms
 
+    /// <returns><code>a * b - c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector64<float> Fms(Vector64<float> a, Vector64<float> b, Vector64<float> c)
     {
@@ -1139,11 +1164,12 @@ public static partial class simd
         }
         if (AdvSimd.IsSupported)
         {
-            return AdvSimd.FusedMultiplySubtract(c, a, b);
+            return AdvSimd.FusedMultiplyAdd(-c, a, b);
         }
         return a * b - c;
     }
 
+    /// <returns><code>a * b - c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector128<float> Fms(Vector128<float> a, Vector128<float> b, Vector128<float> c)
     {
@@ -1153,11 +1179,12 @@ public static partial class simd
         }
         if (AdvSimd.IsSupported)
         {
-            return AdvSimd.FusedMultiplySubtract(c, a, b);
+            return AdvSimd.FusedMultiplyAdd(-c, a, b);
         }
         return a * b - c;
     }
 
+    /// <returns><code>a * b - c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector128<double> Fms(Vector128<double> a, Vector128<double> b, Vector128<double> c)
     {
@@ -1165,9 +1192,14 @@ public static partial class simd
         {
             return X86.Fma.MultiplySubtract(a, b, c);
         }
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return AdvSimd.Arm64.FusedMultiplyAdd(-c, a, b);
+        }
         return a * b - c;
     }
 
+    /// <returns><code>a * b - c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector256<float> Fms(Vector256<float> a, Vector256<float> b, Vector256<float> c)
     {
@@ -1177,14 +1209,16 @@ public static partial class simd
         }
         if (AdvSimd.IsSupported)
         {
+            var nc = -c;
             return Vector256.Create(
-                AdvSimd.FusedMultiplySubtract(c.GetLower(), a.GetLower(), b.GetLower()),
-                AdvSimd.FusedMultiplySubtract(c.GetUpper(), a.GetUpper(), b.GetUpper())
+                AdvSimd.FusedMultiplyAdd(nc.GetLower(), a.GetLower(), b.GetLower()),
+                AdvSimd.FusedMultiplyAdd(nc.GetUpper(), a.GetUpper(), b.GetUpper())
             );
         }
         return a * b - c;
     }
 
+    /// <returns><code>a * b - c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector256<double> Fms(Vector256<double> a, Vector256<double> b, Vector256<double> c)
     {
@@ -1192,15 +1226,31 @@ public static partial class simd
         {
             return X86.Fma.MultiplySubtract(a, b, c);
         }
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            var nc = -c;
+            return Vector256.Create(
+                AdvSimd.Arm64.FusedMultiplyAdd(nc.GetLower(), a.GetLower(), b.GetLower()),
+                AdvSimd.Arm64.FusedMultiplyAdd(nc.GetUpper(), a.GetUpper(), b.GetUpper())
+            );
+        }
         return a * b - c;
     }
 
+    /// <returns><code>a * b - c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector512<double> Fms(Vector512<double> a, Vector512<double> b, Vector512<double> c)
     {
         if (Avx512F.IsSupported)
         {
             return Avx512F.FusedMultiplySubtract(a, b, c);
+        }
+        if (X86.Fma.IsSupported)
+        {
+            return Vector512.Create(
+                X86.Fma.MultiplySubtract(a.GetLower(), b.GetLower(), c.GetLower()),
+                X86.Fma.MultiplySubtract(a.GetUpper(), b.GetUpper(), c.GetUpper())
+            );
         }
         return a * b - c;
     }
@@ -1209,6 +1259,7 @@ public static partial class simd
 
     #region Fnma
 
+    /// <returns><code>c - a * b</code> or <code>-(a * b) + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector64<float> Fnma(Vector64<float> a, Vector64<float> b, Vector64<float> c)
     {
@@ -1216,9 +1267,14 @@ public static partial class simd
         {
             return X86.Fma.MultiplyAddNegated(a.ToVector128(), b.ToVector128(), c.ToVector128()).GetLower();
         }
-        return -(a * b) + c;
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.FusedMultiplySubtract(c, a, b);
+        }
+        return c - a * b;
     }
 
+    /// <returns><code>c - a * b</code> or <code>-(a * b) + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector128<float> Fnma(Vector128<float> a, Vector128<float> b, Vector128<float> c)
     {
@@ -1226,9 +1282,14 @@ public static partial class simd
         {
             return X86.Fma.MultiplyAddNegated(a, b, c);
         }
-        return -(a * b) + c;
+        if (AdvSimd.IsSupported)
+        {
+            return AdvSimd.FusedMultiplySubtract(c, a, b);
+        }
+        return c - a * b;
     }
 
+    /// <returns><code>c - a * b</code> or <code>-(a * b) + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector128<double> Fnma(Vector128<double> a, Vector128<double> b, Vector128<double> c)
     {
@@ -1236,9 +1297,14 @@ public static partial class simd
         {
             return X86.Fma.MultiplyAddNegated(a, b, c);
         }
-        return -(a * b) + c;
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return AdvSimd.Arm64.FusedMultiplySubtract(c, a, b);
+        }
+        return c - a * b;
     }
 
+    /// <returns><code>c - a * b</code> or <code>-(a * b) + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector256<float> Fnma(Vector256<float> a, Vector256<float> b, Vector256<float> c)
     {
@@ -1246,9 +1312,17 @@ public static partial class simd
         {
             return X86.Fma.MultiplyAddNegated(a, b, c);
         }
-        return -(a * b) + c;
+        if (AdvSimd.IsSupported)
+        {
+            return Vector256.Create(
+                AdvSimd.FusedMultiplySubtract(c.GetLower(), a.GetLower(), b.GetLower()),
+                AdvSimd.FusedMultiplySubtract(c.GetUpper(), a.GetUpper(), b.GetUpper())
+            );
+        }
+        return c - a * b;
     }
 
+    /// <returns><code>c - a * b</code> or <code>-(a * b) + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector256<double> Fnma(Vector256<double> a, Vector256<double> b, Vector256<double> c)
     {
@@ -1256,9 +1330,17 @@ public static partial class simd
         {
             return X86.Fma.MultiplyAddNegated(a, b, c);
         }
-        return -(a * b) + c;
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            return Vector256.Create(
+                AdvSimd.Arm64.FusedMultiplySubtract(c.GetLower(), a.GetLower(), b.GetLower()),
+                AdvSimd.Arm64.FusedMultiplySubtract(c.GetUpper(), a.GetUpper(), b.GetUpper())
+            );
+        }
+        return c - a * b;
     }
 
+    /// <returns><code>c - a * b</code> or <code>-(a * b) + c</code></returns>
     [MethodImpl(256 | 512)]
     public static Vector512<double> Fnma(Vector512<double> a, Vector512<double> b, Vector512<double> c)
     {
@@ -1266,11 +1348,11 @@ public static partial class simd
         {
             return Avx512F.FusedMultiplyAddNegated(a, b, c);
         }
-        return -(a * b) + c;
+        return c - a * b;
     }
 
     #endregion
-
+    
     #region IsInfinity
 
     [MethodImpl(256 | 512)]
