@@ -394,6 +394,56 @@ public static partial class simd_math
     }
 #>
     #endregion
+
+    #region Atan
+
+<#
+    foreach (var size in sizes)
+    {
+        var vector = $"Vector{size}";
+        var vt = $"{vector}<{type}>";
+#>
+    #region <#= vt #>
+
+    [MethodImpl(512)]
+    public static <#= vt #> Atan(<#= vt #> s)
+    {
+        var sign = s & -<#= vt #>.Zero;
+        s = <#= vector #>.Abs(s);
+        var is_gt_1 = <#= vector #>.GreaterThan(s, <#= vt #>.One);
+        s = <#= vector #>.ConditionalSelect(is_gt_1, <#= vt #>.One / s, s);
+
+        var t = s * s;
+        var t2 = t * t;
+        var t4 = t2 * t2;
+        var u = simd.Fma(t4,
+            simd.Fma(t2,
+                simd.Fma(t, <#= vector #>.Create(0.00282363896258175373077393f), <#= vector #>.Create(-0.0159569028764963150024414f)),
+                simd.Fma(t, <#= vector #>.Create(0.0425049886107444763183594f), <#= vector #>.Create(-0.0748900920152664184570312f))
+            ),
+            simd.Fma(t2,
+                simd.Fma(t, <#= vector #>.Create(0.106347933411598205566406f), <#= vector #>.Create(-0.142027363181114196777344f)),
+                simd.Fma(t, <#= vector #>.Create(0.199926957488059997558594f), <#= vector #>.Create(-0.333331018686294555664062f))
+            )
+        );
+        t = simd.Fma(s, t * u, s);
+
+        t = <#= vector #>.ConditionalSelect(
+            is_gt_1,
+            <#= vector #>.Create(math.F_Half_PI) - t,
+            t
+        );
+        t ^= sign;
+
+        return t;
+    }
+
+    #endregion
+
+<#
+    }
+#>
+    #endregion
 }
 
 #endif

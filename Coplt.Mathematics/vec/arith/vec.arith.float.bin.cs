@@ -265,7 +265,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float2 atan(this float2 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan(), a.y.atan());
@@ -618,7 +618,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float3 atan(this float3 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan(), a.y.atan(), a.z.atan());
@@ -973,7 +973,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float4 atan(this float4 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan(), a.y.atan(), a.z.atan(), a.w.atan());
@@ -1324,7 +1324,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double2 atan(this double2 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan(), a.y.atan());
@@ -1677,7 +1677,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double3 atan(this double3 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan(), a.y.atan(), a.z.atan());
@@ -2032,7 +2032,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double4 atan(this double4 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan(), a.y.atan(), a.z.atan(), a.w.atan());

@@ -2916,6 +2916,84 @@ public static partial class simd
     }
 
     #endregion
+
+    #region Atan
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Atan(Vector64<float> a)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_math.Atan(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Atan(a.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).atan(),
+            a.GetElement(1).atan()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Atan(Vector128<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Atan(a);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_math.Atan(a.GetLower()),
+                simd_math.Atan(a.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).atan(),
+            a.GetElement(1).atan(),
+            a.GetElement(2).atan(),
+            a.GetElement(3).atan()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Atan(Vector128<double> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Atan(a);
+        }
+        return Vector128.Create(
+            a.GetElement(0).atan(),
+            a.GetElement(1).atan()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Atan(Vector256<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_math.Atan(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_math.Atan(a.GetLower()),
+                simd_math.Atan(a.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).atan(),
+            a.GetElement(1).atan(),
+            a.GetElement(2).atan(),
+            a.GetElement(3).atan()
+        );
+    }
+
+    #endregion
 }
 
 #endif
