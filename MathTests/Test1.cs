@@ -16,9 +16,9 @@ public class Test1
     [Test]
     public void Foo()
     {
-        //var a = new float4(-1f, 0, 0.25f, 5f).UnsafeGetInner();
-        //var r = simd_float.Asin(a);
-        //Console.WriteLine(r);
+        var a = new double4(-1f, 0, 0.25f, 5f).UnsafeGetInner();
+        var r = simd_math.Asin(a);
+        Console.WriteLine(r);
         //var a = new double4(1, 2, 3, 4).UnsafeGetInner();
         //var b = new double4(5, 6, 7, 8).UnsafeGetInner();
         //var r = simd.UnpackHigh(a, b);

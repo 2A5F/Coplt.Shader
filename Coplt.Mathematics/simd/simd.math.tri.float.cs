@@ -662,6 +662,100 @@ public static partial class simd_math
     #endregion
 
     #endregion
+
+    #region Acos
+
+    #region Vector64<f32>
+
+    [MethodImpl(512)]
+    public static Vector64<f32> Acos(Vector64<f32> d)
+    {
+        var abs = Vector64.Abs(d);
+        var o = Vector64.LessThan(abs, Vector64.Create(0.5f));
+        var x2 = Vector64.ConditionalSelect(o, d * d, (Vector64<f32>.One - abs) * Vector64.Create(0.5f));
+        var x = Vector64.ConditionalSelect(o, abs, Vector64.Sqrt(x2));
+        x &= simd.Ne(Vector64<f32>.One, abs);
+
+        var u = Vector64.Create(0.4197454825e-1f);
+        u = simd.Fma(u, x2, Vector64.Create(0.2424046025e-1f));
+        u = simd.Fma(u, x2, Vector64.Create(0.4547423869e-1f));
+        u = simd.Fma(u, x2, Vector64.Create(0.7495029271e-1f));
+        u = simd.Fma(u, x2, Vector64.Create(0.1666677296e+0f));
+        u *= x * x2;
+
+        var sign = d & -Vector64<f32>.Zero;
+
+        var y = Vector64.Create(math.F_Half_PI) - ((x ^ sign) + (u ^ sign));
+        x += u;
+        var r = Vector64.ConditionalSelect(o, y, x * 2);
+        var c = Vector64.LessThan(d, Vector64<f32>.Zero) & ~o;
+        r = Vector64.ConditionalSelect(c, Vector64.Create(math.F_PI) - r, r);
+        return r;
+    }
+
+    #endregion
+
+    #region Vector128<f32>
+
+    [MethodImpl(512)]
+    public static Vector128<f32> Acos(Vector128<f32> d)
+    {
+        var abs = Vector128.Abs(d);
+        var o = Vector128.LessThan(abs, Vector128.Create(0.5f));
+        var x2 = Vector128.ConditionalSelect(o, d * d, (Vector128<f32>.One - abs) * Vector128.Create(0.5f));
+        var x = Vector128.ConditionalSelect(o, abs, Vector128.Sqrt(x2));
+        x &= simd.Ne(Vector128<f32>.One, abs);
+
+        var u = Vector128.Create(0.4197454825e-1f);
+        u = simd.Fma(u, x2, Vector128.Create(0.2424046025e-1f));
+        u = simd.Fma(u, x2, Vector128.Create(0.4547423869e-1f));
+        u = simd.Fma(u, x2, Vector128.Create(0.7495029271e-1f));
+        u = simd.Fma(u, x2, Vector128.Create(0.1666677296e+0f));
+        u *= x * x2;
+
+        var sign = d & -Vector128<f32>.Zero;
+
+        var y = Vector128.Create(math.F_Half_PI) - ((x ^ sign) + (u ^ sign));
+        x += u;
+        var r = Vector128.ConditionalSelect(o, y, x * 2);
+        var c = Vector128.LessThan(d, Vector128<f32>.Zero) & ~o;
+        r = Vector128.ConditionalSelect(c, Vector128.Create(math.F_PI) - r, r);
+        return r;
+    }
+
+    #endregion
+
+    #region Vector256<f32>
+
+    [MethodImpl(512)]
+    public static Vector256<f32> Acos(Vector256<f32> d)
+    {
+        var abs = Vector256.Abs(d);
+        var o = Vector256.LessThan(abs, Vector256.Create(0.5f));
+        var x2 = Vector256.ConditionalSelect(o, d * d, (Vector256<f32>.One - abs) * Vector256.Create(0.5f));
+        var x = Vector256.ConditionalSelect(o, abs, Vector256.Sqrt(x2));
+        x &= simd.Ne(Vector256<f32>.One, abs);
+
+        var u = Vector256.Create(0.4197454825e-1f);
+        u = simd.Fma(u, x2, Vector256.Create(0.2424046025e-1f));
+        u = simd.Fma(u, x2, Vector256.Create(0.4547423869e-1f));
+        u = simd.Fma(u, x2, Vector256.Create(0.7495029271e-1f));
+        u = simd.Fma(u, x2, Vector256.Create(0.1666677296e+0f));
+        u *= x * x2;
+
+        var sign = d & -Vector256<f32>.Zero;
+
+        var y = Vector256.Create(math.F_Half_PI) - ((x ^ sign) + (u ^ sign));
+        x += u;
+        var r = Vector256.ConditionalSelect(o, y, x * 2);
+        var c = Vector256.LessThan(d, Vector256<f32>.Zero) & ~o;
+        r = Vector256.ConditionalSelect(c, Vector256.Create(math.F_PI) - r, r);
+        return r;
+    }
+
+    #endregion
+
+    #endregion
 }
 
 #endif

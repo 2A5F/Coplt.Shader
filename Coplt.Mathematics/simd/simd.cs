@@ -2760,7 +2760,7 @@ public static partial class simd
     }
 
     #endregion
-    
+
     #region Asin
 
     [MethodImpl(256 | 512)]
@@ -2834,6 +2834,84 @@ public static partial class simd
             a.GetElement(1).asin(),
             a.GetElement(2).asin(),
             a.GetElement(3).asin()
+        );
+    }
+
+    #endregion
+
+    #region Acos
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Acos(Vector64<float> a)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_math.Acos(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Acos(a.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).acos(),
+            a.GetElement(1).acos()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Acos(Vector128<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Acos(a);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_math.Acos(a.GetLower()),
+                simd_math.Acos(a.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).acos(),
+            a.GetElement(1).acos(),
+            a.GetElement(2).acos(),
+            a.GetElement(3).acos()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Acos(Vector128<double> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Acos(a);
+        }
+        return Vector128.Create(
+            a.GetElement(0).acos(),
+            a.GetElement(1).acos()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Acos(Vector256<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_math.Acos(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_math.Acos(a.GetLower()),
+                simd_math.Acos(a.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).acos(),
+            a.GetElement(1).acos(),
+            a.GetElement(2).acos(),
+            a.GetElement(3).acos()
         );
     }
 

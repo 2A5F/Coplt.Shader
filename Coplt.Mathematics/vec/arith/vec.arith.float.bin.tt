@@ -555,7 +555,7 @@ public static partial class math
             if (typ.simd)
             {
 #>
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Acos(a.vector));
         #else // NET8_0_OR_GREATER
 <#

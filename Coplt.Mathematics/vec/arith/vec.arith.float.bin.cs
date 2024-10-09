@@ -255,7 +255,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float2 acos(this float2 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Acos(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.acos(), a.y.acos());
@@ -608,7 +608,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float3 acos(this float3 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Acos(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.acos(), a.y.acos(), a.z.acos());
@@ -963,7 +963,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float4 acos(this float4 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Acos(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.acos(), a.y.acos(), a.z.acos(), a.w.acos());
@@ -1314,7 +1314,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double2 acos(this double2 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Acos(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.acos(), a.y.acos());
@@ -1667,7 +1667,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double3 acos(this double3 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Acos(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.acos(), a.y.acos(), a.z.acos());
@@ -2022,7 +2022,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double4 acos(this double4 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Acos(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.acos(), a.y.acos(), a.z.acos(), a.w.acos());

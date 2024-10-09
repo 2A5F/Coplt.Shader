@@ -351,6 +351,49 @@ public static partial class simd_math
     }
 #>
     #endregion
+
+    #region Acos
+
+<#
+    foreach (var size in sizes)
+    {
+        var vector = $"Vector{size}";
+        var vt = $"{vector}<{type}>";
+#>
+    #region <#= vt #>
+
+    [MethodImpl(512)]
+    public static <#= vt #> Acos(<#= vt #> d)
+    {
+        var abs = <#= vector #>.Abs(d);
+        var o = <#= vector #>.LessThan(abs, <#= vector #>.Create(0.5f));
+        var x2 = <#= vector #>.ConditionalSelect(o, d * d, (<#= vt #>.One - abs) * <#= vector #>.Create(0.5f));
+        var x = <#= vector #>.ConditionalSelect(o, abs, <#= vector #>.Sqrt(x2));
+        x &= simd.Ne(<#= vt #>.One, abs);
+
+        var u = <#= vector #>.Create(0.4197454825e-1f);
+        u = simd.Fma(u, x2, <#= vector #>.Create(0.2424046025e-1f));
+        u = simd.Fma(u, x2, <#= vector #>.Create(0.4547423869e-1f));
+        u = simd.Fma(u, x2, <#= vector #>.Create(0.7495029271e-1f));
+        u = simd.Fma(u, x2, <#= vector #>.Create(0.1666677296e+0f));
+        u *= x * x2;
+
+        var sign = d & -<#= vt #>.Zero;
+
+        var y = <#= vector #>.Create(math.F_Half_PI) - ((x ^ sign) + (u ^ sign));
+        x += u;
+        var r = <#= vector #>.ConditionalSelect(o, y, x * 2);
+        var c = <#= vector #>.LessThan(d, <#= vt #>.Zero) & ~o;
+        r = <#= vector #>.ConditionalSelect(c, <#= vector #>.Create(math.F_PI) - r, r);
+        return r;
+    }
+
+    #endregion
+
+<#
+    }
+#>
+    #endregion
 }
 
 #endif
