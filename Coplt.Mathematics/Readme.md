@@ -4,14 +4,22 @@
 
 hlsl-style linear algebra library
 
-- bool (b16 b32 b64)、half、float、double、short、ushort、int、uint、long、ulong、decimal
+- bool (b16 b32 b64)、half [[1]](#note-1)、float、double、short、ushort、int、uint、long、ulong、decimal [[2]](#note-2)
 - Vector2~4 (float3 double4 int2 ...)
 - Matrix2x2~4x4 (float3x3 double4x2 int2x3 ...)
 - Hlsl-like cartesian product swizzle (.yzx .abgr ...)
-- Full simd support (net8 only)
-- Simd accelerated log, exp, pow, fmod, trigonometry (Lower precision than C# standard library)
+- Full simd support (net8+ only)
+- Simd accelerated [[3]](#note-3) log, exp, pow, fmod, trigonometry
 
-## Function ULPs
+> [!NOTE]
+> <a name="note-1"></a>
+> 1. Very slow on CPU
+> <a name="note-2"></a>
+> 2. Cpu only
+> <a name="note-3"></a>
+> 3. Lower precision than C# standard library
+
+### Function ULPs
 
 | function | float | double |
 |----------|-------|--------|

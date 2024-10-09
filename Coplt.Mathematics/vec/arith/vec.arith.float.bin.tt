@@ -27,6 +27,12 @@ namespace Coplt.Mathematics;
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static <#= bTypeName #> isNaN(this <#= typeName #> a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static <#= bTypeName #> isFinite(this <#= typeName #> a) => abs(a) < <#= typ.simdComp #>.PositiveInfinity;
 

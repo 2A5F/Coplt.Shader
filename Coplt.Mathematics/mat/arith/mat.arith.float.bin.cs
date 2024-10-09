@@ -11,6 +11,10 @@ public partial struct float2x2
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b32m2x2 isNaN(this float2x2 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN());
+
+    [MethodImpl(256 | 512)]
     public static b32m2x2 isFinite(this float2x2 a) => 
         new(a.c0.isFinite(), a.c1.isFinite());
 
@@ -157,6 +161,10 @@ public partial struct float2x3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b32m2x3 isNaN(this float2x3 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b32m2x3 isFinite(this float2x3 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite());
@@ -306,6 +314,10 @@ public partial struct float2x4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b32m2x4 isNaN(this float2x4 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN(), a.c3.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b32m2x4 isFinite(this float2x4 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite(), a.c3.isFinite());
@@ -458,6 +470,10 @@ public partial struct float3x2
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b32m3x2 isNaN(this float3x2 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN());
+
+    [MethodImpl(256 | 512)]
     public static b32m3x2 isFinite(this float3x2 a) => 
         new(a.c0.isFinite(), a.c1.isFinite());
 
@@ -604,6 +620,10 @@ public partial struct float3x3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b32m3x3 isNaN(this float3x3 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b32m3x3 isFinite(this float3x3 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite());
@@ -753,6 +773,10 @@ public partial struct float3x4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b32m3x4 isNaN(this float3x4 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN(), a.c3.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b32m3x4 isFinite(this float3x4 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite(), a.c3.isFinite());
@@ -905,6 +929,10 @@ public partial struct float4x2
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b32m4x2 isNaN(this float4x2 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN());
+
+    [MethodImpl(256 | 512)]
     public static b32m4x2 isFinite(this float4x2 a) => 
         new(a.c0.isFinite(), a.c1.isFinite());
 
@@ -1051,6 +1079,10 @@ public partial struct float4x3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b32m4x3 isNaN(this float4x3 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b32m4x3 isFinite(this float4x3 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite());
@@ -1200,6 +1232,10 @@ public partial struct float4x4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b32m4x4 isNaN(this float4x4 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN(), a.c3.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b32m4x4 isFinite(this float4x4 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite(), a.c3.isFinite());
@@ -1352,6 +1388,10 @@ public partial struct double2x2
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b64m2x2 isNaN(this double2x2 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN());
+
+    [MethodImpl(256 | 512)]
     public static b64m2x2 isFinite(this double2x2 a) => 
         new(a.c0.isFinite(), a.c1.isFinite());
 
@@ -1498,6 +1538,10 @@ public partial struct double2x3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b64m2x3 isNaN(this double2x3 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b64m2x3 isFinite(this double2x3 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite());
@@ -1647,6 +1691,10 @@ public partial struct double2x4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b64m2x4 isNaN(this double2x4 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN(), a.c3.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b64m2x4 isFinite(this double2x4 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite(), a.c3.isFinite());
@@ -1799,6 +1847,10 @@ public partial struct double3x2
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b64m3x2 isNaN(this double3x2 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN());
+
+    [MethodImpl(256 | 512)]
     public static b64m3x2 isFinite(this double3x2 a) => 
         new(a.c0.isFinite(), a.c1.isFinite());
 
@@ -1945,6 +1997,10 @@ public partial struct double3x3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b64m3x3 isNaN(this double3x3 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b64m3x3 isFinite(this double3x3 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite());
@@ -2094,6 +2150,10 @@ public partial struct double3x4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b64m3x4 isNaN(this double3x4 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN(), a.c3.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b64m3x4 isFinite(this double3x4 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite(), a.c3.isFinite());
@@ -2246,6 +2306,10 @@ public partial struct double4x2
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b64m4x2 isNaN(this double4x2 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN());
+
+    [MethodImpl(256 | 512)]
     public static b64m4x2 isFinite(this double4x2 a) => 
         new(a.c0.isFinite(), a.c1.isFinite());
 
@@ -2392,6 +2456,10 @@ public partial struct double4x3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b64m4x3 isNaN(this double4x3 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b64m4x3 isFinite(this double4x3 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite());
@@ -2541,6 +2609,10 @@ public partial struct double4x4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b64m4x4 isNaN(this double4x4 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN(), a.c3.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b64m4x4 isFinite(this double4x4 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite(), a.c3.isFinite());
@@ -2693,6 +2765,10 @@ public partial struct half2x2
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b16m2x2 isNaN(this half2x2 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN());
+
+    [MethodImpl(256 | 512)]
     public static b16m2x2 isFinite(this half2x2 a) => 
         new(a.c0.isFinite(), a.c1.isFinite());
 
@@ -2839,6 +2915,10 @@ public partial struct half2x3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b16m2x3 isNaN(this half2x3 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b16m2x3 isFinite(this half2x3 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite());
@@ -2988,6 +3068,10 @@ public partial struct half2x4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b16m2x4 isNaN(this half2x4 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN(), a.c3.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b16m2x4 isFinite(this half2x4 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite(), a.c3.isFinite());
@@ -3140,6 +3224,10 @@ public partial struct half3x2
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b16m3x2 isNaN(this half3x2 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN());
+
+    [MethodImpl(256 | 512)]
     public static b16m3x2 isFinite(this half3x2 a) => 
         new(a.c0.isFinite(), a.c1.isFinite());
 
@@ -3286,6 +3374,10 @@ public partial struct half3x3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b16m3x3 isNaN(this half3x3 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b16m3x3 isFinite(this half3x3 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite());
@@ -3435,6 +3527,10 @@ public partial struct half3x4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b16m3x4 isNaN(this half3x4 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN(), a.c3.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b16m3x4 isFinite(this half3x4 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite(), a.c3.isFinite());
@@ -3587,6 +3683,10 @@ public partial struct half4x2
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static b16m4x2 isNaN(this half4x2 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN());
+
+    [MethodImpl(256 | 512)]
     public static b16m4x2 isFinite(this half4x2 a) => 
         new(a.c0.isFinite(), a.c1.isFinite());
 
@@ -3733,6 +3833,10 @@ public partial struct half4x3
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b16m4x3 isNaN(this half4x3 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b16m4x3 isFinite(this half4x3 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite());
@@ -3882,6 +3986,10 @@ public partial struct half4x4
 
 public static partial class math
 {
+    [MethodImpl(256 | 512)]
+    public static b16m4x4 isNaN(this half4x4 a) => 
+        new(a.c0.isNaN(), a.c1.isNaN(), a.c2.isNaN(), a.c3.isNaN());
+
     [MethodImpl(256 | 512)]
     public static b16m4x4 isFinite(this half4x4 a) => 
         new(a.c0.isFinite(), a.c1.isFinite(), a.c2.isFinite(), a.c3.isFinite());

@@ -660,6 +660,19 @@ public static partial class math
 
     #endregion
 
+    #region isNaN
+
+    [MethodImpl(256 | 512)]
+    public static bool isNaN(this half v) => half.IsNaN(v);
+
+    [MethodImpl(256 | 512)]
+    public static bool isNaN(this float v) => float.IsNaN(v);
+
+    [MethodImpl(256 | 512)]
+    public static bool isNaN(this double v) => double.IsNaN(v);
+
+    #endregion
+    
     #region isFinite
 
     [MethodImpl(256 | 512)]

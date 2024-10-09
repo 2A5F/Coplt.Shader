@@ -16,8 +16,9 @@ public class Test1
     [Test]
     public void Foo()
     {
-        var a = new float4(-9, 9, 0, 0).UnsafeGetInner();
-        var r = simd_math.Atan(a);
+        var a = Vector256.Create(-5f, -5f, 5f, 5f, -6f, 6f, -6f, 6f);
+        var b = Vector256.Create(-6f, 6f, -6f, 6f, -5f, -5f, 5f, 5f);
+        var r = simd.Atan2(a, b);
         Console.WriteLine(r);
         //var a = new double4(1, 2, 3, 4).UnsafeGetInner();
         //var b = new double4(5, 6, 7, 8).UnsafeGetInner();

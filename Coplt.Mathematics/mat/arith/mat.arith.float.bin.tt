@@ -37,6 +37,10 @@ public partial struct <#= typeName #>
 public static partial class math
 {
     [MethodImpl(256 | 512)]
+    public static <#= bTypeName #> isNaN(this <#= typeName #> a) => 
+        new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i}.isNaN()")) #>);
+
+    [MethodImpl(256 | 512)]
     public static <#= bTypeName #> isFinite(this <#= typeName #> a) => 
         new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i}.isFinite()")) #>);
 

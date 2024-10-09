@@ -1288,6 +1288,13 @@ public static partial class simd
     }
 
     [MethodImpl(256 | 512)]
+    public static Vector256<int> IsInfinity(Vector256<float> f)
+    {
+        var bits = f.AsInt32();
+        return Vector256.Equals(bits & Vector256.Create(int.MaxValue), Vector256.Create(0x7F800000));
+    }
+
+    [MethodImpl(256 | 512)]
     public static Vector128<long> IsInfinity(Vector128<double> f)
     {
         var bits = f.AsInt64();
@@ -1299,6 +1306,13 @@ public static partial class simd
     {
         var bits = f.AsInt64();
         return Vector256.Equals(bits & Vector256.Create(long.MaxValue), Vector256.Create(0x7FF0000000000000L));
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector512<long> IsInfinity(Vector512<double> f)
+    {
+        var bits = f.AsInt64();
+        return Vector512.Equals(bits & Vector512.Create(long.MaxValue), Vector512.Create(0x7FF0000000000000L));
     }
 
     #endregion
@@ -2991,6 +3005,16 @@ public static partial class simd
             a.GetElement(2).atan(),
             a.GetElement(3).atan()
         );
+    }
+
+    #endregion
+
+    #region Atan2
+
+    [MethodImpl(512)]
+    public static Vector256<f64> Atan2(Vector256<f64> y, Vector256<f64> x)
+    {
+        return default;
     }
 
     #endregion

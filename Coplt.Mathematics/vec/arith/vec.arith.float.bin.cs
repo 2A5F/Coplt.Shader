@@ -6,6 +6,12 @@ namespace Coplt.Mathematics;
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static b32v2 isNaN(this float2 a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static b32v2 isFinite(this float2 a) => abs(a) < float.PositiveInfinity;
 
@@ -357,6 +363,12 @@ public static partial class math
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static b32v3 isNaN(this float3 a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static b32v3 isFinite(this float3 a) => abs(a) < float.PositiveInfinity;
 
@@ -710,6 +722,12 @@ public static partial class math
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static b32v4 isNaN(this float4 a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static b32v4 isFinite(this float4 a) => abs(a) < float.PositiveInfinity;
 
@@ -1065,6 +1083,12 @@ public static partial class math
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static b64v2 isNaN(this double2 a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static b64v2 isFinite(this double2 a) => abs(a) < double.PositiveInfinity;
 
@@ -1416,6 +1440,12 @@ public static partial class math
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static b64v3 isNaN(this double3 a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static b64v3 isFinite(this double3 a) => abs(a) < double.PositiveInfinity;
 
@@ -1769,6 +1799,12 @@ public static partial class math
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static b64v4 isNaN(this double4 a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static b64v4 isFinite(this double4 a) => abs(a) < double.PositiveInfinity;
 
@@ -2124,6 +2160,12 @@ public static partial class math
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static b16v2 isNaN(this half2 a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static b16v2 isFinite(this half2 a) => abs(a) < half.PositiveInfinity;
 
@@ -2360,6 +2402,12 @@ public static partial class math
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static b16v3 isNaN(this half3 a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static b16v3 isFinite(this half3 a) => abs(a) < half.PositiveInfinity;
 
@@ -2598,6 +2646,12 @@ public static partial class math
 
 public static partial class math
 {
+    #pragma warning disable CS1718
+    // ReSharper disable once EqualExpressionComparison
+    [MethodImpl(256 | 512)]
+    public static b16v4 isNaN(this half4 a) => a != a;
+    #pragma warning restore CS1718
+
     [MethodImpl(256 | 512)]
     public static b16v4 isFinite(this half4 a) => abs(a) < half.PositiveInfinity;
 
