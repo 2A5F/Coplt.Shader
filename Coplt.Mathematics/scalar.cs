@@ -1776,14 +1776,14 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     #if NET8_0_OR_GREATER
-    public static half atan2(this half a, half b) => half.Atan2(a, b);
+    public static half atan2(this half y, half x) => half.Atan2(y, x);
     #else
-    public static half atan2(this half a, half b) => (half)MathF.Atan2(a, b);
+    public static half atan2(this half y, half x) => (half)MathF.Atan2(y, x);
     #endif
     [MethodImpl(256 | 512)]
-    public static float atan2(this float a, float b) => MathF.Atan2(a, b);
+    public static float atan2(this float y, float x) => MathF.Atan2(y, x);
     [MethodImpl(256 | 512)]
-    public static double atan2(this double a, double b) => Math.Atan2(a, b);
+    public static double atan2(this double y, double x) => Math.Atan2(y, x);
 
     #endregion
 

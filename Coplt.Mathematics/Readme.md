@@ -27,11 +27,12 @@ hlsl-style linear algebra library
 | asin     |   2   |   2    |
 | acos     |   2   |   2    |
 | atan     |   2   |   2    |
+| atan2    |   2   |   2    |
 
 - The function that needs to be rewritten due to insufficient precision is not in the table
 
 ## Todo
 
 - [ ] tests
-- [ ] simd impl of atan2 atanh
+- [ ] simd impl of atanh
 - [ ] rewrite the function with too low precision

@@ -1015,6 +1015,256 @@ public static partial class simd_math
     #endregion
 
     #endregion
+
+    #region Acos
+
+    #region Vector128<f64>
+
+    [MethodImpl(512)]
+    public static Vector128<f64> Atan2(Vector128<f64> y, Vector128<f64> x)
+    {
+        var x_is_inf = simd.IsInfinity(x).AsDouble();
+        var y_is_inf = simd.IsInfinity(y).AsDouble();
+        var x_iz = Vector128.Equals(x, default);
+        var y_iz = Vector128.Equals(y, default);
+        var y_sign = y & -Vector128<f64>.Zero;
+        var x_sign = x & -Vector128<f64>.Zero;
+        var y_is_nan = simd.Ne(y, y);
+        var x_is_nan = simd.Ne(x, x);
+
+        y = Vector128.Abs(y);
+        var x_lz = Vector128.LessThan(x, default);
+        x = Vector128.Abs(x);
+        var q = x_lz & Vector128.Create(-2.0);
+        var y_gt_x = Vector128.GreaterThan(y, x);
+        q += y_gt_x & Vector128<f64>.One;
+        var b = Vector128.Min(x, y);
+        b = Vector128.ConditionalSelect(y_gt_x, -b, b);
+        var a = Vector128.Max(x, y);
+
+        var s = b / a;
+        var t = s * s;
+        var t2 = t * t;
+        var t4 = t2 * t2;
+        var t8 = t4 * t4;
+        var t16 = t8 * t8;
+        var u = simd.Fma(t16,
+            simd.Fma(t2,
+                Vector128.Create(-1.88796008463073496563746e-05),
+                simd.Fma(t, Vector128.Create(0.000209850076645816976906797), Vector128.Create(-0.00110611831486672482563471))),
+            simd.Fma(t8,
+                simd.Fma(t4,
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector128.Create(0.00370026744188713119232403), Vector128.Create(-0.00889896195887655491740809)),
+                        simd.Fma(t, Vector128.Create(0.016599329773529201970117), Vector128.Create(-0.0254517624932312641616861))
+                    ),
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector128.Create(0.0337852580001353069993897), Vector128.Create(-0.0407629191276836500001934)),
+                        simd.Fma(t, Vector128.Create(0.0466667150077840625632675), Vector128.Create(-0.0523674852303482457616113))
+                    )
+                ),
+                simd.Fma(t4,
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector128.Create(0.0587666392926673580854313), Vector128.Create(-0.0666573579361080525984562)),
+                        simd.Fma(t, Vector128.Create(0.0769219538311769618355029), Vector128.Create(-0.090908995008245008229153))
+                    ),
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector128.Create(0.111111105648261418443745), Vector128.Create(-0.14285714266771329383765)),
+                        simd.Fma(t, Vector128.Create(0.199999999996591265594148), Vector128.Create(-0.333333333333311110369124))
+                    )
+                )
+            )
+        );
+
+        var r = simd.Fma(u, t * s, s);
+        r = simd.Fma(q, Vector128.Create(math.D_Half_PI), r);
+        r ^= x_sign;
+        r = Vector128.ConditionalSelect(x_is_inf | x_iz,
+            Vector128.Create(math.D_Half_PI) - (x_is_inf & (Vector128.Create(math.D_Half_PI) ^ x_sign)),
+            r
+        );
+        r = Vector128.ConditionalSelect(y_is_inf,
+            Vector128.Create(math.D_Half_PI) - (x_is_inf & (Vector128.Create(math.D_Quarter_PI) ^ x_sign)),
+            r
+        );
+        r = Vector128.ConditionalSelect(y_iz,
+            Vector128.Equals(x_sign.AsInt64(), (-Vector128<f64>.Zero).AsInt64()).AsDouble() & Vector128.Create(math.D_PI),
+            r
+        );
+        r = Vector128.ConditionalSelect(y_is_nan | x_is_nan,
+            Vector128.Create(f64.NaN),
+            r ^ y_sign
+        );
+        return r;
+    }
+
+    #endregion
+
+    #region Vector256<f64>
+
+    [MethodImpl(512)]
+    public static Vector256<f64> Atan2(Vector256<f64> y, Vector256<f64> x)
+    {
+        var x_is_inf = simd.IsInfinity(x).AsDouble();
+        var y_is_inf = simd.IsInfinity(y).AsDouble();
+        var x_iz = Vector256.Equals(x, default);
+        var y_iz = Vector256.Equals(y, default);
+        var y_sign = y & -Vector256<f64>.Zero;
+        var x_sign = x & -Vector256<f64>.Zero;
+        var y_is_nan = simd.Ne(y, y);
+        var x_is_nan = simd.Ne(x, x);
+
+        y = Vector256.Abs(y);
+        var x_lz = Vector256.LessThan(x, default);
+        x = Vector256.Abs(x);
+        var q = x_lz & Vector256.Create(-2.0);
+        var y_gt_x = Vector256.GreaterThan(y, x);
+        q += y_gt_x & Vector256<f64>.One;
+        var b = Vector256.Min(x, y);
+        b = Vector256.ConditionalSelect(y_gt_x, -b, b);
+        var a = Vector256.Max(x, y);
+
+        var s = b / a;
+        var t = s * s;
+        var t2 = t * t;
+        var t4 = t2 * t2;
+        var t8 = t4 * t4;
+        var t16 = t8 * t8;
+        var u = simd.Fma(t16,
+            simd.Fma(t2,
+                Vector256.Create(-1.88796008463073496563746e-05),
+                simd.Fma(t, Vector256.Create(0.000209850076645816976906797), Vector256.Create(-0.00110611831486672482563471))),
+            simd.Fma(t8,
+                simd.Fma(t4,
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector256.Create(0.00370026744188713119232403), Vector256.Create(-0.00889896195887655491740809)),
+                        simd.Fma(t, Vector256.Create(0.016599329773529201970117), Vector256.Create(-0.0254517624932312641616861))
+                    ),
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector256.Create(0.0337852580001353069993897), Vector256.Create(-0.0407629191276836500001934)),
+                        simd.Fma(t, Vector256.Create(0.0466667150077840625632675), Vector256.Create(-0.0523674852303482457616113))
+                    )
+                ),
+                simd.Fma(t4,
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector256.Create(0.0587666392926673580854313), Vector256.Create(-0.0666573579361080525984562)),
+                        simd.Fma(t, Vector256.Create(0.0769219538311769618355029), Vector256.Create(-0.090908995008245008229153))
+                    ),
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector256.Create(0.111111105648261418443745), Vector256.Create(-0.14285714266771329383765)),
+                        simd.Fma(t, Vector256.Create(0.199999999996591265594148), Vector256.Create(-0.333333333333311110369124))
+                    )
+                )
+            )
+        );
+
+        var r = simd.Fma(u, t * s, s);
+        r = simd.Fma(q, Vector256.Create(math.D_Half_PI), r);
+        r ^= x_sign;
+        r = Vector256.ConditionalSelect(x_is_inf | x_iz,
+            Vector256.Create(math.D_Half_PI) - (x_is_inf & (Vector256.Create(math.D_Half_PI) ^ x_sign)),
+            r
+        );
+        r = Vector256.ConditionalSelect(y_is_inf,
+            Vector256.Create(math.D_Half_PI) - (x_is_inf & (Vector256.Create(math.D_Quarter_PI) ^ x_sign)),
+            r
+        );
+        r = Vector256.ConditionalSelect(y_iz,
+            Vector256.Equals(x_sign.AsInt64(), (-Vector256<f64>.Zero).AsInt64()).AsDouble() & Vector256.Create(math.D_PI),
+            r
+        );
+        r = Vector256.ConditionalSelect(y_is_nan | x_is_nan,
+            Vector256.Create(f64.NaN),
+            r ^ y_sign
+        );
+        return r;
+    }
+
+    #endregion
+
+    #region Vector512<f64>
+
+    [MethodImpl(512)]
+    public static Vector512<f64> Atan2(Vector512<f64> y, Vector512<f64> x)
+    {
+        var x_is_inf = simd.IsInfinity(x).AsDouble();
+        var y_is_inf = simd.IsInfinity(y).AsDouble();
+        var x_iz = Vector512.Equals(x, default);
+        var y_iz = Vector512.Equals(y, default);
+        var y_sign = y & -Vector512<f64>.Zero;
+        var x_sign = x & -Vector512<f64>.Zero;
+        var y_is_nan = simd.Ne(y, y);
+        var x_is_nan = simd.Ne(x, x);
+
+        y = Vector512.Abs(y);
+        var x_lz = Vector512.LessThan(x, default);
+        x = Vector512.Abs(x);
+        var q = x_lz & Vector512.Create(-2.0);
+        var y_gt_x = Vector512.GreaterThan(y, x);
+        q += y_gt_x & Vector512<f64>.One;
+        var b = Vector512.Min(x, y);
+        b = Vector512.ConditionalSelect(y_gt_x, -b, b);
+        var a = Vector512.Max(x, y);
+
+        var s = b / a;
+        var t = s * s;
+        var t2 = t * t;
+        var t4 = t2 * t2;
+        var t8 = t4 * t4;
+        var t16 = t8 * t8;
+        var u = simd.Fma(t16,
+            simd.Fma(t2,
+                Vector512.Create(-1.88796008463073496563746e-05),
+                simd.Fma(t, Vector512.Create(0.000209850076645816976906797), Vector512.Create(-0.00110611831486672482563471))),
+            simd.Fma(t8,
+                simd.Fma(t4,
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector512.Create(0.00370026744188713119232403), Vector512.Create(-0.00889896195887655491740809)),
+                        simd.Fma(t, Vector512.Create(0.016599329773529201970117), Vector512.Create(-0.0254517624932312641616861))
+                    ),
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector512.Create(0.0337852580001353069993897), Vector512.Create(-0.0407629191276836500001934)),
+                        simd.Fma(t, Vector512.Create(0.0466667150077840625632675), Vector512.Create(-0.0523674852303482457616113))
+                    )
+                ),
+                simd.Fma(t4,
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector512.Create(0.0587666392926673580854313), Vector512.Create(-0.0666573579361080525984562)),
+                        simd.Fma(t, Vector512.Create(0.0769219538311769618355029), Vector512.Create(-0.090908995008245008229153))
+                    ),
+                    simd.Fma(t2,
+                        simd.Fma(t, Vector512.Create(0.111111105648261418443745), Vector512.Create(-0.14285714266771329383765)),
+                        simd.Fma(t, Vector512.Create(0.199999999996591265594148), Vector512.Create(-0.333333333333311110369124))
+                    )
+                )
+            )
+        );
+
+        var r = simd.Fma(u, t * s, s);
+        r = simd.Fma(q, Vector512.Create(math.D_Half_PI), r);
+        r ^= x_sign;
+        r = Vector512.ConditionalSelect(x_is_inf | x_iz,
+            Vector512.Create(math.D_Half_PI) - (x_is_inf & (Vector512.Create(math.D_Half_PI) ^ x_sign)),
+            r
+        );
+        r = Vector512.ConditionalSelect(y_is_inf,
+            Vector512.Create(math.D_Half_PI) - (x_is_inf & (Vector512.Create(math.D_Quarter_PI) ^ x_sign)),
+            r
+        );
+        r = Vector512.ConditionalSelect(y_iz,
+            Vector512.Equals(x_sign.AsInt64(), (-Vector512<f64>.Zero).AsInt64()).AsDouble() & Vector512.Create(math.D_PI),
+            r
+        );
+        r = Vector512.ConditionalSelect(y_is_nan | x_is_nan,
+            Vector512.Create(f64.NaN),
+            r ^ y_sign
+        );
+        return r;
+    }
+
+    #endregion
+
+    #endregion
 }
 
 #endif

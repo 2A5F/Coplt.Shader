@@ -281,7 +281,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float2 atan2(this float2 a, float2 b)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan2(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan2(b.x), a.y.atan2(b.y));
@@ -640,7 +640,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float3 atan2(this float3 a, float3 b)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan2(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan2(b.x), a.y.atan2(b.y), a.z.atan2(b.z));
@@ -1001,7 +1001,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float4 atan2(this float4 a, float4 b)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan2(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan2(b.x), a.y.atan2(b.y), a.z.atan2(b.z), a.w.atan2(b.w));
@@ -1358,7 +1358,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double2 atan2(this double2 a, double2 b)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan2(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan2(b.x), a.y.atan2(b.y));
@@ -1717,7 +1717,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double3 atan2(this double3 a, double3 b)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan2(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan2(b.x), a.y.atan2(b.y), a.z.atan2(b.z));
@@ -2078,7 +2078,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double4 atan2(this double4 a, double4 b)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan2(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atan2(b.x), a.y.atan2(b.y), a.z.atan2(b.z), a.w.atan2(b.w));

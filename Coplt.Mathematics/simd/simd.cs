@@ -3011,10 +3011,78 @@ public static partial class simd
 
     #region Atan2
 
-    [MethodImpl(512)]
-    public static Vector256<f64> Atan2(Vector256<f64> y, Vector256<f64> x)
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Atan2(Vector64<float> y, Vector64<float> x)
     {
-        return default;
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_math.Atan2(y, x);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Atan2(y.ToVector128(), x.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            y.GetElement(0).atan2(x.GetElement(0)),
+            y.GetElement(1).atan2(x.GetElement(1))
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Atan2(Vector128<float> y, Vector128<float> x)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Atan2(y, x);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_math.Atan2(y.GetLower(), x.GetLower()),
+                simd_math.Atan2(y.GetUpper(), x.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            y.GetElement(0).atan2(x.GetElement(0)),
+            y.GetElement(1).atan2(x.GetElement(1)),
+            y.GetElement(2).atan2(x.GetElement(2)),
+            y.GetElement(3).atan2(x.GetElement(3))
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Atan2(Vector128<double> y, Vector128<double> x)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Atan2(y, x);
+        }
+        return Vector128.Create(
+            y.GetElement(0).atan2(x.GetElement(0)),
+            y.GetElement(1).atan2(x.GetElement(1))
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Atan2(Vector256<double> y, Vector256<double> x)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_math.Atan2(y, x);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_math.Atan2(y.GetLower(), x.GetLower()),
+                simd_math.Atan2(y.GetUpper(), x.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            y.GetElement(0).atan2(x.GetElement(0)),
+            y.GetElement(1).atan2(x.GetElement(1)),
+            y.GetElement(2).atan2(x.GetElement(2)),
+            y.GetElement(3).atan2(x.GetElement(3))
+        );
     }
 
     #endregion

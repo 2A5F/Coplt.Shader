@@ -492,6 +492,101 @@ public static partial class simd_math
     }
 #>
     #endregion
+
+    #region Acos
+
+<#
+    foreach (var size in sizes)
+    {
+        var vector = $"Vector{size}";
+        var vt = $"{vector}<{type}>";
+#>
+    #region <#= vt #>
+
+    [MethodImpl(512)]
+    public static <#= vt #> Atan2(<#= vt #> y, <#= vt #> x)
+    {
+        var x_is_inf = simd.IsInfinity(x).AsDouble();
+        var y_is_inf = simd.IsInfinity(y).AsDouble();
+        var x_iz = <#= vector #>.Equals(x, default);
+        var y_iz = <#= vector #>.Equals(y, default);
+        var y_sign = y & -<#= vt #>.Zero;
+        var x_sign = x & -<#= vt #>.Zero;
+        var y_is_nan = simd.Ne(y, y);
+        var x_is_nan = simd.Ne(x, x);
+
+        y = <#= vector #>.Abs(y);
+        var x_lz = <#= vector #>.LessThan(x, default);
+        x = <#= vector #>.Abs(x);
+        var q = x_lz & <#= vector #>.Create(-2.0);
+        var y_gt_x = <#= vector #>.GreaterThan(y, x);
+        q += y_gt_x & <#= vt #>.One;
+        var b = <#= vector #>.Min(x, y);
+        b = <#= vector #>.ConditionalSelect(y_gt_x, -b, b);
+        var a = <#= vector #>.Max(x, y);
+
+        var s = b / a;
+        var t = s * s;
+        var t2 = t * t;
+        var t4 = t2 * t2;
+        var t8 = t4 * t4;
+        var t16 = t8 * t8;
+        var u = simd.Fma(t16,
+            simd.Fma(t2,
+                <#= vector #>.Create(-1.88796008463073496563746e-05),
+                simd.Fma(t, <#= vector #>.Create(0.000209850076645816976906797), <#= vector #>.Create(-0.00110611831486672482563471))),
+            simd.Fma(t8,
+                simd.Fma(t4,
+                    simd.Fma(t2,
+                        simd.Fma(t, <#= vector #>.Create(0.00370026744188713119232403), <#= vector #>.Create(-0.00889896195887655491740809)),
+                        simd.Fma(t, <#= vector #>.Create(0.016599329773529201970117), <#= vector #>.Create(-0.0254517624932312641616861))
+                    ),
+                    simd.Fma(t2,
+                        simd.Fma(t, <#= vector #>.Create(0.0337852580001353069993897), <#= vector #>.Create(-0.0407629191276836500001934)),
+                        simd.Fma(t, <#= vector #>.Create(0.0466667150077840625632675), <#= vector #>.Create(-0.0523674852303482457616113))
+                    )
+                ),
+                simd.Fma(t4,
+                    simd.Fma(t2,
+                        simd.Fma(t, <#= vector #>.Create(0.0587666392926673580854313), <#= vector #>.Create(-0.0666573579361080525984562)),
+                        simd.Fma(t, <#= vector #>.Create(0.0769219538311769618355029), <#= vector #>.Create(-0.090908995008245008229153))
+                    ),
+                    simd.Fma(t2,
+                        simd.Fma(t, <#= vector #>.Create(0.111111105648261418443745), <#= vector #>.Create(-0.14285714266771329383765)),
+                        simd.Fma(t, <#= vector #>.Create(0.199999999996591265594148), <#= vector #>.Create(-0.333333333333311110369124))
+                    )
+                )
+            )
+        );
+
+        var r = simd.Fma(u, t * s, s);
+        r = simd.Fma(q, <#= vector #>.Create(math.D_Half_PI), r);
+        r ^= x_sign;
+        r = <#= vector #>.ConditionalSelect(x_is_inf | x_iz,
+            <#= vector #>.Create(math.D_Half_PI) - (x_is_inf & (<#= vector #>.Create(math.D_Half_PI) ^ x_sign)),
+            r
+        );
+        r = <#= vector #>.ConditionalSelect(y_is_inf,
+            <#= vector #>.Create(math.D_Half_PI) - (x_is_inf & (<#= vector #>.Create(math.D_Quarter_PI) ^ x_sign)),
+            r
+        );
+        r = <#= vector #>.ConditionalSelect(y_iz,
+            <#= vector #>.Equals(x_sign.AsInt64(), (-<#= vt #>.Zero).AsInt64()).AsDouble() & <#= vector #>.Create(math.D_PI),
+            r
+        );
+        r = <#= vector #>.ConditionalSelect(y_is_nan | x_is_nan,
+            <#= vector #>.Create(f64.NaN),
+            r ^ y_sign
+        );
+        return r;
+    }
+
+    #endregion
+
+<#
+    }
+#>
+    #endregion
 }
 
 #endif

@@ -609,7 +609,7 @@ public static partial class math
             if (typ.simd)
             {
 #>
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atan2(a.vector, b.vector));
         #else // NET8_0_OR_GREATER
 <#
