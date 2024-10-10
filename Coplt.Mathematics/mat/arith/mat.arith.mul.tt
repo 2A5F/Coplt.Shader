@@ -6,6 +6,8 @@
 
 namespace Coplt.Mathematics;
 <#
+    string RN(int a, int n) => string.Join("", Enumerable.Repeat(Typ.xyzw[a], n));
+
     foreach (var typ in Typ.Typs)
     {
         if (!typ.arith) continue;
@@ -42,13 +44,15 @@ public static partial class math
 <#
                     for (var b = 0; b < v; b++)
                     {
-                        var split = b + 1 < v ? "," : "";
+                        var split = b + 1 < v ? "," : " ";
 #>
-            <#= string.Join(" + ", Enumerable.Range(0, m).Select(a => $"a.c{a} * b.c{b}.{string.Join("", Enumerable.Repeat(Typ.xyzw[a], n))}")) #><#= split #>
+            <#= Enumerable.Range(0, m).Select(a => $"a.c{a} * b.c{b}.{RN(a, n)}")
+                    .Aggregate((a, b) => $"fma({b.Replace(" * ", ", ")}, {a})") #><#= split #> // <#=
+                            string.Join(" + ", Enumerable.Range(0, m).Select(a => $"a.c{a} * b.c{b}.{RN(a, n)}")) #>
 <#
                     }
 #>
-    );
+        );
 <#
                 }
 #>

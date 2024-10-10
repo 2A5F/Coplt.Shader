@@ -35,7 +35,8 @@ public partial struct <#= typeName #>
     /// </summary>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator *(<#= typeName #> a, <#= vecTypeNameM #> b) 
-        => new(<#= string.Join(", ", Enumerable.Range(0, m).Select(c => $"a.c{c} * b.{string.Join("", Enumerable.Repeat(Typ.xyzw[c], n))}")) #>);
+        => new(<#=
+                    string.Join(", ", Enumerable.Range(0, m).Select(c => $"a.c{c} * b.{string.Join("", Enumerable.Repeat(Typ.xyzw[c], n))}")) #>);
 
     /// <summary>
     /// Scale a <#= typeName #> rows by <#= vecTypeName #>
@@ -49,7 +50,10 @@ public static partial class math
 {
     [MethodImpl(256 | 512)]
     public static <#= vecTypeName #> mul(this <#= typeName #> a, <#= vecTypeNameM #> b)
-        => <#= string.Join(" + ", Enumerable.Range(0, m).Select(c => $"a.c{c} * b.{string.Join("", Enumerable.Repeat(Typ.xyzw[c], n))}")) #>;
+        => <#= Enumerable.Range(0, m)
+                   .Select(c => $"a.c{c} * b.{string.Join("", Enumerable.Repeat(Typ.xyzw[c], n))}")
+                   .Aggregate((a, b) => $"fma({b.Replace(" * ", ", ")}, {a})") #>; // <#=
+                    string.Join(" + ", Enumerable.Range(0, m).Select(c => $"a.c{c} * b.{string.Join("", Enumerable.Repeat(Typ.xyzw[c], n))}")) #>
 
     [MethodImpl(256 | 512)]
     public static <#= vecTypeNameM #> mul(this <#= vecTypeName #> a, <#= typeName #> b)
