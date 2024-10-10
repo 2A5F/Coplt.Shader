@@ -29,6 +29,12 @@ public partial struct float2
     }
 
     [MethodImpl(256 | 512)]
+    public static float2 operator +(float2 a, float b) => a + new float2(b);
+
+    [MethodImpl(256 | 512)]
+    public static float2 operator +(float a, float2 b) => new float2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static float2 operator -(float2 a, float2 b)
     {
         #if NET8_0_OR_GREATER
@@ -37,6 +43,12 @@ public partial struct float2
         return new((float)(a.x - b.x), (float)(a.y - b.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float2 operator -(float2 a, float b) => a - new float2(b);
+
+    [MethodImpl(256 | 512)]
+    public static float2 operator -(float a, float2 b) => new float2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static float2 operator *(float2 a, float2 b)
@@ -89,6 +101,9 @@ public partial struct float2
     }
 
     [MethodImpl(256 | 512)]
+    public static float2 operator /(float a, float2 b) => new float2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static float2 operator %(float2 a, float2 b)
     {
         #if NET8_0_OR_GREATER
@@ -107,6 +122,9 @@ public partial struct float2
         return new((float)(a.x % b), (float)(a.y % b));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float2 operator %(float a, float2 b) => new float2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static float2 operator --(float2 a) => a - One;
@@ -168,6 +186,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float2 clamp(this float2 v, float min, float max) => v.clamp(new float2(min), new float2(max));
+
+    [MethodImpl(256 | 512)]
     public static float2 lerp(this float2 t, float2 start, float2 end)
     {
         #if NET8_0_OR_GREATER
@@ -190,13 +211,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float2 lerp(this float2 t, float start, float end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static float2 unlerp(this float2 a, float2 start, float2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static float2 unlerp(this float a, float2 start, float2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static float2 unlerp(this float2 a, float start, float end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static float2 remap(this float2 a, float2 srcStart, float2 srcEnd, float2 dstStart, float2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static float2 remap(this float2 a, float srcStart, float srcEnd, float dstStart, float dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -358,6 +397,12 @@ public partial struct float3
     }
 
     [MethodImpl(256 | 512)]
+    public static float3 operator +(float3 a, float b) => a + new float3(b);
+
+    [MethodImpl(256 | 512)]
+    public static float3 operator +(float a, float3 b) => new float3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static float3 operator -(float3 a, float3 b)
     {
         #if NET8_0_OR_GREATER
@@ -366,6 +411,12 @@ public partial struct float3
         return new((float)(a.x - b.x), (float)(a.y - b.y), (float)(a.z - b.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float3 operator -(float3 a, float b) => a - new float3(b);
+
+    [MethodImpl(256 | 512)]
+    public static float3 operator -(float a, float3 b) => new float3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static float3 operator *(float3 a, float3 b)
@@ -418,6 +469,9 @@ public partial struct float3
     }
 
     [MethodImpl(256 | 512)]
+    public static float3 operator /(float a, float3 b) => new float3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static float3 operator %(float3 a, float3 b)
     {
         #if NET8_0_OR_GREATER
@@ -436,6 +490,9 @@ public partial struct float3
         return new((float)(a.x % b), (float)(a.y % b), (float)(a.z % b));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float3 operator %(float a, float3 b) => new float3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static float3 operator --(float3 a) => a - One;
@@ -497,6 +554,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float3 clamp(this float3 v, float min, float max) => v.clamp(new float3(min), new float3(max));
+
+    [MethodImpl(256 | 512)]
     public static float3 lerp(this float3 t, float3 start, float3 end)
     {
         #if NET8_0_OR_GREATER
@@ -519,13 +579,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float3 lerp(this float3 t, float start, float end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static float3 unlerp(this float3 a, float3 start, float3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static float3 unlerp(this float a, float3 start, float3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static float3 unlerp(this float3 a, float start, float end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static float3 remap(this float3 a, float3 srcStart, float3 srcEnd, float3 dstStart, float3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static float3 remap(this float3 a, float srcStart, float srcEnd, float dstStart, float dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -690,6 +768,12 @@ public partial struct float4
     }
 
     [MethodImpl(256 | 512)]
+    public static float4 operator +(float4 a, float b) => a + new float4(b);
+
+    [MethodImpl(256 | 512)]
+    public static float4 operator +(float a, float4 b) => new float4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static float4 operator -(float4 a, float4 b)
     {
         #if NET8_0_OR_GREATER
@@ -698,6 +782,12 @@ public partial struct float4
         return new((float)(a.x - b.x), (float)(a.y - b.y), (float)(a.z - b.z), (float)(a.w - b.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float4 operator -(float4 a, float b) => a - new float4(b);
+
+    [MethodImpl(256 | 512)]
+    public static float4 operator -(float a, float4 b) => new float4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static float4 operator *(float4 a, float4 b)
@@ -750,6 +840,9 @@ public partial struct float4
     }
 
     [MethodImpl(256 | 512)]
+    public static float4 operator /(float a, float4 b) => new float4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static float4 operator %(float4 a, float4 b)
     {
         #if NET8_0_OR_GREATER
@@ -768,6 +861,9 @@ public partial struct float4
         return new((float)(a.x % b), (float)(a.y % b), (float)(a.z % b), (float)(a.w % b));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static float4 operator %(float a, float4 b) => new float4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static float4 operator --(float4 a) => a - One;
@@ -829,6 +925,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float4 clamp(this float4 v, float min, float max) => v.clamp(new float4(min), new float4(max));
+
+    [MethodImpl(256 | 512)]
     public static float4 lerp(this float4 t, float4 start, float4 end)
     {
         #if NET8_0_OR_GREATER
@@ -851,13 +950,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static float4 lerp(this float4 t, float start, float end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static float4 unlerp(this float4 a, float4 start, float4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static float4 unlerp(this float a, float4 start, float4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static float4 unlerp(this float4 a, float start, float end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static float4 remap(this float4 a, float4 srcStart, float4 srcEnd, float4 dstStart, float4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static float4 remap(this float4 a, float srcStart, float srcEnd, float dstStart, float dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -1019,6 +1136,12 @@ public partial struct double2
     }
 
     [MethodImpl(256 | 512)]
+    public static double2 operator +(double2 a, double b) => a + new double2(b);
+
+    [MethodImpl(256 | 512)]
+    public static double2 operator +(double a, double2 b) => new double2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static double2 operator -(double2 a, double2 b)
     {
         #if NET8_0_OR_GREATER
@@ -1027,6 +1150,12 @@ public partial struct double2
         return new((double)(a.x - b.x), (double)(a.y - b.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double2 operator -(double2 a, double b) => a - new double2(b);
+
+    [MethodImpl(256 | 512)]
+    public static double2 operator -(double a, double2 b) => new double2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static double2 operator *(double2 a, double2 b)
@@ -1079,6 +1208,9 @@ public partial struct double2
     }
 
     [MethodImpl(256 | 512)]
+    public static double2 operator /(double a, double2 b) => new double2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static double2 operator %(double2 a, double2 b)
     {
         #if NET8_0_OR_GREATER
@@ -1097,6 +1229,9 @@ public partial struct double2
         return new((double)(a.x % b), (double)(a.y % b));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double2 operator %(double a, double2 b) => new double2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static double2 operator --(double2 a) => a - One;
@@ -1158,6 +1293,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double2 clamp(this double2 v, double min, double max) => v.clamp(new double2(min), new double2(max));
+
+    [MethodImpl(256 | 512)]
     public static double2 lerp(this double2 t, double2 start, double2 end)
     {
         #if NET8_0_OR_GREATER
@@ -1180,13 +1318,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double2 lerp(this double2 t, double start, double end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static double2 unlerp(this double2 a, double2 start, double2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static double2 unlerp(this double a, double2 start, double2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static double2 unlerp(this double2 a, double start, double end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static double2 remap(this double2 a, double2 srcStart, double2 srcEnd, double2 dstStart, double2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static double2 remap(this double2 a, double srcStart, double srcEnd, double dstStart, double dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -1348,6 +1504,12 @@ public partial struct double3
     }
 
     [MethodImpl(256 | 512)]
+    public static double3 operator +(double3 a, double b) => a + new double3(b);
+
+    [MethodImpl(256 | 512)]
+    public static double3 operator +(double a, double3 b) => new double3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static double3 operator -(double3 a, double3 b)
     {
         #if NET8_0_OR_GREATER
@@ -1356,6 +1518,12 @@ public partial struct double3
         return new((double)(a.x - b.x), (double)(a.y - b.y), (double)(a.z - b.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double3 operator -(double3 a, double b) => a - new double3(b);
+
+    [MethodImpl(256 | 512)]
+    public static double3 operator -(double a, double3 b) => new double3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static double3 operator *(double3 a, double3 b)
@@ -1408,6 +1576,9 @@ public partial struct double3
     }
 
     [MethodImpl(256 | 512)]
+    public static double3 operator /(double a, double3 b) => new double3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static double3 operator %(double3 a, double3 b)
     {
         #if NET8_0_OR_GREATER
@@ -1426,6 +1597,9 @@ public partial struct double3
         return new((double)(a.x % b), (double)(a.y % b), (double)(a.z % b));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double3 operator %(double a, double3 b) => new double3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static double3 operator --(double3 a) => a - One;
@@ -1487,6 +1661,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double3 clamp(this double3 v, double min, double max) => v.clamp(new double3(min), new double3(max));
+
+    [MethodImpl(256 | 512)]
     public static double3 lerp(this double3 t, double3 start, double3 end)
     {
         #if NET8_0_OR_GREATER
@@ -1509,13 +1686,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double3 lerp(this double3 t, double start, double end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static double3 unlerp(this double3 a, double3 start, double3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static double3 unlerp(this double a, double3 start, double3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static double3 unlerp(this double3 a, double start, double end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static double3 remap(this double3 a, double3 srcStart, double3 srcEnd, double3 dstStart, double3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static double3 remap(this double3 a, double srcStart, double srcEnd, double dstStart, double dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -1680,6 +1875,12 @@ public partial struct double4
     }
 
     [MethodImpl(256 | 512)]
+    public static double4 operator +(double4 a, double b) => a + new double4(b);
+
+    [MethodImpl(256 | 512)]
+    public static double4 operator +(double a, double4 b) => new double4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static double4 operator -(double4 a, double4 b)
     {
         #if NET8_0_OR_GREATER
@@ -1688,6 +1889,12 @@ public partial struct double4
         return new((double)(a.x - b.x), (double)(a.y - b.y), (double)(a.z - b.z), (double)(a.w - b.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double4 operator -(double4 a, double b) => a - new double4(b);
+
+    [MethodImpl(256 | 512)]
+    public static double4 operator -(double a, double4 b) => new double4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static double4 operator *(double4 a, double4 b)
@@ -1740,6 +1947,9 @@ public partial struct double4
     }
 
     [MethodImpl(256 | 512)]
+    public static double4 operator /(double a, double4 b) => new double4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static double4 operator %(double4 a, double4 b)
     {
         #if NET8_0_OR_GREATER
@@ -1758,6 +1968,9 @@ public partial struct double4
         return new((double)(a.x % b), (double)(a.y % b), (double)(a.z % b), (double)(a.w % b));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static double4 operator %(double a, double4 b) => new double4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static double4 operator --(double4 a) => a - One;
@@ -1819,6 +2032,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double4 clamp(this double4 v, double min, double max) => v.clamp(new double4(min), new double4(max));
+
+    [MethodImpl(256 | 512)]
     public static double4 lerp(this double4 t, double4 start, double4 end)
     {
         #if NET8_0_OR_GREATER
@@ -1841,13 +2057,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static double4 lerp(this double4 t, double start, double end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static double4 unlerp(this double4 a, double4 start, double4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static double4 unlerp(this double a, double4 start, double4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static double4 unlerp(this double4 a, double start, double end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static double4 remap(this double4 a, double4 srcStart, double4 srcEnd, double4 dstStart, double4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static double4 remap(this double4 a, double srcStart, double srcEnd, double dstStart, double dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -2001,10 +2235,22 @@ public partial struct short2
     }
 
     [MethodImpl(256 | 512)]
+    public static short2 operator +(short2 a, short b) => a + new short2(b);
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator +(short a, short2 b) => new short2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static short2 operator -(short2 a, short2 b)
     {
         return new((short)(a.x - b.x), (short)(a.y - b.y));
     }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator -(short2 a, short b) => a - new short2(b);
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator -(short a, short2 b) => new short2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static short2 operator *(short2 a, short2 b)
@@ -2037,6 +2283,9 @@ public partial struct short2
     }
 
     [MethodImpl(256 | 512)]
+    public static short2 operator /(short a, short2 b) => new short2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static short2 operator %(short2 a, short2 b)
     {
         return new((short)(a.x % b.x), (short)(a.y % b.y));
@@ -2047,6 +2296,9 @@ public partial struct short2
     {
         return new((short)(a.x % b), (short)(a.y % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static short2 operator %(short a, short2 b) => new short2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static short2 operator --(short2 a) => a - One;
@@ -2088,6 +2340,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static short2 clamp(this short2 v, short min, short max) => v.clamp(new short2(min), new short2(max));
+
+    [MethodImpl(256 | 512)]
     public static short2 lerp(this short2 t, short2 start, short2 end)
     {
         return start + t * (end - start);
@@ -2100,13 +2355,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static short2 lerp(this short2 t, short start, short end)
+    {
+        return start + t * (short)(end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static short2 unlerp(this short2 a, short2 start, short2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static short2 unlerp(this short a, short2 start, short2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static short2 unlerp(this short2 a, short start, short end) => (a - start) / (short)(end - start);
+
+    [MethodImpl(256 | 512)]
     public static short2 remap(this short2 a, short2 srcStart, short2 srcEnd, short2 dstStart, short2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static short2 remap(this short2 a, short srcStart, short srcEnd, short dstStart, short dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -2236,10 +2504,22 @@ public partial struct short3
     }
 
     [MethodImpl(256 | 512)]
+    public static short3 operator +(short3 a, short b) => a + new short3(b);
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator +(short a, short3 b) => new short3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static short3 operator -(short3 a, short3 b)
     {
         return new((short)(a.x - b.x), (short)(a.y - b.y), (short)(a.z - b.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator -(short3 a, short b) => a - new short3(b);
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator -(short a, short3 b) => new short3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static short3 operator *(short3 a, short3 b)
@@ -2272,6 +2552,9 @@ public partial struct short3
     }
 
     [MethodImpl(256 | 512)]
+    public static short3 operator /(short a, short3 b) => new short3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static short3 operator %(short3 a, short3 b)
     {
         return new((short)(a.x % b.x), (short)(a.y % b.y), (short)(a.z % b.z));
@@ -2282,6 +2565,9 @@ public partial struct short3
     {
         return new((short)(a.x % b), (short)(a.y % b), (short)(a.z % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static short3 operator %(short a, short3 b) => new short3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static short3 operator --(short3 a) => a - One;
@@ -2323,6 +2609,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static short3 clamp(this short3 v, short min, short max) => v.clamp(new short3(min), new short3(max));
+
+    [MethodImpl(256 | 512)]
     public static short3 lerp(this short3 t, short3 start, short3 end)
     {
         return start + t * (end - start);
@@ -2335,13 +2624,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static short3 lerp(this short3 t, short start, short end)
+    {
+        return start + t * (short)(end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static short3 unlerp(this short3 a, short3 start, short3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static short3 unlerp(this short a, short3 start, short3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static short3 unlerp(this short3 a, short start, short end) => (a - start) / (short)(end - start);
+
+    [MethodImpl(256 | 512)]
     public static short3 remap(this short3 a, short3 srcStart, short3 srcEnd, short3 dstStart, short3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static short3 remap(this short3 a, short srcStart, short srcEnd, short dstStart, short dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -2474,10 +2776,22 @@ public partial struct short4
     }
 
     [MethodImpl(256 | 512)]
+    public static short4 operator +(short4 a, short b) => a + new short4(b);
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator +(short a, short4 b) => new short4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static short4 operator -(short4 a, short4 b)
     {
         return new((short)(a.x - b.x), (short)(a.y - b.y), (short)(a.z - b.z), (short)(a.w - b.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator -(short4 a, short b) => a - new short4(b);
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator -(short a, short4 b) => new short4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static short4 operator *(short4 a, short4 b)
@@ -2510,6 +2824,9 @@ public partial struct short4
     }
 
     [MethodImpl(256 | 512)]
+    public static short4 operator /(short a, short4 b) => new short4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static short4 operator %(short4 a, short4 b)
     {
         return new((short)(a.x % b.x), (short)(a.y % b.y), (short)(a.z % b.z), (short)(a.w % b.w));
@@ -2520,6 +2837,9 @@ public partial struct short4
     {
         return new((short)(a.x % b), (short)(a.y % b), (short)(a.z % b), (short)(a.w % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static short4 operator %(short a, short4 b) => new short4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static short4 operator --(short4 a) => a - One;
@@ -2561,6 +2881,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static short4 clamp(this short4 v, short min, short max) => v.clamp(new short4(min), new short4(max));
+
+    [MethodImpl(256 | 512)]
     public static short4 lerp(this short4 t, short4 start, short4 end)
     {
         return start + t * (end - start);
@@ -2573,13 +2896,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static short4 lerp(this short4 t, short start, short end)
+    {
+        return start + t * (short)(end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static short4 unlerp(this short4 a, short4 start, short4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static short4 unlerp(this short a, short4 start, short4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static short4 unlerp(this short4 a, short start, short end) => (a - start) / (short)(end - start);
+
+    [MethodImpl(256 | 512)]
     public static short4 remap(this short4 a, short4 srcStart, short4 srcEnd, short4 dstStart, short4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static short4 remap(this short4 a, short srcStart, short srcEnd, short dstStart, short dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -2704,10 +3040,22 @@ public partial struct ushort2
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort2 operator +(ushort2 a, ushort b) => a + new ushort2(b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator +(ushort a, ushort2 b) => new ushort2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static ushort2 operator -(ushort2 a, ushort2 b)
     {
         return new((ushort)(a.x - b.x), (ushort)(a.y - b.y));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator -(ushort2 a, ushort b) => a - new ushort2(b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator -(ushort a, ushort2 b) => new ushort2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static ushort2 operator *(ushort2 a, ushort2 b)
@@ -2740,6 +3088,9 @@ public partial struct ushort2
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort2 operator /(ushort a, ushort2 b) => new ushort2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static ushort2 operator %(ushort2 a, ushort2 b)
     {
         return new((ushort)(a.x % b.x), (ushort)(a.y % b.y));
@@ -2750,6 +3101,9 @@ public partial struct ushort2
     {
         return new((ushort)(a.x % b), (ushort)(a.y % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 operator %(ushort a, ushort2 b) => new ushort2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static ushort2 operator --(ushort2 a) => a - One;
@@ -2791,6 +3145,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort2 clamp(this ushort2 v, ushort min, ushort max) => v.clamp(new ushort2(min), new ushort2(max));
+
+    [MethodImpl(256 | 512)]
     public static ushort2 lerp(this ushort2 t, ushort2 start, ushort2 end)
     {
         return start + t * (end - start);
@@ -2803,13 +3160,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort2 lerp(this ushort2 t, ushort start, ushort end)
+    {
+        return start + t * (ushort)(end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static ushort2 unlerp(this ushort2 a, ushort2 start, ushort2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static ushort2 unlerp(this ushort a, ushort2 start, ushort2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static ushort2 unlerp(this ushort2 a, ushort start, ushort end) => (a - start) / (ushort)(end - start);
+
+    [MethodImpl(256 | 512)]
     public static ushort2 remap(this ushort2 a, ushort2 srcStart, ushort2 srcEnd, ushort2 dstStart, ushort2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static ushort2 remap(this ushort2 a, ushort srcStart, ushort srcEnd, ushort dstStart, ushort dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -2934,10 +3304,22 @@ public partial struct ushort3
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort3 operator +(ushort3 a, ushort b) => a + new ushort3(b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator +(ushort a, ushort3 b) => new ushort3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static ushort3 operator -(ushort3 a, ushort3 b)
     {
         return new((ushort)(a.x - b.x), (ushort)(a.y - b.y), (ushort)(a.z - b.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator -(ushort3 a, ushort b) => a - new ushort3(b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator -(ushort a, ushort3 b) => new ushort3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static ushort3 operator *(ushort3 a, ushort3 b)
@@ -2970,6 +3352,9 @@ public partial struct ushort3
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort3 operator /(ushort a, ushort3 b) => new ushort3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static ushort3 operator %(ushort3 a, ushort3 b)
     {
         return new((ushort)(a.x % b.x), (ushort)(a.y % b.y), (ushort)(a.z % b.z));
@@ -2980,6 +3365,9 @@ public partial struct ushort3
     {
         return new((ushort)(a.x % b), (ushort)(a.y % b), (ushort)(a.z % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 operator %(ushort a, ushort3 b) => new ushort3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static ushort3 operator --(ushort3 a) => a - One;
@@ -3021,6 +3409,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort3 clamp(this ushort3 v, ushort min, ushort max) => v.clamp(new ushort3(min), new ushort3(max));
+
+    [MethodImpl(256 | 512)]
     public static ushort3 lerp(this ushort3 t, ushort3 start, ushort3 end)
     {
         return start + t * (end - start);
@@ -3033,13 +3424,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort3 lerp(this ushort3 t, ushort start, ushort end)
+    {
+        return start + t * (ushort)(end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static ushort3 unlerp(this ushort3 a, ushort3 start, ushort3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static ushort3 unlerp(this ushort a, ushort3 start, ushort3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static ushort3 unlerp(this ushort3 a, ushort start, ushort end) => (a - start) / (ushort)(end - start);
+
+    [MethodImpl(256 | 512)]
     public static ushort3 remap(this ushort3 a, ushort3 srcStart, ushort3 srcEnd, ushort3 dstStart, ushort3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static ushort3 remap(this ushort3 a, ushort srcStart, ushort srcEnd, ushort dstStart, ushort dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -3167,10 +3571,22 @@ public partial struct ushort4
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort4 operator +(ushort4 a, ushort b) => a + new ushort4(b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator +(ushort a, ushort4 b) => new ushort4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static ushort4 operator -(ushort4 a, ushort4 b)
     {
         return new((ushort)(a.x - b.x), (ushort)(a.y - b.y), (ushort)(a.z - b.z), (ushort)(a.w - b.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator -(ushort4 a, ushort b) => a - new ushort4(b);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator -(ushort a, ushort4 b) => new ushort4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static ushort4 operator *(ushort4 a, ushort4 b)
@@ -3203,6 +3619,9 @@ public partial struct ushort4
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort4 operator /(ushort a, ushort4 b) => new ushort4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static ushort4 operator %(ushort4 a, ushort4 b)
     {
         return new((ushort)(a.x % b.x), (ushort)(a.y % b.y), (ushort)(a.z % b.z), (ushort)(a.w % b.w));
@@ -3213,6 +3632,9 @@ public partial struct ushort4
     {
         return new((ushort)(a.x % b), (ushort)(a.y % b), (ushort)(a.z % b), (ushort)(a.w % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 operator %(ushort a, ushort4 b) => new ushort4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static ushort4 operator --(ushort4 a) => a - One;
@@ -3254,6 +3676,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort4 clamp(this ushort4 v, ushort min, ushort max) => v.clamp(new ushort4(min), new ushort4(max));
+
+    [MethodImpl(256 | 512)]
     public static ushort4 lerp(this ushort4 t, ushort4 start, ushort4 end)
     {
         return start + t * (end - start);
@@ -3266,13 +3691,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ushort4 lerp(this ushort4 t, ushort start, ushort end)
+    {
+        return start + t * (ushort)(end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static ushort4 unlerp(this ushort4 a, ushort4 start, ushort4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static ushort4 unlerp(this ushort a, ushort4 start, ushort4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static ushort4 unlerp(this ushort4 a, ushort start, ushort end) => (a - start) / (ushort)(end - start);
+
+    [MethodImpl(256 | 512)]
     public static ushort4 remap(this ushort4 a, ushort4 srcStart, ushort4 srcEnd, ushort4 dstStart, ushort4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static ushort4 remap(this ushort4 a, ushort srcStart, ushort srcEnd, ushort dstStart, ushort dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -3410,6 +3848,12 @@ public partial struct int2
     }
 
     [MethodImpl(256 | 512)]
+    public static int2 operator +(int2 a, int b) => a + new int2(b);
+
+    [MethodImpl(256 | 512)]
+    public static int2 operator +(int a, int2 b) => new int2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static int2 operator -(int2 a, int2 b)
     {
         #if NET8_0_OR_GREATER
@@ -3418,6 +3862,12 @@ public partial struct int2
         return new((int)(a.x - b.x), (int)(a.y - b.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static int2 operator -(int2 a, int b) => a - new int2(b);
+
+    [MethodImpl(256 | 512)]
+    public static int2 operator -(int a, int2 b) => new int2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static int2 operator *(int2 a, int2 b)
@@ -3470,6 +3920,9 @@ public partial struct int2
     }
 
     [MethodImpl(256 | 512)]
+    public static int2 operator /(int a, int2 b) => new int2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static int2 operator %(int2 a, int2 b)
     {
         return new((int)(a.x % b.x), (int)(a.y % b.y));
@@ -3480,6 +3933,9 @@ public partial struct int2
     {
         return new((int)(a.x % b), (int)(a.y % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static int2 operator %(int a, int2 b) => new int2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static int2 operator --(int2 a) => a - One;
@@ -3541,6 +3997,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static int2 clamp(this int2 v, int min, int max) => v.clamp(new int2(min), new int2(max));
+
+    [MethodImpl(256 | 512)]
     public static int2 lerp(this int2 t, int2 start, int2 end)
     {
         #if NET8_0_OR_GREATER
@@ -3563,13 +4022,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static int2 lerp(this int2 t, int start, int end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static int2 unlerp(this int2 a, int2 start, int2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static int2 unlerp(this int a, int2 start, int2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static int2 unlerp(this int2 a, int start, int end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static int2 remap(this int2 a, int2 srcStart, int2 srcEnd, int2 dstStart, int2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static int2 remap(this int2 a, int srcStart, int srcEnd, int dstStart, int dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -3719,6 +4196,12 @@ public partial struct int3
     }
 
     [MethodImpl(256 | 512)]
+    public static int3 operator +(int3 a, int b) => a + new int3(b);
+
+    [MethodImpl(256 | 512)]
+    public static int3 operator +(int a, int3 b) => new int3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static int3 operator -(int3 a, int3 b)
     {
         #if NET8_0_OR_GREATER
@@ -3727,6 +4210,12 @@ public partial struct int3
         return new((int)(a.x - b.x), (int)(a.y - b.y), (int)(a.z - b.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static int3 operator -(int3 a, int b) => a - new int3(b);
+
+    [MethodImpl(256 | 512)]
+    public static int3 operator -(int a, int3 b) => new int3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static int3 operator *(int3 a, int3 b)
@@ -3779,6 +4268,9 @@ public partial struct int3
     }
 
     [MethodImpl(256 | 512)]
+    public static int3 operator /(int a, int3 b) => new int3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static int3 operator %(int3 a, int3 b)
     {
         return new((int)(a.x % b.x), (int)(a.y % b.y), (int)(a.z % b.z));
@@ -3789,6 +4281,9 @@ public partial struct int3
     {
         return new((int)(a.x % b), (int)(a.y % b), (int)(a.z % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static int3 operator %(int a, int3 b) => new int3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static int3 operator --(int3 a) => a - One;
@@ -3850,6 +4345,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static int3 clamp(this int3 v, int min, int max) => v.clamp(new int3(min), new int3(max));
+
+    [MethodImpl(256 | 512)]
     public static int3 lerp(this int3 t, int3 start, int3 end)
     {
         #if NET8_0_OR_GREATER
@@ -3872,13 +4370,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static int3 lerp(this int3 t, int start, int end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static int3 unlerp(this int3 a, int3 start, int3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static int3 unlerp(this int a, int3 start, int3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static int3 unlerp(this int3 a, int start, int end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static int3 remap(this int3 a, int3 srcStart, int3 srcEnd, int3 dstStart, int3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static int3 remap(this int3 a, int srcStart, int srcEnd, int dstStart, int dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -4031,6 +4547,12 @@ public partial struct int4
     }
 
     [MethodImpl(256 | 512)]
+    public static int4 operator +(int4 a, int b) => a + new int4(b);
+
+    [MethodImpl(256 | 512)]
+    public static int4 operator +(int a, int4 b) => new int4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static int4 operator -(int4 a, int4 b)
     {
         #if NET8_0_OR_GREATER
@@ -4039,6 +4561,12 @@ public partial struct int4
         return new((int)(a.x - b.x), (int)(a.y - b.y), (int)(a.z - b.z), (int)(a.w - b.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static int4 operator -(int4 a, int b) => a - new int4(b);
+
+    [MethodImpl(256 | 512)]
+    public static int4 operator -(int a, int4 b) => new int4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static int4 operator *(int4 a, int4 b)
@@ -4091,6 +4619,9 @@ public partial struct int4
     }
 
     [MethodImpl(256 | 512)]
+    public static int4 operator /(int a, int4 b) => new int4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static int4 operator %(int4 a, int4 b)
     {
         return new((int)(a.x % b.x), (int)(a.y % b.y), (int)(a.z % b.z), (int)(a.w % b.w));
@@ -4101,6 +4632,9 @@ public partial struct int4
     {
         return new((int)(a.x % b), (int)(a.y % b), (int)(a.z % b), (int)(a.w % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static int4 operator %(int a, int4 b) => new int4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static int4 operator --(int4 a) => a - One;
@@ -4162,6 +4696,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static int4 clamp(this int4 v, int min, int max) => v.clamp(new int4(min), new int4(max));
+
+    [MethodImpl(256 | 512)]
     public static int4 lerp(this int4 t, int4 start, int4 end)
     {
         #if NET8_0_OR_GREATER
@@ -4184,13 +4721,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static int4 lerp(this int4 t, int start, int end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static int4 unlerp(this int4 a, int4 start, int4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static int4 unlerp(this int a, int4 start, int4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static int4 unlerp(this int4 a, int start, int end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static int4 remap(this int4 a, int4 srcStart, int4 srcEnd, int4 dstStart, int4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static int4 remap(this int4 a, int srcStart, int srcEnd, int dstStart, int dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -4331,6 +4886,12 @@ public partial struct uint2
     }
 
     [MethodImpl(256 | 512)]
+    public static uint2 operator +(uint2 a, uint b) => a + new uint2(b);
+
+    [MethodImpl(256 | 512)]
+    public static uint2 operator +(uint a, uint2 b) => new uint2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static uint2 operator -(uint2 a, uint2 b)
     {
         #if NET8_0_OR_GREATER
@@ -4339,6 +4900,12 @@ public partial struct uint2
         return new((uint)(a.x - b.x), (uint)(a.y - b.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint2 operator -(uint2 a, uint b) => a - new uint2(b);
+
+    [MethodImpl(256 | 512)]
+    public static uint2 operator -(uint a, uint2 b) => new uint2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static uint2 operator *(uint2 a, uint2 b)
@@ -4391,6 +4958,9 @@ public partial struct uint2
     }
 
     [MethodImpl(256 | 512)]
+    public static uint2 operator /(uint a, uint2 b) => new uint2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static uint2 operator %(uint2 a, uint2 b)
     {
         return new((uint)(a.x % b.x), (uint)(a.y % b.y));
@@ -4401,6 +4971,9 @@ public partial struct uint2
     {
         return new((uint)(a.x % b), (uint)(a.y % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint2 operator %(uint a, uint2 b) => new uint2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static uint2 operator --(uint2 a) => a - One;
@@ -4462,6 +5035,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static uint2 clamp(this uint2 v, uint min, uint max) => v.clamp(new uint2(min), new uint2(max));
+
+    [MethodImpl(256 | 512)]
     public static uint2 lerp(this uint2 t, uint2 start, uint2 end)
     {
         #if NET8_0_OR_GREATER
@@ -4484,13 +5060,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static uint2 lerp(this uint2 t, uint start, uint end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static uint2 unlerp(this uint2 a, uint2 start, uint2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static uint2 unlerp(this uint a, uint2 start, uint2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static uint2 unlerp(this uint2 a, uint start, uint end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static uint2 remap(this uint2 a, uint2 srcStart, uint2 srcEnd, uint2 dstStart, uint2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static uint2 remap(this uint2 a, uint srcStart, uint srcEnd, uint dstStart, uint dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -4631,6 +5225,12 @@ public partial struct uint3
     }
 
     [MethodImpl(256 | 512)]
+    public static uint3 operator +(uint3 a, uint b) => a + new uint3(b);
+
+    [MethodImpl(256 | 512)]
+    public static uint3 operator +(uint a, uint3 b) => new uint3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static uint3 operator -(uint3 a, uint3 b)
     {
         #if NET8_0_OR_GREATER
@@ -4639,6 +5239,12 @@ public partial struct uint3
         return new((uint)(a.x - b.x), (uint)(a.y - b.y), (uint)(a.z - b.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint3 operator -(uint3 a, uint b) => a - new uint3(b);
+
+    [MethodImpl(256 | 512)]
+    public static uint3 operator -(uint a, uint3 b) => new uint3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static uint3 operator *(uint3 a, uint3 b)
@@ -4691,6 +5297,9 @@ public partial struct uint3
     }
 
     [MethodImpl(256 | 512)]
+    public static uint3 operator /(uint a, uint3 b) => new uint3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static uint3 operator %(uint3 a, uint3 b)
     {
         return new((uint)(a.x % b.x), (uint)(a.y % b.y), (uint)(a.z % b.z));
@@ -4701,6 +5310,9 @@ public partial struct uint3
     {
         return new((uint)(a.x % b), (uint)(a.y % b), (uint)(a.z % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint3 operator %(uint a, uint3 b) => new uint3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static uint3 operator --(uint3 a) => a - One;
@@ -4762,6 +5374,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static uint3 clamp(this uint3 v, uint min, uint max) => v.clamp(new uint3(min), new uint3(max));
+
+    [MethodImpl(256 | 512)]
     public static uint3 lerp(this uint3 t, uint3 start, uint3 end)
     {
         #if NET8_0_OR_GREATER
@@ -4784,13 +5399,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static uint3 lerp(this uint3 t, uint start, uint end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static uint3 unlerp(this uint3 a, uint3 start, uint3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static uint3 unlerp(this uint a, uint3 start, uint3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static uint3 unlerp(this uint3 a, uint start, uint end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static uint3 remap(this uint3 a, uint3 srcStart, uint3 srcEnd, uint3 dstStart, uint3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static uint3 remap(this uint3 a, uint srcStart, uint srcEnd, uint dstStart, uint dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -4934,6 +5567,12 @@ public partial struct uint4
     }
 
     [MethodImpl(256 | 512)]
+    public static uint4 operator +(uint4 a, uint b) => a + new uint4(b);
+
+    [MethodImpl(256 | 512)]
+    public static uint4 operator +(uint a, uint4 b) => new uint4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static uint4 operator -(uint4 a, uint4 b)
     {
         #if NET8_0_OR_GREATER
@@ -4942,6 +5581,12 @@ public partial struct uint4
         return new((uint)(a.x - b.x), (uint)(a.y - b.y), (uint)(a.z - b.z), (uint)(a.w - b.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint4 operator -(uint4 a, uint b) => a - new uint4(b);
+
+    [MethodImpl(256 | 512)]
+    public static uint4 operator -(uint a, uint4 b) => new uint4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static uint4 operator *(uint4 a, uint4 b)
@@ -4994,6 +5639,9 @@ public partial struct uint4
     }
 
     [MethodImpl(256 | 512)]
+    public static uint4 operator /(uint a, uint4 b) => new uint4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static uint4 operator %(uint4 a, uint4 b)
     {
         return new((uint)(a.x % b.x), (uint)(a.y % b.y), (uint)(a.z % b.z), (uint)(a.w % b.w));
@@ -5004,6 +5652,9 @@ public partial struct uint4
     {
         return new((uint)(a.x % b), (uint)(a.y % b), (uint)(a.z % b), (uint)(a.w % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static uint4 operator %(uint a, uint4 b) => new uint4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static uint4 operator --(uint4 a) => a - One;
@@ -5065,6 +5716,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static uint4 clamp(this uint4 v, uint min, uint max) => v.clamp(new uint4(min), new uint4(max));
+
+    [MethodImpl(256 | 512)]
     public static uint4 lerp(this uint4 t, uint4 start, uint4 end)
     {
         #if NET8_0_OR_GREATER
@@ -5087,13 +5741,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static uint4 lerp(this uint4 t, uint start, uint end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static uint4 unlerp(this uint4 a, uint4 start, uint4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static uint4 unlerp(this uint a, uint4 start, uint4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static uint4 unlerp(this uint4 a, uint start, uint end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static uint4 remap(this uint4 a, uint4 srcStart, uint4 srcEnd, uint4 dstStart, uint4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static uint4 remap(this uint4 a, uint srcStart, uint srcEnd, uint dstStart, uint dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -5243,6 +5915,12 @@ public partial struct long2
     }
 
     [MethodImpl(256 | 512)]
+    public static long2 operator +(long2 a, long b) => a + new long2(b);
+
+    [MethodImpl(256 | 512)]
+    public static long2 operator +(long a, long2 b) => new long2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static long2 operator -(long2 a, long2 b)
     {
         #if NET8_0_OR_GREATER
@@ -5251,6 +5929,12 @@ public partial struct long2
         return new((long)(a.x - b.x), (long)(a.y - b.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static long2 operator -(long2 a, long b) => a - new long2(b);
+
+    [MethodImpl(256 | 512)]
+    public static long2 operator -(long a, long2 b) => new long2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static long2 operator *(long2 a, long2 b)
@@ -5303,6 +5987,9 @@ public partial struct long2
     }
 
     [MethodImpl(256 | 512)]
+    public static long2 operator /(long a, long2 b) => new long2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static long2 operator %(long2 a, long2 b)
     {
         return new((long)(a.x % b.x), (long)(a.y % b.y));
@@ -5313,6 +6000,9 @@ public partial struct long2
     {
         return new((long)(a.x % b), (long)(a.y % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static long2 operator %(long a, long2 b) => new long2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static long2 operator --(long2 a) => a - One;
@@ -5374,6 +6064,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static long2 clamp(this long2 v, long min, long max) => v.clamp(new long2(min), new long2(max));
+
+    [MethodImpl(256 | 512)]
     public static long2 lerp(this long2 t, long2 start, long2 end)
     {
         #if NET8_0_OR_GREATER
@@ -5396,13 +6089,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static long2 lerp(this long2 t, long start, long end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static long2 unlerp(this long2 a, long2 start, long2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static long2 unlerp(this long a, long2 start, long2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static long2 unlerp(this long2 a, long start, long end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static long2 remap(this long2 a, long2 srcStart, long2 srcEnd, long2 dstStart, long2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static long2 remap(this long2 a, long srcStart, long srcEnd, long dstStart, long dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -5552,6 +6263,12 @@ public partial struct long3
     }
 
     [MethodImpl(256 | 512)]
+    public static long3 operator +(long3 a, long b) => a + new long3(b);
+
+    [MethodImpl(256 | 512)]
+    public static long3 operator +(long a, long3 b) => new long3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static long3 operator -(long3 a, long3 b)
     {
         #if NET8_0_OR_GREATER
@@ -5560,6 +6277,12 @@ public partial struct long3
         return new((long)(a.x - b.x), (long)(a.y - b.y), (long)(a.z - b.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static long3 operator -(long3 a, long b) => a - new long3(b);
+
+    [MethodImpl(256 | 512)]
+    public static long3 operator -(long a, long3 b) => new long3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static long3 operator *(long3 a, long3 b)
@@ -5612,6 +6335,9 @@ public partial struct long3
     }
 
     [MethodImpl(256 | 512)]
+    public static long3 operator /(long a, long3 b) => new long3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static long3 operator %(long3 a, long3 b)
     {
         return new((long)(a.x % b.x), (long)(a.y % b.y), (long)(a.z % b.z));
@@ -5622,6 +6348,9 @@ public partial struct long3
     {
         return new((long)(a.x % b), (long)(a.y % b), (long)(a.z % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static long3 operator %(long a, long3 b) => new long3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static long3 operator --(long3 a) => a - One;
@@ -5683,6 +6412,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static long3 clamp(this long3 v, long min, long max) => v.clamp(new long3(min), new long3(max));
+
+    [MethodImpl(256 | 512)]
     public static long3 lerp(this long3 t, long3 start, long3 end)
     {
         #if NET8_0_OR_GREATER
@@ -5705,13 +6437,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static long3 lerp(this long3 t, long start, long end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static long3 unlerp(this long3 a, long3 start, long3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static long3 unlerp(this long a, long3 start, long3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static long3 unlerp(this long3 a, long start, long end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static long3 remap(this long3 a, long3 srcStart, long3 srcEnd, long3 dstStart, long3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static long3 remap(this long3 a, long srcStart, long srcEnd, long dstStart, long dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -5864,6 +6614,12 @@ public partial struct long4
     }
 
     [MethodImpl(256 | 512)]
+    public static long4 operator +(long4 a, long b) => a + new long4(b);
+
+    [MethodImpl(256 | 512)]
+    public static long4 operator +(long a, long4 b) => new long4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static long4 operator -(long4 a, long4 b)
     {
         #if NET8_0_OR_GREATER
@@ -5872,6 +6628,12 @@ public partial struct long4
         return new((long)(a.x - b.x), (long)(a.y - b.y), (long)(a.z - b.z), (long)(a.w - b.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static long4 operator -(long4 a, long b) => a - new long4(b);
+
+    [MethodImpl(256 | 512)]
+    public static long4 operator -(long a, long4 b) => new long4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static long4 operator *(long4 a, long4 b)
@@ -5924,6 +6686,9 @@ public partial struct long4
     }
 
     [MethodImpl(256 | 512)]
+    public static long4 operator /(long a, long4 b) => new long4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static long4 operator %(long4 a, long4 b)
     {
         return new((long)(a.x % b.x), (long)(a.y % b.y), (long)(a.z % b.z), (long)(a.w % b.w));
@@ -5934,6 +6699,9 @@ public partial struct long4
     {
         return new((long)(a.x % b), (long)(a.y % b), (long)(a.z % b), (long)(a.w % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static long4 operator %(long a, long4 b) => new long4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static long4 operator --(long4 a) => a - One;
@@ -5995,6 +6763,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static long4 clamp(this long4 v, long min, long max) => v.clamp(new long4(min), new long4(max));
+
+    [MethodImpl(256 | 512)]
     public static long4 lerp(this long4 t, long4 start, long4 end)
     {
         #if NET8_0_OR_GREATER
@@ -6017,13 +6788,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static long4 lerp(this long4 t, long start, long end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static long4 unlerp(this long4 a, long4 start, long4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static long4 unlerp(this long a, long4 start, long4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static long4 unlerp(this long4 a, long start, long end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static long4 remap(this long4 a, long4 srcStart, long4 srcEnd, long4 dstStart, long4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static long4 remap(this long4 a, long srcStart, long srcEnd, long dstStart, long dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -6164,6 +6953,12 @@ public partial struct ulong2
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong2 operator +(ulong2 a, ulong b) => a + new ulong2(b);
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 operator +(ulong a, ulong2 b) => new ulong2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static ulong2 operator -(ulong2 a, ulong2 b)
     {
         #if NET8_0_OR_GREATER
@@ -6172,6 +6967,12 @@ public partial struct ulong2
         return new((ulong)(a.x - b.x), (ulong)(a.y - b.y));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 operator -(ulong2 a, ulong b) => a - new ulong2(b);
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 operator -(ulong a, ulong2 b) => new ulong2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static ulong2 operator *(ulong2 a, ulong2 b)
@@ -6224,6 +7025,9 @@ public partial struct ulong2
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong2 operator /(ulong a, ulong2 b) => new ulong2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static ulong2 operator %(ulong2 a, ulong2 b)
     {
         return new((ulong)(a.x % b.x), (ulong)(a.y % b.y));
@@ -6234,6 +7038,9 @@ public partial struct ulong2
     {
         return new((ulong)(a.x % b), (ulong)(a.y % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 operator %(ulong a, ulong2 b) => new ulong2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static ulong2 operator --(ulong2 a) => a - One;
@@ -6295,6 +7102,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong2 clamp(this ulong2 v, ulong min, ulong max) => v.clamp(new ulong2(min), new ulong2(max));
+
+    [MethodImpl(256 | 512)]
     public static ulong2 lerp(this ulong2 t, ulong2 start, ulong2 end)
     {
         #if NET8_0_OR_GREATER
@@ -6317,13 +7127,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong2 lerp(this ulong2 t, ulong start, ulong end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static ulong2 unlerp(this ulong2 a, ulong2 start, ulong2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static ulong2 unlerp(this ulong a, ulong2 start, ulong2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static ulong2 unlerp(this ulong2 a, ulong start, ulong end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static ulong2 remap(this ulong2 a, ulong2 srcStart, ulong2 srcEnd, ulong2 dstStart, ulong2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static ulong2 remap(this ulong2 a, ulong srcStart, ulong srcEnd, ulong dstStart, ulong dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -6464,6 +7292,12 @@ public partial struct ulong3
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong3 operator +(ulong3 a, ulong b) => a + new ulong3(b);
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 operator +(ulong a, ulong3 b) => new ulong3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static ulong3 operator -(ulong3 a, ulong3 b)
     {
         #if NET8_0_OR_GREATER
@@ -6472,6 +7306,12 @@ public partial struct ulong3
         return new((ulong)(a.x - b.x), (ulong)(a.y - b.y), (ulong)(a.z - b.z));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 operator -(ulong3 a, ulong b) => a - new ulong3(b);
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 operator -(ulong a, ulong3 b) => new ulong3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static ulong3 operator *(ulong3 a, ulong3 b)
@@ -6524,6 +7364,9 @@ public partial struct ulong3
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong3 operator /(ulong a, ulong3 b) => new ulong3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static ulong3 operator %(ulong3 a, ulong3 b)
     {
         return new((ulong)(a.x % b.x), (ulong)(a.y % b.y), (ulong)(a.z % b.z));
@@ -6534,6 +7377,9 @@ public partial struct ulong3
     {
         return new((ulong)(a.x % b), (ulong)(a.y % b), (ulong)(a.z % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 operator %(ulong a, ulong3 b) => new ulong3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static ulong3 operator --(ulong3 a) => a - One;
@@ -6595,6 +7441,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong3 clamp(this ulong3 v, ulong min, ulong max) => v.clamp(new ulong3(min), new ulong3(max));
+
+    [MethodImpl(256 | 512)]
     public static ulong3 lerp(this ulong3 t, ulong3 start, ulong3 end)
     {
         #if NET8_0_OR_GREATER
@@ -6617,13 +7466,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong3 lerp(this ulong3 t, ulong start, ulong end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static ulong3 unlerp(this ulong3 a, ulong3 start, ulong3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static ulong3 unlerp(this ulong a, ulong3 start, ulong3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static ulong3 unlerp(this ulong3 a, ulong start, ulong end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static ulong3 remap(this ulong3 a, ulong3 srcStart, ulong3 srcEnd, ulong3 dstStart, ulong3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static ulong3 remap(this ulong3 a, ulong srcStart, ulong srcEnd, ulong dstStart, ulong dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -6767,6 +7634,12 @@ public partial struct ulong4
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong4 operator +(ulong4 a, ulong b) => a + new ulong4(b);
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 operator +(ulong a, ulong4 b) => new ulong4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static ulong4 operator -(ulong4 a, ulong4 b)
     {
         #if NET8_0_OR_GREATER
@@ -6775,6 +7648,12 @@ public partial struct ulong4
         return new((ulong)(a.x - b.x), (ulong)(a.y - b.y), (ulong)(a.z - b.z), (ulong)(a.w - b.w));
         #endif // NET8_0_OR_GREATER
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 operator -(ulong4 a, ulong b) => a - new ulong4(b);
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 operator -(ulong a, ulong4 b) => new ulong4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static ulong4 operator *(ulong4 a, ulong4 b)
@@ -6827,6 +7706,9 @@ public partial struct ulong4
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong4 operator /(ulong a, ulong4 b) => new ulong4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static ulong4 operator %(ulong4 a, ulong4 b)
     {
         return new((ulong)(a.x % b.x), (ulong)(a.y % b.y), (ulong)(a.z % b.z), (ulong)(a.w % b.w));
@@ -6837,6 +7719,9 @@ public partial struct ulong4
     {
         return new((ulong)(a.x % b), (ulong)(a.y % b), (ulong)(a.z % b), (ulong)(a.w % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 operator %(ulong a, ulong4 b) => new ulong4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static ulong4 operator --(ulong4 a) => a - One;
@@ -6898,6 +7783,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong4 clamp(this ulong4 v, ulong min, ulong max) => v.clamp(new ulong4(min), new ulong4(max));
+
+    [MethodImpl(256 | 512)]
     public static ulong4 lerp(this ulong4 t, ulong4 start, ulong4 end)
     {
         #if NET8_0_OR_GREATER
@@ -6920,13 +7808,31 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static ulong4 lerp(this ulong4 t, ulong start, ulong end)
+    {
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, (end - start), new(start));
+        #else // NET8_0_OR_GREATER
+        return start + t * (end - start);
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public static ulong4 unlerp(this ulong4 a, ulong4 start, ulong4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static ulong4 unlerp(this ulong a, ulong4 start, ulong4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static ulong4 unlerp(this ulong4 a, ulong start, ulong end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static ulong4 remap(this ulong4 a, ulong4 srcStart, ulong4 srcEnd, ulong4 dstStart, ulong4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static ulong4 remap(this ulong4 a, ulong srcStart, ulong srcEnd, ulong dstStart, ulong dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -7068,10 +7974,22 @@ public partial struct decimal2
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal2 operator +(decimal2 a, decimal b) => a + new decimal2(b);
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 operator +(decimal a, decimal2 b) => new decimal2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static decimal2 operator -(decimal2 a, decimal2 b)
     {
         return new((decimal)(a.x - b.x), (decimal)(a.y - b.y));
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 operator -(decimal2 a, decimal b) => a - new decimal2(b);
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 operator -(decimal a, decimal2 b) => new decimal2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static decimal2 operator *(decimal2 a, decimal2 b)
@@ -7104,6 +8022,9 @@ public partial struct decimal2
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal2 operator /(decimal a, decimal2 b) => new decimal2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static decimal2 operator %(decimal2 a, decimal2 b)
     {
         return new((decimal)(a.x % b.x), (decimal)(a.y % b.y));
@@ -7114,6 +8035,9 @@ public partial struct decimal2
     {
         return new((decimal)(a.x % b), (decimal)(a.y % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 operator %(decimal a, decimal2 b) => new decimal2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static decimal2 operator --(decimal2 a) => a - One;
@@ -7155,6 +8079,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal2 clamp(this decimal2 v, decimal min, decimal max) => v.clamp(new decimal2(min), new decimal2(max));
+
+    [MethodImpl(256 | 512)]
     public static decimal2 lerp(this decimal2 t, decimal2 start, decimal2 end)
     {
         return start + t * (end - start);
@@ -7167,13 +8094,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal2 lerp(this decimal2 t, decimal start, decimal end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static decimal2 unlerp(this decimal2 a, decimal2 start, decimal2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static decimal2 unlerp(this decimal a, decimal2 start, decimal2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static decimal2 unlerp(this decimal2 a, decimal start, decimal end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static decimal2 remap(this decimal2 a, decimal2 srcStart, decimal2 srcEnd, decimal2 dstStart, decimal2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static decimal2 remap(this decimal2 a, decimal srcStart, decimal srcEnd, decimal dstStart, decimal dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -7303,10 +8243,22 @@ public partial struct decimal3
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal3 operator +(decimal3 a, decimal b) => a + new decimal3(b);
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 operator +(decimal a, decimal3 b) => new decimal3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static decimal3 operator -(decimal3 a, decimal3 b)
     {
         return new((decimal)(a.x - b.x), (decimal)(a.y - b.y), (decimal)(a.z - b.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 operator -(decimal3 a, decimal b) => a - new decimal3(b);
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 operator -(decimal a, decimal3 b) => new decimal3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static decimal3 operator *(decimal3 a, decimal3 b)
@@ -7339,6 +8291,9 @@ public partial struct decimal3
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal3 operator /(decimal a, decimal3 b) => new decimal3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static decimal3 operator %(decimal3 a, decimal3 b)
     {
         return new((decimal)(a.x % b.x), (decimal)(a.y % b.y), (decimal)(a.z % b.z));
@@ -7349,6 +8304,9 @@ public partial struct decimal3
     {
         return new((decimal)(a.x % b), (decimal)(a.y % b), (decimal)(a.z % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 operator %(decimal a, decimal3 b) => new decimal3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static decimal3 operator --(decimal3 a) => a - One;
@@ -7390,6 +8348,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal3 clamp(this decimal3 v, decimal min, decimal max) => v.clamp(new decimal3(min), new decimal3(max));
+
+    [MethodImpl(256 | 512)]
     public static decimal3 lerp(this decimal3 t, decimal3 start, decimal3 end)
     {
         return start + t * (end - start);
@@ -7402,13 +8363,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal3 lerp(this decimal3 t, decimal start, decimal end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static decimal3 unlerp(this decimal3 a, decimal3 start, decimal3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static decimal3 unlerp(this decimal a, decimal3 start, decimal3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static decimal3 unlerp(this decimal3 a, decimal start, decimal end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static decimal3 remap(this decimal3 a, decimal3 srcStart, decimal3 srcEnd, decimal3 dstStart, decimal3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static decimal3 remap(this decimal3 a, decimal srcStart, decimal srcEnd, decimal dstStart, decimal dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -7541,10 +8515,22 @@ public partial struct decimal4
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal4 operator +(decimal4 a, decimal b) => a + new decimal4(b);
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 operator +(decimal a, decimal4 b) => new decimal4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static decimal4 operator -(decimal4 a, decimal4 b)
     {
         return new((decimal)(a.x - b.x), (decimal)(a.y - b.y), (decimal)(a.z - b.z), (decimal)(a.w - b.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 operator -(decimal4 a, decimal b) => a - new decimal4(b);
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 operator -(decimal a, decimal4 b) => new decimal4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static decimal4 operator *(decimal4 a, decimal4 b)
@@ -7577,6 +8563,9 @@ public partial struct decimal4
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal4 operator /(decimal a, decimal4 b) => new decimal4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static decimal4 operator %(decimal4 a, decimal4 b)
     {
         return new((decimal)(a.x % b.x), (decimal)(a.y % b.y), (decimal)(a.z % b.z), (decimal)(a.w % b.w));
@@ -7587,6 +8576,9 @@ public partial struct decimal4
     {
         return new((decimal)(a.x % b), (decimal)(a.y % b), (decimal)(a.z % b), (decimal)(a.w % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 operator %(decimal a, decimal4 b) => new decimal4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static decimal4 operator --(decimal4 a) => a - One;
@@ -7628,6 +8620,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal4 clamp(this decimal4 v, decimal min, decimal max) => v.clamp(new decimal4(min), new decimal4(max));
+
+    [MethodImpl(256 | 512)]
     public static decimal4 lerp(this decimal4 t, decimal4 start, decimal4 end)
     {
         return start + t * (end - start);
@@ -7640,13 +8635,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static decimal4 lerp(this decimal4 t, decimal start, decimal end)
+    {
+        return start + t * (end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static decimal4 unlerp(this decimal4 a, decimal4 start, decimal4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static decimal4 unlerp(this decimal a, decimal4 start, decimal4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static decimal4 unlerp(this decimal4 a, decimal start, decimal end) => (a - start) / (end - start);
+
+    [MethodImpl(256 | 512)]
     public static decimal4 remap(this decimal4 a, decimal4 srcStart, decimal4 srcEnd, decimal4 dstStart, decimal4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static decimal4 remap(this decimal4 a, decimal srcStart, decimal srcEnd, decimal dstStart, decimal dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -7776,10 +8784,22 @@ public partial struct half2
     }
 
     [MethodImpl(256 | 512)]
+    public static half2 operator +(half2 a, half b) => a + new half2(b);
+
+    [MethodImpl(256 | 512)]
+    public static half2 operator +(half a, half2 b) => new half2(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static half2 operator -(half2 a, half2 b)
     {
         return new((half)(a.x - b.x), (half)(a.y - b.y));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half2 operator -(half2 a, half b) => a - new half2(b);
+
+    [MethodImpl(256 | 512)]
+    public static half2 operator -(half a, half2 b) => new half2(a) - b;
 
     [MethodImpl(256 | 512)]
     public static half2 operator *(half2 a, half2 b)
@@ -7812,6 +8832,9 @@ public partial struct half2
     }
 
     [MethodImpl(256 | 512)]
+    public static half2 operator /(half a, half2 b) => new half2(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static half2 operator %(half2 a, half2 b)
     {
         return new((half)(a.x % b.x), (half)(a.y % b.y));
@@ -7822,6 +8845,9 @@ public partial struct half2
     {
         return new((half)(a.x % b), (half)(a.y % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half2 operator %(half a, half2 b) => new half2(a) % b;
 
     [MethodImpl(256 | 512)]
     public static half2 operator --(half2 a) => a - One;
@@ -7863,6 +8889,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half2 clamp(this half2 v, half min, half max) => v.clamp(new half2(min), new half2(max));
+
+    [MethodImpl(256 | 512)]
     public static half2 lerp(this half2 t, half2 start, half2 end)
     {
         return start + t * (end - start);
@@ -7875,13 +8904,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half2 lerp(this half2 t, half start, half end)
+    {
+        return start + t * (half)(end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static half2 unlerp(this half2 a, half2 start, half2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static half2 unlerp(this half a, half2 start, half2 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static half2 unlerp(this half2 a, half start, half end) => (a - start) / (half)(end - start);
+
+    [MethodImpl(256 | 512)]
     public static half2 remap(this half2 a, half2 srcStart, half2 srcEnd, half2 dstStart, half2 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static half2 remap(this half2 a, half srcStart, half srcEnd, half dstStart, half dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -8011,10 +9053,22 @@ public partial struct half3
     }
 
     [MethodImpl(256 | 512)]
+    public static half3 operator +(half3 a, half b) => a + new half3(b);
+
+    [MethodImpl(256 | 512)]
+    public static half3 operator +(half a, half3 b) => new half3(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static half3 operator -(half3 a, half3 b)
     {
         return new((half)(a.x - b.x), (half)(a.y - b.y), (half)(a.z - b.z));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half3 operator -(half3 a, half b) => a - new half3(b);
+
+    [MethodImpl(256 | 512)]
+    public static half3 operator -(half a, half3 b) => new half3(a) - b;
 
     [MethodImpl(256 | 512)]
     public static half3 operator *(half3 a, half3 b)
@@ -8047,6 +9101,9 @@ public partial struct half3
     }
 
     [MethodImpl(256 | 512)]
+    public static half3 operator /(half a, half3 b) => new half3(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static half3 operator %(half3 a, half3 b)
     {
         return new((half)(a.x % b.x), (half)(a.y % b.y), (half)(a.z % b.z));
@@ -8057,6 +9114,9 @@ public partial struct half3
     {
         return new((half)(a.x % b), (half)(a.y % b), (half)(a.z % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half3 operator %(half a, half3 b) => new half3(a) % b;
 
     [MethodImpl(256 | 512)]
     public static half3 operator --(half3 a) => a - One;
@@ -8098,6 +9158,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half3 clamp(this half3 v, half min, half max) => v.clamp(new half3(min), new half3(max));
+
+    [MethodImpl(256 | 512)]
     public static half3 lerp(this half3 t, half3 start, half3 end)
     {
         return start + t * (end - start);
@@ -8110,13 +9173,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half3 lerp(this half3 t, half start, half end)
+    {
+        return start + t * (half)(end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static half3 unlerp(this half3 a, half3 start, half3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static half3 unlerp(this half a, half3 start, half3 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static half3 unlerp(this half3 a, half start, half end) => (a - start) / (half)(end - start);
+
+    [MethodImpl(256 | 512)]
     public static half3 remap(this half3 a, half3 srcStart, half3 srcEnd, half3 dstStart, half3 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static half3 remap(this half3 a, half srcStart, half srcEnd, half dstStart, half dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
@@ -8249,10 +9325,22 @@ public partial struct half4
     }
 
     [MethodImpl(256 | 512)]
+    public static half4 operator +(half4 a, half b) => a + new half4(b);
+
+    [MethodImpl(256 | 512)]
+    public static half4 operator +(half a, half4 b) => new half4(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static half4 operator -(half4 a, half4 b)
     {
         return new((half)(a.x - b.x), (half)(a.y - b.y), (half)(a.z - b.z), (half)(a.w - b.w));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half4 operator -(half4 a, half b) => a - new half4(b);
+
+    [MethodImpl(256 | 512)]
+    public static half4 operator -(half a, half4 b) => new half4(a) - b;
 
     [MethodImpl(256 | 512)]
     public static half4 operator *(half4 a, half4 b)
@@ -8285,6 +9373,9 @@ public partial struct half4
     }
 
     [MethodImpl(256 | 512)]
+    public static half4 operator /(half a, half4 b) => new half4(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static half4 operator %(half4 a, half4 b)
     {
         return new((half)(a.x % b.x), (half)(a.y % b.y), (half)(a.z % b.z), (half)(a.w % b.w));
@@ -8295,6 +9386,9 @@ public partial struct half4
     {
         return new((half)(a.x % b), (half)(a.y % b), (half)(a.z % b), (half)(a.w % b));
     }
+
+    [MethodImpl(256 | 512)]
+    public static half4 operator %(half a, half4 b) => new half4(a) % b;
 
     [MethodImpl(256 | 512)]
     public static half4 operator --(half4 a) => a - One;
@@ -8336,6 +9430,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half4 clamp(this half4 v, half min, half max) => v.clamp(new half4(min), new half4(max));
+
+    [MethodImpl(256 | 512)]
     public static half4 lerp(this half4 t, half4 start, half4 end)
     {
         return start + t * (end - start);
@@ -8348,13 +9445,26 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static half4 lerp(this half4 t, half start, half end)
+    {
+        return start + t * (half)(end - start);
+    }
+
+    [MethodImpl(256 | 512)]
     public static half4 unlerp(this half4 a, half4 start, half4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static half4 unlerp(this half a, half4 start, half4 end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static half4 unlerp(this half4 a, half start, half end) => (a - start) / (half)(end - start);
+
+    [MethodImpl(256 | 512)]
     public static half4 remap(this half4 a, half4 srcStart, half4 srcEnd, half4 dstStart, half4 dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static half4 remap(this half4 a, half srcStart, half srcEnd, half dstStart, half dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]

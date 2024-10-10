@@ -86,6 +86,12 @@ public partial struct <#= typeName #>
     }
 
     [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator +(<#= typeName #> a, <#= typ.compType #> b) => a + new <#= typeName #>(b);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator +(<#= typ.compType #> a, <#= typeName #> b) => new <#= typeName #>(a) + b;
+
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> operator -(<#= typeName #> a, <#= typeName #> b)
     {
 <#
@@ -109,6 +115,12 @@ public partial struct <#= typeName #>
             }
 #>
     }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator -(<#= typeName #> a, <#= typ.compType #> b) => a - new <#= typeName #>(b);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator -(<#= typ.compType #> a, <#= typeName #> b) => new <#= typeName #>(a) - b;
 
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator *(<#= typeName #> a, <#= typeName #> b)
@@ -243,6 +255,9 @@ public partial struct <#= typeName #>
     }
 
     [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator /(<#= typ.compType #> a, <#= typeName #> b) => new <#= typeName #>(a) / b;
+
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> operator %(<#= typeName #> a, <#= typeName #> b)
     {
 <#
@@ -301,6 +316,9 @@ public partial struct <#= typeName #>
             }
 #>
     }
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> operator %(<#= typ.compType #> a, <#= typeName #> b) => new <#= typeName #>(a) % b;
 
     [MethodImpl(256 | 512)]
     public static <#= typeName #> operator --(<#= typeName #> a) => a - One;
@@ -451,6 +469,9 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static <#= typeName #> clamp(this <#= typeName #> v, <#= typ.simdComp #> min, <#= typ.simdComp #> max) => v.clamp(new <#= typeName #>(min), new <#= typeName #>(max));
+
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> lerp(this <#= typeName #> t, <#= typeName #> start, <#= typeName #> end)
     {
 <#
@@ -501,13 +522,45 @@ public static partial class math
     }
 
     [MethodImpl(256 | 512)]
+    public static <#= typeName #> lerp(this <#= typeName #> t, <#= typ.simdComp #> start, <#= typ.simdComp #> end)
+    {
+<#
+            if (typ.simd)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        // start + t * (end - start)
+        return fma(t, <#= typ.arithCast #>(end - start), new(start));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return start + t * <#= typ.arithCast #>(end - start);
+<#
+            if (typ.simd)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> unlerp(this <#= typeName #> a, <#= typeName #> start, <#= typeName #> end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
     public static <#= typeName #> unlerp(this <#= typ.simdComp #> a, <#= typeName #> start, <#= typeName #> end) => (a - start) / (end - start);
 
     [MethodImpl(256 | 512)]
+    public static <#= typeName #> unlerp(this <#= typeName #> a, <#= typ.simdComp #> start, <#= typ.simdComp #> end) => (a - start) / <#= typ.arithCast #>(end - start);
+
+    [MethodImpl(256 | 512)]
     public static <#= typeName #> remap(this <#= typeName #> a, <#= typeName #> srcStart, <#= typeName #> srcEnd, <#= typeName #> dstStart, <#= typeName #> dstEnd) => 
+        a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
+
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> remap(this <#= typeName #> a, <#= typ.simdComp #> srcStart, <#= typ.simdComp #> srcEnd, <#= typ.simdComp #> dstStart, <#= typ.simdComp #> dstEnd) => 
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
 
     [MethodImpl(256 | 512)]
