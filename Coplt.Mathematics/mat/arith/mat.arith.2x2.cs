@@ -48,7 +48,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        var det = (a * d - b * c);
+        // var det = (a * d - b * c);
+        var det = (fsm(a * d, b, c));
 
         return new float2x2(d, -b, -c, a) * (1.0f / det);
     }
@@ -61,7 +62,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        return (a * d - b * c);
+        // return (a * d - b * c);
+        return (fsm(a * d, b, c));
     }
 }
 
@@ -113,7 +115,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        var det = (a * d - b * c);
+        // var det = (a * d - b * c);
+        var det = (fsm(a * d, b, c));
 
         return new double2x2(d, -b, -c, a) * (1.0 / det);
     }
@@ -126,7 +129,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        return (a * d - b * c);
+        // return (a * d - b * c);
+        return (fsm(a * d, b, c));
     }
 }
 
@@ -342,7 +346,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        var det = (a * d - b * c);
+        // var det = (a * d - b * c);
+        var det = (fsm(a * d, b, c));
 
         return new decimal2x2(d, -b, -c, a) * (1m / det);
     }
@@ -355,7 +360,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        return (a * d - b * c);
+        // return (a * d - b * c);
+        return (fsm(a * d, b, c));
     }
 }
 
@@ -407,7 +413,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        var det = (half)(a * d - b * c);
+        // var det = (half)(a * d - b * c);
+        var det = (half)(fsm(a * d, b, c));
 
         return new half2x2(d, -b, -c, a) * (half)((half)1.0 / det);
     }
@@ -420,7 +427,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        return (half)(a * d - b * c);
+        // return (half)(a * d - b * c);
+        return (half)(fsm(a * d, b, c));
     }
 }
 

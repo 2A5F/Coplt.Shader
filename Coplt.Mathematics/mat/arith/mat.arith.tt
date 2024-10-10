@@ -140,6 +140,47 @@ public static partial class math
     public static <#= typeName #> fms(this <#= typeName #> a, <#= typeName #> b, <#= typeName #> c) => 
         new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i}.fms(b.c{i}, c.c{i})")) #>);
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> fnma(this <#= typeName #> a, <#= typeName #> b, <#= typeName #> c) => 
+        new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i}.fnma(b.c{i}, c.c{i})")) #>);
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> fsm(this <#= typeName #> c, <#= typeName #> a, <#= typeName #> b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> fam(this <#= typeName #> c, <#= typeName #> a, <#= typeName #> b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> mad(this <#= typeName #> a, <#= typeName #> b, <#= typeName #> c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static <#= vecTypeNameM #> csum(this <#= typeName #> a) => 
         new(<#= string.Join(", ", Enumerable.Range(0, m).Select(i => $"a.c{i}.csum()")) #>);

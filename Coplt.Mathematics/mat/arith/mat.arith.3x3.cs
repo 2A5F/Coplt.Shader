@@ -93,7 +93,7 @@ public partial struct float3x3
     {
         angle.sincos(out var sina, out var cosa);
         var u = axis;
-        var u_inv_cosa = u - u * cosa; // u * (1 - cosa);
+        var u_inv_cosa = math.fsm(u, u, cosa); // u - u * cosa // u * (1 - cosa);
         var t = new float4(u * sina, cosa);
 
         var ppn = new uint3(default, default, 0x80000000).asfloat();
@@ -307,9 +307,12 @@ public static partial class math
         // var t2 = new float3(c1.z, c2.z, c0.z);
         var (t0, t1, t2) = transpose(new float3x3(c1, c2, c0));
     
-        var m0 = t1 * t2.yzx - t1.yzx * t2;
-        var m1 = t0.yzx * t2 - t0 * t2.yzx;
-        var m2 = t0 * t1.yzx - t0.yzx * t1;
+        // var m0 = t1 * t2.yzx - t1.yzx * t2;
+        // var m1 = t0.yzx * t2 - t0 * t2.yzx;
+        // var m2 = t0 * t1.yzx - t0.yzx * t1;
+        var m0 = fsm(t1 * t2.yzx, t1.yzx, t2);
+        var m1 = fsm(t0.yzx * t2, t0, t2.yzx);
+        var m2 = fsm(t0 * t1.yzx, t0.yzx, t1);
     
         var rcpDet = (1.0f / csum(t0.zxy * m0));
         return new float3x3(m0, m1, m2) * rcpDet;
@@ -323,11 +326,15 @@ public static partial class math
     {
         var (c0, c1, c2) = m;
 
-        var m00 = c1.y * c2.z - c1.z * c2.y;
-        var m01 = c0.y * c2.z - c0.z * c2.y;
-        var m02 = c0.y * c1.z - c0.z * c1.y;
+        // var m00 = c1.y * c2.z - c1.z * c2.y;
+        // var m01 = c0.y * c2.z - c0.z * c2.y;
+        // var m02 = c0.y * c1.z - c0.z * c1.y;
+        var m00 = fsm(c1.y * c2.z, c1.z, c2.y);
+        var m01 = fsm(c0.y * c2.z, c0.z, c2.y);
+        var m02 = fsm(c0.y * c1.z, c0.z, c1.y);
 
-        var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        //var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        var r = fam(fsm(c0.x * m00, c1.x, m01), c2.x, m02);
 
         return r;
     }
@@ -426,7 +433,7 @@ public partial struct double3x3
     {
         angle.sincos(out var sina, out var cosa);
         var u = axis;
-        var u_inv_cosa = u - u * cosa; // u * (1 - cosa);
+        var u_inv_cosa = math.fsm(u, u, cosa); // u - u * cosa // u * (1 - cosa);
         var t = new double4(u * sina, cosa);
 
         var ppn = new ulong3(default, default, 0x8000000000000000).asdouble();
@@ -640,9 +647,12 @@ public static partial class math
         // var t2 = new double3(c1.z, c2.z, c0.z);
         var (t0, t1, t2) = transpose(new double3x3(c1, c2, c0));
     
-        var m0 = t1 * t2.yzx - t1.yzx * t2;
-        var m1 = t0.yzx * t2 - t0 * t2.yzx;
-        var m2 = t0 * t1.yzx - t0.yzx * t1;
+        // var m0 = t1 * t2.yzx - t1.yzx * t2;
+        // var m1 = t0.yzx * t2 - t0 * t2.yzx;
+        // var m2 = t0 * t1.yzx - t0.yzx * t1;
+        var m0 = fsm(t1 * t2.yzx, t1.yzx, t2);
+        var m1 = fsm(t0.yzx * t2, t0, t2.yzx);
+        var m2 = fsm(t0 * t1.yzx, t0.yzx, t1);
     
         var rcpDet = (1.0 / csum(t0.zxy * m0));
         return new double3x3(m0, m1, m2) * rcpDet;
@@ -656,11 +666,15 @@ public static partial class math
     {
         var (c0, c1, c2) = m;
 
-        var m00 = c1.y * c2.z - c1.z * c2.y;
-        var m01 = c0.y * c2.z - c0.z * c2.y;
-        var m02 = c0.y * c1.z - c0.z * c1.y;
+        // var m00 = c1.y * c2.z - c1.z * c2.y;
+        // var m01 = c0.y * c2.z - c0.z * c2.y;
+        // var m02 = c0.y * c1.z - c0.z * c1.y;
+        var m00 = fsm(c1.y * c2.z, c1.z, c2.y);
+        var m01 = fsm(c0.y * c2.z, c0.z, c2.y);
+        var m02 = fsm(c0.y * c1.z, c0.z, c1.y);
 
-        var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        //var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        var r = fam(fsm(c0.x * m00, c1.x, m01), c2.x, m02);
 
         return r;
     }
@@ -1118,9 +1132,12 @@ public static partial class math
         // var t2 = new decimal3(c1.z, c2.z, c0.z);
         var (t0, t1, t2) = transpose(new decimal3x3(c1, c2, c0));
     
-        var m0 = t1 * t2.yzx - t1.yzx * t2;
-        var m1 = t0.yzx * t2 - t0 * t2.yzx;
-        var m2 = t0 * t1.yzx - t0.yzx * t1;
+        // var m0 = t1 * t2.yzx - t1.yzx * t2;
+        // var m1 = t0.yzx * t2 - t0 * t2.yzx;
+        // var m2 = t0 * t1.yzx - t0.yzx * t1;
+        var m0 = fsm(t1 * t2.yzx, t1.yzx, t2);
+        var m1 = fsm(t0.yzx * t2, t0, t2.yzx);
+        var m2 = fsm(t0 * t1.yzx, t0.yzx, t1);
     
         var rcpDet = (1m / csum(t0.zxy * m0));
         return new decimal3x3(m0, m1, m2) * rcpDet;
@@ -1134,11 +1151,15 @@ public static partial class math
     {
         var (c0, c1, c2) = m;
 
-        var m00 = c1.y * c2.z - c1.z * c2.y;
-        var m01 = c0.y * c2.z - c0.z * c2.y;
-        var m02 = c0.y * c1.z - c0.z * c1.y;
+        // var m00 = c1.y * c2.z - c1.z * c2.y;
+        // var m01 = c0.y * c2.z - c0.z * c2.y;
+        // var m02 = c0.y * c1.z - c0.z * c1.y;
+        var m00 = fsm(c1.y * c2.z, c1.z, c2.y);
+        var m01 = fsm(c0.y * c2.z, c0.z, c2.y);
+        var m02 = fsm(c0.y * c1.z, c0.z, c1.y);
 
-        var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        //var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        var r = fam(fsm(c0.x * m00, c1.x, m01), c2.x, m02);
 
         return r;
     }
@@ -1237,7 +1258,7 @@ public partial struct half3x3
     {
         angle.sincos(out var sina, out var cosa);
         var u = axis;
-        var u_inv_cosa = u - u * cosa; // u * (1 - cosa);
+        var u_inv_cosa = math.fsm(u, u, cosa); // u - u * cosa // u * (1 - cosa);
         var t = new half4(u * sina, cosa);
 
         var ppn = new ushort3(default, default, 0x8000).ashalf();
@@ -1451,9 +1472,12 @@ public static partial class math
         // var t2 = new half3(c1.z, c2.z, c0.z);
         var (t0, t1, t2) = transpose(new half3x3(c1, c2, c0));
     
-        var m0 = t1 * t2.yzx - t1.yzx * t2;
-        var m1 = t0.yzx * t2 - t0 * t2.yzx;
-        var m2 = t0 * t1.yzx - t0.yzx * t1;
+        // var m0 = t1 * t2.yzx - t1.yzx * t2;
+        // var m1 = t0.yzx * t2 - t0 * t2.yzx;
+        // var m2 = t0 * t1.yzx - t0.yzx * t1;
+        var m0 = fsm(t1 * t2.yzx, t1.yzx, t2);
+        var m1 = fsm(t0.yzx * t2, t0, t2.yzx);
+        var m2 = fsm(t0 * t1.yzx, t0.yzx, t1);
     
         var rcpDet = (half)((half)1.0 / csum(t0.zxy * m0));
         return new half3x3(m0, m1, m2) * rcpDet;
@@ -1467,11 +1491,15 @@ public static partial class math
     {
         var (c0, c1, c2) = m;
 
-        var m00 = c1.y * c2.z - c1.z * c2.y;
-        var m01 = c0.y * c2.z - c0.z * c2.y;
-        var m02 = c0.y * c1.z - c0.z * c1.y;
+        // var m00 = c1.y * c2.z - c1.z * c2.y;
+        // var m01 = c0.y * c2.z - c0.z * c2.y;
+        // var m02 = c0.y * c1.z - c0.z * c1.y;
+        var m00 = fsm(c1.y * c2.z, c1.z, c2.y);
+        var m01 = fsm(c0.y * c2.z, c0.z, c2.y);
+        var m02 = fsm(c0.y * c1.z, c0.z, c1.y);
 
-        var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        //var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        var r = fam(fsm(c0.x * m00, c1.x, m01), c2.x, m02);
 
         return (half)r;
     }

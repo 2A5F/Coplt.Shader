@@ -74,7 +74,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        var det = <#= typ.arithCast #>(a * d - b * c);
+        // var det = <#= typ.arithCast #>(a * d - b * c);
+        var det = <#= typ.arithCast #>(fsm(a * d, b, c));
 
         return new <#= typeName #>(d, -b, -c, a) * <#= typ.arithCast #>(<#= typ.one #> / det);
     }
@@ -87,7 +88,8 @@ public static partial class math
         var c = m.c0.y;
         var d = m.c1.y;
 
-        return <#= typ.arithCast #>(a * d - b * c);
+        // return <#= typ.arithCast #>(a * d - b * c);
+        return <#= typ.arithCast #>(fsm(a * d, b, c));
     }
 <#
         }

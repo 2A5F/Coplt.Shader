@@ -109,6 +109,47 @@ public static partial class math
     public static float2x2 fms(this float2x2 a, float2x2 b, float2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x2 fnma(this float2x2 a, float2x2 b, float2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x2 fsm(this float2x2 c, float2x2 a, float2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x2 fam(this float2x2 c, float2x2 a, float2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x2 mad(this float2x2 a, float2x2 b, float2x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static float2 csum(this float2x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -230,6 +271,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float2x3 fms(this float2x3 a, float2x3 b, float2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x3 fnma(this float2x3 a, float2x3 b, float2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x3 fsm(this float2x3 c, float2x3 a, float2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x3 fam(this float2x3 c, float2x3 a, float2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x3 mad(this float2x3 a, float2x3 b, float2x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static float3 csum(this float2x3 a) => 
@@ -353,6 +435,47 @@ public static partial class math
     public static float2x4 fms(this float2x4 a, float2x4 b, float2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x4 fnma(this float2x4 a, float2x4 b, float2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x4 fsm(this float2x4 c, float2x4 a, float2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x4 fam(this float2x4 c, float2x4 a, float2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float2x4 mad(this float2x4 a, float2x4 b, float2x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static float4 csum(this float2x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -474,6 +597,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float3x2 fms(this float3x2 a, float3x2 b, float3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x2 fnma(this float3x2 a, float3x2 b, float3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x2 fsm(this float3x2 c, float3x2 a, float3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x2 fam(this float3x2 c, float3x2 a, float3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x2 mad(this float3x2 a, float3x2 b, float3x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static float2 csum(this float3x2 a) => 
@@ -597,6 +761,47 @@ public static partial class math
     public static float3x3 fms(this float3x3 a, float3x3 b, float3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x3 fnma(this float3x3 a, float3x3 b, float3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x3 fsm(this float3x3 c, float3x3 a, float3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x3 fam(this float3x3 c, float3x3 a, float3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x3 mad(this float3x3 a, float3x3 b, float3x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static float3 csum(this float3x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -718,6 +923,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float3x4 fms(this float3x4 a, float3x4 b, float3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x4 fnma(this float3x4 a, float3x4 b, float3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x4 fsm(this float3x4 c, float3x4 a, float3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x4 fam(this float3x4 c, float3x4 a, float3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float3x4 mad(this float3x4 a, float3x4 b, float3x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static float4 csum(this float3x4 a) => 
@@ -841,6 +1087,47 @@ public static partial class math
     public static float4x2 fms(this float4x2 a, float4x2 b, float4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x2 fnma(this float4x2 a, float4x2 b, float4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x2 fsm(this float4x2 c, float4x2 a, float4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x2 fam(this float4x2 c, float4x2 a, float4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x2 mad(this float4x2 a, float4x2 b, float4x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static float2 csum(this float4x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -962,6 +1249,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float4x3 fms(this float4x3 a, float4x3 b, float4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x3 fnma(this float4x3 a, float4x3 b, float4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x3 fsm(this float4x3 c, float4x3 a, float4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x3 fam(this float4x3 c, float4x3 a, float4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x3 mad(this float4x3 a, float4x3 b, float4x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static float3 csum(this float4x3 a) => 
@@ -1085,6 +1413,47 @@ public static partial class math
     public static float4x4 fms(this float4x4 a, float4x4 b, float4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x4 fnma(this float4x4 a, float4x4 b, float4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x4 fsm(this float4x4 c, float4x4 a, float4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x4 fam(this float4x4 c, float4x4 a, float4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static float4x4 mad(this float4x4 a, float4x4 b, float4x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static float4 csum(this float4x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -1206,6 +1575,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double2x2 fms(this double2x2 a, double2x2 b, double2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x2 fnma(this double2x2 a, double2x2 b, double2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x2 fsm(this double2x2 c, double2x2 a, double2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x2 fam(this double2x2 c, double2x2 a, double2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x2 mad(this double2x2 a, double2x2 b, double2x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static double2 csum(this double2x2 a) => 
@@ -1329,6 +1739,47 @@ public static partial class math
     public static double2x3 fms(this double2x3 a, double2x3 b, double2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x3 fnma(this double2x3 a, double2x3 b, double2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x3 fsm(this double2x3 c, double2x3 a, double2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x3 fam(this double2x3 c, double2x3 a, double2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x3 mad(this double2x3 a, double2x3 b, double2x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static double3 csum(this double2x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -1450,6 +1901,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double2x4 fms(this double2x4 a, double2x4 b, double2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x4 fnma(this double2x4 a, double2x4 b, double2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x4 fsm(this double2x4 c, double2x4 a, double2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x4 fam(this double2x4 c, double2x4 a, double2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double2x4 mad(this double2x4 a, double2x4 b, double2x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static double4 csum(this double2x4 a) => 
@@ -1573,6 +2065,47 @@ public static partial class math
     public static double3x2 fms(this double3x2 a, double3x2 b, double3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x2 fnma(this double3x2 a, double3x2 b, double3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x2 fsm(this double3x2 c, double3x2 a, double3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x2 fam(this double3x2 c, double3x2 a, double3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x2 mad(this double3x2 a, double3x2 b, double3x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static double2 csum(this double3x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -1694,6 +2227,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double3x3 fms(this double3x3 a, double3x3 b, double3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x3 fnma(this double3x3 a, double3x3 b, double3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x3 fsm(this double3x3 c, double3x3 a, double3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x3 fam(this double3x3 c, double3x3 a, double3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x3 mad(this double3x3 a, double3x3 b, double3x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static double3 csum(this double3x3 a) => 
@@ -1817,6 +2391,47 @@ public static partial class math
     public static double3x4 fms(this double3x4 a, double3x4 b, double3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x4 fnma(this double3x4 a, double3x4 b, double3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x4 fsm(this double3x4 c, double3x4 a, double3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x4 fam(this double3x4 c, double3x4 a, double3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double3x4 mad(this double3x4 a, double3x4 b, double3x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static double4 csum(this double3x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -1938,6 +2553,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double4x2 fms(this double4x2 a, double4x2 b, double4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x2 fnma(this double4x2 a, double4x2 b, double4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x2 fsm(this double4x2 c, double4x2 a, double4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x2 fam(this double4x2 c, double4x2 a, double4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x2 mad(this double4x2 a, double4x2 b, double4x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static double2 csum(this double4x2 a) => 
@@ -2061,6 +2717,47 @@ public static partial class math
     public static double4x3 fms(this double4x3 a, double4x3 b, double4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x3 fnma(this double4x3 a, double4x3 b, double4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x3 fsm(this double4x3 c, double4x3 a, double4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x3 fam(this double4x3 c, double4x3 a, double4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x3 mad(this double4x3 a, double4x3 b, double4x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static double3 csum(this double4x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -2182,6 +2879,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double4x4 fms(this double4x4 a, double4x4 b, double4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x4 fnma(this double4x4 a, double4x4 b, double4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x4 fsm(this double4x4 c, double4x4 a, double4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x4 fam(this double4x4 c, double4x4 a, double4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static double4x4 mad(this double4x4 a, double4x4 b, double4x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static double4 csum(this double4x4 a) => 
@@ -2305,6 +3043,47 @@ public static partial class math
     public static short2x2 fms(this short2x2 a, short2x2 b, short2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x2 fnma(this short2x2 a, short2x2 b, short2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x2 fsm(this short2x2 c, short2x2 a, short2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x2 fam(this short2x2 c, short2x2 a, short2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x2 mad(this short2x2 a, short2x2 b, short2x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static short2 csum(this short2x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -2426,6 +3205,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static short2x3 fms(this short2x3 a, short2x3 b, short2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x3 fnma(this short2x3 a, short2x3 b, short2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x3 fsm(this short2x3 c, short2x3 a, short2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x3 fam(this short2x3 c, short2x3 a, short2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x3 mad(this short2x3 a, short2x3 b, short2x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static short3 csum(this short2x3 a) => 
@@ -2549,6 +3369,47 @@ public static partial class math
     public static short2x4 fms(this short2x4 a, short2x4 b, short2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x4 fnma(this short2x4 a, short2x4 b, short2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x4 fsm(this short2x4 c, short2x4 a, short2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x4 fam(this short2x4 c, short2x4 a, short2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short2x4 mad(this short2x4 a, short2x4 b, short2x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static short4 csum(this short2x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -2670,6 +3531,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static short3x2 fms(this short3x2 a, short3x2 b, short3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x2 fnma(this short3x2 a, short3x2 b, short3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x2 fsm(this short3x2 c, short3x2 a, short3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x2 fam(this short3x2 c, short3x2 a, short3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x2 mad(this short3x2 a, short3x2 b, short3x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static short2 csum(this short3x2 a) => 
@@ -2793,6 +3695,47 @@ public static partial class math
     public static short3x3 fms(this short3x3 a, short3x3 b, short3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x3 fnma(this short3x3 a, short3x3 b, short3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x3 fsm(this short3x3 c, short3x3 a, short3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x3 fam(this short3x3 c, short3x3 a, short3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x3 mad(this short3x3 a, short3x3 b, short3x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static short3 csum(this short3x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -2914,6 +3857,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static short3x4 fms(this short3x4 a, short3x4 b, short3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x4 fnma(this short3x4 a, short3x4 b, short3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x4 fsm(this short3x4 c, short3x4 a, short3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x4 fam(this short3x4 c, short3x4 a, short3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short3x4 mad(this short3x4 a, short3x4 b, short3x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static short4 csum(this short3x4 a) => 
@@ -3037,6 +4021,47 @@ public static partial class math
     public static short4x2 fms(this short4x2 a, short4x2 b, short4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x2 fnma(this short4x2 a, short4x2 b, short4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x2 fsm(this short4x2 c, short4x2 a, short4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x2 fam(this short4x2 c, short4x2 a, short4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x2 mad(this short4x2 a, short4x2 b, short4x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static short2 csum(this short4x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -3158,6 +4183,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static short4x3 fms(this short4x3 a, short4x3 b, short4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x3 fnma(this short4x3 a, short4x3 b, short4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x3 fsm(this short4x3 c, short4x3 a, short4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x3 fam(this short4x3 c, short4x3 a, short4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x3 mad(this short4x3 a, short4x3 b, short4x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static short3 csum(this short4x3 a) => 
@@ -3281,6 +4347,47 @@ public static partial class math
     public static short4x4 fms(this short4x4 a, short4x4 b, short4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x4 fnma(this short4x4 a, short4x4 b, short4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x4 fsm(this short4x4 c, short4x4 a, short4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x4 fam(this short4x4 c, short4x4 a, short4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static short4x4 mad(this short4x4 a, short4x4 b, short4x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static short4 csum(this short4x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -3398,6 +4505,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ushort2x2 fms(this ushort2x2 a, ushort2x2 b, ushort2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 fnma(this ushort2x2 a, ushort2x2 b, ushort2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 fsm(this ushort2x2 c, ushort2x2 a, ushort2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 fam(this ushort2x2 c, ushort2x2 a, ushort2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x2 mad(this ushort2x2 a, ushort2x2 b, ushort2x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ushort2 csum(this ushort2x2 a) => 
@@ -3517,6 +4665,47 @@ public static partial class math
     public static ushort2x3 fms(this ushort2x3 a, ushort2x3 b, ushort2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 fnma(this ushort2x3 a, ushort2x3 b, ushort2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 fsm(this ushort2x3 c, ushort2x3 a, ushort2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 fam(this ushort2x3 c, ushort2x3 a, ushort2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x3 mad(this ushort2x3 a, ushort2x3 b, ushort2x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static ushort3 csum(this ushort2x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -3634,6 +4823,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ushort2x4 fms(this ushort2x4 a, ushort2x4 b, ushort2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 fnma(this ushort2x4 a, ushort2x4 b, ushort2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 fsm(this ushort2x4 c, ushort2x4 a, ushort2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 fam(this ushort2x4 c, ushort2x4 a, ushort2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort2x4 mad(this ushort2x4 a, ushort2x4 b, ushort2x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ushort4 csum(this ushort2x4 a) => 
@@ -3753,6 +4983,47 @@ public static partial class math
     public static ushort3x2 fms(this ushort3x2 a, ushort3x2 b, ushort3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 fnma(this ushort3x2 a, ushort3x2 b, ushort3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 fsm(this ushort3x2 c, ushort3x2 a, ushort3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 fam(this ushort3x2 c, ushort3x2 a, ushort3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x2 mad(this ushort3x2 a, ushort3x2 b, ushort3x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static ushort2 csum(this ushort3x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -3870,6 +5141,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ushort3x3 fms(this ushort3x3 a, ushort3x3 b, ushort3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 fnma(this ushort3x3 a, ushort3x3 b, ushort3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 fsm(this ushort3x3 c, ushort3x3 a, ushort3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 fam(this ushort3x3 c, ushort3x3 a, ushort3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x3 mad(this ushort3x3 a, ushort3x3 b, ushort3x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ushort3 csum(this ushort3x3 a) => 
@@ -3989,6 +5301,47 @@ public static partial class math
     public static ushort3x4 fms(this ushort3x4 a, ushort3x4 b, ushort3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 fnma(this ushort3x4 a, ushort3x4 b, ushort3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 fsm(this ushort3x4 c, ushort3x4 a, ushort3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 fam(this ushort3x4 c, ushort3x4 a, ushort3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort3x4 mad(this ushort3x4 a, ushort3x4 b, ushort3x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static ushort4 csum(this ushort3x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -4106,6 +5459,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ushort4x2 fms(this ushort4x2 a, ushort4x2 b, ushort4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 fnma(this ushort4x2 a, ushort4x2 b, ushort4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 fsm(this ushort4x2 c, ushort4x2 a, ushort4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 fam(this ushort4x2 c, ushort4x2 a, ushort4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x2 mad(this ushort4x2 a, ushort4x2 b, ushort4x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ushort2 csum(this ushort4x2 a) => 
@@ -4225,6 +5619,47 @@ public static partial class math
     public static ushort4x3 fms(this ushort4x3 a, ushort4x3 b, ushort4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 fnma(this ushort4x3 a, ushort4x3 b, ushort4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 fsm(this ushort4x3 c, ushort4x3 a, ushort4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 fam(this ushort4x3 c, ushort4x3 a, ushort4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x3 mad(this ushort4x3 a, ushort4x3 b, ushort4x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static ushort3 csum(this ushort4x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -4342,6 +5777,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ushort4x4 fms(this ushort4x4 a, ushort4x4 b, ushort4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 fnma(this ushort4x4 a, ushort4x4 b, ushort4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 fsm(this ushort4x4 c, ushort4x4 a, ushort4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 fam(this ushort4x4 c, ushort4x4 a, ushort4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ushort4x4 mad(this ushort4x4 a, ushort4x4 b, ushort4x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ushort4 csum(this ushort4x4 a) => 
@@ -4465,6 +5941,47 @@ public static partial class math
     public static int2x2 fms(this int2x2 a, int2x2 b, int2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x2 fnma(this int2x2 a, int2x2 b, int2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x2 fsm(this int2x2 c, int2x2 a, int2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x2 fam(this int2x2 c, int2x2 a, int2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x2 mad(this int2x2 a, int2x2 b, int2x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static int2 csum(this int2x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -4586,6 +6103,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static int2x3 fms(this int2x3 a, int2x3 b, int2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x3 fnma(this int2x3 a, int2x3 b, int2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x3 fsm(this int2x3 c, int2x3 a, int2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x3 fam(this int2x3 c, int2x3 a, int2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x3 mad(this int2x3 a, int2x3 b, int2x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static int3 csum(this int2x3 a) => 
@@ -4709,6 +6267,47 @@ public static partial class math
     public static int2x4 fms(this int2x4 a, int2x4 b, int2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x4 fnma(this int2x4 a, int2x4 b, int2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x4 fsm(this int2x4 c, int2x4 a, int2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x4 fam(this int2x4 c, int2x4 a, int2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int2x4 mad(this int2x4 a, int2x4 b, int2x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static int4 csum(this int2x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -4830,6 +6429,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static int3x2 fms(this int3x2 a, int3x2 b, int3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x2 fnma(this int3x2 a, int3x2 b, int3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x2 fsm(this int3x2 c, int3x2 a, int3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x2 fam(this int3x2 c, int3x2 a, int3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x2 mad(this int3x2 a, int3x2 b, int3x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static int2 csum(this int3x2 a) => 
@@ -4953,6 +6593,47 @@ public static partial class math
     public static int3x3 fms(this int3x3 a, int3x3 b, int3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x3 fnma(this int3x3 a, int3x3 b, int3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x3 fsm(this int3x3 c, int3x3 a, int3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x3 fam(this int3x3 c, int3x3 a, int3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x3 mad(this int3x3 a, int3x3 b, int3x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static int3 csum(this int3x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -5074,6 +6755,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static int3x4 fms(this int3x4 a, int3x4 b, int3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x4 fnma(this int3x4 a, int3x4 b, int3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x4 fsm(this int3x4 c, int3x4 a, int3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x4 fam(this int3x4 c, int3x4 a, int3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int3x4 mad(this int3x4 a, int3x4 b, int3x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static int4 csum(this int3x4 a) => 
@@ -5197,6 +6919,47 @@ public static partial class math
     public static int4x2 fms(this int4x2 a, int4x2 b, int4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x2 fnma(this int4x2 a, int4x2 b, int4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x2 fsm(this int4x2 c, int4x2 a, int4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x2 fam(this int4x2 c, int4x2 a, int4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x2 mad(this int4x2 a, int4x2 b, int4x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static int2 csum(this int4x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -5318,6 +7081,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static int4x3 fms(this int4x3 a, int4x3 b, int4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x3 fnma(this int4x3 a, int4x3 b, int4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x3 fsm(this int4x3 c, int4x3 a, int4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x3 fam(this int4x3 c, int4x3 a, int4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x3 mad(this int4x3 a, int4x3 b, int4x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static int3 csum(this int4x3 a) => 
@@ -5441,6 +7245,47 @@ public static partial class math
     public static int4x4 fms(this int4x4 a, int4x4 b, int4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x4 fnma(this int4x4 a, int4x4 b, int4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x4 fsm(this int4x4 c, int4x4 a, int4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x4 fam(this int4x4 c, int4x4 a, int4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static int4x4 mad(this int4x4 a, int4x4 b, int4x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static int4 csum(this int4x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -5558,6 +7403,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static uint2x2 fms(this uint2x2 a, uint2x2 b, uint2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x2 fnma(this uint2x2 a, uint2x2 b, uint2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x2 fsm(this uint2x2 c, uint2x2 a, uint2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x2 fam(this uint2x2 c, uint2x2 a, uint2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x2 mad(this uint2x2 a, uint2x2 b, uint2x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static uint2 csum(this uint2x2 a) => 
@@ -5677,6 +7563,47 @@ public static partial class math
     public static uint2x3 fms(this uint2x3 a, uint2x3 b, uint2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x3 fnma(this uint2x3 a, uint2x3 b, uint2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x3 fsm(this uint2x3 c, uint2x3 a, uint2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x3 fam(this uint2x3 c, uint2x3 a, uint2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x3 mad(this uint2x3 a, uint2x3 b, uint2x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static uint3 csum(this uint2x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -5794,6 +7721,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static uint2x4 fms(this uint2x4 a, uint2x4 b, uint2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x4 fnma(this uint2x4 a, uint2x4 b, uint2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x4 fsm(this uint2x4 c, uint2x4 a, uint2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x4 fam(this uint2x4 c, uint2x4 a, uint2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint2x4 mad(this uint2x4 a, uint2x4 b, uint2x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static uint4 csum(this uint2x4 a) => 
@@ -5913,6 +7881,47 @@ public static partial class math
     public static uint3x2 fms(this uint3x2 a, uint3x2 b, uint3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x2 fnma(this uint3x2 a, uint3x2 b, uint3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x2 fsm(this uint3x2 c, uint3x2 a, uint3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x2 fam(this uint3x2 c, uint3x2 a, uint3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x2 mad(this uint3x2 a, uint3x2 b, uint3x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static uint2 csum(this uint3x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -6030,6 +8039,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static uint3x3 fms(this uint3x3 a, uint3x3 b, uint3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x3 fnma(this uint3x3 a, uint3x3 b, uint3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x3 fsm(this uint3x3 c, uint3x3 a, uint3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x3 fam(this uint3x3 c, uint3x3 a, uint3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x3 mad(this uint3x3 a, uint3x3 b, uint3x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static uint3 csum(this uint3x3 a) => 
@@ -6149,6 +8199,47 @@ public static partial class math
     public static uint3x4 fms(this uint3x4 a, uint3x4 b, uint3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x4 fnma(this uint3x4 a, uint3x4 b, uint3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x4 fsm(this uint3x4 c, uint3x4 a, uint3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x4 fam(this uint3x4 c, uint3x4 a, uint3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint3x4 mad(this uint3x4 a, uint3x4 b, uint3x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static uint4 csum(this uint3x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -6266,6 +8357,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static uint4x2 fms(this uint4x2 a, uint4x2 b, uint4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x2 fnma(this uint4x2 a, uint4x2 b, uint4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x2 fsm(this uint4x2 c, uint4x2 a, uint4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x2 fam(this uint4x2 c, uint4x2 a, uint4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x2 mad(this uint4x2 a, uint4x2 b, uint4x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static uint2 csum(this uint4x2 a) => 
@@ -6385,6 +8517,47 @@ public static partial class math
     public static uint4x3 fms(this uint4x3 a, uint4x3 b, uint4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x3 fnma(this uint4x3 a, uint4x3 b, uint4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x3 fsm(this uint4x3 c, uint4x3 a, uint4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x3 fam(this uint4x3 c, uint4x3 a, uint4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x3 mad(this uint4x3 a, uint4x3 b, uint4x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static uint3 csum(this uint4x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -6502,6 +8675,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static uint4x4 fms(this uint4x4 a, uint4x4 b, uint4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x4 fnma(this uint4x4 a, uint4x4 b, uint4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x4 fsm(this uint4x4 c, uint4x4 a, uint4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x4 fam(this uint4x4 c, uint4x4 a, uint4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static uint4x4 mad(this uint4x4 a, uint4x4 b, uint4x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static uint4 csum(this uint4x4 a) => 
@@ -6625,6 +8839,47 @@ public static partial class math
     public static long2x2 fms(this long2x2 a, long2x2 b, long2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x2 fnma(this long2x2 a, long2x2 b, long2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x2 fsm(this long2x2 c, long2x2 a, long2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x2 fam(this long2x2 c, long2x2 a, long2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x2 mad(this long2x2 a, long2x2 b, long2x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static long2 csum(this long2x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -6746,6 +9001,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static long2x3 fms(this long2x3 a, long2x3 b, long2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x3 fnma(this long2x3 a, long2x3 b, long2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x3 fsm(this long2x3 c, long2x3 a, long2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x3 fam(this long2x3 c, long2x3 a, long2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x3 mad(this long2x3 a, long2x3 b, long2x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static long3 csum(this long2x3 a) => 
@@ -6869,6 +9165,47 @@ public static partial class math
     public static long2x4 fms(this long2x4 a, long2x4 b, long2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x4 fnma(this long2x4 a, long2x4 b, long2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x4 fsm(this long2x4 c, long2x4 a, long2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x4 fam(this long2x4 c, long2x4 a, long2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long2x4 mad(this long2x4 a, long2x4 b, long2x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static long4 csum(this long2x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -6990,6 +9327,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static long3x2 fms(this long3x2 a, long3x2 b, long3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x2 fnma(this long3x2 a, long3x2 b, long3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x2 fsm(this long3x2 c, long3x2 a, long3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x2 fam(this long3x2 c, long3x2 a, long3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x2 mad(this long3x2 a, long3x2 b, long3x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static long2 csum(this long3x2 a) => 
@@ -7113,6 +9491,47 @@ public static partial class math
     public static long3x3 fms(this long3x3 a, long3x3 b, long3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x3 fnma(this long3x3 a, long3x3 b, long3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x3 fsm(this long3x3 c, long3x3 a, long3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x3 fam(this long3x3 c, long3x3 a, long3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x3 mad(this long3x3 a, long3x3 b, long3x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static long3 csum(this long3x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -7234,6 +9653,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static long3x4 fms(this long3x4 a, long3x4 b, long3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x4 fnma(this long3x4 a, long3x4 b, long3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x4 fsm(this long3x4 c, long3x4 a, long3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x4 fam(this long3x4 c, long3x4 a, long3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long3x4 mad(this long3x4 a, long3x4 b, long3x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static long4 csum(this long3x4 a) => 
@@ -7357,6 +9817,47 @@ public static partial class math
     public static long4x2 fms(this long4x2 a, long4x2 b, long4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x2 fnma(this long4x2 a, long4x2 b, long4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x2 fsm(this long4x2 c, long4x2 a, long4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x2 fam(this long4x2 c, long4x2 a, long4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x2 mad(this long4x2 a, long4x2 b, long4x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static long2 csum(this long4x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -7478,6 +9979,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static long4x3 fms(this long4x3 a, long4x3 b, long4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x3 fnma(this long4x3 a, long4x3 b, long4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x3 fsm(this long4x3 c, long4x3 a, long4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x3 fam(this long4x3 c, long4x3 a, long4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x3 mad(this long4x3 a, long4x3 b, long4x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static long3 csum(this long4x3 a) => 
@@ -7601,6 +10143,47 @@ public static partial class math
     public static long4x4 fms(this long4x4 a, long4x4 b, long4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x4 fnma(this long4x4 a, long4x4 b, long4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x4 fsm(this long4x4 c, long4x4 a, long4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x4 fam(this long4x4 c, long4x4 a, long4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static long4x4 mad(this long4x4 a, long4x4 b, long4x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static long4 csum(this long4x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -7718,6 +10301,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ulong2x2 fms(this ulong2x2 a, ulong2x2 b, ulong2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x2 fnma(this ulong2x2 a, ulong2x2 b, ulong2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x2 fsm(this ulong2x2 c, ulong2x2 a, ulong2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x2 fam(this ulong2x2 c, ulong2x2 a, ulong2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x2 mad(this ulong2x2 a, ulong2x2 b, ulong2x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ulong2 csum(this ulong2x2 a) => 
@@ -7837,6 +10461,47 @@ public static partial class math
     public static ulong2x3 fms(this ulong2x3 a, ulong2x3 b, ulong2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x3 fnma(this ulong2x3 a, ulong2x3 b, ulong2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x3 fsm(this ulong2x3 c, ulong2x3 a, ulong2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x3 fam(this ulong2x3 c, ulong2x3 a, ulong2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x3 mad(this ulong2x3 a, ulong2x3 b, ulong2x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static ulong3 csum(this ulong2x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -7954,6 +10619,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ulong2x4 fms(this ulong2x4 a, ulong2x4 b, ulong2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x4 fnma(this ulong2x4 a, ulong2x4 b, ulong2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x4 fsm(this ulong2x4 c, ulong2x4 a, ulong2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x4 fam(this ulong2x4 c, ulong2x4 a, ulong2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong2x4 mad(this ulong2x4 a, ulong2x4 b, ulong2x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ulong4 csum(this ulong2x4 a) => 
@@ -8073,6 +10779,47 @@ public static partial class math
     public static ulong3x2 fms(this ulong3x2 a, ulong3x2 b, ulong3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x2 fnma(this ulong3x2 a, ulong3x2 b, ulong3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x2 fsm(this ulong3x2 c, ulong3x2 a, ulong3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x2 fam(this ulong3x2 c, ulong3x2 a, ulong3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x2 mad(this ulong3x2 a, ulong3x2 b, ulong3x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static ulong2 csum(this ulong3x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -8190,6 +10937,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ulong3x3 fms(this ulong3x3 a, ulong3x3 b, ulong3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x3 fnma(this ulong3x3 a, ulong3x3 b, ulong3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x3 fsm(this ulong3x3 c, ulong3x3 a, ulong3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x3 fam(this ulong3x3 c, ulong3x3 a, ulong3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x3 mad(this ulong3x3 a, ulong3x3 b, ulong3x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ulong3 csum(this ulong3x3 a) => 
@@ -8309,6 +11097,47 @@ public static partial class math
     public static ulong3x4 fms(this ulong3x4 a, ulong3x4 b, ulong3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x4 fnma(this ulong3x4 a, ulong3x4 b, ulong3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x4 fsm(this ulong3x4 c, ulong3x4 a, ulong3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x4 fam(this ulong3x4 c, ulong3x4 a, ulong3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong3x4 mad(this ulong3x4 a, ulong3x4 b, ulong3x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static ulong4 csum(this ulong3x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -8426,6 +11255,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ulong4x2 fms(this ulong4x2 a, ulong4x2 b, ulong4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x2 fnma(this ulong4x2 a, ulong4x2 b, ulong4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x2 fsm(this ulong4x2 c, ulong4x2 a, ulong4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x2 fam(this ulong4x2 c, ulong4x2 a, ulong4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x2 mad(this ulong4x2 a, ulong4x2 b, ulong4x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ulong2 csum(this ulong4x2 a) => 
@@ -8545,6 +11415,47 @@ public static partial class math
     public static ulong4x3 fms(this ulong4x3 a, ulong4x3 b, ulong4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x3 fnma(this ulong4x3 a, ulong4x3 b, ulong4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x3 fsm(this ulong4x3 c, ulong4x3 a, ulong4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x3 fam(this ulong4x3 c, ulong4x3 a, ulong4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x3 mad(this ulong4x3 a, ulong4x3 b, ulong4x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static ulong3 csum(this ulong4x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -8662,6 +11573,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static ulong4x4 fms(this ulong4x4 a, ulong4x4 b, ulong4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x4 fnma(this ulong4x4 a, ulong4x4 b, ulong4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x4 fsm(this ulong4x4 c, ulong4x4 a, ulong4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x4 fam(this ulong4x4 c, ulong4x4 a, ulong4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static ulong4x4 mad(this ulong4x4 a, ulong4x4 b, ulong4x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static ulong4 csum(this ulong4x4 a) => 
@@ -8785,6 +11737,47 @@ public static partial class math
     public static decimal2x2 fms(this decimal2x2 a, decimal2x2 b, decimal2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x2 fnma(this decimal2x2 a, decimal2x2 b, decimal2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x2 fsm(this decimal2x2 c, decimal2x2 a, decimal2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x2 fam(this decimal2x2 c, decimal2x2 a, decimal2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x2 mad(this decimal2x2 a, decimal2x2 b, decimal2x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static decimal2 csum(this decimal2x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -8906,6 +11899,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static decimal2x3 fms(this decimal2x3 a, decimal2x3 b, decimal2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x3 fnma(this decimal2x3 a, decimal2x3 b, decimal2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x3 fsm(this decimal2x3 c, decimal2x3 a, decimal2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x3 fam(this decimal2x3 c, decimal2x3 a, decimal2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x3 mad(this decimal2x3 a, decimal2x3 b, decimal2x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static decimal3 csum(this decimal2x3 a) => 
@@ -9029,6 +12063,47 @@ public static partial class math
     public static decimal2x4 fms(this decimal2x4 a, decimal2x4 b, decimal2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x4 fnma(this decimal2x4 a, decimal2x4 b, decimal2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x4 fsm(this decimal2x4 c, decimal2x4 a, decimal2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x4 fam(this decimal2x4 c, decimal2x4 a, decimal2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal2x4 mad(this decimal2x4 a, decimal2x4 b, decimal2x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static decimal4 csum(this decimal2x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -9150,6 +12225,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static decimal3x2 fms(this decimal3x2 a, decimal3x2 b, decimal3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x2 fnma(this decimal3x2 a, decimal3x2 b, decimal3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x2 fsm(this decimal3x2 c, decimal3x2 a, decimal3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x2 fam(this decimal3x2 c, decimal3x2 a, decimal3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x2 mad(this decimal3x2 a, decimal3x2 b, decimal3x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static decimal2 csum(this decimal3x2 a) => 
@@ -9273,6 +12389,47 @@ public static partial class math
     public static decimal3x3 fms(this decimal3x3 a, decimal3x3 b, decimal3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x3 fnma(this decimal3x3 a, decimal3x3 b, decimal3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x3 fsm(this decimal3x3 c, decimal3x3 a, decimal3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x3 fam(this decimal3x3 c, decimal3x3 a, decimal3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x3 mad(this decimal3x3 a, decimal3x3 b, decimal3x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static decimal3 csum(this decimal3x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -9394,6 +12551,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static decimal3x4 fms(this decimal3x4 a, decimal3x4 b, decimal3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x4 fnma(this decimal3x4 a, decimal3x4 b, decimal3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x4 fsm(this decimal3x4 c, decimal3x4 a, decimal3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x4 fam(this decimal3x4 c, decimal3x4 a, decimal3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal3x4 mad(this decimal3x4 a, decimal3x4 b, decimal3x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static decimal4 csum(this decimal3x4 a) => 
@@ -9517,6 +12715,47 @@ public static partial class math
     public static decimal4x2 fms(this decimal4x2 a, decimal4x2 b, decimal4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x2 fnma(this decimal4x2 a, decimal4x2 b, decimal4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x2 fsm(this decimal4x2 c, decimal4x2 a, decimal4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x2 fam(this decimal4x2 c, decimal4x2 a, decimal4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x2 mad(this decimal4x2 a, decimal4x2 b, decimal4x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static decimal2 csum(this decimal4x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -9638,6 +12877,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static decimal4x3 fms(this decimal4x3 a, decimal4x3 b, decimal4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x3 fnma(this decimal4x3 a, decimal4x3 b, decimal4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x3 fsm(this decimal4x3 c, decimal4x3 a, decimal4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x3 fam(this decimal4x3 c, decimal4x3 a, decimal4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x3 mad(this decimal4x3 a, decimal4x3 b, decimal4x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static decimal3 csum(this decimal4x3 a) => 
@@ -9761,6 +13041,47 @@ public static partial class math
     public static decimal4x4 fms(this decimal4x4 a, decimal4x4 b, decimal4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x4 fnma(this decimal4x4 a, decimal4x4 b, decimal4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x4 fsm(this decimal4x4 c, decimal4x4 a, decimal4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x4 fam(this decimal4x4 c, decimal4x4 a, decimal4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static decimal4x4 mad(this decimal4x4 a, decimal4x4 b, decimal4x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static decimal4 csum(this decimal4x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -9882,6 +13203,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half2x2 fms(this half2x2 a, half2x2 b, half2x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x2 fnma(this half2x2 a, half2x2 b, half2x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x2 fsm(this half2x2 c, half2x2 a, half2x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x2 fam(this half2x2 c, half2x2 a, half2x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x2 mad(this half2x2 a, half2x2 b, half2x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static half2 csum(this half2x2 a) => 
@@ -10005,6 +13367,47 @@ public static partial class math
     public static half2x3 fms(this half2x3 a, half2x3 b, half2x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x3 fnma(this half2x3 a, half2x3 b, half2x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x3 fsm(this half2x3 c, half2x3 a, half2x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x3 fam(this half2x3 c, half2x3 a, half2x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x3 mad(this half2x3 a, half2x3 b, half2x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static half3 csum(this half2x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -10126,6 +13529,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half2x4 fms(this half2x4 a, half2x4 b, half2x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x4 fnma(this half2x4 a, half2x4 b, half2x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x4 fsm(this half2x4 c, half2x4 a, half2x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x4 fam(this half2x4 c, half2x4 a, half2x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half2x4 mad(this half2x4 a, half2x4 b, half2x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static half4 csum(this half2x4 a) => 
@@ -10249,6 +13693,47 @@ public static partial class math
     public static half3x2 fms(this half3x2 a, half3x2 b, half3x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x2 fnma(this half3x2 a, half3x2 b, half3x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x2 fsm(this half3x2 c, half3x2 a, half3x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x2 fam(this half3x2 c, half3x2 a, half3x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x2 mad(this half3x2 a, half3x2 b, half3x2 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static half2 csum(this half3x2 a) => 
         new(a.c0.csum(), a.c1.csum());
@@ -10370,6 +13855,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half3x3 fms(this half3x3 a, half3x3 b, half3x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x3 fnma(this half3x3 a, half3x3 b, half3x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x3 fsm(this half3x3 c, half3x3 a, half3x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x3 fam(this half3x3 c, half3x3 a, half3x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x3 mad(this half3x3 a, half3x3 b, half3x3 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static half3 csum(this half3x3 a) => 
@@ -10493,6 +14019,47 @@ public static partial class math
     public static half3x4 fms(this half3x4 a, half3x4 b, half3x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x4 fnma(this half3x4 a, half3x4 b, half3x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x4 fsm(this half3x4 c, half3x4 a, half3x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x4 fam(this half3x4 c, half3x4 a, half3x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half3x4 mad(this half3x4 a, half3x4 b, half3x4 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static half4 csum(this half3x4 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum(), a.c3.csum());
@@ -10614,6 +14181,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half4x2 fms(this half4x2 a, half4x2 b, half4x2 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x2 fnma(this half4x2 a, half4x2 b, half4x2 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x2 fsm(this half4x2 c, half4x2 a, half4x2 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x2 fam(this half4x2 c, half4x2 a, half4x2 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x2 mad(this half4x2 a, half4x2 b, half4x2 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static half2 csum(this half4x2 a) => 
@@ -10737,6 +14345,47 @@ public static partial class math
     public static half4x3 fms(this half4x3 a, half4x3 b, half4x3 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2));
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x3 fnma(this half4x3 a, half4x3 b, half4x3 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x3 fsm(this half4x3 c, half4x3 a, half4x3 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x3 fam(this half4x3 c, half4x3 a, half4x3 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x3 mad(this half4x3 a, half4x3 b, half4x3 c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static half3 csum(this half4x3 a) => 
         new(a.c0.csum(), a.c1.csum(), a.c2.csum());
@@ -10858,6 +14507,47 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static half4x4 fms(this half4x4 a, half4x4 b, half4x4 c) => 
         new(a.c0.fms(b.c0, c.c0), a.c1.fms(b.c1, c.c1), a.c2.fms(b.c2, c.c2), a.c3.fms(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x4 fnma(this half4x4 a, half4x4 b, half4x4 c) => 
+        new(a.c0.fnma(b.c0, c.c0), a.c1.fnma(b.c1, c.c1), a.c2.fnma(b.c2, c.c2), a.c3.fnma(b.c3, c.c3));
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x4 fsm(this half4x4 c, half4x4 a, half4x4 b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x4 fam(this half4x4 c, half4x4 a, half4x4 b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static half4x4 mad(this half4x4 a, half4x4 b, half4x4 c) => fma(a, b, c);
 
     [MethodImpl(256 | 512)]
     public static half4 csum(this half4x4 a) => 

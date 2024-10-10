@@ -672,7 +672,7 @@ public static partial class math
     public static bool isNaN(this double v) => double.IsNaN(v);
 
     #endregion
-    
+
     #region isFinite
 
     [MethodImpl(256 | 512)]
@@ -1101,25 +1101,25 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static byte unlerp(this byte a, byte start, byte end) => (byte)((a - start) / (end - start));
-    
+
     [MethodImpl(256 | 512)]
     public static sbyte unlerp(this sbyte a, sbyte start, sbyte end) => (sbyte)((a - start) / (end - start));
-    
+
     [MethodImpl(256 | 512)]
     public static ushort unlerp(this ushort a, ushort start, ushort end) => (ushort)((a - start) / (end - start));
-    
+
     [MethodImpl(256 | 512)]
     public static short unlerp(this short a, short start, short end) => (short)((a - start) / (end - start));
-    
+
     [MethodImpl(256 | 512)]
     public static uint unlerp(this uint a, uint start, uint end) => (a - start) / (end - start);
-    
+
     [MethodImpl(256 | 512)]
     public static int unlerp(this int a, int start, int end) => (a - start) / (end - start);
-    
+
     [MethodImpl(256 | 512)]
     public static ulong unlerp(this ulong a, ulong start, ulong end) => (a - start) / (end - start);
-    
+
     [MethodImpl(256 | 512)]
     public static long unlerp(this long a, long start, long end) => (a - start) / (end - start);
 
@@ -1131,26 +1131,26 @@ public static partial class math
 
     [MethodImpl(256 | 512)]
     public static double unlerp(this double a, double start, double end) => (a - start) / (end - start);
-    
+
     [MethodImpl(256 | 512)]
     public static decimal unlerp(this decimal a, decimal start, decimal end) => (a - start) / (end - start);
 
     #endregion
 
     #region Remap
-    
+
     [MethodImpl(256 | 512)]
     public static byte remap(this byte a, byte srcStart, byte srcEnd, byte dstStart, byte dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
-    
+
     [MethodImpl(256 | 512)]
     public static sbyte remap(this sbyte a, sbyte srcStart, sbyte srcEnd, sbyte dstStart, sbyte dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
-    
+
     [MethodImpl(256 | 512)]
     public static ushort remap(this ushort a, ushort srcStart, ushort srcEnd, ushort dstStart, ushort dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
-    
+
     [MethodImpl(256 | 512)]
     public static short remap(this short a, short srcStart, short srcEnd, short dstStart, short dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
@@ -1158,15 +1158,15 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static uint remap(this uint a, uint srcStart, uint srcEnd, uint dstStart, uint dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
-    
+
     [MethodImpl(256 | 512)]
     public static int remap(this int a, int srcStart, int srcEnd, int dstStart, int dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
-    
+
     [MethodImpl(256 | 512)]
     public static ulong remap(this ulong a, ulong srcStart, ulong srcEnd, ulong dstStart, ulong dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
-    
+
     [MethodImpl(256 | 512)]
     public static long remap(this long a, long srcStart, long srcEnd, long dstStart, long dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
@@ -1182,7 +1182,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double remap(this double a, double srcStart, double srcEnd, double dstStart, double dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
-    
+
     [MethodImpl(256 | 512)]
     public static decimal remap(this decimal a, decimal srcStart, decimal srcEnd, decimal dstStart, decimal dstEnd) =>
         a.unlerp(srcStart, srcEnd).lerp(dstStart, dstEnd);
@@ -1238,7 +1238,7 @@ public static partial class math
 
     #endregion
 
-    #region Fma
+    #region fma
 
     #if NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
@@ -1277,7 +1277,7 @@ public static partial class math
 
     #endregion
 
-    #region Fms
+    #region fms
 
     #if NET8_0_OR_GREATER
     [MethodImpl(256 | 512)]
@@ -1309,6 +1309,127 @@ public static partial class math
     public static long fms(this long a, long b, long c) => a * b - c;
     [MethodImpl(256 | 512)]
     public static decimal fms(this decimal a, decimal b, decimal c) => a * b - c;
+
+    #endregion
+
+    #region fnma
+
+    #if NET8_0_OR_GREATER
+    [MethodImpl(256 | 512)]
+    public static half fnma(this half a, half b, half c) => (half)fnma((float)a, (float)b, (float)c);
+    [MethodImpl(256 | 512)]
+    public static float fnma(this float a, float b, float c) => MathF.FusedMultiplyAdd(-a, b, c);
+    [MethodImpl(256 | 512)]
+    public static double fnma(this double a, double b, double c) => Math.FusedMultiplyAdd(-a, b, c);
+    #else
+    [MethodImpl(256 | 512)]
+    public static half fnma(this half a, half b, half c) => (half)(c - a * b);
+    [MethodImpl(256 | 512)]
+    public static float fnma(this float a, float b, float c) => c - a * b;
+    [MethodImpl(256 | 512)]
+    public static double fnma(this double a, double b, double c) => c - a * b;
+    #endif
+
+    [MethodImpl(256 | 512)]
+    public static ushort fnma(this ushort a, ushort b, ushort c) => (ushort)(c - a * b);
+    [MethodImpl(256 | 512)]
+    public static short fnma(this short a, short b, short c) => (short)(c - a * b);
+    [MethodImpl(256 | 512)]
+    public static uint fnma(this uint a, uint b, uint c) => c - a * b;
+    [MethodImpl(256 | 512)]
+    public static int fnma(this int a, int b, int c) => c - a * b;
+    [MethodImpl(256 | 512)]
+    public static ulong fnma(this ulong a, ulong b, ulong c) => c - a * b;
+    [MethodImpl(256 | 512)]
+    public static long fnma(this long a, long b, long c) => c - a * b;
+    [MethodImpl(256 | 512)]
+    public static decimal fnma(this decimal a, decimal b, decimal c) => c - a * b;
+
+    #endregion
+
+    #region fsm
+
+    [MethodImpl(256 | 512)]
+    public static half fsm(this half c, half a, half b) => fnma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static float fsm(this float c, float a, float b) => fnma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static double fsm(this double c, double a, double b) => fnma(a, b, c);
+
+    [MethodImpl(256 | 512)]
+    public static ushort fsm(this ushort c, ushort a, ushort b) => fnma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static short fsm(this short c, short a, short b) => fnma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static uint fsm(this uint c, uint a, uint b) => fnma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static int fsm(this int c, int a, int b) => fnma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static ulong fsm(this ulong c, ulong a, ulong b) => fnma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static long fsm(this long c, long a, long b) => fnma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static decimal fsm(this decimal c, decimal a, decimal b) => fnma(a, b, c);
+
+    #endregion
+
+    #region fam
+
+    [MethodImpl(256 | 512)]
+    public static half fam(this half c, half a, half b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static float fam(this float c, float a, float b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static double fam(this double c, double a, double b) => fma(a, b, c);
+
+    [MethodImpl(256 | 512)]
+    public static byte fam(this byte c, byte a, byte b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static sbyte fam(this sbyte c, sbyte a, sbyte b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static ushort fam(this ushort c, ushort a, ushort b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static short fam(this short c, short a, short b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static uint fam(this uint c, uint a, uint b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static int fam(this int c, int a, int b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static ulong fam(this ulong c, ulong a, ulong b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static long fam(this long c, long a, long b) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static decimal fam(this decimal c, decimal a, decimal b) => fma(a, b, c);
+
+    #endregion
+
+    #region mad
+
+    [MethodImpl(256 | 512)]
+    public static half mad(this half a, half b, half c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static float mad(this float a, float b, float c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static double mad(this double a, double b, double c) => fma(a, b, c);
+
+    [MethodImpl(256 | 512)]
+    public static byte mad(this byte a, byte b, byte c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static sbyte mad(this sbyte a, sbyte b, sbyte c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static ushort mad(this ushort a, ushort b, ushort c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static short mad(this short a, short b, short c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static uint mad(this uint a, uint b, uint c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static int mad(this int a, int b, int c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static ulong mad(this ulong a, ulong b, ulong c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static long mad(this long a, long b, long c) => fma(a, b, c);
+    [MethodImpl(256 | 512)]
+    public static decimal mad(this decimal a, decimal b, decimal c) => fma(a, b, c);
 
     #endregion
 

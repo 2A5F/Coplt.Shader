@@ -638,6 +638,68 @@ public static partial class math
 #>
     }
 
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code> or <code>-(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> fnma(this <#= typeName #> a, <#= typeName #> b, <#= typeName #> c)
+    {
+<#
+            if (typ.simd && typ.f && typ.bin)
+            {
+#>
+        #if NET8_0_OR_GREATER
+        return new(simd.Fnma(a.vector, b.vector, c.vector));
+        #else // NET8_0_OR_GREATER
+<#
+            }
+#>
+        return new(<#=
+                string.Join(", ", Enumerable.Range(0, i).Select(n => $"a.{Typ.xyzw[n]}.fnma(b.{Typ.xyzw[n]}, c.{Typ.xyzw[n]})")) #>);
+<#
+            if (typ.simd && typ.f && typ.bin)
+            {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+            }
+#>
+    }
+
+    /// <summary>
+    /// Fusion Multiplication and Subtraction
+    /// <code>c - (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Minuend c</param>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> fsm(this <#= typeName #> c, <#= typeName #> a, <#= typeName #> b) => fnma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>c + (a * b)</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> fam(this <#= typeName #> c, <#= typeName #> a, <#= typeName #> b) => fma(a, b, c);
+
+    /// <summary>
+    /// Fusion Addition and Multiplication
+    /// <code>(a * b) + c</code>
+    /// </summary>
+    /// <param name="a">Multiplier a</param>
+    /// <param name="b">Multiplier b</param>
+    /// <param name="c">Addend c</param>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> mad(this <#= typeName #> a, <#= typeName #> b, <#= typeName #> c) => fma(a, b, c);
+
     [MethodImpl(256 | 512)]
     public static <#= typ.compType #> csum(this <#= typeName #> a)
     {

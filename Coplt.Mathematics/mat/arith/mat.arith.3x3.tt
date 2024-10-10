@@ -117,7 +117,7 @@ public partial struct <#= typeName #>
     {
         angle.sincos(out var sina, out var cosa);
         var u = axis;
-        var u_inv_cosa = u - u * cosa; // u * (1 - cosa);
+        var u_inv_cosa = math.fsm(u, u, cosa); // u - u * cosa // u * (1 - cosa);
         var t = new <#= vecTypeName4 #>(u * sina, cosa);
 
         var ppn = new <#= typ.maskType #>3(default, default, <#= typ.maskNeg #>).as<#= typ.compType #>();
@@ -338,9 +338,12 @@ public static partial class math
         // var t2 = new <#= vecTypeName #>(c1.z, c2.z, c0.z);
         var (t0, t1, t2) = transpose(new <#= typeName #>(c1, c2, c0));
     
-        var m0 = t1 * t2.yzx - t1.yzx * t2;
-        var m1 = t0.yzx * t2 - t0 * t2.yzx;
-        var m2 = t0 * t1.yzx - t0.yzx * t1;
+        // var m0 = t1 * t2.yzx - t1.yzx * t2;
+        // var m1 = t0.yzx * t2 - t0 * t2.yzx;
+        // var m2 = t0 * t1.yzx - t0.yzx * t1;
+        var m0 = fsm(t1 * t2.yzx, t1.yzx, t2);
+        var m1 = fsm(t0.yzx * t2, t0, t2.yzx);
+        var m2 = fsm(t0 * t1.yzx, t0.yzx, t1);
     
         var rcpDet = <#= typ.arithCast #>(<#= typ.one #> / csum(t0.zxy * m0));
         return new <#= typeName #>(m0, m1, m2) * rcpDet;
@@ -354,11 +357,15 @@ public static partial class math
     {
         var (c0, c1, c2) = m;
 
-        var m00 = c1.y * c2.z - c1.z * c2.y;
-        var m01 = c0.y * c2.z - c0.z * c2.y;
-        var m02 = c0.y * c1.z - c0.z * c1.y;
+        // var m00 = c1.y * c2.z - c1.z * c2.y;
+        // var m01 = c0.y * c2.z - c0.z * c2.y;
+        // var m02 = c0.y * c1.z - c0.z * c1.y;
+        var m00 = fsm(c1.y * c2.z, c1.z, c2.y);
+        var m01 = fsm(c0.y * c2.z, c0.z, c2.y);
+        var m02 = fsm(c0.y * c1.z, c0.z, c1.y);
 
-        var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        //var r = c0.x * m00 - c1.x * m01 + c2.x * m02;
+        var r = fam(fsm(c0.x * m00, c1.x, m01), c2.x, m02);
 
         return <#= typ.arithCast #>r;
     }
