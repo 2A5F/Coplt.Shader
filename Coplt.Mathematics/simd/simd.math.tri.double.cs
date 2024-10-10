@@ -472,7 +472,7 @@ public static partial class simd_math
 
     #endregion
 
-    #region Asinh Acosh
+    #region Asinh Acosh Atanh
 
     #region Vector128<f64>
 
@@ -493,6 +493,14 @@ public static partial class simd_math
         r = Vector128.Sqrt(r);
         r += x;
         r = Log(r);
+        return r;
+    }
+
+    [MethodImpl(512)]
+    public static Vector128<f64> Atanh(Vector128<f64> x)
+    {
+        var r = (Vector128<f64>.One + x) / (Vector128<f64>.One - x);
+        r = Log(r) * 0.5;
         return r;
     }
 
@@ -520,6 +528,14 @@ public static partial class simd_math
         return r;
     }
 
+    [MethodImpl(512)]
+    public static Vector256<f64> Atanh(Vector256<f64> x)
+    {
+        var r = (Vector256<f64>.One + x) / (Vector256<f64>.One - x);
+        r = Log(r) * 0.5;
+        return r;
+    }
+
     #endregion
 
     #region Vector512<f64>
@@ -541,6 +557,14 @@ public static partial class simd_math
         r = Vector512.Sqrt(r);
         r += x;
         r = Log(r);
+        return r;
+    }
+
+    [MethodImpl(512)]
+    public static Vector512<f64> Atanh(Vector512<f64> x)
+    {
+        var r = (Vector512<f64>.One + x) / (Vector512<f64>.One - x);
+        r = Log(r) * 0.5;
         return r;
     }
 

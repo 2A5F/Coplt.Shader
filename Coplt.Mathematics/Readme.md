@@ -34,5 +34,4 @@ hlsl-style linear algebra library
 ## Todo
 
 - [ ] tests
-- [ ] simd impl of atanh
 - [ ] rewrite the function with too low precision

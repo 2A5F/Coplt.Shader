@@ -341,7 +341,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float2 atanh(this float2 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atanh(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atanh(), a.y.atanh());
@@ -700,7 +700,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float3 atanh(this float3 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atanh(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh());
@@ -1061,7 +1061,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static float4 atanh(this float4 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atanh(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh(), a.w.atanh());
@@ -1418,7 +1418,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double2 atanh(this double2 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atanh(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atanh(), a.y.atanh());
@@ -1777,7 +1777,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double3 atanh(this double3 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atanh(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh());
@@ -2138,7 +2138,7 @@ public static partial class math
     [MethodImpl(256 | 512)]
     public static double4 atanh(this double4 a)
     {
-        #if NET8_0_OR_GREATER && false // todo
+        #if NET8_0_OR_GREATER
         return new(simd.Atanh(a.vector));
         #else // NET8_0_OR_GREATER
         return new(a.x.atanh(), a.y.atanh(), a.z.atanh(), a.w.atanh());

@@ -51,6 +51,17 @@ public class TestAsinhAcosh
         Console.WriteLine($"{b}");
         Assert.That(b, Is.EqualTo(a).Within(10).Ulps);
     }
+    
+    [Test]
+    [Parallelizable]
+    public void FloatTestAtanh([Random(-1.1f, 1.1f, 100)] float x)
+    {
+        var a = simd_math.Atanh(new float4(x).UnsafeGetInner()).GetElement(0);
+        var b = MathF.Atanh(x);
+        Console.WriteLine($"{a}");
+        Console.WriteLine($"{b}");
+        Assert.That(b, Is.EqualTo(a).Within(50).Ulps);
+    }
 }
 
 #endif

@@ -249,7 +249,7 @@ public static partial class simd_math
 
     #endregion
 
-    #region Asinh Acosh
+    #region Asinh Acosh Atanh
 
 <#
     foreach (var size in sizes)
@@ -276,6 +276,14 @@ public static partial class simd_math
         r = <#= vector #>.Sqrt(r);
         r += x;
         r = Log(r);
+        return r;
+    }
+
+    [MethodImpl(512)]
+    public static <#= vt #> Atanh(<#= vt #> x)
+    {
+        var r = (<#= vt #>.One + x) / (<#= vt #>.One - x);
+        r = Log(r) * 0.5;
         return r;
     }
 

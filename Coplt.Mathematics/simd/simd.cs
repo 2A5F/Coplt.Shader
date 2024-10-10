@@ -2857,6 +2857,84 @@ public static partial class simd
 
     #endregion
 
+    #region Atanh
+
+    [MethodImpl(256 | 512)]
+    public static Vector64<float> Atanh(Vector64<float> a)
+    {
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return simd_math.Atanh(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Atanh(a.ToVector128()).GetLower();
+        }
+        return Vector64.Create(
+            a.GetElement(0).atanh(),
+            a.GetElement(1).atanh()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<float> Atanh(Vector128<float> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Atanh(a);
+        }
+        if (Vector64.IsHardwareAccelerated)
+        {
+            return Vector128.Create(
+                simd_math.Atanh(a.GetLower()),
+                simd_math.Atanh(a.GetUpper())
+            );
+        }
+        return Vector128.Create(
+            a.GetElement(0).atanh(),
+            a.GetElement(1).atanh(),
+            a.GetElement(2).atanh(),
+            a.GetElement(3).atanh()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector128<double> Atanh(Vector128<double> a)
+    {
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return simd_math.Atanh(a);
+        }
+        return Vector128.Create(
+            a.GetElement(0).atanh(),
+            a.GetElement(1).atanh()
+        );
+    }
+
+    [MethodImpl(256 | 512)]
+    public static Vector256<double> Atanh(Vector256<double> a)
+    {
+        if (Vector256.IsHardwareAccelerated)
+        {
+            return simd_math.Atanh(a);
+        }
+        if (Vector128.IsHardwareAccelerated)
+        {
+            return Vector256.Create(
+                simd_math.Atanh(a.GetLower()),
+                simd_math.Atanh(a.GetUpper())
+            );
+        }
+        return Vector256.Create(
+            a.GetElement(0).atanh(),
+            a.GetElement(1).atanh(),
+            a.GetElement(2).atanh(),
+            a.GetElement(3).atanh()
+        );
+    }
+
+    #endregion
+    
     #region Asin
 
     [MethodImpl(256 | 512)]
