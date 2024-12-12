@@ -1997,4 +1997,30 @@ public static partial class math
     public static double atanh(this double a) => Math.Atanh(a);
 
     #endregion
+
+    #region radians
+
+    [MethodImpl(256 | 512)]
+    public static half radians(this half a) => (half)((float)a * F_DegToRad);
+
+    [MethodImpl(256 | 512)]
+    public static float radians(this float a) => a * F_DegToRad;
+
+    [MethodImpl(256 | 512)]
+    public static double radians(this double a) => a * D_DegToRad;
+
+    #endregion
+
+    #region degrees
+
+    [MethodImpl(256 | 512)]
+    public static half degrees(this half a) => (half)((float)a * F_RadToDeg);
+
+    [MethodImpl(256 | 512)]
+    public static float degrees(this float a) => a * F_RadToDeg;
+
+    [MethodImpl(256 | 512)]
+    public static double degrees(this double a) => a * D_RadToDeg;
+
+    #endregion
 }

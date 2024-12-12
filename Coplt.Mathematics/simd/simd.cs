@@ -1352,7 +1352,7 @@ public static partial class simd
     }
 
     #endregion
-    
+
     #region IsInfinity
 
     [MethodImpl(256 | 512)]
@@ -2934,7 +2934,7 @@ public static partial class simd
     }
 
     #endregion
-    
+
     #region Asin
 
     [MethodImpl(256 | 512)]
