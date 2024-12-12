@@ -10,7 +10,9 @@ public class TestBool
         {
             var a = new uint4(1, 2, 3, 4);
             // ReSharper disable once EqualExpressionComparison
+            #pragma warning disable CS1718 // Comparison made to same variable
             var r = (a == a).all();
+            #pragma warning restore CS1718 // Comparison made to same variable
             Console.WriteLine(r);
             Assert.IsTrue(r);
         }
@@ -51,7 +53,9 @@ public class TestBool
         {
             var a = new uint4(1, 2, 3, 4);
             // ReSharper disable once EqualExpressionComparison
+            #pragma warning disable CS1718 // Comparison made to same variable
             var r = (a == a).any();
+            #pragma warning restore CS1718 // Comparison made to same variable
             Console.WriteLine(r);
             Assert.IsTrue(r);
         }

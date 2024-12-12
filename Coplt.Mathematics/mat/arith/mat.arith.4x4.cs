@@ -222,9 +222,21 @@ public partial struct float4x4
     /// <param name="up">The eye up direction</param>
     /// <returns>The float4x4 view matrix.</returns>
     [MethodImpl(256 | 512)]
-    public static float4x4 LookAt(float3 eye, float3 target, float3 up)
+    public static float4x4 LookAt(float3 eye, float3 target, float3 up) 
+        => LookTo(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a float4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookTo(float3 eye, float3 dir, float3 up)
     {
-        var rot = float3x3.LookRotation((target - eye).normalize(), up);
+        var rot = float3x3.LookRotation(dir.normalize(), up);
         return new(
             new(rot.c0, default),
             new(rot.c1, default),
@@ -747,9 +759,21 @@ public partial struct double4x4
     /// <param name="up">The eye up direction</param>
     /// <returns>The double4x4 view matrix.</returns>
     [MethodImpl(256 | 512)]
-    public static double4x4 LookAt(double3 eye, double3 target, double3 up)
+    public static double4x4 LookAt(double3 eye, double3 target, double3 up) 
+        => LookTo(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a double4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookTo(double3 eye, double3 dir, double3 up)
     {
-        var rot = double3x3.LookRotation((target - eye).normalize(), up);
+        var rot = double3x3.LookRotation(dir.normalize(), up);
         return new(
             new(rot.c0, default),
             new(rot.c1, default),
@@ -1935,9 +1959,21 @@ public partial struct half4x4
     /// <param name="up">The eye up direction</param>
     /// <returns>The half4x4 view matrix.</returns>
     [MethodImpl(256 | 512)]
-    public static half4x4 LookAt(half3 eye, half3 target, half3 up)
+    public static half4x4 LookAt(half3 eye, half3 target, half3 up) 
+        => LookTo(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a half4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookTo(half3 eye, half3 dir, half3 up)
     {
-        var rot = half3x3.LookRotation((target - eye).normalize(), up);
+        var rot = half3x3.LookRotation(dir.normalize(), up);
         return new(
             new(rot.c0, default),
             new(rot.c1, default),

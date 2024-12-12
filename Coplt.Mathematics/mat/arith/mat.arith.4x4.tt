@@ -259,9 +259,21 @@ public partial struct <#= typeName #>
     /// <param name="up">The eye up direction</param>
     /// <returns>The <#= typeName #> view matrix.</returns>
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> LookAt(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> target, <#= vecTypeName3 #> up)
+    public static <#= typeName #> LookAt(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> target, <#= vecTypeName3 #> up) 
+        => LookTo(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a <#= typeName #> view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookTo(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> dir, <#= vecTypeName3 #> up)
     {
-        var rot = <#= typeName3x3 #>.LookRotation((target - eye).normalize(), up);
+        var rot = <#= typeName3x3 #>.LookRotation(dir.normalize(), up);
         return new(
             new(rot.c0, default),
             new(rot.c1, default),
