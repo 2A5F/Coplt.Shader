@@ -24,6 +24,33 @@ namespace Coplt.Mathematics;
 public partial struct <#= typeName #> 
 {
     [MethodImpl(256 | 512)]
+    public <#= typeName #>(<#= typeName3 #> xyz)
+    {
+<#
+        if (typ.simd)
+        {
+#>
+        #if NET8_0_OR_GREATER
+        vector = xyz.vector;
+        #else // NET8_0_OR_GREATER
+<#
+        }
+#>
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+<#
+        if (typ.simd)
+        {
+#>
+        #endif // NET8_0_OR_GREATER
+<#
+        }
+#>
+    }
+
+    [MethodImpl(256 | 512)]
     public <#= typeName #>(<#= typeName3 #> xyz, <#= type #> w)
     {
 <#

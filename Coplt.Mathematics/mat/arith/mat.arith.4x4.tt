@@ -250,7 +250,7 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> view matrix given an eye position, a target point and a unit length up vector.
+    /// Returns a left-handed <#= typeName #> view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
     /// the vector between them is assumes to be collinear with the up vector.
     /// </summary>
@@ -263,7 +263,33 @@ public partial struct <#= typeName #>
         => LookTo(eye, target - eye, up);
 
     /// <summary>
-    /// Returns a <#= typeName #> view matrix given an eye position, a target direction and a unit length up vector.
+    /// Returns a right-handed <#= typeName #> view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookAt_RH(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> target, <#= vecTypeName3 #> up) 
+        => LookTo_RH(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a <#= typeName #> view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookAt_GL(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> target, <#= vecTypeName3 #> up) 
+        => LookTo_GL(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a left-handed <#= typeName #> view matrix given an eye position, a target direction and a unit length up vector.
     /// The up vector is assumed to be unit length.
     /// </summary>
     /// <param name="eye">The eye position</param>
@@ -272,6 +298,43 @@ public partial struct <#= typeName #>
     /// <returns>The <#= typeName #> view matrix.</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> LookTo(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> dir, <#= vecTypeName3 #> up)
+        => LookTo_RH(eye, -dir, up);
+
+    /// <summary>
+    /// Returns a right-handed <#= typeName #> view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookTo_RH(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> dir, <#= vecTypeName3 #> up)
+    {
+        var f = dir.normalize();
+        var s = f.cross(up).normalize();
+        var u = s.cross(f);
+
+        var m3x3 = new <#= vecTypeName3 #>x3(s, u, -f).transpose();
+        
+        return new(
+            new(m3x3.c0),
+            new(m3x3.c1),
+            new(m3x3.c2),
+            new(-eye.dot(s), -eye.dot(u), eye.dot(f), <#= typ.one #>)
+        );
+    }
+
+    /// <summary>
+    /// Returns a <#= typeName #> view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookTo_GL(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> dir, <#= vecTypeName3 #> up)
     {
         var rot = <#= typeName3x3 #>.LookRotation(dir.normalize(), up);
         return new(
@@ -283,7 +346,7 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> centered orthographic projection matrix
+    /// Returns a left-handed <#= typeName #> centered orthographic projection matrix.
     /// </summary>
     /// <param name="width">The width of the view volume</param>
     /// <param name="height">The height of the view volume</param>
@@ -292,6 +355,102 @@ public partial struct <#= typeName #>
     /// <returns>The <#= typeName #> centered orthographic projection matrix.</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> Ortho(<#= typ.compType #> width, <#= typ.compType #> height, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var rcp_width = <#= typ.one #> / width;
+        var rcp_height = <#= typ.one #> / height;
+        var r = <#= typ.one #> / (far - near);
+
+        return new(
+            new(<#= typ.arithCast #>(rcp_width + rcp_width),       default,            default,            default),
+            new(default,           <#= typ.arithCast #>(rcp_height + rcp_height),        default,            default),
+            new(default,           default,            <#= typ.arithCast #>r,       default),
+            new(default,           default,            <#= typ.arithCast #>(-r * near), <#= typ.one #>)
+       );
+    }
+
+    /// <summary>
+    /// Returns a left-handed <#= typeName #> off-center orthographic projection matrix.
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The <#= typeName #> off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> Ortho(<#= typ.compType #> left, <#= typ.compType #> right, <#= typ.compType #> bottom, <#= typ.compType #> top, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var rcp_width = <#= typ.one #> / (right - left);
+        var rcp_height = <#= typ.one #> / (top - bottom);
+        var r = <#= typ.one #> / (far - near);
+
+        return new(
+            new(<#= typ.arithCast #>(rcp_width + rcp_width),       default,            default,            default),
+            new(default,           <#= typ.arithCast #>(rcp_height + rcp_height),        default,            default),
+            new(default,           default,            <#= typ.arithCast #>r,       default),
+            new(<#= typ.arithCast #>(-(left + right) * rcp_width), <#= typ.arithCast #>(-(top + bottom) * rcp_height), <#= typ.arithCast #>(-r * near), <#= typ.one #>)
+       );
+    }
+
+    /// <summary>
+    /// Returns a right-handed <#= typeName #> centered orthographic projection matrix.
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The <#= typeName #> centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> Ortho_RH(<#= typ.compType #> width, <#= typ.compType #> height, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var rcp_width = <#= typ.one #> / width;
+        var rcp_height = <#= typ.one #> / height;
+        var r = <#= typ.one #> / (far - near);
+
+        return new(
+            new(<#= typ.arithCast #>(rcp_width + rcp_width),       default,            default,            default),
+            new(default,           <#= typ.arithCast #>(rcp_height + rcp_height),        default,            default),
+            new(default,           default,            <#= typ.arithCast #>r,       default),
+            new(default,           default,            <#= typ.arithCast #>(r * near), <#= typ.one #>)
+       );
+    }
+
+    /// <summary>
+    /// Returns a right-handed <#= typeName #> off-center orthographic projection matrix.
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The <#= typeName #> off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> Ortho_RH(<#= typ.compType #> left, <#= typ.compType #> right, <#= typ.compType #> bottom, <#= typ.compType #> top, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var rcp_width = <#= typ.one #> / (right - left);
+        var rcp_height = <#= typ.one #> / (top - bottom);
+        var r = <#= typ.one #> / (far - near);
+
+        return new(
+            new(<#= typ.arithCast #>(rcp_width + rcp_width),       default,            default,            default),
+            new(default,           <#= typ.arithCast #>(rcp_height + rcp_height),        default,            default),
+            new(default,           default,            <#= typ.arithCast #>r,       default),
+            new(<#= typ.arithCast #>(-(left + right) * rcp_width), <#= typ.arithCast #>(-(top + bottom) * rcp_height), <#= typ.arithCast #>(r * near), <#= typ.one #>)
+       );
+    }
+
+    /// <summary>
+    /// Returns a <#= typeName #> centered orthographic projection matrix.
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The <#= typeName #> centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> Ortho_GL(<#= typ.compType #> width, <#= typ.compType #> height, <#= typ.compType #> near, <#= typ.compType #> far)
     {
         var rcpdx = <#= typ.one #> / width;
         var rcpdy = <#= typ.one #> / height;
@@ -306,7 +465,7 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> off-center orthographic projection matrix
+    /// Returns a <#= typeName #> off-center orthographic projection matrix.
     /// </summary>
     /// <param name="left">The minimum x-coordinate of the view volume</param>
     /// <param name="right">The maximum x-coordinate of the view volume</param>
@@ -316,7 +475,7 @@ public partial struct <#= typeName #>
     /// <param name="far">The distance to the far plane</param>
     /// <returns>The <#= typeName #> off-center orthographic projection matrix.</returns>
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> OrthoOffCenter(<#= typ.compType #> left, <#= typ.compType #> right, <#= typ.compType #> bottom, <#= typ.compType #> top, <#= typ.compType #> near, <#= typ.compType #> far)
+    public static <#= typeName #> Ortho_GL(<#= typ.compType #> left, <#= typ.compType #> right, <#= typ.compType #> bottom, <#= typ.compType #> top, <#= typ.compType #> near, <#= typ.compType #> far)
     {
         var rcpdx = <#= typ.one #> / (right - left);
         var rcpdy = <#= typ.one #> / (top - bottom);
@@ -331,7 +490,7 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
-    /// Returns a <#= typeName #> perspective projection matrix based on field of view
+    /// Returns a left-handed <#= typeName #> perspective projection matrix based on field of view.
     /// </summary>
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
@@ -340,6 +499,53 @@ public partial struct <#= typeName #>
     /// <returns>The <#= typeName #> perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> PerspectiveFov(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var h = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            new(<#= typ.arithCast #>w,                     default,       default,                   default),
+            new(default,               <#= typ.arithCast #>h,             default,                   default),
+            new(default,               default,       <#= typ.arithCast #>r,                            <#= typ.one #>),
+            new(default,               default,       <#= typ.arithCast #>(-r * near),                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns a right-handed <#= typeName #> perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The <#= typeName #> perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> PerspectiveFov_RH(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var h = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            new(<#= typ.arithCast #>w,                     default,       default,                   default),
+            new(default,               <#= typ.arithCast #>h,             default,                   default),
+            new(default,               default,       <#= typ.arithCast #>r,                            -<#= typ.one #>),
+            new(default,               default,       <#= typ.arithCast #>(r * near),                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns a <#= typeName #> perspective projection matrix based on field of view.
+    /// <para><see href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml"/></para>
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The <#= typeName #> perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> PerspectiveFov_GL(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near, <#= typ.compType #> far)
     {
         var cotangent = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
         var rcpdz = <#= typ.one #> / (near - far);
@@ -352,20 +558,64 @@ public partial struct <#= typeName #>
         );
     }
 
+    /// <summary>
+    /// Returns an infinite left-handed <#= typeName #> perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The <#= typeName #> perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
-    public static <#= typeName #> PerspectiveOffCenter(<#= typ.compType #> left, <#= typ.compType #> right, <#= typ.compType #> bottom, <#= typ.compType #> top, <#= typ.compType #> near, <#= typ.compType #> far)
+    public static <#= typeName #> PerspectiveFov(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near)
     {
-        var rcpdz = <#= typ.one #> / (near - far);
-        var rcpWidth = <#= typ.one #> / (right - left);
-        var rcpHeight = <#= typ.one #> / (top - bottom);
+        var h = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
+        var w = h / aspect;
 
         return new(
-            <#= typ.arithCast #>(<#= typ.two #> * near * rcpWidth),        default,                       <#= typ.arithCast #>((left + right) * rcpWidth),     default,
-            default,                       <#= typ.arithCast #>(<#= typ.two #> * near * rcpHeight),       <#= typ.arithCast #>((bottom + top) * rcpHeight),    default,
-            default,                       default,                       <#= typ.arithCast #>((far + near) * rcpdz),          <#= typ.arithCast #>(<#= typ.two #> * near * far * rcpdz),
-            default,                       default,                       -<#= typ.one #>,                         default
+            new(<#= typ.arithCast #>w,                     default,       default,                   default),
+            new(default,               <#= typ.arithCast #>h,             default,                   default),
+            new(default,               default,       <#= typ.one #>,                            <#= typ.one #>),
+            new(default,               default,       -<#= typ.arithCast #>near,                     default)
         );
     }
+
+    /// <summary>
+    /// Returns an infinite right-handed <#= typeName #> perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The <#= typeName #> perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> PerspectiveFov_RH(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near)
+    {
+        var h = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
+        var w = h / aspect;
+
+        return new(
+            new(<#= typ.arithCast #>w,                     default,       default,                   default),
+            new(default,               <#= typ.arithCast #>h,             default,                   default),
+            new(default,               default,       -<#= typ.one #>,                            -<#= typ.one #>),
+            new(default,               default,       -<#= typ.arithCast #>near,                     default)
+        );
+    }
+
+    // [MethodImpl(256 | 512)]
+    // public static <#= typeName #> PerspectiveOffCenter(<#= typ.compType #> left, <#= typ.compType #> right, <#= typ.compType #> bottom, <#= typ.compType #> top, <#= typ.compType #> near, <#= typ.compType #> far)
+    // {
+    //     var rcpdz = <#= typ.one #> / (near - far);
+    //     var rcpWidth = <#= typ.one #> / (right - left);
+    //     var rcpHeight = <#= typ.one #> / (top - bottom);
+// 
+    //     return new(
+    //         <#= typ.arithCast #>(<#= typ.two #> * near * rcpWidth),        default,                       <#= typ.arithCast #>((left + right) * rcpWidth),     default,
+    //         default,                       <#= typ.arithCast #>(<#= typ.two #> * near * rcpHeight),       <#= typ.arithCast #>((bottom + top) * rcpHeight),    default,
+    //         default,                       default,                       <#= typ.arithCast #>((far + near) * rcpdz),          <#= typ.arithCast #>(<#= typ.two #> * near * far * rcpdz),
+    //         default,                       default,                       -<#= typ.one #>,                         default
+    //     );
+    // }
 
     /// <summary>
     /// Returns a <#= typeName #> matrix representing a combined scale-, rotation- and translation transform.
@@ -382,6 +632,20 @@ public partial struct <#= typeName #>
         r.c0 *= scale.xxx;
         r.c1 *= scale.yyy;
         r.c2 *= scale.zzz;
+        return new(r, translation);
+    }
+
+    /// <summary>
+    /// Returns a <#= typeName #> matrix representing a combined rotation- and translation transform.
+    /// Equivalent to mul(translationTransform, rotationTransform)
+    /// </summary>
+    /// <param name="translation">The translation vector</param>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <returns>The <#= typeName #> matrix representing the translation and rotation by the inputs</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> TR(<#= vecTypeName3 #> translation, <#= quaternionName #> rotation)
+    {
+        var r = new <#= typeName3x3 #>(rotation);
         return new(r, translation);
     }
 <#

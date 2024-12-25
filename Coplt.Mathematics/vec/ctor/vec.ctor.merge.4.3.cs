@@ -7,6 +7,19 @@ namespace Coplt.Mathematics;
 public partial struct float4 
 {
     [MethodImpl(256 | 512)]
+    public float4(float3 xyz)
+    {
+        #if NET8_0_OR_GREATER
+        vector = xyz.vector;
+        #else // NET8_0_OR_GREATER
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public float4(float3 xyz, float w)
     {
         #if NET8_0_OR_GREATER
@@ -96,6 +109,19 @@ public static partial class math
 
 public partial struct double4 
 {
+    [MethodImpl(256 | 512)]
+    public double4(double3 xyz)
+    {
+        #if NET8_0_OR_GREATER
+        vector = xyz.vector;
+        #else // NET8_0_OR_GREATER
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+        #endif // NET8_0_OR_GREATER
+    }
+
     [MethodImpl(256 | 512)]
     public double4(double3 xyz, double w)
     {
@@ -187,6 +213,15 @@ public static partial class math
 public partial struct short4 
 {
     [MethodImpl(256 | 512)]
+    public short4(short3 xyz)
+    {
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+    }
+
+    [MethodImpl(256 | 512)]
     public short4(short3 xyz, short w)
     {
         this.x = xyz.x;
@@ -261,6 +296,15 @@ public static partial class math
 public partial struct ushort4 
 {
     [MethodImpl(256 | 512)]
+    public ushort4(ushort3 xyz)
+    {
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+    }
+
+    [MethodImpl(256 | 512)]
     public ushort4(ushort3 xyz, ushort w)
     {
         this.x = xyz.x;
@@ -334,6 +378,19 @@ public static partial class math
 
 public partial struct int4 
 {
+    [MethodImpl(256 | 512)]
+    public int4(int3 xyz)
+    {
+        #if NET8_0_OR_GREATER
+        vector = xyz.vector;
+        #else // NET8_0_OR_GREATER
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+        #endif // NET8_0_OR_GREATER
+    }
+
     [MethodImpl(256 | 512)]
     public int4(int3 xyz, int w)
     {
@@ -425,6 +482,19 @@ public static partial class math
 public partial struct uint4 
 {
     [MethodImpl(256 | 512)]
+    public uint4(uint3 xyz)
+    {
+        #if NET8_0_OR_GREATER
+        vector = xyz.vector;
+        #else // NET8_0_OR_GREATER
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public uint4(uint3 xyz, uint w)
     {
         #if NET8_0_OR_GREATER
@@ -514,6 +584,19 @@ public static partial class math
 
 public partial struct long4 
 {
+    [MethodImpl(256 | 512)]
+    public long4(long3 xyz)
+    {
+        #if NET8_0_OR_GREATER
+        vector = xyz.vector;
+        #else // NET8_0_OR_GREATER
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+        #endif // NET8_0_OR_GREATER
+    }
+
     [MethodImpl(256 | 512)]
     public long4(long3 xyz, long w)
     {
@@ -605,6 +688,19 @@ public static partial class math
 public partial struct ulong4 
 {
     [MethodImpl(256 | 512)]
+    public ulong4(ulong3 xyz)
+    {
+        #if NET8_0_OR_GREATER
+        vector = xyz.vector;
+        #else // NET8_0_OR_GREATER
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+        #endif // NET8_0_OR_GREATER
+    }
+
+    [MethodImpl(256 | 512)]
     public ulong4(ulong3 xyz, ulong w)
     {
         #if NET8_0_OR_GREATER
@@ -695,6 +791,15 @@ public static partial class math
 public partial struct decimal4 
 {
     [MethodImpl(256 | 512)]
+    public decimal4(decimal3 xyz)
+    {
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+    }
+
+    [MethodImpl(256 | 512)]
     public decimal4(decimal3 xyz, decimal w)
     {
         this.x = xyz.x;
@@ -768,6 +873,15 @@ public static partial class math
 
 public partial struct half4 
 {
+    [MethodImpl(256 | 512)]
+    public half4(half3 xyz)
+    {
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+    }
+
     [MethodImpl(256 | 512)]
     public half4(half3 xyz, half w)
     {
@@ -843,6 +957,15 @@ public static partial class math
 public partial struct b16v4 
 {
     [MethodImpl(256 | 512)]
+    public b16v4(b16v3 xyz)
+    {
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+    }
+
+    [MethodImpl(256 | 512)]
     public b16v4(b16v3 xyz, b16 w)
     {
         this.x = xyz.x;
@@ -916,6 +1039,19 @@ public static partial class math
 
 public partial struct b32v4 
 {
+    [MethodImpl(256 | 512)]
+    public b32v4(b32v3 xyz)
+    {
+        #if NET8_0_OR_GREATER
+        vector = xyz.vector;
+        #else // NET8_0_OR_GREATER
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+        #endif // NET8_0_OR_GREATER
+    }
+
     [MethodImpl(256 | 512)]
     public b32v4(b32v3 xyz, b32 w)
     {
@@ -1006,6 +1142,19 @@ public static partial class math
 
 public partial struct b64v4 
 {
+    [MethodImpl(256 | 512)]
+    public b64v4(b64v3 xyz)
+    {
+        #if NET8_0_OR_GREATER
+        vector = xyz.vector;
+        #else // NET8_0_OR_GREATER
+        this.x = xyz.x;
+        this.y = xyz.y;
+        this.z = xyz.z;
+        this.w = default;
+        #endif // NET8_0_OR_GREATER
+    }
+
     [MethodImpl(256 | 512)]
     public b64v4(b64v3 xyz, b64 w)
     {

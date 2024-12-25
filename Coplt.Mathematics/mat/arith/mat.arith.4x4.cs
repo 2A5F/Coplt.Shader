@@ -213,7 +213,7 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// Returns a left-handed float4x4 view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
     /// the vector between them is assumes to be collinear with the up vector.
     /// </summary>
@@ -226,7 +226,33 @@ public partial struct float4x4
         => LookTo(eye, target - eye, up);
 
     /// <summary>
-    /// Returns a float4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// Returns a right-handed float4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookAt_RH(float3 eye, float3 target, float3 up) 
+        => LookTo_RH(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a float4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookAt_GL(float3 eye, float3 target, float3 up) 
+        => LookTo_GL(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a left-handed float4x4 view matrix given an eye position, a target direction and a unit length up vector.
     /// The up vector is assumed to be unit length.
     /// </summary>
     /// <param name="eye">The eye position</param>
@@ -235,6 +261,43 @@ public partial struct float4x4
     /// <returns>The float4x4 view matrix.</returns>
     [MethodImpl(256 | 512)]
     public static float4x4 LookTo(float3 eye, float3 dir, float3 up)
+        => LookTo_RH(eye, -dir, up);
+
+    /// <summary>
+    /// Returns a right-handed float4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookTo_RH(float3 eye, float3 dir, float3 up)
+    {
+        var f = dir.normalize();
+        var s = f.cross(up).normalize();
+        var u = s.cross(f);
+
+        var m3x3 = new float3x3(s, u, -f).transpose();
+        
+        return new(
+            new(m3x3.c0),
+            new(m3x3.c1),
+            new(m3x3.c2),
+            new(-eye.dot(s), -eye.dot(u), eye.dot(f), 1.0f)
+        );
+    }
+
+    /// <summary>
+    /// Returns a float4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookTo_GL(float3 eye, float3 dir, float3 up)
     {
         var rot = float3x3.LookRotation(dir.normalize(), up);
         return new(
@@ -246,7 +309,7 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 centered orthographic projection matrix
+    /// Returns a left-handed float4x4 centered orthographic projection matrix.
     /// </summary>
     /// <param name="width">The width of the view volume</param>
     /// <param name="height">The height of the view volume</param>
@@ -255,6 +318,102 @@ public partial struct float4x4
     /// <returns>The float4x4 centered orthographic projection matrix.</returns>
     [MethodImpl(256 | 512)]
     public static float4x4 Ortho(float width, float height, float near, float far)
+    {
+        var rcp_width = 1.0f / width;
+        var rcp_height = 1.0f / height;
+        var r = 1.0f / (far - near);
+
+        return new(
+            new((rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (rcp_height + rcp_height),        default,            default),
+            new(default,           default,            r,       default),
+            new(default,           default,            (-r * near), 1.0f)
+       );
+    }
+
+    /// <summary>
+    /// Returns a left-handed float4x4 off-center orthographic projection matrix.
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The float4x4 off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 Ortho(float left, float right, float bottom, float top, float near, float far)
+    {
+        var rcp_width = 1.0f / (right - left);
+        var rcp_height = 1.0f / (top - bottom);
+        var r = 1.0f / (far - near);
+
+        return new(
+            new((rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (rcp_height + rcp_height),        default,            default),
+            new(default,           default,            r,       default),
+            new((-(left + right) * rcp_width), (-(top + bottom) * rcp_height), (-r * near), 1.0f)
+       );
+    }
+
+    /// <summary>
+    /// Returns a right-handed float4x4 centered orthographic projection matrix.
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The float4x4 centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 Ortho_RH(float width, float height, float near, float far)
+    {
+        var rcp_width = 1.0f / width;
+        var rcp_height = 1.0f / height;
+        var r = 1.0f / (far - near);
+
+        return new(
+            new((rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (rcp_height + rcp_height),        default,            default),
+            new(default,           default,            r,       default),
+            new(default,           default,            (r * near), 1.0f)
+       );
+    }
+
+    /// <summary>
+    /// Returns a right-handed float4x4 off-center orthographic projection matrix.
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The float4x4 off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 Ortho_RH(float left, float right, float bottom, float top, float near, float far)
+    {
+        var rcp_width = 1.0f / (right - left);
+        var rcp_height = 1.0f / (top - bottom);
+        var r = 1.0f / (far - near);
+
+        return new(
+            new((rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (rcp_height + rcp_height),        default,            default),
+            new(default,           default,            r,       default),
+            new((-(left + right) * rcp_width), (-(top + bottom) * rcp_height), (r * near), 1.0f)
+       );
+    }
+
+    /// <summary>
+    /// Returns a float4x4 centered orthographic projection matrix.
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The float4x4 centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 Ortho_GL(float width, float height, float near, float far)
     {
         var rcpdx = 1.0f / width;
         var rcpdy = 1.0f / height;
@@ -269,7 +428,7 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 off-center orthographic projection matrix
+    /// Returns a float4x4 off-center orthographic projection matrix.
     /// </summary>
     /// <param name="left">The minimum x-coordinate of the view volume</param>
     /// <param name="right">The maximum x-coordinate of the view volume</param>
@@ -279,7 +438,7 @@ public partial struct float4x4
     /// <param name="far">The distance to the far plane</param>
     /// <returns>The float4x4 off-center orthographic projection matrix.</returns>
     [MethodImpl(256 | 512)]
-    public static float4x4 OrthoOffCenter(float left, float right, float bottom, float top, float near, float far)
+    public static float4x4 Ortho_GL(float left, float right, float bottom, float top, float near, float far)
     {
         var rcpdx = 1.0f / (right - left);
         var rcpdy = 1.0f / (top - bottom);
@@ -294,7 +453,7 @@ public partial struct float4x4
     }
 
     /// <summary>
-    /// Returns a float4x4 perspective projection matrix based on field of view
+    /// Returns a left-handed float4x4 perspective projection matrix based on field of view.
     /// </summary>
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
@@ -303,6 +462,53 @@ public partial struct float4x4
     /// <returns>The float4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static float4x4 PerspectiveFov(float verticalFov, float aspect, float near, float far)
+    {
+        var h = 1.0f / math.tan(verticalFov * 0.5f);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            new(w,                     default,       default,                   default),
+            new(default,               h,             default,                   default),
+            new(default,               default,       r,                            1.0f),
+            new(default,               default,       (-r * near),                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns a right-handed float4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The float4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 PerspectiveFov_RH(float verticalFov, float aspect, float near, float far)
+    {
+        var h = 1.0f / math.tan(verticalFov * 0.5f);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            new(w,                     default,       default,                   default),
+            new(default,               h,             default,                   default),
+            new(default,               default,       r,                            -1.0f),
+            new(default,               default,       (r * near),                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns a float4x4 perspective projection matrix based on field of view.
+    /// <para><see href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml"/></para>
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The float4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 PerspectiveFov_GL(float verticalFov, float aspect, float near, float far)
     {
         var cotangent = 1.0f / math.tan(verticalFov * 0.5f);
         var rcpdz = 1.0f / (near - far);
@@ -315,20 +521,64 @@ public partial struct float4x4
         );
     }
 
+    /// <summary>
+    /// Returns an infinite left-handed float4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The float4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
-    public static float4x4 PerspectiveOffCenter(float left, float right, float bottom, float top, float near, float far)
+    public static float4x4 PerspectiveFov(float verticalFov, float aspect, float near)
     {
-        var rcpdz = 1.0f / (near - far);
-        var rcpWidth = 1.0f / (right - left);
-        var rcpHeight = 1.0f / (top - bottom);
+        var h = 1.0f / math.tan(verticalFov * 0.5f);
+        var w = h / aspect;
 
         return new(
-            (2.0f * near * rcpWidth),        default,                       ((left + right) * rcpWidth),     default,
-            default,                       (2.0f * near * rcpHeight),       ((bottom + top) * rcpHeight),    default,
-            default,                       default,                       ((far + near) * rcpdz),          (2.0f * near * far * rcpdz),
-            default,                       default,                       -1.0f,                         default
+            new(w,                     default,       default,                   default),
+            new(default,               h,             default,                   default),
+            new(default,               default,       1.0f,                            1.0f),
+            new(default,               default,       -near,                     default)
         );
     }
+
+    /// <summary>
+    /// Returns an infinite right-handed float4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The float4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 PerspectiveFov_RH(float verticalFov, float aspect, float near)
+    {
+        var h = 1.0f / math.tan(verticalFov * 0.5f);
+        var w = h / aspect;
+
+        return new(
+            new(w,                     default,       default,                   default),
+            new(default,               h,             default,                   default),
+            new(default,               default,       -1.0f,                            -1.0f),
+            new(default,               default,       -near,                     default)
+        );
+    }
+
+    // [MethodImpl(256 | 512)]
+    // public static float4x4 PerspectiveOffCenter(float left, float right, float bottom, float top, float near, float far)
+    // {
+    //     var rcpdz = 1.0f / (near - far);
+    //     var rcpWidth = 1.0f / (right - left);
+    //     var rcpHeight = 1.0f / (top - bottom);
+// 
+    //     return new(
+    //         (2.0f * near * rcpWidth),        default,                       ((left + right) * rcpWidth),     default,
+    //         default,                       (2.0f * near * rcpHeight),       ((bottom + top) * rcpHeight),    default,
+    //         default,                       default,                       ((far + near) * rcpdz),          (2.0f * near * far * rcpdz),
+    //         default,                       default,                       -1.0f,                         default
+    //     );
+    // }
 
     /// <summary>
     /// Returns a float4x4 matrix representing a combined scale-, rotation- and translation transform.
@@ -345,6 +595,20 @@ public partial struct float4x4
         r.c0 *= scale.xxx;
         r.c1 *= scale.yyy;
         r.c2 *= scale.zzz;
+        return new(r, translation);
+    }
+
+    /// <summary>
+    /// Returns a float4x4 matrix representing a combined rotation- and translation transform.
+    /// Equivalent to mul(translationTransform, rotationTransform)
+    /// </summary>
+    /// <param name="translation">The translation vector</param>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <returns>The float4x4 matrix representing the translation and rotation by the inputs</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 TR(float3 translation, quaternion rotation)
+    {
+        var r = new float3x3(rotation);
         return new(r, translation);
     }
 
@@ -750,7 +1014,7 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// Returns a left-handed double4x4 view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
     /// the vector between them is assumes to be collinear with the up vector.
     /// </summary>
@@ -763,7 +1027,33 @@ public partial struct double4x4
         => LookTo(eye, target - eye, up);
 
     /// <summary>
-    /// Returns a double4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// Returns a right-handed double4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookAt_RH(double3 eye, double3 target, double3 up) 
+        => LookTo_RH(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a double4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookAt_GL(double3 eye, double3 target, double3 up) 
+        => LookTo_GL(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a left-handed double4x4 view matrix given an eye position, a target direction and a unit length up vector.
     /// The up vector is assumed to be unit length.
     /// </summary>
     /// <param name="eye">The eye position</param>
@@ -772,6 +1062,43 @@ public partial struct double4x4
     /// <returns>The double4x4 view matrix.</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 LookTo(double3 eye, double3 dir, double3 up)
+        => LookTo_RH(eye, -dir, up);
+
+    /// <summary>
+    /// Returns a right-handed double4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookTo_RH(double3 eye, double3 dir, double3 up)
+    {
+        var f = dir.normalize();
+        var s = f.cross(up).normalize();
+        var u = s.cross(f);
+
+        var m3x3 = new double3x3(s, u, -f).transpose();
+        
+        return new(
+            new(m3x3.c0),
+            new(m3x3.c1),
+            new(m3x3.c2),
+            new(-eye.dot(s), -eye.dot(u), eye.dot(f), 1.0)
+        );
+    }
+
+    /// <summary>
+    /// Returns a double4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookTo_GL(double3 eye, double3 dir, double3 up)
     {
         var rot = double3x3.LookRotation(dir.normalize(), up);
         return new(
@@ -783,7 +1110,7 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 centered orthographic projection matrix
+    /// Returns a left-handed double4x4 centered orthographic projection matrix.
     /// </summary>
     /// <param name="width">The width of the view volume</param>
     /// <param name="height">The height of the view volume</param>
@@ -792,6 +1119,102 @@ public partial struct double4x4
     /// <returns>The double4x4 centered orthographic projection matrix.</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 Ortho(double width, double height, double near, double far)
+    {
+        var rcp_width = 1.0 / width;
+        var rcp_height = 1.0 / height;
+        var r = 1.0 / (far - near);
+
+        return new(
+            new((rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (rcp_height + rcp_height),        default,            default),
+            new(default,           default,            r,       default),
+            new(default,           default,            (-r * near), 1.0)
+       );
+    }
+
+    /// <summary>
+    /// Returns a left-handed double4x4 off-center orthographic projection matrix.
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The double4x4 off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 Ortho(double left, double right, double bottom, double top, double near, double far)
+    {
+        var rcp_width = 1.0 / (right - left);
+        var rcp_height = 1.0 / (top - bottom);
+        var r = 1.0 / (far - near);
+
+        return new(
+            new((rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (rcp_height + rcp_height),        default,            default),
+            new(default,           default,            r,       default),
+            new((-(left + right) * rcp_width), (-(top + bottom) * rcp_height), (-r * near), 1.0)
+       );
+    }
+
+    /// <summary>
+    /// Returns a right-handed double4x4 centered orthographic projection matrix.
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The double4x4 centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 Ortho_RH(double width, double height, double near, double far)
+    {
+        var rcp_width = 1.0 / width;
+        var rcp_height = 1.0 / height;
+        var r = 1.0 / (far - near);
+
+        return new(
+            new((rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (rcp_height + rcp_height),        default,            default),
+            new(default,           default,            r,       default),
+            new(default,           default,            (r * near), 1.0)
+       );
+    }
+
+    /// <summary>
+    /// Returns a right-handed double4x4 off-center orthographic projection matrix.
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The double4x4 off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 Ortho_RH(double left, double right, double bottom, double top, double near, double far)
+    {
+        var rcp_width = 1.0 / (right - left);
+        var rcp_height = 1.0 / (top - bottom);
+        var r = 1.0 / (far - near);
+
+        return new(
+            new((rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (rcp_height + rcp_height),        default,            default),
+            new(default,           default,            r,       default),
+            new((-(left + right) * rcp_width), (-(top + bottom) * rcp_height), (r * near), 1.0)
+       );
+    }
+
+    /// <summary>
+    /// Returns a double4x4 centered orthographic projection matrix.
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The double4x4 centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 Ortho_GL(double width, double height, double near, double far)
     {
         var rcpdx = 1.0 / width;
         var rcpdy = 1.0 / height;
@@ -806,7 +1229,7 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 off-center orthographic projection matrix
+    /// Returns a double4x4 off-center orthographic projection matrix.
     /// </summary>
     /// <param name="left">The minimum x-coordinate of the view volume</param>
     /// <param name="right">The maximum x-coordinate of the view volume</param>
@@ -816,7 +1239,7 @@ public partial struct double4x4
     /// <param name="far">The distance to the far plane</param>
     /// <returns>The double4x4 off-center orthographic projection matrix.</returns>
     [MethodImpl(256 | 512)]
-    public static double4x4 OrthoOffCenter(double left, double right, double bottom, double top, double near, double far)
+    public static double4x4 Ortho_GL(double left, double right, double bottom, double top, double near, double far)
     {
         var rcpdx = 1.0 / (right - left);
         var rcpdy = 1.0 / (top - bottom);
@@ -831,7 +1254,7 @@ public partial struct double4x4
     }
 
     /// <summary>
-    /// Returns a double4x4 perspective projection matrix based on field of view
+    /// Returns a left-handed double4x4 perspective projection matrix based on field of view.
     /// </summary>
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
@@ -840,6 +1263,53 @@ public partial struct double4x4
     /// <returns>The double4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 PerspectiveFov(double verticalFov, double aspect, double near, double far)
+    {
+        var h = 1.0 / math.tan(verticalFov * 0.5);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            new(w,                     default,       default,                   default),
+            new(default,               h,             default,                   default),
+            new(default,               default,       r,                            1.0),
+            new(default,               default,       (-r * near),                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns a right-handed double4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The double4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 PerspectiveFov_RH(double verticalFov, double aspect, double near, double far)
+    {
+        var h = 1.0 / math.tan(verticalFov * 0.5);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            new(w,                     default,       default,                   default),
+            new(default,               h,             default,                   default),
+            new(default,               default,       r,                            -1.0),
+            new(default,               default,       (r * near),                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns a double4x4 perspective projection matrix based on field of view.
+    /// <para><see href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml"/></para>
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The double4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 PerspectiveFov_GL(double verticalFov, double aspect, double near, double far)
     {
         var cotangent = 1.0 / math.tan(verticalFov * 0.5);
         var rcpdz = 1.0 / (near - far);
@@ -852,20 +1322,64 @@ public partial struct double4x4
         );
     }
 
+    /// <summary>
+    /// Returns an infinite left-handed double4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The double4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
-    public static double4x4 PerspectiveOffCenter(double left, double right, double bottom, double top, double near, double far)
+    public static double4x4 PerspectiveFov(double verticalFov, double aspect, double near)
     {
-        var rcpdz = 1.0 / (near - far);
-        var rcpWidth = 1.0 / (right - left);
-        var rcpHeight = 1.0 / (top - bottom);
+        var h = 1.0 / math.tan(verticalFov * 0.5);
+        var w = h / aspect;
 
         return new(
-            (2.0 * near * rcpWidth),        default,                       ((left + right) * rcpWidth),     default,
-            default,                       (2.0 * near * rcpHeight),       ((bottom + top) * rcpHeight),    default,
-            default,                       default,                       ((far + near) * rcpdz),          (2.0 * near * far * rcpdz),
-            default,                       default,                       -1.0,                         default
+            new(w,                     default,       default,                   default),
+            new(default,               h,             default,                   default),
+            new(default,               default,       1.0,                            1.0),
+            new(default,               default,       -near,                     default)
         );
     }
+
+    /// <summary>
+    /// Returns an infinite right-handed double4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The double4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 PerspectiveFov_RH(double verticalFov, double aspect, double near)
+    {
+        var h = 1.0 / math.tan(verticalFov * 0.5);
+        var w = h / aspect;
+
+        return new(
+            new(w,                     default,       default,                   default),
+            new(default,               h,             default,                   default),
+            new(default,               default,       -1.0,                            -1.0),
+            new(default,               default,       -near,                     default)
+        );
+    }
+
+    // [MethodImpl(256 | 512)]
+    // public static double4x4 PerspectiveOffCenter(double left, double right, double bottom, double top, double near, double far)
+    // {
+    //     var rcpdz = 1.0 / (near - far);
+    //     var rcpWidth = 1.0 / (right - left);
+    //     var rcpHeight = 1.0 / (top - bottom);
+// 
+    //     return new(
+    //         (2.0 * near * rcpWidth),        default,                       ((left + right) * rcpWidth),     default,
+    //         default,                       (2.0 * near * rcpHeight),       ((bottom + top) * rcpHeight),    default,
+    //         default,                       default,                       ((far + near) * rcpdz),          (2.0 * near * far * rcpdz),
+    //         default,                       default,                       -1.0,                         default
+    //     );
+    // }
 
     /// <summary>
     /// Returns a double4x4 matrix representing a combined scale-, rotation- and translation transform.
@@ -882,6 +1396,20 @@ public partial struct double4x4
         r.c0 *= scale.xxx;
         r.c1 *= scale.yyy;
         r.c2 *= scale.zzz;
+        return new(r, translation);
+    }
+
+    /// <summary>
+    /// Returns a double4x4 matrix representing a combined rotation- and translation transform.
+    /// Equivalent to mul(translationTransform, rotationTransform)
+    /// </summary>
+    /// <param name="translation">The translation vector</param>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <returns>The double4x4 matrix representing the translation and rotation by the inputs</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 TR(double3 translation, quaternion_d rotation)
+    {
+        var r = new double3x3(rotation);
         return new(r, translation);
     }
 
@@ -1950,7 +2478,7 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// Returns a left-handed half4x4 view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
     /// the vector between them is assumes to be collinear with the up vector.
     /// </summary>
@@ -1963,7 +2491,33 @@ public partial struct half4x4
         => LookTo(eye, target - eye, up);
 
     /// <summary>
-    /// Returns a half4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// Returns a right-handed half4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookAt_RH(half3 eye, half3 target, half3 up) 
+        => LookTo_RH(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a half4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookAt_GL(half3 eye, half3 target, half3 up) 
+        => LookTo_GL(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a left-handed half4x4 view matrix given an eye position, a target direction and a unit length up vector.
     /// The up vector is assumed to be unit length.
     /// </summary>
     /// <param name="eye">The eye position</param>
@@ -1972,6 +2526,43 @@ public partial struct half4x4
     /// <returns>The half4x4 view matrix.</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 LookTo(half3 eye, half3 dir, half3 up)
+        => LookTo_RH(eye, -dir, up);
+
+    /// <summary>
+    /// Returns a right-handed half4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookTo_RH(half3 eye, half3 dir, half3 up)
+    {
+        var f = dir.normalize();
+        var s = f.cross(up).normalize();
+        var u = s.cross(f);
+
+        var m3x3 = new half3x3(s, u, -f).transpose();
+        
+        return new(
+            new(m3x3.c0),
+            new(m3x3.c1),
+            new(m3x3.c2),
+            new(-eye.dot(s), -eye.dot(u), eye.dot(f), (half)1.0)
+        );
+    }
+
+    /// <summary>
+    /// Returns a half4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookTo_GL(half3 eye, half3 dir, half3 up)
     {
         var rot = half3x3.LookRotation(dir.normalize(), up);
         return new(
@@ -1983,7 +2574,7 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 centered orthographic projection matrix
+    /// Returns a left-handed half4x4 centered orthographic projection matrix.
     /// </summary>
     /// <param name="width">The width of the view volume</param>
     /// <param name="height">The height of the view volume</param>
@@ -1992,6 +2583,102 @@ public partial struct half4x4
     /// <returns>The half4x4 centered orthographic projection matrix.</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 Ortho(half width, half height, half near, half far)
+    {
+        var rcp_width = (half)1.0 / width;
+        var rcp_height = (half)1.0 / height;
+        var r = (half)1.0 / (far - near);
+
+        return new(
+            new((half)(rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (half)(rcp_height + rcp_height),        default,            default),
+            new(default,           default,            (half)r,       default),
+            new(default,           default,            (half)(-r * near), (half)1.0)
+       );
+    }
+
+    /// <summary>
+    /// Returns a left-handed half4x4 off-center orthographic projection matrix.
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The half4x4 off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 Ortho(half left, half right, half bottom, half top, half near, half far)
+    {
+        var rcp_width = (half)1.0 / (right - left);
+        var rcp_height = (half)1.0 / (top - bottom);
+        var r = (half)1.0 / (far - near);
+
+        return new(
+            new((half)(rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (half)(rcp_height + rcp_height),        default,            default),
+            new(default,           default,            (half)r,       default),
+            new((half)(-(left + right) * rcp_width), (half)(-(top + bottom) * rcp_height), (half)(-r * near), (half)1.0)
+       );
+    }
+
+    /// <summary>
+    /// Returns a right-handed half4x4 centered orthographic projection matrix.
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The half4x4 centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 Ortho_RH(half width, half height, half near, half far)
+    {
+        var rcp_width = (half)1.0 / width;
+        var rcp_height = (half)1.0 / height;
+        var r = (half)1.0 / (far - near);
+
+        return new(
+            new((half)(rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (half)(rcp_height + rcp_height),        default,            default),
+            new(default,           default,            (half)r,       default),
+            new(default,           default,            (half)(r * near), (half)1.0)
+       );
+    }
+
+    /// <summary>
+    /// Returns a right-handed half4x4 off-center orthographic projection matrix.
+    /// </summary>
+    /// <param name="left">The minimum x-coordinate of the view volume</param>
+    /// <param name="right">The maximum x-coordinate of the view volume</param>
+    /// <param name="bottom">The minimum y-coordinate of the view volume</param>
+    /// <param name="top">The minimum y-coordinate of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The half4x4 off-center orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 Ortho_RH(half left, half right, half bottom, half top, half near, half far)
+    {
+        var rcp_width = (half)1.0 / (right - left);
+        var rcp_height = (half)1.0 / (top - bottom);
+        var r = (half)1.0 / (far - near);
+
+        return new(
+            new((half)(rcp_width + rcp_width),       default,            default,            default),
+            new(default,           (half)(rcp_height + rcp_height),        default,            default),
+            new(default,           default,            (half)r,       default),
+            new((half)(-(left + right) * rcp_width), (half)(-(top + bottom) * rcp_height), (half)(r * near), (half)1.0)
+       );
+    }
+
+    /// <summary>
+    /// Returns a half4x4 centered orthographic projection matrix.
+    /// </summary>
+    /// <param name="width">The width of the view volume</param>
+    /// <param name="height">The height of the view volume</param>
+    /// <param name="near">The distance to the near plane</param>
+    /// <param name="far">The distance to the far plane</param>
+    /// <returns>The half4x4 centered orthographic projection matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 Ortho_GL(half width, half height, half near, half far)
     {
         var rcpdx = (half)1.0 / width;
         var rcpdy = (half)1.0 / height;
@@ -2006,7 +2693,7 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 off-center orthographic projection matrix
+    /// Returns a half4x4 off-center orthographic projection matrix.
     /// </summary>
     /// <param name="left">The minimum x-coordinate of the view volume</param>
     /// <param name="right">The maximum x-coordinate of the view volume</param>
@@ -2016,7 +2703,7 @@ public partial struct half4x4
     /// <param name="far">The distance to the far plane</param>
     /// <returns>The half4x4 off-center orthographic projection matrix.</returns>
     [MethodImpl(256 | 512)]
-    public static half4x4 OrthoOffCenter(half left, half right, half bottom, half top, half near, half far)
+    public static half4x4 Ortho_GL(half left, half right, half bottom, half top, half near, half far)
     {
         var rcpdx = (half)1.0 / (right - left);
         var rcpdy = (half)1.0 / (top - bottom);
@@ -2031,7 +2718,7 @@ public partial struct half4x4
     }
 
     /// <summary>
-    /// Returns a half4x4 perspective projection matrix based on field of view
+    /// Returns a left-handed half4x4 perspective projection matrix based on field of view.
     /// </summary>
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
@@ -2040,6 +2727,53 @@ public partial struct half4x4
     /// <returns>The half4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 PerspectiveFov(half verticalFov, half aspect, half near, half far)
+    {
+        var h = (half)1.0 / math.tan(verticalFov * (half)0.5f);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            new((half)w,                     default,       default,                   default),
+            new(default,               (half)h,             default,                   default),
+            new(default,               default,       (half)r,                            (half)1.0),
+            new(default,               default,       (half)(-r * near),                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns a right-handed half4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The half4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 PerspectiveFov_RH(half verticalFov, half aspect, half near, half far)
+    {
+        var h = (half)1.0 / math.tan(verticalFov * (half)0.5f);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            new((half)w,                     default,       default,                   default),
+            new(default,               (half)h,             default,                   default),
+            new(default,               default,       (half)r,                            -(half)1.0),
+            new(default,               default,       (half)(r * near),                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns a half4x4 perspective projection matrix based on field of view.
+    /// <para><see href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml"/></para>
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The half4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 PerspectiveFov_GL(half verticalFov, half aspect, half near, half far)
     {
         var cotangent = (half)1.0 / math.tan(verticalFov * (half)0.5f);
         var rcpdz = (half)1.0 / (near - far);
@@ -2052,20 +2786,64 @@ public partial struct half4x4
         );
     }
 
+    /// <summary>
+    /// Returns an infinite left-handed half4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The half4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
-    public static half4x4 PerspectiveOffCenter(half left, half right, half bottom, half top, half near, half far)
+    public static half4x4 PerspectiveFov(half verticalFov, half aspect, half near)
     {
-        var rcpdz = (half)1.0 / (near - far);
-        var rcpWidth = (half)1.0 / (right - left);
-        var rcpHeight = (half)1.0 / (top - bottom);
+        var h = (half)1.0 / math.tan(verticalFov * (half)0.5f);
+        var w = h / aspect;
 
         return new(
-            (half)((half)2.0f * near * rcpWidth),        default,                       (half)((left + right) * rcpWidth),     default,
-            default,                       (half)((half)2.0f * near * rcpHeight),       (half)((bottom + top) * rcpHeight),    default,
-            default,                       default,                       (half)((far + near) * rcpdz),          (half)((half)2.0f * near * far * rcpdz),
-            default,                       default,                       -(half)1.0,                         default
+            new((half)w,                     default,       default,                   default),
+            new(default,               (half)h,             default,                   default),
+            new(default,               default,       (half)1.0,                            (half)1.0),
+            new(default,               default,       -(half)near,                     default)
         );
     }
+
+    /// <summary>
+    /// Returns an infinite right-handed half4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The half4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 PerspectiveFov_RH(half verticalFov, half aspect, half near)
+    {
+        var h = (half)1.0 / math.tan(verticalFov * (half)0.5f);
+        var w = h / aspect;
+
+        return new(
+            new((half)w,                     default,       default,                   default),
+            new(default,               (half)h,             default,                   default),
+            new(default,               default,       -(half)1.0,                            -(half)1.0),
+            new(default,               default,       -(half)near,                     default)
+        );
+    }
+
+    // [MethodImpl(256 | 512)]
+    // public static half4x4 PerspectiveOffCenter(half left, half right, half bottom, half top, half near, half far)
+    // {
+    //     var rcpdz = (half)1.0 / (near - far);
+    //     var rcpWidth = (half)1.0 / (right - left);
+    //     var rcpHeight = (half)1.0 / (top - bottom);
+// 
+    //     return new(
+    //         (half)((half)2.0f * near * rcpWidth),        default,                       (half)((left + right) * rcpWidth),     default,
+    //         default,                       (half)((half)2.0f * near * rcpHeight),       (half)((bottom + top) * rcpHeight),    default,
+    //         default,                       default,                       (half)((far + near) * rcpdz),          (half)((half)2.0f * near * far * rcpdz),
+    //         default,                       default,                       -(half)1.0,                         default
+    //     );
+    // }
 
     /// <summary>
     /// Returns a half4x4 matrix representing a combined scale-, rotation- and translation transform.
@@ -2082,6 +2860,20 @@ public partial struct half4x4
         r.c0 *= scale.xxx;
         r.c1 *= scale.yyy;
         r.c2 *= scale.zzz;
+        return new(r, translation);
+    }
+
+    /// <summary>
+    /// Returns a half4x4 matrix representing a combined rotation- and translation transform.
+    /// Equivalent to mul(translationTransform, rotationTransform)
+    /// </summary>
+    /// <param name="translation">The translation vector</param>
+    /// <param name="rotation">The quaternion rotation</param>
+    /// <returns>The half4x4 matrix representing the translation and rotation by the inputs</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 TR(half3 translation, quaternion_h rotation)
+    {
+        var r = new half3x3(rotation);
         return new(r, translation);
     }
 
