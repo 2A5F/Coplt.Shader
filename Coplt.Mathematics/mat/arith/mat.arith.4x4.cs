@@ -239,6 +239,32 @@ public partial struct float4x4
         => LookTo_RH(eye, target - eye, up);
 
     /// <summary>
+    /// Returns a left-handed row-major float4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookAt_Row(float3 eye, float3 target, float3 up) 
+        => LookTo_Row(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a right-handed row-major float4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookAt_RH_Row(float3 eye, float3 target, float3 up) 
+        => LookTo_RH_Row(eye, target - eye, up);
+
+    /// <summary>
     /// Returns a float4x4 view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
     /// the vector between them is assumes to be collinear with the up vector.
@@ -285,6 +311,41 @@ public partial struct float4x4
             new(m3x3.c1),
             new(m3x3.c2),
             new(-eye.dot(s), -eye.dot(u), eye.dot(f), 1.0f)
+        );
+    }
+
+    /// <summary>
+    /// Returns a left-handed row-major float4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookTo_Row(float3 eye, float3 dir, float3 up)
+        => LookTo_RH_Row(eye, -dir, up);
+
+    /// <summary>
+    /// Returns a right-handed row-major float4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The float4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 LookTo_RH_Row(float3 eye, float3 dir, float3 up)
+    {
+        var f = dir.normalize();
+        var s = f.cross(up).normalize();
+        var u = s.cross(f);
+        
+        return new(
+            new(s, -eye.dot(s)),
+            new(u, -eye.dot(u)),
+            new(-f, eye.dot(f)),
+            new(default, default, default, 1.0f)
         );
     }
 
@@ -499,6 +560,52 @@ public partial struct float4x4
     }
 
     /// <summary>
+    /// Returns a left-handed row-major float4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The float4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 PerspectiveFov_Row(float verticalFov, float aspect, float near, float far)
+    {
+        var h = 1.0f / math.tan(verticalFov * 0.5f);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            w,                     default,       default,                   default,
+            default,               h,             default,                   default,
+            default,               default,       r,                            1.0f,
+            default,               default,       (-r * near),                     default
+        );
+    }
+
+    /// <summary>
+    /// Returns a right-handed row-major float4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The float4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 PerspectiveFov_RH_Row(float verticalFov, float aspect, float near, float far)
+    {
+        var h = 1.0f / math.tan(verticalFov * 0.5f);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            w,                     default,       default,                   default,
+            default,               h,             default,                   default,
+            default,               default,       r,                            -1.0f,
+            default,               default,       (r * near),                     default
+        );
+    }
+
+    /// <summary>
     /// Returns a float4x4 perspective projection matrix based on field of view.
     /// <para><see href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml"/></para>
     /// </summary>
@@ -527,7 +634,6 @@ public partial struct float4x4
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
     /// <param name="near">Distance to near plane. Must be greater than zero</param>
-    /// <param name="far">Distance to far plane. Must be greater than zero</param>
     /// <returns>The float4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static float4x4 PerspectiveFov(float verticalFov, float aspect, float near)
@@ -549,7 +655,6 @@ public partial struct float4x4
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
     /// <param name="near">Distance to near plane. Must be greater than zero</param>
-    /// <param name="far">Distance to far plane. Must be greater than zero</param>
     /// <returns>The float4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static float4x4 PerspectiveFov_RH(float verticalFov, float aspect, float near)
@@ -562,6 +667,48 @@ public partial struct float4x4
             new(default,               h,             default,                   default),
             new(default,               default,       -1.0f,                            -1.0f),
             new(default,               default,       -near,                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns an infinite left-handed row-major float4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <returns>The float4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 PerspectiveFov_Row(float verticalFov, float aspect, float near)
+    {
+        var h = 1.0f / math.tan(verticalFov * 0.5f);
+        var w = h / aspect;
+
+        return new(
+            w,                     default,       default,                   default,
+            default,               h,             default,                   default,
+            default,               default,       1.0f,                            1.0f,
+            default,               default,       -near,                     default
+        );
+    }
+
+    /// <summary>
+    /// Returns an infinite right-handed row-major float4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <returns>The float4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static float4x4 PerspectiveFov_RH_Row(float verticalFov, float aspect, float near)
+    {
+        var h = 1.0f / math.tan(verticalFov * 0.5f);
+        var w = h / aspect;
+
+        return new(
+            w,                     default,       default,                   default,
+            default,               h,             default,                   default,
+            default,               default,       -1.0f,                            -1.0f,
+            default,               default,       -near,                     default
         );
     }
 
@@ -1040,6 +1187,32 @@ public partial struct double4x4
         => LookTo_RH(eye, target - eye, up);
 
     /// <summary>
+    /// Returns a left-handed row-major double4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookAt_Row(double3 eye, double3 target, double3 up) 
+        => LookTo_Row(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a right-handed row-major double4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookAt_RH_Row(double3 eye, double3 target, double3 up) 
+        => LookTo_RH_Row(eye, target - eye, up);
+
+    /// <summary>
     /// Returns a double4x4 view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
     /// the vector between them is assumes to be collinear with the up vector.
@@ -1086,6 +1259,41 @@ public partial struct double4x4
             new(m3x3.c1),
             new(m3x3.c2),
             new(-eye.dot(s), -eye.dot(u), eye.dot(f), 1.0)
+        );
+    }
+
+    /// <summary>
+    /// Returns a left-handed row-major double4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookTo_Row(double3 eye, double3 dir, double3 up)
+        => LookTo_RH_Row(eye, -dir, up);
+
+    /// <summary>
+    /// Returns a right-handed row-major double4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The double4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 LookTo_RH_Row(double3 eye, double3 dir, double3 up)
+    {
+        var f = dir.normalize();
+        var s = f.cross(up).normalize();
+        var u = s.cross(f);
+        
+        return new(
+            new(s, -eye.dot(s)),
+            new(u, -eye.dot(u)),
+            new(-f, eye.dot(f)),
+            new(default, default, default, 1.0)
         );
     }
 
@@ -1300,6 +1508,52 @@ public partial struct double4x4
     }
 
     /// <summary>
+    /// Returns a left-handed row-major double4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The double4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 PerspectiveFov_Row(double verticalFov, double aspect, double near, double far)
+    {
+        var h = 1.0 / math.tan(verticalFov * 0.5);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            w,                     default,       default,                   default,
+            default,               h,             default,                   default,
+            default,               default,       r,                            1.0,
+            default,               default,       (-r * near),                     default
+        );
+    }
+
+    /// <summary>
+    /// Returns a right-handed row-major double4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The double4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 PerspectiveFov_RH_Row(double verticalFov, double aspect, double near, double far)
+    {
+        var h = 1.0 / math.tan(verticalFov * 0.5);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            w,                     default,       default,                   default,
+            default,               h,             default,                   default,
+            default,               default,       r,                            -1.0,
+            default,               default,       (r * near),                     default
+        );
+    }
+
+    /// <summary>
     /// Returns a double4x4 perspective projection matrix based on field of view.
     /// <para><see href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml"/></para>
     /// </summary>
@@ -1328,7 +1582,6 @@ public partial struct double4x4
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
     /// <param name="near">Distance to near plane. Must be greater than zero</param>
-    /// <param name="far">Distance to far plane. Must be greater than zero</param>
     /// <returns>The double4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 PerspectiveFov(double verticalFov, double aspect, double near)
@@ -1350,7 +1603,6 @@ public partial struct double4x4
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
     /// <param name="near">Distance to near plane. Must be greater than zero</param>
-    /// <param name="far">Distance to far plane. Must be greater than zero</param>
     /// <returns>The double4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static double4x4 PerspectiveFov_RH(double verticalFov, double aspect, double near)
@@ -1363,6 +1615,48 @@ public partial struct double4x4
             new(default,               h,             default,                   default),
             new(default,               default,       -1.0,                            -1.0),
             new(default,               default,       -near,                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns an infinite left-handed row-major double4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <returns>The double4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 PerspectiveFov_Row(double verticalFov, double aspect, double near)
+    {
+        var h = 1.0 / math.tan(verticalFov * 0.5);
+        var w = h / aspect;
+
+        return new(
+            w,                     default,       default,                   default,
+            default,               h,             default,                   default,
+            default,               default,       1.0,                            1.0,
+            default,               default,       -near,                     default
+        );
+    }
+
+    /// <summary>
+    /// Returns an infinite right-handed row-major double4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <returns>The double4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static double4x4 PerspectiveFov_RH_Row(double verticalFov, double aspect, double near)
+    {
+        var h = 1.0 / math.tan(verticalFov * 0.5);
+        var w = h / aspect;
+
+        return new(
+            w,                     default,       default,                   default,
+            default,               h,             default,                   default,
+            default,               default,       -1.0,                            -1.0,
+            default,               default,       -near,                     default
         );
     }
 
@@ -2504,6 +2798,32 @@ public partial struct half4x4
         => LookTo_RH(eye, target - eye, up);
 
     /// <summary>
+    /// Returns a left-handed row-major half4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookAt_Row(half3 eye, half3 target, half3 up) 
+        => LookTo_Row(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a right-handed row-major half4x4 view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookAt_RH_Row(half3 eye, half3 target, half3 up) 
+        => LookTo_RH_Row(eye, target - eye, up);
+
+    /// <summary>
     /// Returns a half4x4 view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
     /// the vector between them is assumes to be collinear with the up vector.
@@ -2550,6 +2870,41 @@ public partial struct half4x4
             new(m3x3.c1),
             new(m3x3.c2),
             new(-eye.dot(s), -eye.dot(u), eye.dot(f), (half)1.0)
+        );
+    }
+
+    /// <summary>
+    /// Returns a left-handed row-major half4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookTo_Row(half3 eye, half3 dir, half3 up)
+        => LookTo_RH_Row(eye, -dir, up);
+
+    /// <summary>
+    /// Returns a right-handed row-major half4x4 view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The half4x4 view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 LookTo_RH_Row(half3 eye, half3 dir, half3 up)
+    {
+        var f = dir.normalize();
+        var s = f.cross(up).normalize();
+        var u = s.cross(f);
+        
+        return new(
+            new(s, -eye.dot(s)),
+            new(u, -eye.dot(u)),
+            new(-f, eye.dot(f)),
+            new(default, default, default, (half)1.0)
         );
     }
 
@@ -2764,6 +3119,52 @@ public partial struct half4x4
     }
 
     /// <summary>
+    /// Returns a left-handed row-major half4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The half4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 PerspectiveFov_Row(half verticalFov, half aspect, half near, half far)
+    {
+        var h = (half)1.0 / math.tan(verticalFov * (half)0.5f);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            (half)w,                     default,       default,                   default,
+            default,               (half)h,             default,                   default,
+            default,               default,       (half)r,                            (half)1.0,
+            default,               default,       (half)(-r * near),                     default
+        );
+    }
+
+    /// <summary>
+    /// Returns a right-handed row-major half4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The half4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 PerspectiveFov_RH_Row(half verticalFov, half aspect, half near, half far)
+    {
+        var h = (half)1.0 / math.tan(verticalFov * (half)0.5f);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            (half)w,                     default,       default,                   default,
+            default,               (half)h,             default,                   default,
+            default,               default,       (half)r,                            -(half)1.0,
+            default,               default,       (half)(r * near),                     default
+        );
+    }
+
+    /// <summary>
     /// Returns a half4x4 perspective projection matrix based on field of view.
     /// <para><see href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml"/></para>
     /// </summary>
@@ -2792,7 +3193,6 @@ public partial struct half4x4
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
     /// <param name="near">Distance to near plane. Must be greater than zero</param>
-    /// <param name="far">Distance to far plane. Must be greater than zero</param>
     /// <returns>The half4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 PerspectiveFov(half verticalFov, half aspect, half near)
@@ -2814,7 +3214,6 @@ public partial struct half4x4
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
     /// <param name="near">Distance to near plane. Must be greater than zero</param>
-    /// <param name="far">Distance to far plane. Must be greater than zero</param>
     /// <returns>The half4x4 perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static half4x4 PerspectiveFov_RH(half verticalFov, half aspect, half near)
@@ -2827,6 +3226,48 @@ public partial struct half4x4
             new(default,               (half)h,             default,                   default),
             new(default,               default,       -(half)1.0,                            -(half)1.0),
             new(default,               default,       -(half)near,                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns an infinite left-handed row-major half4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <returns>The half4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 PerspectiveFov_Row(half verticalFov, half aspect, half near)
+    {
+        var h = (half)1.0 / math.tan(verticalFov * (half)0.5f);
+        var w = h / aspect;
+
+        return new(
+            (half)w,                     default,       default,                   default,
+            default,               (half)h,             default,                   default,
+            default,               default,       (half)1.0,                            (half)1.0,
+            default,               default,       -(half)near,                     default
+        );
+    }
+
+    /// <summary>
+    /// Returns an infinite right-handed row-major half4x4 perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <returns>The half4x4 perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static half4x4 PerspectiveFov_RH_Row(half verticalFov, half aspect, half near)
+    {
+        var h = (half)1.0 / math.tan(verticalFov * (half)0.5f);
+        var w = h / aspect;
+
+        return new(
+            (half)w,                     default,       default,                   default,
+            default,               (half)h,             default,                   default,
+            default,               default,       -(half)1.0,                            -(half)1.0,
+            default,               default,       -(half)near,                     default
         );
     }
 

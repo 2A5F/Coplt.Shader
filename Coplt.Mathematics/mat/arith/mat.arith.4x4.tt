@@ -276,6 +276,32 @@ public partial struct <#= typeName #>
         => LookTo_RH(eye, target - eye, up);
 
     /// <summary>
+    /// Returns a left-handed row-major <#= typeName #> view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookAt_Row(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> target, <#= vecTypeName3 #> up) 
+        => LookTo_Row(eye, target - eye, up);
+
+    /// <summary>
+    /// Returns a right-handed row-major <#= typeName #> view matrix given an eye position, a target point and a unit length up vector.
+    /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
+    /// the vector between them is assumes to be collinear with the up vector.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="target">The view target position</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookAt_RH_Row(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> target, <#= vecTypeName3 #> up) 
+        => LookTo_RH_Row(eye, target - eye, up);
+
+    /// <summary>
     /// Returns a <#= typeName #> view matrix given an eye position, a target point and a unit length up vector.
     /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
     /// the vector between them is assumes to be collinear with the up vector.
@@ -322,6 +348,41 @@ public partial struct <#= typeName #>
             new(m3x3.c1),
             new(m3x3.c2),
             new(-eye.dot(s), -eye.dot(u), eye.dot(f), <#= typ.one #>)
+        );
+    }
+
+    /// <summary>
+    /// Returns a left-handed row-major <#= typeName #> view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookTo_Row(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> dir, <#= vecTypeName3 #> up)
+        => LookTo_RH_Row(eye, -dir, up);
+
+    /// <summary>
+    /// Returns a right-handed row-major <#= typeName #> view matrix given an eye position, a target direction and a unit length up vector.
+    /// The up vector is assumed to be unit length.
+    /// </summary>
+    /// <param name="eye">The eye position</param>
+    /// <param name="dir">The view target direction</param>
+    /// <param name="up">The eye up direction</param>
+    /// <returns>The <#= typeName #> view matrix.</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> LookTo_RH_Row(<#= vecTypeName3 #> eye, <#= vecTypeName3 #> dir, <#= vecTypeName3 #> up)
+    {
+        var f = dir.normalize();
+        var s = f.cross(up).normalize();
+        var u = s.cross(f);
+        
+        return new(
+            new(s, -eye.dot(s)),
+            new(u, -eye.dot(u)),
+            new(-f, eye.dot(f)),
+            new(default, default, default, <#= typ.one #>)
         );
     }
 
@@ -536,6 +597,52 @@ public partial struct <#= typeName #>
     }
 
     /// <summary>
+    /// Returns a left-handed row-major <#= typeName #> perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The <#= typeName #> perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> PerspectiveFov_Row(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var h = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            <#= typ.arithCast #>w,                     default,       default,                   default,
+            default,               <#= typ.arithCast #>h,             default,                   default,
+            default,               default,       <#= typ.arithCast #>r,                            <#= typ.one #>,
+            default,               default,       <#= typ.arithCast #>(-r * near),                     default
+        );
+    }
+
+    /// <summary>
+    /// Returns a right-handed row-major <#= typeName #> perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <param name="far">Distance to far plane. Must be greater than zero</param>
+    /// <returns>The <#= typeName #> perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> PerspectiveFov_RH_Row(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near, <#= typ.compType #> far)
+    {
+        var h = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
+        var w = h / aspect;
+        var r = far / (far - near);
+
+        return new(
+            <#= typ.arithCast #>w,                     default,       default,                   default,
+            default,               <#= typ.arithCast #>h,             default,                   default,
+            default,               default,       <#= typ.arithCast #>r,                            -<#= typ.one #>,
+            default,               default,       <#= typ.arithCast #>(r * near),                     default
+        );
+    }
+
+    /// <summary>
     /// Returns a <#= typeName #> perspective projection matrix based on field of view.
     /// <para><see href="https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluPerspective.xml"/></para>
     /// </summary>
@@ -564,7 +671,6 @@ public partial struct <#= typeName #>
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
     /// <param name="near">Distance to near plane. Must be greater than zero</param>
-    /// <param name="far">Distance to far plane. Must be greater than zero</param>
     /// <returns>The <#= typeName #> perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> PerspectiveFov(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near)
@@ -586,7 +692,6 @@ public partial struct <#= typeName #>
     /// <param name="verticalFov">Vertical Field of view in radians</param>
     /// <param name="aspect">X:Y aspect ratio</param>
     /// <param name="near">Distance to near plane. Must be greater than zero</param>
-    /// <param name="far">Distance to far plane. Must be greater than zero</param>
     /// <returns>The <#= typeName #> perspective projection matrix</returns>
     [MethodImpl(256 | 512)]
     public static <#= typeName #> PerspectiveFov_RH(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near)
@@ -599,6 +704,48 @@ public partial struct <#= typeName #>
             new(default,               <#= typ.arithCast #>h,             default,                   default),
             new(default,               default,       -<#= typ.one #>,                            -<#= typ.one #>),
             new(default,               default,       -<#= typ.arithCast #>near,                     default)
+        );
+    }
+
+    /// <summary>
+    /// Returns an infinite left-handed row-major <#= typeName #> perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <returns>The <#= typeName #> perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> PerspectiveFov_Row(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near)
+    {
+        var h = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
+        var w = h / aspect;
+
+        return new(
+            <#= typ.arithCast #>w,                     default,       default,                   default,
+            default,               <#= typ.arithCast #>h,             default,                   default,
+            default,               default,       <#= typ.one #>,                            <#= typ.one #>,
+            default,               default,       -<#= typ.arithCast #>near,                     default
+        );
+    }
+
+    /// <summary>
+    /// Returns an infinite right-handed row-major <#= typeName #> perspective projection matrix based on field of view.
+    /// </summary>
+    /// <param name="verticalFov">Vertical Field of view in radians</param>
+    /// <param name="aspect">X:Y aspect ratio</param>
+    /// <param name="near">Distance to near plane. Must be greater than zero</param>
+    /// <returns>The <#= typeName #> perspective projection matrix</returns>
+    [MethodImpl(256 | 512)]
+    public static <#= typeName #> PerspectiveFov_RH_Row(<#= typ.compType #> verticalFov, <#= typ.compType #> aspect, <#= typ.compType #> near)
+    {
+        var h = <#= typ.one #> / math.tan(verticalFov * <#= typ.half #>);
+        var w = h / aspect;
+
+        return new(
+            <#= typ.arithCast #>w,                     default,       default,                   default,
+            default,               <#= typ.arithCast #>h,             default,                   default,
+            default,               default,       -<#= typ.one #>,                            -<#= typ.one #>,
+            default,               default,       -<#= typ.arithCast #>near,                     default
         );
     }
 
