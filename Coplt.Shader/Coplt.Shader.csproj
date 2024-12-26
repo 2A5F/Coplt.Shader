@@ -7,8 +7,4 @@
         <NoWarn>CS8981</NoWarn>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Coplt.Mathematics\Coplt.Mathematics.csproj" />
-    </ItemGroup>
-
 </Project>

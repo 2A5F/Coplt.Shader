@@ -22,7 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Coplt.Mathematics.SignedDistances\Coplt.Mathematics.SignedDistances.csproj" />
       <ProjectReference Include="..\Coplt.Shader\Coplt.Shader.csproj" />
     </ItemGroup>
 
