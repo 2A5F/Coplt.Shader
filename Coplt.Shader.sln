@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coplt.Shader.Mir", "Coplt.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coplt.Shader.Analyzers", "Coplt.Shader.Analyzers\Coplt.Shader.Analyzers.csproj", "{A20F03F9-53F2-408A-BD62-5EEB78DD228B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coplt.Mathematics", "Coplt.Mathematics\Coplt.Mathematics\Coplt.Mathematics.csproj", "{78B69121-A1A0-4A9A-9210-C55B3FC85179}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{A20F03F9-53F2-408A-BD62-5EEB78DD228B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A20F03F9-53F2-408A-BD62-5EEB78DD228B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A20F03F9-53F2-408A-BD62-5EEB78DD228B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B69121-A1A0-4A9A-9210-C55B3FC85179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B69121-A1A0-4A9A-9210-C55B3FC85179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B69121-A1A0-4A9A-9210-C55B3FC85179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B69121-A1A0-4A9A-9210-C55B3FC85179}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
